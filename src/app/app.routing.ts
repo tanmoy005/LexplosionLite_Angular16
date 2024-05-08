@@ -11,6 +11,7 @@ export const AppRoutes: Routes = [
     pathMatch: 'full'
   },
   
+
   {
     path: '',
     component: BlankComponent,
@@ -20,6 +21,18 @@ export const AppRoutes: Routes = [
       {
         path: '',
         loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+      }
+    ]
+  },
+  {
+    path: '',
+    component: BlankComponent,
+  
+    children: [
+  
+      {
+        path: '',
+        loadChildren: () => import('./user-onboard/user-onboard.module').then(m => m.UserOnboardModule)
       }
     ]
   },

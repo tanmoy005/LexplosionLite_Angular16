@@ -1,1 +1,18 @@
-<p>stepper works!</p>
+<div class="labelPosition-reverse">
+
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+
+      <mat-step >
+        <ng-template matStepLabel>Company Details</ng-template>
+      </mat-step>
+
+      <mat-step >
+        <ng-template matStepLabel>Subscription Details</ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Payment</ng-template>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </div>

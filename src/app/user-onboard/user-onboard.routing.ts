@@ -3,9 +3,10 @@ import { PaymentComponent } from './payment-page/payment.component';
 import { Routes } from '@angular/router';
 
 import { LawsTableComponent } from './laws-table-page/laws-table.component'
+import { CommonComponentsComponent } from './common-components/common-components.component';
  
 
-export const AuthenticationRoutes: Routes = [
+export const UserOnboardRoutes: Routes = [
   {
     path: 'laws',
     component: LawsTableComponent,
@@ -17,6 +18,10 @@ export const AuthenticationRoutes: Routes = [
   {
     path: 'payment',
     component: PaymentComponent,
+  },
+  {
+    path: 'common-component',
+    component: CommonComponentsComponent,
   },
 
 ];
