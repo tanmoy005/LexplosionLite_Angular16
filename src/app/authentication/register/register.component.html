@@ -1,15 +1,17 @@
-<div class="containar">
-<mat-card>
+
+
+<div class='container'>
+<mat-card class ="mat-card-container">
  
    
     
-      <div class="col-lg-6  align-items-center">
-        <mat-card-title class="mat-card-title">User Registration</mat-card-title>
+      <div class="col-lg-6 col-md-12 col-sm-12 align-items-center">
+        <mat-card-title class="col-lg-12 col-md-12 col-sm-12 mat-card-title">User Registration</mat-card-title>
           
             <mat-card-content class="p-32">
            
               <form class="login-form" >
-                <mat-form-field class="example-full-width">
+                <mat-form-field class=" example-full-width">
                   <mat-label>Username</mat-label>
                   <input  matInput name="username"  [formControl]="usernameFormControl">
                   <mat-error *ngIf="usernameFormControl.hasError('required')">Username is <strong>required</strong></mat-error>
@@ -32,16 +34,21 @@
                   <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></mat-error>
                 </mat-form-field>
               
+                <h4 class="col-lg-6 col-md-12 col-sm-12 contact-title">Contact</h4>
                 <div class="example-full-width d-flex">
-                  <mat-form-field class="country-code-full-width">
-                    <mat-label>Country Code</mat-label>
+                  <mat-form-field class="country-code-full-width" style="margin-right: 10px;">
+                  <!-- <mat-label>Country Code</mat-label> --> 
                     <input matInput type="number" placeholder="Ex. 91" name="countryCode"  [formControl]="countryCodeFormControl">
+                    <mat-hint align="start">Country Code *</mat-hint>
                     <mat-error *ngIf="countryCodeFormControl.hasError('required')">Country Code is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
-                    <mat-label>Phone Number</mat-label>
+                   <!-- <mat-label>Phone Number</mat-label> -->
                     <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"  [formControl]="phoneNumberFormControl">
+                    <mat-hint align="start">Phone Number *</mat-hint>
                     <mat-error *ngIf="phoneNumberFormControl.hasError('required')">Phone Number is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')">Invalid Phone Number</mat-error>
                   </mat-form-field>
                 </div>
 

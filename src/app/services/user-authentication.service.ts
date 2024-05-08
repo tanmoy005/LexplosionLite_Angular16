@@ -6,10 +6,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserAuthenticationService {
-  url =''
+  url =' https://enginebackend.komrisk.com:3000/v1/company'
   constructor(private http: HttpClient ) { }
 
   userRegistration(data: any){
+    console.log('user registration data',data)
     return this.http.post(this.url,data)
   }
 }
