@@ -1,6 +1,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -13,6 +13,7 @@ import { AppHeaderComponent } from './layouts/full/header/header.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './demo-material-module';
+import { BlankComponent } from './layouts/blank/blank/blank.component';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
@@ -23,6 +24,8 @@ import { SpinnerComponent } from './shared/spinner.component';
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
+    BlankComponent
+  
     
   ],
   imports: [
@@ -33,7 +36,8 @@ import { SpinnerComponent } from './shared/spinner.component';
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
-    AppSidebarComponent
+    AppSidebarComponent,
+    
   ],
   providers: [
     {
