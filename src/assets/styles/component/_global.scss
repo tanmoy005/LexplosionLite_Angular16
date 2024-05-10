@@ -9,7 +9,7 @@ body {
   font-family: $bodyfont;
   margin: 0;
   overflow-x: hidden;
-  color: $bodytext;
+ // color: $bodytext;
   font-weight: 300;
   background: $inverse;
 }
@@ -259,3 +259,36 @@ html body {
   letter-spacing: normal;
   font-weight: 400;
 }
+
+
+.mat-step-header {
+  flex-direction: column-reverse;
+  margin-bottom: 50px;
+  margin-left: -10px; /* Adjust as needed */
+  margin-right: -10px;
+}
+
+
+.mat-step-header .mat-step-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to maximum 3 lines */
+  -webkit-box-orient: vertical;
+  max-height: 4.5em; /* Adjust as needed */
+  word-wrap: break-word;
+  line-height: 1.5em; /* Adjust line height for better readability */
+  white-space: normal; /* Allow wrapping */
+}
+
+/* Position stepper labels at the top-middle of each step */
+.mat-horizontal-stepper .mat-step-header {
+  text-align: center;
+  flex-direction: column;
+}
+
+.mat-horizontal-stepper .mat-step-header .mat-step-label {
+  margin-top: 0;
+}
+
+

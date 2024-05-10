@@ -11,6 +11,7 @@ import { StepperHelperTextComponent } from './common-components/stepper-helper-t
 import { TermsConditionCardComponent } from './common-components/terms-condition-card/terms-condition-card.component';
 import { PaymentSectionComponent } from './common-components/payment-section/payment-section.component';
 import { UserOnboardRoutes } from './user-onboard.routing';
+import { BusinessCardComponent } from './common-components/business-card/business-card.component';
 
 
 @NgModule({
@@ -24,14 +25,21 @@ import { UserOnboardRoutes } from './user-onboard.routing';
     
     StepperHelperTextComponent,
     
-    PaymentSectionComponent
+    PaymentSectionComponent,
+    
+         
   ],
   imports: [
     CommonModule,
     TermsConditionCardComponent,
     StepperComponent,
     RouterModule.forChild(UserOnboardRoutes),
+    BusinessCardComponent
     
+    
+  ],
+  exports:[
+    BusinessCardComponent
   ]
 })
 export class UserOnboardModule { }

@@ -16,6 +16,7 @@ import { AuthenticationRoutes } from './authentication.routing';
 
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
+//import { BusinessCardComponent } from '../user-onboard/common-components/business-card/business-card.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { AppSideRegisterComponent } from './register/register.component';
 
   AppSideLoginComponent,
     AppSideRegisterComponent,
-
+    
    // TablerIconsModule.pick(TablerIcons),
   ],
   declarations: [
