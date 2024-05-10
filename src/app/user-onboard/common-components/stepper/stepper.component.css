@@ -1,27 +1,22 @@
-/* 
-::ng-deep .mat-horizontal-stepper-header {
-    box-sizing: border-box;
-    flex-direction: column-reverse !important;
-    height: auto;
-    padding: 24px;
-}
-::ng-deep .mat-horizontal-stepper-header .mat-step-label {
-    padding: 0px 0px 16px !important;
-}
-::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after{
-    top: 68px !important;
-} */
+.mat-step-header {
+    flex-direction: column-reverse;
+    margin-bottom: 40px;
+  }
 
-/* .mat-stepper-label-position-top .mat-horizontal-stepper-header{
-    flex-direction: column-reverse !important;
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+
+  .stepper-header-above .mat-horizontal-stepper-header-container {
+    display: flex;
+    flex-direction: column;
   }
   
-  .mat-stepper-label-position-top .mat-horizontal-stepper-header .mat-step-label{
-    height: 48px;
+  .stepper-header-above .mat-step-header {
+    text-align: center;
+    flex-grow: 1;
   }
   
-  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, 
-  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after{
-    bottom: 36px !important;
-    top:unset !important;
-  } */
+  

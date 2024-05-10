@@ -1,0 +1,24 @@
+.example-card {
+    max-width: 400px;
+  }
+
+
+  .business-field-container {
+    display: flex;
+    align-items: center; 
+  }
+
+  .example-full-width {
+    width: 100%;
+    height: 50%
+  }
+
+  .dark-brown-icon {
+    color: #654321; /* Dark brown color */
+  }
+  
+
+
+  
+ 
+  

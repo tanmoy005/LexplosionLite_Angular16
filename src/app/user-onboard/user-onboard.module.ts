@@ -11,6 +11,8 @@ import { StepperHelperTextComponent } from './common-components/stepper-helper-t
 import { TermsConditionCardComponent } from './common-components/terms-condition-card/terms-condition-card.component';
 import { PaymentSectionComponent } from './common-components/payment-section/payment-section.component';
 import { UserOnboardRoutes } from './user-onboard.routing';
+import { BusinessCardComponent } from './common-components/business-card/business-card.component';
+import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
 import { EntityTableComponent } from './common-components/entity-table/entity-table.component';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
@@ -29,6 +31,9 @@ import { OperatingUnitTableComponent } from './common-components/operating-unit-
     StepperHelperTextComponent,
     PaymentSectionComponent,
     
+    PaymentSectionComponent,
+    
+         
   ],
   
   imports: [
@@ -36,12 +41,18 @@ import { OperatingUnitTableComponent } from './common-components/operating-unit-
     TermsConditionCardComponent,
     StepperComponent,
     RouterModule.forChild(UserOnboardRoutes),
+    BusinessCardComponent,
+    FeaturesSectionComponent
+    
     EntityTableComponent,
     FormsModule,
     MatTableModule,
     FeaturesSectionComponent, 
     MatDialogModule,
     OperatingUnitTableComponent
+  ],
+  exports:[
+    BusinessCardComponent
   ]
 })
 export class UserOnboardModule { }

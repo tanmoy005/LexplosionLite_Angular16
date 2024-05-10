@@ -1,1 +1,36 @@
-<p>stepper-helper-text works!</p>
+
+<p>Step {{currentStep}} of 3. </p>
+
+<div *ngIf="currentStep === 1">
+    <div *ngIf="subStep === 1">
+        <p>Let’s get started</p>
+    </div>
+    <div *ngIf="subStep === 2">
+        <p>Let’s get started</p>
+    </div>
+</div>
+
+<div *ngIf="currentStep === 2">
+    <div *ngIf="subStep === 1">
+        <p>Almost there ! </p>
+        <p>   Just one step away. Select the subscription you want to use  </p>
+    </div>
+    <div *ngIf="subStep === 2">
+        <p>Almost there ! </p>
+        <p>Meanwhile here’s a preliminary list of critical laws for your business  </p>
+    </div>
+    <div *ngIf="subStep === 3">
+        <p>Last step !.</p>
+       
+    </div>
+
+</div>
+  
+<div *ngIf="currentStep === 3">
+    <div *ngIf="subStep === 1">
+        <p>Almost there !</p>
+        <p> Just one step away. Select the subscription you want to use.</p>
+    </div>
+  
+    
+</div>

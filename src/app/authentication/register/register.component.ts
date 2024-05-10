@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 
 import {UserAuthenticationService} from '../../services/user-authentication.service'
 
+import { BusinessCardComponent } from 'src/app/user-onboard/common-components/business-card/business-card.component';
+
 @Component({
   selector: 'app-register',
    standalone: true,
@@ -19,7 +21,8 @@ import {UserAuthenticationService} from '../../services/user-authentication.serv
     MatInputModule,
     MatFormFieldModule,
     FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    BusinessCardComponent
 
     ],
   styleUrls: ['./register.component.css']

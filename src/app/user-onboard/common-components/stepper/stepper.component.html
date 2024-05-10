@@ -1,9 +1,11 @@
-<div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12"> 
 
-  <mat-horizontal-stepper #stepper>
+    <mat-horizontal-stepper  #stepper [selectedIndex]="currentStep" [linear]="true" class="stepper-header-above" labelPosition="bottom">
 
       <mat-step >
-        <ng-template matStepLabel>Business Details</ng-template>
+        <ng-template matStepLabel >Company Details</ng-template>
       </mat-step>
 
       <mat-step >
@@ -17,4 +19,5 @@
     </mat-horizontal-stepper>
   </div>
 
-  
+</div>
+</div>

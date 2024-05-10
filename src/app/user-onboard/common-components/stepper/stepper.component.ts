@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormBuilder, Validators, FormsModule, ReactiveFormsModule,FormGroup} from '@angular/forms';
+import { Component,Input,ViewChild  } from '@angular/core';
+import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -21,16 +21,11 @@ import {MatStepperModule} from '@angular/material/stepper';
 })
 
 export class StepperComponent {
+  @Input() currentStep: number = 0;
 
-  // firstFormGroup: any;
-  // secondFormGroup: any;
-  // constructor(private _formBuilder: FormBuilder) {}
-  // ngOnInit() {
-  //   this.firstFormGroup = this._formBuilder.group({
-  //     firstCtrl: ['', Validators.required]
-  //   });
-  //   this.secondFormGroup = this._formBuilder.group({
-  //     secondCtrl: ['', Validators.required]
-  //   });
+  isStepDisabled(index: number): boolean {
+    // If the index is not the current step, disable the step
+    return index !== this.currentStep;
   }
 
+}

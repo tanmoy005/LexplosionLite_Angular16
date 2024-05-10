@@ -1,0 +1,128 @@
+// .example-tree-progress-bar {
+//     margin-left: 30px;
+//   }
+
+//   .example-tree-nested-node {
+//     padding-left: 30px;
+//   }
+
+//   mat-tree {
+//     margin-left: 40px;
+//   }
+//   .mat-tree-node {
+//     padding: 0;
+//     background-color: white;
+//   }
+
+//   .mat-nested-tree-node {
+//     top: -24px;
+//   }
+
+//   ul, li {
+//     list-style: none;
+//     margin: 0;
+//     padding: 0;
+//   }
+
+//   li.example-tree-container {
+//     border-bottom: 0;
+//   }
+
+//   ul {
+//     padding-left: 40px;
+//   }
+
+//   li {
+//     padding-left: 40px;
+//     border: 1px dotted grey;
+//     border-width: 0 0 1px 1px;
+//     position: relative;
+//     top: -24px;
+//   }
+
+//   li.mat-tree-node,
+//   li div {
+//     margin: 0;
+//     position: relative;
+//     top: 24px;
+//   }
+
+//   li ul {
+//     border-top: 1px dotted grey;
+//     margin-left: -40px;
+//     padding-left: 60px;
+//   }
+
+//   .mat-nested-tree-node:last-child ul {
+//     border-left: 1px solid white;
+//     margin-left: -41px;
+//   }
+
+//   .mat-icon-button {
+//     z-index: 100;
+//   }
+.tree,
+.tree ul {
+  list-style-type: none;
+  position: relative;
+  padding: 0;
+  white-space: nowrap;
+  margin: 0 0 1em;
+}
+
+.tree li {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+}
+
+.tree li::before,
+.tree li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px dotted #ccc;
+  width: 50%;
+  height: 20px;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px dotted #ccc;
+}
+
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+
+.tree li:only-child {
+  padding-top: 0;
+}
+
+.tree li:first-child::before,
+.tree li:last-child::after {
+  border: 0 none;
+}
+
+.tree li:last-child::before {
+  border-right: 1px dotted #ccc;
+  border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+.nodeSpan {
+  margin: 15px;
+  display: inline-block;
+  background: beige;
+  border-radius: 5px;
+  padding: 4px;
+  border-bottom: 1px dotted #ccc;
+}
