@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,ViewEncapsulation } from '@angular/core';
 import { FormGroup,  } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 import {UserAuthenticationService} from '../../services/user-authentication.service'
 
 import { BusinessCardComponent } from 'src/app/user-onboard/common-components/business-card/business-card.component';
+import { RegHeaderComponent } from './reg-header/reg-header.component';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @Component({
   selector: 'app-register',
@@ -22,10 +25,13 @@ import { BusinessCardComponent } from 'src/app/user-onboard/common-components/bu
     MatFormFieldModule,
     FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,
     CommonModule,
-    BusinessCardComponent
+    BusinessCardComponent,
+    RegHeaderComponent,
+    MatDividerModule
 
     ],
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 

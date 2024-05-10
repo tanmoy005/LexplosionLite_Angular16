@@ -30,10 +30,7 @@
     
 }
 
-  .mat-form-field{
-    border: 1px solid #C0C0C0;
-    background-color: #F4F4F4;
-  } 
+  
 
   .country-code-full-width {
     width: 40%;
@@ -83,5 +80,72 @@ text-align: left;
 color: #786ACD;
 ;
 }
+.about-yourself{
+  width: 176px;
+height: 14px;
+top: 188px;
+left: 40px;
+gap: 0px;
+opacity: 0px;
 
- 
+}
+.about-yourself-typography {
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.4px;
+  text-align: left;
+  color: #786ACD;
+
+}
+
+.agree-to-label {
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  text-align: left;
+}
+
+.consent-label{
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  text-align: left;
+
+}
+
+.verify-email-button{
+  background-color: #786ACD; /* Change this to your desired color */
+  color: white; /* Text color */
+  
+}
+
+/* Target the mat-form-field with outline appearance */
+
+
+.mat-mdc-text-field-wrapper{
+  background-color: #F4F4F4 !important;
+  padding: 8px;
+  border-radius: 0px;
+  font-size: 16px;
+  border-color: #C0C0C0;
+}
+
+
+
+
+
+
+
+
+
+.mat-form-field-appearance-outline.mat-focused {
+  /* Your custom CSS styles here */
+  /* For example: */
+  box-shadow: 0 0 5px white; /* Change the box-shadow color when focused */
+}
+
+
+
