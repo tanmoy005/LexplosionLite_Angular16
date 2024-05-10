@@ -11,27 +11,37 @@ import { StepperHelperTextComponent } from './common-components/stepper-helper-t
 import { TermsConditionCardComponent } from './common-components/terms-condition-card/terms-condition-card.component';
 import { PaymentSectionComponent } from './common-components/payment-section/payment-section.component';
 import { UserOnboardRoutes } from './user-onboard.routing';
-
+import { EntityTableComponent } from './common-components/entity-table/entity-table.component';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { OperatingUnitTableComponent } from './common-components/operating-unit-table/operating-unit-table.component';
 
 @NgModule({
   declarations: [
     
     CommonComponentsComponent,
-   
     LawsTableComponent,
     TermsConditionComponent,
     PaymentComponent,
-    
     StepperHelperTextComponent,
+    PaymentSectionComponent,
     
-    PaymentSectionComponent
   ],
+  
   imports: [
     CommonModule,
     TermsConditionCardComponent,
     StepperComponent,
     RouterModule.forChild(UserOnboardRoutes),
-    
+    EntityTableComponent,
+    FormsModule,
+    MatTableModule,
+    FeaturesSectionComponent, 
+    MatDialogModule,
+    OperatingUnitTableComponent
   ]
 })
 export class UserOnboardModule { }

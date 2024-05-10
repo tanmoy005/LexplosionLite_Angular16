@@ -1,3 +1,4 @@
+/* 
 ::ng-deep .mat-horizontal-stepper-header {
     box-sizing: border-box;
     flex-direction: column-reverse !important;
@@ -9,4 +10,18 @@
 }
 ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, ::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after{
     top: 68px !important;
-}
+} */
+
+/* .mat-stepper-label-position-top .mat-horizontal-stepper-header{
+    flex-direction: column-reverse !important;
+  }
+  
+  .mat-stepper-label-position-top .mat-horizontal-stepper-header .mat-step-label{
+    height: 48px;
+  }
+  
+  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before, 
+  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after{
+    bottom: 36px !important;
+    top:unset !important;
+  } */

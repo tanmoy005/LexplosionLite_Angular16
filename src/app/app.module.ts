@@ -18,6 +18,7 @@ import { BlankComponent } from './layouts/blank/blank/blank.component';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 import {UserOnboardModule} from './user-onboard/user-onboard.module'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +26,6 @@ import {UserOnboardModule} from './user-onboard/user-onboard.module'
     AppHeaderComponent,
     SpinnerComponent,
     BlankComponent
-  
-    
   ],
   imports: [
     BrowserModule,
