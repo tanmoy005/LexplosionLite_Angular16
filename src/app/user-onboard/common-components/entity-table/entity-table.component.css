@@ -1,0 +1,29 @@
+.mat-header-row {
+  height: 35px; /* Set the desired height */
+  background-color:#F0F0F0; /* Set the background color */
+}
+
+.mat-header-cell{
+  color:black;
+}
+
+.entity-details-container{
+  margin-top: 20px; 
+  margin: 20px; 
+  /* display: flex; */
+
+}
+
+.entity-add-button-container{
+  margin-bottom: 20px;
+}
+
+.entity-add-button{
+  height: 40px; 
+  width: 130px;
+}
+
+.entity-table-button{
+  height: 40px; 
+  width:50px
+}

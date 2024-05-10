@@ -1,17 +1,22 @@
 // global
 
-* {
-  outline: none;
-  box-sizing: border-box;
+// * {
+//   outline: none;
+//   box-sizing: border-box;
+// }
+
+.mat-step-header {
+  flex-direction: column-reverse;
+  margin-bottom: 40px;
 }
 
 body {
   font-family: $bodyfont;
   margin: 0;
   overflow-x: hidden;
- // color: $bodytext;
+//  // color: $bodytext;
   font-weight: 300;
-  background: $inverse;
+  background: #fff;
 }
 
 html {

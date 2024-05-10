@@ -1,0 +1,37 @@
+.mat-header-row {
+    height: 35px; /* Set the desired height */
+    background-color:#F0F0F0; /* Set the background color */
+  }
+  
+  .mat-header-cell{
+    color:black;
+  }
+  
+  .opUnit-details-container{
+    margin-top: 20px; 
+    margin: 20px; 
+    /* display: flex; */
+  
+  }
+  
+  .opUnit-add-and-back-button-container{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .opUnit-add-button{
+    height: 40px; 
+    width: 130px;
+  }
+
+  .opUnit-back-button{
+    height: 40px; 
+    width: 130px;
+  }
+  
+  .opUnit-table-button{
+    height: 40px; 
+    width:50px
+  }

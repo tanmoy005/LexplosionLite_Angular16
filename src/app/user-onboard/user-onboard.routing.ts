@@ -2,7 +2,7 @@ import { TermsConditionComponent } from './terms-condition-page/terms-condition.
 import { PaymentComponent } from './payment-page/payment.component';
 import { Routes } from '@angular/router';
 
-import { LawsTableComponent } from './laws-table-page/laws-table.component'
+import { LawsTableComponent } from './laws-table-page/laws-table.component';
 import { CommonComponentsComponent } from './common-components/common-components.component';
  
 
@@ -23,6 +23,5 @@ export const UserOnboardRoutes: Routes = [
     path: 'common-component',
     component: CommonComponentsComponent,
   },
-
 ];
 
