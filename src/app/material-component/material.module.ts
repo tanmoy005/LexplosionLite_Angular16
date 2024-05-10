@@ -31,6 +31,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { MenuRecursiveComponent } from './menu-recursive/menu-recursive.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -41,7 +42,7 @@ import { MenuRecursiveComponent } from './menu-recursive/menu-recursive.componen
     FormsModule,
     ReactiveFormsModule,
     CdkTableModule,
-
+    MatCheckboxModule,
     ButtonsComponent,
     GridComponent,
     ListsComponent,
@@ -58,7 +59,7 @@ import { MenuRecursiveComponent } from './menu-recursive/menu-recursive.componen
     SnackbarComponent,
     SliderComponent,
     SlideToggleComponent,
-    MenuRecursiveComponent
+    MenuRecursiveComponent,
   ],
   providers: [],
 })
