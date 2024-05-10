@@ -12,6 +12,7 @@ import { TermsConditionCardComponent } from './common-components/terms-condition
 import { PaymentSectionComponent } from './common-components/payment-section/payment-section.component';
 import { UserOnboardRoutes } from './user-onboard.routing';
 import { BusinessCardComponent } from './common-components/business-card/business-card.component';
+import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { BusinessCardComponent } from './common-components/business-card/busines
     TermsConditionCardComponent,
     StepperComponent,
     RouterModule.forChild(UserOnboardRoutes),
-    BusinessCardComponent
+    BusinessCardComponent,
+    FeaturesSectionComponent
     
     
   ],
