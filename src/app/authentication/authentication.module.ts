@@ -17,6 +17,7 @@ import { AuthenticationRoutes } from './authentication.routing';
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
 import { RegHeaderComponent } from './register/reg-header/reg-header.component';
+import { VerifyEmailPageComponent } from './register/verify-email-page/verify-email-page.component';
 //import { BusinessCardComponent } from '../user-onboard/common-components/business-card/business-card.component';
 
 @NgModule({
@@ -33,11 +34,14 @@ import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 
   AppSideLoginComponent,
     AppSideRegisterComponent,
-    RegHeaderComponent
+    RegHeaderComponent,
+    VerifyEmailPageComponent
     
    // TablerIconsModule.pick(TablerIcons),
   ],
   declarations: [
+    
+  
     
   
     

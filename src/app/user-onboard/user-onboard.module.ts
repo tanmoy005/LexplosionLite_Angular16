@@ -12,7 +12,7 @@ import { TermsConditionCardComponent } from './common-components/terms-condition
 import { PaymentSectionComponent } from './common-components/payment-section/payment-section.component';
 import { UserOnboardRoutes } from './user-onboard.routing';
 import { BusinessCardComponent } from './common-components/business-card/business-card.component';
-import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
+
 import { EntityTableComponent } from './common-components/entity-table/entity-table.component';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
@@ -42,7 +42,7 @@ import { OperatingUnitTableComponent } from './common-components/operating-unit-
     StepperComponent,
     RouterModule.forChild(UserOnboardRoutes),
     BusinessCardComponent,
-    FeaturesSectionComponent
+    FeaturesSectionComponent,
     
     EntityTableComponent,
     FormsModule,

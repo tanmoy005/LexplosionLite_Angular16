@@ -103,13 +103,22 @@
                 </mat-form-field>
 
                 <div class=" example-full-width d-flex">
+
                   <mat-form-field class="country-code-full-width" style="margin-right: 10px;" appearance="outline">
                     <mat-label>+91</mat-label>
                     <input matInput type="number" placeholder="Ex. 91" name="countryCode"  [formControl]="countryCodeFormControl">
                   
-                    <mat-error *ngIf="countryCodeFormControl.hasError('required')">Country Code is <strong>required</strong></mat-error>
+                    <mat-error *ngIf="countryCodeFormControl.hasError('required')"><strong>required</strong></mat-error>
                     <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
                   </mat-form-field>
+<!-- 
+                  <mat-form-field class="country-code-full-width" style="margin-right: 10px;" appearance="outline">
+                    <ngx-intl-tel-input [preferredCountries]="['IN']" [enablePlaceholder]="true" [cssClass]="'form-control'"
+                                        [ngModel]="phoneNumber" (ngModelChange)="onPhoneNumberChange($event)"></ngx-intl-tel-input>
+                    <mat-error *ngIf="countryCodeFormControl.hasError('required')"><strong>required</strong></mat-error>
+                    <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
+                  </mat-form-field> -->
+                  
 
 
                   <mat-form-field class="example-full-width" appearance="outline">
@@ -151,7 +160,7 @@
                
 
               <div class="example-button-row">
-                <button mat-flat-button class="verify-email-button"  (click)="handleRegistration($event)">Verify Email ID</button>
+                <button mat-raised-button color="warn"  (click)="handleRegistration($event)">Verify Email ID</button>
               </div>
   
             </form>
