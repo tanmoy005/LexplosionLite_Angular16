@@ -147,5 +147,10 @@ opacity: 0px;
   box-shadow: 0 0 5px white; /* Change the box-shadow color when focused */
 }
 
+.mat-mdc-raised-button.mat-warn {
+  --mdc-protected-button-container-color: #786ACD;
+  --mdc-protected-button-label-text-color: #fff;
+}
+
 
 
