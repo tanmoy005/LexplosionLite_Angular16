@@ -1,6 +1,6 @@
 .mat-header-row {
-    height: 35px; /* Set the desired height */
-    background-color:#F0F0F0; /* Set the background color */
+    height: 35px; 
+    background-color:#F0F0F0; 
   }
   
   .mat-header-cell{
@@ -8,16 +8,19 @@
   }
   
   .opUnit-details-container{
-    margin-top: 20px; 
-    margin: 20px; 
-    /* display: flex; */
-  
+    padding: 20px;    
+  }
+
+  .opUnit-details-table{
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: auto;
   }
   
   .opUnit-add-and-back-button-container{
     margin-bottom: 20px;
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
   }
   
@@ -29,9 +32,18 @@
   .opUnit-back-button{
     height: 40px; 
     width: 130px;
+
   }
   
   .opUnit-table-button{
     height: 40px; 
     width:50px
   }
+
+  .received-entity-details{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+  }
+
+ 

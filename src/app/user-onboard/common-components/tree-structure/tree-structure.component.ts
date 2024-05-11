@@ -22,6 +22,7 @@ import { TreeNode } from 'src/app/shared/menu-items/menu-items';
 
 export class TreeStructureComponent {
   @Input() rootNode!: TreeNode;
+  
   // recursive: boolean = false;
   // levels = new Map<TreeNode, number>();
   // treeControl: NestedTreeControl<TreeNode>;

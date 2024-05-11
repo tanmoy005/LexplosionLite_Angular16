@@ -1,7 +1,7 @@
-.mat-step-header {
+/* .mat-step-header {
     flex-direction: column-reverse;
-    margin-bottom: 40px;
-  }
+    margin-bottom: 10px;
+  } */
 
   .disabled {
     pointer-events: none;
@@ -18,5 +18,5 @@
     text-align: center;
     flex-grow: 1;
   }
-  
+
   

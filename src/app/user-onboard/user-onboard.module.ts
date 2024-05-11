@@ -12,7 +12,7 @@ import { TermsConditionCardComponent } from './common-components/terms-condition
 import { PaymentSectionComponent } from './common-components/payment-section/payment-section.component';
 import { UserOnboardRoutes } from './user-onboard.routing';
 import { BusinessCardComponent } from './common-components/business-card/business-card.component';
-import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
+//import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
 import { EntityTableComponent } from './common-components/entity-table/entity-table.component';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
@@ -20,6 +20,11 @@ import { FeaturesSectionComponent } from './common-components/features-section/f
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { OperatingUnitTableComponent } from './common-components/operating-unit-table/operating-unit-table.component';
+import { EntityDetailsPageComponent } from './entity-details-page/entity-details-page.component';
+import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-details-page.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { TreeStructureComponent } from './common-components/tree-structure/tree-structure.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -30,10 +35,9 @@ import { OperatingUnitTableComponent } from './common-components/operating-unit-
     PaymentComponent,
     StepperHelperTextComponent,
     PaymentSectionComponent,
-    
     PaymentSectionComponent,
-    
-         
+    EntityDetailsPageComponent,
+    OpUnitDetailsPageComponent,
   ],
   
   imports: [
@@ -42,14 +46,15 @@ import { OperatingUnitTableComponent } from './common-components/operating-unit-
     StepperComponent,
     RouterModule.forChild(UserOnboardRoutes),
     BusinessCardComponent,
-    FeaturesSectionComponent
-    
     EntityTableComponent,
     FormsModule,
     MatTableModule,
     FeaturesSectionComponent, 
     MatDialogModule,
-    OperatingUnitTableComponent
+    OperatingUnitTableComponent,
+    MatDividerModule,
+    TreeStructureComponent,
+    MatCardModule
   ],
   exports:[
     BusinessCardComponent

@@ -17,6 +17,7 @@ import { AuthenticationRoutes } from './authentication.routing';
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
 //import { BusinessCardComponent } from '../user-onboard/common-components/business-card/business-card.component';
+import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 
 @NgModule({
   imports: [
@@ -32,10 +33,13 @@ import { AppSideRegisterComponent } from './register/register.component';
 
   AppSideLoginComponent,
     AppSideRegisterComponent,
+    RegHeaderComponent
     
    // TablerIconsModule.pick(TablerIcons),
   ],
   declarations: [
+    
+  
     
   ],
   exports:[

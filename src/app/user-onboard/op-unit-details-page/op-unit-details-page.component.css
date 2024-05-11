@@ -1,0 +1,23 @@
+.app-business-card-container{
+    margin-bottom: 10px;
+    
+    /* text-align: right; */
+}
+
+.opUnit-details-page-container{
+    margin: 20px;
+}
+
+.opUnit-details-next-button{
+    height:40px;
+    width: 130px;
+}
+
+.opUnit-details-next-button-div{
+    margin-top: 10px;
+    margin-left:4px
+}
+
+.opUnit-details-page-entity-section{
+    margin-top:10px
+}
