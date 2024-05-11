@@ -17,9 +17,12 @@ import { BlankComponent } from './layouts/blank/blank/blank.component';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
-import {UserOnboardModule} from './user-onboard/user-onboard.module';
-import { TreeStructureComponent } from './user-onboard/common-components/tree-structure/tree-structure.component'
-
+import { UserOnboardModule } from './user-onboard/user-onboard.module';
+import { TreeStructureComponent } from './user-onboard/common-components/tree-structure/tree-structure.component';
+import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
+import { HomeComponent } from './guest-user/home/home.component'
+import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
+import { GuestUserModuleModule } from './guest-user/guest-user-module.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +30,9 @@ import { TreeStructureComponent } from './user-onboard/common-components/tree-st
     AppHeaderComponent,
     SpinnerComponent,
     BlankComponent,
-    
-  
-    
+    InitialLayoutComponent,
+    // HomeComponent,
+    InitialLayoutHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { TreeStructureComponent } from './user-onboard/common-components/tree-st
     RouterModule.forRoot(AppRoutes),
     AppSidebarComponent,
     UserOnboardModule,
+    // GuestUserModuleModule,
     TreeStructureComponent
   ],
   providers: [
@@ -51,4 +55,4 @@ import { TreeStructureComponent } from './user-onboard/common-components/tree-st
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
