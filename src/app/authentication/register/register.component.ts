@@ -16,6 +16,7 @@ import { RegHeaderComponent } from './reg-header/reg-header.component';
 import {MatDividerModule} from '@angular/material/divider';
 
 
+
 @Component({
   selector: 'app-register',
    standalone: true,
@@ -27,7 +28,8 @@ import {MatDividerModule} from '@angular/material/divider';
     CommonModule,
     BusinessCardComponent,
     RegHeaderComponent,
-    MatDividerModule
+    MatDividerModule,
+    
 
     ],
   styleUrls: ['./register.component.css'],
