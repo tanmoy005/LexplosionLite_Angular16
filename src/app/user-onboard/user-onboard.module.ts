@@ -24,6 +24,7 @@ import { FeaturesSectionComponent } from './common-components/features-section/f
 import { LawsTableComponent } from './common-components/laws-table/laws-table.component';
 
 
+
 @NgModule({
   declarations: [
     
@@ -34,7 +35,8 @@ import { LawsTableComponent } from './common-components/laws-table/laws-table.co
     StepperHelperTextComponent,
     PaymentSectionComponent,
     PaymentSectionComponent,
-    LawsTablePageComponent
+    LawsTablePageComponent,
+    
          
   ],
   
@@ -53,6 +55,7 @@ import { LawsTableComponent } from './common-components/laws-table/laws-table.co
     MatDialogModule,
     OperatingUnitTableComponent,
     LawsTableComponent,
+    
    
     
   ],

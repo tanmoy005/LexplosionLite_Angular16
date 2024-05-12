@@ -31,16 +31,18 @@
   </section>
    -->
 
-
+   
    <section class="example-container mat-elevation-z8" tabindex="0">
    <table mat-table [dataSource]="dataSource">
 
     
     <ng-container matColumnDef="lawName">
-        <th mat-header-cell *matHeaderCellDef class="mat-header-cell"> Name of the Law </th>
+        <th mat-header-cell *matHeaderCellDef> Name of the LAW </th>
         <td mat-cell *matCellDef="let element">
-          <div>{{ element.lawName }}</div>
-          <div *ngIf="element.noOfCompliances !== undefined">No. of Compliances: {{ element.noOfCompliances }}</div>
+          <div style="margin: 0;">{{ element.lawName }}</div>
+          <p style="margin: 0;"><button mat-button (click)="openDialog()">Read With</button></p>
+         <p style="margin: 0;">{{ element.lawName }}</p>
+          <div *ngIf="element.noOfCompliances !== undefined" style="margin: 0;">No. of Compliances: {{ element.noOfCompliances }}</div>
         </td>
       </ng-container>
       
@@ -49,6 +51,14 @@
         <td mat-cell *matCellDef="let element"> {{ element.applicability }} </td>
       </ng-container>
     
+
+      <ng-container matColumnDef="Add/RemovefromCP">
+        <th mat-header-cell *matHeaderCellDef> Add/Remove from CP </th>
+        <td mat-cell *matCellDef="let element">  </td>
+      </ng-container>
+  
+   
+   
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
