@@ -17,6 +17,7 @@ import {MatDividerModule} from '@angular/material/divider';
 
 
 
+
 @Component({
   selector: 'app-register',
    standalone: true,
@@ -43,7 +44,9 @@ import {MatDividerModule} from '@angular/material/divider';
 
 export class AppSideRegisterComponent {
 
-  constructor(private authService: UserAuthenticationService) {}
+  constructor(private authService: UserAuthenticationService, private router: Router) {}
+  
+
 
   usernameFormControl = new FormControl('', [Validators.required]);
   companynameFormControl = new FormControl('', [Validators.required]);
@@ -76,20 +79,22 @@ export class AppSideRegisterComponent {
     //   phoneNumber:this.phoneNumberFormControl.value
     //   // Add other properties as needed
     // };
-    const registrationData = {
-      name: this.companynameFormControl.value,
+
+    
+    // const registrationData = {
+    //   name: this.companynameFormControl.value,
       
-      description: ""
-      // Add other properties as needed
-    };
-    this.authService.userRegistration(registrationData).subscribe(
-      (response) => {
-        console.log('Registration successful:', response);
-        //const companyId = response.companyId;
-        // Handle success response here
-      },
+    //   description: ""
+      
+    // };
+    // this.authService.userRegistration(registrationData).subscribe(
+    //   (response) => {
+    //     console.log('Registration successful:', response);
+       
+    //   },
      
-    );
+    // );
+    this.router.navigate(['/verify-email']);
   }
   }
 

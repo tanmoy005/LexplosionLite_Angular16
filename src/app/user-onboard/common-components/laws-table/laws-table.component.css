@@ -1,0 +1,30 @@
+.example-container {
+    height: 400px;
+    overflow: auto;
+  }
+  .example-container table th {
+    background-color: lightblue;
+  }
+
+  .example-container mat-cell {
+    font-size: 1px;
+  }
+
+  .mdc-data-table__cell {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Poppins));
+    font-size: var(--mdc-typography-body2-font-size, 10px);
+    line-height: var(--mdc-typography-body2-line-height, 20px);
+    font-weight: var(--mdc-typography-body2-font-weight, 1000);
+    letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
+    -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-transform: var(--mdc-typography-body2-text-transform, none);
+}
+
+  
+  table {
+    width: 100%;
+  }
+  
