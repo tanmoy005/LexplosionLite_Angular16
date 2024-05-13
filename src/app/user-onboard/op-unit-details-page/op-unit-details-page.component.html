@@ -7,10 +7,10 @@
     </div>
     
     <div class="row app-business-card-container">
-        <div class="col-7">
+        <div class="col-lg-8">
         <app-stepper-helper-text [currentStep]="1" [subStep]="2"></app-stepper-helper-text>
         </div>
-        <div class="col">
+        <div class="col-lg-4">
         <app-business-card></app-business-card>
         <!-- <p>Test</p> -->
         </div>
@@ -20,13 +20,13 @@
     <mat-divider> </mat-divider>
     
     <div class="row opUnit-details-page-entity-section">
-      <div class="col-8">
+      <div class="col-lg-8 col-md-12 col-sm-12">
         <app-operating-unit-table [entity]="entityDetails"></app-operating-unit-table>
       </div>
     
-      <div class="col-3">
+      <div class="col-lg-4 col-md-12 col-sm-12">
       
-      <mat-card class="example-card">
+      <mat-card class="company-structure-card">
         <h4>Company Structure</h4>
         <app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
       </mat-card>
