@@ -1,0 +1,66 @@
+.example-container {
+   background-color: rgb(229, 139, 21);
+    overflow: auto;
+  }
+  .example-container table th {
+    background-color: rgb(165, 222, 241);
+  }
+
+  .mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+    background: #EEEEEE;
+}
+
+  .mdc-data-table__cell div  {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Poppins));
+    font-size: var(--mdc-typography-body2-font-size, 10px);
+    line-height: var(--mdc-typography-body2-line-height, 20px);
+    font-weight: var(--mdc-typography-body2-font-weight, 1000);
+    letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
+    -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-transform: var(--mdc-typography-body2-text-transform, none);
+}
+
+
+.mdc-data-table__cell button  {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Poppins));
+    font-size: var(--mdc-typography-body2-font-size, 10px);
+    line-height: var(--mdc-typography-body2-line-height, 20px);
+    font-weight: var(--mdc-typography-body2-font-weight, 2000);
+    letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
+    -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-decoration: underline;
+    text-transform: var(--mdc-typography-body2-text-transform, none);
+}
+
+.mdc-data-table__cell p  {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Poppins));
+    font-size: var(--mdc-typography-body2-font-size, 10px);
+    line-height: var(--mdc-typography-body2-line-height, 20px);
+    font-weight: var(--mdc-typography-body2-font-weight, 2000);
+    letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
+    -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+    text-transform: var(--mdc-typography-body2-text-transform, none);
+}
+
+
+.read-more {
+    text-decoration: underline; /* Add underline */
+    cursor: pointer; /* Change cursor to indicate clickable */
+  }
+  
+  
+
+  
+  table {
+    width: 100%;
+  }
+  

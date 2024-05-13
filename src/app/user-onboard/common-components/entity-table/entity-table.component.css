@@ -8,10 +8,13 @@
 }
 
 .entity-details-container{
-  margin-top: 20px; 
-  margin: 20px; 
-  /* display: flex; */
+ padding:20px;
+}
 
+.entity-details-table{
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x:auto;
 }
 
 .entity-add-button-container{
@@ -25,5 +28,5 @@
 
 .entity-table-button{
   height: 40px; 
-  width:50px
+  width: 50px
 }

@@ -30,7 +30,7 @@
 </mat-card> -->
 <ul class="tree">
     <li style="margin: 20px;" *ngFor="let node of [rootNode]">
-      <span class="nodeSpan">{{ node.label }}</span>
+      <!-- <span class="nodeSpan">{{ node.label }}</span> -->
       <ul *ngIf="node.children">
         <li *ngFor="let child of node.children">
           <app-tree-structure [rootNode]="child"></app-tree-structure>

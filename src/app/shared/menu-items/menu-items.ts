@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-export interface TreeNode {
-  id: number;
-  label: string;
-  children?: TreeNode[];
-}
+// export interface TreeNode {
+//   id: number;
+//   label: string;
+//   children?: TreeNode[];
+// }
 export interface Menu {
   // state: string;
   // name: string;
@@ -67,7 +67,101 @@ const MENUITEMS = [
     class: '',
     extralink: false,
     submenu: []
+  },
+  {
+    path: 'component/tabs',
+    title: 'tabs',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/stepper',
+    title: 'stepper',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/expansion',
+    title: 'expansion',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/chips',
+    title: 'chips',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/toolbar',
+    title: 'toolbar',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/progress-snipper',
+    title: 'progress snipper',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/progress',
+    title: 'progress',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/dialog',
+    title: 'dialog',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/tooltip',
+    title: 'tooltip',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/dialog',
+    title: 'dialog',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/snackbar',
+    title: 'snackbar',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/slider',
+    title: 'slider',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
+  }, {
+    path: 'component/slide-toggle',
+    title: 'slide-toggle',
+    icon: 'view_headline',
+    class: '',
+    extralink: false,
+    submenu: []
   }
+
+
   // { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
   // { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5' },
   // { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },

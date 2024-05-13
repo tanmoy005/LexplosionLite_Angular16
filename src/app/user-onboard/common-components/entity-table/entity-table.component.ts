@@ -135,6 +135,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
+import { Router } from '@angular/router';
 
 import {
   MatDialog,
@@ -181,7 +182,7 @@ const ELEMENT_DATA: BusinessDetails[] = [
 })
 
 export class EntityTableComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,private router: Router) {}
 
   displayedColumns: string[] = ['position', 'name', 'country', 'industry', 
                                  'type','emailID','laws','operatingUnit','actions'];
@@ -211,7 +212,7 @@ export class EntityTableComponent {
       actions:''
     };
     this.dataSource.push(newRow);
-    console.log(this.dataSource)
+    //console.log(this.dataSource)
     //this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
     this.table.renderRows();
   }
@@ -267,6 +268,11 @@ export class EntityTableComponent {
   //   }
   // }
 
+  navigateToAddOpUnit(entity:BusinessDetails[]){
+    this.router.navigate(['/oprating-unit-details'],{ state: entity }); 
+    //console.log(entity);
+  }
+
 
   openEntityMenuDialog(action: string, position:number) {
     console.log("ACTION SELECTED",action,position);
@@ -280,7 +286,15 @@ export class EntityTableComponent {
       case 'Delete':
         this.removeEntityData(position);
         break;
-      // Add other cases for different actions if needed
+      case 'Add Operating Unit':
+        const entity = this.dataSource.filter((entity)=> entity.position===position)
+        // console.log(entity)
+        // const entityName = entity.name
+        this.navigateToAddOpUnit(entity);
+        break
+      case 'Edit':
+        break
+      
       default:
         break;
     }

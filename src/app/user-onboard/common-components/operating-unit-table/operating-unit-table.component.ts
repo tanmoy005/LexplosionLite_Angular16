@@ -13,6 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
+import { Router } from '@angular/router';
+import { Input } from '@angular/core';
 
 import {
   MatDialog,
@@ -67,7 +69,7 @@ const ELEMENT_DATA: OPUnitDetails[] = [
 })
 
 export class OperatingUnitTableComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,private router: Router) {}
 
   displayedColumns: string[] = ['position', 'name', 'industry', 
                                  'type','emailID','laws','department','actions'];
@@ -75,6 +77,8 @@ export class OperatingUnitTableComponent {
 
   @ViewChild(MatTable) table: MatTable<OPUnitDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
+  @Input() entity:any;
+
 
   // viewAddEntityDialog() {
   //   this.openEntityDialog();
@@ -140,6 +144,9 @@ export class OperatingUnitTableComponent {
     });
   }
 
+  navigateBackToEntityDetailsPage(){
+    this.router.navigate(['/entity-details'],{ state: this.entity }); 
+  }
 
 
   openopUnitMenuDialog(action: string, position:number) {

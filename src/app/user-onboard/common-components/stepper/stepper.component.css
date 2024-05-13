@@ -1,7 +1,7 @@
-.mat-step-header {
+/* .mat-step-header {
     flex-direction: column-reverse;
-    margin-bottom: 40px;
-  }
+    margin-bottom: 10px;
+  } */
 
   .disabled {
     pointer-events: none;
@@ -16,7 +16,18 @@
   
   .stepper-header-above .mat-step-header {
     text-align: center;
-    flex-grow: 1;
+    flex-grow: 0;
   }
-  
+
+  .mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+    align-items: flex-start;
+    padding: 0%;
+}
+
+  .mat-horizontal-stepper-header-container {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: 0%;
+}
   

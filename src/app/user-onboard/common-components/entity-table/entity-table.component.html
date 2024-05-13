@@ -3,14 +3,19 @@
 
  <mat-card class="entity-details-container">
 
+  <div>
+    <h4>Entities</h4>
+  </div>
+
   <div class="entity-add-button-container">
       <button (click)="viewAddEntityDialog()" class="entity-add-button">
         Add New
       </button>
   </div>
 
-  <div class="mat-table-container">
+  <div>
     
+  <div class="entity-details-table">
   <table mat-table [dataSource]="dataSource" >
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef class="mat-header-cell">SL</th>
@@ -101,6 +106,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="mat-header-row"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  </div>
   </div>
 </mat-card>
 
