@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{data.name}} </h1>
+<div mat-dialog-content>
+  <mat-list>
+    <mat-list-item>
+      <span matListItemTitle>Pepper</span>
+      <span matListItemLine>Produced by a plant</span>
+    </mat-list-item>
+    <mat-list-item>
+      <span matListItemTitle>Salt</span>
+      <span matListItemLine>Extracted from sea water</span>
+    </mat-list-item>
+    <mat-list-item>
+      <span matListItemTitle>Paprika</span>
+      <span matListItemLine>Produced by dried and ground red peppers</span>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" tabindex="2">Ok</button> -->
+  <button mat-button (click)="onNoClick()" tabindex="-1">CLose</button>
+</div>
