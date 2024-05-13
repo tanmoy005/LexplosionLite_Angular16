@@ -27,6 +27,7 @@ import { TreeStructureComponent } from './user-onboard/common-components/tree-st
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
 import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-l
     AppHeaderComponent,
     SpinnerComponent,
     BlankComponent,
-    InitialLayoutHeaderComponent
+    InitialLayoutHeaderComponent,
+    InitialLayoutComponent
   ],
   imports: [
     BrowserModule,
