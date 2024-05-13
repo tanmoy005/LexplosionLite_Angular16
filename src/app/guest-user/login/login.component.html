@@ -144,8 +144,8 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="login-field">
       <mat-label>Password</mat-label>
-      <input type="password" matInput [formControl]="usernameFormControl" placeholder="Password">
-      <mat-error *ngIf="usernameFormControl.hasError('email') && !usernameFormControl.hasError('required')">
+      <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password">
+      <mat-error *ngIf="!passwordFormControl.hasError('required')">
         Please enter a valid email address
       </mat-error>
       <mat-error *ngIf="usernameFormControl.hasError('required')">Email is <strong>required</strong></mat-error>

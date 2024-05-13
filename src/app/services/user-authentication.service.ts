@@ -1,28 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthenticationService {
-  url =' https://enginebackend.komrisk.com:3000/v1/company'
-  loginURL='https://enginebackend.komrisk.com:3000/v1/login'
+  url = 'https://enginebackendqa.komrisk.com/v1/login'
+  loginURL = 'https://enginebackendqa.komrisk.com/v1/login'
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
-  userRegistration(data: any){
-    console.log('user registration data',data)
-    return this.http.post(this.url,data)
+  userRegistration(data: any) {
+    console.log('user registration data', data)
+    return this.http.post(this.url, data)
   }
 
-  userLogin(data:any){
-    var message;
-    this.http.post(this.loginURL,data).subscribe((data) =>{
-      message = data;
-    })
-    return message;
-    // return this.http.post(this.loginURL,data)
+  userLogin(data: any): Observable<any> {
+    // Make the HTTP POST request and return the observable
+    return this.http.post(this.loginURL, data);
   }
+  //   this.http.post(this.loginURL, data).subscribe((response) => {
+  //     message = response;
+  //   },
+  //     (error) => {
+  //       // Handle any errors here
+  //       console.error('Login error:', error);
+  //     })
+
+  //   return message;
+  //   // return this.http.post(this.loginURL,data)
+  // }
 
 }
