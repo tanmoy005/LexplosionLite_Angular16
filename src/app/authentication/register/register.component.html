@@ -118,9 +118,6 @@
                     <mat-error *ngIf="countryCodeFormControl.hasError('required')"><strong>required</strong></mat-error>
                     <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
                   </mat-form-field> -->
-                  
-
-
                   <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Phone Number</mat-label>
                     <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"  [formControl]="phoneNumberFormControl">
