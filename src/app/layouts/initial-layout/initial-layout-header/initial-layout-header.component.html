@@ -4,18 +4,9 @@
     </div>
 
     <div class="page-link-container">
-        <div class="link-item text_16_700">Home</div>
-        <div class="link-item text_16_700">About us</div>
-        <div class="link-item text_16_700">Features</div>
-        <div class="link-item text_16_700">Pricing</div>
-        <div class="link-item text_16_700">Partnership</div>
-        <div class="link-item text_16_700">Login</div>
-        <!-- <div>Home</div>
-        <div>About us<div>
-        <div>Features</div>
-        <div>Pricing</div>
-        <div>Partnership</div>
-        <div>Login</div> -->
+        <div class="link-item text_16_700" *ngFor="let menuItem of menuItemList" (click)="handleMenuItemClick(menuItem.path)">
+            {{menuItem.displayName}}
+        </div>
     </div>
 
 </div>
