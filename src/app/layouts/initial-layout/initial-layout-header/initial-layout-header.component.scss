@@ -1,0 +1,31 @@
+
+
+
+.initial-layout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo-container {
+        // background-color: aqua;
+        width: 13vw;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .page-link-container {
+        // background-color: red;
+        display: flex;
+        // width: 80%;
+        margin: 0 10%;
+        column-gap: 68px;
+        .link-item {
+            // margin: 0 68px;
+            cursor: pointer;
+            // font-family: 'Barlow';  // todo import font family
+        }
+        
+    }
+
+}
