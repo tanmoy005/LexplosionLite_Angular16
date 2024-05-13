@@ -134,6 +134,18 @@ opacity: 0px;
 }
 
 
+.option1{
+  background:  url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg")  center / contain no-repeat;
+  white-space: nowrap
+
+}
+
+
+.option2{
+  background:  url("https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg")  center / contain no-repeat;
+  white-space: nowrap;
+  display:inline
+}
 
 
 
@@ -154,3 +166,12 @@ opacity: 0px;
 
 
 
+.login-credential-typography {
+  font-family: Barlow;
+font-size: 12px;
+font-weight: 700;
+line-height: 14.4px;
+text-align: left;
+color: #786ACD;
+
+}
