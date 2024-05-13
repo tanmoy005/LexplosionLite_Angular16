@@ -6,34 +6,20 @@
 <mat-card>
     <mat-card-content style="padding: 10px; padding-bottom: 5px;">
       <div class="container">
-      <!-- <div class="row align-items-center">
-          <div class='col-2'>
-          <h5>Business</h5>
-        </div>
-          <div class='col'>
-          <mat-form-field  class="example-full-width">
-            <mat-label>Choose an option</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
-                {{ option.label }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-    <div class="col-lg-2"> 
-          <div class="col-2">
+      
+          <div class="col-lg-1">
             <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
               <mat-icon class="dark-brown-icon" >more_horiz</mat-icon>
               </button>
         </div>
-        </div> -->
+        </div> 
 
 
         <div class="row align-items-center">
-        <div class='col'>
+        <div class='col-lg-2 col-sm-6 col-md-6'>
             <h5>Country</h5>
           </div>
-          <div class='col-10'>
+          <div class='col-lg-6'>
             <mat-form-field  class="example-full-width">
               <mat-label>Choose option/options</mat-label>
               <mat-select multiple>
@@ -43,7 +29,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-1">
+          <div class="col-lg-1">
             <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
               <mat-icon class="dark-brown-icon">more_horiz</mat-icon>
               </button>
@@ -52,29 +38,27 @@
 
 
         <div class="row align-items-center">
-          <div class='col'>
+          <div class='col-lg-2'>
             <h5>Address</h5>
           </div>
-          <div class='col-10'>
+          <div class='col-lg-6'>
             <mat-form-field class="example-full-width">
                 <mat-label>Address</mat-label>
                 <input matInput #message maxlength="256" >
                
               </mat-form-field>
           </div>
-          <div class="col-1">
+          <div class="col-lg-1">
             <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
               <mat-icon class="dark-brown-icon">more_horiz</mat-icon>
               </button>
           </div>
           </div>
-          </div>
+          
     </mat-card-content>
   </mat-card>
 
-<!-- </div>
-</div>
-</div> -->
+
   
   
   
