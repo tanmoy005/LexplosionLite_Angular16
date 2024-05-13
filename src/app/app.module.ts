@@ -19,10 +19,12 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 import { UserOnboardModule } from './user-onboard/user-onboard.module';
 import { TreeStructureComponent } from './user-onboard/common-components/tree-structure/tree-structure.component';
+
 // import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
-// import { HomeComponent } from './guest-user/home/home.component'
-// import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
-// import { GuestUserModuleModule } from './guest-user/guest-user-module.module';
+//import { HomeComponent } from './guest-user/home/home.component'
+//import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
+//import { GuestUserModuleModule } from './guest-user/guest-user-module.module';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
@@ -32,10 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
-    BlankComponent,
-    InitialLayoutComponent,
-    // HomeComponent,
-    InitialLayoutHeaderComponent
+    BlankComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +47,9 @@ import { MatMenuModule } from '@angular/material/menu';
     AppSidebarComponent,
     UserOnboardModule,
     // GuestUserModuleModule,
-    TreeStructureComponent
+    TreeStructureComponent,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [
     {
