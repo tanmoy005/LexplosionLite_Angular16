@@ -7,6 +7,8 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
+import { Router } from '@angular/router';
+import { catchError, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -26,10 +28,13 @@ import { UserAuthenticationService } from 'src/app/services/user-authentication.
 })
 export class AppSideLoginComponent {
 
-  constructor(private authService: UserAuthenticationService) { 
+  constructor(private authService: UserAuthenticationService, routerService: Router ) { 
    
   }
 
+// navigate to another component, with or without data
+// here "entity" is the data being sent
+// this.router.navigate(['/oprating-unit-details'],{ state: entity }); 
   usernameFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
 
@@ -45,8 +50,20 @@ export class AppSideLoginComponent {
 
     const loginPayload = {"unique_key":this.username,"password":this.password}
     try {
-      const response =  this.authService.userLogin(loginPayload); 
-      console.log('Login successful:', response);
+      // const response =  this.authService.userLogin(loginPayload); 
+      this.authService.userLogin(loginPayload).pipe(
+        tap(response => {
+          // Handle successful response
+          console.log('Login successful:', response);
+          // this.routerService.navigate(['/oprating-unit-details']); 
+        }),
+        catchError(error => {
+          // Handle error
+          console.error('Login error:', error);
+          throw error; // Rethrow the error to propagate it downstream
+        })
+      ).subscribe();
+      // console.log('Login successful:', response);
       // Handle successful login, such as redirecting to a dashboard
     } 
     catch (error) {
