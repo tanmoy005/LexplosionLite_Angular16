@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { GuestUserRoutes } from './guest-user.routing';
-import { ComplianceSectionComponent } from './home/compliance-section/compliance-section.component';
 import { AppSideLoginComponent } from './login/login.component';
 
 
@@ -18,6 +17,7 @@ import { AppSideLoginComponent } from './login/login.component';
     HomeComponent,
     AppSideLoginComponent
     // ComplianceSectionComponent
-  ]
+  ],
+  providers: [],
 })
-export class GuestUserModuleModule { }
+export class GuestUserModule { }

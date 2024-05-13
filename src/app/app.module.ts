@@ -21,7 +21,6 @@ import { UserOnboardModule } from './user-onboard/user-onboard.module';
 import { TreeStructureComponent } from './user-onboard/common-components/tree-structure/tree-structure.component';
 
 import { HomeComponent } from './guest-user/home/home.component'
-import { GuestUserModuleModule } from './guest-user/guest-user-module.module';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -48,11 +47,9 @@ import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-l
     RouterModule.forRoot(AppRoutes),
     AppSidebarComponent,
     UserOnboardModule,
-    // GuestUserModuleModule,
     TreeStructureComponent,
     MatIconModule,
     MatMenuModule,
-    GuestUserModuleModule,
     HomeComponent
     
   ],

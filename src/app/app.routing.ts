@@ -8,11 +8,21 @@ export const AppRoutes: Routes = [
   {
     path: '',
     //redirectTo: '/dashboard',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
+  {
+    path: '',
+    component: InitialLayoutComponent,
   
-
+    children: [
+  
+      {
+        path: '',
+        loadChildren: () => import('./guest-user/guest-user.module').then(m => m.GuestUserModule)
+      }
+    ]
+  },
   {
     path: '',
     component: BlankComponent,
@@ -45,7 +55,7 @@ export const AppRoutes: Routes = [
   
       {
         path: '',
-        loadChildren: () => import('./guest-user/guest-user-module.module').then(m => m.GuestUserModuleModule)
+        loadChildren: () => import('./guest-user/guest-user.module').then(m => m.GuestUserModule)
       }
     ]
   },
