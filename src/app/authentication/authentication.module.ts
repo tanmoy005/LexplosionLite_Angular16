@@ -31,8 +31,7 @@ import { VerifyEmailPageComponent } from './register/verify-email-page/verify-em
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-
-  AppSideLoginComponent,
+    AppSideLoginComponent,
     AppSideRegisterComponent,
     RegHeaderComponent,
     VerifyEmailPageComponent
@@ -40,14 +39,10 @@ import { VerifyEmailPageComponent } from './register/verify-email-page/verify-em
    // TablerIconsModule.pick(TablerIcons),
   ],
   declarations: [
-    
-  
-    
-  
-    
+
   ],
-  exports:[
+  exports: [
     AppSideRegisterComponent
   ]
 })
-export class AuthenticationModule {}
+export class AuthenticationModule { }
