@@ -1,7 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component,OnDestroy,AfterViewInit} from '@angular/core';
 import { MenuItems } from '../../shared/menu-items/menu-items';
-
+import { MatMenuModule } from '@angular/material/menu';
 
 /** @title Responsive sidenav */
 @Component({

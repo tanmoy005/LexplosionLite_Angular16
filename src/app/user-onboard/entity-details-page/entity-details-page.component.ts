@@ -14,18 +14,26 @@ import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 export class EntityDetailsPageComponent {
 
   receivedData: any;
-  
+  // treeDataItem: any;
+
   constructor(private router: Router) {
     // Retrieve data from navigation state
     
     const navigation = this.router.getCurrentNavigation();
     if (navigation && navigation.extras.state) {
       this.receivedData = navigation.extras.state;
-      console.log("This is the received data back in entity page", this.receivedData);    
+      console.log("This is the received data back in entity page", this.receivedData); 
+         
     }
   }
 
- treeDataItem = treeDataitem;
+  treeDataItem = treeDataitem;
+
+  showTreeData(){
+    console.log("Tree data- ", this.treeDataItem)
+  }
 
   
+
+
 }

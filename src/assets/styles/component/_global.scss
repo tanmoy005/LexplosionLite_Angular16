@@ -6,8 +6,13 @@
 // }
 
 .mat-step-header {
-  flex-direction: column-reverse;
-  margin-bottom: 40px;
+  // flex-direction: column-reverse;
+  margin-bottom: 10px;
+}
+
+.company-structure-card{
+  padding:20px;
+  overflow-x: auto;
 }
 
 body {

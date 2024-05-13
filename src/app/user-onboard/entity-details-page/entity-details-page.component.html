@@ -9,7 +9,6 @@
 <app-entity-table> </app-entity-table> -->
 <div class="container entity-details-page-container">
 
-
 <div class="row">
     <div class="col">
     <app-stepper [currentStep]="0"> </app-stepper>
@@ -29,40 +28,23 @@
 
 <mat-divider> </mat-divider>
 
-<div class="row entity-details-page-entiy-section" >
-  <div class="col-8">
-    <app-entity-table> </app-entity-table>
+<div class="row entity-details-page-entity-section">
+  
+  <div class="col-lg-8 col-md-12 col-sm-12">
+    <app-entity-table></app-entity-table>
   </div>
 
-  <div class="col-3">
-
-  <mat-card class="example-card">
+  <div class="col-lg-4 col-md-12 col-sm-12">
+  <mat-card class="company-structure-card">
     <h4>Company Structure</h4>
     <app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
-    <!-- <mat-card-header> -->
-      <!-- <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-    <!-- </mat-card-header> -->
-    <!-- <img mat-card-image src="" alt="Tree Structure">
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions> -->
   </mat-card>
   </div>
 </div>
 
 <div class="row entity-details-next-button-div">
     <div class="col-12">
-    <button class="entity-details-next-button"> Next </button>
+    <button class="entity-details-next-button" (click)="showTreeData()"> Next </button>
     </div>
 </div>
 
