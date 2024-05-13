@@ -26,9 +26,7 @@ export const treeDataitem :TreeNode = {
       label: 'Child Node 3',
       children: [
         { id: 7, label: 'Grandchild Node 3-1' },
-        { id: 8, label: 'Grandchild Node 3-2', children: [
-          { id: 9, label: 'Great-Grandchild Node 3-2-1' }
-        ] }
+        { id: 8, label: 'Grandchild Node 3-2',}
       ]
     }
   ]
