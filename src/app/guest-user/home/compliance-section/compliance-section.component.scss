@@ -1,0 +1,108 @@
+// .compliance-section {
+//     display: flex;
+//     padding: 4.41% 4.71%;
+  
+//     &__left,
+//     &__middle,
+//     &__right {
+//       width: 17.5vw; /* Set the width of all sections in vw */
+//     }
+  
+//     &__left {
+//       display: flex;
+//       flex-direction: column;
+//       word-break: break-word;
+//     }
+  
+//     &__middle {
+//       display: flex;
+//       align-items: flex-end;
+//     }
+  
+//     &__right {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       justify-content: space-between;
+  
+//       .group_image {
+//         width: 5.3vw; /* Set the width of the group_image in vw */
+//       }
+//     }
+  
+//     /* Media Query for Medium Screens */
+//     @media (min-width: 768px) and (max-width: 1279px) {
+//       &__left,
+//       &__middle,
+//       &__right {
+//         width: 20vw; /* Set width to 20vw for medium-sized screens */
+//         margin: 0 1vw; /* Add margin between flex items in vw */
+//       }
+//     }
+  
+//     /* Media Query for Large Screens */
+//     @media (min-width: 1280px) {
+//       &__left,
+//       &__middle,
+//       &__right {
+//         width: 20vw; /* Set width to 20vw for large screens */
+//         margin: 0 1vw; /* Add margin between flex items in vw */
+//       }
+//     }
+//   }
+.compliance-section {
+    display: flex;
+    padding: 4.41% 4.71%;
+  
+    &__left,
+    &__middle,
+    &__right {
+      width: 17.5vw; /* Set the width of all sections in vw */
+      font-size: 1rem; /* Set the font size for all sections */
+    }
+  
+    &__left {
+      display: flex;
+      flex-direction: column;
+      word-break: break-word;
+    }
+  
+    &__middle {
+      display: flex;
+      align-items: flex-end;
+    }
+  
+    &__right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+  
+      .group_image {
+        width: 5.3vw; /* Set the width of the group_image in vw */
+      }
+    }
+  
+    /* Media Query for Medium Screens */
+    @media (min-width: 768px) and (max-width: 1279px) {
+      &__left,
+      &__middle,
+      &__right {
+        width: 20vw; /* Set width to 20vw for medium-sized screens */
+        margin: 0 1vw; /* Add margin between flex items in vw */
+        font-size: 0.9rem; /* Adjust font size for medium screens */
+      }
+    }
+  
+    /* Media Query for Large Screens */
+    @media (min-width: 1280px) {
+      &__left,
+      &__middle,
+      &__right {
+        width: 20vw; /* Set width to 20vw for large screens */
+        margin: 0 1vw; /* Add margin between flex items in vw */
+        font-size: 1rem; /* Adjust font size for large screens */
+      }
+    }
+  }
+  
