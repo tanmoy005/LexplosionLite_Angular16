@@ -4,7 +4,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTreeModule } from '@angular/material/tree';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
-import { TreeNode } from 'src/app/shared/menu-items/menu-items';
+import { TreeNode } from 'src/app/shared/menu-items/tree-items';
 
 @Component({
   selector: 'app-tree-structure',

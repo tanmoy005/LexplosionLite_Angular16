@@ -4,6 +4,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { EntityTableComponent } from '../common-components/entity-table/entity-table.component';
 import { StepperHelperTextComponent } from '../common-components/stepper-helper-text/stepper-helper-text.component';
 import { MatCardModule } from '@angular/material/card';
+import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 
 @Component({
   selector: 'app-entity-details-page',
@@ -16,12 +17,15 @@ export class EntityDetailsPageComponent {
   
   constructor(private router: Router) {
     // Retrieve data from navigation state
+    
     const navigation = this.router.getCurrentNavigation();
     if (navigation && navigation.extras.state) {
       this.receivedData = navigation.extras.state;
       console.log("This is the received data back in entity page", this.receivedData);    
     }
   }
+
+ treeDataItem = treeDataitem;
 
   
 }

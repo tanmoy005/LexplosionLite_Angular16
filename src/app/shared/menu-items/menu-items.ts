@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-export interface TreeNode {
-  id: number;
-  label: string;
-  children?: TreeNode[];
-}
+// export interface TreeNode {
+//   id: number;
+//   label: string;
+//   children?: TreeNode[];
+// }
 export interface Menu {
   // state: string;
   // name: string;
