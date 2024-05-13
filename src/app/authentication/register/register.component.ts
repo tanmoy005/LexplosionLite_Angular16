@@ -60,7 +60,7 @@ export class AppSideRegisterComponent {
 
 
   get username() { return this.usernameFormControl.value; }
-  get companyname() { return this.companynameFormControl.value; }
+  get businessname() { return this.companynameFormControl.value; }
   get email() { return this.emailFormControl.value; }
   get password() { return this.passwordFormControl.value; }
   get countryCode() { return this.countryCodeFormControl.value; }
@@ -68,32 +68,23 @@ export class AppSideRegisterComponent {
 
   handleRegistration(event: any){
     console.log("Handle login clicked!")
-    console.log("Username - ", this.username);
+    console.log("Username - ", this.businessname);
     console.log("Password - ", this.password);
-    // const registrationData = {
-    //   username: this.usernameFormControl.value,
-    //   companyname:this.companynameFormControl.value,
-    //   email:this.emailFormControl.value,
-    //   password: this.passwordFormControl.value,
-    //   countryCode:this.countryCodeFormControl.value,
-    //   phoneNumber:this.phoneNumberFormControl.value
-    //   // Add other properties as needed
-    // };
 
+    const createBusinessPayload =
+    {"name": this.businessname,
+    "description":"Kolkata 2022"}
+    try {
+      const response =  this.authService.userRegistration(createBusinessPayload); 
+      console.log('Login successful:', response);
+      
+    } 
+    catch (error) {
+      
+      alert("Some error occurred while logging in");
+      
+    }
     
-    // const registrationData = {
-    //   name: this.companynameFormControl.value,
-      
-    //   description: ""
-      
-    // };
-    // this.authService.userRegistration(registrationData).subscribe(
-    //   (response) => {
-    //     console.log('Registration successful:', response);
-       
-    //   },
-     
-    // );
     this.router.navigate(['/verify-email']);
   }
   }
