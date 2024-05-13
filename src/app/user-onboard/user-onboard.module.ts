@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { CommonComponentsComponent } from './common-components/common-components.component';
-import { LawsTableComponent } from './laws-table-page/laws-table.component';
+// import { LawsTableComponent } from './laws-table-page/laws-table.component';
 import { TermsConditionComponent } from './terms-condition-page/terms-condition.component';
 import { PaymentComponent } from './payment-page/payment.component';
 import { StepperComponent } from './common-components/stepper/stepper.component';
@@ -25,12 +25,14 @@ import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-detai
 import {MatDividerModule} from '@angular/material/divider';
 import { TreeStructureComponent } from './common-components/tree-structure/tree-structure.component';
 import { MatCardModule } from '@angular/material/card';
-
+import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
+import { LawsTablePageComponent } from './laws-table-page/laws-table.component';
+import { LawsTableComponent } from './common-components/laws-table/laws-table.component';
 @NgModule({
   declarations: [
     
     CommonComponentsComponent,
-    LawsTableComponent,
+    LawsTablePageComponent,
     TermsConditionComponent,
     PaymentComponent,
     StepperHelperTextComponent,
@@ -47,7 +49,6 @@ import { MatCardModule } from '@angular/material/card';
     RouterModule.forChild(UserOnboardRoutes),
     BusinessCardComponent,
     FeaturesSectionComponent,
-    
     EntityTableComponent,
     FormsModule,
     MatTableModule,
@@ -56,7 +57,8 @@ import { MatCardModule } from '@angular/material/card';
     OperatingUnitTableComponent,
     MatDividerModule,
     TreeStructureComponent,
-    MatCardModule
+    MatCardModule,
+    LawsTableComponent
   ],
   exports:[
     BusinessCardComponent

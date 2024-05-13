@@ -19,7 +19,6 @@ import { AppSideRegisterComponent } from './register/register.component';
 import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 import { VerifyEmailPageComponent } from './register/verify-email-page/verify-email-page.component';
 //import { BusinessCardComponent } from '../user-onboard/common-components/business-card/business-card.component';
-import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 
 @NgModule({
   imports: [
