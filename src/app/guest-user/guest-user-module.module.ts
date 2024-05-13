@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { GuestUserRoutes } from './guest-user.routing';
 import { ComplianceSectionComponent } from './home/compliance-section/compliance-section.component';
+import { AppSideLoginComponent } from './login/login.component';
 
 
 
@@ -15,6 +16,7 @@ import { ComplianceSectionComponent } from './home/compliance-section/compliance
     CommonModule,
     RouterModule.forChild(GuestUserRoutes),
     HomeComponent,
+    AppSideLoginComponent
     // ComplianceSectionComponent
   ]
 })

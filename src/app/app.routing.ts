@@ -13,18 +13,18 @@ export const AppRoutes: Routes = [
   },
   
 
-  {
-    path: '',
-    component: BlankComponent,
+  // {
+  //   path: '',
+  //   component: BlankComponent,
   
-    children: [
+  //   children: [
   
-      {
-        path: '',
-        loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
-      }
-    ]
-  },
+  //     {
+  //       path: '',
+  //       loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+  //     }
+  //   ]
+  // },
   {
     path: '',
     component: BlankComponent,
