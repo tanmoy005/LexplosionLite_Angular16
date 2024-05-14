@@ -1,4 +1,5 @@
 import { Component ,ViewEncapsulation} from '@angular/core';
+import { Router } from '@angular/router';
 import { RegHeaderComponent } from '../reg-header/reg-header.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -25,5 +26,10 @@ import {MatCardModule} from '@angular/material/card';
   encapsulation: ViewEncapsulation.None
 })
 export class VerifyEmailPageComponent {
+  constructor( private router: Router) {}
+  
+  handleRegistration(event: any){
+    this.router.navigate(['/entity-details']);
+  }
 
 }
