@@ -26,9 +26,7 @@ export const AppRoutes: Routes = [
   {
     path: '',
     component: BlankComponent,
-  
     children: [
-  
       {
         path: '',
         loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
