@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
 import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-l
     UserOnboardModule,
     TreeStructureComponent,
     MatIconModule,
+    MatSnackBarModule,
     MatMenuModule,
     HomeComponent
     
