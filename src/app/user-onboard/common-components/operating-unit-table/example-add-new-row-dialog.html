@@ -1,5 +1,135 @@
 <h2 mat-dialog-title>Operating Unit Details</h2>
-<mat-dialog-content>This dialog {{data.entityName}}</mat-dialog-content>
+<mat-dialog-content> 
+  <div class=" example-full-width d-flex">
+  <div class="col-lg-8">
+  <mat-card>
+    <mat-card-content>
+  <form>
+  <mat-form-field appearance="outline">
+    <mat-label>Entity</mat-label>
+    <input matInput name="Entity" [(ngModel)]="data.entityName">
+  </mat-form-field>
+
+  <div class=" example-full-width d-flex">
+    
+  <mat-form-field appearance="outline">
+    <mat-label>Operating Unit Name</mat-label>
+    <input matInput name="operatingUnitName" >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Operating Unit Type</mat-label>
+    <!-- <input matInput name="OperatingUnitType" > -->
+    <mat-select multiple>
+      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+ <div class=" example-full-width d-flex">
+  <mat-form-field appearance="outline">
+    <mat-label>State</mat-label>
+    <!-- <input matInput name="State" > -->
+    <mat-select multiple>
+      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Activities</mat-label>
+    <mat-select multiple>
+      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+    <!-- <input matInput name="Entity" > -->
+  </mat-form-field>
+</div>
+<div class=" example-full-width d-flex">
+  <mat-form-field appearance="outline">
+    <mat-label>Located At</mat-label>
+    <!-- <input matInput name="Entity" > -->
+    <mat-select multiple>
+      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Ownarship</mat-label>
+    <!-- <input matInput name="Entity" > -->
+    <mat-select multiple>
+      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+ </form>
+</mat-card-content>
+</mat-card>
+</div>
+<div class="col-lg-4">
+  <mat-card>
+    <mat-card-content>
+      <form>
+        <p>Direct Employees</p>
+        <div class=" example-full-width d-flex">
+        <mat-form-field appearance="outline">
+          <mat-label>Male</mat-label>
+          <input matInput name="male" type="number" >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Female</mat-label>
+          <input matInput name="female" type="number" >
+        </mat-form-field>
+      </div>
+      <p>Contract Labours</p>
+      <div class=" example-full-width d-flex">
+      <mat-form-field appearance="outline">
+        <mat-label>Male</mat-label>
+        <input matInput name="male" type="number" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Female</mat-label>
+        <input matInput name="female" type="number" >
+      </mat-form-field>
+    </div>
+    <p>Inter-State Migrants</p>
+    <div class=" example-full-width d-flex">
+    <mat-form-field appearance="outline">
+      <mat-label>Male</mat-label>
+      <input matInput name="male" type="number" >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Female</mat-label>
+      <input matInput name="female" type="number" >
+    </mat-form-field>
+  </div>
+  <p>Others</p>
+  <div class=" example-full-width d-flex">
+  <mat-form-field appearance="outline">
+    <mat-label>Apprentices</mat-label>
+    <input matInput name="male" type="number" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Child Labours</mat-label>
+    <input matInput name="female" type="number" >
+  </mat-form-field>
+</div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+</div>
+</mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="addEntity()">Close</button>
+
+
+  <button  mat-raised-button color="warn"  (click)="addEntity()">Add</button>
 </mat-dialog-actions>
