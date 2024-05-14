@@ -8,6 +8,7 @@ import {FormControl, Validators, FormsModule, ReactiveFormsModule,ValidatorFn, A
 import { CommonModule } from '@angular/common';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-verify-email-page',
@@ -21,7 +22,8 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     MatCardModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   encapsulation: ViewEncapsulation.None
 })
@@ -30,6 +32,9 @@ export class VerifyEmailPageComponent {
   
   handleRegistration(event: any){
     this.router.navigate(['/entity-details']);
+  }
+  handleBackToRegistration(event: any){
+    this.router.navigate(['/register']);
   }
 
 }

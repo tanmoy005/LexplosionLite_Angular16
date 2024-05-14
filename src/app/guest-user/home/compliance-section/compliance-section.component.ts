@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-compliance-section',
@@ -7,5 +9,10 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class ComplianceSectionComponent {
+  constructor( private router: Router) {}
+  
+  goToRegistrationPage(event: any){
+    this.router.navigate(['/register']);
+  }
 
 }

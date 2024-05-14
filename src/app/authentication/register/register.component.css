@@ -7,7 +7,7 @@
   
 } */
 .container {
- 
+  display: flex;
   background-color: white;
   
 }
@@ -159,9 +159,10 @@ opacity: 0px;
   box-shadow: 0 0 5px white; /* Change the box-shadow color when focused */
 }
 
-.mat-mdc-raised-button.mat-warn {
+.mat-mdc-raised-button.mat-warn  {
   --mdc-protected-button-container-color: #786ACD;
   --mdc-protected-button-label-text-color: #fff;
+  text-decoration: none;
 }
 
 
@@ -175,3 +176,22 @@ text-align: left;
 color: #786ACD;
 
 }
+
+
+
+.mdc-button p{
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--mdc-typography-button-font-family, var(--mdc-typography-font-family, Barlow));
+  font-size: var(--mdc-typography-button-font-size, 12px);
+  line-height: var(--mdc-typography-button-line-height, 36px);
+  font-weight: var(--mdc-typography-button-font-weight, 500);
+  letter-spacing: var(--mdc-typography-button-letter-spacing, 0.0892857143em);
+  -webkit-text-decoration: var(--mdc-typography-button-text-decoration, none);
+  text-decoration: var(--mdc-typography-button-text-decoration, none);
+  text-decoration: underline;
+  text-decoration-color: blue;
+  text-transform: var(--mdc-typography-button-text-transform, none);
+  
+}
+

@@ -77,7 +77,7 @@
    <mat-divider></mat-divider>
       <div class="col-lg-4" style="margin-top: 40px;" >
         <div class="get-start-for-free"  style="margin-bottom: 50px ; margin-left: 20px;">
-        <mat-card-title class=" get-started-for-free-typography">Get started for free</mat-card-title>
+        <p class=" get-started-for-free-typography">Get started for free</p>
         </div>
        
        <div about-yourself style="margin-bottom: 20px;margin-left: 20px;">
@@ -144,7 +144,9 @@
                 <mat-checkbox style="margin-left: -10px;" color="primary" >
                   <span class="agree-to-label">
                   I agree to
-                  <a href="#" style="color: blue;">terms and conditions</a>
+                 <button mat-button (click)="termsConditionModalOpen()">
+                  <p style="color: blue;"> terms and conditions </p>
+                </button>
                   </span>
                 </mat-checkbox>
 
