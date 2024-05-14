@@ -131,9 +131,9 @@ export class OperatingUnitTableComponent {
   }
   
 
-  openEntityDialog() {
+  openEntityDialog(entityName: string) {
     const dialogRef = this.dialog.open(AddNewEntityDialog, {
-      data: { entityTable: this }
+      data: { entityTable: this ,entityName: entityName,}
     });
   }
 
@@ -186,9 +186,10 @@ export class OperatingUnitTableComponent {
   imports:[MatDialogModule]
 })
 export class AddNewEntityDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: OperatingUnitTableComponent }) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: OperatingUnitTableComponent }) {}
 
   addEntity() {
+    console.log('Entity Name:', this.data.entityName);
     this.data.entityTable.addOpUnitData();
   }
 }

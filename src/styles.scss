@@ -178,3 +178,21 @@ $font-12: 0.9375vw;
     margin-top: -$mt-10;
 }
 
+
+
+.mat-mdc-raised-button.mat-warn {
+    --mdc-protected-button-container-color: #786ACD;
+    --mdc-protected-button-label-text-color: #fff;
+    text-decoration: none;
+  }
+  
+  .mat-mdc-outlined-button {
+    --mdc-outlined-button-outline-color: #786ACD;
+  }
+  
+  .mat-mdc-outlined-button.mat-unthemed {
+  --mdc-outlined-button-label-text-color: #786ACD;
+  }
+  
+
+  
