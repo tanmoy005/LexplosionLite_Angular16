@@ -7,6 +7,7 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserAuthenticationService {
   CreateBusinessURL = 'https://enginebackendqa.komrisk.com/v1/login'
   loginURL = 'https://enginebackendqa.komrisk.com/v1/login'
@@ -35,4 +36,11 @@ export class UserAuthenticationService {
   //   // return this.http.post(this.loginURL,data)
   // }
 
+  
 }
+
+export class EntityService{
+  // addEntityURL = 
+}
+
+

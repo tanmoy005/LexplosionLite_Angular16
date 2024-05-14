@@ -12,6 +12,7 @@
   }
 
   .opUnit-details-table{
+    min-height: 248px;
     max-height: 250px;
     overflow-y: auto;
     overflow-x: auto;
@@ -40,8 +41,8 @@
   }
 
   .received-entity-details{
-    margin-top: 10px;
-    margin-bottom: 20px;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
     display: flex;
   }
 

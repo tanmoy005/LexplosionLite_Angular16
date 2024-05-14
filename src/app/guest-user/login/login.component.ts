@@ -9,6 +9,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -28,9 +34,40 @@ import { catchError, tap } from 'rxjs';
 })
 export class AppSideLoginComponent {
 
-  constructor(private authService: UserAuthenticationService, routerService: Router ) { 
-   
+  constructor(private authService: UserAuthenticationService, private routerService: Router,
+    private _snackBar: MatSnackBar ) { }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  successdurationInSeconds = 2;
+  failuredurationInSeconds = 4;
+
+  openSuccessSnackBar() {
+    this._snackBar.open('Login Successful!', 'close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.successdurationInSeconds * 1000,
+    });
   }
+
+  openWrongCredentialsSnackBar() {
+    this._snackBar.open('Given Username or Password is wrong.', 'close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.failuredurationInSeconds * 1000,
+    });
+  }
+
+  openServerErrorSnackBar() {
+    this._snackBar.open('Some error occurred while logging you in. Please try again', 'close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.failuredurationInSeconds * 1000,
+    });
+  }
+
+
+
 
 // navigate to another component, with or without data
 // here "entity" is the data being sent
@@ -55,20 +92,25 @@ export class AppSideLoginComponent {
         tap(response => {
           // Handle successful response
           console.log('Login successful:', response);
+          this.openSuccessSnackBar();
+          this.routerService.navigate(['/entity-details']); 
           // this.routerService.navigate(['/oprating-unit-details']); 
         }),
         catchError(error => {
           // Handle error
           console.error('Login error:', error);
+          this.openWrongCredentialsSnackBar()
           throw error; // Rethrow the error to propagate it downstream
         })
       ).subscribe();
       // console.log('Login successful:', response);
       // Handle successful login, such as redirecting to a dashboard
     } 
+
     catch (error) {
       //console.error('Error occurred during login:', error);
-      alert("Some error occurred while logging in");
+      //alert("Some error occurred while logging in");
+      this.openServerErrorSnackBar();
       // Handle login error, such as displaying an error message
     }
   }
