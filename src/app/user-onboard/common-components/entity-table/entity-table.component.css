@@ -35,3 +35,16 @@
 .entity-label{
   margin-bottom: 10px;
 }
+
+.entity-form {
+  width: 100%;
+}
+
+.entity-form-field{
+  width:100%
+}
+
+.dialog-button{
+  height:30px;
+  width: 60px;
+}

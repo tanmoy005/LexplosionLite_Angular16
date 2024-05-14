@@ -1,109 +1,37 @@
-
-
-<!-- <div class='container'>
-<mat-card class ="mat-card-container">
- 
-   
-    
-      <div class="col-lg-6 col-md-12 col-sm-12 align-items-center">
-        <mat-card-title class="col-lg-12 col-md-12 col-sm-12 mat-card-title">User Registration</mat-card-title>
-          
-            <mat-card-content class="p-32">
-           
-              <form class="login-form" >
-                <mat-form-field class=" example-full-width">
-                  <mat-label>Username</mat-label>
-                  <input  matInput name="username"  [formControl]="usernameFormControl">
-                  <mat-error *ngIf="usernameFormControl.hasError('required')">Username is <strong>required</strong></mat-error>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Company Name</mat-label>
-                  <input matInput name="companyname"  [formControl]="companynameFormControl">
-                  <mat-error *ngIf="companynameFormControl.hasError('required')">Company Name is <strong>required</strong></mat-error>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Email ID</mat-label>
-                  <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" name="email" >
-                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Please enter a valid email address</mat-error>
-                  <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
-                </mat-form-field>
-               
-                <mat-form-field class="example-full-width">
-                  <mat-label>Password</mat-label>
-                  <input matInput type="password" name="password"  [formControl]="passwordFormControl">
-                  <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></mat-error>
-                </mat-form-field>
-              
-                <h4 class="col-lg-6 col-md-12 col-sm-12 contact-title">Contact</h4>
-                <div class=" example-full-width d-flex">
-                  <mat-form-field class="country-code-full-width" style="margin-right: 10px;">
-                 
-                    <input matInput type="number" placeholder="Ex. 91" name="countryCode"  [formControl]="countryCodeFormControl">
-                    <mat-hint align="start">Country Code *</mat-hint>
-                    <mat-error *ngIf="countryCodeFormControl.hasError('required')">Country Code is <strong>required</strong></mat-error>
-                    <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="example-full-width">
-               
-                    <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"  [formControl]="phoneNumberFormControl">
-                    <mat-hint align="start">Phone Number *</mat-hint>
-                    <mat-error *ngIf="phoneNumberFormControl.hasError('required')">Phone Number is <strong>required</strong></mat-error>
-                    <mat-error *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')">Invalid Phone Number</mat-error>
-                  </mat-form-field>
-                </div>
-
-              <div class="example-button-row">
-                <button mat-flat-button color="primary"  (click)="handleRegistration($event)">Register</button>
-              </div>
-  
-            </form>
-           
-            </mat-card-content>
-        
-      </div>
-    
-      
-  
-</mat-card>
-</div>   -->
-
-
-
-<div >
-<mat-card >
- 
-   <app-reg-header></app-reg-header>
-
-   <mat-divider></mat-divider>
-      <div class="col-lg-4" style="margin-top: 40px;" >
-        <div class="get-start-for-free"  style="margin-bottom: 50px ; margin-left: 20px;">
+<div>
+  <mat-card style="display: contents;">
+    <app-reg-header></app-reg-header>
+    <mat-divider></mat-divider>
+    <div class="col-lg-4" style="margin-top: 40px;">
+      <div class="get-start-for-free" style="margin-bottom: 50px ; margin-left: 20px;">
         <p class=" get-started-for-free-typography">Get started for free</p>
-        </div>
-       
-       <div about-yourself style="margin-bottom: 20px;margin-left: 20px;">
+      </div>
+
+      <div about-yourself style="margin-bottom: 20px;margin-left: 20px;">
         <p class="about-yourself-typography">Tell us something about yourself!</p>
-      </div>  
-            <mat-card-content >
-           
-              <form >
+      </div>
+      <mat-card-content>
 
-                <mat-form-field  appearance="outline">
-                  <mat-label>Name</mat-label>
-                  <input  matInput name="username"  [formControl]="usernameFormControl">
-                 
-                </mat-form-field>
+        <form>
 
-                <!-- <input type="text" class="styled-input" placeholder="Enter text here"> -->
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput name="username" [formControl]="usernameFormControl">
+
+          </mat-form-field>
+
+          <!-- <input type="text" class="styled-input" placeholder="Enter text here"> -->
 
 
-                <mat-form-field  appearance="outline">
-                  <mat-label>Business Name</mat-label>
-                  <input matInput name="businessname"  [formControl]="companynameFormControl">
-                  <mat-error *ngIf="companynameFormControl.hasError('required')">Business Name is <strong>required</strong></mat-error>
-                </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Business Name</mat-label>
+            <input matInput name="businessname" [formControl]="companynameFormControl">
+            <mat-error *ngIf="companynameFormControl.hasError('required')">Business Name is
+              <strong>required</strong></mat-error>
+          </mat-form-field>
 
-                <div class=" example-full-width d-flex">
-<!-- 
+          <div class=" example-full-width d-flex">
+            <!-- 
                   <mat-form-field class="country-code-full-width" style="margin-right: 10px;" appearance="outline">
                     <mat-label>+91</mat-label>
                     <input matInput type="number" placeholder="Ex. 91" name="countryCode"  [formControl]="countryCodeFormControl">
@@ -138,67 +66,66 @@
                   
 
 
-                  <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Phone Number</mat-label>
-                    <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"  [formControl]="phoneNumberFormControl">
-                    
-                    <mat-error *ngIf="phoneNumberFormControl.hasError('required')">Phone Number is <strong>required</strong></mat-error>
-                    <mat-error *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')">Invalid Phone Number</mat-error>
-                  </mat-form-field>
-                </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"
+                [formControl]="phoneNumberFormControl">
 
-                <mat-checkbox style="margin-left: -10px;" color="primary" >
-                  <span class="agree-to-label">
-                  I agree to
-                 <button mat-button (click)="termsConditionModalOpen()">
-                  <p style="color: blue;"> terms and conditions </p>
-                </button>
-                  </span>
-                </mat-checkbox>
+              <mat-error *ngIf="phoneNumberFormControl.hasError('required')">Phone Number is
+                <strong>required</strong></mat-error>
+              <mat-error *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')">Invalid Phone Number</mat-error>
+            </mat-form-field>
+          </div>
 
-                <mat-checkbox style="margin-left: -10px; margin-bottom: 10px;" color="primary" >
-                  <span class="consent-label">
-                  I consent to receiving promotional information about compliance management
-                </span>
-                </mat-checkbox>
+          <mat-checkbox style="margin-left: -10px;" color="primary">
+            <span class="agree-to-label">
+              I agree to
+              <button mat-button (click)="termsConditionModalOpen()">
+                <p style="color: blue;"> terms and conditions </p>
+              </button>
+            </span>
+          </mat-checkbox>
+
+          <mat-checkbox style="margin-left: -10px; margin-bottom: 10px;" color="primary">
+            <span class="consent-label">
+              I consent to receiving promotional information about compliance management
+            </span>
+          </mat-checkbox>
 
 
-                <div style="margin-left: 10px; margin-bottom: 20px; margin-top: 10px;">
-                  <p class="login-credential-typography">Create login Credentials</p>
-                </div>
+          <div style="margin-left: 10px; margin-bottom: 20px; margin-top: 10px;">
+            <p class="login-credential-typography">Create login Credentials</p>
+          </div>
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Email ID/Username</mat-label>
-                  <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" name="email" >
-                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Please enter a valid email address</mat-error>
-                  <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
-                </mat-form-field>
-               
-                <!-- <mat-form-field appearance="outline" >
+          <mat-form-field appearance="outline">
+            <mat-label>Email ID/Username</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
+              name="email">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Please enter
+              a valid email address</mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="outline" >
                   <mat-label>Password</mat-label>
                   <input matInput type="password" name="password"  [formControl]="passwordFormControl">
                   <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></mat-error>
                 </mat-form-field> -->
-              
-               
-               
-
-              <div class="example-button-row">
-                <button mat-raised-button color="warn"  (click)="handleRegistration($event)">Verify Email ID</button>
-              </div>
-  
-            </form>
-           
-            </mat-card-content>
-        
-      </div>
-    
-      
-  
-</mat-card>
-</div> 
 
 
 
 
- 
+          <div class="example-button-row">
+            <button mat-raised-button color="warn" (click)="handleRegistration($event)">Verify Email ID</button>
+          </div>
+
+        </form>
+
+      </mat-card-content>
+
+    </div>
+
+
+
+  </mat-card>
+</div>

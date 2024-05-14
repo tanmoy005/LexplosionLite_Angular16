@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 $size_16px: 1.12vw;
@@ -12,12 +12,12 @@ $size_56px: 4.8vw;
 $size_32px: 2.5vw;
 
 $mt-42: 5.77vh;
-$mt-10: 1.20vh;
+$mt-10: 1.2vh;
 
-$primary : rgb(120, 106, 205, 1);
+$primary: rgb(120, 106, 205, 1);
 
-$font-color-dark :rgba(23, 34, 25, 1);
-$font-color-dark2 :rgba(38, 38, 44, 1);
+$font-color-dark: rgba(23, 34, 25, 1);
+$font-color-dark2: rgba(38, 38, 44, 1);
 
 $font-color-light: rgba(243, 243, 243, 1);
 $font-color-blue: $primary;
@@ -28,155 +28,172 @@ $font-24: 1.64vw;
 $font-56: $size_56px;
 $font-12: 0.9375vw;
 
-
 @mixin text_24_400 {
-    font-weight: 400;
-    font-size: $font-24;
+  font-weight: 400;
+  font-size: $font-24;
 }
-@mixin text_12_400{
-    font-size: $font-12;
-    font-weight: 400;
+@mixin text_12_400 {
+  font-size: $font-12;
+  font-weight: 400;
 }
-
 
 .contain_bg_36_br_16 {
-    background-color: rgba(217, 217, 217, 0.36);
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgba(233, 233, 233, 1); // todo set borer image  to gradiant
-    // border-image: linear-gradient(to right, rgba(233, 233, 233, 1), rgba(38, 39, 32, 1)) 1 stretch;
-    border-radius: 16px;
+  background-color: rgba(217, 217, 217, 0.36);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(233, 233, 233, 1); // todo set borer image  to gradiant
+  // border-image: linear-gradient(to right, rgba(233, 233, 233, 1), rgba(38, 39, 32, 1)) 1 stretch;
+  border-radius: 16px;
 }
 
 .text_25_700 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: $font-color-dark;
-    // font-family: 'Barlow'; //todo 
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $font-color-dark;
+  // font-family: 'Barlow'; //todo
 }
 
 .text_24_400_dark {
-    @include text_24_400;
-    line-height: 40px;
-    color: $font-color-dark;
-    // font-family: 'Barlow'; // todo import font
+  @include text_24_400;
+  line-height: 40px;
+  color: $font-color-dark;
+  // font-family: 'Barlow'; // todo import font
 }
 
 .text_24_400_blue {
-    @include text_24_400;
-    line-height: 40px;
-    color: $font-color-blue;
-    // font-family: 'Barlow'; // todo import font
+  @include text_24_400;
+  line-height: 40px;
+  color: $font-color-blue;
+  // font-family: 'Barlow'; // todo import font
 }
 
-
-
 .text_56_800 {
-    // font-size: $font-56;
-    font-size: $font-56;
-    font-weight: 800;
-    color: $font-color-light;
-    line-height: 78.79px;
-    text-transform: uppercase;
-    // font-family: 'Open Sans'; //todo 
+  // font-size: $font-56;
+  font-size: $font-56;
+  font-weight: 800;
+  color: $font-color-light;
+  line-height: 78.79px;
+  text-transform: uppercase;
+  // font-family: 'Open Sans'; //todo
 }
 
 .text_16_700 {
-    color: $font-color-dark;
-    font-size: $font-16;
-    font-weight: 700;
+  color: $font-color-dark;
+  font-size: $font-16;
+  font-weight: 700;
 }
 
-
-
 .btn-secondary {
-    background-color: rgba(18, 1, 1, 1);
-    padding: 9.5% 8.5%;
-    border: 1px solid rgba(57, 87, 63, 1); // todo use gradient
-    border-radius: 8px;
-    color: rgba(233, 233, 233, 1);
-    font-size: $font-16;
-    font-weight: 400;
-    cursor: pointer;
+  background-color: rgba(18, 1, 1, 1);
+  padding: 9.5% 8.5%;
+  border: 1px solid rgba(57, 87, 63, 1); // todo use gradient
+  border-radius: 8px;
+  color: rgba(233, 233, 233, 1);
+  font-size: $font-16;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .btn-primary {
-    background-color: $primary;
-    padding: 2.34% 8.5%;
-    border: 1px solid $primary; // todo use gradient
-    border-radius: 5px;
-    color: rgba(233, 233, 233, 1);
-    font-size: $font-16;
-    font-weight: 400;
-    cursor: pointer;
-    //     Font
-    // Barlow
-    // Weight
-    // 400
-    // Size
-    // 16px
-    // Line height
-    // 19.2px
+  background-color: $primary;
+  padding: 2.34% 8.5%;
+  border: 1px solid $primary; // todo use gradient
+  border-radius: 5px;
+  color: rgba(233, 233, 233, 1);
+  font-size: $font-16;
+  font-weight: 400;
+  cursor: pointer;
+  //     Font
+  // Barlow
+  // Weight
+  // 400
+  // Size
+  // 16px
+  // Line height
+  // 19.2px
 }
 
 .form-container1 {
-    display: flex;
-    flex-direction: column;
-    width: 31.87vw;
-    // height: 55.76vh;
-    border-radius: 10px;
-    // border: 1px solid rgba(255, 255, 255, 1);
-    background-color: rgba(248, 248, 248, 0.76);
-    box-shadow: 0 4px 56px 0 rgba(0, 0, 0, 0.16);
-    margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 31.87vw;
+  // height: 55.76vh;
+  border-radius: 10px;
+  // border: 1px solid rgba(255, 255, 255, 1);
+  background-color: rgba(248, 248, 248, 0.76);
+  box-shadow: 0 4px 56px 0 rgba(0, 0, 0, 0.16);
+  margin: auto;
 }
 
 .form-heading-container {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    // background-color: rgba(248, 248, 248, 0.76);
-    padding: $size_16px $size_24px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  // background-color: rgba(248, 248, 248, 0.76);
+  padding: $size_16px $size_24px;
 }
 
 .login-formheader {
-    // padding: 0.7vw 0.7vw;
-    background-color: $primary;
-    border-radius: 10px 10px 0 0;
-    .login-header-logo{
-        width: 43.87%;
-    }
+  // padding: 0.7vw 0.7vw;
+  background-color: $primary;
+  border-radius: 10px 10px 0 0;
+  .login-header-logo {
+    width: 43.87%;
+  }
 }
 
 .login-form {
-    padding: 0 $size_56px $size_32px $size_56px ;
+  padding: 0 $size_56px $size_32px $size_56px;
 
-    .login-field {
-        .mat-mdc-text-field-wrapper {
-            height: 7.885vh !important;
-            //    min-height: 48px;
-        }
-    
-        label {
-            font-size: $font-12;
-        }
+  .login-field {
+    .mat-mdc-text-field-wrapper {
+      height: 7.885vh !important;
+      //    min-height: 48px;
     }
-    .button-container{
-        display: flex;
-        justify-content: space-between;
+
+    label {
+      font-size: $font-12;
     }
-    .forgot_pass{
-        @include text_12_400;
-        color: rgba(0, 145, 208, 1);
-    }
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .forgot_pass {
+    @include text_12_400;
+    color: rgba(0, 145, 208, 1);
+  }
 }
 
 .mt-42 {
-    margin-top: $mt-42;
+  margin-top: $mt-42;
 }
-.mt--10{
-    margin-top: -$mt-10;
+.mt--10 {
+  margin-top: -$mt-10;
 }
+.custom-error-snackbar {
+  .mdc-snackbar__surface {
+    background-color: #D7566D !important;
+    color: #fff !important;
+    border-radius: 4px;
+  }
+}
+
+
+.mat-mdc-raised-button.mat-warn {
+    --mdc-protected-button-container-color: #786ACD;
+    --mdc-protected-button-label-text-color: #fff;
+    text-decoration: none;
+  }
+  
+  .mat-mdc-outlined-button {
+    --mdc-outlined-button-outline-color: #786ACD;
+  }
+  
+  .mat-mdc-outlined-button.mat-unthemed {
+  --mdc-outlined-button-label-text-color: #786ACD;
+  }
+  
 
 
 
