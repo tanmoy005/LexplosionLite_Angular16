@@ -8,7 +8,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.scss'],
+  styleUrls: ['./stepper.component.css'],
   standalone: true,
   imports: [
     MatStepperModule,

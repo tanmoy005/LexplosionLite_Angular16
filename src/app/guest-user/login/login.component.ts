@@ -10,6 +10,8 @@ import { UserAuthenticationService } from 'src/app/services/user-authentication.
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ApiService } from 'src/app/services/api.service';
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -35,7 +37,7 @@ import {
 export class AppSideLoginComponent {
 
   constructor(private authService: UserAuthenticationService, private router: Router,
-    private _snackBar: MatSnackBar ) { }
+    private _snackBar: MatSnackBar, private apiService: ApiService ) { }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -88,7 +90,8 @@ export class AppSideLoginComponent {
     const loginPayload = {"unique_key":this.username,"password":this.password}
     try {
       // const response =  this.authService.userLogin(loginPayload); 
-      this.authService.userLogin(loginPayload).pipe(
+      //this.authService.userLogin(loginPayload).pipe(
+      this.apiService.postLoginData(loginPayload).pipe(
         tap(response => {
           // Handle successful response
           console.log('Login successful:', response);
