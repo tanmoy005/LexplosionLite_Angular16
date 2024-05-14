@@ -155,7 +155,8 @@
       <mat-checkbox class="custome-check-box">Remember Me</mat-checkbox>
     </div>
     <div class="button-container">
-      <button [disabled]="usernameFormControl.invalid || passwordFormControl.invalid" class="btn-primary"
+      <button [disabled]="usernameFormControl.invalid || passwordFormControl.invalid" 
+       class="btn-primary"
         (click)="handleLogin($event)">
         Login
       </button>

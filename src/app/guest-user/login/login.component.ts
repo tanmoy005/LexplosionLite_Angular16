@@ -34,7 +34,7 @@ import {
 })
 export class AppSideLoginComponent {
 
-  constructor(private authService: UserAuthenticationService, private routerService: Router,
+  constructor(private authService: UserAuthenticationService, private router: Router,
     private _snackBar: MatSnackBar ) { }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
@@ -92,9 +92,10 @@ export class AppSideLoginComponent {
         tap(response => {
           // Handle successful response
           console.log('Login successful:', response);
-          this.openSuccessSnackBar();
-          this.routerService.navigate(['/entity-details']); 
+          //this.openSuccessSnackBar();
+          
           // this.routerService.navigate(['/oprating-unit-details']); 
+          this.router.navigate(['/entity-details'],{ state: { entity: '' } }); 
         }),
         catchError(error => {
           // Handle error
@@ -113,6 +114,8 @@ export class AppSideLoginComponent {
       this.openServerErrorSnackBar();
       // Handle login error, such as displaying an error message
     }
+
+    
   }
 }
 

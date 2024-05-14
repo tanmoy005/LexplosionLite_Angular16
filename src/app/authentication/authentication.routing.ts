@@ -12,7 +12,7 @@ export const AuthenticationRoutes: Routes = [
   {
     path: 'verify-email',
     component: VerifyEmailPageComponent
-  },
+  }
 
 ];
 

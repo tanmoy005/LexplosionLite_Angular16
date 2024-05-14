@@ -38,7 +38,6 @@ export const AppRoutes: Routes = [
   {
     path: '',
     component: BlankComponent,
-  
     children: [
   
       {
