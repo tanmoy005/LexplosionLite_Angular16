@@ -28,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
 import { LawsTablePageComponent } from './laws-table-page/laws-table.component';
 import { LawsTableComponent } from './common-components/laws-table/laws-table.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { LawsTableComponent } from './common-components/laws-table/laws-table.co
     MatDividerModule,
     TreeStructureComponent,
     MatCardModule,
-    LawsTableComponent
+    LawsTableComponent,
+    MatFormFieldModule
   ],
   exports:[
     BusinessCardComponent
