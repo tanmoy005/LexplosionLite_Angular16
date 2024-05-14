@@ -54,21 +54,21 @@ export class AppSideLoginComponent {
   successdurationInSeconds = 2;
   failuredurationInSeconds = 4;
 
-  openSuccessSnackBar() {
-    this._snackBar.open('Login Successful!', 'close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      duration: this.successdurationInSeconds * 1000,
-    });
-  }
+  // openSuccessSnackBar() {
+  //   this._snackBar.open('Login Successful!', 'close', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //     duration: this.successdurationInSeconds * 1000,
+  //   });
+  // }
 
-  openWrongCredentialsSnackBar() {
-    this._snackBar.open('Given Username or Password is wrong.', 'close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      duration: this.failuredurationInSeconds * 1000,
-    });
-  }
+  // openWrongCredentialsSnackBar() {
+  //   this._snackBar.open('Given Username or Password is wrong.', 'close', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //     duration: this.failuredurationInSeconds * 1000,
+  //   });
+  // }
 
   openServerErrorSnackBar() {
     this._snackBar.open('Some error occurred while logging you in. Please try again', 'close', {
@@ -158,7 +158,7 @@ export class AppSideLoginComponent {
     catch (error) {
       //console.error('Error occurred during login:', error);
       //alert("Some error occurred while logging in");
-      this.openServerErrorSnackBar();
+       this.openServerErrorSnackBar();
       // Handle login error, such as displaying an error message
     }
 
