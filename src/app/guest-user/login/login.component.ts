@@ -28,7 +28,7 @@ import { catchError, tap } from 'rxjs';
 })
 export class AppSideLoginComponent {
 
-  constructor(private authService: UserAuthenticationService, routerService: Router ) { 
+  constructor(private authService: UserAuthenticationService, private routerService: Router ) { 
    
   }
 
@@ -55,7 +55,7 @@ export class AppSideLoginComponent {
         tap(response => {
           // Handle successful response
           console.log('Login successful:', response);
-          // this.routerService.navigate(['/oprating-unit-details']); 
+          this.routerService.navigate(['/entity-details']); 
         }),
         catchError(error => {
           // Handle error

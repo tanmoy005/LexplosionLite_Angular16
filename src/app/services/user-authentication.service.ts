@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserAuthenticationService {
-  CreateBusinessURL = 'https://enginebackendqa.komrisk.com/v1/login'
+  CreateBusinessURL = 'https://enginebackendqa.komrisk.com/v1/company'
+  CreateUserURL ='https://enginebackendqa.komrisk.com/v1/user'
   loginURL = 'https://enginebackendqa.komrisk.com/v1/login'
 
   constructor(private http: HttpClient) { }
@@ -15,6 +16,11 @@ export class UserAuthenticationService {
   userRegistration(data: any) : Observable<any>{
     console.log('user registration data', data)
     return this.http.post(this.CreateBusinessURL, data)
+  }
+
+  userCreateUser(data: any) : Observable<any>{
+    console.log('user Create User data', data)
+    return this.http.post(this.CreateUserURL, data)
   }
 
   userLogin(data: any): Observable<any> {
