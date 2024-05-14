@@ -45,7 +45,7 @@ export class ApiService {
     else{
       headerJSON = {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.getAuthToken()}`,}
+                    'Authorization': `Bearer ${this.getAuthToken()}`}
     }
     return this.http.post<any>(`${this.baseUrl}/${apiUrl}`, data,{headers:headerJSON});
   }

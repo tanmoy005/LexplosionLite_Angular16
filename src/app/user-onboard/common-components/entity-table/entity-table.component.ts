@@ -126,16 +126,17 @@ import { Component, ViewChild,Inject  } from '@angular/core';
 import {MatTable, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule} from '@angular/material/input';
+import { MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { NgStyle } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import {
   MatDialog,
@@ -178,7 +179,7 @@ const ELEMENT_DATA: BusinessDetails[] = [
   styleUrls: ['./entity-table.component.css'],
   standalone: true,
   imports:[MatInputModule,MatCardModule,FormsModule,MatTableModule,NgStyle,
-          MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule]
+          MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule,MatFormFieldModule]
 })
 
 export class EntityTableComponent {
@@ -320,13 +321,23 @@ export class EntityTableComponent {
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'example-add-new-row-dialog.html',
   standalone:true,
-  imports:[MatDialogModule]
+  styleUrls: ['./entity-table.component.css'],
+  imports:[MatDialogModule,MatFormFieldModule,FormsModule,MatInputModule,MatSelectModule,CommonModule]
 })
 export class AddNewEntityDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent }) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, public dialogRef: MatDialogRef<AddNewEntityDialog>){}
 
+  moduleOptions = [{"label": "Labour","value":"LAB"},
+                   {"label": "Operation", "value":"OPS"},
+                   {"label": "Fiscal", "value":'FISC'}]
+  
   addEntity() {
     this.data.entityTable.addEntityData();
+    this.dialogRef.close();
+  }
+
+  closeEntityDialog(){
+    this.dialogRef.close();
   }
 }
 
