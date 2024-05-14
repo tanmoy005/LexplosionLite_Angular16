@@ -17,7 +17,14 @@ import {MatDividerModule} from '@angular/material/divider';
 import { catchError, tap } from 'rxjs';
 
 
-
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -45,7 +52,7 @@ import { catchError, tap } from 'rxjs';
 
 export class AppSideRegisterComponent {
 
-  constructor(private authService: UserAuthenticationService, private router: Router) {}
+  constructor(private authService: UserAuthenticationService, private router: Router ,public dialog: MatDialog) {}
   
 
 
@@ -110,66 +117,73 @@ export class AppSideRegisterComponent {
     console.log("Username - ", this.businessname);
     console.log("Password - ", this.password);
 
-    const createBusinessPayload =
+    // const createBusinessPayload =
 
-    {"name": this.businessname,
-    "description":"Kolkata 2022"}
-    try {
-      // const response =  this.authService.userLogin(loginPayload); 
-      this.authService.userRegistration(createBusinessPayload).pipe(
-        tap(response => {
+    // {"name": this.businessname,
+    // "description":"Kolkata 2022"}
+    // try {
+    //   // const response =  this.authService.userLogin(loginPayload); 
+    //   this.authService.userRegistration(createBusinessPayload).pipe(
+    //     tap(response => {
          
-          console.log('Create Business Successful', response);
+    //       console.log('Create Business Successful', response);
 
-          const createUserPayload={
-            "id":null,
-            "firstName":"Test",
-            "lastName":"User",
-            "email":"testff@test.com",
-            "mobile":"9076543210",
-            "companyId":54,
-            "roleId":4
-          }
-          try {
-            // const response =  this.authService.userLogin(loginPayload); 
-            this.authService.userCreateUser(createUserPayload).pipe(
-              tap(response => {
-                // Handle successful response
-                console.log('Login successful:', response);
-                //this.routerService.navigate(['/entity-details']); 
-              }),
-              catchError(error => {
-                // Handle error
-                console.error('Login error:', error);
-                throw error; // Rethrow the error to propagate it downstream
-              })
-            ).subscribe();
-            // console.log('Login successful:', response);
-            // Handle successful login, such as redirecting to a dashboard
-          } 
-          catch (error) {
-            //console.error('Error occurred during login:', error);
-            alert("Some error occurred while logging in");
-            // Handle login error, such as displaying an error message
-          }
-          this.router.navigate(['/verify-email']);
-        }),
-        catchError(error => {
-          // Handle error
-          console.error('Login error:', error);
-          throw error; 
-        })
-      ).subscribe();
+    //       const createUserPayload={
+    //         "id":null,
+    //         "firstName":"Test",
+    //         "lastName":"User",
+    //         "email":"testff@test.com",
+    //         "mobile":"9076543210",
+    //         "companyId":54,
+    //         "roleId":4
+    //       }
+    //       try {
+    //         // const response =  this.authService.userLogin(loginPayload); 
+    //         this.authService.userCreateUser(createUserPayload).pipe(
+    //           tap(response => {
+    //             // Handle successful response
+    //             console.log('Login successful:', response);
+    //             //this.routerService.navigate(['/entity-details']); 
+    //           }),
+    //           catchError(error => {
+    //             // Handle error
+    //             console.error('Login error:', error);
+    //             throw error; // Rethrow the error to propagate it downstream
+    //           })
+    //         ).subscribe();
+    //         // console.log('Login successful:', response);
+    //         // Handle successful login, such as redirecting to a dashboard
+    //       } 
+    //       catch (error) {
+    //         //console.error('Error occurred during login:', error);
+    //         alert("Some error occurred while logging in");
+    //         // Handle login error, such as displaying an error message
+    //       }
+    //       // this.router.navigate(['/verify-email']);
+    //     }),
+    //     catchError(error => {
+    //       // Handle error
+    //       console.error('Login error:', error);
+    //       throw error; 
+    //     })
+    //   ).subscribe();
       
-    } 
-    catch (error) {
-      //console.error('Error occurred during login:', error);
-      alert("Some error occurred while logging in");
-      // Handle login error, such as displaying an error message
-    }
+    // } 
+    // catch (error) {
+    //   //console.error('Error occurred during login:', error);
+    //   alert("Some error occurred while logging in");
+    //   // Handle login error, such as displaying an error message
+    // }
+    this.router.navigate(['/verify-email']);
   }
-   
+
+  termsConditionModalOpen (){
+    
+      this.dialog.open(TermsConditionDialog);
+  
   }
+  }
+  
 
   
 
@@ -195,3 +209,10 @@ export class AppSideRegisterComponent {
 
  
 
+  @Component({
+    selector: 'terms-and-condition-dialog',
+    templateUrl: 'terms-condition-dialog.html',
+    standalone: true,
+    imports: [MatDialogModule,MatButtonModule],
+  })
+  export class TermsConditionDialog {}
