@@ -18,6 +18,8 @@ export class ApiService {
                         entityTree:'entity-details/entity/tree'
                       }
 
+  private endpointsWithoutAuthToken = [this.endpoints.userLogin]
+
   constructor(private http: HttpClient) {}
   
   // GET requests: Generic Methods and Endpoint Calls
@@ -28,9 +30,26 @@ export class ApiService {
 
   // POST requests: Generic Methods and Endpoint Calls
   // Example API call to post data
-  private postData(apiUrl:string, data: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/${apiUrl}`, data);
+
+  // Sample authtoken fetching method from localstorage
+  getAuthToken(){
+    return localStorage.getItem('authorization')
   }
+
+  private postData(apiUrl:string, data: any): Observable<any> {
+    var headerJSON;
+
+    if(this.endpointsWithoutAuthToken.includes(apiUrl)){
+      headerJSON = {'Content-Type': 'application/json'}
+    }
+    else{
+      headerJSON = {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.getAuthToken()}`,}
+    }
+    return this.http.post<any>(`${this.baseUrl}/${apiUrl}`, data,{headers:headerJSON});
+  }
+
 
   // Method to post login data to login API url 
   postLoginData(data: any): Observable<any> {
