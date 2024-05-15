@@ -32,9 +32,37 @@ $font-12: 0.9375vw;
   font-weight: 400;
   font-size: $font-24;
 }
+
 @mixin text_12_400 {
   font-size: $font-12;
   font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('../src/assets/fonts/Barlow/Barlow-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('../src/assets/fonts/Barlow/Barlow-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../src/assets/fonts/Open_Sans/static/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../src/assets/fonts/Open_Sans/static/OpenSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
 }
 
 .contain_bg_36_br_16 {
@@ -50,21 +78,21 @@ $font-12: 0.9375vw;
   font-size: 1.5rem;
   font-weight: 700;
   color: $font-color-dark;
-  // font-family: 'Barlow'; //todo
+  font-family: Barlow;
 }
 
 .text_24_400_dark {
   @include text_24_400;
   line-height: 40px;
   color: $font-color-dark;
-  // font-family: 'Barlow'; // todo import font
+  font-family: Barlow;
 }
 
 .text_24_400_blue {
   @include text_24_400;
   line-height: 40px;
   color: $font-color-blue;
-  // font-family: 'Barlow'; // todo import font
+  font-family: Barlow;
 }
 
 .text_56_800 {
@@ -74,7 +102,7 @@ $font-12: 0.9375vw;
   color: $font-color-light;
   line-height: 78.79px;
   text-transform: uppercase;
-  // font-family: 'Open Sans'; //todo
+  // font-family: 'Open Sans';
 }
 
 .text_16_700 {
@@ -137,6 +165,7 @@ $font-12: 0.9375vw;
   // padding: 0.7vw 0.7vw;
   background-color: $primary;
   border-radius: 10px 10px 0 0;
+
   .login-header-logo {
     width: 43.87%;
   }
@@ -155,10 +184,12 @@ $font-12: 0.9375vw;
       font-size: $font-12;
     }
   }
+
   .button-container {
     display: flex;
     justify-content: space-between;
   }
+
   .forgot_pass {
     @include text_12_400;
     color: rgba(0, 145, 208, 1);
@@ -168,9 +199,11 @@ $font-12: 0.9375vw;
 .mt-42 {
   margin-top: $mt-42;
 }
+
 .mt--10 {
   margin-top: -$mt-10;
 }
+
 .custom-error-snackbar {
   .mdc-snackbar__surface {
     background-color: #D7566D !important;
@@ -256,35 +289,32 @@ $font-12: 0.9375vw;
 
 
 .mat-mdc-raised-button.mat-warn {
-    --mdc-protected-button-container-color: #786ACD;
-    --mdc-protected-button-label-text-color: #fff;
-    text-decoration: none;
-  }
-  
-  .mat-mdc-outlined-button {
-    --mdc-outlined-button-outline-color: #786ACD;
-  }
-  
-  .mat-mdc-outlined-button.mat-unthemed {
+  --mdc-protected-button-container-color: #786ACD;
+  --mdc-protected-button-label-text-color: #fff;
+  text-decoration: none;
+}
+
+.mat-mdc-outlined-button {
+  --mdc-outlined-button-outline-color: #786ACD;
+}
+
+.mat-mdc-outlined-button.mat-unthemed {
   --mdc-outlined-button-label-text-color: #786ACD;
-  }
-  
+}
+
 
 
 
 .mat-mdc-raised-button.mat-warn {
-    --mdc-protected-button-container-color: #786ACD;
-    --mdc-protected-button-label-text-color: #fff;
-    text-decoration: none;
-  }
-  
-  .mat-mdc-outlined-button {
-    --mdc-outlined-button-outline-color: #786ACD;
-  }
-  
-  .mat-mdc-outlined-button.mat-unthemed {
-  --mdc-outlined-button-label-text-color: #786ACD;
-  }
-  
+  --mdc-protected-button-container-color: #786ACD;
+  --mdc-protected-button-label-text-color: #fff;
+  text-decoration: none;
+}
 
-  
+.mat-mdc-outlined-button {
+  --mdc-outlined-button-outline-color: #786ACD;
+}
+
+.mat-mdc-outlined-button.mat-unthemed {
+  --mdc-outlined-button-label-text-color: #786ACD;
+}
