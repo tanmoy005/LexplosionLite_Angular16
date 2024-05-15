@@ -27,6 +27,9 @@ import {
 import { MatDialogModule } from '@angular/material/dialog';
 import { DropdownComponent } from 'src/app/user-onboard/common-components/dropdown/dropdown.component';
 
+import { CountryList } from 'src/app/shared/menu-items/country-list';
+import { CountryData } from 'src/app/shared/menu-items/country-list';
+
 @Component({
   selector: 'app-register',
    standalone: true,
@@ -114,11 +117,8 @@ export class AppSideRegisterComponent {
   //   }
   // }
 
-  dropdownOptions = [
-    { value: '1', label: 'India', icon: './assets/images/indian_flag.webp' },
-    { value: '2', label: 'Sri Lanka', icon: './assets/images/sri-lanka-flag-icon.png' },
-    { value: '3', label: 'Bangladesh', icon: './assets/images/bangladesh_flag.png' }
-  ];
+  countryList : CountryData[] = CountryList
+
 
   handleRegistration(event: any){
     console.log("Handle login clicked!")
