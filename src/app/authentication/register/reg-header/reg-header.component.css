@@ -9,6 +9,7 @@
     max-width:179px; /* Adjust the maximum width of the logo */
     height: auto;
     margin-right: 20px; /* Adjust the spacing between the image and the text */
+    cursor: pointer;
   }
     
   .lexplosion-product {
