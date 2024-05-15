@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { SnackbarService } from '../shared/snackbar.service';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +36,12 @@ export class ApiService {
 
   // Sample authtoken fetching method from localstorage
   getAuthToken() {
-    return localStorage.getItem('authorization')
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    const { token } = encryptStorage.getItem('login-details');
+    console.log('token', token);
+    console.log('environment', environment.localStorageKey);
+    
+    return token
   }
 
   private postData(apiUrl: string, data: any): Observable<any> {
@@ -51,7 +58,7 @@ export class ApiService {
     }
     return this.http.post<any>(`${this.baseUrl}/${apiUrl}`, data, { headers: headerJSON }).pipe(
       catchError(({ error }: HttpErrorResponse) => {
-               this.snackBar.showError(error?.error
+        this.snackBar.showError(error?.error
         );
         return throwError(() => new Error(error?.error)); // Return a custom error message
       })

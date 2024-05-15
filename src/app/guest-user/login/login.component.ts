@@ -7,7 +7,7 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,6 +17,8 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +49,7 @@ import {
 export class AppSideLoginComponent {
 
   constructor(private authService: UserAuthenticationService, private router: Router,
-    private _snackBar: MatSnackBar, private apiService: ApiService) { }
+    private _snackBar: MatSnackBar) { }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -151,6 +153,9 @@ export class AppSideLoginComponent {
 
 
       this.authService.userLogin(loginPayload).subscribe((response) => {
+        console.log('response', response);
+        const encryptStorage = new EncryptStorage(environment.localStorageKey);
+        encryptStorage.setItem('login-details', response);
         this.router.navigate(['/entity-details'], { state: { entity: '' } });
       })
       // Handle successful login, such as redirecting to a dashboard
@@ -161,8 +166,6 @@ export class AppSideLoginComponent {
       this.openServerErrorSnackBar();
       // Handle login error, such as displaying an error message
     }
-
-
   }
 }
 
