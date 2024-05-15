@@ -25,6 +25,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DropdownComponent } from 'src/app/user-onboard/common-components/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-register',
@@ -38,7 +39,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BusinessCardComponent,
     RegHeaderComponent,
     MatDividerModule,
-    
+    DropdownComponent
 
     ],
   styleUrls: ['./register.component.css'],
@@ -113,6 +114,11 @@ export class AppSideRegisterComponent {
   //   }
   // }
 
+  dropdownOptions = [
+    { value: '1', label: 'India', icon: './assets/images/indian_flag.webp' },
+    { value: '2', label: 'Sri Lanka', icon: './assets/images/sri-lanka-flag-icon.png' },
+    { value: '3', label: 'Bangladesh', icon: './assets/images/bangladesh_flag.png' }
+  ];
 
   handleRegistration(event: any){
     console.log("Handle login clicked!")
@@ -134,7 +140,9 @@ export class AppSideRegisterComponent {
   }
   
 
-  
+  // function handleVerifyRegistration(event: any){
+  //   this.router.navigate(['/verify-email'], { state: '' });
+  // }
 
 
   function countryCodeValidator(control: AbstractControl): { [key: string]: any } | null {
@@ -154,9 +162,7 @@ export class AppSideRegisterComponent {
     }
     return null;
   }
-  
 
- 
 
   @Component({
     selector: 'terms-and-condition-dialog',
