@@ -396,6 +396,7 @@ function getMaxIdFromChildren(node: TreeNode): number {
 })
 
 export class ViewLawsDialog {
+  data = {'name':'Laws'}
 }
 
 
