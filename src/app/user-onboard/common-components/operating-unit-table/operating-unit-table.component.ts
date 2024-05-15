@@ -18,7 +18,7 @@ import { Input } from '@angular/core';
 
 import {ApiService} from '../../../services/api.service'
 
-
+import { DropdownComponent } from '../dropdown/dropdown.component';
 
 import {
   MatDialog,
@@ -44,6 +44,26 @@ export interface OPUnitDetails {
   actions:string
 }
 
+export interface OriginalType {
+  id: number;
+  name: string;
+  description: string | null;
+}
+
+export interface TransformedType {
+  value: number;
+  label: string;
+  description: string | null;
+}
+
+function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
+  return data.map((item) => ({
+    value: item.id,
+    label: item.name,
+    description: item.description
+  }));
+}
+
 const ELEMENT_DATA: OPUnitDetails[] = [
   {position: 1, name: 'Tata Steel', industry: 'Manufacturing', type:"abc", 
   emailID:"examplemail.com", laws:"", department:"",actions:''},
@@ -63,7 +83,7 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   standalone: true,
   imports:[MatInputModule,MatCardModule,FormsModule,MatTableModule,NgStyle,
           MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule,
-          CommonModule]
+          CommonModule,DropdownComponent]
 })
 
 export class OperatingUnitTableComponent implements OnInit{
@@ -73,8 +93,16 @@ export class OperatingUnitTableComponent implements OnInit{
   states: any
 
   ngOnInit(): void {
+    //this.fetchOperatingUniTypes();
+    if (this.entity.country === 'India') {
+      this.fetchstates();
+    } else {
+      this.states = [{
+        'id':1,
+        'name':'Singapore'
+      }]; 
+    }
     this.fetchOperatingUniTypes();
-    this.fetchstates();
   }
 
   fetchOperatingUniTypes(){
@@ -110,9 +138,9 @@ fetchstates(){
     const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length)
     const randomRow = this.dataSource[randomElementIndex];
 
-    // Create a new row with the same data as the random row
+   
     const newRow: OPUnitDetails = {
-      position: this.dataSource.length + 1, // New position is one greater than the last present row's position
+      position: this.dataSource.length + 1, 
       name: randomRow.name,
       industry: randomRow.industry,
       type: randomRow.type,
@@ -207,21 +235,31 @@ fetchstates(){
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'example-add-new-row-dialog.html',
   standalone:true,
-  imports:[MatDialogModule,MatButtonModule,MatCardModule,MatInputModule,FormsModule,MatFormFieldModule,MatSelectModule,CommonModule]
+  imports:[MatDialogModule,MatButtonModule,MatCardModule,MatInputModule,FormsModule,
+    MatFormFieldModule,MatSelectModule,CommonModule,DropdownComponent]
 })
+
 export class AddNewEntityDialog {
+  transformedDataOperatingUnits: TransformedType[] = [];
+  transformedStates: TransformedType[] = []
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: 
-    OperatingUnitTableComponent,operatingUnitTypes:any,states:any}) {
+    OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]}) {
     //console.log('operating unit types',this.data.operatingUnitypes)
+    this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
+    this.transformedStates = transformOperatingUnitTypes(this.data.states)
+
   }
+
+  
+ 
   BusinessOptions = [
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
     { value: 'option3', label: 'Option 3' }
   ];
   addEntity() {
-    // console.log('Entity Name:', this.data.entityName);
-    // console.log('operating unit types:', this.data.operatingUnitTypes);
+
     this.data.entityTable.addOpUnitData();
   }
 }
