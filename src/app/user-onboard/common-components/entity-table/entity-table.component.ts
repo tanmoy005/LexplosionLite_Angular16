@@ -120,21 +120,21 @@
 // }
 
 
-import { Component, ViewChild,Inject  } from '@angular/core';
+import { Component, ViewChild, Inject } from '@angular/core';
 // import { MatTable } from '@angular/material/table';
 // import {Component, ViewChild} from '@angular/core';
-import {MatTable, MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatTable, MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule} from '@angular/material/input';
-import { MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { NgStyle } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
+import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiService } from 'src/app/services/api.service';
@@ -148,6 +148,7 @@ import {
 } from '@angular/material/dialog';
 import { DialogData } from '../../component-interfaces';
 import { findIndex } from 'rxjs';
+import { TreeNode, treeDataitem } from 'src/app/shared/menu-items/tree-items';
 
 
 export interface BusinessDetails {
@@ -156,19 +157,25 @@ export interface BusinessDetails {
   country: string;
   industry: string;
   type: string;
-  emailID:string;
-  laws: string; 
-  operatingUnit: string; 
-  actions:string
+  emailID: string;
+  laws: string;
+  operatingUnit: string;
+  actions: string
 }
 
 const ELEMENT_DATA: BusinessDetails[] = [
-  {position: 1, name: 'Tata Steel', country: "India", industry: 'Manufacturing', type:"abc", 
-  emailID:"examplemail.com", laws:"", operatingUnit:"",actions:''},
-  {position: 2, name: 'Tata Tea', country: "India", industry: 'Tea',
-   type:"abc", emailID:"examplemail.com", laws:"", operatingUnit:"",actions:''},
-  {position: 3, name: 'Tata Consultancy Services', country: "India", industry: 'IT', type:"abc",
-  emailID:"examplemail.com", laws:"", operatingUnit:"",actions:''}
+  {
+    position: 1, name: 'Tata Steel', country: "India", industry: 'Manufacturing', type: "abc",
+    emailID: "examplemail.com", laws: "", operatingUnit: "", actions: ''
+  },
+  {
+    position: 2, name: 'Tata Tea', country: "India", industry: 'Tea',
+    type: "abc", emailID: "examplemail.com", laws: "", operatingUnit: "", actions: ''
+  },
+  {
+    position: 3, name: 'Tata Consultancy Services', country: "India", industry: 'IT', type: "abc",
+    emailID: "examplemail.com", laws: "", operatingUnit: "", actions: ''
+  }
 ];
 
 /**
@@ -179,15 +186,15 @@ const ELEMENT_DATA: BusinessDetails[] = [
   templateUrl: './entity-table.component.html',
   styleUrls: ['./entity-table.component.css'],
   standalone: true,
-  imports:[MatInputModule,MatCardModule,FormsModule,MatTableModule,NgStyle,
-          MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule,MatFormFieldModule]
+  imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
+    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule]
 })
 
 export class EntityTableComponent {
-  constructor(public dialog: MatDialog,private router: Router, private apiService:ApiService) {}
+  constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService) { }
 
-  displayedColumns: string[] = ['position', 'name', 'country', 'industry', 
-                                 'type','emailID','laws','operatingUnit','actions'];
+  displayedColumns: string[] = ['position', 'name', 'country', 'industry',
+    'type', 'emailID', 'laws', 'operatingUnit', 'actions'];
   dataSource = [...ELEMENT_DATA];
 
   @ViewChild(MatTable) table: MatTable<BusinessDetails>;
@@ -197,7 +204,7 @@ export class EntityTableComponent {
     this.openEntityDialog();
   }
 
-  addEntityData(){
+  addEntityData() {
     const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length)
     const randomRow = this.dataSource[randomElementIndex];
 
@@ -208,10 +215,10 @@ export class EntityTableComponent {
       country: randomRow.country,
       industry: randomRow.industry,
       type: randomRow.type,
-      emailID:randomRow.emailID,
-      laws:'',
-      operatingUnit:'',
-      actions:''
+      emailID: randomRow.emailID,
+      laws: '',
+      operatingUnit: '',
+      actions: ''
     };
     this.dataSource.push(newRow);
     //console.log(this.dataSource)
@@ -232,7 +239,7 @@ export class EntityTableComponent {
   removeEntityData(position: number) {
     // Find the index of the row with the matching position
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
-  
+
     // Check if the rowIndex is valid
     if (rowIndex !== -1) {
       // Remove the element at the found index
@@ -243,7 +250,7 @@ export class EntityTableComponent {
       this.table.renderRows();
     }
   }
-  
+
 
 
   openEntityDialog() {
@@ -270,38 +277,38 @@ export class EntityTableComponent {
   //   }
   // }
 
-  navigateToAddOpUnit(entity:BusinessDetails[]){
-    this.router.navigate(['/oprating-unit-details'],{ state: entity }); 
+  navigateToAddOpUnit(entity: BusinessDetails[]) {
+    this.router.navigate(['/oprating-unit-details'], { state: entity });
     //console.log(entity);
   }
 
 
-  openEntityMenuDialog(action: string, position:number) {
-    console.log("ACTION SELECTED",action,position);
+  openEntityMenuDialog(action: string, position: number) {
+    console.log("ACTION SELECTED", action, position);
 
     // const dialogRef = this.dialog.open(DialogFromMenuExampleDialog, { 
     //   restoreFocus: false, 
     //   data: { action, entityTable: this } 
     // });
 
-    switch(action) {
+    switch (action) {
       case 'Delete':
         this.removeEntityData(position);
         break;
       case 'Add Operating Unit':
-        const entity = this.dataSource.filter((entity)=> entity.position===position)
+        const entity = this.dataSource.filter((entity) => entity.position === position)
         // console.log(entity)
         // const entityName = entity.name
         this.navigateToAddOpUnit(entity);
         break
       case 'Edit':
         break
-      
+
       default:
         break;
     }
 
-    
+
     // dialogRef.afterClosed().subscribe(result => {
     //   // If a result is returned, handle the menu item action
     //   console.log("After dialog close",action);
@@ -313,57 +320,74 @@ export class EntityTableComponent {
 
 
   }
-  
-  
+
+
 }
 
 
 @Component({
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'example-add-new-row-dialog.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./entity-table.component.css'],
-  imports:[MatDialogModule,MatFormFieldModule,FormsModule,MatInputModule,MatSelectModule,CommonModule]
+  imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, MatSelectModule, CommonModule]
 })
 export class AddNewEntityDialog {
 
   entityTypeList: any;
   industriesList: any;
-  lawsList:any;
+  lawsList: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) 
-  public data: { entityTable: EntityTableComponent}, 
-  public dialogRef: MatDialogRef<AddNewEntityDialog>,
-  private apiService:ApiService){
+  constructor(@Inject(MAT_DIALOG_DATA)
+  public data: { entityTable: EntityTableComponent },
+    public dialogRef: MatDialogRef<AddNewEntityDialog>,
+    private apiService: ApiService) {
 
-  try{
+    try {
       this.apiService.getFieldDefinition(JSON.stringify(["entityTypes"])).subscribe((response) => {
-      this.entityTypeList = response;
-    })
+        this.entityTypeList = response;
+      })
+    }
+    catch (error) {
+      console.log(error)
+    }
+    console.log("Entity Types: ", this.entityTypeList);
   }
-  catch (error) {
-    console.log(error)
-  }
-  console.log("Entity Types: ",this.entityTypeList);
-  }
-  
-  moduleOptions = [{"label": "Labour","value":"LAB"},
-                   {"label": "Operation", "value":"OPS"},
-                   {"label": "Fiscal", "value":'FISC'}]
-  
+
+  moduleOptions = [{ "label": "Labour", "value": "LAB" },
+  { "label": "Operation", "value": "OPS" },
+  { "label": "Fiscal", "value": 'FISC' }]
+  entityDataitem = treeDataitem;
+
+
+
   addEntity() {
+    const maxId = getMaxIdFromChildren(treeDataitem);
+    const entity = {
+      id: maxId + 1,
+      label: 'Child Node ' + maxId,
+    }
+    treeDataitem?.children?.push(entity);
     this.data.entityTable.addEntityData();
     this.dialogRef.close();
   }
 
 
 
-  closeEntityDialog(){
+  closeEntityDialog() {
     this.dialogRef.close();
   }
 }
 
+function getMaxIdFromChildren(node: TreeNode): number {
+  const rootChildren = treeDataitem.children;
+  let maxId = 0;
 
+  if (rootChildren && rootChildren.length > 0) {
+    maxId = Math.max(...rootChildren.map(child => child.id));
+  }
+  return maxId;
+}
 
 @Component({
   selector: 'dialog-content-example-dialog',
