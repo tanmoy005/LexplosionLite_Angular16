@@ -1,4 +1,5 @@
-<mat-form-field  style="margin-right: 10px;" appearance="outline">
+<div  style="margin-right: 10px;">
+<mat-form-field  appearance="outline">
     <mat-label>{{ label }}</mat-label>
     <mat-select [(value)]="selectedValue">
       <mat-option *ngFor="let option of options" [value]="option.value">
@@ -7,3 +8,4 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+</div>
