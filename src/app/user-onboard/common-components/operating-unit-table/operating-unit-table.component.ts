@@ -254,8 +254,7 @@ export class AddNewEntityDialog {
   isDataValid(): boolean {
     return (
       this.operatingUnitName.trim() !== '' &&
-      this.operatingUnitType !== '' 
-      &&
+      this.operatingUnitType !== '' &&
       this.state!== '' &&
       this.activity.trim() !== '' &&
       this.locatedAt.trim() !== '' &&
@@ -265,6 +264,7 @@ export class AddNewEntityDialog {
 
   
   addEntity() {
+   
     if (this.isDataValid()) {
       const operatingUnitTypeName = this.findOperatingUnitTypeName(this.operatingUnitType);
       const newData: OPUnitDetails = {
@@ -282,7 +282,7 @@ export class AddNewEntityDialog {
       this.dialogRef.close();
       
     } else {
-      console.log('Please fill in all the fields.');
+      
       this.snackbar.showError("Please fill all the fields");
     
     }
@@ -296,7 +296,7 @@ export class AddNewEntityDialog {
    if (columnvalue === 'operatingUnitType'){
     this.operatingUnitType = value
    }
-   if (columnvalue === 'state'){
+   if (columnvalue === 'states'){
     this.state = value
    }
    if (columnvalue === 'activity'){

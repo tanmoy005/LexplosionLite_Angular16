@@ -17,7 +17,7 @@
     <input matInput name="operatingUnitName" [(ngModel)]="operatingUnitName" required >
   </mat-form-field>
 
-  <app-dropdown [label]="'Operating Unit Type'" [options]="transformedDataOperatingUnits" [IsMultiSelection]="false" [IsRequired]="false" 
+  <app-dropdown [label]="'Operating Unit Type'" [options]="transformedDataOperatingUnits" [IsMultiSelection]="false" [IsRequired]="true" 
   (selectedValueChange)="onSelectedValueChanged($event,'operatingUnitType')"
   >
   </app-dropdown>
@@ -26,22 +26,22 @@
 </div>
 
  <div class=" example-full-width d-flex">
-  <app-dropdown [label]="'States'" [options]="transformedStates" [IsMultiSelection]="false" [IsRequired]="false" 
+  <app-dropdown [label]="'States'" [options]="transformedStates" [IsMultiSelection]="false" [IsRequired]="true" 
   (selectedValueChange)="onSelectedValueChanged($event,'states')"
   >
   </app-dropdown>
 
-  <app-dropdown [label]="'Activities'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false"
+  <app-dropdown [label]="'Activities'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"
   (selectedValueChange)="onSelectedValueChanged($event,'activity')">
   </app-dropdown>
 
 </div>
 <div class=" example-full-width d-flex">
-  <app-dropdown [label]="'Located At'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false" 
+  <app-dropdown [label]="'Located At'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true" 
   (selectedValueChange)="onSelectedValueChanged($event,'locatedAt')">
   </app-dropdown>
 
-  <app-dropdown [label]="'Ownarship'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false" 
+  <app-dropdown [label]="'Ownarship'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true" 
   (selectedValueChange)="onSelectedValueChanged($event,'ownership')">
   </app-dropdown>
 
