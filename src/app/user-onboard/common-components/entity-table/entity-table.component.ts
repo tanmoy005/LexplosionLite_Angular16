@@ -417,12 +417,9 @@ export class AddNewEntityDialog {
 
 
   addEntity() {
+
     const maxId = getMaxIdFromChildren(treeDataitem);
-    const entity = {
-      id: maxId + 1,
-      label: 'Child Node ' + maxId,
-    }
-    treeDataitem?.children?.push(entity);
+
     // // Send the form data to the backend
     // console.log("Entity added successfully:", this.formData);
     
@@ -447,6 +444,11 @@ export class AddNewEntityDialog {
 
     else {
       this.data.entityTable.addEntityData();
+      const entity = {
+        id: maxId + 1,
+        label: 'Child Node ' + maxId,
+      }
+      treeDataitem?.children?.push(entity);
       this.dialogRef.close();
     }
   }
