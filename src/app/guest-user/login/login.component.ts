@@ -7,7 +7,7 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,6 +18,8 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
 
 @Component({
   selector: 'app-login',
@@ -154,6 +156,9 @@ export class AppSideLoginComponent {
       
       this.authService.userLogin(loginPayload).subscribe((response) => {
         this.snackbar.showSuccess("Login Successful!");
+        console.log('response', response);
+        const encryptStorage = new EncryptStorage(environment.localStorageKey);
+        encryptStorage.setItem('login-details', response);
         this.router.navigate(['/entity-details'], { state: { entity: '' } });
       })
       // Handle successful login, such as redirecting to a dashboard

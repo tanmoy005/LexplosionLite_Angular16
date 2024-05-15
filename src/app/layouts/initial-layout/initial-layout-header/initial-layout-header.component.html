@@ -4,7 +4,7 @@
     </div>
 
     <div class="page-link-container">
-        <div class="link-item text_16_700" *ngFor="let menuItem of menuItemList" (click)="handleMenuItemClick(menuItem.path)">
+        <div [class.selected]="selectedMenuItem ===  menuItem.path" class="link-item text_16_700" *ngFor="let menuItem of menuItemList" (click)="handleMenuItemClick(menuItem.path)">
             {{menuItem.displayName}}
         </div>
     </div>
