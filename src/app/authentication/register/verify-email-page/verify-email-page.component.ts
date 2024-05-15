@@ -1,5 +1,5 @@
 import { Component ,ViewEncapsulation} from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute  } from '@angular/router';
 import { RegHeaderComponent } from '../reg-header/reg-header.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -28,7 +28,20 @@ import {MatIconModule} from '@angular/material/icon';
   encapsulation: ViewEncapsulation.None
 })
 export class VerifyEmailPageComponent {
-  constructor( private router: Router) {}
+
+  stateData: any ;
+  businessName: string;
+
+  constructor( private router: Router,private route: ActivatedRoute) {
+    const navigation = this.router.getCurrentNavigation();
+    
+    if (navigation && navigation.extras.state) {
+      this.stateData = navigation.extras.state;
+      console.log("This is the received data in op-unit page", this.stateData);
+      this.businessName = this.stateData['businessname'] 
+      //console.log(this.entityDetails)
+    }
+  }
   
   handleRegistration(event: any){
     this.router.navigate(['/entity-details']);

@@ -8,13 +8,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { NgStyle } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
+
+
+
 
 import {
   MatDialog,
@@ -65,7 +68,8 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   styleUrls: ['./operating-unit-table.component.css'],
   standalone: true,
   imports:[MatInputModule,MatCardModule,FormsModule,MatTableModule,NgStyle,
-          MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule]
+          MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule,
+          CommonModule]
 })
 
 export class OperatingUnitTableComponent {
@@ -131,9 +135,9 @@ export class OperatingUnitTableComponent {
   }
   
 
-  openEntityDialog() {
+  openEntityDialog(entityName: string) {
     const dialogRef = this.dialog.open(AddNewEntityDialog, {
-      data: { entityTable: this }
+      data: { entityTable: this ,entityName: entityName,}
     });
   }
 
@@ -183,12 +187,17 @@ export class OperatingUnitTableComponent {
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'example-add-new-row-dialog.html',
   standalone:true,
-  imports:[MatDialogModule]
+  imports:[MatDialogModule,MatButtonModule,MatCardModule,MatInputModule,FormsModule,MatFormFieldModule,MatSelectModule,CommonModule]
 })
 export class AddNewEntityDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: OperatingUnitTableComponent }) {}
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: OperatingUnitTableComponent }) {}
+  BusinessOptions = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' }
+  ];
   addEntity() {
+    console.log('Entity Name:', this.data.entityName);
     this.data.entityTable.addOpUnitData();
   }
 }

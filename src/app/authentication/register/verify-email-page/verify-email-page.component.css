@@ -6,20 +6,26 @@
   background-color: white;
   
 } */
-.container {
- 
+/* .container {
+  display: flex;
     background-color: white;
     
   }
-  
-
+   */
+  /* .mat-card-container{
+    transition: none !important;
+    box-shadow: none !important;
+    border-radius: 0px;
+  } */
 
 
   .mat-mdc-card {
     box-shadow: none;
 }
   
-  .example-form {
+
+
+   .example-form {
       min-width: 150px;
       max-width: 500px;
       width: 100vh;
@@ -130,23 +136,24 @@
     box-shadow: 0 0 5px white; /* Change the box-shadow color when focused */
   }
   
-  .mat-mdc-raised-button.mat-warn {
+  /* .mat-mdc-raised-button.mat-warn {
     --mdc-protected-button-container-color: #786ACD;
     --mdc-protected-button-label-text-color: #fff;
     text-decoration: none;
-  }
+  } */
 
 
   
-  .mat-mdc-outlined-button {
+  /* .mat-mdc-outlined-button {
     --mdc-outlined-button-outline-color: #786ACD;
 }
 
 .mat-mdc-outlined-button.mat-unthemed {
   --mdc-outlined-button-label-text-color: #786ACD;
-}
+} */
 
 
 .mat-mdc-button.mat-unthemed {
   --mdc-text-button-label-text-color: #786ACD;
 }
+

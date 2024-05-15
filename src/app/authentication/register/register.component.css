@@ -6,7 +6,7 @@
   background-color: white;
   
 } */
-.container {
+/* .container {
   display: flex;
   background-color: white;
   
@@ -16,7 +16,7 @@
   transition: none !important;
   box-shadow: none !important;
   border-radius: 0px;
-}
+} */
 
 
 .example-form {
@@ -33,7 +33,7 @@
   
 
   .country-code-full-width {
-    width: 40%;
+    width: 50%;
   }
 
   td {
@@ -134,7 +134,7 @@ opacity: 0px;
 }
 
 
-.option1{
+/* .option1{
   background:  url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg")  center / contain no-repeat;
   white-space: nowrap
 
@@ -145,7 +145,7 @@ opacity: 0px;
   background:  url("https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg")  center / contain no-repeat;
   white-space: nowrap;
   display:inline
-}
+} */
 
 
 
@@ -159,11 +159,11 @@ opacity: 0px;
   box-shadow: 0 0 5px white; /* Change the box-shadow color when focused */
 }
 
-.mat-mdc-raised-button.mat-warn  {
+/* .mat-mdc-raised-button.mat-warn  {
   --mdc-protected-button-container-color: #786ACD;
   --mdc-protected-button-label-text-color: #fff;
   text-decoration: none;
-}
+} */
 
 
 
