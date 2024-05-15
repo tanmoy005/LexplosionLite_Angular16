@@ -138,6 +138,7 @@ import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApiService } from 'src/app/services/api.service';
+import { Input } from '@angular/core';
 
 import {
   MatDialog,
@@ -193,6 +194,10 @@ export class EntityTableComponent {
   @ViewChild(MatTable) table: MatTable<BusinessDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
+  @Input() entityTypesList: any;
+  @Input() industryTypesList: any;
+  @Input() lawCategoriesList:any;
+
   viewAddEntityDialog() {
     this.openEntityDialog();
   }
@@ -214,7 +219,9 @@ export class EntityTableComponent {
       actions:''
     };
     this.dataSource.push(newRow);
-    //console.log(this.dataSource)
+    // console.log(this.entityTypesList)
+    // console.log(this.industryTypesList)
+    // console.log(this.lawCategoriesList)
     //this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
     this.table.renderRows();
   }
@@ -327,24 +334,59 @@ export class EntityTableComponent {
 })
 export class AddNewEntityDialog {
 
-  entityTypeList: any;
-  industriesList: any;
-  lawsList:any;
+  entityTypesList: any;
+  industryTypesList: any;
+  distinctIndutryTypesList: any;
+  lawCategoriesList: any;
+
+  countryList = [
+    {"label": "India","value":"ind"},
+    {"label": "Singapore","value":"sing"}
+  ]
+ 
+// Sample entity creation payload format
+//   {
+//     "id": null,
+//     "name": "Test Entity-2",
+//     "company": 1,
+//     "entityType": 1,
+//     "entityTypeSearch": null,
+//     "industries": [
+//         1
+//     ],
+//     "komriskLawCategories": [
+//         4
+//     ]
+//  }
+
+  // Define the data model
+  formData = {
+    name: '',
+    country: '',
+    entityType: '',
+    industry: '',
+    lawModules: []
+  };
 
   constructor(@Inject(MAT_DIALOG_DATA) 
   public data: { entityTable: EntityTableComponent}, 
   public dialogRef: MatDialogRef<AddNewEntityDialog>,
   private apiService:ApiService){
+  
+  this.entityTypesList = this.data.entityTable.entityTypesList;
+  this.industryTypesList = this.data.entityTable.industryTypesList;
+  this.lawCategoriesList = this.data.entityTable.lawCategoriesList;
+  this.distinctIndutryTypesList = [];
 
-  try{
-      this.apiService.getFieldDefinition(JSON.stringify(["entityTypes"])).subscribe((response) => {
-      this.entityTypeList = response;
-    })
+  const seenIds = new Set();
+
+  for (let industry of this.industryTypesList) {
+    if (!seenIds.has(industry.iId)) {
+      this.distinctIndutryTypesList.push(industry);
+      seenIds.add(industry.iId);
+    }
   }
-  catch (error) {
-    console.log(error)
-  }
-  console.log("Entity Types: ",this.entityTypeList);
+  // console.log("Distinct entities", this.distinctIndutryTypesList);
   }
   
   moduleOptions = [{"label": "Labour","value":"LAB"},
@@ -352,11 +394,15 @@ export class AddNewEntityDialog {
                    {"label": "Fiscal", "value":'FISC'}]
   
   addEntity() {
+    // console.log("Entities - ", this.entityTypesList);
+    // console.log("Industries - ", this.industryTypesList);
+    // console.log("Laws - ", this.lawCategoriesList);
+
+    // Send the form data to the backend
+    console.log("Entity added successfully:", this.formData);
     this.data.entityTable.addEntityData();
     this.dialogRef.close();
   }
-
-
 
   closeEntityDialog(){
     this.dialogRef.close();
