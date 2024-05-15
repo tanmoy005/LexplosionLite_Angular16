@@ -56,20 +56,7 @@ interface FormData {
   lawModulesLabel: string[];
 }
 
-const ELEMENT_DATA: BusinessDetails[] = [
-  // {
-  //   position: 1, name: 'Tata Steel', country: "India", industry: 'Manufacturing', type: "abc",
-  //   emailID: "examplemail.com", laws: "", operatingUnit: "", actions: ''
-  // },
-  // {
-  //   position: 2, name: 'Tata Tea', country: "India", industry: 'Tea',
-  //   type: "abc", emailID: "examplemail.com", laws: "", operatingUnit: "", actions: ''
-  // },
-  // {
-  //   position: 3, name: 'Tata Consultancy Services', country: "India", industry: 'IT', type: "abc",
-  //   emailID: "examplemail.com", laws: "", operatingUnit: "", actions: ''
-  // }
-];
+const ELEMENT_DATA: BusinessDetails[] = [];
 
 
 /**
@@ -271,21 +258,6 @@ export class AddNewEntityDialog {
     {"label": "Singapore","value":2}
   ]
 
-  // Sample entity creation payload format
-  //   {
-  //     "id": null,
-  //     "name": "Test Entity-2",
-  //     "company": 1,
-  //     "entityType": 1,
-  //     "entityTypeSearch": null,
-  //     "industries": [
-  //         1
-  //     ],
-  //     "komriskLawCategories": [
-  //         4
-  //     ]
-  //  }
-
   formData:any;
   formLabeledData:any;
   selectedCountry:any;
@@ -366,6 +338,7 @@ export class AddNewEntityDialog {
         label: 'Child Node ' + maxId,
       }
       treeDataitem?.children?.push(entity);
+      this.snackbar.showSuccess("Successfully added Entity.");
       console.log("FORMDATA SUBMITTED", this.formData);
       this.dialogRef.close();
     }
@@ -397,16 +370,4 @@ function getMaxIdFromChildren(node: TreeNode): number {
 export class ViewLawsDialog {
   data = {'name':'Laws'}
 }
-
-
-// @Component({
-//   selector: 'dialog-from-menu-dialog',
-//   templateUrl: 'example-entity-menu-dialog.html',
-//   standalone: true,
-//   imports: [MatDialogModule, MatButtonModule,MatMenuModule],
-// })
-
-// export class DialogFromMenuExampleDialog {
-//   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-// }
 
