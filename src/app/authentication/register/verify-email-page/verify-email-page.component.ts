@@ -44,7 +44,7 @@ export class VerifyEmailPageComponent {
   }
   
   handleRegistration(event: any){
-    this.router.navigate(['/entity-details']);
+    this.router.navigate(['/login']);
   }
   handleBackToRegistration(event: any){
     this.router.navigate(['/register']);

@@ -40,30 +40,9 @@
                     <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
                   </mat-form-field> -->
 
+            <app-dropdown [label]="'Country'" [options]="dropdownOptions"></app-dropdown>
 
-                  <mat-form-field class="country-code-full-width" style="margin-right: 10px;" appearance="outline">
-                    <mat-label>Country</mat-label>
-                  <mat-select >
-                    <mat-option>None</mat-option>
-                    <mat-option value="option1">India
-                      <img with="10" height="10" src="./assets/images/indian_flag.webp">
-                
-                    </mat-option>      
-                    <mat-option value="option2">Srilanka
-                      <img with="10" height="10" src="./assets/images/sri-lanka-flag-icon.png">
-                
-                    </mat-option>
 
-                 
-                  <mat-option value="option2">Bangladesh
-                    <img with="10" height="10" src="./assets/images/bangladesh_flag.png">
-              
-                  </mat-option>
-                
-                    <!-- <mat-option value="option3">Option 3</mat-option> -->
-                  </mat-select>
-                </mat-form-field> 
-                  
 
 
             <mat-form-field class="example-full-width" appearance="outline">
