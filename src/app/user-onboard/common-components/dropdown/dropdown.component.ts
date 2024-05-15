@@ -18,5 +18,7 @@ import {  MatSelectModule } from '@angular/material/select';
 export class DropdownComponent {
   @Input() label: string;
   @Input() options: { value: any, label: string, icon: string }[];
+  @Input() IsMultiSelection: boolean = false;
+  @Input() IsRequired: boolean = false;
   selectedValue: any;
 }

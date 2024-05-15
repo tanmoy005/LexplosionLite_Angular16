@@ -1,7 +1,7 @@
 <div  style="margin-right: 10px;">
 <mat-form-field  appearance="outline">
     <mat-label>{{ label }}</mat-label>
-    <mat-select [(value)]="selectedValue">
+    <mat-select [multiple]="IsMultiSelection" [required]="IsRequired" [(value)]="selectedValue">
       <mat-option *ngFor="let option of options" [value]="option.value">
         {{ option.label }}
         <img [src]="option.icon" width="10" height="10">
