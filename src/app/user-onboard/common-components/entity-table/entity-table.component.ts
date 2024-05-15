@@ -28,6 +28,9 @@ import { findIndex } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { TreeNode, treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { DropdownComponent } from '../dropdown/dropdown.component';
+import { MatListModule } from '@angular/material/list';
+
+
 
 export interface BusinessDetails {
   position: number;
@@ -93,7 +96,7 @@ export class EntityTableComponent {
 
   @Input() entityTypesList: any;
   @Input() industryTypesList: any;
-  @Input() lawCategoriesList:any;
+  @Input() lawCategoriesList: any;
 
   viewAddEntityDialog() {
     this.openEntityDialog();
@@ -141,6 +144,7 @@ export class EntityTableComponent {
       this.rearrangeDataSource();
       // Re-render the table rows
       this.table.renderRows();
+      treeDataitem?.children?.splice(rowIndex, 1)
     }
   }
 
@@ -150,7 +154,19 @@ export class EntityTableComponent {
     });
   }
   openLawDialog() {
-    const dialogRef = this.dialog.open(ViewLawsDialog);
+    const name: string = 'Law List';
+    const dialogRef = this.dialog.open(ViewLawsDialog, {
+      data: { name: name }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  openOpDialog() {
+    const name: string = 'Operating Unit List';
+    const dialogRef = this.dialog.open(ViewLawsDialog, {
+      data: { name: name }
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
@@ -242,6 +258,7 @@ function transformIndustryTypes(data: OriginalIndustryType[]): TransformedType[]
   imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
     MatSelectModule, CommonModule, DropdownComponent]
 })
+
 export class AddNewEntityDialog {
   industryTypesList: any;
   distinctIndutryTypesList: any;
@@ -253,21 +270,21 @@ export class AddNewEntityDialog {
     {"label": "India","value":1},
     {"label": "Singapore","value":2}
   ]
- 
-// Sample entity creation payload format
-//   {
-//     "id": null,
-//     "name": "Test Entity-2",
-//     "company": 1,
-//     "entityType": 1,
-//     "entityTypeSearch": null,
-//     "industries": [
-//         1
-//     ],
-//     "komriskLawCategories": [
-//         4
-//     ]
-//  }
+
+  // Sample entity creation payload format
+  //   {
+  //     "id": null,
+  //     "name": "Test Entity-2",
+  //     "company": 1,
+  //     "entityType": 1,
+  //     "entityTypeSearch": null,
+  //     "industries": [
+  //         1
+  //     ],
+  //     "komriskLawCategories": [
+  //         4
+  //     ]
+  //  }
 
   formData:any;
   formLabeledData:any;
@@ -330,6 +347,8 @@ export class AddNewEntityDialog {
     }
     if(isAnyFieldBlank){
       console.log(this.formData)
+
+    if (isAnyFieldBlank) {
       this.snackbar.showError("Please enter all the field values.")
     }
     else {
@@ -351,10 +370,12 @@ export class AddNewEntityDialog {
       this.dialogRef.close();
     }
   }
+}
 
-  closeEntityDialog(){
+  closeEntityDialog() {
     this.dialogRef.close();
   }
+
 }
 
 function getMaxIdFromChildren(node: TreeNode): number {
@@ -371,8 +392,21 @@ function getMaxIdFromChildren(node: TreeNode): number {
   selector: 'dialog-content-example-dialog',
   templateUrl: 'example-law-details-dialog.html',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule],
+  imports: [MatDialogModule, MatButtonModule, MatListModule],
 })
 
 export class ViewLawsDialog {
 }
+
+
+// @Component({
+//   selector: 'dialog-from-menu-dialog',
+//   templateUrl: 'example-entity-menu-dialog.html',
+//   standalone: true,
+//   imports: [MatDialogModule, MatButtonModule,MatMenuModule],
+// })
+
+// export class DialogFromMenuExampleDialog {
+//   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+// }
+
