@@ -5,7 +5,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
-
+import { CountryList } from 'src/app/shared/menu-items/country-list';
+import { CountryData } from 'src/app/shared/menu-items/country-list';
 
 @Component({
   selector: 'app-business-card',
@@ -15,6 +16,8 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [CommonModule,MatCardModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatIconModule],
 })
 export class BusinessCardComponent {
+  countryList : CountryData[] = CountryList
+
   BusinessOptions = [
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },

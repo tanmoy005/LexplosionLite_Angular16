@@ -1,4 +1,4 @@
-import { Component, ViewChild,Inject  } from '@angular/core';
+import { Component, ViewChild,Inject,OnInit   } from '@angular/core';
 // import { MatTable } from '@angular/material/table';
 // import {Component, ViewChild} from '@angular/core';
 import {MatTable, MatTableModule} from '@angular/material/table';
@@ -8,13 +8,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { NgStyle } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
+
+import {ApiService} from '../../../services/api.service'
+
+
 
 import {
   MatDialog,
@@ -27,14 +31,7 @@ import { DialogData } from '../../component-interfaces';
 import { findIndex } from 'rxjs';
 
 
-// 1. SL - cell, numeric
-// 2. Name - cell, editable, string
-// 4. Industry - cell, dropdown 
-// 5. Type - cell, dropdown 
-// 6. Email ID - cell, editable, string
-// 7. Laws - button
-// 8. Department - button
-// 9. blank - ...
+
 
 export interface OPUnitDetails {
   position: number;
@@ -65,12 +62,37 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   styleUrls: ['./operating-unit-table.component.css'],
   standalone: true,
   imports:[MatInputModule,MatCardModule,FormsModule,MatTableModule,NgStyle,
-          MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule]
+          MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule,
+          CommonModule]
 })
 
-export class OperatingUnitTableComponent {
-  constructor(public dialog: MatDialog,private router: Router) {}
+export class OperatingUnitTableComponent implements OnInit{
+  constructor(public dialog: MatDialog,private router: Router, private fieldDefinitionService: ApiService) {}
 
+  operatingUnitTypes: any;
+  states: any
+
+  ngOnInit(): void {
+    this.fetchOperatingUniTypes();
+    this.fetchstates();
+  }
+
+  fetchOperatingUniTypes(){
+  const fieldPayload=['operatingUnitTypes']
+
+  this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
+   console.log('those are operating unit types',response)
+   this.operatingUnitTypes = response.data.operatingUnitTypes;
+  })
+}
+fetchstates(){
+  const fieldPayload=['states']
+
+  this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
+   console.log('those states',response)
+   this.states = response.data.states;
+  })
+}
   displayedColumns: string[] = ['position', 'name', 'industry', 
                                  'type','emailID','laws','department','actions'];
   dataSource = [...ELEMENT_DATA];
@@ -131,9 +153,11 @@ export class OperatingUnitTableComponent {
   }
   
 
-  openEntityDialog() {
+  openEntityDialog(entityName: string) {
     const dialogRef = this.dialog.open(AddNewEntityDialog, {
-      data: { entityTable: this }
+      data: { entityTable: this ,entityName: entityName,
+        operatingUnitTypes:this.operatingUnitTypes,
+      states:this.states}
     });
   }
 
@@ -183,12 +207,21 @@ export class OperatingUnitTableComponent {
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'example-add-new-row-dialog.html',
   standalone:true,
-  imports:[MatDialogModule]
+  imports:[MatDialogModule,MatButtonModule,MatCardModule,MatInputModule,FormsModule,MatFormFieldModule,MatSelectModule,CommonModule]
 })
 export class AddNewEntityDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: OperatingUnitTableComponent }) {}
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: 
+    OperatingUnitTableComponent,operatingUnitTypes:any,states:any}) {
+    //console.log('operating unit types',this.data.operatingUnitypes)
+  }
+  BusinessOptions = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' }
+  ];
   addEntity() {
+    // console.log('Entity Name:', this.data.entityName);
+    // console.log('operating unit types:', this.data.operatingUnitTypes);
     this.data.entityTable.addOpUnitData();
   }
 }

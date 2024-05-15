@@ -35,10 +35,9 @@
             </div>
         </div>
 
-        
         <div class="row align-items-center">
           <div class='col-lg-2'>
-            <h5>Address</h5>
+            <h5>Headquarter Address</h5>
           </div>
           <div class='col-lg-8'>
             <mat-form-field class="example-full-width">
@@ -53,17 +52,21 @@
               </button>
           </div>
           </div>
+        
+      
         <div class="row align-items-center">
         <div class='col-lg-2 col-sm-6 col-md-6'>
-            <h5>Country</h5>
+            <h5>Country of Operation</h5>
           </div>
           <div class='col-lg-8'>
             <mat-form-field  class="example-full-width">
               <mat-label>Choose option/options</mat-label>
               <mat-select multiple>
-                <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
-                  {{ option.label }}
+                <mat-option *ngFor="let option of countryList" [value]="option.id">
+                  {{ option.countryName }}
+                  <img with="10" height="10" src={{option.image}}>
                 </mat-option>
+              
               </mat-select>
             </mat-form-field>
           </div>
@@ -74,6 +77,7 @@
           </div>
         </div>
 
+       
 
           </div>
           

@@ -1,51 +1,41 @@
-<div >
-    <mat-card >
-     
-       <app-reg-header></app-reg-header>
-    
-       <mat-divider></mat-divider>
-          <div class="col-lg-4" style="margin-top: 40px;" >
-            <div class="verify-email-id"  style="margin-bottom: 50px ; margin-left: 20px;">
-              <p class="verify-email-id-typography">Verify Email ID</p>
-              </div>
-              
-              <div class="back-button">
-                <button mat-stroked-button
-                (click)="handleBackToRegistration($event)"
-                >
-                <mat-icon>keyboard_arrow_left</mat-icon>Back
-              </button>
-              </div>
+<div>
+  <mat-card style="display: contents;">
+    <app-reg-header></app-reg-header>
+    <mat-divider></mat-divider>
 
-              <div verify-email-div style="margin-bottom: 30px;margin-left: 20px;margin-top: 30px;">
-                <p class="verify-email-typography">An OTP has been sent to your email ID user****@em***.com.
-                  Please enter below to verify your email ID</p>
-              </div>  
-
-                <mat-card-content >
-                  <form >
-    
-                    <mat-form-field  appearance="outline">
-                      <mat-label>OTP</mat-label>
-                      <input  matInput name="username"  >
-                     
-                    </mat-form-field>
-                  
-                    <button mat-button >
-                       Resent OTP
-                    </button>
-
-                  <div class="example-button-row">
-                    <button mat-raised-button color="warn"  (click)="handleRegistration($event)">Verify and Register</button>
-                  </div>
-      
-                </form>
-               
-                </mat-card-content>
-            
+    <div class="col-lg-4" style="margin-top: 40px;">
+      <div class="verify-email-id" style="margin-bottom: 50px ; margin-left: 20px;">
+        <p class="verify-email-id-typography">Verify Email ID</p>
+      </div>
+      <div class="back-button">
+        <button mat-stroked-button (click)="handleBackToRegistration($event)">
+          <mat-icon>keyboard_arrow_left</mat-icon>Back
+        </button>
+      </div>
+      <div verify-email-div style="margin-bottom: 30px;margin-left: 20px;margin-top: 30px;">
+        <p class="verify-email-typography">An OTP has been sent to your email ID user****@em***.com.
+          Please enter below to verify your email ID</p>
+      </div>
+      <mat-card-content>
+        <form>
+          <mat-form-field appearance="outline">
+            <mat-label>OTP</mat-label>
+            <input matInput name="username">
+          </mat-form-field>
+          <button mat-button>
+            Resent OTP
+          </button>
+          <div class="example-button-row">
+            <button mat-raised-button color="warn" (click)="handleRegistration($event)">Verify and Register</button>
           </div>
-        
-          
-      
-    </mat-card>
-    </div> 
+
+        </form>
+
+      </mat-card-content>
+
+    </div>
+
+
+
+  </mat-card>
+</div>

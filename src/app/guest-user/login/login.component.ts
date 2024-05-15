@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 import {
   MatSnackBar,
@@ -49,36 +50,37 @@ import { environment } from 'dotenv';
 export class AppSideLoginComponent {
 
   constructor(private authService: UserAuthenticationService, private router: Router,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar, private apiService: ApiService, 
+    private snackbar: SnackbarService ) { }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   successdurationInSeconds = 2;
   failuredurationInSeconds = 4;
 
-  openSuccessSnackBar() {
-    this._snackBar.open('Login Successful!', 'close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      duration: this.successdurationInSeconds * 1000,
-    });
-  }
+  // openSuccessSnackBar() {
+  //   this._snackBar.open('Login Successful!', 'close', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //     duration: this.successdurationInSeconds * 1000,
+  //   });
+  // }
 
-  openWrongCredentialsSnackBar() {
-    this._snackBar.open('Given Username or Password is wrong.', 'close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      duration: this.failuredurationInSeconds * 1000,
-    });
-  }
+  // openWrongCredentialsSnackBar() {
+  //   this._snackBar.open('Given Username or Password is wrong.', 'close', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //     duration: this.failuredurationInSeconds * 1000,
+  //   });
+  // }
 
-  openServerErrorSnackBar() {
-    this._snackBar.open('Some error occurred while logging you in. Please try again', 'close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      duration: this.failuredurationInSeconds * 1000,
-    });
-  }
+  // openServerErrorSnackBar() {
+  //   this._snackBar.open('Some error occurred while logging you in. Please try again', 'close', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //     duration: this.failuredurationInSeconds * 1000,
+  //   });
+  // }
 
 
 
@@ -151,8 +153,9 @@ export class AppSideLoginComponent {
       // ).subscribe();
       // console.log('Login successful:', response);
 
-
+      
       this.authService.userLogin(loginPayload).subscribe((response) => {
+        this.snackbar.showSuccess("Login Successful!");
         console.log('response', response);
         const encryptStorage = new EncryptStorage(environment.localStorageKey);
         encryptStorage.setItem('login-details', response);
@@ -163,7 +166,7 @@ export class AppSideLoginComponent {
     catch (error) {
       //console.error('Error occurred during login:', error);
       //alert("Some error occurred while logging in");
-      this.openServerErrorSnackBar();
+       this.snackbar.showError("Some error occurred while logging you in!");
       // Handle login error, such as displaying an error message
     }
   }

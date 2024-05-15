@@ -28,6 +28,8 @@ import { MatCardModule } from '@angular/material/card';
 import { FeaturesSectionComponent } from './common-components/features-section/features-section/features-section.component';
 import { LawsTablePageComponent } from './laws-table-page/laws-table.component';
 import { LawsTableComponent } from './common-components/laws-table/laws-table.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DropdownComponent } from './common-components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { LawsTableComponent } from './common-components/laws-table/laws-table.co
     PaymentSectionComponent,
     EntityDetailsPageComponent,
     OpUnitDetailsPageComponent,
+    
   ],
   
   imports: [
@@ -58,7 +61,9 @@ import { LawsTableComponent } from './common-components/laws-table/laws-table.co
     MatDividerModule,
     TreeStructureComponent,
     MatCardModule,
-    LawsTableComponent
+    LawsTableComponent,
+    MatFormFieldModule,
+    DropdownComponent
   ],
   exports:[
     BusinessCardComponent

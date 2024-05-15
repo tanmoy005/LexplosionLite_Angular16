@@ -25,6 +25,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DropdownComponent } from 'src/app/user-onboard/common-components/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-register',
@@ -38,7 +39,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BusinessCardComponent,
     RegHeaderComponent,
     MatDividerModule,
-    
+    DropdownComponent
 
     ],
   styleUrls: ['./register.component.css'],
@@ -112,12 +113,72 @@ export class AppSideRegisterComponent {
   //     // Handle login error, such as displaying an error message
   //   }
   // }
+
+  dropdownOptions = [
+    { value: '1', label: 'India', icon: './assets/images/indian_flag.webp' },
+    { value: '2', label: 'Sri Lanka', icon: './assets/images/sri-lanka-flag-icon.png' },
+    { value: '3', label: 'Bangladesh', icon: './assets/images/bangladesh_flag.png' }
+  ];
+
   handleRegistration(event: any){
     console.log("Handle login clicked!")
     console.log("Username - ", this.businessname);
     console.log("Password - ", this.password);
 
-    // const createBusinessPayload =
+    const stateVariabl = {
+      businessname: this.businessname,
+     
+  };
+
+    this.router.navigate(['/verify-email'], { state: stateVariabl });
+  }
+
+  termsConditionModalOpen (){
+    
+      this.dialog.open(TermsConditionDialog);
+    }
+  }
+  
+
+  // function handleVerifyRegistration(event: any){
+  //   this.router.navigate(['/verify-email'], { state: '' });
+  // }
+
+
+  function countryCodeValidator(control: AbstractControl): { [key: string]: any } | null {
+    const countryCode = control.value;
+    if (countryCode && countryCode.toString().length !== 2) {
+      return { 'invalidCountryCode': true };
+    }
+    return null;
+  }
+
+  function phoneNumberValidator(control: AbstractControl): { [key: string]: any } | null {
+    const phoneNumber = control.value;
+    // Regular expression for validating phone numbers (10 digits)
+    const phoneNumberPattern = /^[0-9]{10}$/;
+    if (phoneNumber && !phoneNumberPattern.test(phoneNumber)) {
+      return { 'invalidPhoneNumber': true };
+    }
+    return null;
+  }
+
+
+  @Component({
+    selector: 'terms-and-condition-dialog',
+    templateUrl: 'terms-condition-dialog.html',
+    standalone: true,
+    imports: [MatDialogModule,MatButtonModule],
+  })
+  export class TermsConditionDialog {}
+
+
+
+
+
+
+
+      // const createBusinessPayload =
 
     // {"name": this.businessname,
     // "description":"Kolkata 2022"}
@@ -174,45 +235,3 @@ export class AppSideRegisterComponent {
     //   alert("Some error occurred while logging in");
     //   // Handle login error, such as displaying an error message
     // }
-    this.router.navigate(['/verify-email']);
-  }
-
-  termsConditionModalOpen (){
-    
-      this.dialog.open(TermsConditionDialog);
-  
-  }
-  }
-  
-
-  
-
-
-  function countryCodeValidator(control: AbstractControl): { [key: string]: any } | null {
-    const countryCode = control.value;
-    if (countryCode && countryCode.toString().length !== 2) {
-      return { 'invalidCountryCode': true };
-    }
-    return null;
-  }
-
-  function phoneNumberValidator(control: AbstractControl): { [key: string]: any } | null {
-    const phoneNumber = control.value;
-    // Regular expression for validating phone numbers (10 digits)
-    const phoneNumberPattern = /^[0-9]{10}$/;
-    if (phoneNumber && !phoneNumberPattern.test(phoneNumber)) {
-      return { 'invalidPhoneNumber': true };
-    }
-    return null;
-  }
-  
-
- 
-
-  @Component({
-    selector: 'terms-and-condition-dialog',
-    templateUrl: 'terms-condition-dialog.html',
-    standalone: true,
-    imports: [MatDialogModule,MatButtonModule],
-  })
-  export class TermsConditionDialog {}
