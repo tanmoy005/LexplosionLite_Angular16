@@ -20,6 +20,8 @@ import {ApiService} from '../../../services/api.service'
 
 import { DropdownComponent } from '../dropdown/dropdown.component';
 
+import { SnackbarService } from 'src/app/shared/snackbar.service';
+
 import {
   MatDialog,
   MatDialogActions,
@@ -65,12 +67,12 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
 }
 
 const ELEMENT_DATA: OPUnitDetails[] = [
-  {position: 1, name: 'Tata Steel', industry: 'Manufacturing', type:"abc", 
-  emailID:"examplemail.com", laws:"", department:"",actions:''},
-  {position: 2, name: 'Tata Tea',industry: 'Tea',
-   type:"abc", emailID:"examplemail.com", laws:"", department:"",actions:''},
-  {position: 3, name: 'Tata Consultancy Services', industry: 'IT', type:"abc",
-  emailID:"examplemail.com", laws:"", department:"",actions:''}
+  // {position: 1, name: 'Tata Steel', industry: 'Manufacturing', type:"abc", 
+  // emailID:"examplemail.com", laws:"", department:"",actions:''},
+  // {position: 2, name: 'Tata Tea',industry: 'Tea',
+  //  type:"abc", emailID:"examplemail.com", laws:"", department:"",actions:''},
+  // {position: 3, name: 'Tata Consultancy Services', industry: 'IT', type:"abc",
+  // emailID:"examplemail.com", laws:"", department:"",actions:''}
 ];
 
 /**
@@ -83,7 +85,8 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   standalone: true,
   imports:[MatInputModule,MatCardModule,FormsModule,MatTableModule,NgStyle,
           MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule,
-          CommonModule,DropdownComponent]
+          CommonModule,DropdownComponent,
+          ]
 })
 
 export class OperatingUnitTableComponent implements OnInit{
@@ -130,35 +133,19 @@ fetchstates(){
   @Input() entity:any;
 
 
-  // viewAddEntityDialog() {
-  //   this.openEntityDialog();
-  // }
+  
 
-  addOpUnitData(){
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length)
-    const randomRow = this.dataSource[randomElementIndex];
-
-   
-    const newRow: OPUnitDetails = {
-      position: this.dataSource.length + 1, 
-      name: randomRow.name,
-      industry: randomRow.industry,
-      type: randomRow.type,
-      emailID:randomRow.emailID,
-      laws:'',
-      department:'',
-      actions:''
-    };
-    this.dataSource.push(newRow);
-    console.log(this.dataSource)
-    //this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
+  addOpUnitData(newData: OPUnitDetails) {
+    newData['position'] = this.dataSource.length + 1
+    this.dataSource.push(newData);
     this.table.renderRows();
   }
+  
 
   rearrangeDataSource() {
-    // Sort the dataSource by position
+    
     this.dataSource.sort((a, b) => a.position - b.position);
-    // Update the position numbering of the rows
+    
     for (let i = 0; i < this.dataSource.length; i++) {
       this.dataSource[i].position = i + 1;
     }
@@ -166,16 +153,16 @@ fetchstates(){
 
 
   removeEntityData(position: number) {
-    // Find the index of the row with the matching position
+   
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
   
-    // Check if the rowIndex is valid
+    
     if (rowIndex !== -1) {
-      // Remove the element at the found index
+      
       this.dataSource.splice(rowIndex, 1);
-      // Rearrange the position numbering of the remaining rows
+     
       this.rearrangeDataSource();
-      // Re-render the table rows
+      
       this.table.renderRows();
     }
   }
@@ -204,10 +191,7 @@ fetchstates(){
   openopUnitMenuDialog(action: string, position:number) {
     console.log("ACTION SELECTED",action,position);
 
-    // const dialogRef = this.dialog.open(DialogFromMenuExampleDialog, { 
-    //   restoreFocus: false, 
-    //   data: { action, entityTable: this } 
-    // });
+   
 
     switch(action) {
       case 'Delete':
@@ -218,13 +202,7 @@ fetchstates(){
         break;
     }
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   // If a result is returned, handle the menu item action
-    //   console.log("After dialog close",action);
-    //   if (result) {
-    //     this.handleMenuItemAction(result);
-    //   }
-    // });
+   
   }
   
   
@@ -236,7 +214,8 @@ fetchstates(){
   templateUrl: 'example-add-new-row-dialog.html',
   standalone:true,
   imports:[MatDialogModule,MatButtonModule,MatCardModule,MatInputModule,FormsModule,
-    MatFormFieldModule,MatSelectModule,CommonModule,DropdownComponent]
+    MatFormFieldModule,MatSelectModule,CommonModule,DropdownComponent
+  ]
 })
 
 export class AddNewEntityDialog {
@@ -253,8 +232,9 @@ export class AddNewEntityDialog {
   selectedOperatingUnitType: any
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: 
-    OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]}) {
-    //console.log('operating unit types',this.data.operatingUnitypes)
+    OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]},
+    private snackbar: SnackbarService) {
+   
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
     this.transformedStates = transformOperatingUnitTypes(this.data.states)
 
@@ -267,18 +247,71 @@ export class AddNewEntityDialog {
     { value: 'option2', label: 'Option 2' },
     { value: 'option3', label: 'Option 3' }
   ];
-  // addEntity() {
 
-  //   this.data.entityTable.addOpUnitData();
-  // }
-  addEntity(newEntity:any) {
-    console.log('the new entity is',newEntity)
-
-    this.data.entityTable.addOpUnitData();
+  isDataValid(): boolean {
+    return (
+      this.operatingUnitName.trim() !== '' &&
+      this.operatingUnitType !== '' 
+      &&
+      this.state!== '' &&
+      this.activity.trim() !== '' &&
+      this.locatedAt.trim() !== '' &&
+      this.ownership.trim() !== ''
+    );
   }
-  onSelectedValueChanged(value: any) {
+
+  
+  addEntity() {
+    if (this.isDataValid()) {
+      const operatingUnitTypeName = this.findOperatingUnitTypeName(this.operatingUnitType);
+      const newData: OPUnitDetails = {
+        position: 1,
+        name: this.operatingUnitName,
+        industry: '',
+        type: operatingUnitTypeName, 
+        emailID: 'examplemail.com', 
+        laws: '', 
+        department: '', 
+        actions: '' 
+      };
+      this.data.entityTable.addOpUnitData(newData);
+      this.snackbar.showSuccess("Sucessfully added Operating Unit");
+      
+    } else {
+      console.log('Please fill in all the fields.');
+      this.snackbar.showError("Please fill all the fields");
+    
+    }
+  }
+ 
+  onSelectedValueChangedOPUnit(value: any) {
     console.log('Selected value:', value);
-    // Do whatever you want with the selected value
+    this.operatingUnitType = value
+    
+  }
+  onSelectedValueChangedStates(value: any) {
+    console.log('Selected value:', value);
+    this.state = value
+    
+  }
+  onSelectedValueChangedActivities(value: any) {
+    console.log('Selected value:', value);
+    this.activity = value
+    
+  }
+  onSelectedValueChangedLocation(value: any) {
+    console.log('Selected value:', value);
+    this.locatedAt = value
+    
+  }
+  onSelectedValueChangedOwnarship(value: any) {
+    console.log('Selected value:', value);
+    this.ownership = value
+    
+  }
+  findOperatingUnitTypeName(id: any): string  {
+    const operatingUnitType = this.data.operatingUnitTypes.find(type => type.id === id);
+    return operatingUnitType ? operatingUnitType.name : '';
   }
 }
 

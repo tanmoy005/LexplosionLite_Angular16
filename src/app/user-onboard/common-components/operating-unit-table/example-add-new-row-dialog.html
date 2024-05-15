@@ -18,7 +18,7 @@
   </mat-form-field>
 
   <app-dropdown [label]="'Operating Unit Type'" [options]="transformedDataOperatingUnits" [IsMultiSelection]="false" [IsRequired]="false" 
-  (selectedValueChange)="onSelectedValueChanged($event)"
+  (selectedValueChange)="onSelectedValueChangedOPUnit($event)"
   >
   </app-dropdown>
 
@@ -27,21 +27,22 @@
 
  <div class=" example-full-width d-flex">
   <app-dropdown [label]="'States'" [options]="transformedStates" [IsMultiSelection]="false" [IsRequired]="false" 
+  (selectedValueChange)="onSelectedValueChangedStates($event)"
   >
   </app-dropdown>
 
   <app-dropdown [label]="'Activities'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false"
-   >
+  (selectedValueChange)="onSelectedValueChangedActivities($event)">
   </app-dropdown>
 
 </div>
 <div class=" example-full-width d-flex">
   <app-dropdown [label]="'Located At'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false" 
-  >
+  (selectedValueChange)="onSelectedValueChangedLocation($event)">
   </app-dropdown>
 
   <app-dropdown [label]="'Ownarship'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false" 
-  >
+  (selectedValueChange)="onSelectedValueChangedOwnarship($event)">
   </app-dropdown>
 
 </div>
@@ -107,5 +108,5 @@
 <mat-dialog-actions>
 
 
-  <button  mat-raised-button color="warn"  (click)="addEntity(entityForm)">Add</button>
+  <button  mat-raised-button color="warn"  (click)="addEntity()">Add</button>
 </mat-dialog-actions>
