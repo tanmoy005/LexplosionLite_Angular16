@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import {ApiService} from '../../../services/api.service'
 
@@ -139,6 +140,7 @@ fetchstates(){
     newData['position'] = this.dataSource.length + 1
     this.dataSource.push(newData);
     this.table.renderRows();
+    
   }
   
 
@@ -233,7 +235,8 @@ export class AddNewEntityDialog {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]},
-    private snackbar: SnackbarService) {
+    private snackbar: SnackbarService,
+    public dialogRef: MatDialogRef<AddNewEntityDialog>) {
    
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
     this.transformedStates = transformOperatingUnitTypes(this.data.states)
@@ -276,6 +279,7 @@ export class AddNewEntityDialog {
       };
       this.data.entityTable.addOpUnitData(newData);
       this.snackbar.showSuccess("Sucessfully added Operating Unit");
+      this.dialogRef.close();
       
     } else {
       console.log('Please fill in all the fields.');
@@ -283,32 +287,30 @@ export class AddNewEntityDialog {
     
     }
   }
+
+  CloseDialog(){
+    this.dialogRef.close();
+  }
  
-  onSelectedValueChangedOPUnit(value: any) {
-    console.log('Selected value:', value);
+  onSelectedValueChanged(value: any,columnvalue: String) {
+   if (columnvalue === 'operatingUnitType'){
     this.operatingUnitType = value
-    
-  }
-  onSelectedValueChangedStates(value: any) {
-    console.log('Selected value:', value);
+   }
+   if (columnvalue === 'state'){
     this.state = value
-    
-  }
-  onSelectedValueChangedActivities(value: any) {
-    console.log('Selected value:', value);
+   }
+   if (columnvalue === 'activity'){
     this.activity = value
-    
-  }
-  onSelectedValueChangedLocation(value: any) {
-    console.log('Selected value:', value);
+   }
+   if (columnvalue === 'locatedAt'){
     this.locatedAt = value
-    
-  }
-  onSelectedValueChangedOwnarship(value: any) {
-    console.log('Selected value:', value);
+   }
+   if (columnvalue === 'ownership'){
     this.ownership = value
+   }
     
   }
+  
   findOperatingUnitTypeName(id: any): string  {
     const operatingUnitType = this.data.operatingUnitTypes.find(type => type.id === id);
     return operatingUnitType ? operatingUnitType.name : '';
