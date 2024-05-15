@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 import {
   MatSnackBar,
@@ -47,7 +48,8 @@ import {
 export class AppSideLoginComponent {
 
   constructor(private authService: UserAuthenticationService, private router: Router,
-    private _snackBar: MatSnackBar, private apiService: ApiService) { }
+    private _snackBar: MatSnackBar, private apiService: ApiService, 
+    private snackbar: SnackbarService ) { }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -70,13 +72,13 @@ export class AppSideLoginComponent {
   //   });
   // }
 
-  openServerErrorSnackBar() {
-    this._snackBar.open('Some error occurred while logging you in. Please try again', 'close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-      duration: this.failuredurationInSeconds * 1000,
-    });
-  }
+  // openServerErrorSnackBar() {
+  //   this._snackBar.open('Some error occurred while logging you in. Please try again', 'close', {
+  //     horizontalPosition: this.horizontalPosition,
+  //     verticalPosition: this.verticalPosition,
+  //     duration: this.failuredurationInSeconds * 1000,
+  //   });
+  // }
 
 
 
@@ -149,8 +151,9 @@ export class AppSideLoginComponent {
       // ).subscribe();
       // console.log('Login successful:', response);
 
-
+      
       this.authService.userLogin(loginPayload).subscribe((response) => {
+        this.snackbar.showSuccess("Login Successful!");
         this.router.navigate(['/entity-details'], { state: { entity: '' } });
       })
       // Handle successful login, such as redirecting to a dashboard
@@ -158,11 +161,9 @@ export class AppSideLoginComponent {
     catch (error) {
       //console.error('Error occurred during login:', error);
       //alert("Some error occurred while logging in");
-       this.openServerErrorSnackBar();
+       this.snackbar.showError("Some error occurred while logging you in!");
       // Handle login error, such as displaying an error message
     }
-
-
   }
 }
 

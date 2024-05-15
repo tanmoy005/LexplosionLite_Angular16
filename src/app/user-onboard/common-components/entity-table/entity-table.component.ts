@@ -137,6 +137,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ApiService } from 'src/app/services/api.service';
 
 import {
   MatDialog,
@@ -183,7 +184,7 @@ const ELEMENT_DATA: BusinessDetails[] = [
 })
 
 export class EntityTableComponent {
-  constructor(public dialog: MatDialog,private router: Router) {}
+  constructor(public dialog: MatDialog,private router: Router, private apiService:ApiService) {}
 
   displayedColumns: string[] = ['position', 'name', 'country', 'industry', 
                                  'type','emailID','laws','operatingUnit','actions'];
@@ -325,8 +326,27 @@ export class EntityTableComponent {
   imports:[MatDialogModule,MatFormFieldModule,FormsModule,MatInputModule,MatSelectModule,CommonModule]
 })
 export class AddNewEntityDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, public dialogRef: MatDialogRef<AddNewEntityDialog>){}
 
+  entityTypeList: any;
+  industriesList: any;
+  lawsList:any;
+
+  constructor(@Inject(MAT_DIALOG_DATA) 
+  public data: { entityTable: EntityTableComponent}, 
+  public dialogRef: MatDialogRef<AddNewEntityDialog>,
+  private apiService:ApiService){
+
+  try{
+      this.apiService.getFieldDefinition(JSON.stringify(["entityTypes"])).subscribe((response) => {
+      this.entityTypeList = response;
+    })
+  }
+  catch (error) {
+    console.log(error)
+  }
+  console.log("Entity Types: ",this.entityTypeList);
+  }
+  
   moduleOptions = [{"label": "Labour","value":"LAB"},
                    {"label": "Operation", "value":"OPS"},
                    {"label": "Fiscal", "value":'FISC'}]
@@ -335,6 +355,8 @@ export class AddNewEntityDialog {
     this.data.entityTable.addEntityData();
     this.dialogRef.close();
   }
+
+
 
   closeEntityDialog(){
     this.dialogRef.close();

@@ -16,7 +16,8 @@ export class ApiService {
     addEntity: 'entity-details/entity',
     addOperatingUnit: 'entity-details/operating-unit',
     applicableLaws: 'entity-details/applicable-laws',
-    entityTree: 'entity-details/entity/tree'
+    entityTree: 'entity-details/entity/tree',
+    definition:'definition'
   }
 
   private endpointsWithoutAuthToken = [this.endpoints.userLogin]
@@ -51,8 +52,7 @@ export class ApiService {
     }
     return this.http.post<any>(`${this.baseUrl}/${apiUrl}`, data, { headers: headerJSON }).pipe(
       catchError(({ error }: HttpErrorResponse) => {
-               this.snackBar.showError(error?.error
-        );
+               this.snackBar.showError(error?.error);
         return throwError(() => new Error(error?.error)); // Return a custom error message
       })
     );
@@ -95,6 +95,12 @@ export class ApiService {
   postEntityTree(data: any): Observable<any> {
     return this.postData(this.endpoints.entityTree, data)
   }
+
+  // Method to fetch a field's (Ex. Entity Type, Modules, Laws) possible values
+  getFieldDefinition(data:any): Observable<any> {
+    return this.postData(this.endpoints.definition, data)
+  }
+  
 }
 
 
