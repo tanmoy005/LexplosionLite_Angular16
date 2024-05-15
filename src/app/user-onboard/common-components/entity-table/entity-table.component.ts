@@ -151,6 +151,7 @@ import { DialogData } from '../../component-interfaces';
 import { findIndex } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { TreeNode, treeDataitem } from 'src/app/shared/menu-items/tree-items';
+import { MatListModule } from '@angular/material/list';
 
 
 export interface BusinessDetails {
@@ -278,7 +279,19 @@ export class EntityTableComponent {
   }
 
   openLawDialog() {
-    const dialogRef = this.dialog.open(ViewLawsDialog);
+    const name: string = 'Law List';
+    const dialogRef = this.dialog.open(ViewLawsDialog, {
+      data: { name: name }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  openOpDialog() {
+    const name: string = 'Operating Unit List';
+    const dialogRef = this.dialog.open(ViewLawsDialog, {
+      data: { name: name }
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
@@ -473,10 +486,18 @@ function getMaxIdFromChildren(node: TreeNode): number {
   selector: 'dialog-content-example-dialog',
   templateUrl: 'example-law-details-dialog.html',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule],
+  imports: [MatDialogModule, MatButtonModule, MatListModule],
 })
 
 export class ViewLawsDialog {
+  constructor(
+    public dialogRef: MatDialogRef<ViewLawsDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
 
 
