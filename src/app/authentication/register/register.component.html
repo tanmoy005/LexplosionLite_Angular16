@@ -40,7 +40,7 @@
                     <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
                   </mat-form-field> -->
 
-            <app-dropdown [label]="'Country'" [options]="dropdownOptions"></app-dropdown>
+            <app-dropdown [label]="'Country'" [options]="dropdownOptions" [IsMultiSelection]="false" [IsRequired]="false" ></app-dropdown>
 
 
 
