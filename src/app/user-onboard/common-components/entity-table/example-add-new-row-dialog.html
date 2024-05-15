@@ -11,57 +11,79 @@
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <mat-form-field appearance="outline" class="entity-form-field">
       <mat-label>Name of the Entity</mat-label>
-      <input matInput required [(ngModel)]="formData.name" name="name">
+      <input matInput required (input)="onTextFieldChange($event,'name')">
     </mat-form-field>
   </div>
 
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <mat-form-field appearance="outline">
-      <mat-label>Country</mat-label>
-      
-      <mat-select required [(ngModel)]="formData.country" name="country">
+    <!-- <mat-form-field appearance="outline"> -->
+      <!-- <mat-label>Country</mat-label> -->
+      <!-- <mat-select required [(ngModel)]="formData.country" name="country">
         <mat-option *ngFor="let option of countryList" [value]="option.value">
           {{option.label}}
         </mat-option>
-      </mat-select>
-
-      <mat-hint>Click to select a Country</mat-hint>
-    </mat-form-field>
+      </mat-select> -->
+      <app-dropdown [label]="'Country'" [options]="countryList" 
+      [IsMultiSelection]="false" 
+      [IsRequired]="true" 
+      (selectedValueChange)="onSelectedValueChanged($event,'country')">
+      </app-dropdown>
+      <!-- <mat-hint>Click to select a Country</mat-hint>
+    </mat-form-field> -->
   </div>
 
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <mat-form-field appearance="outline">
-      <mat-label>Type of Entity</mat-label>
+    <!-- <mat-form-field appearance="outline"> -->
+      <!-- <mat-label>Type of Entity</mat-label>
       <mat-select required [(ngModel)]="formData.entityType" name="entityType">
         <mat-option *ngFor="let option of entityTypesList" [value]="option.id">
           {{option.name}}
         </mat-option>
       </mat-select>
-      <mat-hint>Click to select Entity type</mat-hint>
-    </mat-form-field>
+      <mat-hint>Click to select Entity type</mat-hint> -->
+
+      <app-dropdown [label]="'Type of Entity'" [options]="transformedEntityList" 
+      [IsMultiSelection]="false" 
+      [IsRequired]="true" 
+      (selectedValueChange)="onSelectedValueChanged($event,'entityType')">
+      </app-dropdown>
+
+    <!-- </mat-form-field> -->
   </div>
 
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <mat-form-field appearance="outline">
-      <mat-label>Industries</mat-label>
+    <!-- <mat-form-field appearance="outline"> -->
+      <!-- <mat-label>Industries</mat-label>
       <mat-select required [(ngModel)]="formData.industry" name="industry">
         <mat-option *ngFor="let option of distinctIndutryTypesList" [value]="option.iId">
           {{option.industry}}
         </mat-option>
       </mat-select>
-      <mat-hint>Click to select Industries </mat-hint>
-    </mat-form-field>
+      <mat-hint>Click to select Industries </mat-hint> -->
+
+      <app-dropdown [label]="'Industries'" [options]="transformedIndustryList" 
+      [IsMultiSelection]="false" 
+      [IsRequired]="true" 
+      (selectedValueChange)="onSelectedValueChanged($event,'industry')">
+      </app-dropdown>
+    <!-- </mat-form-field> -->
   </div>
 
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <mat-form-field  appearence="outline">
+    <!-- <mat-form-field  appearence="outline">
       <mat-label>Law Modules</mat-label>
       <mat-select multiple required [(ngModel)]="formData.lawModules" name="lawModules">
         <mat-option *ngFor="let option of lawCategoriesList" [value]="option.id">
           {{ option.description }}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
+
+    <app-dropdown [label]="'Law Modules'" [options]="transformedLawCategoryList" 
+      [IsMultiSelection]="true" 
+      [IsRequired]="true" 
+      (selectedValueChange)="onSelectedValueChanged($event,'lawModules')">
+    </app-dropdown>
   </div>
   </div>
   </div>
