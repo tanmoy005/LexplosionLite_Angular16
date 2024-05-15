@@ -241,7 +241,16 @@ fetchstates(){
 
 export class AddNewEntityDialog {
   transformedDataOperatingUnits: TransformedType[] = [];
-  transformedStates: TransformedType[] = []
+  transformedStates: TransformedType[] = [];
+
+  operatingUnitName: string = '';
+  operatingUnitType: string = '';
+  state: string = '';
+  activity: string = '';
+  locatedAt: string = '';
+  ownership: string = '';
+
+  selectedOperatingUnitType: any
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]}) {
@@ -258,9 +267,18 @@ export class AddNewEntityDialog {
     { value: 'option2', label: 'Option 2' },
     { value: 'option3', label: 'Option 3' }
   ];
-  addEntity() {
+  // addEntity() {
+
+  //   this.data.entityTable.addOpUnitData();
+  // }
+  addEntity(newEntity:any) {
+    console.log('the new entity is',newEntity)
 
     this.data.entityTable.addOpUnitData();
+  }
+  onSelectedValueChanged(value: any) {
+    console.log('Selected value:', value);
+    // Do whatever you want with the selected value
   }
 }
 
