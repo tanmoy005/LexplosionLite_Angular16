@@ -1,19 +1,17 @@
 export interface CountryData {
-    id: number;
-    countryName: string;
-    image: string;
+    value: any, label: string, icon?: string 
   }
   
 export const CountryList : CountryData[] =[
     {
-      id:1,
-      countryName:'India',
-      image:'./assets/images/indian_flag.webp'
+        value:1,
+        label:'India',
+        icon:'./assets/images/indian_flag.webp'
     },
     {
-      id:2,
-      countryName:'Singapore',
-      image:'./assets/images/singapore_flag.png'
+        value:2,
+        label:'Singapore',
+        icon:'./assets/images/singapore_flag.png'
     }
    
   ]

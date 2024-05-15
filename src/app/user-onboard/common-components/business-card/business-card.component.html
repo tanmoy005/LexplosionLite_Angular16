@@ -59,7 +59,10 @@
             <h5>Country of Operation</h5>
           </div>
           <div class='col-lg-8'>
-            <mat-form-field  class="example-full-width">
+             <app-dropdown [label]="'Country'" [options]="countryList"
+             [IsMultiSelection]="true" [IsRequired]="false" >
+            </app-dropdown> 
+            <!-- <mat-form-field  class="example-full-width">
               <mat-label>Choose option/options</mat-label>
               <mat-select multiple>
                 <mat-option *ngFor="let option of countryList" [value]="option.id">
@@ -68,7 +71,7 @@
                 </mat-option>
               
               </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
           </div>
           <div class="col-lg-1">
             <button mat-fab color="primary" aria-label="Example icon button with a delete icon">

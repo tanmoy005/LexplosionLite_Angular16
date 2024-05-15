@@ -5,69 +5,39 @@
   <mat-card>
     <mat-card-content>
   <form>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" style="margin-right: 10px;">
     <mat-label>Entity</mat-label>
     <input matInput name="Entity" [(ngModel)]="data.entityName">
   </mat-form-field>
 
   <div class=" example-full-width d-flex">
     
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" style="margin-right: 10px;">
     <mat-label>Operating Unit Name</mat-label>
     <input matInput name="operatingUnitName" >
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Operating Unit Type</mat-label>
-    <!-- <input matInput name="OperatingUnitType" > -->
-    <mat-select >
-      <mat-option *ngFor="let option of data.operatingUnitTypes" [value]="option.id">
-        {{ option.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <app-dropdown [label]="'Operating Unit Type'" [options]="transformedDataOperatingUnits" [IsMultiSelection]="false" [IsRequired]="false" >
+  </app-dropdown>
+
 
 </div>
 
  <div class=" example-full-width d-flex">
-  <mat-form-field appearance="outline">
-    <mat-label>State</mat-label>
-    <!-- <input matInput name="State" > -->
-    <mat-select >
-      <mat-option *ngFor="let option of data.states" [value]="option.id">
-        {{ option.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Activities</mat-label>
-    <mat-select multiple>
-      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
-        {{ option.label }}
-      </mat-option>
-    </mat-select>
-    <!-- <input matInput name="Entity" > -->
-  </mat-form-field>
+  <app-dropdown [label]="'States'" [options]="transformedStates" [IsMultiSelection]="false" [IsRequired]="false" >
+  </app-dropdown>
+
+  <app-dropdown [label]="'Activities'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false" >
+  </app-dropdown>
+
 </div>
 <div class=" example-full-width d-flex">
-  <mat-form-field appearance="outline">
-    <mat-label>Located At</mat-label>
-    <!-- <input matInput name="Entity" > -->
-    <mat-select multiple>
-      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
-        {{ option.label }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Ownarship</mat-label>
-    <!-- <input matInput name="Entity" > -->
-    <mat-select multiple>
-      <mat-option *ngFor="let option of BusinessOptions" [value]="option.value">
-        {{ option.label }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <app-dropdown [label]="'Located At'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false" >
+  </app-dropdown>
+
+  <app-dropdown [label]="'Ownarship'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="false" >
+  </app-dropdown>
+
 </div>
  </form>
 </mat-card-content>
