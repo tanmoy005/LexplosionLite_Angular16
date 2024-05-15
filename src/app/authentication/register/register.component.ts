@@ -78,44 +78,7 @@ export class AppSideRegisterComponent {
   get countryCode() { return this.countryCodeFormControl.value; }
   get phoneNumber() { return this.phoneNumberFormControl.value; }
 
-  // handleRegistration(event: any){
-  //   console.log("Handle login clicked!")
-  //   console.log("Username - ", this.businessname);
-  //   console.log("Password - ", this.password);
-
-  //   const createBusinessPayload =
-
-  //   {"name": this.businessname,
-  //   "description":"Kolkata 2022"}
-  //   try {
-  //     // const response =  this.authService.userLogin(loginPayload); 
-  //     this.authService.userRegistration(createBusinessPayload).pipe(
-  //       tap(response => {
-         
-  //         console.log('Create Business Successful', response);
-
-  //         // try{
-  //         //   this.authService.userRegistration(createBusinessPayload).pipe(
-
-  //         //   )
-  //         // }
-         
-  //         this.router.navigate(['/entity-details']);
-  //       }),
-  //       catchError(error => {
-  //         // Handle error
-  //         console.error('Login error:', error);
-  //         throw error; 
-  //       })
-  //     ).subscribe();
-      
-  //   } 
-  //   catch (error) {
-  //     //console.error('Error occurred during login:', error);
-  //     alert("Some error occurred while logging in");
-  //     // Handle login error, such as displaying an error message
-  //   }
-  // }
+  
 
   countryList : CountryData[] = CountryList
 
@@ -140,9 +103,7 @@ export class AppSideRegisterComponent {
   }
   
 
-  // function handleVerifyRegistration(event: any){
-  //   this.router.navigate(['/verify-email'], { state: '' });
-  // }
+ 
 
 
   function countryCodeValidator(control: AbstractControl): { [key: string]: any } | null {
@@ -155,7 +116,7 @@ export class AppSideRegisterComponent {
 
   function phoneNumberValidator(control: AbstractControl): { [key: string]: any } | null {
     const phoneNumber = control.value;
-    // Regular expression for validating phone numbers (10 digits)
+    
     const phoneNumberPattern = /^[0-9]{10}$/;
     if (phoneNumber && !phoneNumberPattern.test(phoneNumber)) {
       return { 'invalidPhoneNumber': true };
@@ -178,60 +139,4 @@ export class AppSideRegisterComponent {
 
 
 
-      // const createBusinessPayload =
-
-    // {"name": this.businessname,
-    // "description":"Kolkata 2022"}
-    // try {
-    //   // const response =  this.authService.userLogin(loginPayload); 
-    //   this.authService.userRegistration(createBusinessPayload).pipe(
-    //     tap(response => {
-         
-    //       console.log('Create Business Successful', response);
-
-    //       const createUserPayload={
-    //         "id":null,
-    //         "firstName":"Test",
-    //         "lastName":"User",
-    //         "email":"testff@test.com",
-    //         "mobile":"9076543210",
-    //         "companyId":54,
-    //         "roleId":4
-    //       }
-    //       try {
-    //         // const response =  this.authService.userLogin(loginPayload); 
-    //         this.authService.userCreateUser(createUserPayload).pipe(
-    //           tap(response => {
-    //             // Handle successful response
-    //             console.log('Login successful:', response);
-    //             //this.routerService.navigate(['/entity-details']); 
-    //           }),
-    //           catchError(error => {
-    //             // Handle error
-    //             console.error('Login error:', error);
-    //             throw error; // Rethrow the error to propagate it downstream
-    //           })
-    //         ).subscribe();
-    //         // console.log('Login successful:', response);
-    //         // Handle successful login, such as redirecting to a dashboard
-    //       } 
-    //       catch (error) {
-    //         //console.error('Error occurred during login:', error);
-    //         alert("Some error occurred while logging in");
-    //         // Handle login error, such as displaying an error message
-    //       }
-    //       // this.router.navigate(['/verify-email']);
-    //     }),
-    //     catchError(error => {
-    //       // Handle error
-    //       console.error('Login error:', error);
-    //       throw error; 
-    //     })
-    //   ).subscribe();
-      
-    // } 
-    // catch (error) {
-    //   //console.error('Error occurred during login:', error);
-    //   alert("Some error occurred while logging in");
-    //   // Handle login error, such as displaying an error message
-    // }
+    

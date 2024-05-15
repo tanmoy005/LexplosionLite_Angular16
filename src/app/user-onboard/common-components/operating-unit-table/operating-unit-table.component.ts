@@ -1,6 +1,5 @@
 import { Component, ViewChild,Inject,OnInit   } from '@angular/core';
-// import { MatTable } from '@angular/material/table';
-// import {Component, ViewChild} from '@angular/core';
+
 import {MatTable, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -16,6 +15,7 @@ import {MatMenuTrigger, MatMenuModule} from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { EmployeeCountCardComponent } from './employee-count-card/employee-count-card.component';
 
 import {ApiService} from '../../../services/api.service'
 
@@ -68,12 +68,7 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
 }
 
 const ELEMENT_DATA: OPUnitDetails[] = [
-  // {position: 1, name: 'Tata Steel', industry: 'Manufacturing', type:"abc", 
-  // emailID:"examplemail.com", laws:"", department:"",actions:''},
-  // {position: 2, name: 'Tata Tea',industry: 'Tea',
-  //  type:"abc", emailID:"examplemail.com", laws:"", department:"",actions:''},
-  // {position: 3, name: 'Tata Consultancy Services', industry: 'IT', type:"abc",
-  // emailID:"examplemail.com", laws:"", department:"",actions:''}
+ 
 ];
 
 /**
@@ -216,7 +211,8 @@ fetchstates(){
   templateUrl: 'example-add-new-row-dialog.html',
   standalone:true,
   imports:[MatDialogModule,MatButtonModule,MatCardModule,MatInputModule,FormsModule,
-    MatFormFieldModule,MatSelectModule,CommonModule,DropdownComponent
+    MatFormFieldModule,MatSelectModule,CommonModule,DropdownComponent,
+    EmployeeCountCardComponent
   ]
 })
 
