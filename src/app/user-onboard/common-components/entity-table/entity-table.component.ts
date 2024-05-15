@@ -149,6 +149,7 @@ import {
 } from '@angular/material/dialog';
 import { DialogData } from '../../component-interfaces';
 import { findIndex } from 'rxjs';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 
 export interface BusinessDetails {
@@ -163,6 +164,14 @@ export interface BusinessDetails {
   actions:string
 }
 
+interface FormData {
+  name: string;
+  country: string;
+  entityType: string;
+  industry: string;
+  lawModules: string[]; // Assuming lawModules is an array of strings
+}
+
 const ELEMENT_DATA: BusinessDetails[] = [
   {position: 1, name: 'Tata Steel', country: "India", industry: 'Manufacturing', type:"abc", 
   emailID:"examplemail.com", laws:"", operatingUnit:"",actions:''},
@@ -171,6 +180,7 @@ const ELEMENT_DATA: BusinessDetails[] = [
   {position: 3, name: 'Tata Consultancy Services', country: "India", industry: 'IT', type:"abc",
   emailID:"examplemail.com", laws:"", operatingUnit:"",actions:''}
 ];
+
 
 /**
  * @title Adding and removing data when using an array-based datasource.
@@ -324,6 +334,15 @@ export class EntityTableComponent {
   
 }
 
+const initialFormData: FormData = {
+  name: '',
+  country: '',
+  entityType: '',
+  industry: '',
+  lawModules: []
+};
+
+
 
 @Component({
   selector: 'dialog-elements-example-dialog',
@@ -338,6 +357,7 @@ export class AddNewEntityDialog {
   industryTypesList: any;
   distinctIndutryTypesList: any;
   lawCategoriesList: any;
+
 
   countryList = [
     {"label": "India","value":"ind"},
@@ -359,19 +379,12 @@ export class AddNewEntityDialog {
 //     ]
 //  }
 
-  // Define the data model
-  formData = {
-    name: '',
-    country: '',
-    entityType: '',
-    industry: '',
-    lawModules: []
-  };
+  formData = initialFormData
 
   constructor(@Inject(MAT_DIALOG_DATA) 
   public data: { entityTable: EntityTableComponent}, 
   public dialogRef: MatDialogRef<AddNewEntityDialog>,
-  private apiService:ApiService){
+  private apiService:ApiService, private snackbar:SnackbarService){
   
   this.entityTypesList = this.data.entityTable.entityTypesList;
   this.industryTypesList = this.data.entityTable.industryTypesList;
@@ -394,14 +407,32 @@ export class AddNewEntityDialog {
                    {"label": "Fiscal", "value":'FISC'}]
   
   addEntity() {
-    // console.log("Entities - ", this.entityTypesList);
-    // console.log("Industries - ", this.industryTypesList);
-    // console.log("Laws - ", this.lawCategoriesList);
+    // // Send the form data to the backend
+    // console.log("Entity added successfully:", this.formData);
+    
+    let isAnyFieldBlank = false;
 
-    // Send the form data to the backend
-    console.log("Entity added successfully:", this.formData);
-    this.data.entityTable.addEntityData();
-    this.dialogRef.close();
+    for (let field in this.formData) {
+      if (this.formData.hasOwnProperty(field)) {
+        const fieldValue = this.formData[field as keyof FormData];
+        if (field === "lawModules" && (fieldValue as string[]).length === 0) {
+          isAnyFieldBlank = true;
+          break;
+        } else if (typeof fieldValue === 'string' && fieldValue === '') {
+          isAnyFieldBlank = true;
+          break;
+        }
+      }
+    }
+
+    if(isAnyFieldBlank){
+      this.snackbar.showError("Please enter all the field values.")
+    }
+
+    else {
+      this.data.entityTable.addEntityData();
+      this.dialogRef.close();
+    }
   }
 
   closeEntityDialog(){

@@ -22,7 +22,7 @@ export class ApiService {
     definition:'definition'
   }
 
-  private endpointsWithoutAuthToken = [this.endpoints.userLogin]
+  private endpointsWithoutAuthToken = [this.endpoints.userLogin, this.endpoints.definition]
 
   constructor(private http: HttpClient, private snackBar: SnackbarService) { }
 
