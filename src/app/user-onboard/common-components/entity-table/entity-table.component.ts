@@ -331,7 +331,8 @@ export class AddNewEntityDialog {
     const maxId = getMaxIdFromChildren(treeDataitem);   
 
     let isAnyFieldBlank = false;
-    console.log(this.requiredFormDataFields)
+
+    console.log(this.formData)
 
     for (const field of this.requiredFormDataFields) {
       if (this.formData.hasOwnProperty(field)) {
@@ -345,12 +346,11 @@ export class AddNewEntityDialog {
         }
       }
     }
-    if(isAnyFieldBlank){
-      console.log(this.formData)
 
     if (isAnyFieldBlank) {
       this.snackbar.showError("Please enter all the field values.")
     }
+
     else {
       this.selectedCountry = this.countryList.find((country)=> country.value === this.formData.country);
       this.selectedEntity = this.transformedEntityList.find((entity)=> entity.value === this.formData.entityType);
@@ -370,7 +370,6 @@ export class AddNewEntityDialog {
       this.dialogRef.close();
     }
   }
-}
 
   closeEntityDialog() {
     this.dialogRef.close();
