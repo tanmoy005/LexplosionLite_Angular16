@@ -6,11 +6,13 @@ import { StepperHelperTextComponent } from '../common-components/stepper-helper-
 import { MatCardModule } from '@angular/material/card';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { ApiService } from 'src/app/services/api.service';
+import { RegHeaderComponent } from 'src/app/authentication/register/reg-header/reg-header.component';
 
 @Component({
   selector: 'app-entity-details-page',
   templateUrl: './entity-details-page.component.html',
   styleUrls: ['./entity-details-page.component.css'],
+ 
 })
 export class EntityDetailsPageComponent {
 
