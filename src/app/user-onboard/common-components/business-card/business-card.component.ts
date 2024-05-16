@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewEncapsulation } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -9,11 +9,13 @@ import { CountryList } from 'src/app/shared/menu-items/country-list';
 import { CountryData } from 'src/app/shared/menu-items/country-list';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 
+
 @Component({
   selector: 'app-business-card',
   templateUrl: './business-card.component.html',
   styleUrls: ['./business-card.component.css'],
   standalone : true,
+  encapsulation: ViewEncapsulation.None,
   imports: [CommonModule,MatCardModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatIconModule,DropdownComponent],
 })
 export class BusinessCardComponent {
