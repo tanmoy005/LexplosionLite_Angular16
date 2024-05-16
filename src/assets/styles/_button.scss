@@ -1,0 +1,20 @@
+@use 'variable' as var;
+
+@mixin btn-model($background-color, $padding, $border-color, $border-radius) {
+    background-color: $background-color;
+    padding: $padding;
+    border: 1px solid $border-color; // todo use gradient
+    border-radius: $border-radius;
+    color: var.$gray-400;
+    font-size: var.$font-16;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    @include btn-model($dark-red-100, 9.5% 8.5%, $green-100, 8px);
+}
+
+.btn-primary {
+    @include btn-model($primary, 2.34% 8.5%, $primary, 5px);
+}
