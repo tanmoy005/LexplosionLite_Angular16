@@ -1,0 +1,23 @@
+// Define font paths and formats
+$font-path: '../../assets/fonts/';
+
+$barlow-path: '#{$font-path}Barlow/';
+$opensans-path: '#{$font-path}Open_Sans/static/';
+
+$font-format: format('truetype');
+
+// Mixin for @font-face rule
+@mixin font-face($font-family, $font-path, $font-weight, $font-style) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-path) format(#{$font-format});
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+// Define font faces using mixins
+@include font-face('Barlow', '#{$barlow-path}Barlow-Regular.ttf', normal, normal);
+@include font-face('Barlow', '#{$barlow-path}Barlow-Bold.ttf', bold, normal);
+@include font-face('Open Sans', '#{$opensans-path}OpenSans-Regular.ttf', normal, normal);
+@include font-face('Open Sans', '#{$opensans-path}OpenSans-Bold.ttf', bold, normal);

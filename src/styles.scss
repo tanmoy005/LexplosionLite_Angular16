@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 * {
   margin: 0;
   padding: 0;
@@ -131,21 +132,12 @@ $font-12: 0.9375vw;
   font-size: $font-16;
   font-weight: 400;
   cursor: pointer;
-  //     Font
-  // Barlow
-  // Weight
-  // 400
-  // Size
-  // 16px
-  // Line height
-  // 19.2px
 }
 
 .form-container1 {
   display: flex;
   flex-direction: column;
   width: 31.87vw;
-  // height: 55.76vh;
   border-radius: 10px;
   // border: 1px solid rgba(255, 255, 255, 1);
   background-color: rgba(248, 248, 248, 0.76);
