@@ -30,6 +30,7 @@ import { LawsTablePageComponent } from './laws-table-page/laws-table.component';
 import { LawsTableComponent } from './common-components/laws-table/laws-table.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DropdownComponent } from './common-components/dropdown/dropdown.component';
+import { EmployeeCountCardComponent } from './common-components/operating-unit-table/employee-count-card/employee-count-card.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { DropdownComponent } from './common-components/dropdown/dropdown.compone
     PaymentSectionComponent,
     EntityDetailsPageComponent,
     OpUnitDetailsPageComponent,
+   
     
   ],
   
@@ -63,7 +65,8 @@ import { DropdownComponent } from './common-components/dropdown/dropdown.compone
     MatCardModule,
     LawsTableComponent,
     MatFormFieldModule,
-    DropdownComponent
+    DropdownComponent,
+    EmployeeCountCardComponent,
   ],
   exports:[
     BusinessCardComponent

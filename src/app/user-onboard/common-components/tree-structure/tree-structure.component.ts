@@ -22,26 +22,4 @@ import { TreeNode } from 'src/app/shared/menu-items/tree-items';
 
 export class TreeStructureComponent {
   @Input() rootNode!: TreeNode;
-  
-  // recursive: boolean = false;
-  // levels = new Map<TreeNode, number>();
-  // treeControl: NestedTreeControl<TreeNode>;
-
-
-  // dataSource: MatTreeNestedDataSource<TreeNode>;
-
-  // constructor(private changeDetectorRef: ChangeDetectorRef) {
-
-  //   this.treeControl = new NestedTreeControl<TreeNode>(this.getChildren);
-  //   this.dataSource = new MatTreeNestedDataSource();
-  //   // this.dataSource.data =this.rootNode;
-  // }
-
-  // getChildren = (node: TreeNode) => {
-  //   return node.children;
-  // };
-
-  // hasChildren = (index: number, node: TreeNode) => {
-  //   return node?.children?.length ?? 0 > 0;
-  // }
 }
