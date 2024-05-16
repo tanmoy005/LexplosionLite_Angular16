@@ -34,7 +34,7 @@ $mat-secondary: (
   ),
 );
 $mat-warn: (
-  100: FDEDE8,
+  100: #FDEDE8,
   500: #e91e63,
   700: #e91e63,
   contrast: (100: white,
@@ -186,3 +186,26 @@ $card-brd: #d7dfe3;
 $dark-text: #848a96;
 $radius: 4px;
 $form-brd: #d9d9d9;
+
+$size_16px: 1.12vw;
+$size_24px: 1.85vw;
+$size_38px: 2.97vw;
+$size_56px: 4.8vw;
+$size_32px: 2.5vw;
+
+$mt-42: 5.77vh;
+$mt-10: 1.2vh;
+
+//   $primary: rgb(120, 106, 205, 1);
+
+$font-color-dark: $dark-green-100;
+$font-color-dark2: $gray-100;
+
+$font-color-light: $gray-200;
+$font-color-blue: $primary;
+$font-color-light-blue: $blue-light-100;
+
+$font-16: 1.12vw;
+$font-24: 1.64vw;
+$font-56: $size_56px;
+$font-12: 0.9375vw;
