@@ -92,9 +92,16 @@ const initialFormData: EntityInterfaces.FormData = {
   
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
     this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
-    const filteredCountryList = CountryList.filter(country => this.data.entityTable.countryList.includes(country.value));
-    this.countryList = filteredCountryList;
+    var filteredCountryList = CountryList; 
+    
+    try{
+      filteredCountryList = CountryList.filter(country => this.data.entityTable.countryList.includes(country.value));
+    }
+    catch(error){
+      console.log(error)
+    }
 
+    this.countryList = filteredCountryList;
     this.distinctIndutryTypesList = [];
     this.formData = initialFormData
     this.formLabeledData = initialFormData
