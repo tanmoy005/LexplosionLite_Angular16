@@ -74,7 +74,7 @@ export class OperatingUnitTableComponent implements OnInit{
 
   ngOnInit(): void {
     //this.fetchOperatingUniTypes();
-    if (this.entity.country === 'India') {
+    if (this.entity.countryLabel === 'India') {
       this.fetchstates();
     } else {
       this.states = [{
@@ -151,7 +151,7 @@ fetchstates(){
   
   openEntityDialog(entityName: string) {
     const dialogRef = this.dialog.open(AddNewOperatingUnitDialogComponent, {
-      data: { entityTable: this ,entityName: entityName, industry: this.entity.industry,
+      data: { entityTable: this ,entityName: entityName, industry: this.entity.industryLabel,
         operatingUnitTypes:this.operatingUnitTypes,
       states:this.states}
     });
