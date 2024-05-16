@@ -1,19 +1,23 @@
 // Define font paths and formats
 $font-path: '../../assets/fonts/';
-
 $barlow-path: '#{$font-path}Barlow/';
 $opensans-path: '#{$font-path}Open_Sans/static/';
-
-$font-format: format('truetype');
 
 // Mixin for @font-face rule
 @mixin font-face($font-family, $font-path, $font-weight, $font-style) {
   @font-face {
     font-family: $font-family;
-    src: url($font-path) format(#{$font-format});
+    src: url($font-path) format('truetype');
     font-weight: $font-weight;
     font-style: $font-style;
   }
+}
+
+// Assuming $font-24 and $font-12 are defined elsewhere in your SCSS files
+
+@mixin text_W400($font-size, $font-weight: 400) {
+  font-size: $font-size;
+  font-weight: $font-weight;
 }
 
 // Define font faces using mixins
