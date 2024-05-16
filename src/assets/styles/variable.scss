@@ -6,6 +6,7 @@ File: scss
 */
 // Variables
 
+
 @use "@angular/material" as mat;
 @include mat.core();
 
@@ -18,8 +19,7 @@ $mat-primary: (
   100: #ebf9fa,
   500: #1e88e5,
   700: #1e88e5,
-  contrast: (
-    100: rgba(black, 0.87),
+  contrast: (100: rgba(black, 0.87),
     500: white,
     700: white,
   ),
@@ -28,8 +28,7 @@ $mat-secondary: (
   100: #fff5f2,
   500: #26c6da,
   700: #26c6da,
-  contrast: (
-    100: white,
+  contrast: (100: white,
     500: white,
     700: white,
   ),
@@ -38,8 +37,7 @@ $mat-warn: (
   100: FDEDE8,
   500: #e91e63,
   700: #e91e63,
-  contrast: (
-    100: white,
+  contrast: (100: white,
     500: white,
     700: white,
   ),
@@ -57,19 +55,13 @@ $warn: mat.define-palette($mat-warn, 500);
 // $background: map-get($theme, background);
 // $foreground: map-get($theme, foreground);
 
-$cyantheme: mat.define-light-theme(
-  (
-    color: (
-      primary: $primary,
-      accent: $accent,
-      warn: $warn,
-    ),
-    typography:
-      mat.define-typography-config(
-        $font-family: "Poppins",
+$cyantheme: mat.define-light-theme((color: (primary: $primary,
+        accent: $accent,
+        warn: $warn,
       ),
-  )
-);
+      typography: mat.define-typography-config($font-family: "Poppins",
+      ),
+    ));
 
 @include mat.all-component-themes($cyantheme);
 
@@ -108,7 +100,8 @@ $themecolor-dark: #028ee1;
 $danger: #fc4b6c;
 $success: #26c6da;
 $warning: #ffb22b;
-$primary: #7460ee;
+// $primary: rgb(116, 96, 238);
+$primary: rgb(120, 106, 205, 1);
 $info: #1e88e5;
 $inverse: #fff;
 $muted: #99abb4;
@@ -137,11 +130,52 @@ $dark-transparent: rgba(0, 0, 0, 0.05);
 
 /*Normal Color*/
 $white: #ffffff;
-$red: #fb3a3a;
 $yellow: #a0aec4;
 $purple: #7460ee;
-$blue: #02bec9;
+$blue: rgba(0, 145, 208, 1);
 $megna: #00897b;
+
+
+/*Red Color*/
+$dark-red-100: rgba(18, 1, 1, 1); // Dark red using RGBA values
+$red: rgb(215, 86, 109, 1);
+$red-100: rgba(18, 1, 1, 1); // Red using RGBA values
+$red-200: rgb(215, 86, 109); // Red using RGB values
+
+/*Green Color*/
+$green-100: rgba(23, 34, 25, 1); // Dark green using previous value
+$green-200: rgb(30, 70, 32, 1); // Dark green using RGB values
+
+$dark-green-100: rgba(23, 34, 25, 1); // Dark green using RGBA values
+$dark-green-200: rgb(30, 70, 32); // Dark green using RGB values
+$green-100: rgba(57, 87, 63, 1); // Green using RGBA values
+
+/*Blue Color Start*/
+$blue-light-100: rgba(0, 145, 208, 1); // Light blue using RGBA values
+$blue-dark-100: rgb(1, 67, 97, 1); // Dark blue using RGB values
+
+/*Gray Color Start*/
+
+$gray-100: rgba(38, 38, 44, 1); // Dark gray
+$gray-200: rgba(243, 243, 243, 1); // Light gray
+$gray-300: rgba(217, 217, 217, 0.36); // Faint gray
+$gray-400: rgba(233, 233, 233, 1); // Pale silver
+$gray-500: rgba(248, 248, 248, 0.76); // Semi-opaque white
+
+/*Gray Color Ends*/
+
+/*Black Color Start*/
+
+$black-100: rgba(0, 0, 0, 0.16); // Very light gray with transparency
+
+/*Black Color End*/
+/*Brown Color Start*/
+$brown-100: rgb(102, 60, 0); // Brown using RGB values
+
+/*Brown Color End*/
+/*Purple Color Start*/
+$purple-100: rgb(120, 106, 205); // Purple using RGB values
+/*Purple Color End*/
 
 /*Extra Variable*/
 $rgt: right;
