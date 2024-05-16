@@ -60,7 +60,8 @@
           </div>
           <div class='col-lg-8'>
              <app-dropdown [label]="'Country'" [options]="countryList"
-             [IsMultiSelection]="true" [IsRequired]="false" >
+              [IsMultiSelection]="true" [IsRequired]="false" 
+              (selectedValueChange)="onCountryValueChange($event)">
             </app-dropdown> 
             <!-- <mat-form-field  class="example-full-width">
               <mat-label>Choose option/options</mat-label>

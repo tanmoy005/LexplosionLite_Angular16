@@ -12,6 +12,7 @@ import { EntityTableComponent } from './entity-table.component';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
+import { CountryList, CountryData } from 'src/app/shared/menu-items/country-list';
 
 const initialFormData: EntityInterfaces.FormData = {
     name: '',
@@ -74,11 +75,7 @@ const initialFormData: EntityInterfaces.FormData = {
     transformedEntityList: EntityInterfaces.TransformedType[] = [];
     transformedIndustryList: EntityInterfaces.TransformedType[] = [];
     transformedLawCategoryList:EntityInterfaces.TransformedType[]=[];
-  
-    countryList = [
-      {"label": "India","value":1},
-      {"label": "Singapore","value":2}
-    ]
+    countryList:CountryData[]=[];
   
     formData:any;
     formLabeledData:any;
@@ -87,8 +84,7 @@ const initialFormData: EntityInterfaces.FormData = {
     selectedIndustry:any;
     requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
   
-    constructor(@Inject(MAT_DIALOG_DATA) 
-    public data: { entityTable: EntityTableComponent}, 
+    constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, 
     public dialogRef: MatDialogRef<AddEntityDialog>,
     private apiService:ApiService, private snackbar:SnackbarService){
     
@@ -96,7 +92,9 @@ const initialFormData: EntityInterfaces.FormData = {
   
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
     this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
-  
+    const filteredCountryList = CountryList.filter(country => this.data.entityTable.countryList.includes(country.value));
+    this.countryList = filteredCountryList;
+
     this.distinctIndutryTypesList = [];
     this.formData = initialFormData
     this.formLabeledData = initialFormData

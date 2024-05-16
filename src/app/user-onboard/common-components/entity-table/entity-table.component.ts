@@ -41,6 +41,7 @@ export class EntityTableComponent {
   @Input() entityTypesList: any;
   @Input() industryTypesList: any;
   @Input() lawCategoriesList: any;
+  @Input() countryList: any;
 
   viewAddEntityDialog() {
     this.openEntityDialog();
@@ -95,6 +96,9 @@ export class EntityTableComponent {
   }
 
   openEntityDialog() {
+
+    // console.log("RECEIVED COUNTRY in ADD-ENT-TABLE", this.countryList);
+
     const dialogRef = this.dialog.open(AddEntityDialog, {
       data: { entityTable: this }
     });
@@ -114,6 +118,7 @@ export class EntityTableComponent {
     const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
       data: { name: name }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

@@ -12,7 +12,7 @@
     <app-stepper-helper-text [currentStep]="1" [subStep]="1"></app-stepper-helper-text>
     </div>
     <div class="col-lg-6 col-md-12 col-sm-12">
-    <app-business-card></app-business-card>
+    <app-business-card (selectedCountryChange)="getSelectedCountries($event)"></app-business-card>
     </div>
 </div>
 
@@ -25,7 +25,8 @@
     <app-entity-table 
     [entityTypesList]="entityTypesList" 
     [industryTypesList]="industryTypesList"
-    [lawCategoriesList]="lawCategoriesList" 
+    [lawCategoriesList]="lawCategoriesList"
+    [countryList]="countryList" 
     >
   </app-entity-table>
   </div>

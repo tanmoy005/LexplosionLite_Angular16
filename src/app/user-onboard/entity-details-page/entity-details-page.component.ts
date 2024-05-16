@@ -18,7 +18,7 @@ export class EntityDetailsPageComponent {
   entityTypesList: any;
   industryTypesList: any;
   lawCategoriesList: any;
-
+  countryList: any;
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -40,6 +40,10 @@ export class EntityDetailsPageComponent {
   catch (error) {
       console.log(error)
     }
+  }
+
+  getSelectedCountries(value:any){
+    this.countryList = value;
   }
 
   treeDataItem = treeDataitem;
