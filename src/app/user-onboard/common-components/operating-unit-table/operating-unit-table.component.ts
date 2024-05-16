@@ -1,3 +1,10 @@
+
+
+
+
+//====================================== Testing Version ===========================//
+
+
 import { Component, ViewChild,Inject,OnInit   } from '@angular/core';
 
 import {MatTable, MatTableModule} from '@angular/material/table';
@@ -33,39 +40,12 @@ import {
 import { DialogData } from '../../component-interfaces';
 import { findIndex } from 'rxjs';
 
+import { AddNewOperatingUnitDialogComponent } from './add-new-operating-unit-dialog/add-new-operating-unit-dialog.component';
 
 
+import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details';
 
-export interface OPUnitDetails {
-  position: number;
-  name: string;
-  industry: string;
-  type: string;
-  emailID:string;
-  laws: string; 
-  department: string; 
-  actions:string
-}
 
-export interface OriginalType {
-  id: number;
-  name: string;
-  description: string | null;
-}
-
-export interface TransformedType {
-  value: number;
-  label: string;
-  description: string | null;
-}
-
-function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
-  return data.map((item) => ({
-    value: item.id,
-    label: item.name,
-    description: item.description
-  }));
-}
 
 const ELEMENT_DATA: OPUnitDetails[] = [
  
@@ -82,6 +62,7 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   imports:[MatInputModule,MatCardModule,FormsModule,MatTableModule,NgStyle,
           MatSelectModule,MatButtonModule,MatIconModule,MatMenuModule,
           CommonModule,DropdownComponent,
+          AddNewOperatingUnitDialogComponent
           ]
 })
 
@@ -93,7 +74,7 @@ export class OperatingUnitTableComponent implements OnInit{
 
   ngOnInit(): void {
     //this.fetchOperatingUniTypes();
-    if (this.entity.country === 'India') {
+    if (this.entity.countryLabel === 'India') {
       this.fetchstates();
     } else {
       this.states = [{
@@ -165,9 +146,12 @@ fetchstates(){
   }
   
 
+ 
+
+  
   openEntityDialog(entityName: string) {
-    const dialogRef = this.dialog.open(AddNewEntityDialog, {
-      data: { entityTable: this ,entityName: entityName,
+    const dialogRef = this.dialog.open(AddNewOperatingUnitDialogComponent, {
+      data: { entityTable: this ,entityName: entityName, industry: this.entity.industryLabel,
         operatingUnitTypes:this.operatingUnitTypes,
       states:this.states}
     });
@@ -205,113 +189,6 @@ fetchstates(){
   
 }
 
-
-@Component({
-  selector: 'dialog-elements-example-dialog',
-  templateUrl: 'example-add-new-row-dialog.html',
-  standalone:true,
-  imports:[MatDialogModule,MatButtonModule,MatCardModule,MatInputModule,FormsModule,
-    MatFormFieldModule,MatSelectModule,CommonModule,DropdownComponent,
-    EmployeeCountCardComponent
-  ]
-})
-
-export class AddNewEntityDialog {
-  transformedDataOperatingUnits: TransformedType[] = [];
-  transformedStates: TransformedType[] = [];
-
-  operatingUnitName: string = '';
-  operatingUnitType: string = '';
-  state: string = '';
-  activity: string = '';
-  locatedAt: string = '';
-  ownership: string = '';
-
-  selectedOperatingUnitType: any
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, entityTable: 
-    OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]},
-    private snackbar: SnackbarService,
-    public dialogRef: MatDialogRef<AddNewEntityDialog>) {
-   
-    this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
-    this.transformedStates = transformOperatingUnitTypes(this.data.states)
-
-  }
-
-  
- 
-  BusinessOptions = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' }
-  ];
-
-  isDataValid(): boolean {
-    return (
-      this.operatingUnitName.trim() !== '' &&
-      this.operatingUnitType !== '' &&
-      this.state!== '' &&
-      this.activity.trim() !== '' &&
-      this.locatedAt.trim() !== '' &&
-      this.ownership.trim() !== ''
-    );
-  }
-
-  
-  addEntity() {
-   
-    if (this.isDataValid()) {
-      const operatingUnitTypeName = this.findOperatingUnitTypeName(this.operatingUnitType);
-      const newData: OPUnitDetails = {
-        position: 1,
-        name: this.operatingUnitName,
-        industry: '',
-        type: operatingUnitTypeName, 
-        emailID: 'examplemail.com', 
-        laws: '', 
-        department: '', 
-        actions: '' 
-      };
-      this.data.entityTable.addOpUnitData(newData);
-      this.snackbar.showSuccess("Sucessfully added Operating Unit");
-      this.dialogRef.close();
-      
-    } else {
-      
-      this.snackbar.showError("Please fill all the fields");
-    
-    }
-  }
-
-  CloseDialog(){
-    this.dialogRef.close();
-  }
- 
-  onSelectedValueChanged(value: any,columnvalue: String) {
-   if (columnvalue === 'operatingUnitType'){
-    this.operatingUnitType = value
-   }
-   if (columnvalue === 'states'){
-    this.state = value
-   }
-   if (columnvalue === 'activity'){
-    this.activity = value
-   }
-   if (columnvalue === 'locatedAt'){
-    this.locatedAt = value
-   }
-   if (columnvalue === 'ownership'){
-    this.ownership = value
-   }
-    
-  }
-  
-  findOperatingUnitTypeName(id: any): string  {
-    const operatingUnitType = this.data.operatingUnitTypes.find(type => type.id === id);
-    return operatingUnitType ? operatingUnitType.name : '';
-  }
-}
 
 
 

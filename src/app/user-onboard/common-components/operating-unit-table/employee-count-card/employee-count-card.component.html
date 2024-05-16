@@ -1,4 +1,4 @@
-<mat-card>
+<!-- <mat-card>
     <mat-card-content>
       <form>
         <p>Direct Employees</p>
@@ -47,4 +47,49 @@
 </div>
       </form>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
+
+
+
+
+<mat-card>
+    <mat-card-content>
+      <form>
+        <div *ngFor="let header of header_list; let i = index">
+          <p>{{ header }}</p>
+          <div class="example-full-width d-flex">
+            <mat-form-field appearance="outline">
+              <mat-label>Male</mat-label>
+              <input matInput [(ngModel)]="employeeData[i].male" name="male{{i}}" type="number"
+              (input)="onInputChange()">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Female</mat-label>
+              <input matInput [(ngModel)]="employeeData[i].female" name="female{{i}}" type="number"
+              (input)="onInputChange()">
+            </mat-form-field>
+          </div>
+        </div>
+
+
+  <p>Others</p>
+  <div class=" example-full-width d-flex">
+  <mat-form-field appearance="outline">
+    <mat-label>Apprentices</mat-label>
+    <input matInput name="male" type="number" 
+   [(ngModel)]="apprenticesCount" (input)="emitApprenticesCount()">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Child Labours</mat-label>
+    <input matInput name="female" type="number" 
+    [(ngModel)]="childLaboursCount" (input)="emitChildLaboursCount()">
+  </mat-form-field>
+</div>
+      </form>
+    </mat-card-content>
+  </mat-card> 
+
+
+
+ 
+  

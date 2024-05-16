@@ -7,61 +7,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { NgStyle } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ApiService } from 'src/app/services/api.service';
 import { Input } from '@angular/core';
-
 import {
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
+  MatDialog
 } from '@angular/material/dialog';
-import { DialogData } from '../../component-interfaces';
-import { findIndex } from 'rxjs';
-import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { TreeNode, treeDataitem } from 'src/app/shared/menu-items/tree-items';
-import { DropdownComponent } from '../dropdown/dropdown.component';
-import { MatListModule } from '@angular/material/list';
+import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
+import { AddEntityDialog } from './add-entity-dialog-component';
+import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 
-
-
-export interface BusinessDetails {
-  position: number;
-  name: string;
-  country: string;
-  industry: string;
-  type: string;
-  emailID: string;
-  laws: string;
-  operatingUnit: string;
-  actions: string
-}
-
-interface FormData {
-  name: string;
-  country: string;
-  countryLabel: string;
-  entityType: string;
-  entityTypeLabel: string;
-  industry: string;
-  industryLabel: string;
-  lawModules: string[];
-  lawModulesLabel: string[];
-}
-
-const ELEMENT_DATA: BusinessDetails[] = [];
-
-
-/**
- * @title Adding and removing data when using an array-based datasource.
- */
+const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
@@ -73,12 +32,10 @@ const ELEMENT_DATA: BusinessDetails[] = [];
 
 export class EntityTableComponent {
   constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService) { }
-
-  displayedColumns: string[] = ['position', 'name', 'country', 'industry',
-    'type', 'emailID', 'laws', 'operatingUnit', 'actions'];
+  displayedColumns: string[] = EntityInterfaces.EntityColumns;
   dataSource = [...ELEMENT_DATA];
 
-  @ViewChild(MatTable) table: MatTable<BusinessDetails>;
+  @ViewChild(MatTable) table: MatTable<EntityInterfaces.BusinessDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
   @Input() entityTypesList: any;
@@ -89,19 +46,22 @@ export class EntityTableComponent {
     this.openEntityDialog();
   }
 
-  addEntityData(formData: FormData) {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length)
-    const randomRow = this.dataSource[randomElementIndex];
-
+  addEntityData(formData: EntityInterfaces.FormData) {
     // Create a new row with the same data as the random row
-    const newRow: BusinessDetails = {
-      position: this.dataSource.length + 1, // New position is one greater than the last present row's position
+    const newRow: EntityInterfaces.BusinessDetails = {
+     // New position is one greater than the last present row's position
+      position: this.dataSource.length + 1, 
       name: formData.name,
-      country: formData.countryLabel,
-      industry: formData.industryLabel,
-      type: formData.entityTypeLabel,
+      country: formData.country,
+      countryLabel:formData.countryLabel,
+      industry: formData.industry,
+      industryLabel: formData.industryLabel,
+      entityType: formData.entityType,
+      entityTypeLabel: formData.entityTypeLabel,
       emailID: '',
       laws: '',
+      lawModules:formData.lawModules,
+      lawModulesLabel:formData.lawModulesLabel,
       operatingUnit: '',
       actions: ''
     };
@@ -117,7 +77,6 @@ export class EntityTableComponent {
       this.dataSource[i].position = i + 1;
     }
   }
-
 
   removeEntityData(position: number) {
     // Find the index of the row with the matching position
@@ -136,13 +95,14 @@ export class EntityTableComponent {
   }
 
   openEntityDialog() {
-    const dialogRef = this.dialog.open(AddNewEntityDialog, {
+    const dialogRef = this.dialog.open(AddEntityDialog, {
       data: { entityTable: this }
     });
   }
+
   openLawDialog() {
     const name: string = 'Law List';
-    const dialogRef = this.dialog.open(ViewLawsDialog, {
+    const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
       data: { name: name }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -151,7 +111,7 @@ export class EntityTableComponent {
   }
   openOpDialog() {
     const name: string = 'Operating Unit List';
-    const dialogRef = this.dialog.open(ViewLawsDialog, {
+    const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
       data: { name: name }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -159,21 +119,34 @@ export class EntityTableComponent {
     });
   }
 
-  navigateToAddOpUnit(entity: BusinessDetails[]) {
+  navigateToAddOpUnit(entity: EntityInterfaces.BusinessDetails) {
     this.router.navigate(['/oprating-unit-details'], { state: entity });
   }
 
-
   openEntityMenuDialog(action: string, position: number) {
-    console.log("ACTION SELECTED", action, position);
+    var blankEntity =  {position: position,
+                        name: '',
+                        country: '',
+                        countryLabel:'',
+                        industry: '',
+                        industryLabel:'',
+                        entityType: '',
+                        entityTypeLabel: '',
+                        emailID: '',
+                        laws: '',
+                        lawModules: [],
+                        lawModulesLabel:[],
+                        operatingUnit: '',
+                        actions: ''}
     switch (action) {
       case 'Delete':
         this.removeEntityData(position);
         break;
       case 'Add Operating Unit':
-        const entity = this.dataSource.filter((entity) => entity.position === position)
-        // console.log(entity)
-        // const entityName = entity.name
+        var entity = this.dataSource.find((entity) => entity.position === position);
+        if(entity===undefined){
+          entity = blankEntity
+        }  
         this.navigateToAddOpUnit(entity);
         break
       case 'Edit':
@@ -183,191 +156,3 @@ export class EntityTableComponent {
     }
   }
 }
-
-const initialFormData: FormData = {
-  name: '',
-  country: '',
-  countryLabel:'',
-  entityType: '',
-  entityTypeLabel:'',
-  industry: '',
-  industryLabel:'',
-  lawModules: [],
-  lawModulesLabel:[]
-};
-
-export interface OriginalType {
-  id: number;
-  name: string;
-  description: string;
-}
-
-export interface OriginalIndustryType {
-  iId: number;
-  industry: string;
-  subIndustry: string | null;
-}
-
-export interface TransformedType {
-  value: number;
-  label: string;
-  description: string | null;
-}
-
-function transformEntityTypes(data: OriginalType[]): TransformedType[] {
-  return data.map((item) => ({
-    value: item.id,
-    label: item.name,
-    description: item.description
-  }));
-}
-
-function transformLawCategories(data: OriginalType[]): TransformedType[] {
-  return data.map((item) => ({
-    value: item.id,
-    label: item.description,
-    description: item.description
-  }));
-}
-
-function transformIndustryTypes(data: OriginalIndustryType[]): TransformedType[] {
-  return data.map((item) => ({
-    value: item.iId,
-    label: item.industry,
-    description: item.subIndustry
-  }));
-}
-@Component({
-  selector: 'dialog-elements-example-dialog',
-  templateUrl: 'example-add-new-row-dialog.html',
-  standalone: true,
-  styleUrls: ['./entity-table.component.css'],
-  imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
-    MatSelectModule, CommonModule, DropdownComponent]
-})
-
-export class AddNewEntityDialog {
-  industryTypesList: any;
-  distinctIndutryTypesList: any;
-  transformedEntityList: TransformedType[] = [];
-  transformedIndustryList: TransformedType[] = [];
-  transformedLawCategoryList:TransformedType[]=[];
-
-  countryList = [
-    {"label": "India","value":1},
-    {"label": "Singapore","value":2}
-  ]
-
-  formData:any;
-  formLabeledData:any;
-  selectedCountry:any;
-  selectedEntity:any;
-  selectedIndustry:any;
-  requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
-
-  constructor(@Inject(MAT_DIALOG_DATA) 
-  public data: { entityTable: EntityTableComponent}, 
-  public dialogRef: MatDialogRef<AddNewEntityDialog>,
-  private apiService:ApiService, private snackbar:SnackbarService){
-  
-  this.industryTypesList = this.data.entityTable.industryTypesList;
-
-  this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
-  this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
-
-  this.distinctIndutryTypesList = [];
-  this.formData = initialFormData
-  this.formLabeledData = initialFormData
-
-  const seenIds = new Set();
-  for (let industry of this.industryTypesList) {
-    if (!seenIds.has(industry.iId)) {
-      this.distinctIndutryTypesList.push(industry);
-      seenIds.add(industry.iId);
-    }
-  }
-  this.transformedIndustryList = transformIndustryTypes(this.distinctIndutryTypesList);
-  }
-
-  entityDataitem = treeDataitem;
-
-  onSelectedValueChanged(value:any,field:string){
-    this.formData[field]=value;
-  }
-
-  onTextFieldChange(event:any, field:string){
-    this.formData[field]=event.target.value;
-  }
-
-  addEntity() {
-    const maxId = getMaxIdFromChildren(treeDataitem);   
-
-    let isAnyFieldBlank = false;
-
-    console.log(this.formData)
-
-    for (const field of this.requiredFormDataFields) {
-      if (this.formData.hasOwnProperty(field)) {
-        const fieldValue = this.formData[field as keyof FormData];
-        if (field === "lawModules" && (fieldValue as string[]).length === 0) {
-          isAnyFieldBlank = true;
-          break;
-        } else if (typeof fieldValue === 'string' && fieldValue === '') {
-          isAnyFieldBlank = true;
-          break;
-        }
-      }
-    }
-
-    if (isAnyFieldBlank) {
-      this.snackbar.showError("Please enter all the field values.")
-    }
-
-    else {
-      this.selectedCountry = this.countryList.find((country)=> country.value === this.formData.country);
-      this.selectedEntity = this.transformedEntityList.find((entity)=> entity.value === this.formData.entityType);
-      this.selectedIndustry= this.transformedIndustryList.find((industry)=> industry.value === this.formData.industry);
-  
-      this.formData.countryLabel = this.selectedCountry.label;
-      this.formData.entityTypeLabel = this.selectedEntity.label;
-      this.formData.industryLabel = this.selectedIndustry.label;
-      this.formData.lawModulesLabel = this.formData.lawModules;
-      this.data.entityTable.addEntityData(this.formData);
-      const entity = {
-        id: maxId + 1,
-        label: 'Child Node ' + maxId,
-      }
-      treeDataitem?.children?.push(entity);
-      this.snackbar.showSuccess("Successfully added Entity.");
-      console.log("FORMDATA SUBMITTED", this.formData);
-      this.dialogRef.close();
-    }
-  }
-
-  closeEntityDialog() {
-    this.dialogRef.close();
-  }
-
-}
-
-function getMaxIdFromChildren(node: TreeNode): number {
-  const rootChildren = treeDataitem.children;
-  let maxId = 0;
-
-  if (rootChildren && rootChildren.length > 0) {
-    maxId = Math.max(...rootChildren.map(child => child.id));
-  }
-  return maxId;
-}
-
-@Component({
-  selector: 'dialog-content-example-dialog',
-  templateUrl: 'example-law-details-dialog.html',
-  standalone: true,
-  imports: [MatDialogModule, MatButtonModule, MatListModule],
-})
-
-export class ViewLawsDialog {
-  data = {'name':'Laws'}
-}
-

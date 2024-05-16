@@ -17,7 +17,7 @@ export class OpUnitDetailsPageComponent {
     if (navigation && navigation.extras.state) {
       this.receivedData = navigation.extras.state;
       
-      this.entityDetails = this.receivedData[0] 
+      this.entityDetails = this.receivedData 
     
     }
   }
