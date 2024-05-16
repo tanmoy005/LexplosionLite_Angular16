@@ -1,6 +1,11 @@
 
 <div class="container entity-details-page-container">
 
+  <app-reg-header></app-reg-header>
+  <mat-divider></mat-divider>
+
+ 
+
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-md-12">
     <app-stepper [currentStep]="0"> </app-stepper>
@@ -8,10 +13,18 @@
 </div>
 
 <div class="row app-business-card-container">
-    <div class="col-lg-6 col-md-12 col-sm-12">
-    <app-stepper-helper-text [currentStep]="1" [subStep]="1"></app-stepper-helper-text>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+    <!-- <app-stepper-helper-text [currentStep]="1" [subStep]="1"></app-stepper-helper-text> -->
+    <div class="header">
+    <div class="lets-get-started-layout" style="margin-bottom: 5px;">
+      <p class="lets-get-started-layout-typography">Let’s get started !</p>
     </div>
-    <div class="col-lg-6 col-md-12 col-sm-12">
+    <div class="step-no-layout" style="margin-bottom: 5px;">
+      <p class="step-no-typography">Step 1 of 5</p>
+    </div>
+    </div>
+  </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
     <app-business-card (selectedCountryChange)="getSelectedCountries($event)"></app-business-card>
     </div>
 </div>

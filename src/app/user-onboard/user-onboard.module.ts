@@ -32,7 +32,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { DropdownComponent } from './common-components/dropdown/dropdown.component';
 import { EmployeeCountCardComponent } from './common-components/operating-unit-table/employee-count-card/employee-count-card.component';
 import { AddNewOperatingUnitDialogComponent } from './common-components/operating-unit-table/add-new-operating-unit-dialog/add-new-operating-unit-dialog.component';
-
+import { RegHeaderComponent } from '../authentication/register/reg-header/reg-header.component';
+import { MatDivider } from '@angular/material/divider';
 @NgModule({
   declarations: [
     
@@ -70,6 +71,7 @@ import { AddNewOperatingUnitDialogComponent } from './common-components/operatin
     DropdownComponent,
     EmployeeCountCardComponent,
     AddNewOperatingUnitDialogComponent,
+    RegHeaderComponent
   ],
   exports:[
     BusinessCardComponent

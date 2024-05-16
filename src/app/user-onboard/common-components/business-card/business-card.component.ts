@@ -9,6 +9,7 @@ import { CountryList } from 'src/app/shared/menu-items/country-list';
 import { CountryData } from 'src/app/shared/menu-items/country-list';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { Output, EventEmitter } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -17,7 +18,9 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./business-card.component.css'],
   standalone : true,
   encapsulation: ViewEncapsulation.None,
-  imports: [CommonModule,MatCardModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatIconModule,DropdownComponent],
+  imports: [CommonModule,MatCardModule,MatFormFieldModule,MatInputModule,
+    MatSelectModule,MatIconModule,DropdownComponent,
+    MatButtonModule],
 })
 export class BusinessCardComponent {
   countryList : CountryData[] = CountryList
