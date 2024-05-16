@@ -31,6 +31,7 @@ import { LawsTableComponent } from './common-components/laws-table/laws-table.co
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DropdownComponent } from './common-components/dropdown/dropdown.component';
 import { EmployeeCountCardComponent } from './common-components/operating-unit-table/employee-count-card/employee-count-card.component';
+import { AddNewOperatingUnitDialogComponent } from './common-components/operating-unit-table/add-new-operating-unit-dialog/add-new-operating-unit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { EmployeeCountCardComponent } from './common-components/operating-unit-t
     PaymentSectionComponent,
     EntityDetailsPageComponent,
     OpUnitDetailsPageComponent,
+    
    
     
   ],
@@ -67,6 +69,7 @@ import { EmployeeCountCardComponent } from './common-components/operating-unit-t
     MatFormFieldModule,
     DropdownComponent,
     EmployeeCountCardComponent,
+    AddNewOperatingUnitDialogComponent,
   ],
   exports:[
     BusinessCardComponent
