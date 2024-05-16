@@ -89,7 +89,6 @@ const initialFormData: EntityInterfaces.FormData = {
     private apiService:ApiService, private snackbar:SnackbarService){
     
     this.industryTypesList = this.data.entityTable.industryTypesList;
-  
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
     this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
     var filteredCountryList = CountryList; 
