@@ -1,4 +1,4 @@
-import { Component, ViewChild, Inject } from '@angular/core';
+import { Component, ViewChild, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -12,6 +12,7 @@ import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import {
   MatDialog
 } from '@angular/material/dialog';
@@ -20,6 +21,7 @@ import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { AddEntityDialog } from './add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
+import { EntityDialogService } from 'src/app/services/Dialog.service';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 @Component({
@@ -31,8 +33,12 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
     MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,TreeStructureComponent]
 })
 
-export class EntityTableComponent {
-  constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService) { }
+export class EntityTableComponent implements OnInit, OnDestroy{
+  private subscription: Subscription;
+
+  constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService,
+    private entityDialogService: EntityDialogService
+  ) { }
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
   dataSource = [...ELEMENT_DATA];
 
@@ -43,6 +49,16 @@ export class EntityTableComponent {
   @Input() industryTypesList: any;
   @Input() lawCategoriesList: any;
   @Input() countryList: any;
+
+  ngOnInit(): void {
+    this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
+      this.viewAddEntityDialog();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   viewAddEntityDialog() {
     this.openEntityDialog();
