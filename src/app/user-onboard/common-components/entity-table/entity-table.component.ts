@@ -19,6 +19,7 @@ import { TreeNode, treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { AddEntityDialog } from './add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
+import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 @Component({
@@ -27,7 +28,7 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
   styleUrls: ['./entity-table.component.css'],
   standalone: true,
   imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule]
+    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,TreeStructureComponent]
 })
 
 export class EntityTableComponent {
@@ -46,7 +47,7 @@ export class EntityTableComponent {
   viewAddEntityDialog() {
     this.openEntityDialog();
   }
-
+  treeDataItem = treeDataitem;
   addEntityData(formData: EntityInterfaces.FormData) {
     // Create a new row with the same data as the random row
     const newRow: EntityInterfaces.BusinessDetails = {
