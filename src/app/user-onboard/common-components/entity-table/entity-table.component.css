@@ -11,6 +11,10 @@
  padding:20px;
 }
 
+.entity-details-table table th {
+  background-color: rgb(165, 222, 241);
+}
+
 .entity-details-table{
   min-height: 248px;
   max-height: 250px;
