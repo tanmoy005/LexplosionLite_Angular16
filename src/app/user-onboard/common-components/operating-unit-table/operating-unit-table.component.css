@@ -46,4 +46,9 @@
     display: flex;
   }
 
- 
+::ng-deep .mat-mdc-table tfoot, .mat-mdc-table thead,
+  .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-footer-row, 
+  .mat-mdc-table .mat-mdc-header-cell {
+    background: inherit;
+    background-color: rgb(187, 187, 216);
+}

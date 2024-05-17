@@ -9,6 +9,7 @@ import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-detai
 
 import { EntityComponent } from './entity/entity.component';
 import { SubscriptionDetailsPageComponent } from './subscription-details-page/subscription-details-page.component';
+import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
 
 export const UserOnboardRoutes: Routes = [
   {
@@ -42,6 +43,10 @@ export const UserOnboardRoutes: Routes = [
   {
     path:'subscription',
     component:SubscriptionDetailsPageComponent,
+  },
+  {
+    path:'operatingunit',
+    component:OperatingUnitComponent
   }
 ];
 

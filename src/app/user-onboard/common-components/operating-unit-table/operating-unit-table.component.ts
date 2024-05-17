@@ -126,7 +126,7 @@ fetchstates(){
   })
 }
   displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
-                                'type', 'location', 'zone', 'employees','activities','laws'];
+                                'type', 'location', 'zone', 'employees','activities','laws','actions'];
 
   dataSource = [...ELEMENT_DATA];
 
