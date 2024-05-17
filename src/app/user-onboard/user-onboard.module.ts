@@ -50,14 +50,7 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     PaymentSectionComponent,
     PaymentSectionComponent,
     EntityDetailsPageComponent,
-    OpUnitDetailsPageComponent,
-    SubscriptionDetailsPageComponent,
-    FeaturesComponent,
-    EntityComponent,
-    
-    
-   
-    
+    OpUnitDetailsPageComponent
   ],
   
   imports: [
@@ -83,9 +76,10 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     RegHeaderComponent,
     EntitiesTableHeaderComponent,
     MatIconModule,
+    EntityComponent,
     SubscriptionDetailsPageComponent,
     FeaturesComponent,
-    OperatingUnitComponent
+    OperatingUnitComponent,
   ],
   exports:[
     BusinessCardComponent
