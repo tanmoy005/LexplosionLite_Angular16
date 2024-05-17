@@ -1,0 +1,32 @@
+.entity-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+.entities-layout {
+  width: 82px;
+  height: 29px;
+  top: 408px;
+  left: 168px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.entities-typography {
+  font-family: Barlow;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.8px;
+  text-align: left;
+  color: #786acd;
+}
+.separator {
+  margin: 0 5px;
+}
+
+.route-name {
+  display: flex;
+  align-items: center;
+}

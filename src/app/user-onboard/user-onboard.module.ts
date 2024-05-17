@@ -36,6 +36,8 @@ import { RegHeaderComponent } from '../authentication/register/reg-header/reg-he
 import { MatDivider } from '@angular/material/divider';
 import { SubscriptionDetailsPageComponent } from './subscription-details-page/subscription-details-page.component';
 import { FeaturesComponent } from './subscription-details-page/features/features.component';
+import { EntitiesTableHeaderComponent } from './common-components/entities-table-header/entities-table-header.component';
+import { EntityComponent } from './entity/entity.component';
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
 @NgModule({
   declarations: [
@@ -48,7 +50,14 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     PaymentSectionComponent,
     PaymentSectionComponent,
     EntityDetailsPageComponent,
-    OpUnitDetailsPageComponent
+    OpUnitDetailsPageComponent,
+    SubscriptionDetailsPageComponent,
+    FeaturesComponent,
+    EntityComponent,
+    
+    
+   
+    
   ],
   
   imports: [
@@ -72,6 +81,8 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     EmployeeCountCardComponent,
     AddNewOperatingUnitDialogComponent,
     RegHeaderComponent,
+    EntitiesTableHeaderComponent,
+    MatIconModule,
     SubscriptionDetailsPageComponent,
     FeaturesComponent,
     OperatingUnitComponent

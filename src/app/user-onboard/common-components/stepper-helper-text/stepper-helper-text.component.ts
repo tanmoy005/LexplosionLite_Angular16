@@ -6,8 +6,8 @@ import { Component,Input } from '@angular/core';
   styleUrls: ['./stepper-helper-text.component.css']
 })
 export class StepperHelperTextComponent {
-  @Input() currentStep: number = 0;
-  @Input() subStep: number = 1;
+  @Input() helperText: string = "";
+  @Input() stepText: string = "";
 
   
  
