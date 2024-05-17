@@ -1,9 +1,6 @@
 <div class="container entity-details-page-container">
-
   <app-reg-header></app-reg-header>
   <mat-divider></mat-divider>
-
-
 
   <div class="row">
     <div class="col-lg-12 col-sm-12 col-md-12">
@@ -13,43 +10,53 @@
 
   <div class="row app-business-card-container">
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <app-stepper-helper-text [helperText]="'Let’s get started !'" [stepText]="'Step 1 of 5'"
-        style="width: 100%;"></app-stepper-helper-text>
+      <app-stepper-helper-text
+        [helperText]="'Let’s get started !'"
+        [stepText]="'Step 1 of 5'"
+        style="width: 100%"
+      ></app-stepper-helper-text>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <app-business-card (selectedCountryChange)="getSelectedCountries($event)"></app-business-card>
+      <app-business-card
+        (selectedCountryChange)="getSelectedCountries($event)"
+      ></app-business-card>
     </div>
   </div>
 
-  <app-entities-table-header [path]="['Entities', 'Entities', 'Details']" [buttonName]="'Add New Entity'" (addEntity)="handleAddEntity($event)">
+  <!-- <app-entities-table-header
+    [path]="['Entities', 'Entities', 'Details']"
+    [buttonName]="'Add New Entity'"
+    (addEntity)="handleAddEntity($event)"
+  >
   </app-entities-table-header>
 
-<div class="row">
-  <!-- <div class="col-lg-8 col-md-12 col-sm-12">
-    <app-entity-table 
-    [entityTypesList]="entityTypesList" 
-    [industryTypesList]="industryTypesList"
-    [lawCategoriesList]="lawCategoriesList"
-    [countryList]="countryList" 
-    >
-  </app-entity-table>
-  </div>
+  <div class="row">
+    <div class="col-lg-8 col-md-12 col-sm-12">
+      <app-entity-table
+        [entityTypesList]="entityTypesList"
+        [industryTypesList]="industryTypesList"
+        [lawCategoriesList]="lawCategoriesList"
+        [countryList]="countryList"
+      >
+      </app-entity-table>
+    </div>
 
-  <div class="col-lg-4 col-md-12 col-sm-12">
-  <mat-card class="company-structure-card">
-    <h4>Company Structure</h4>
-    <app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
-  </mat-card>
-
-  </div> -->
-  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <mat-card class="company-structure-card">
+        <h4>Company Structure</h4>
+        <app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
+      </mat-card>
+    </div>
+     <div class="col-lg-12 col-md-12 col-sm-12">
       <app-operating-unit></app-operating-unit>
-  </div>
-</div>
-
+    </div> 
+  </div> -->
+<app-entity></app-entity>
   <div class="row entity-details-next-button-div">
     <div class="col-12">
-      <button class="entity-details-next-button" (click)="showTreeData()"> Next </button>
+      <button class="entity-details-next-button" (click)="showTreeData()">
+        Next
+      </button>
     </div>
   </div>
 </div>
