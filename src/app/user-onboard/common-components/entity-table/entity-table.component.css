@@ -11,9 +11,37 @@
  padding:20px;
 }
 
-.entity-details-table table th {
-  background-color: rgb(165, 222, 241);
+.dark-brown-icon {
+  color: rgba(120, 106, 205, 1); 
+  font-size: 20px;
 }
+
+
+.entity-details-table table th {
+  background-color: rgba(120, 106, 205, 0.04);
+  color: rgba(88, 89, 91, 1);
+  font-family: Barlow;
+font-size: 12px;
+font-weight: 700;
+line-height: 14.4px;
+text-align: left;
+}
+
+.entity-details-table .mdc-data-table__cell, .mdc-data-table__header-cell {
+  border-bottom-color:rgba(120, 106, 205, 0.04);
+}
+
+
+/* .entity-details-table  .mat-header-cell[_ngcontent-ng-c4013717579] {
+  color: rgba(88, 89, 91, 1);
+  font-family: Barlow;
+font-size: 12px;
+font-weight: 700;
+line-height: 14.4px;
+text-align: left;
+
+} */
+
 
 .entity-details-table{
   min-height: 248px;

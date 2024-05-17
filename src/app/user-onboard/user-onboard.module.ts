@@ -36,6 +36,8 @@ import { RegHeaderComponent } from '../authentication/register/reg-header/reg-he
 import { MatDivider } from '@angular/material/divider';
 import { SubscriptionDetailsPageComponent } from './subscription-details-page/subscription-details-page.component';
 import { FeaturesComponent } from './subscription-details-page/features/features.component';
+import { EntitiesTableHeaderComponent } from './common-components/entities-table-header/entities-table-header.component';
+import { EntityComponent } from './entity/entity.component';
 @NgModule({
   declarations: [
     
@@ -50,6 +52,8 @@ import { FeaturesComponent } from './subscription-details-page/features/features
     OpUnitDetailsPageComponent,
     SubscriptionDetailsPageComponent,
     FeaturesComponent,
+    EntityComponent,
+    
     
    
     
@@ -75,7 +79,9 @@ import { FeaturesComponent } from './subscription-details-page/features/features
     DropdownComponent,
     EmployeeCountCardComponent,
     AddNewOperatingUnitDialogComponent,
-    RegHeaderComponent
+    RegHeaderComponent,
+    EntitiesTableHeaderComponent,
+    MatIconModule
   ],
   exports:[
     BusinessCardComponent
