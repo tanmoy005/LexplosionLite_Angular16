@@ -52,7 +52,7 @@ import { EntityComponent } from './entity/entity.component';
     OpUnitDetailsPageComponent,
     SubscriptionDetailsPageComponent,
     FeaturesComponent,
-    EntityComponent,
+    
     
     
    
@@ -81,7 +81,8 @@ import { EntityComponent } from './entity/entity.component';
     AddNewOperatingUnitDialogComponent,
     RegHeaderComponent,
     EntitiesTableHeaderComponent,
-    MatIconModule
+    MatIconModule,
+    EntityComponent,
   ],
   exports:[
     BusinessCardComponent
