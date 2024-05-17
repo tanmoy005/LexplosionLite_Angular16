@@ -6,6 +6,7 @@ import { LawsTablePageComponent } from './laws-table-page/laws-table.component';
 import { CommonComponentsComponent } from './common-components/common-components.component';
 import { EntityDetailsPageComponent } from './entity-details-page/entity-details-page.component';
 import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-details-page.component';
+import { SubscriptionDetailsPageComponent } from './subscription-details-page/subscription-details-page.component';
 
 export const UserOnboardRoutes: Routes = [
   {
@@ -32,5 +33,9 @@ export const UserOnboardRoutes: Routes = [
     path: 'oprating-unit-details',
     component: OpUnitDetailsPageComponent,
   },
+  {
+    path:'subscription',
+    component:SubscriptionDetailsPageComponent,
+  }
 ];
 

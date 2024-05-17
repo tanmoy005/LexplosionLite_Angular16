@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { ApiService } from 'src/app/services/api.service';
 import { RegHeaderComponent } from 'src/app/authentication/register/reg-header/reg-header.component';
+import { OperatingUnitComponent } from '../operating-unit/operating-unit.component';
 
 @Component({
   selector: 'app-entity-details-page',
