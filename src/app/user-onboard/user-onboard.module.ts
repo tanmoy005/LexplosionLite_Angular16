@@ -34,6 +34,8 @@ import { EmployeeCountCardComponent } from './common-components/operating-unit-t
 import { AddNewOperatingUnitDialogComponent } from './common-components/operating-unit-table/add-new-operating-unit-dialog/add-new-operating-unit-dialog.component';
 import { RegHeaderComponent } from '../authentication/register/reg-header/reg-header.component';
 import { MatDivider } from '@angular/material/divider';
+import { SubscriptionDetailsPageComponent } from './subscription-details-page/subscription-details-page.component';
+import { FeaturesComponent } from './subscription-details-page/features/features.component';
 @NgModule({
   declarations: [
     
@@ -46,6 +48,8 @@ import { MatDivider } from '@angular/material/divider';
     PaymentSectionComponent,
     EntityDetailsPageComponent,
     OpUnitDetailsPageComponent,
+    SubscriptionDetailsPageComponent,
+    FeaturesComponent,
     
    
     
