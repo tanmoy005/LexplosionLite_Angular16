@@ -67,6 +67,9 @@ export class AddNewOperatingUnitDialogComponent {
   activity: string = '';
   locatedAt: string = '';
   ownership: string = '';
+  employeeData:any;
+  apprenticeDataCount:any;
+  childLabourDataCount: any
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]},
@@ -95,12 +98,15 @@ export class AddNewOperatingUnitDialogComponent {
       const newData: OPUnitDetails = {
         position: 1,
         name: this.operatingUnitName,
-        industry: this.data.industry,
+        entity:'',
+        ownership:'',
         type: operatingUnitTypeName, 
-        emailID: 'examplemail.com', 
-        laws: '', 
-        department: '', 
-        actions: '' 
+        location:'',
+        zone:'',
+        employees:'',
+        activities:'',
+        laws: '',
+        actions:''
       };
       this.data.entityTable.addOpUnitData(newData);
       this.snackbar.showSuccess("Sucessfully added Operating Unit");
@@ -134,6 +140,21 @@ export class AddNewOperatingUnitDialogComponent {
      this.ownership = value
     }
      
+   }
+
+   employeeCountData(value:any){
+    this.employeeData = value
+    console.log('employee data',value)
+   }
+   
+   apprenticesData(value:any){
+    this.apprenticeDataCount = value
+    console.log('apprentice data',value)
+   }
+   
+   childLabourData(value:any){
+    this.childLabourDataCount = value
+    console.log('child labour data',value)
    }
 
   CloseDialog(){

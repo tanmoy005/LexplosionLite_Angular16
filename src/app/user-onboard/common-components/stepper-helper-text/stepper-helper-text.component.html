@@ -1,39 +1,11 @@
 
-<div class="stepper-helper-text-container">
-<p>Step {{currentStep}} of 3. </p>
-
-<div *ngIf="currentStep === 1">
-    <div *ngIf="subStep === 1">
-        <p>Let’s get started</p>
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="header">
+        <div class="lets-get-started-layout" style="margin-bottom: 5px;">
+            <p class="lets-get-started-layout-typography">{{ helperText }}</p>
+        </div>
+        <div class="step-no-layout" style="margin-bottom: 5px;">
+            <p class="step-no-typography">{{ stepText }}</p>
+        </div>
     </div>
-    <div *ngIf="subStep === 2">
-        <p>Let’s get started</p>
-    </div>
-</div>
-
-<div *ngIf="currentStep === 2">
-    <div *ngIf="subStep === 1">
-        <p>Almost there ! </p>
-        <p>   Just one step away. Select the subscription you want to use  </p>
-    </div>
-    <div *ngIf="subStep === 2">
-        <p>Almost there ! </p>
-        <p>Meanwhile here’s a preliminary list of critical laws for your business  </p>
-    </div>
-    <div *ngIf="subStep === 3">
-        <p>Last step !.</p>
-       
-    </div>
-
-</div>
-  
-<div *ngIf="currentStep === 3">
-    <div *ngIf="subStep === 1">
-        <p>Almost there !</p>
-        <p> Just one step away. Select the subscription you want to use.</p>
-    </div>
-  
-    
-</div>
-
 </div>

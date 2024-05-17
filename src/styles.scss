@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+// todo delete the file
 * {
   margin: 0;
   padding: 0;
@@ -112,27 +112,13 @@ $font-12: 0.9375vw;
   font-weight: 700;
 }
 
-.btn-secondary {
-  background-color: rgba(18, 1, 1, 1);
-  padding: 9.5% 8.5%;
-  border: 1px solid rgba(57, 87, 63, 1); // todo use gradient
-  border-radius: 8px;
-  color: rgba(233, 233, 233, 1);
-  font-size: $font-16;
-  font-weight: 400;
-  cursor: pointer;
-}
+// .btn-secondary {
+//   @include btn($dark-red-100, 9.5% 8.5%, $green-100, 8px, $gray-400);
+// }
 
-.btn-primary {
-  background-color: $primary;
-  padding: 2.34% 8.5%;
-  border: 1px solid $primary; // todo use gradient
-  border-radius: 5px;
-  color: rgba(233, 233, 233, 1);
-  font-size: $font-16;
-  font-weight: 400;
-  cursor: pointer;
-}
+// .btn-primary {
+//   @include btn($primary, 2.34% 8.5%, $primary, 5px, $gray-400);
+// }
 
 .form-container1 {
   display: flex;
@@ -315,3 +301,4 @@ $font-12: 0.9375vw;
   padding: 4.73% 11%;
   // padding: 100px;
 }
+

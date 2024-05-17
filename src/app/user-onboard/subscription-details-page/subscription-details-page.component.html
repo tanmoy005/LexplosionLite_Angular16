@@ -1,0 +1,44 @@
+
+
+<!-- <mat-checkbox>komrisk</mat-checkbox>
+<mat-checkbox>komrisk Lite</mat-checkbox> -->
+
+<div class="container">
+   
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-0 col-xs-0">
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    Sample-content-1
+                    <mat-checkbox class="example-margin" [(ngModel)]="komrisk" (change)="handleCheckboxSelection($event)">Komrisk</mat-checkbox>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+            <mat-card>
+                <mat-card-content>
+                    Sample-content-2
+                    <mat-checkbox class="example-margin" [(ngModel)]="komriskLite">Komrisk Lite</mat-checkbox>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row features-section-card">
+       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <mat-card>
+                <mat-card-header class="features-section-card-header">
+                   <strong>Features</strong>
+                </mat-card-header>
+                
+                <mat-card-content>
+                   <app-features></app-features>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

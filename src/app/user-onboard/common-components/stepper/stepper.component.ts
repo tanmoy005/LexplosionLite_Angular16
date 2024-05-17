@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-stepper',
@@ -17,15 +18,17 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    CommonModule
   ]
 })
 
 export class StepperComponent {
   @Input() currentStep: number = 0;
+  stepperSteps = ["Business Details","Subscription Details", "Preliminary List of Laws", "Payment", "Go Live !"]
+
 
   isStepDisabled(index: number): boolean {
     // If the index is not the current step, disable the step
     return index !== this.currentStep;
   }
-
 }

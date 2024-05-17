@@ -6,11 +6,16 @@ import { StepperHelperTextComponent } from '../common-components/stepper-helper-
 import { MatCardModule } from '@angular/material/card';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { ApiService } from 'src/app/services/api.service';
+import { RegHeaderComponent } from 'src/app/authentication/register/reg-header/reg-header.component';
+import { MatIconModule } from '@angular/material/icon';import { OperatingUnitComponent } from '../operating-unit/operating-unit.component';
 
 @Component({
   selector: 'app-entity-details-page',
   templateUrl: './entity-details-page.component.html',
   styleUrls: ['./entity-details-page.component.css'],
+ 
+ 
+ 
 })
 export class EntityDetailsPageComponent {
 
@@ -18,7 +23,8 @@ export class EntityDetailsPageComponent {
   entityTypesList: any;
   industryTypesList: any;
   lawCategoriesList: any;
-
+  countryList: any;
+  isEntityDialogOpen: boolean
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -40,6 +46,17 @@ export class EntityDetailsPageComponent {
   catch (error) {
       console.log(error)
     }
+  }
+
+  handleAddEntity(event: boolean) {
+    if (event) {
+      console.log('Add New Entity button clicked:', event);
+      // Perform the actions you want to take when the button is clicked
+    }
+  }
+
+  getSelectedCountries(value:any){
+    this.countryList = value;
   }
 
   treeDataItem = treeDataitem;

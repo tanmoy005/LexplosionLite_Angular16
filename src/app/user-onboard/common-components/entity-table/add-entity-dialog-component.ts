@@ -13,6 +13,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
 import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
+import { CountryList, CountryData } from 'src/app/shared/menu-items/country-list';
 
 const initialFormData: EntityInterfaces.FormData = {
     name: '',
@@ -75,11 +76,7 @@ const initialFormData: EntityInterfaces.FormData = {
     transformedEntityList: EntityInterfaces.TransformedType[] = [];
     transformedIndustryList: EntityInterfaces.TransformedType[] = [];
     transformedLawCategoryList:EntityInterfaces.TransformedType[]=[];
-  
-    countryList = [
-      {"label": "India","value":1},
-      {"label": "Singapore","value":2}
-    ]
+    countryList:CountryData[]=[];
   
     formData:any;
     formLabeledData:any;
@@ -89,16 +86,23 @@ const initialFormData: EntityInterfaces.FormData = {
     requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
     dialogHeader: string = 'Edit Entity Details';
   
-    constructor(@Inject(MAT_DIALOG_DATA) 
-    public data: { entityTable: EntityTableComponent}, 
+    constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, 
     public dialogRef: MatDialogRef<AddEntityDialog>,
     private apiService:ApiService, private snackbar:SnackbarService){
     
     this.industryTypesList = this.data.entityTable.industryTypesList;
-  
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
     this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
-  
+    var filteredCountryList = CountryList; 
+    
+    try{
+      filteredCountryList = CountryList.filter(country => this.data.entityTable.countryList.includes(country.value));
+    }
+    catch(error){
+      console.log(error)
+    }
+
+    this.countryList = filteredCountryList;
     this.distinctIndutryTypesList = [];
     this.formData = initialFormData
     this.formLabeledData = initialFormData

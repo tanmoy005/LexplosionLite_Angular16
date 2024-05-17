@@ -67,8 +67,30 @@ const ELEMENT_DATA: OPUnitDetails[] = [
 })
 
 export class OperatingUnitTableComponent implements OnInit{
+  
   constructor(public dialog: MatDialog,private router: Router, private fieldDefinitionService: ApiService) {}
-
+  @Input() entity = {
+    "position": 1,
+    "name": "Test Entity",
+    "country": 1,
+    "countryLabel": "India",
+    "industry": 3,
+    "industryLabel": "Manufacturing",
+    "entityType": 1,
+    "entityTypeLabel": "Company",
+    "emailID": "",
+    "laws": "",
+    "lawModules": [
+        1,
+        2
+    ],
+    "lawModulesLabel": [
+        "Labour",
+        "Operational"
+    ],
+    "operatingUnit": "",
+    "actions": ""
+  };
   operatingUnitTypes: any;
   states: any
 
@@ -83,6 +105,7 @@ export class OperatingUnitTableComponent implements OnInit{
       }]; 
     }
     this.fetchOperatingUniTypes();
+
   }
 
   fetchOperatingUniTypes(){
@@ -93,6 +116,7 @@ export class OperatingUnitTableComponent implements OnInit{
    this.operatingUnitTypes = response.data.operatingUnitTypes;
   })
 }
+
 fetchstates(){
   const fieldPayload=['states']
 
@@ -101,17 +125,16 @@ fetchstates(){
    this.states = response.data.states;
   })
 }
-  displayedColumns: string[] = ['position', 'name', 'industry', 
-                                 'type','emailID','laws','department','actions'];
+  displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
+                                'type', 'location', 'zone', 'employees','activities','laws'];
+
   dataSource = [...ELEMENT_DATA];
 
   @ViewChild(MatTable) table: MatTable<OPUnitDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
-  @Input() entity:any;
-
+ 
 
   
-
   addOpUnitData(newData: OPUnitDetails) {
     newData['position'] = this.dataSource.length + 1
     this.dataSource.push(newData);
@@ -144,10 +167,6 @@ fetchstates(){
       this.table.renderRows();
     }
   }
-  
-
- 
-
   
   openEntityDialog(entityName: string) {
     const dialogRef = this.dialog.open(AddNewOperatingUnitDialogComponent, {

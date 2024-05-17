@@ -54,7 +54,11 @@
 </mat-card>
 </div>
 <div class="col-lg-4">
- <app-employee-count-card></app-employee-count-card>
+ <app-employee-count-card
+ (employeeDataChange)="employeeCountData($event)"
+ (apprenticesChange)="apprenticesData($event)"
+ (childLaboursChange)="childLabourData($event)"
+ ></app-employee-count-card>
 </div>
 
 </div>
