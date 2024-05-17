@@ -152,7 +152,9 @@ $green-100: rgba(57, 87, 63, 1); // Green using RGBA values
 
 /*Blue Color Start*/
 $blue-light-100: rgba(0, 145, 208, 1); // Light blue using RGBA values
+$blue-light-200: rgba(213, 230, 239, 1); // Light blue using RGBA values
 $blue-dark-100: rgb(1, 67, 97, 1); // Dark blue using RGB values
+
 
 /*Gray Color Start*/
 
@@ -161,6 +163,11 @@ $gray-200: rgba(243, 243, 243, 1); // Light gray
 $gray-300: rgba(217, 217, 217, 0.36); // Faint gray
 $gray-400: rgba(233, 233, 233, 1); // Pale silver
 $gray-500: rgba(248, 248, 248, 0.76); // Semi-opaque white
+$gray-600: rgba(247, 247, 248, 1); // Semi-opaque white
+$gray-700: rgba(192, 192, 192, 1); // Semi-opaque white
+$gray-800: rgba(244, 244, 244, 1); // Semi-opaque white
+$gray-900: rgba(164, 164, 164, 1); // Semi-opaque white
+$gray-1000: rgba(88, 89, 91, 1); // Semi-opaque white
 
 /*Gray Color Ends*/
 
@@ -186,6 +193,16 @@ $card-brd: #d7dfe3;
 $dark-text: #848a96;
 $radius: 4px;
 $form-brd: #d9d9d9;
+
+// Heights 
+$h8px: 1vh;
+$h40px:  4.80vh;
+$h56px:  6.73vh;
+
+
+// Width
+$w440px: 34.375vw;
+$w776px: 60.625vw;
 
 $size_16px: 1.12vw;
 $size_24px: 1.85vw;

@@ -1,0 +1,24 @@
+@use 'variable' as var;
+
+.big-text-input{
+    .mat-mdc-text-field-wrapper{
+        height: 56px;
+        border-radius: 5px;
+        // border: 1px sollid $gray-700;
+        border: 1px solid $gray-700;
+        background-color: $gray-800;
+    }
+    
+}
+.dropdown-label{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    // todo set the svg ofdropdown at right position
+//     label{
+//         height: 100%;
+//         display: flex;
+//    align-items: center;
+//     }
+}

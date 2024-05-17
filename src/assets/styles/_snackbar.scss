@@ -1,0 +1,40 @@
+@use 'variable' as var;
+
+@mixin snackbar-model($type) {
+    .mdc-snackbar__surface {
+        @if ($type=='success') {
+            background-color: var.$dark-green-200 !important;
+        }
+
+        @else if($type=='error') {
+            background-color: var.$red-200 !important;
+        }
+
+        @else if($type=='info') {
+            background-color: var.$blue-dark-100 !important;
+        }
+
+        @else {
+            background-color: var.$brown-100 !important;
+        }
+
+        color: var.$white !important;
+        border-radius: 4px;
+    }
+}
+
+.custom-error-snackbar {
+    @include snackbar-model('error');
+}
+
+.custom-success-snackbar {
+    @include snackbar-model('success');
+}
+
+.custom-info-snackbar {
+    @include snackbar-model('info');
+}
+
+.custom-warning-snackbar {
+    @include snackbar-model('warning');
+}

@@ -24,7 +24,7 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
-  styleUrls: ['./entity-table.component.css'],
+  styleUrls: ['./entity-table.component.scss'],
   standalone: true,
   imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
     MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule]

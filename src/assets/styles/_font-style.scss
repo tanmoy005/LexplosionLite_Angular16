@@ -15,11 +15,6 @@ $opensans-path: '#{$font-path}Open_Sans/static/';
 
 // Assuming $font-24 and $font-12 are defined elsewhere in your SCSS files
 
-@mixin text_W400($font-size, $font-weight: 400) {
-  font-size: $font-size;
-  font-weight: $font-weight;
-}
-
 // Define font faces using mixins
 @include font-face('Barlow', '#{$barlow-path}Barlow-Regular.ttf', normal, normal);
 @include font-face('Barlow', '#{$barlow-path}Barlow-Bold.ttf', bold, normal);

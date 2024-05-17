@@ -1,0 +1,58 @@
+@import '../../../../assets/styles/variable.scss';
+
+.mat-header-row {
+  height: 35px;
+  /* Set the desired height */
+  background-color: #F0F0F0;
+  /* Set the background color */
+}
+
+.mat-header-cell {
+  color: black;
+}
+
+.entity-details-container {
+  padding: 20px;
+}
+
+.entity-details-table {
+  min-height: 248px;
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.entity-add-button-container {
+  margin-bottom: 20px;
+}
+
+.entity-add-button {
+  height: 40px;
+  width: 130px;
+}
+
+.entity-table-button {
+  height: 40px;
+  width: 50px
+}
+
+.entity-label {
+  margin-bottom: 10px;
+}
+
+.entity-form {
+  width: 100%;
+}
+
+.entity-form-field {
+  width: 100%
+}
+
+.dialog-button {
+  height: 30px;
+  width: 60px;
+}
+
+.entity-dialog {
+  width: $w440px;
+}

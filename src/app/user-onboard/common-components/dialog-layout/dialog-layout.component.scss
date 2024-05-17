@@ -1,0 +1,14 @@
+@import '../../../../assets/styles/variable.scss';
+
+.dialog-header {
+    background-color: $purple-100;
+    display: flex;
+    padding: $h8px $size_32px;
+    align-items: flex-end;
+    .dialog-name{
+        margin-left: 24px;
+    }
+}  
+.dialog-content-container{
+    padding: $h40px $size_38px;
+} 

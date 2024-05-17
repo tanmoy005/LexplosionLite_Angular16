@@ -15,9 +15,7 @@ File: scss
 @import 'mixins/spacing';
 @import 'mixins/color';
 @import 'mixins/font';
-
 @import 'grid/grid';
-
 @import 'component/global';
 @import 'component/heading';
 @import 'component/header';
@@ -27,7 +25,10 @@ File: scss
 @import 'component/dashboard';
 @import 'font-style';
 @import 'button';
+@import 'snackbar';
 @import 'responsive';
+@import 'input';
+@import 'text';
 @import "../styles/icons/material-design-iconic-font/css/materialdesignicons.min.css";
 
 
@@ -43,64 +44,6 @@ File: scss
     border-radius: 16px;
 }
 
-.text_25_700 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: $font-color-dark;
-    font-family: Barlow;
-}
-
-.text_24_400_dark {
-    @include text_W400($font-24);
-    line-height: 40px;
-    color: $font-color-dark;
-    font-family: Barlow;
-}
-
-.text_24_400_blue {
-    @include text_W400($font-24);
-    line-height: 40px;
-    color: $font-color-blue;
-    font-family: Barlow;
-}
-
-.text_56_800 {
-    // font-size: $font-56;
-    font-size: $font-56;
-    font-weight: 800;
-    color: $font-color-light;
-    line-height: 78.79px;
-    text-transform: uppercase;
-    // font-family: 'Open Sans';
-}
-
-.text_16_700 {
-    color: $font-color-dark;
-    font-size: $font-16;
-    font-weight: 700;
-}
-
-// .btn-secondary {
-//     background-color: $red-100;
-//     padding: 9.5% 8.5%;
-//     border: 1px solid $green-100; // todo use gradient
-//     border-radius: 8px;
-//     color: $gray-400;
-//     font-size: $font-16;
-//     font-weight: 400;
-//     cursor: pointer;
-// }
-
-// .btn-primary {
-//     background-color: $primary;
-//     padding: 2.34% 8.5%;
-//     border: 1px solid $primary; // todo use gradient
-//     border-radius: 5px;
-//     color: $gray-400;
-//     font-size: $font-16;
-//     font-weight: 400;
-//     cursor: pointer;
-// }
 
 .form-container1 {
     display: flex;
@@ -140,7 +83,6 @@ File: scss
             height: 7.885vh !important;
             //    min-height: 48px;
         }
-
         label {
             font-size: $font-12;
         }
@@ -160,93 +102,24 @@ File: scss
 .mt-42 {
     margin-top: $mt-42;
 }
+.mr-40 {
+    margin-top: 40px;
+}
 
 .mt--10 {
     margin-top: -$mt-10;
 }
-
-.custom-error-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $red-200 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
+.mt-22 {
+    margin-top: 22px;
 }
-
-.custom-success-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $dark-green-200 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
+.ml-40{
+    margin-left: 40px;
 }
-
-.custom-info-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $blue-dark-100 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
+.radio_selection{
+    display: flex;
+    flex-direction: column;
+ 
 }
-
-.custom-warning-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $brown-100 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
-}
-
-
-.custom-success-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $dark-green-200 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
-}
-
-.custom-info-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $blue-dark-100 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
-}
-
-.custom-warning-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $brown-100 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
-}
-
-
-.custom-success-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $dark-green-200 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
-}
-
-.custom-info-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $blue-dark-100 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
-}
-
-.custom-warning-snackbar {
-    .mdc-snackbar__surface {
-        background-color: $brown-100 !important;
-        color: $white !important;
-        border-radius: 4px;
-    }
-}
-
 
 
 .mat-mdc-raised-button.mat-warn {
@@ -262,9 +135,6 @@ File: scss
 .mat-mdc-outlined-button.mat-unthemed {
     --mdc-outlined-button-label-text-color: $purple-100;
 }
-
-
-
 
 .mat-mdc-raised-button.mat-warn {
     --mdc-protected-button-container-color: $purple-100;
@@ -284,4 +154,25 @@ File: scss
     // padding: 6.73% 13%;
     padding: 4.73% 11%;
     // padding: 100px;
+}
+.field-container{
+    display: flex;
+}
+.field-serial-no{
+    margin-right: 37px;
+}
+.app-dropdown{
+    .mat-mdc-text-field-wrapper{
+        background-color: $blue-light-200;
+        height: 40px;
+        border-radius: 3px;
+        border: 1px solid $blue-light-200;
+    }
+}
+.divider {
+    width: 100%; /* Adjust the width as needed */
+    border: 1px solid rgba(214, 214, 214, 1);
+  }
+.w-240px{
+    width: 18.75vw;
 }

@@ -44,10 +44,7 @@ import { AddNewOperatingUnitDialogComponent } from './common-components/operatin
     PaymentSectionComponent,
     PaymentSectionComponent,
     EntityDetailsPageComponent,
-    OpUnitDetailsPageComponent,
-    
-   
-    
+    OpUnitDetailsPageComponent
   ],
   
   imports: [

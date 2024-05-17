@@ -12,6 +12,7 @@ import { EntityTableComponent } from './entity-table.component';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
+import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
 
 const initialFormData: EntityInterfaces.FormData = {
     name: '',
@@ -63,9 +64,9 @@ const initialFormData: EntityInterfaces.FormData = {
     selector: 'dialog-elements-example-dialog',
     templateUrl: 'add-new-entity-dialog.html',
     standalone: true,
-    styleUrls: ['./entity-table.component.css'],
+    styleUrls: ['./entity-table.component.scss'],
     imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
-      MatSelectModule, CommonModule, DropdownComponent]
+      MatSelectModule, CommonModule, DropdownComponent, DialogLayoutComponent]
   })
   
   export class AddEntityDialog {
@@ -86,6 +87,7 @@ const initialFormData: EntityInterfaces.FormData = {
     selectedEntity:any;
     selectedIndustry:any;
     requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
+    dialogHeader: string = 'Edit Entity Details';
   
     constructor(@Inject(MAT_DIALOG_DATA) 
     public data: { entityTable: EntityTableComponent}, 
