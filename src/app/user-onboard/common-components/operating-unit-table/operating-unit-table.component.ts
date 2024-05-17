@@ -125,8 +125,9 @@ fetchstates(){
    this.states = response.data.states;
   })
 }
-  displayedColumns: string[] = ['position', 'name', 'industry', 
-                                 'type','emailID','laws','department','actions'];
+  displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
+                                'type', 'location', 'zone', 'employees','activities','laws'];
+
   dataSource = [...ELEMENT_DATA];
 
   @ViewChild(MatTable) table: MatTable<OPUnitDetails>;

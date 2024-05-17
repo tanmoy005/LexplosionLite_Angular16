@@ -98,12 +98,15 @@ export class AddNewOperatingUnitDialogComponent {
       const newData: OPUnitDetails = {
         position: 1,
         name: this.operatingUnitName,
-        industry: this.data.industry,
+        entity:'',
+        ownership:'',
         type: operatingUnitTypeName, 
-        emailID: 'examplemail.com', 
-        laws: '', 
-        department: '', 
-        actions: '' 
+        location:'',
+        zone:'',
+        employees:'',
+        activities:'',
+        laws: '',
+        actions:''
       };
       this.data.entityTable.addOpUnitData(newData);
       this.snackbar.showSuccess("Sucessfully added Operating Unit");

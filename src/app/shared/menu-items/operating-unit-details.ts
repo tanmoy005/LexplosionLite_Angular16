@@ -1,10 +1,13 @@
 export interface OPUnitDetails {
     position: number;
     name: string;
-    industry: string;
+    entity:string;
+    ownership:string;
     type: string;
-    emailID:string;
-    laws: string; 
-    department: string; 
+    location:string;
+    zone:string;
+    employees:string;
+    activities:string;
+    laws: string;  
     actions:string
   }
