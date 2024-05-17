@@ -23,7 +23,7 @@ export class EntityDetailsPageComponent {
   entityTypesList: any;
   industryTypesList: any;
   lawCategoriesList: any;
-  countryList: any;
+  countryList: [];
   isEntityDialogOpen: boolean
 
   constructor(private router: Router, private apiService: ApiService) {
