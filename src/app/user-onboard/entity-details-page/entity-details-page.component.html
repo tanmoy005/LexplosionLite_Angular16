@@ -59,7 +59,8 @@
 
   <div class="entity-operating-unit-section" *ngIf="isAddOperatingUnitClicked">
     <app-operating-unit
-    (isBackClicked)="handleBackClick($event)"></app-operating-unit>
+    (isBackClicked)="handleBackClick($event)"
+    [entity]="selectedEntity"></app-operating-unit>
   </div>
 
   <!-- <div class="row entity-details-next-button-div">

@@ -33,11 +33,11 @@ export class EntityComponent {
   lawCategoriesList:any= ['labour'];
   //countryList: any=[];
   isEntityDialogOpen: boolean
-  selectedEntity:  EntityInterfaces.BusinessDetails
+  selectedEntity:  any
   
 
   @Input() countryList: [] = [];
-  @Output() selectedEntityEmitter = new EventEmitter<EntityInterfaces.BusinessDetails>();
+  @Output() selectedEntityEmitter = new EventEmitter<any>();
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -67,7 +67,13 @@ export class EntityComponent {
       // Perform the actions you want to take when the button is clicked
     }
   }
-  handleEntitySelected(entity: EntityInterfaces.BusinessDetails) {
+  // handleEntitySelected(entity: EntityInterfaces.BusinessDetails) {
+  //   console.log('Selected entity:', entity);
+  //   this.selectedEntity= entity
+  //   this.selectedEntityEmitter.emit(this.selectedEntity);
+   
+  // }
+  handleEntitySelected(entity: any) {
     console.log('Selected entity:', entity);
     this.selectedEntity= entity
     this.selectedEntityEmitter.emit(this.selectedEntity);

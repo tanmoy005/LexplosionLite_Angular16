@@ -27,20 +27,20 @@ export class EntityDetailsPageComponent {
   lawCategoriesList: any;
   countryList: [];
   isEntityDialogOpen: boolean
-  selectedEntity: EntityInterfaces.BusinessDetails={
+  selectedEntity: any={
     "position": 1,
     "name": "Test Entity",
-    "country": "1",
+    "country": 1,
     "countryLabel": "India",
-    "industry": "3",
+    "industry": 3,
     "industryLabel": "Manufacturing",
-    "entityType": "1",
+    "entityType": 1,
     "entityTypeLabel": "Company",
     "emailID": "",
     "laws": "",
     "lawModules": [
-        "1",
-        "2"
+      1,
+      2
     ],
     "lawModulesLabel": [
         "Labour",
@@ -90,9 +90,12 @@ export class EntityDetailsPageComponent {
   goToSubscription(){
     this.router.navigate(['/subscription'], { state: { entity: '' } });
   }
-  handleSelectedEntity(entity: EntityInterfaces.BusinessDetails) {
+
+
+  handleSelectedEntity(entity: any) {
     console.log('Selected entity in page:', entity);
     this.isAddOperatingUnitClicked= true
+    this.selectedEntity= entity
     
   }
 
