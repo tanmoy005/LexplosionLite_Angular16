@@ -1,4 +1,4 @@
-import { Component, ViewChild, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, Inject, OnInit, OnDestroy,EventEmitter  } from '@angular/core';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { Input } from '@angular/core';
+import { Input,Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {
   MatDialog
@@ -23,7 +23,30 @@ import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
 import { DialogService } from 'src/app/services/Dialog.service';
 
-const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
+const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [
+  {
+    "position": 1,
+    "name": "Test Entity 1",
+    "country": "1",
+    "countryLabel": "India",
+    "industry": "3",
+    "industryLabel": "Manufacturing",
+    "entityType": "1",
+    "entityTypeLabel": "Company",
+    "emailID": "",
+    "laws": "",
+    "lawModules": [
+      "1",
+      "2"
+    ],
+    "lawModulesLabel": [
+      "Labour",
+      "Operational"
+    ],
+    "operatingUnit": "",
+    "actions": ""
+  }
+];
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
@@ -49,6 +72,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   @Input() industryTypesList: any;
   @Input() lawCategoriesList: any;
   @Input() countryList: any;
+
+  @Output() entitySelected = new EventEmitter<EntityInterfaces.BusinessDetails>();
 
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
@@ -88,25 +113,25 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
 
   rearrangeDataSource() {
-    // Sort the dataSource by position
+   
     this.dataSource.sort((a, b) => a.position - b.position);
-    // Update the position numbering of the rows
+   
     for (let i = 0; i < this.dataSource.length; i++) {
       this.dataSource[i].position = i + 1;
     }
   }
 
   removeEntityData(position: number) {
-    // Find the index of the row with the matching position
+   
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
 
-    // Check if the rowIndex is valid
+
     if (rowIndex !== -1) {
-      // Remove the element at the found index
+ 
       this.dataSource.splice(rowIndex, 1);
-      // Rearrange the position numbering of the remaining rows
+      
       this.rearrangeDataSource();
-      // Re-render the table rows
+
       this.table.renderRows();
       treeDataitem?.children?.splice(rowIndex, 1)
     }
@@ -142,7 +167,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
 
   navigateToAddOpUnit(entity: EntityInterfaces.BusinessDetails) {
-    this.router.navigate(['/oprating-unit-details'], { state: entity });
+    this.entitySelected.emit(entity);
+    // this.router.navigate(['/oprating-unit-details'], { state: entity });
   }
 
   openEntityMenuDialog(action: string, position: number) {

@@ -5,7 +5,7 @@
 //====================================== Testing Version ===========================//
 
 
-import { Component, ViewChild, Inject, OnInit } from '@angular/core';
+import { Component, ViewChild, Inject, OnInit , OnDestroy } from '@angular/core';
 
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -45,7 +45,8 @@ import { AddNewOperatingUnitDialogComponent } from './add-new-operating-unit-dia
 
 import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details';
 
-
+import { DialogService } from 'src/app/services/Dialog.service';
+import { Subscription } from 'rxjs';
 
 const ELEMENT_DATA: OPUnitDetails[] = [
 
@@ -67,8 +68,10 @@ const ELEMENT_DATA: OPUnitDetails[] = [
 })
 
 export class OperatingUnitTableComponent implements OnInit {
-
-  constructor(public dialog: MatDialog, private router: Router, private fieldDefinitionService: ApiService) { }
+  private subscription: Subscription;
+  constructor(public dialog: MatDialog, private router: Router, private fieldDefinitionService: ApiService,
+    private opDialogService: DialogService
+  ) { }
   @Input() entity = {
     "position": 1,
     "name": "Test Entity",
@@ -107,6 +110,20 @@ export class OperatingUnitTableComponent implements OnInit {
     this.fetchstates();
     this.fetchOperatingUniTypes();
 
+    
+    this.subscription = this.opDialogService.openDialog$.subscribe(() => {
+      this.openEntityDialog(this.entity.name);
+    });
+  }
+
+  // ngOnInit(): void {
+  //   this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
+  //     this.viewAddEntityDialog();
+  //   });
+  // }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   fetchOperatingUniTypes() {
@@ -135,6 +152,7 @@ export class OperatingUnitTableComponent implements OnInit {
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
 
+ 
 
   addOpUnitData(newData: OPUnitDetails) {
     newData['position'] = this.dataSource.length + 1

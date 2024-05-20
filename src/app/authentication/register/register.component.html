@@ -1,36 +1,46 @@
 <div>
-  <mat-card style="display: contents;">
+  <mat-card style="display: contents">
     <app-reg-header></app-reg-header>
     <mat-divider></mat-divider>
-    <div class="col-lg-4" style="margin-top: 40px;">
-      <div class="get-start-for-free" style="margin-bottom: 50px ; margin-left: 20px;">
-        <p class=" get-started-for-free-typography">Get started for free</p>
+    <div class="col-lg-4" style="margin-top: 40px">
+      <div
+        class="get-start-for-free"
+        style="margin-bottom: 50px; margin-left: 20px"
+      >
+        <p class="get-started-for-free-typography">Get started for free</p>
       </div>
 
-      <div about-yourself style="margin-bottom: 20px;margin-left: 20px;">
-        <p class="about-yourself-typography">Tell us something about yourself!</p>
+      <div about-yourself style="margin-bottom: 20px; margin-left: 20px">
+        <p class="about-yourself-typography">
+          Tell us something about yourself!
+        </p>
       </div>
       <mat-card-content>
-
         <form>
-
           <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput name="username" [formControl]="usernameFormControl">
-
+            <input
+              matInput
+              name="username"
+              [formControl]="usernameFormControl"
+            />
           </mat-form-field>
 
           <!-- <input type="text" class="styled-input" placeholder="Enter text here"> -->
 
-
           <mat-form-field appearance="outline">
             <mat-label>Business Name</mat-label>
-            <input matInput name="businessname" [formControl]="companynameFormControl">
-            <mat-error *ngIf="companynameFormControl.hasError('required')">Business Name is
-              <strong>required</strong></mat-error>
+            <input
+              matInput
+              name="businessname"
+              [formControl]="companynameFormControl"
+            />
+            <mat-error *ngIf="companynameFormControl.hasError('required')"
+              >Business Name is <strong>required</strong></mat-error
+            >
           </mat-form-field>
 
-          <div class=" example-full-width d-flex">
+          <div class="example-full-width d-flex">
             <!-- 
                   <mat-form-field class="country-code-full-width" style="margin-right: 10px;" appearance="outline">
                     <mat-label>+91</mat-label>
@@ -40,49 +50,75 @@
                     <mat-error *ngIf="countryCodeFormControl.hasError('invalidCountryCode')">Country Code must be a two-digit number</mat-error>
                   </mat-form-field> -->
 
-            <app-dropdown [label]="'Country'" [options]="countryList" [IsMultiSelection]="false" [IsRequired]="false" ></app-dropdown>
-
-
-
+            <app-dropdown
+              [label]="'Country'"
+              [options]="countryList"
+              [IsMultiSelection]="false"
+              [IsRequired]="false"
+            ></app-dropdown>
 
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Phone Number</mat-label>
-              <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"
-                [formControl]="phoneNumberFormControl">
+              <input
+                matInput
+                type="tel"
+                placeholder="Ex. 9999900000"
+                name="phoneNumber"
+                [formControl]="phoneNumberFormControl"
+              />
 
-              <mat-error *ngIf="phoneNumberFormControl.hasError('required')">Phone Number is
-                <strong>required</strong></mat-error>
-              <mat-error *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')">Invalid Phone Number</mat-error>
+              <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
+                >Phone Number is <strong>required</strong></mat-error
+              >
+              <mat-error
+                *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')"
+                >Invalid Phone Number</mat-error
+              >
             </mat-form-field>
           </div>
 
-          <mat-checkbox style="margin-left: -10px;" color="primary">
+          <mat-checkbox style="margin-left: -10px" color="primary">
             <span class="agree-to-label">
               I agree to
               <button mat-button (click)="termsConditionModalOpen()">
-                <p style="color: blue;"> terms and conditions </p>
+                <p style="color: blue">terms and conditions</p>
               </button>
             </span>
           </mat-checkbox>
 
-          <mat-checkbox style="margin-left: -10px; margin-bottom: 10px;" color="primary">
+          <mat-checkbox
+            style="margin-left: -10px; margin-bottom: 10px"
+            color="primary"
+          >
             <span class="consent-label">
-              I consent to receiving promotional information about compliance management
+              I consent to receiving promotional information about compliance
+              management
             </span>
           </mat-checkbox>
 
-
-          <div style="margin-left: 10px; margin-bottom: 20px; margin-top: 10px;">
+          <div style="margin-left: 10px; margin-bottom: 20px; margin-top: 10px">
             <p class="login-credential-typography">Create login Credentials</p>
           </div>
 
           <mat-form-field appearance="outline">
             <mat-label>Email ID/Username</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
-              name="email">
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Please enter
-              a valid email address</mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
+            <input
+              type="email"
+              matInput
+              [formControl]="emailFormControl"
+              placeholder="Ex. pat@example.com"
+              name="email"
+            />
+            <mat-error
+              *ngIf="
+                emailFormControl.hasError('email') &&
+                !emailFormControl.hasError('required')
+              "
+              >Please enter a valid email address</mat-error
+            >
+            <mat-error *ngIf="emailFormControl.hasError('required')"
+              >Email is <strong>required</strong></mat-error
+            >
           </mat-form-field>
 
           <!-- <mat-form-field appearance="outline" >
@@ -91,20 +127,17 @@
                   <mat-error *ngIf="passwordFormControl.hasError('required')">Password is <strong>required</strong></mat-error>
                 </mat-form-field> -->
 
-
-
-
           <div class="example-button-row">
-            <button mat-raised-button color="warn" (click)="handleRegistration($event)">Verify Email ID</button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="handleRegistration($event)"
+            >
+              Verify Email ID
+            </button>
           </div>
-
         </form>
-
       </mat-card-content>
-
     </div>
-
-
-
   </mat-card>
 </div>

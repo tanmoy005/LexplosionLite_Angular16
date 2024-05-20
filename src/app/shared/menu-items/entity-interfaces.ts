@@ -1,19 +1,37 @@
+// export interface BusinessDetails {
+//     position: number;
+//     name: string;
+//     country: string;
+//     countryLabel: string,
+//     industry: string;
+//     industryLabel:string;
+//     entityType: string;
+//     entityTypeLabel: string;
+//     emailID: string;
+//     laws: string;
+//     lawModules: string[],
+//     lawModulesLabel:string[],
+//     operatingUnit: string;
+//     actions: string
+//   }
+
 export interface BusinessDetails {
-    position: number;
-    name: string;
-    country: string;
-    countryLabel: string,
-    industry: string;
-    industryLabel:string;
-    entityType: string;
-    entityTypeLabel: string;
-    emailID: string;
-    laws: string;
-    lawModules: string[],
-    lawModulesLabel:string[],
-    operatingUnit: string;
-    actions: string
-  }
+  position: number;
+  name: string;
+  country: string;
+  countryLabel: string,
+  industry: string;
+  industryLabel:string;
+  entityType: string;
+  entityTypeLabel: string;
+  emailID: string;
+  laws: string;
+  lawModules: string[],
+  lawModulesLabel:string[],
+  operatingUnit: string;
+  actions: string
+}
+
 
   export interface FormData {
     name: string;

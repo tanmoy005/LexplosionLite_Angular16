@@ -1,19 +1,23 @@
-
 <div class="container">
-
-<div class="row opUnit-details-page-entity-section">
+  <app-table-add-header [path]="['Entities']" [buttonName]="'Add New Entity'">
+  </app-table-add-header>
+  <div class="row opUnit-details-page-entity-section">
     <div class="col-lg-8 col-md-12 col-sm-12">
       <app-operating-unit-table></app-operating-unit-table>
     </div>
-  
- <div class="col-lg-4 col-md-12 col-sm-12">
-    <mat-card>
-      <mat-card-header>Company Structure</mat-card-header>
-      <mat-card-content>
-      <app-tree-structure [rootNode]="treeDataItem">
-      </app-tree-structure>
-    </mat-card-content>
-    </mat-card>
+
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <mat-card>
+        <mat-card-header>Company Structure</mat-card-header>
+        <mat-card-content>
+          <app-tree-structure [rootNode]="treeDataItem"> </app-tree-structure>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-</div>
+  <div class="col-12">
+    <button mat-stroked-button (click)="onBackClick()">
+      <mat-icon>keyboard_arrow_left</mat-icon>Back
+    </button>
+  </div>
 </div>

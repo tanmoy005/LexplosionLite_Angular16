@@ -1,10 +1,13 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output ,EventEmitter} from '@angular/core';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { OperatingUnitTableComponent } from '../common-components/operating-unit-table/operating-unit-table.component';
 import { TreeStructureComponent } from '../common-components/tree-structure/tree-structure.component';
+import { TableHeaderComponent } from '../common-components/table-header/table-add-header.component';
+
+
 
 @Component({
   selector: 'app-operating-unit',
@@ -12,9 +15,10 @@ import { TreeStructureComponent } from '../common-components/tree-structure/tree
   styleUrls: ['./operating-unit.component.scss'],
   standalone:true,
   imports:[MatIconModule, MatButtonModule, MatCardModule, OperatingUnitTableComponent, 
-          TreeStructureComponent]
+          TreeStructureComponent,TableHeaderComponent]
 })
 export class OperatingUnitComponent {
+  @Output() isBackClicked = new EventEmitter<boolean>();
   @Input() entityDetails:any;
   @Input() entity = {
     "position": 1,
@@ -40,4 +44,7 @@ export class OperatingUnitComponent {
   };
 
   treeDataItem = treeDataitem;
+  onBackClick() {
+    this.isBackClicked.emit(true);
+  }
 }
