@@ -27,7 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
 import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { EntityDialogService } from './services/Dialog.service';
+import { DialogService } from './services/Dialog.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { EntityDialogService } from './services/Dialog.service';
     
   ],
   providers: [
-    EntityDialogService,
+    DialogService,
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy

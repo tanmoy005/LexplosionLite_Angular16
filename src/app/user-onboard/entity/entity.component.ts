@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntityTableComponent } from '../common-components/entity-table/entity-table.component';
-import { EntitiesTableHeaderComponent } from '../common-components/entities-table-header/entities-table-header.component';
+import { TableHeaderComponent } from '../common-components/table-header/table-add-header.component';
 import { TreeStructureComponent } from '../common-components/tree-structure/tree-structure.component';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { ApiService } from 'src/app/services/api.service';
@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./entity.component.scss'],
   standalone:true,
   imports:[EntityTableComponent,
-    EntitiesTableHeaderComponent,
+    TableHeaderComponent,
     TreeStructureComponent
   ]
 })
@@ -25,8 +25,10 @@ export class EntityComponent {
   entityTypesList:any= [];
   industryTypesList: any=[];
   lawCategoriesList:any= [];
-  countryList: any=[];
+  //countryList: any=[];
   isEntityDialogOpen: boolean
+
+  @Input() countryList: [] = [];
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();

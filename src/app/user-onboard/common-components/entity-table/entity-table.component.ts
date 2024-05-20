@@ -21,7 +21,7 @@ import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { AddEntityDialog } from './add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
-import { EntityDialogService } from 'src/app/services/Dialog.service';
+import { DialogService } from 'src/app/services/Dialog.service';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 @Component({
@@ -37,7 +37,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   private subscription: Subscription;
 
   constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService,
-    private entityDialogService: EntityDialogService
+    private entityDialogService: DialogService
   ) { }
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
   dataSource = [...ELEMENT_DATA];

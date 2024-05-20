@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class EntityDialogService {
+export class DialogService {
   private openDialogSubject = new Subject<void>();
   openDialog$ = this.openDialogSubject.asObservable();
 

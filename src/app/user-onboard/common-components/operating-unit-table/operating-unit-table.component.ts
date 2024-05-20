@@ -96,14 +96,15 @@ export class OperatingUnitTableComponent implements OnInit {
 
   ngOnInit(): void {
     //this.fetchOperatingUniTypes();
-    if (this.entity.countryLabel === 'India') {
-      this.fetchstates();
-    } else {
-      this.states = [{
-        'id': 1,
-        'name': 'Singapore'
-      }];
-    }
+    // if (this.entity.countryLabel === 'India') {
+    //   this.fetchstates();
+    // } else {
+    //   this.states = [{
+    //     'id':1,
+    //     'name':'Singapore'
+    //   }]; 
+    // }
+    this.fetchstates();
     this.fetchOperatingUniTypes();
 
   }

@@ -3,22 +3,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { EntityTableComponent } from '../entity-table/entity-table.component';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { EntityDialogService } from 'src/app/services/Dialog.service';
+import { DialogService } from 'src/app/services/Dialog.service';
 
 
 @Component({
-  selector: 'app-entities-table-header',
-  templateUrl: './entities-table-header.component.html',
-  styleUrls: ['./entities-table-header.component.scss'],
+  selector: 'app-table-add-header',
+  templateUrl: './table-add-header.component.html',
+  styleUrls: ['./table-add-header.component.scss'],
   standalone:true,
   imports:[MatButtonModule,MatIconModule,EntityTableComponent,NgFor,NgIf,NgClass]
 })
-export class EntitiesTableHeaderComponent {
-  constructor(private entityDialogService: EntityDialogService) {}
+export class TableHeaderComponent {
+  constructor(private entityDialogService: DialogService) {}
 
   @Input() path: string[] = [];
   @Input() buttonName: string = '';
-  @Output() addEntity = new EventEmitter<boolean>();
+  // @Output() addEntity = new EventEmitter<boolean>();
 
   //  emitAddNewEntity() {
   //   this.addEntity.emit(true);

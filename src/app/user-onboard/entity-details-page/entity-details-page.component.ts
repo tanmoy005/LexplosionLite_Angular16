@@ -57,6 +57,7 @@ export class EntityDetailsPageComponent {
 
   getSelectedCountries(value:any){
     this.countryList = value;
+    console.log('country data from business card',this.countryList)
   }
 
   treeDataItem = treeDataitem;
