@@ -52,6 +52,8 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     EntityDetailsPageComponent,
     OpUnitDetailsPageComponent,
     SubscriptionDetailsPageComponent,
+    OperatingUnitComponent,
+    EntityComponent
 
   ],
   
@@ -78,9 +80,7 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     RegHeaderComponent,
     TableHeaderComponent,
     MatIconModule,
-    EntityComponent,
     FeaturesComponent,
-    OperatingUnitComponent,
   ],
   exports:[
     BusinessCardComponent
