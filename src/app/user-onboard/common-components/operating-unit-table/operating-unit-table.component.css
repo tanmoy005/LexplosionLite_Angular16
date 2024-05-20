@@ -52,3 +52,22 @@
     background: inherit;
     background-color: rgb(187, 187, 216);
 }
+
+.opUnit-details-table table th {
+  background-color: rgba(120, 106, 205, 0.04);
+  color: rgba(88, 89, 91, 1);
+  font-family: Barlow;
+font-size: 12px;
+font-weight: 700;
+line-height: 14.4px;
+text-align: left;
+}
+
+.opUnit-details-table table td{
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  text-align: left;
+
+}
