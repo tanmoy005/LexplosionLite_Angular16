@@ -19,10 +19,13 @@ import { ApiService } from 'src/app/services/api.service';
 export class EntityComponent {
   treeDataItem = treeDataitem;
   receivedData: any;
-  entityTypesList: any;
-  industryTypesList: any;
-  lawCategoriesList: any;
-  countryList: [];
+  // entityTypesList: any;
+  // industryTypesList: any;
+  // lawCategoriesList: any;
+  entityTypesList:any= [];
+  industryTypesList: any=[];
+  lawCategoriesList:any= [];
+  countryList: any=[];
   isEntityDialogOpen: boolean
 
   constructor(private router: Router, private apiService: ApiService) {

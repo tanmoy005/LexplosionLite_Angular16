@@ -91,8 +91,8 @@ export class OperatingUnitTableComponent implements OnInit{
     "operatingUnit": "",
     "actions": ""
   };
-  operatingUnitTypes: any;
-  states: any
+  operatingUnitTypes: any=[];
+  states: any=[]
 
   ngOnInit(): void {
     //this.fetchOperatingUniTypes();
