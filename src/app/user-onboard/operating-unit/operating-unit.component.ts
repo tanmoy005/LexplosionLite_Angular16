@@ -1,4 +1,4 @@
-import { Component, Input, Output ,EventEmitter} from '@angular/core';
+import { Component, Input, Output ,EventEmitter, OnInit} from '@angular/core';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,7 +17,9 @@ import { TableHeaderComponent } from '../common-components/table-header/table-ad
   imports:[MatIconModule, MatButtonModule, MatCardModule, OperatingUnitTableComponent, 
           TreeStructureComponent,TableHeaderComponent]
 })
-export class OperatingUnitComponent {
+export class OperatingUnitComponent 
+// implements OnInit
+ {
   @Output() isBackClicked = new EventEmitter<boolean>();
   @Input() entityDetails:any;
   @Input() entity = {
@@ -42,7 +44,12 @@ export class OperatingUnitComponent {
     "operatingUnit": "",
     "actions": ""
   };
+  entityOpPath :string[]=['Entities',this.entity.name,'Operating Unit']
 
+  // ngOnInit(): void {
+  //   this.entityOpPath =['Entities',this.entity.name,'Operating Unit']
+  // }
+  
   treeDataItem = treeDataitem;
   onBackClick() {
     this.isBackClicked.emit(true);
