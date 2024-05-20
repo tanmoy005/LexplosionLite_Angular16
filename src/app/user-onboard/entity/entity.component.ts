@@ -14,13 +14,13 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-entity',
   templateUrl: './entity.component.html',
   styleUrls: ['./entity.component.scss'],
-  standalone:true,
-  imports:[EntityTableComponent,
-    TableHeaderComponent,
-    TreeStructureComponent,
-    MatButtonModule,
-    MatIconModule
-  ]
+  // standalone:true,
+  // imports:[EntityTableComponent,
+  //   TableHeaderComponent,
+  //   TreeStructureComponent,
+  //   MatButtonModule,
+  //   MatIconModule
+  // ]
 })
 export class EntityComponent {
   treeDataItem = treeDataitem;

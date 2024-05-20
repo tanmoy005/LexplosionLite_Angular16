@@ -13,9 +13,9 @@ import { TableHeaderComponent } from '../common-components/table-header/table-ad
   selector: 'app-operating-unit',
   templateUrl: './operating-unit.component.html',
   styleUrls: ['./operating-unit.component.scss'],
-  standalone:true,
-  imports:[MatIconModule, MatButtonModule, MatCardModule, OperatingUnitTableComponent, 
-          TreeStructureComponent,TableHeaderComponent]
+  // standalone:true,
+  // imports:[MatIconModule, MatButtonModule, MatCardModule, OperatingUnitTableComponent, 
+  //         TreeStructureComponent,TableHeaderComponent]
 })
 export class OperatingUnitComponent 
 // implements OnInit
