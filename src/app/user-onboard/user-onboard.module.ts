@@ -50,7 +50,9 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     PaymentSectionComponent,
     PaymentSectionComponent,
     EntityDetailsPageComponent,
-    OpUnitDetailsPageComponent
+    OpUnitDetailsPageComponent,
+    SubscriptionDetailsPageComponent,
+
   ],
   
   imports: [
@@ -77,7 +79,6 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     EntitiesTableHeaderComponent,
     MatIconModule,
     EntityComponent,
-    SubscriptionDetailsPageComponent,
     FeaturesComponent,
     OperatingUnitComponent,
   ],

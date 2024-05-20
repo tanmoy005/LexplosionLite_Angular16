@@ -60,7 +60,7 @@ export class EntityDetailsPageComponent {
   }
 
   treeDataItem = treeDataitem;
-  showTreeData(){
-    console.log("Tree data- ", this.treeDataItem)
+  goToSubscription(){
+    this.router.navigate(['/subscription'], { state: { entity: '' } });
   }
 }
