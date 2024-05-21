@@ -28,7 +28,7 @@ export interface BusinessDetails {
   laws: string;
   lawModules: string[],
   lawModulesLabel:string[],
-  operatingUnit: string;
+  operatingUnit: string[];
   actions: string
 }
 
@@ -43,6 +43,7 @@ export interface BusinessDetails {
     industryLabel: string;
     lawModules: string[];
     lawModulesLabel: string[];
+    operatingUnit: string[];
   }
 
   export interface OriginalType {

@@ -22,6 +22,7 @@ import { AddEntityDialog } from './add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
 import { DialogService } from 'src/app/services/Dialog.service';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [
   {
@@ -43,7 +44,29 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [
       "Labour",
       "Operational"
     ],
-    "operatingUnit": "",
+    "operatingUnit": [],
+    "actions": ""
+  },
+  {
+    "position": 2,
+    "name": "Test Entity 2",
+    "country": "1",
+    "countryLabel": "India",
+    "industry": "3",
+    "industryLabel": "Manufacturing",
+    "entityType": "1",
+    "entityTypeLabel": "Company",
+    "emailID": "",
+    "laws": "",
+    "lawModules": [
+      "1",
+      "2"
+    ],
+    "lawModulesLabel": [
+      "Labour",
+      "Operational"
+    ],
+    "operatingUnit": ['1','2'],
     "actions": ""
   }
 ];
@@ -53,7 +76,8 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [
   styleUrls: ['./entity-table.component.scss'],
   standalone: true,
   imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,TreeStructureComponent]
+    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,
+    TreeStructureComponent,MatBadgeModule]
 })
 
 export class EntityTableComponent implements OnInit, OnDestroy{
@@ -92,7 +116,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   addEntityData(formData: EntityInterfaces.FormData) {
     // Create a new row with the same data as the random row
     const newRow: EntityInterfaces.BusinessDetails = {
-     // New position is one greater than the last present row's position
+    
       position: this.dataSource.length + 1, 
       name: formData.name,
       country: formData.country,
@@ -105,7 +129,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       laws: '',
       lawModules:formData.lawModules,
       lawModulesLabel:formData.lawModulesLabel,
-      operatingUnit: '',
+      operatingUnit: formData.operatingUnit,
       actions: ''
     };
     this.dataSource.push(newRow);
@@ -184,7 +208,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
                         laws: '',
                         lawModules: [],
                         lawModulesLabel:[],
-                        operatingUnit: '',
+                        operatingUnit: [],
                         actions: ''}
     switch (action) {
       case 'Delete':
@@ -203,4 +227,10 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         break;
     }
   }
+
+
+  getImageSource(element:any): string {
+    return element.operatingUnit.length > 0 ? './assets/images/icons/Vectoroperating_unit_Icon.png' : './assets/images/icons/Vectordisabled_op_unit_icon.png';
+  }
+  
 }

@@ -28,6 +28,7 @@ import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.
 import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DialogService } from './services/Dialog.service';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DialogService } from './services/Dialog.service';
     MatIconModule,
     MatSnackBarModule,
     MatMenuModule,
-    HomeComponent
+    HomeComponent,
+    MatBadgeModule
     
   ],
   providers: [

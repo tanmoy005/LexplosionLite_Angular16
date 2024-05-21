@@ -39,6 +39,7 @@ import { FeaturesComponent } from './subscription-details-page/features/features
 import { TableHeaderComponent } from './common-components/table-header/table-add-header.component';
 import { EntityComponent } from './entity/entity.component';
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
+import { BadgeComponentComponent } from './common-components/badge-component/badge-component.component';
 @NgModule({
   declarations: [
     
@@ -53,7 +54,8 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     OpUnitDetailsPageComponent,
     SubscriptionDetailsPageComponent,
     OperatingUnitComponent,
-    EntityComponent
+    EntityComponent,
+    BadgeComponentComponent
 
   ],
   
