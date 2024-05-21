@@ -39,6 +39,9 @@ import { FeaturesComponent } from './subscription-details-page/features/features
 import { TableHeaderComponent } from './common-components/table-header/table-add-header.component';
 import { EntityComponent } from './entity/entity.component';
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
+import { ActivitiesListComponent } from './common-components/activities-list/activities-list.component';
+import { MatListModule } from '@angular/material/list';
+
 import { BadgeComponentComponent } from './common-components/badge-component/badge-component.component';
 @NgModule({
   declarations: [
@@ -56,7 +59,6 @@ import { BadgeComponentComponent } from './common-components/badge-component/bad
     OperatingUnitComponent,
     EntityComponent,
     BadgeComponentComponent
-
   ],
   
   imports: [
@@ -83,6 +85,7 @@ import { BadgeComponentComponent } from './common-components/badge-component/bad
     TableHeaderComponent,
     MatIconModule,
     FeaturesComponent,
+    MatListModule
   ],
   exports:[
     BusinessCardComponent

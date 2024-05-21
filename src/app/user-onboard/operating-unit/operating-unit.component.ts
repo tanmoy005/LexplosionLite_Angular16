@@ -1,4 +1,4 @@
-import { Component, Input, Output ,EventEmitter, OnInit} from '@angular/core';
+import { Component, Input, Output ,EventEmitter, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { OperatingUnitTableComponent } from '../common-components/operating-unit-table/operating-unit-table.component';
 import { TreeStructureComponent } from '../common-components/tree-structure/tree-structure.component';
 import { TableHeaderComponent } from '../common-components/table-header/table-add-header.component';
-
+import { BusinessDetails } from 'src/app/shared/menu-items/entity-interfaces';
 
 
 @Component({
@@ -17,39 +17,21 @@ import { TableHeaderComponent } from '../common-components/table-header/table-ad
   // imports:[MatIconModule, MatButtonModule, MatCardModule, OperatingUnitTableComponent, 
   //         TreeStructureComponent,TableHeaderComponent]
 })
-export class OperatingUnitComponent 
+export class OperatingUnitComponent implements OnChanges
 // implements OnInit
  {
   @Output() isBackClicked = new EventEmitter<boolean>();
   @Input() entityDetails:any;
-  @Input() entity = {
-    "position": 1,
-    "name": "Test Entity",
-    "country": 1,
-    "countryLabel": "India",
-    "industry": 3,
-    "industryLabel": "Manufacturing",
-    "entityType": 1,
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-        1,
-        2
-    ],
-    "lawModulesLabel": [
-        "Labour",
-        "Operational"
-    ],
-    "operatingUnit": "",
-    "actions": ""
-  };
-  entityOpPath :string[]=['Entities',this.entity.name,'Operating Unit']
+  @Input() entity: any;
 
-  // ngOnInit(): void {
-  //   this.entityOpPath =['Entities',this.entity.name,'Operating Unit']
-  // }
-  
+  entityOpPath: string[] = [];
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['entity'] && changes['entity'].currentValue) {
+      this.entityOpPath = ['Entities', this.entity.name, 'Operating Unit'];
+    }
+  }
+
   treeDataItem = treeDataitem;
   onBackClick() {
     this.isBackClicked.emit(true);

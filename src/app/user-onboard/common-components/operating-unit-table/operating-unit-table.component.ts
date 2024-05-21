@@ -72,28 +72,7 @@ export class OperatingUnitTableComponent implements OnInit {
   constructor(public dialog: MatDialog, private router: Router, private fieldDefinitionService: ApiService,
     private opDialogService: DialogService
   ) { }
-  @Input() entity = {
-    "position": 1,
-    "name": "Test Entity",
-    "country": 1,
-    "countryLabel": "India",
-    "industry": 3,
-    "industryLabel": "Manufacturing",
-    "entityType": 1,
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      1,
-      2
-    ],
-    "lawModulesLabel": [
-      "Labour",
-      "Operational"
-    ],
-    "operatingUnit": "",
-    "actions": ""
-  };
+  @Input() entity: any; 
   operatingUnitTypes: any=[];
   states: any=[]
 
