@@ -70,3 +70,12 @@
   text-align: left;
 
 }
+
+
+.invisible-border-button {
+  border: none; /* Remove the border */
+  background: none; /* Remove any background */
+  padding: 0; /* Optional: Remove any padding */
+  margin: 0; /* Optional: Remove any margin */
+  cursor: pointer; /* Optional: Change cursor to pointer */
+}
