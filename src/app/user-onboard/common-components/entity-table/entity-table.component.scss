@@ -65,7 +65,7 @@
 
 .entity-details-table table th {
   background-color: rgba(120, 106, 205, 0.04);
-  color: rgba(88, 89, 91, 1);
+  color: black;
   font-family: Barlow;
 font-size: 12px;
 font-weight: 700;
@@ -95,4 +95,11 @@ text-align: left;
   line-height: 14.4px;
   text-align: left;
 
+}
+
+::ng-deep .mat-mdc-table tfoot, .mat-mdc-table thead,
+  .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-footer-row, 
+  .mat-mdc-table .mat-mdc-header-cell {
+    background: inherit;
+    background-color: rgba(120, 106, 205, 0.04);
 }

@@ -1,5 +1,5 @@
 .mat-header-row {
-    height: 35px; 
+    /* height: 35px;  */
     background-color:#F0F0F0; 
   }
   
@@ -41,7 +41,7 @@
   }
 
   .received-entity-details{
-    /* margin-top: 10px; */
+    margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
   }
@@ -50,17 +50,16 @@
   .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-footer-row, 
   .mat-mdc-table .mat-mdc-header-cell {
     background: inherit;
-    background-color: rgb(187, 187, 216);
+    background-color: rgba(120, 106, 205, 0.04);
 }
 
-.opUnit-details-table table th {
-  background-color: rgba(120, 106, 205, 0.04);
+::ng-deep .opUnit-details-table table th {
   color: rgba(88, 89, 91, 1);
   font-family: Barlow;
-font-size: 12px;
-font-weight: 700;
-line-height: 14.4px;
-text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.4px;
+  text-align: left;
 }
 
 .opUnit-details-table table td{

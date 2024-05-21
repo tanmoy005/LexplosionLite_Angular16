@@ -39,6 +39,9 @@ import { FeaturesComponent } from './subscription-details-page/features/features
 import { TableHeaderComponent } from './common-components/table-header/table-add-header.component';
 import { EntityComponent } from './entity/entity.component';
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
+import { ActivitiesListComponent } from './common-components/activities-list/activities-list.component';
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
   declarations: [
     
@@ -54,7 +57,6 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     SubscriptionDetailsPageComponent,
     OperatingUnitComponent,
     EntityComponent
-
   ],
   
   imports: [
@@ -81,6 +83,7 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
     TableHeaderComponent,
     MatIconModule,
     FeaturesComponent,
+    MatListModule
   ],
   exports:[
     BusinessCardComponent
