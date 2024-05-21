@@ -1,38 +1,19 @@
 <div class="row">
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <div
+    class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
+    *ngFor="let item of checkboxItems; let i = index"
+  >
     <mat-card class="example-card">
       <mat-card-content>
         <div class="row">
           <div class="col-lg-12">
-            <img src="./assets/images/logos/Komrisk logo.png" class="logo" />
+            <img [src]="item.imgSrc" class="logo" />
           </div>
           <div class="col-lg-12">
             <mat-checkbox
               class="example-margin"
-              [(ngModel)]="komrisk"
-              (change)="onCheckboxChange($event)"
-            ></mat-checkbox>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-    <mat-card>
-      <mat-card-content>
-        <div class="row">
-          <div class="col-lg-12">
-            <img
-              src="./assets/images/logos/Komrisk Lite logo.png"
-              class="logo"
-            />
-          </div>
-          <div class="col-lg-12 ">
-            <mat-checkbox
-              class="example-margin"
-              [(ngModel)]="komriskLite"
-              (change)="onCheckboxChange($event)"
+              [(ngModel)]="item.checked"
+              (change)="onCheckboxChange(i)"
             ></mat-checkbox>
           </div>
         </div>

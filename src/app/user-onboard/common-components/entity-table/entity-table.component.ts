@@ -24,52 +24,8 @@ import { TreeStructureComponent } from '../tree-structure/tree-structure.compone
 import { DialogService } from 'src/app/services/Dialog.service';
 import { MatBadgeModule } from '@angular/material/badge';
 
-const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [
-  {
-    "position": 1,
-    "name": "Test Entity 1",
-    "country": "1",
-    "countryLabel": "India",
-    "industry": "3",
-    "industryLabel": "Manufacturing",
-    "entityType": "1",
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      "1",
-      "2"
-    ],
-    "lawModulesLabel": [
-      "Labour",
-      "Operational"
-    ],
-    "operatingUnit": [],
-    "actions": ""
-  },
-  {
-    "position": 2,
-    "name": "Test Entity 2",
-    "country": "1",
-    "countryLabel": "India",
-    "industry": "3",
-    "industryLabel": "Manufacturing",
-    "entityType": "1",
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      "1",
-      "2"
-    ],
-    "lawModulesLabel": [
-      "Labour",
-      "Operational"
-    ],
-    "operatingUnit": ['1','2'],
-    "actions": ""
-  }
-];
+
+const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =EntityInterfaces.EntityData;
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
