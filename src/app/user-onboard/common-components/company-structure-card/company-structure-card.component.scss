@@ -1,0 +1,15 @@
+::ng-deep .mat-mdc-card-header {
+    display: flex;
+    padding: 16px 16px 16px;
+    background-color:  rgba(120, 106, 205, 0.16);
+    font-family: Barlow;
+  }
+  
+  .mat-mdc-card {
+    --mdc-elevated-card-container-color: rgba(120, 106, 205, 0.04);
+    --mdc-elevated-card-container-elevation: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    --mdc-outlined-card-container-color: white;
+    --mdc-outlined-card-outline-color: rgba(0, 0, 0, 0.12);
+    --mdc-outlined-card-container-elevation: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+    --mat-card-subtitle-text-color: rgba(0, 0, 0, 0.54);
+  }

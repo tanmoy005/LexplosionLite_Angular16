@@ -47,6 +47,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BadgeComponentComponent } from './common-components/badge-component/badge-component.component';
 import { FeatureHeaderComponent } from './subscription-details-page/feature-header/feature-header.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CompanyStructureCardComponent } from './common-components/company-structure-card/company-structure-card.component';
 @NgModule({
   declarations: [
     
@@ -64,7 +65,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     EntityComponent,
     BadgeComponentComponent,
     FeatureHeaderComponent,
-    ActivitiesListComponent
+    ActivitiesListComponent,
+    CompanyStructureCardComponent
   ],
   
   imports: [
