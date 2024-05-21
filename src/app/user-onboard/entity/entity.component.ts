@@ -79,4 +79,7 @@ export class EntityComponent {
     this.selectedEntityEmitter.emit(this.selectedEntity);
    
   }
+  goToSubscription(){
+    this.router.navigate(['/subscription'], { state: { entity: '' } });
+  }
 }

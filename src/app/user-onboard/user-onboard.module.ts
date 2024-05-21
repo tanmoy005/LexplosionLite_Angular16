@@ -43,6 +43,8 @@ import { ActivitiesListComponent } from './common-components/activities-list/act
 import { MatListModule } from '@angular/material/list';
 
 import { BadgeComponentComponent } from './common-components/badge-component/badge-component.component';
+import { FeatureHeaderComponent } from './subscription-details-page/feature-header/feature-header.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     
@@ -58,7 +60,8 @@ import { BadgeComponentComponent } from './common-components/badge-component/bad
     SubscriptionDetailsPageComponent,
     OperatingUnitComponent,
     EntityComponent,
-    BadgeComponentComponent
+    BadgeComponentComponent,
+    FeatureHeaderComponent
   ],
   
   imports: [
@@ -85,7 +88,8 @@ import { BadgeComponentComponent } from './common-components/badge-component/bad
     TableHeaderComponent,
     MatIconModule,
     FeaturesComponent,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   exports:[
     BusinessCardComponent

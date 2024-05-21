@@ -14,18 +14,5 @@ import { AppHeaderComponent } from 'src/app/layouts/full/header/header.component
 })
 
 export class SubscriptionDetailsPageComponent {
-  komrisk=false;
-  komriskLite=false;
-
-  handleCheckboxSelection(event:any){
-    console.log("CHECK BOX CHNG", event.target);
-    // if(this.komrisk === true)
-  //  if(this.komrisk === true){
-  //     this.komriskLite=false;
-  //   }
-  //  else if(this.komriskLite === true){
-  //     this.komrisk=false;
-  //  }
-  //   console.log(this.komrisk, this.komriskLite)
-  }
+ 
 }

@@ -5,3 +5,13 @@
 .features-section-card-header{
     background-color:rgb(211, 147, 208);
 }
+
+
+.grid-container {
+    display: grid;
+    justify-content: end;
+}
+
+.grid-item {
+    justify-self: end;
+}

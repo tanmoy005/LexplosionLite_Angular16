@@ -93,6 +93,10 @@ export class OperatingUnitTableComponent implements OnInit {
     this.subscription = this.opDialogService.openDialog$.subscribe(() => {
       this.openEntityDialog(this.entity.name);
     });
+
+    if (Array.isArray(this.entity.operatingUnit) && this.entity.operatingUnit.length === 0) {
+      this.openEntityDialog(this.entity.name);
+    }
   }
 
   // ngOnInit(): void {
