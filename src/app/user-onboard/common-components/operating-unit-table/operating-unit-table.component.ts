@@ -93,6 +93,10 @@ export class OperatingUnitTableComponent implements OnInit {
     this.subscription = this.opDialogService.openDialog$.subscribe(() => {
       this.openEntityDialog(this.entity.name);
     });
+
+    if (Array.isArray(this.entity.operatingUnit) && this.entity.operatingUnit.length === 0) {
+      this.openEntityDialog(this.entity.name);
+    }
   }
 
   // ngOnInit(): void {
@@ -173,7 +177,8 @@ export class OperatingUnitTableComponent implements OnInit {
       data: {
         entityTable: this, entityName: entityName, industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
-        states: this.states
+        states: this.states,
+        entityPosition:this.entity.position
       }
     });
   }

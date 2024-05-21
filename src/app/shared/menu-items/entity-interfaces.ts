@@ -1,3 +1,4 @@
+
 // export interface BusinessDetails {
 //     position: number;
 //     name: string;
@@ -28,7 +29,7 @@ export interface BusinessDetails {
   laws: string;
   lawModules: string[],
   lawModulesLabel:string[],
-  operatingUnit: string;
+  operatingUnit: string[];
   actions: string
 }
 
@@ -43,6 +44,7 @@ export interface BusinessDetails {
     industryLabel: string;
     lawModules: string[];
     lawModulesLabel: string[];
+    operatingUnit: string[];
   }
 
   export interface OriginalType {
@@ -65,4 +67,51 @@ export interface BusinessDetails {
 
 
 export const EntityColumns = ['position', 'name', 'country', 'industry', 'entityType', 'emailID', 'laws', 'operatingUnit', 'actions'];
- 
+
+
+export const EntityData:BusinessDetails[] =  [
+  {
+    "position": 1,
+    "name": "Test Entity 1",
+    "country": "1",
+    "countryLabel": "India",
+    "industry": "3",
+    "industryLabel": "Manufacturing",
+    "entityType": "1",
+    "entityTypeLabel": "Company",
+    "emailID": "",
+    "laws": "",
+    "lawModules": [
+      "1",
+      "2"
+    ],
+    "lawModulesLabel": [
+      "Labour",
+      "Operational"
+    ],
+    "operatingUnit": [],
+    "actions": ""
+  },
+  {
+    "position": 2,
+    "name": "Test Entity 2",
+    "country": "1",
+    "countryLabel": "India",
+    "industry": "3",
+    "industryLabel": "Manufacturing",
+    "entityType": "1",
+    "entityTypeLabel": "Company",
+    "emailID": "",
+    "laws": "",
+    "lawModules": [
+      "1",
+      "2"
+    ],
+    "lawModulesLabel": [
+      "Labour",
+      "Operational"
+    ],
+    "operatingUnit": ['1','2'],
+    "actions": ""
+  }
+]

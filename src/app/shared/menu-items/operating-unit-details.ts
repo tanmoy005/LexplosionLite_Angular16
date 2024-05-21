@@ -9,5 +9,6 @@ export interface OPUnitDetails {
     employees:string;
     activities:string;
     laws: string;  
-    actions:string
+    actions:string;
+    entityPosition:number
   }

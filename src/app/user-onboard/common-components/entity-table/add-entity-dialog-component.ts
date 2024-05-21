@@ -24,7 +24,8 @@ const initialFormData: EntityInterfaces.FormData = {
     industry: '',
     industryLabel:'',
     lawModules: [],
-    lawModulesLabel:[]
+    lawModulesLabel:[],
+    operatingUnit:[]
   };
   
   function transformEntityTypes(data: EntityInterfaces.OriginalType[]): EntityInterfaces.TransformedType[] {
@@ -85,6 +86,7 @@ const initialFormData: EntityInterfaces.FormData = {
     selectedIndustry:any;
     requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
     dialogHeader: string = 'Edit Entity Details';
+    operatingUnit:[]
   
     constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, 
     public dialogRef: MatDialogRef<AddEntityDialog>,
@@ -127,56 +129,7 @@ const initialFormData: EntityInterfaces.FormData = {
       this.formData[field]=event.target.value;
     }
   
-    // addEntity() {
-    //   const maxId = getMaxIdFromChildren(treeDataitem);   
-  
-    //   let isAnyFieldBlank = false;
-  
-    //   console.log(this.formData)
-  
-    //   for (const field of this.requiredFormDataFields) {
-    //     if (this.formData.hasOwnProperty(field)) {
-    //       const fieldValue = this.formData[field as keyof FormData];
-    //       if (field === "lawModules" && (fieldValue as string[]).length === 0) {
-    //         isAnyFieldBlank = true;
-    //         break;
-    //       } else if (typeof fieldValue === 'string' && fieldValue === '') {
-    //         isAnyFieldBlank = true;
-    //         break;
-    //       }
-    //     }
-    //   }
-  
-    //   if (isAnyFieldBlank) {
-    //     this.snackbar.showError("Please enter all the field values.")
-    //   }
-  
-    //   else {
-    //     this.selectedCountry = this.countryList.find((country)=> country.value === this.formData.country);
-    //     this.selectedEntity = this.transformedEntityList.find((entity)=> entity.value === this.formData.entityType);
-    //     this.selectedIndustry= this.transformedIndustryList.find((industry)=> industry.value === this.formData.industry);
-    
-    //     this.formData.countryLabel = this.selectedCountry.label || "";
-    //     this.formData.entityTypeLabel = this.selectedEntity.label || "";
-    //     this.formData.industryLabel = this.selectedIndustry.label || "";
-
-    //     for(const lawModule of this.formData.lawModules){
-    //       var law = this.transformedLawCategoryList.find((law)=> law.value === lawModule);
-    //       this.formData.lawModulesLabel.push(law?.label || "")
-    //     }
-
-    //     //this.formData.lawModulesLabel = this.formData.lawModules;
-    //     this.data.entityTable.addEntityData(this.formData);
-    //     const entity = {
-    //       id: maxId + 1,
-    //       label: 'Child Node ' + maxId,
-    //     }
-    //     treeDataitem?.children?.push(entity);
-    //     this.snackbar.showSuccess("Successfully added Entity.");
-    //     console.log("FORMDATA SUBMITTED", this.formData);
-    //     this.dialogRef.close();
-    //   }
-    // }
+   
 
 
     addEntity() {
@@ -211,6 +164,7 @@ const initialFormData: EntityInterfaces.FormData = {
         this.formData.countryLabel = this.selectedCountry.label || "";
         this.formData.entityTypeLabel = this.selectedEntity.label || "";
         this.formData.industryLabel = this.selectedIndustry.label || "";
+        this.formData.operatingUnit = ['1']
 
         for(const lawModule of this.formData.lawModules){
           var law = this.transformedLawCategoryList.find((law)=> law.value === lawModule);

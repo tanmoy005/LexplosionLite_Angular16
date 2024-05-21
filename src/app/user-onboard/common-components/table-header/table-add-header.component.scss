@@ -28,5 +28,24 @@
 
 .route-name {
   display: flex;
-  align-items: center;
+ 
+}
+
+.path-layout{
+  width: 64px;
+  height: 14px;
+  top: 420px;
+  left: 304px;
+  gap: 0px;
+  opacity: 0px;
+
+}
+
+.path-layout-typography{
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  text-align: left;
+
 }

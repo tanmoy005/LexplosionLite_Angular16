@@ -72,7 +72,8 @@ export class AddNewOperatingUnitDialogComponent {
   childLabourDataCount: any
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
-    OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[]},
+    OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[],
+    entityPosition:number},
     private snackbar: SnackbarService,
     public dialogRef: MatDialogRef<AddNewOperatingUnitDialogComponent>) {
    
@@ -106,8 +107,10 @@ export class AddNewOperatingUnitDialogComponent {
         employees:'',
         activities:'',
         laws: '',
-        actions:''
+        actions:'',
+        entityPosition:this.data.entityPosition
       };
+      console.log('op unit added!',newData)
       this.data.entityTable.addOpUnitData(newData);
       this.snackbar.showSuccess("Sucessfully added Operating Unit");
       this.dialogRef.close();

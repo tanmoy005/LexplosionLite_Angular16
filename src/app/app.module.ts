@@ -28,7 +28,8 @@ import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.
 import { InitialLayoutHeaderComponent } from './layouts/initial-layout/initial-layout-header/initial-layout-header.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DialogService } from './services/Dialog.service';
-import { MatListModule } from '@angular/material/list';
+import {MatBadgeModule} from '@angular/material/badge';
+import { MatCheckboxModule } from '@angular/material/checkbox';import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,8 @@ import { MatListModule } from '@angular/material/list';
     MatSnackBarModule,
     MatMenuModule,
     HomeComponent,
+    MatBadgeModule,
+    MatCheckboxModule,
     MatListModule
     
   ],

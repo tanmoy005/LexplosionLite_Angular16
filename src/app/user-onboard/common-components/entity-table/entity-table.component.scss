@@ -103,3 +103,16 @@ text-align: left;
     background: inherit;
     background-color: rgba(120, 106, 205, 0.04);
 }
+
+
+.entity-table .mat-mdc-card {
+  border-radius: var(--mdc-elevated-card-container-shape);
+  background-color: var(--mdc-elevated-card-container-color);
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--mdc-elevated-card-container-color);
+  
+  --mdc-elevated-card-container-shape: 4px;
+  --mdc-outlined-card-container-shape: 4px;
+  --mdc-outlined-card-outline-width: 1px;
+}
