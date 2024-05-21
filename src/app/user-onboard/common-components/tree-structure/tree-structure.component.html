@@ -1,11 +1,19 @@
-<ul class="tree">
-    <li style="margin: 5px;" *ngFor="let node of [rootNode]">
-      <span class="nodeSpan">{{ node.label }}</span>
-      <ul *ngIf="node.children">
-        <li *ngFor="let child of node.children">
-          <app-tree-structure [rootNode]="child"></app-tree-structure>
-        </li>
-      </ul>
-    </li>
+
+<mat-card>
+  <mat-card-header><b>Company Structure</b></mat-card-header>
+  <mat-card-content>
+  <ul class="tree">
+      <li style="margin: 5px;" *ngFor="let node of [rootNode]">
+        <span class="nodeSpan">{{ node.label }}</span>
+        <ul *ngIf="node.children">
+          <li *ngFor="let child of node.children">
+            <app-tree-structure [rootNode]="child"></app-tree-structure>
+          </li>
+        </ul>
+      </li>
   </ul>
+</mat-card-content>
+</mat-card>
+
+
   

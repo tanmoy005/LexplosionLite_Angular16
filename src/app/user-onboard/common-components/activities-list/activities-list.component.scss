@@ -1,0 +1,41 @@
+.custom-expansion-header {
+    display: flex;
+    flex-direction: row-reverse; 
+  }
+  
+  .custom-expansion-header .mat-expansion-indicator {
+    order: -1; 
+  }
+  
+  .mdc-list-item--with-two-lines .mdc-list-item__primary-text, .mdc-list-item--with-three-lines .mdc-list-item__primary-text {
+    display: block;
+    margin-top: 0;
+    line-height: normal;
+    margin-bottom: -20px;
+    font-family: Barlow;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  content: "";
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  vertical-align: middle;
+  height: 2px;
+  width: 2px;
+}
+
+.activities-label{
+ margin-top:8px;
+}
+
+.activity-section-label{
+  margin-bottom:10px;
+  font-family: Barlow;
+}
+
+.activities-section{
+  margin: 1px;
+}

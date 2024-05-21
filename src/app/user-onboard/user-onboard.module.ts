@@ -41,6 +41,8 @@ import { EntityComponent } from './entity/entity.component';
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
 import { ActivitiesListComponent } from './common-components/activities-list/activities-list.component';
 import { MatListModule } from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { MatListModule } from '@angular/material/list';
     OpUnitDetailsPageComponent,
     SubscriptionDetailsPageComponent,
     OperatingUnitComponent,
-    EntityComponent
+    EntityComponent,
+    ActivitiesListComponent
   ],
   
   imports: [
@@ -83,7 +86,9 @@ import { MatListModule } from '@angular/material/list';
     TableHeaderComponent,
     MatIconModule,
     FeaturesComponent,
-    MatListModule
+    MatListModule,
+    MatExpansionModule,
+    MatButtonModule
   ],
   exports:[
     BusinessCardComponent
