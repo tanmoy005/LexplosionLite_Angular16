@@ -25,7 +25,8 @@ const initialFormData: EntityInterfaces.FormData = {
     industryLabel:'',
     lawModules: [],
     lawModulesLabel:[],
-    operatingUnit:[]
+    operatingUnit:[],
+    childrenID:0
   };
   
   function transformEntityTypes(data: EntityInterfaces.OriginalType[]): EntityInterfaces.TransformedType[] {
@@ -87,6 +88,7 @@ const initialFormData: EntityInterfaces.FormData = {
     requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
     dialogHeader: string = 'Edit Entity Details';
     operatingUnit:[]
+    entityChild:TreeNode;
   
     constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, 
     public dialogRef: MatDialogRef<AddEntityDialog>,
@@ -134,7 +136,6 @@ const initialFormData: EntityInterfaces.FormData = {
 
     addEntity() {
       const maxId = getMaxIdFromChildren(treeDataitem);   
-  
       let isAnyFieldBlank = false;
   
       console.log(this.formData)
@@ -166,18 +167,22 @@ const initialFormData: EntityInterfaces.FormData = {
         this.formData.industryLabel = this.selectedIndustry.label || "";
         this.formData.operatingUnit = ['1']
 
+        
         for(const lawModule of this.formData.lawModules){
           var law = this.transformedLawCategoryList.find((law)=> law.value === lawModule);
           this.formData.lawModulesLabel.push(law?.label || "")
         }
 
+        this.entityChild = {
+          id: maxId + 1,
+          label: 'Child Node '+String(maxId+1),
+          children: []
+        }
+        this.formData.childrenID = this.entityChild.id;
+
         //this.formData.lawModulesLabel = this.formData.lawModules;
         this.data.entityTable.addEntityData(this.formData);
-        const entity = {
-          id: maxId + 1,
-          label: 'Child Node ' + maxId,
-        }
-        treeDataitem?.children?.push(entity);
+        treeDataitem?.children?.push(this.entityChild);
         this.snackbar.showSuccess("Successfully added Entity.");
         console.log("FORMDATA SUBMITTED", this.formData);
         this.dialogRef.close();

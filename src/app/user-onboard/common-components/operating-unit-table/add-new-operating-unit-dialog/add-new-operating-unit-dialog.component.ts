@@ -20,9 +20,6 @@ import { TransformedType } from 'src/app/shared/menu-items/transfered-dropdown-m
 import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details';
 
 
-
-
-
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
     value: item.id,
@@ -112,6 +109,7 @@ export class AddNewOperatingUnitDialogComponent {
       };
       console.log('op unit added!',newData)
       this.data.entityTable.addOpUnitData(newData);
+      
       this.snackbar.showSuccess("Sucessfully added Operating Unit");
       this.dialogRef.close();
       
