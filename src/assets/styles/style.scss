@@ -163,10 +163,27 @@ File: scss
 }
 .app-dropdown{
     .mat-mdc-text-field-wrapper{
-        background-color: $blue-light-200;
-        height: 40px;
-        border-radius: 3px;
-        border: 1px solid $blue-light-200;
+        background-color: $blue-light-200!important;
+        height: 40px!important;
+        border-radius: 3px!important;
+        border: 1px solid $blue-light-200!important;
+    }
+}
+.small-dropdown-container{
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    border: 1px solid $gray-1100;
+    cursor: pointer;
+}
+.app-dropdown-small{
+    position: absolute;
+    .mat-mdc-text-field-wrapper{
+        height: 24px!important;
+        background-color: transparent!important;
+        // width: 24px!important;
+        // border-radius: 3px!important;
+        // border: 1px solid $gray-1100!important;
     }
 }
 .divider {
@@ -178,4 +195,10 @@ File: scss
 }
 .d-none{
     display: none;
+}
+.down_arrow{
+    font-size: 10px!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
 }

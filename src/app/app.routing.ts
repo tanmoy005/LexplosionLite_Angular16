@@ -14,7 +14,6 @@ export const AppRoutes: Routes = [
   {
     path: '',
     component: InitialLayoutComponent,
-  
     children: [
   
       {
@@ -35,17 +34,6 @@ export const AppRoutes: Routes = [
   },
   {
     path: '',
-    component: BlankComponent,
-    children: [
-  
-      {
-        path: '',
-        loadChildren: () => import('./user-onboard/user-onboard.module').then(m => m.UserOnboardModule)
-      }
-    ]
-  },
-  {
-    path: '',
     component: InitialLayoutComponent,
   
     children: [
@@ -61,11 +49,6 @@ export const AppRoutes: Routes = [
     component: FullComponent,
     children: [
      
-      {
-        path: 'component',
-        loadChildren:
-          () => import('./material-component/material.module').then(m => m.MaterialComponentsModule)
-      },
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)

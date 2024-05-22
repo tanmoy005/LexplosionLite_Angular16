@@ -8,8 +8,8 @@ import {MatCardModule} from '@angular/material/card';
   selector: 'app-terms-condition-card',
   templateUrl: './terms-condition-card.component.html',
   styleUrls: ['./terms-condition-card.component.css'],
-  standalone: true,
-  imports: [MatCardModule, MatDividerModule, MatButtonModule, MatProgressBarModule],
+  // standalone: true,
+  // imports: [MatCardModule, MatDividerModule, MatButtonModule, MatProgressBarModule],
 })
 export class TermsConditionCardComponent {
   longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog

@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DemoMaterialModule } from 'src/app/demo-material-module';
+import { MaterialModule } from 'src/app/material-module';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
@@ -25,7 +25,7 @@ import { environment } from 'dotenv';
   selector: 'app-login',
   standalone: true,
   imports: [
-    DemoMaterialModule,
+    MaterialModule,
     MatButtonModule,
     FormsModule,
     MatFormFieldModule,

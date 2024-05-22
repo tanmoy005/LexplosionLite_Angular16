@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { FeaturesComponent } from './features/features.component';
 import { AppHeaderComponent } from 'src/app/layouts/full/header/header.component';

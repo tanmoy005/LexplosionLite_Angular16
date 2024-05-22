@@ -17,9 +17,9 @@ import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
   selector: 'app-laws-table',
   templateUrl: './laws-table.component.html',
   styleUrls: ['./laws-table.component.css'],
-  standalone:true,
-  imports:[MatTableModule,CommonModule,MatButtonModule
-  ]
+  // standalone:true,
+  // imports:[MatTableModule,CommonModule,MatButtonModule
+  // ]
 })
 
 

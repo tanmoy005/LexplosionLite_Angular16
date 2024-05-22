@@ -98,6 +98,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
         PlatformModule,
         PortalModule,
         CdkTreeModule,
+        
     ]
 })
-export class DemoMaterialModule { }
+export class MaterialModule { }

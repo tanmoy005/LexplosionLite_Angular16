@@ -66,10 +66,10 @@ const initialFormData: EntityInterfaces.FormData = {
 @Component({
     selector: 'dialog-elements-example-dialog',
     templateUrl: 'add-new-entity-dialog.html',
-    standalone: true,
+    // standalone: true,
     styleUrls: ['./entity-table.component.scss'],
-    imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
-      MatSelectModule, CommonModule, DropdownComponent, DialogLayoutComponent]
+    // imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
+    //   MatSelectModule, CommonModule, DropdownComponent ]
   })
   
   export class AddEntityDialog {
@@ -85,15 +85,18 @@ const initialFormData: EntityInterfaces.FormData = {
     selectedCountry:any;
     selectedEntity:any;
     selectedIndustry:any;
-    requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
-    dialogHeader: string = 'Edit Entity Details';
+    requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules'];
+    dialogHeaderTitle: string = 'Edit Entity Details';
     operatingUnit:[]
+    dialogHeaderImage: string = 'src/assets/images/Business.png';
     entityChild:TreeNode;
   
     constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, 
     public dialogRef: MatDialogRef<AddEntityDialog>,
     private apiService:ApiService, private snackbar:SnackbarService){
     
+
+      
     this.industryTypesList = this.data.entityTable.industryTypesList;
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
     this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
