@@ -87,6 +87,7 @@ import { CommonComponentModule } from './common-components/common-component.modu
   ],
   exports:[
     // BusinessCardComponent
+    CommonComponentModule
   ]
 })
 export class UserOnboardModule { }

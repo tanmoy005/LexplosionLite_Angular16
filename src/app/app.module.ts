@@ -35,6 +35,8 @@ import { MatListModule } from '@angular/material/list';
 import { CommonDirective } from './common.directive';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CommonComponentModule } from './user-onboard/common-components/common-component.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -68,8 +70,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     HomeComponent,
     MatBadgeModule,
     MatCheckboxModule,
-    MatListModule
-    
+    MatListModule,
+    AuthenticationModule
+  ],
+  exports:[
+    AppHeaderComponent
   ],
   providers: [
     DialogService,
