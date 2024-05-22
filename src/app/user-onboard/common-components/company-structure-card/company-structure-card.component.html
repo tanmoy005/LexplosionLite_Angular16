@@ -1,6 +1,13 @@
-<mat-card>
+<!-- <mat-card>
     <mat-card-header><b>Company Structure</b></mat-card-header>
     <mat-card-content>
         <app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
     </mat-card-content>
-</mat-card>
+</mat-card> -->
+
+<app-card-layout
+[cardHeaderTitle]="companyStructureLabel"
+[shade]="companyStructureCardShade"
+>
+<app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
+</app-card-layout>

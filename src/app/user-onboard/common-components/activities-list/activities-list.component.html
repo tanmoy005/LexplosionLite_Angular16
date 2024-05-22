@@ -5,7 +5,7 @@
 </div>
 <div>
 <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="activites-panel">
     <mat-expansion-panel-header class="custom-expansion-header">
     <mat-panel-title>
     </mat-panel-title>
@@ -14,8 +14,8 @@
         <mat-list-item *ngFor="let activity of activities">
         <div class="container">
             <div class="row">
-            <div class="col-4">
-            <button mat-stroked-button aria-label="expand-activities-icon" >
+            <div class="col-3">
+            <button mat-stroked-button aria-label="remove-activity-icon" (click)="removeActivity($event,activity)">
              <mat-icon>remove</mat-icon>
             </button>
             </div>

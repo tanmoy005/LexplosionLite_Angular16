@@ -32,4 +32,12 @@ export class ActivitiesListComponent {
   ];
 
   panelOpenState = false;
+
+  removeActivity(event:any,activity:Section){
+    // console.log("Clicked activity- ", activity);
+    const selectedActivityIndex = this.activities.indexOf(activity)
+    if (selectedActivityIndex !== -1) {
+      this.activities.splice(selectedActivityIndex, 1);
+    }
+  }
 }
