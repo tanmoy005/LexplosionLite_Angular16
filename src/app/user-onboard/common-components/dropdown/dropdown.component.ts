@@ -7,14 +7,14 @@ import {  MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-dropdown',
-  standalone: true,
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-     NgIf,NgFor  ]
+  // standalone: true,
+  // imports: [
+  //   MatFormFieldModule,
+  //   MatSelectModule,
+  //    NgIf,NgFor  ]
 })
 export class DropdownComponent {
   @Input() label: string;
@@ -24,7 +24,12 @@ export class DropdownComponent {
   //selectedValue: any;
   @Output() selectedValueChange: EventEmitter<any> = new EventEmitter<any>();
 
+  type: string = 'small';
+  isDropdownOpened: boolean = false;
   onSelectionChange(event: any) {
     this.selectedValueChange.emit(event.value);
+  }
+  toggleDropdown(){
+    !this.isDropdownOpened;
   }
 }

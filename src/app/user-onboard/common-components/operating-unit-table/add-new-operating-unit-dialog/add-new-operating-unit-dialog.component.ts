@@ -36,16 +36,16 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   selector: 'app-add-new-operating-unit-dialog',
   templateUrl: './add-new-operating-unit-dialog.component.html',
   styleUrls: ['./add-new-operating-unit-dialog.component.scss'],
-  standalone:true,
-  imports:[MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-    MatCardModule,
-    FormsModule,
-    DropdownComponent,
-    MatSelectModule,
-    EmployeeCountCardComponent
-  ]
+  // standalone:true,
+  // imports:[MatDialogModule,
+  //   MatButtonModule,
+  //   MatInputModule,
+  //   MatCardModule,
+  //   FormsModule,
+  //   DropdownComponent,
+  //   MatSelectModule,
+  //   EmployeeCountCardComponent
+  // ]
 })
 
 
@@ -57,6 +57,9 @@ export class AddNewOperatingUnitDialogComponent {
     { value: 'option2', label: 'Option 2' },
     { value: 'option3', label: 'Option 3' }
   ];
+  dialogHeaderTitle: string = 'Add New Operating Unit';
+  dialogHeaderImage: string = '';
+  color:string ='#fff';
 
   transformedDataOperatingUnits: TransformedType[] = [];
   transformedStates: TransformedType[] = [];

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { EntityTableComponent } from '../common-components/entity-table/entity-table.component';
@@ -15,7 +15,7 @@ import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
   selector: 'app-entity-details-page',
   templateUrl: './entity-details-page.component.html',
   styleUrls: ['./entity-details-page.component.css'],
- 
+  encapsulation: ViewEncapsulation.None
  
  
 })

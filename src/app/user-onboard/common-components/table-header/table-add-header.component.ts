@@ -10,8 +10,8 @@ import { DialogService } from 'src/app/services/Dialog.service';
   selector: 'app-table-add-header',
   templateUrl: './table-add-header.component.html',
   styleUrls: ['./table-add-header.component.scss'],
-  standalone:true,
-  imports:[MatButtonModule,MatIconModule,EntityTableComponent,NgFor,NgIf,NgClass]
+  // standalone:true,
+  // imports:[MatButtonModule,MatIconModule,EntityTableComponent,NgFor,NgIf,NgClass]
 })
 export class TableHeaderComponent {
   constructor(private entityDialogService: DialogService) {}
@@ -23,7 +23,7 @@ export class TableHeaderComponent {
   //  emitAddNewEntity() {
   //   this.addEntity.emit(true);
   // }
-  emitAddNewEntity() {
+  emitAddNewEntity() {    
     this.entityDialogService.emitOpenDialog();
   }
 

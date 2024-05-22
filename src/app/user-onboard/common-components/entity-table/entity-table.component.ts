@@ -30,10 +30,10 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =EntityInterfaces.EntityD
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
   styleUrls: ['./entity-table.component.scss'],
-  standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,
-    TreeStructureComponent,MatBadgeModule]
+  // standalone: true,
+  // imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
+  //   MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,
+  //   TreeStructureComponent,MatBadgeModule]
 })
 
 export class EntityTableComponent implements OnInit, OnDestroy{

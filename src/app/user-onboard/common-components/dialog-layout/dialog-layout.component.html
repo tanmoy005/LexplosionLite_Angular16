@@ -1,7 +1,10 @@
-<div class="dialog-header">
+<!-- <div class="dialog-header">
     <img src="../../../../assets/images/Business.png" alt="" srcset="">
-    <div class="dialog-name text_12_700">{{dialogHeader}}</div>
+    <div class="dialog-name text_12_700_gray_600">{{dialogHeaderTitle}}</div>
 </div>
 <div class="dialog-content-container">
     <ng-content></ng-content>
-</div>
+</div> -->
+<app-card-layout [cardHeaderTitle]="dialogHeaderTitle" [cardHeaderImage]="dialogHeaderImage" [shade]="shade">
+    <ng-content></ng-content>
+</app-card-layout>

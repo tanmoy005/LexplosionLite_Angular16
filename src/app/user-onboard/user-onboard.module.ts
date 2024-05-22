@@ -64,7 +64,8 @@ import { CommonComponentModule } from './common-components/common-component.modu
     BadgeComponentComponent,
     FeatureHeaderComponent,
     ActivitiesListComponent,
-    CompanyStructureCardComponent
+    FeaturesComponent,
+    
   ],
   
   imports: [
@@ -78,14 +79,14 @@ import { CommonComponentModule } from './common-components/common-component.modu
     MatFormFieldModule,
     RegHeaderComponent,
     MatIconModule,
-    FeaturesComponent,
     MatListModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonComponentModule
   ],
   exports:[
-    BusinessCardComponent
+    // BusinessCardComponent
   ]
 })
 export class UserOnboardModule { }
