@@ -211,7 +211,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
                         lawModules: [],
                         lawModulesLabel:[],
                         operatingUnit: [],
-                        actions: ''}
+                        actions: '',
+                        childrenID:0}
     switch (action) {
       case 'Delete':
         this.removeEntityData(position);
