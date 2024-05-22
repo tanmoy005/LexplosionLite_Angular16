@@ -67,7 +67,8 @@ import { CompanyStructureCardComponent } from './company-structure-card/company-
     CardLayoutComponent,
     FeaturesSectionComponent,
     DropdownComponent,
-    CompanyStructureCardComponent
+    CompanyStructureCardComponent,
+    LawsTableComponent
   ]
 })
 export class CommonComponentModule { }

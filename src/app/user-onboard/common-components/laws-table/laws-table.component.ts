@@ -57,6 +57,17 @@ export class LawsTableComponent {
     });
     return transformedData;
   }
+
+
+  getImageSource(element: any): string {
+    if (element.applicability === 'Definitely Applicable') {
+      return './assets/images/icons/LawDefiniteny.svg';
+    } else if (element.applicability === 'Maybe Applicable') {
+      return './assets/images/icons/LawMaybeVector.svg';
+    } else {
+      return './assets/images/icons/LawAll.svg';
+    }
+  }
 }
 
 
