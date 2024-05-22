@@ -33,7 +33,9 @@ File: scss
 
 
 /* You can add global styles to this file, and also import other style files */
-
+.mat-expansion-panel-body {
+    padding: 0px 0px 0px!important; 
+}
 
 .contain_bg_36_br_16 {
     background-color: $gray-300;

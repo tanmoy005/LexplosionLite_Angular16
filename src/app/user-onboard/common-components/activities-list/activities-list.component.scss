@@ -5,6 +5,7 @@
   
   .custom-expansion-header .mat-expansion-indicator {
     order: -1; 
+    margin-left: 100px;
   }
   
   .mdc-list-item--with-two-lines .mdc-list-item__primary-text, .mdc-list-item--with-three-lines .mdc-list-item__primary-text {
@@ -38,4 +39,12 @@
 
 .activities-section{
   margin: 1px;
+}
+
+.mdc-button {
+  min-width: 53px;
+}
+
+.activites-panel{
+  box-shadow: none;
 }
