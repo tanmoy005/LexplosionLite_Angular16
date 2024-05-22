@@ -38,6 +38,7 @@ export class EntityComponent {
 
   @Input() countryList: [] = [];
   @Output() selectedEntityEmitter = new EventEmitter<any>();
+  @Output() selectedEntityEmitter1 = new EventEmitter<any>();
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -74,9 +75,15 @@ export class EntityComponent {
    
   // }
   handleEntitySelected(entity: any) {
-    console.log('Selected entity:', entity);
+    console.log('Selected entity from dots:', entity);
     this.selectedEntity= entity
     this.selectedEntityEmitter.emit(this.selectedEntity);
+   
+  }
+  handleEntitySelected1(entity: any) {
+    console.log('Selected entity:', entity);
+    this.selectedEntity= entity
+    this.selectedEntityEmitter1.emit(this.selectedEntity);
    
   }
   goToSubscription(){

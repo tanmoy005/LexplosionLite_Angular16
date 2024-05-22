@@ -27,30 +27,14 @@ export class EntityDetailsPageComponent {
   lawCategoriesList: any;
   countryList: [];
   isEntityDialogOpen: boolean
-  selectedEntity: any={
-    "position": 1,
-    "name": "Test Entity",
-    "country": 1,
-    "countryLabel": "India",
-    "industry": 3,
-    "industryLabel": "Manufacturing",
-    "entityType": 1,
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      1,
-      2
-    ],
-    "lawModulesLabel": [
-        "Labour",
-        "Operational"
-    ],
-    "operatingUnit": "",
-    "actions": ""
-  };
+  selectedEntity: any;
+
+  selectedEntity1: any
 
   isAddOperatingUnitClicked: boolean =false;
+
+  isDotsCliscked: boolean
+  
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -93,9 +77,17 @@ export class EntityDetailsPageComponent {
 
 
   handleSelectedEntity(entity: any) {
+    console.log('Selected entity in page from dots', entity);
+    this.isAddOperatingUnitClicked= true
+    this.selectedEntity= entity
+    this.isDotsCliscked= true
+    
+  }
+  handleSelectedEntity1(entity: any) {
     console.log('Selected entity in page:', entity);
     this.isAddOperatingUnitClicked= true
     this.selectedEntity= entity
+    this.isDotsCliscked= false
     
   }
 

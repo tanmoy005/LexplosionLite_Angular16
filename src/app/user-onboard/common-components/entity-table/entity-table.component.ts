@@ -55,6 +55,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
   @Output() entitySelected = new EventEmitter<EntityInterfaces.BusinessDetails>();
 
+  @Output() entitySelected1 = new EventEmitter<EntityInterfaces.BusinessDetails>();
+
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
       this.viewAddEntityDialog();
@@ -148,6 +150,12 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
   navigateToAddOpUnit(entity: EntityInterfaces.BusinessDetails) {
     this.entitySelected.emit(entity);
+    console.log('dots are clicked')
+    // this.router.navigate(['/oprating-unit-details'], { state: entity });
+  }
+  navigateToAddOpUnit1(entity: EntityInterfaces.BusinessDetails) {
+    this.entitySelected1.emit(entity);
+    
     // this.router.navigate(['/oprating-unit-details'], { state: entity });
   }
 
@@ -176,6 +184,39 @@ export class EntityTableComponent implements OnInit, OnDestroy{
           entity = blankEntity
         }  
         this.navigateToAddOpUnit(entity);
+        break
+      case 'Edit':
+        break
+      default:
+        break;
+    }
+  }
+
+  openEntityMenuDialog1(action: string, position: number) {
+    var blankEntity =  {position: position,
+                        name: '',
+                        country: '',
+                        countryLabel:'',
+                        industry: '',
+                        industryLabel:'',
+                        entityType: '',
+                        entityTypeLabel: '',
+                        emailID: '',
+                        laws: '',
+                        lawModules: [],
+                        lawModulesLabel:[],
+                        operatingUnit: [],
+                        actions: ''}
+    switch (action) {
+      case 'Delete':
+        this.removeEntityData(position);
+        break;
+      case 'Add Operating Unit':
+        var entity = this.dataSource.find((entity) => entity.position === position);
+        if(entity===undefined){
+          entity = blankEntity
+        }  
+        this.navigateToAddOpUnit1(entity);
         break
       case 'Edit':
         break

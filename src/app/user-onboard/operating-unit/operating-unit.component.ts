@@ -23,6 +23,8 @@ export class OperatingUnitComponent implements OnChanges
   @Output() isBackClicked = new EventEmitter<boolean>();
   @Input() entityDetails:any;
   @Input() entity: any;
+  @Input() isDotsCliscked: boolean;
+
 
   entityOpPath: string[] = [];
 

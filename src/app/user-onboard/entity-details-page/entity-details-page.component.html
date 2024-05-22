@@ -53,6 +53,7 @@
     <app-entity
       [countryList]="countryList"
       (selectedEntityEmitter)="handleSelectedEntity($event)"
+      (selectedEntityEmitter1)="handleSelectedEntity1($event)"
     >
     </app-entity>
   </div>
@@ -60,7 +61,10 @@
   <div class="entity-operating-unit-section" *ngIf="isAddOperatingUnitClicked">
     <app-operating-unit
     (isBackClicked)="handleBackClick($event)"
-    [entity]="selectedEntity"></app-operating-unit>
+    [entity]="selectedEntity"
+    [isDotsCliscked]="isDotsCliscked"
+    
+    ></app-operating-unit>
   </div>
 
   <!-- <div class="row entity-details-next-button-div">

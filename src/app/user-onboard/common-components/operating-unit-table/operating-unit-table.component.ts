@@ -72,7 +72,8 @@ export class OperatingUnitTableComponent implements OnInit {
   constructor(public dialog: MatDialog, private router: Router, private fieldDefinitionService: ApiService,
     private opDialogService: DialogService
   ) { }
-  @Input() entity: any; 
+  @Input() entity: any={}; 
+  @Input() isDotsCliscked: boolean; 
   operatingUnitTypes: any=[];
   states: any=[]
 
@@ -94,9 +95,18 @@ export class OperatingUnitTableComponent implements OnInit {
       this.openEntityDialog(this.entity.name);
     });
 
+    console.log('the entity1 is coming',this.entity)
+    console.log('the entity is coming',this.entity)
+    
+    if (this.isDotsCliscked === true){
+      this.openEntityDialog(this.entity.name);
+    }
+    else{
     if (Array.isArray(this.entity.operatingUnit) && this.entity.operatingUnit.length === 0) {
       this.openEntityDialog(this.entity.name);
     }
+  }
+    
   }
 
   // ngOnInit(): void {
