@@ -59,12 +59,12 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   selector: 'app-operating-unit-table',
   templateUrl: 'operating-unit-table.component.html',
   styleUrls: ['./operating-unit-table.component.css'],
-  standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule,
-    CommonModule, DropdownComponent,
-    AddNewOperatingUnitDialogComponent
-  ]
+  // standalone: true,
+  // imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
+  //   MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule,
+  //   CommonModule, DropdownComponent,
+  //   AddNewOperatingUnitDialogComponent
+  // ]
 })
 
 export class OperatingUnitTableComponent implements OnInit {

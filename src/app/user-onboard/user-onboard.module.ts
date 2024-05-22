@@ -48,6 +48,7 @@ import { BadgeComponentComponent } from './common-components/badge-component/bad
 import { FeatureHeaderComponent } from './subscription-details-page/feature-header/feature-header.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CompanyStructureCardComponent } from './common-components/company-structure-card/company-structure-card.component';
+import { CommonComponentModule } from './common-components/common-component.module';
 @NgModule({
   declarations: [
     
@@ -55,9 +56,6 @@ import { CompanyStructureCardComponent } from './common-components/company-struc
     LawsTablePageComponent,
     TermsConditionComponent,
     PaymentComponent,
-    StepperHelperTextComponent,
-    PaymentSectionComponent,
-    PaymentSectionComponent,
     EntityDetailsPageComponent,
     OpUnitDetailsPageComponent,
     SubscriptionDetailsPageComponent,
@@ -71,26 +69,14 @@ import { CompanyStructureCardComponent } from './common-components/company-struc
   
   imports: [
     CommonModule,
-    TermsConditionCardComponent,
-    StepperComponent,
     RouterModule.forChild(UserOnboardRoutes),
-    BusinessCardComponent,
-    FeaturesSectionComponent,
-    EntityTableComponent,
     FormsModule,
     MatTableModule,
     MatDialogModule,
-    OperatingUnitTableComponent,
     MatDividerModule,
-    TreeStructureComponent,
     MatCardModule,
-    LawsTableComponent,
     MatFormFieldModule,
-    DropdownComponent,
-    EmployeeCountCardComponent,
-    AddNewOperatingUnitDialogComponent,
     RegHeaderComponent,
-    TableHeaderComponent,
     MatIconModule,
     FeaturesComponent,
     MatListModule,
