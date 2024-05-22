@@ -30,10 +30,10 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =EntityInterfaces.EntityD
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
   styleUrls: ['./entity-table.component.scss'],
-  standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,
-    TreeStructureComponent,MatBadgeModule]
+  // standalone: true,
+  // imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
+  //   MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,
+  //   TreeStructureComponent,MatBadgeModule]
 })
 
 export class EntityTableComponent implements OnInit, OnDestroy{
@@ -70,7 +70,9 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   viewAddEntityDialog() {
     this.openEntityDialog();
   }
+  
   treeDataItem = treeDataitem;
+
   addEntityData(formData: EntityInterfaces.FormData) {
     // Create a new row with the same data as the random row
     const newRow: EntityInterfaces.BusinessDetails = {
@@ -88,7 +90,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       lawModules:formData.lawModules,
       lawModulesLabel:formData.lawModulesLabel,
       operatingUnit: formData.operatingUnit,
-      actions: ''
+      actions: '',
+      childrenID:formData.childrenID
     };
     this.dataSource.push(newRow);
     this.table.renderRows();
@@ -106,7 +109,6 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   removeEntityData(position: number) {
    
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
-
 
     if (rowIndex !== -1) {
  
@@ -160,7 +162,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
 
   openEntityMenuDialog(action: string, position: number) {
-    var blankEntity =  {position: position,
+    var blankEntity =  {
+                        position: position,
                         name: '',
                         country: '',
                         countryLabel:'',
@@ -173,7 +176,9 @@ export class EntityTableComponent implements OnInit, OnDestroy{
                         lawModules: [],
                         lawModulesLabel:[],
                         operatingUnit: [],
-                        actions: ''}
+                        actions: '',
+                        childrenID:0
+                      }
     switch (action) {
       case 'Delete':
         this.removeEntityData(position);

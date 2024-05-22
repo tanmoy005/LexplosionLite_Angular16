@@ -18,9 +18,14 @@ import { AppSideLoginComponent } from '../guest-user/login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
 import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 import { VerifyEmailPageComponent } from './register/verify-email-page/verify-email-page.component';
+import { MatDividerModule } from '@angular/material/divider';
 //import { BusinessCardComponent } from '../user-onboard/common-components/business-card/business-card.component';
 
 @NgModule({
+  declarations: [
+    AppSideRegisterComponent,
+
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(AuthenticationRoutes),
@@ -29,20 +34,18 @@ import { VerifyEmailPageComponent } from './register/verify-email-page/verify-em
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
     AppSideLoginComponent,
-    AppSideRegisterComponent,
     RegHeaderComponent,
-    VerifyEmailPageComponent
+    VerifyEmailPageComponent,
+    CommonModule,
     
    // TablerIconsModule.pick(TablerIcons),
   ],
-  declarations: [
-
-  ],
+  
   exports: [
-    AppSideRegisterComponent
   ]
 })
 export class AuthenticationModule { }

@@ -13,16 +13,16 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } f
   selector: 'app-employee-count-card',
   templateUrl: './employee-count-card.component.html',
   styleUrls: ['./employee-count-card.component.scss'],
-  standalone: true,
-  imports:[
-    MatCardModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule
-  ]
+  // standalone: true,
+  // imports:[
+  //   MatCardModule,
+  //   MatButtonModule,
+  //   MatInputModule,
+  //   MatSelectModule,
+  //   FormsModule,
+  //   ReactiveFormsModule,
+  //   CommonModule
+  // ]
 })
 export class EmployeeCountCardComponent {
   @Output() employeeDataChange = new EventEmitter<any>();
@@ -31,8 +31,7 @@ export class EmployeeCountCardComponent {
 
   header_list = ["Direct Employees",
     "Contract Labours",
-    "Inter-State Migrants",
-    
+    "Inter-State Migrants"
   ]
 
   employeeData = this.header_list.map(header => ({

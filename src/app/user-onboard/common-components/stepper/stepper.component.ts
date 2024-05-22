@@ -10,23 +10,21 @@ import { CommonModule } from '@angular/common';
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.css'],
-  standalone: true,
-  imports: [
-    MatStepperModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    CommonModule
-  ]
+  // standalone: true,
+  // imports: [
+  //   MatStepperModule,
+  //   FormsModule,
+  //   ReactiveFormsModule,
+  //   MatFormFieldModule,
+  //   MatInputModule,
+  //   MatButtonModule,
+  //   CommonModule
+  // ]
 })
 
 export class StepperComponent {
   @Input() currentStep: number = 0;
   stepperSteps = ["Business Details","Subscription Details", "Preliminary List of Laws", "Payment", "Go Live !"]
-
-
   isStepDisabled(index: number): boolean {
     // If the index is not the current step, disable the step
     return index !== this.currentStep;

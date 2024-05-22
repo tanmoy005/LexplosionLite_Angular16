@@ -30,7 +30,8 @@ export interface BusinessDetails {
   lawModules: string[],
   lawModulesLabel:string[],
   operatingUnit: string[];
-  actions: string
+  actions: string,
+  childrenID: number;
 }
 
 
@@ -45,6 +46,7 @@ export interface BusinessDetails {
     lawModules: string[];
     lawModulesLabel: string[];
     operatingUnit: string[];
+    childrenID: number;
   }
 
   export interface OriginalType {
@@ -90,7 +92,8 @@ export const EntityData:BusinessDetails[] =  [
       "Operational"
     ],
     "operatingUnit": [],
-    "actions": ""
+    "actions": "",
+    "childrenID":0
   },
   {
     "position": 2,
@@ -112,6 +115,7 @@ export const EntityData:BusinessDetails[] =  [
       "Operational"
     ],
     "operatingUnit": ['1','2'],
-    "actions": ""
+    "actions": "",
+    "childrenID":1
   }
 ]

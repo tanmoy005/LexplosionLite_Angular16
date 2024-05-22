@@ -20,9 +20,6 @@ import { TransformedType } from 'src/app/shared/menu-items/transfered-dropdown-m
 import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details';
 
 
-
-
-
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
     value: item.id,
@@ -36,16 +33,16 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   selector: 'app-add-new-operating-unit-dialog',
   templateUrl: './add-new-operating-unit-dialog.component.html',
   styleUrls: ['./add-new-operating-unit-dialog.component.scss'],
-  standalone:true,
-  imports:[MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-    MatCardModule,
-    FormsModule,
-    DropdownComponent,
-    MatSelectModule,
-    EmployeeCountCardComponent
-  ]
+  // standalone:true,
+  // imports:[MatDialogModule,
+  //   MatButtonModule,
+  //   MatInputModule,
+  //   MatCardModule,
+  //   FormsModule,
+  //   DropdownComponent,
+  //   MatSelectModule,
+  //   EmployeeCountCardComponent
+  // ]
 })
 
 
@@ -57,6 +54,9 @@ export class AddNewOperatingUnitDialogComponent {
     { value: 'option2', label: 'Option 2' },
     { value: 'option3', label: 'Option 3' }
   ];
+  dialogHeaderTitle: string = 'Add New Operating Unit';
+  dialogHeaderImage: string = '';
+  color:string ='#fff';
 
   transformedDataOperatingUnits: TransformedType[] = [];
   transformedStates: TransformedType[] = [];
@@ -112,6 +112,7 @@ export class AddNewOperatingUnitDialogComponent {
       };
       console.log('op unit added!',newData)
       this.data.entityTable.addOpUnitData(newData);
+      
       this.snackbar.showSuccess("Sucessfully added Operating Unit");
       this.dialogRef.close();
       

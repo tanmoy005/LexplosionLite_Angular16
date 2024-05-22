@@ -12,4 +12,14 @@
     --mdc-outlined-card-outline-color: rgba(0, 0, 0, 0.12);
     --mdc-outlined-card-container-elevation: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
     --mat-card-subtitle-text-color: rgba(0, 0, 0, 0.54);
+    max-height: 250px;
   }
+
+  
+
+  .mat-mdc-card-content {
+    display: block;
+    padding: 0 16px;
+    overflow-x: auto;
+    overflow-y: auto;
+}

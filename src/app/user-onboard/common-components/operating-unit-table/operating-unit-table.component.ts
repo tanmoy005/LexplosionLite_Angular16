@@ -47,10 +47,21 @@ import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details'
 
 import { DialogService } from 'src/app/services/Dialog.service';
 import { Subscription } from 'rxjs';
+import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
 
 const ELEMENT_DATA: OPUnitDetails[] = [
 
 ];
+
+function getMaxIdFromGrandchildren (children:TreeNode): number {
+  const rootChildren = children.children;
+
+  let maxId = 0;
+  if (rootChildren && rootChildren.length > 0) {
+    maxId = Math.max(...rootChildren.map(child => child.id));
+  }
+  return maxId;
+}
 
 /**
  * @title Adding and removing data when using an array-based datasource.
@@ -59,12 +70,12 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   selector: 'app-operating-unit-table',
   templateUrl: 'operating-unit-table.component.html',
   styleUrls: ['./operating-unit-table.component.css'],
-  standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule,
-    CommonModule, DropdownComponent,
-    AddNewOperatingUnitDialogComponent
-  ]
+  // standalone: true,
+  // imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
+  //   MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule,
+  //   CommonModule, DropdownComponent,
+  //   AddNewOperatingUnitDialogComponent
+  // ]
 })
 
 export class OperatingUnitTableComponent implements OnInit {
@@ -150,15 +161,28 @@ export class OperatingUnitTableComponent implements OnInit {
   addOpUnitData(newData: OPUnitDetails) {
     newData['position'] = this.dataSource.length + 1
     this.dataSource.push(newData);
-    this.table.renderRows();
 
+    const childrenToAddGrandChildrenTo = treeDataitem.children?.find((children)=>children.id === this.entity.childrenID) 
+    if(childrenToAddGrandChildrenTo !== undefined){
+      // console.log("Grand Children", childrenToAddGrandChildrenTo);
+      const grandChildrenAddingIndex = treeDataitem.children?.indexOf(childrenToAddGrandChildrenTo);
+      const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
+
+      const entity = {
+        id: maxId + 1,
+        label: 'Grandchild Node ' + String(maxId+1),
+        children:[]
+      }
+
+      childrenToAddGrandChildrenTo?.children?.push(entity);
+    }
+    
+    this.table.renderRows();
   }
 
 
   rearrangeDataSource() {
-
     this.dataSource.sort((a, b) => a.position - b.position);
-
     for (let i = 0; i < this.dataSource.length; i++) {
       this.dataSource[i].position = i + 1;
     }
@@ -166,10 +190,7 @@ export class OperatingUnitTableComponent implements OnInit {
 
 
   removeEntityData(position: number) {
-
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
-
-
     if (rowIndex !== -1) {
 
       this.dataSource.splice(rowIndex, 1);

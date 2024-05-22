@@ -25,7 +25,8 @@ const initialFormData: EntityInterfaces.FormData = {
     industryLabel:'',
     lawModules: [],
     lawModulesLabel:[],
-    operatingUnit:[]
+    operatingUnit:[],
+    childrenID:0
   };
   
   function transformEntityTypes(data: EntityInterfaces.OriginalType[]): EntityInterfaces.TransformedType[] {
@@ -65,10 +66,10 @@ const initialFormData: EntityInterfaces.FormData = {
 @Component({
     selector: 'dialog-elements-example-dialog',
     templateUrl: 'add-new-entity-dialog.html',
-    standalone: true,
+    // standalone: true,
     styleUrls: ['./entity-table.component.scss'],
-    imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
-      MatSelectModule, CommonModule, DropdownComponent, DialogLayoutComponent]
+    // imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
+    //   MatSelectModule, CommonModule, DropdownComponent ]
   })
   
   export class AddEntityDialog {
@@ -84,14 +85,18 @@ const initialFormData: EntityInterfaces.FormData = {
     selectedCountry:any;
     selectedEntity:any;
     selectedIndustry:any;
-    requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules']
-    dialogHeader: string = 'Edit Entity Details';
+    requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules'];
+    dialogHeaderTitle: string = 'Edit Entity Details';
     operatingUnit:[]
+    dialogHeaderImage: string = 'src/assets/images/Business.png';
+    entityChild:TreeNode;
   
     constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, 
     public dialogRef: MatDialogRef<AddEntityDialog>,
     private apiService:ApiService, private snackbar:SnackbarService){
     
+
+      
     this.industryTypesList = this.data.entityTable.industryTypesList;
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
     this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
@@ -134,7 +139,6 @@ const initialFormData: EntityInterfaces.FormData = {
 
     addEntity() {
       const maxId = getMaxIdFromChildren(treeDataitem);   
-  
       let isAnyFieldBlank = false;
   
       console.log(this.formData)
@@ -166,18 +170,22 @@ const initialFormData: EntityInterfaces.FormData = {
         this.formData.industryLabel = this.selectedIndustry.label || "";
         this.formData.operatingUnit = ['1']
 
+        
         for(const lawModule of this.formData.lawModules){
           var law = this.transformedLawCategoryList.find((law)=> law.value === lawModule);
           this.formData.lawModulesLabel.push(law?.label || "")
         }
 
+        this.entityChild = {
+          id: maxId + 1,
+          label: 'Child Node '+String(maxId+1),
+          children: []
+        }
+        this.formData.childrenID = this.entityChild.id;
+
         //this.formData.lawModulesLabel = this.formData.lawModules;
         this.data.entityTable.addEntityData(this.formData);
-        const entity = {
-          id: maxId + 1,
-          label: 'Child Node ' + maxId,
-        }
-        treeDataitem?.children?.push(entity);
+        treeDataitem?.children?.push(this.entityChild);
         this.snackbar.showSuccess("Successfully added Entity.");
         console.log("FORMDATA SUBMITTED", this.formData);
         this.dialogRef.close();

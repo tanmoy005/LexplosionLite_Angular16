@@ -17,11 +17,11 @@ import {MatMenuModule} from '@angular/material/menu';
   selector: 'app-business-card',
   templateUrl: './business-card.component.html',
   styleUrls: ['./business-card.component.css'],
-  standalone : true,
   encapsulation: ViewEncapsulation.None,
-  imports: [CommonModule,MatCardModule,MatFormFieldModule,MatInputModule,
-    MatSelectModule,MatIconModule,DropdownComponent,
-    MatButtonModule,MatMenuModule],
+  // standalone : true,
+  // imports: [CommonModule,MatCardModule,MatFormFieldModule,MatInputModule,
+  //   MatSelectModule,MatIconModule,DropdownComponent,
+  //   MatButtonModule,MatMenuModule],
 })
 export class BusinessCardComponent {
   countryList : CountryData[] = CountryList

@@ -1,0 +1,28 @@
+@import '../../../../assets/styles/variable.scss';
+
+@mixin card-struncture {
+    display: flex;
+    padding: $h8px $size_32px;
+    align-items: flex-end;
+    .card-name{
+        margin-left: 24px;
+    }
+}
+@mixin card-content-padding{
+
+}
+.card-header-purple-dark {
+    background-color: $purple-100;
+    @include card-struncture;
+}  
+.card-header-purple-light {
+    background-color: $purple-200;
+    @include card-struncture;
+}  
+.card-content-container-dark {
+    @include card-content-padding;
+} 
+.card-content-container-light {
+    @include card-content-padding;
+    background-color: $purple-300;
+} 

@@ -2,8 +2,6 @@ import { Component ,ViewEncapsulation } from '@angular/core';
 import { FormGroup,  } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { DemoMaterialModule } from 'src/app/demo-material-module';
-
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule,ValidatorFn, AbstractControl } from '@angular/forms';
@@ -32,19 +30,19 @@ import { CountryData } from 'src/app/shared/menu-items/country-list';
 
 @Component({
   selector: 'app-register',
-   standalone: true,
   templateUrl: './register.component.html',
-  imports: [DemoMaterialModule, MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,
-    CommonModule,
-    BusinessCardComponent,
-    RegHeaderComponent,
-    MatDividerModule,
-    DropdownComponent
+  // standalone: true,
+  // imports: [MaterialModule, MatButtonModule,
+  //   MatInputModule,
+  //   MatFormFieldModule,
+  //   FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,
+  //   CommonModule,
+  //   BusinessCardComponent,
+  //   RegHeaderComponent,
+  //   MatDividerModule,
+  //   DropdownComponent
 
-    ],
+  //   ],
   styleUrls: ['./register.component.css'],
   encapsulation: ViewEncapsulation.None
 })
