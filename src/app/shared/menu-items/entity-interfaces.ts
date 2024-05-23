@@ -18,16 +18,17 @@
 
 export interface BusinessDetails {
   position: number;
+  id:number;
   name: string;
-  country: string;
+  country: number;
   countryLabel: string,
-  industry: string;
+  industry: number[];
   industryLabel:string;
-  entityType: string;
+  entityType: number;
   entityTypeLabel: string;
   emailID: string;
   laws: string;
-  lawModules: string[],
+  lawModules: number[],
   lawModulesLabel:string[],
   operatingUnit: string[];
   actions: string,
@@ -37,13 +38,13 @@ export interface BusinessDetails {
 
   export interface FormData {
     name: string;
-    country: string;
+    country: number;
     countryLabel: string;
-    entityType: string;
+    entityType: number;
     entityTypeLabel: string;
-    industry: string;
+    industry: number[];
     industryLabel: string;
-    lawModules: string[];
+    lawModules: number[];
     lawModulesLabel: string[];
     operatingUnit: string[];
     childrenID: number;
@@ -74,18 +75,18 @@ export const EntityColumns = ['position', 'name', 'country', 'industry', 'entity
 export const EntityData:BusinessDetails[] =  [
   {
     "position": 1,
+    "id":1,
     "name": "Test Entity 1",
-    "country": "1",
+    "country": 1,
     "countryLabel": "India",
-    "industry": "3",
+    "industry": [3],
     "industryLabel": "Manufacturing",
-    "entityType": "1",
+    "entityType": 1,
     "entityTypeLabel": "Company",
     "emailID": "",
     "laws": "",
     "lawModules": [
-      "1",
-      "2"
+      1,2
     ],
     "lawModulesLabel": [
       "Labour",
@@ -97,18 +98,18 @@ export const EntityData:BusinessDetails[] =  [
   },
   {
     "position": 2,
+    "id":2,
     "name": "Test Entity 2",
-    "country": "1",
+    "country": 1,
     "countryLabel": "India",
-    "industry": "3",
+    "industry": [3],
     "industryLabel": "Manufacturing",
-    "entityType": "1",
+    "entityType": 1,
     "entityTypeLabel": "Company",
     "emailID": "",
     "laws": "",
     "lawModules": [
-      "1",
-      "2"
+      1,2
     ],
     "lawModulesLabel": [
       "Labour",
