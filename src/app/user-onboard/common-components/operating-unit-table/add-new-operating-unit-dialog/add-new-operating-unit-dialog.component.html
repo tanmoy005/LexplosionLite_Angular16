@@ -12,7 +12,7 @@
           [IsMultiSelection]="true"
           [IsRequired]="true"
          [unchangeableValues]="[data.entity.id]"
-          (selectedValueChange)="onSelectedValueChanged($event, 'activity')"
+          (selectedValueChange)="onSelectedValueChanged($event, 'entityList')"
         >
         </app-dropdown>
       </div>
@@ -27,7 +27,7 @@
             <mat-label class="text_12_400_gray_900"
               >Enter Name of Operating Unit</mat-label
             >
-            <input matInput name="Entity" [(ngModel)]="data.entityName" />
+            <input matInput name="Entity" [(ngModel)]="operatingUnitName" />
           </mat-form-field>
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Ownership</label>
