@@ -17,11 +17,11 @@ import { CountryList, CountryData } from 'src/app/shared/menu-items/country-list
 
 const initialFormData: EntityInterfaces.FormData = {
     name: '',
-    country: '',
+    country: 1,
     countryLabel:'',
-    entityType: '',
+    entityType: 0,
     entityTypeLabel:'',
-    industry: '',
+    industry: [],
     industryLabel:'',
     lawModules: [],
     lawModulesLabel:[],
@@ -53,15 +53,15 @@ const initialFormData: EntityInterfaces.FormData = {
     }));
   }
 
-  function getMaxIdFromChildren(node: TreeNode): number {
-    const rootChildren = treeDataitem.children;
-    let maxId = 0;
+  // function getMaxIdFromChildren(node: TreeNode): number {
+  //   const rootChildren = treeDataitem.children;
+  //   let maxId = 0;
   
-    if (rootChildren && rootChildren.length > 0) {
-      maxId = Math.max(...rootChildren.map(child => child.id));
-    }
-    return maxId;
-  }
+  //   if (rootChildren && rootChildren.length > 0) {
+  //     maxId = Math.max(...rootChildren.map(child => child.id));
+  //   }
+  //   return maxId;
+  // }
 
 @Component({
     selector: 'dialog-elements-example-dialog',
@@ -135,10 +135,8 @@ const initialFormData: EntityInterfaces.FormData = {
     }
   
    
-
-
     addEntity() {
-      const maxId = getMaxIdFromChildren(treeDataitem);   
+      //const maxId = getMaxIdFromChildren(treeDataitem);   
       let isAnyFieldBlank = false;
   
       console.log(this.formData)
@@ -146,7 +144,7 @@ const initialFormData: EntityInterfaces.FormData = {
       for (const field of this.requiredFormDataFields) {
         if (this.formData.hasOwnProperty(field)) {
           const fieldValue = this.formData[field as keyof FormData];
-          if (field === "lawModules" && (fieldValue as string[]).length === 0) {
+          if ((field === "lawModules" || "industry") && (fieldValue as string[]).length === 0) {
             isAnyFieldBlank = true;
             break;
           } else if (typeof fieldValue === 'string' && fieldValue === '') {
@@ -160,10 +158,11 @@ const initialFormData: EntityInterfaces.FormData = {
         this.snackbar.showError("Please enter all the field values.")
       }
   
-      else {
+      else{
         this.selectedCountry = this.countryList.find((country)=> country.value === this.formData.country);
         this.selectedEntity = this.transformedEntityList.find((entity)=> entity.value === this.formData.entityType);
-        this.selectedIndustry= this.transformedIndustryList.find((industry)=> industry.value === this.formData.industry);
+        this.selectedIndustry= [];
+        //this.transformedIndustryList.find((industry)=> industry.value === this.formData.industry);
     
         this.formData.countryLabel = this.selectedCountry.label || "";
         this.formData.entityTypeLabel = this.selectedEntity.label || "";
@@ -176,16 +175,16 @@ const initialFormData: EntityInterfaces.FormData = {
           this.formData.lawModulesLabel.push(law?.label || "")
         }
 
-        this.entityChild = {
-          id: maxId + 1,
-          label: 'Child Node '+String(maxId+1),
-          children: []
-        }
-        this.formData.childrenID = this.entityChild.id;
+        // this.entityChild = {
+        //   id: maxId + 1,
+        //   label: 'Child Node '+String(maxId+1),
+        //   children: []
+        // }
+        this.formData.childrenID = 0;
 
         //this.formData.lawModulesLabel = this.formData.lawModules;
         this.data.entityTable.addEntityData(this.formData);
-        treeDataitem?.children?.push(this.entityChild);
+       // treeDataitem?.children?.push(this.entityChild);
         this.snackbar.showSuccess("Successfully added Entity.");
         console.log("FORMDATA SUBMITTED", this.formData);
         this.dialogRef.close();

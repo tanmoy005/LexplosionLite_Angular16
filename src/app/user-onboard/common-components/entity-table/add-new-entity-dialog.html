@@ -40,7 +40,7 @@
               <div class="field-serial-no text_12_500_gray_1000">
                 4
               </div>
-              <app-dropdown [label]="'Industries'" [options]="transformedIndustryList" [IsMultiSelection]="false"
+              <app-dropdown [label]="'Industries'" [options]="transformedIndustryList" [IsMultiSelection]="true"
                 [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'industry')">
               </app-dropdown>
             </div>

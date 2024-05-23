@@ -21,8 +21,12 @@
 }  
 .card-content-container-dark {
     @include card-content-padding;
+    overflow-x: auto;
+    overflow-y:auto;
 } 
 .card-content-container-light {
     @include card-content-padding;
     background-color: $purple-300;
+    overflow-x: auto;
+    overflow-y:auto;
 } 

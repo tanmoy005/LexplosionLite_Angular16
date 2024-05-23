@@ -21,15 +21,35 @@ export class DropdownComponent {
   @Input() options: { value: any, label: string, icon?: string }[];
   @Input() IsMultiSelection: boolean = false;
   @Input() IsRequired: boolean = false;
+
+  @Input() unchangeableValues: any[] = [];
+
+
   //selectedValue: any;
   @Output() selectedValueChange: EventEmitter<any> = new EventEmitter<any>();
 
   type: string = 'small';
   isDropdownOpened: boolean = false;
+
+
   onSelectionChange(event: any) {
     this.selectedValueChange.emit(event.value);
   }
   toggleDropdown(){
     !this.isDropdownOpened;
   }
+
+
+  // onSelectionChange(event: any) {
+  //   if (!this.isValueUnchangeable(event.value)) {
+  //     this.selectedValueChange.emit(event.value);
+  //   }
+  // }
+
+  isValueDisabled(value: any): boolean {
+    return this.unchangeableValues.includes(value);
+  }
+  
+
+
 }

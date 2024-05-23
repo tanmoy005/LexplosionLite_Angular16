@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -58,36 +59,13 @@ export class AppSideLoginComponent {
   successdurationInSeconds = 2;
   failuredurationInSeconds = 4;
 
-  // openSuccessSnackBar() {
-  //   this._snackBar.open('Login Successful!', 'close', {
-  //     horizontalPosition: this.horizontalPosition,
-  //     verticalPosition: this.verticalPosition,
-  //     duration: this.successdurationInSeconds * 1000,
-  //   });
-  // }
-
-  // openWrongCredentialsSnackBar() {
-  //   this._snackBar.open('Given Username or Password is wrong.', 'close', {
-  //     horizontalPosition: this.horizontalPosition,
-  //     verticalPosition: this.verticalPosition,
-  //     duration: this.failuredurationInSeconds * 1000,
-  //   });
-  // }
-
-  // openServerErrorSnackBar() {
-  //   this._snackBar.open('Some error occurred while logging you in. Please try again', 'close', {
-  //     horizontalPosition: this.horizontalPosition,
-  //     verticalPosition: this.verticalPosition,
-  //     duration: this.failuredurationInSeconds * 1000,
-  //   });
-  // }
+  // entityTypes: any;
+  // industryActivities: any;
+  // states: any;
+  // operatingUnitTypes:any;
+  // komriskLawCategories:any
 
 
-
-
-  // navigate to another component, with or without data
-  // here "entity" is the data being sent
-  // this.router.navigate(['/oprating-unit-details'],{ state: entity }); 
   usernameFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
 
@@ -96,36 +74,24 @@ export class AppSideLoginComponent {
   get password() { return this.passwordFormControl.value; }
 
 
-  // handleLogin(event: any){
-  //   console.log("Handle login clicked!")
-  //   console.log("Username - ", this.username);
-  //   console.log("Password - ", this.password);
-
-  //   const loginPayload = {"unique_key":this.username,"password":this.password}
-  //   try {
-  //     // const response =  this.authService.userLogin(loginPayload); 
-  //     this.authService.userLogin(loginPayload).pipe(
-  //       tap(response => {
-  //         // Handle successful response
-  //         console.log('Login successful:', response);
-  //         // this.routerService.navigate(['/oprating-unit-details']); 
-  //       }),
-  //       catchError(error => {
-  //         // Handle error
-  //         console.error('Login error:', error);
-  //         throw error; // Rethrow the error to propagate it downstream
-  //       })
-  //     ).subscribe();
-  //     // console.log('Login successful:', response);
-  //     // Handle successful login, such as redirecting to a dashboard
-  //   } 
-  //   catch (error) {
-  //     //console.error('Error occurred during login:', error);
-  //     alert("Some error occurred while logging in");
-  //     // Handle login error, such as displaying an error message
-  //   }
-  // }
+  
   loginResponse: any;
+
+  fetchDefinitions() {
+    const fieldPayload=["entityTypes","industryActivities","states","operatingUnitTypes","komriskLawCategories"]
+
+    this.apiService.getFieldDefinition(fieldPayload).subscribe((response) => {
+      console.log('those are operating unit types', response)
+      const encryptStorage = new EncryptStorage(environment.localStorageKey);
+      encryptStorage.setItem('entityTypes', response.data.entityTypes);
+      encryptStorage.setItem('industryActivities', response.data.industryActivities);
+      encryptStorage.setItem('states', response.data.states);
+      encryptStorage.setItem('operatingUnitTypes', response.data.operatingUnitTypes);
+      encryptStorage.setItem('komriskLawCategories', response.data.komriskLawCategories);
+      
+    })
+  }
+
   handleLogin(event: any) {
     console.log("Handle login clicked!")
     console.log("Username - ", this.username);
@@ -159,6 +125,7 @@ export class AppSideLoginComponent {
         console.log('response', response);
         const encryptStorage = new EncryptStorage(environment.localStorageKey);
         encryptStorage.setItem('login-details', response);
+        this.fetchDefinitions()
         this.router.navigate(['/entity-details'], { state: { entity: '' } });
       })
       // Handle successful login, such as redirecting to a dashboard

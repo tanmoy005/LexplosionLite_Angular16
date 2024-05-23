@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { OperatingUnitComponent } from '../operating-unit/operating-unit.component';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 
+
 @Component({
   selector: 'app-entity-details-page',
   templateUrl: './entity-details-page.component.html',
@@ -44,18 +45,18 @@ export class EntityDetailsPageComponent {
       this.receivedData = navigation.extras.state;
     }
 
-    try{
-    this.apiService.getFieldDefinition(JSON.stringify(["entityTypes","industryActivities","komriskLawCategories"])).subscribe((response) => {
-    fieldDefinitionResponse = response.data;
+  //   try{
+  //   this.apiService.getFieldDefinition(JSON.stringify(["entityTypes","industryActivities","komriskLawCategories"])).subscribe((response) => {
+  //   fieldDefinitionResponse = response.data;
 
-    this.entityTypesList = fieldDefinitionResponse.entityTypes;
-    this.industryTypesList = fieldDefinitionResponse.industryActivities;
-    this.lawCategoriesList = fieldDefinitionResponse.komriskLawCategories;
-    })
-  }
-  catch (error) {
-      console.log(error)
-    }
+  //   this.entityTypesList = fieldDefinitionResponse.entityTypes;
+  //   this.industryTypesList = fieldDefinitionResponse.industryActivities;
+  //   this.lawCategoriesList = fieldDefinitionResponse.komriskLawCategories;
+  //   })
+  // }
+  // catch (error) {
+  //     console.log(error)
+  //   }
   }
 
   handleAddEntity(event: boolean) {
