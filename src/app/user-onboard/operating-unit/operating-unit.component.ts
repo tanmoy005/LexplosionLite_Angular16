@@ -24,6 +24,7 @@ export class OperatingUnitComponent implements OnChanges
   @Input() entityDetails:any;
   @Input() entity: any;
   @Input() isDotsCliscked: boolean;
+  @Output() handleTableDataLoadingFromOperatingUnit = new EventEmitter<boolean>();
 
 
   entityOpPath: string[] = [];
@@ -39,5 +40,6 @@ export class OperatingUnitComponent implements OnChanges
   treeDataItem = treeDataitem;
   onBackClick() {
     this.isBackClicked.emit(true);
+    this.handleTableDataLoadingFromOperatingUnit.emit(true);
   }
 }
