@@ -73,6 +73,7 @@ export class AddNewOperatingUnitDialogComponent {
   ownershipDropdown: string[] = ['Owned', 'Leased'];
   zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
   entityList:TransformedType[] = []
+  selectedEntities:[]=[]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[],
@@ -98,7 +99,35 @@ export class AddNewOperatingUnitDialogComponent {
 
   addEntity() {
    
-    if (this.isDataValid()) {
+    // if (this.isDataValid()) {
+    //   const operatingUnitTypeName = this.findOperatingUnitTypeName(this.operatingUnitType);
+    //   const newData: OPUnitDetails = {
+    //     position: 1,
+    //     name: this.operatingUnitName,
+    //     entity:'',
+    //     ownership:'',
+    //     type: operatingUnitTypeName, 
+    //     location:'',
+    //     zone:'',
+    //     employees:'',
+    //     activities:'',
+    //     laws: '',
+    //     actions:'',
+    //     entityPosition:this.data.entityPosition
+    //   };
+    //   console.log('op unit added!',newData)
+    //   this.data.entityTable.addOpUnitData(newData);
+      
+    //   this.snackbar.showSuccess("Sucessfully added Operating Unit");
+    //   this.dialogRef.close();
+      
+    // } else {
+      
+    //   this.snackbar.showError("Please fill all the fields");
+    
+    // }
+
+   
       const operatingUnitTypeName = this.findOperatingUnitTypeName(this.operatingUnitType);
       const newData: OPUnitDetails = {
         position: 1,
@@ -120,11 +149,7 @@ export class AddNewOperatingUnitDialogComponent {
       this.snackbar.showSuccess("Sucessfully added Operating Unit");
       this.dialogRef.close();
       
-    } else {
-      
-      this.snackbar.showError("Please fill all the fields");
     
-    }
   }
   findOperatingUnitTypeName(id: any): string  {
     const operatingUnitType = this.data.operatingUnitTypes.find(type => type.id === id);
@@ -147,6 +172,10 @@ export class AddNewOperatingUnitDialogComponent {
     if (columnvalue === 'ownership'){
      this.ownership = value
     }
+    if (columnvalue === 'entityList'){
+      this.entityList = value
+      console.log('the selected entity list is',value)
+     }
      
    }
 
