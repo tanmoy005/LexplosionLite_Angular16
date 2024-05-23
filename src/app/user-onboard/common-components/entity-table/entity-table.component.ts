@@ -23,9 +23,20 @@ import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
 import { DialogService } from 'src/app/services/Dialog.service';
 import { MatBadgeModule } from '@angular/material/badge';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
+const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =[];
 
-const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =EntityInterfaces.EntityData;
+function getMaxIdFromChildren(node: TreeNode): number {
+  const rootChildren = treeDataitem.children;
+  let maxId = 0;
+
+  if (rootChildren && rootChildren.length > 0) {
+    maxId = Math.max(...rootChildren.map(child => child.id));
+  }
+  return maxId;
+}
+
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
@@ -37,11 +48,15 @@ const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =EntityInterfaces.EntityD
 })
 
 export class EntityTableComponent implements OnInit, OnDestroy{
-  private subscription: Subscription;
 
-  constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService,
-    private entityDialogService: DialogService
-  ) { }
+  private subscription: Subscription;
+  private entityList: any;
+  entityChild:TreeNode;
+
+  constructor(public dialog: MatDialog, private router: Router, 
+    private entityDialogService: DialogService, private apiService:ApiService, 
+    private snackbar:SnackbarService) { }
+  
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
   dataSource = [...ELEMENT_DATA];
 
@@ -61,10 +76,81 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
       this.viewAddEntityDialog();
     });
+
+    this.fetchEntityList();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  initialFormData: EntityInterfaces.BusinessDetails = {
+    position: 0,
+    id: 0,
+    name: '',
+    country: 0,
+    countryLabel: '',
+    industry: [],
+    industryLabel: '',
+    entityType: 0,
+    entityTypeLabel: '',
+    emailID: '',
+    laws: '',
+    lawModules: [],
+    lawModulesLabel: [],
+    operatingUnit: [],
+    actions: '',
+    childrenID: 0,
+  };
+
+  fetchEntityList() {
+    const entityFetchPayload = { company: 1 };
+    try {
+      this.apiService.postFetchEntityList(entityFetchPayload).subscribe((response) => {
+        const entityList = response.data;
+        let position = 1;
+        let childrenID = 0;
+
+        //console.log('Entity fetch response', entityList);
+      
+        entityList.forEach((entity: any) => {
+          const maxId = getMaxIdFromChildren(treeDataitem);
+
+          this.entityChild = {
+            id: maxId + 1,
+            label: 'Child Node '+String(maxId+1),
+            children: []
+          }
+
+          const entityRow: EntityInterfaces.BusinessDetails = {
+            ...this.initialFormData,
+            position: position,
+            id: entity.id,
+            name: entity.name,
+            industry: entity.industries.map((industry: any) => industry.id),
+            industryLabel: entity.industries.map((industry: any) => industry.name).join(","),
+            entityType: entity.entityType.id,
+            entityTypeLabel: entity.entityType.name,
+            lawModules: entity.komriskLawCategories.map((law: any) => law.id),
+            lawModulesLabel: entity.komriskLawCategories.map((law: any) => law.description),
+            operatingUnit: entity.operatingUnits,
+            country: 1,
+            countryLabel: "India",
+            emailID: '',
+            laws: '',
+            actions: '',
+            childrenID: this.entityChild.id
+          };
+          this.dataSource.push(entityRow);
+          treeDataitem?.children?.push(this.entityChild);
+          position++;
+        });
+
+        this.table.renderRows(); // Ensure this is a MatTable instance
+      });
+    } catch (error) {
+      this.snackbar.showError("Some error occurred while fetching entity list!");
+    }
   }
 
   viewAddEntityDialog() {
@@ -73,28 +159,38 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   
   treeDataItem = treeDataitem;
 
+  // treeDataItem:TreeNode = {
+  //   id: 1,
+  //   label: 'Root Node',
+  //   children: []
+  // };
+
   addEntityData(formData: EntityInterfaces.FormData) {
-    // Create a new row with the same data as the random row
-    const newRow: EntityInterfaces.BusinessDetails = {
-    
-      position: this.dataSource.length + 1, 
-      name: formData.name,
-      country: formData.country,
-      countryLabel:formData.countryLabel,
-      industry: formData.industry,
-      industryLabel: formData.industryLabel,
-      entityType: formData.entityType,
-      entityTypeLabel: formData.entityTypeLabel,
-      emailID: '',
-      laws: '',
-      lawModules:formData.lawModules,
-      lawModulesLabel:formData.lawModulesLabel,
-      operatingUnit: formData.operatingUnit,
-      actions: '',
-      childrenID:formData.childrenID
-    };
-    this.dataSource.push(newRow);
-    this.table.renderRows();
+
+    const createEntityPayload  = {
+        "id": null,
+        "name": formData.name,
+        "company": 1,
+        "entityType": formData.entityType,
+        "entityTypeSearch": null,
+        "industries": formData.industry,
+        "komriskLawCategories": formData.lawModules
+    }
+
+    console.log("Created payload for saving entity",createEntityPayload);
+
+    try {
+      this.apiService.postCreateEntity(createEntityPayload).subscribe((response) => {
+        const entityResponse = response;
+        console.log("Entity Response after saving", entityResponse);
+        this.snackbar.showSuccess('Entity successfully added.');
+        location.reload();
+      })
+    }
+
+   catch (error) {
+    this.snackbar.showError("Some error occurred while fetching entity list!");
+  }
   }
 
   rearrangeDataSource() {
@@ -161,24 +257,9 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     // this.router.navigate(['/oprating-unit-details'], { state: entity });
   }
 
+  entityToSend: any = {};
+
   openEntityMenuDialog(action: string, position: number) {
-    var blankEntity =  {
-                        position: position,
-                        name: '',
-                        country: '',
-                        countryLabel:'',
-                        industry: '',
-                        industryLabel:'',
-                        entityType: '',
-                        entityTypeLabel: '',
-                        emailID: '',
-                        laws: '',
-                        lawModules: [],
-                        lawModulesLabel:[],
-                        operatingUnit: [],
-                        actions: '',
-                        childrenID:0
-                      }
     switch (action) {
       case 'Delete':
         this.removeEntityData(position);
@@ -186,9 +267,20 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       case 'Add Operating Unit':
         var entity = this.dataSource.find((entity) => entity.position === position);
         if(entity===undefined){
-          entity = blankEntity
-        }  
-        this.navigateToAddOpUnit(entity);
+          this.snackbar.showError("Some error occurred while adding Operating Unit.")
+        }
+        else { 
+          this.entityToSend = entity;
+          this.entityToSend['entityList'] = this.dataSource.map((entity: any) => {
+            return {
+              id: entity.id,
+              name: entity.name
+            };
+          });
+
+          //console.log("The sent entity in OP-Unit",this.entityToSend);
+          this.navigateToAddOpUnit(this.entityToSend);
+        }
         break
       case 'Edit':
         break
@@ -217,13 +309,25 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       case 'Delete':
         this.removeEntityData(position);
         break;
-      case 'Add Operating Unit':
+      
+     case 'Add Operating Unit':
         var entity = this.dataSource.find((entity) => entity.position === position);
         if(entity===undefined){
-          entity = blankEntity
-        }  
-        this.navigateToAddOpUnit1(entity);
+          this.snackbar.showError("Some error occurred while adding Operating Unit.")
+        }
+        else { 
+          this.entityToSend = entity;
+          this.entityToSend['entityList'] = this.dataSource.map((entity: any) => {
+            return {
+              id: entity.id,
+              name: entity.name
+            };
+          });
+          //console.log("The sent entity in OP-Unit",this.entityToSend);
+          this.navigateToAddOpUnit1(this.entityToSend);
+        }
         break
+
       case 'Edit':
         break
       default:
