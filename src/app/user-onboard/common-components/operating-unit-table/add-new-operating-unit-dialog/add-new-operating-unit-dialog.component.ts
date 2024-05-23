@@ -66,12 +66,22 @@ export class AddNewOperatingUnitDialogComponent {
   state: string = '';
   activity: string = '';
   locatedAt: string = '';
-  ownership: string = '';
+  ownership: any ;
   employeeData:any;
   apprenticeDataCount:any;
   childLabourDataCount: any;
-  ownershipDropdown: string[] = ['Owned', 'Leased'];
-  zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
+  zone:any
+  // ownershipDropdown: string[] = ['Owned', 'Leased'];
+  ownershipDropdown: any = [
+    {'option':'Owned','value':1},
+    {'option':'Leased','value':2}
+  ];
+  // zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
+  zoneDropdown: any = [
+    {'option':'SEZ','value':1}, 
+    {'option':'STPI','value':2}, 
+    {'option': 'Not Applicable','value':2}
+];
   entityList:TransformedType[] = []
   selectedEntities:[]=[]
 
@@ -196,6 +206,16 @@ export class AddNewOperatingUnitDialogComponent {
 
   CloseDialog(){
     this.dialogRef.close();
+  }
+
+  onOwnershipSelectionChange(event: any): void {
+    this.ownership = event.value;
+    console.log('Selected ownership Value: ', this.ownership);
+  }
+
+  onZoneSelectionChange(event: any): void {
+    this.zone = event.value;
+    console.log('Selected zone Value: ', this.zone);
   }
 
 

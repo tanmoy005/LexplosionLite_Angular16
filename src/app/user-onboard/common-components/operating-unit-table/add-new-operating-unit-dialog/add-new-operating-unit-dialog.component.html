@@ -31,9 +31,12 @@
           </mat-form-field>
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Ownership</label>
-            <mat-radio-group [(ngModel)]="color">
-              <mat-radio-button class="example-margin"  *ngFor='let value of ownershipDropdown' value="value">
-                {{value}}
+            <mat-radio-group 
+            [(ngModel)]="ownership"
+            (change)="onOwnershipSelectionChange($event)">
+             
+              <mat-radio-button class="example-margin"  *ngFor='let menu of ownershipDropdown' [value]="menu.value">
+                {{menu.option}}
               </mat-radio-button>
             </mat-radio-group>
           </section>
@@ -65,9 +68,10 @@
           </div>
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Zone</label>
-            <mat-radio-group [(ngModel)]="color">
-              <mat-radio-button class="example-margin" class="text_12_400_gray_1200"  *ngFor='let value of zoneDropdown' value="value">
-                {{value}}
+            <mat-radio-group [(ngModel)]="zone"
+            (change)="onZoneSelectionChange($event)">
+              <mat-radio-button class="example-margin" class="text_12_400_gray_1200"  *ngFor='let menu of zoneDropdown' [value]="menu.value">
+                {{menu.option}}
               </mat-radio-button>
             </mat-radio-group>
           </section>
