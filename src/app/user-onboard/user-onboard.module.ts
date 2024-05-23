@@ -49,6 +49,7 @@ import { FeatureHeaderComponent } from './subscription-details-page/feature-head
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CompanyStructureCardComponent } from './common-components/company-structure-card/company-structure-card.component';
 import { CommonComponentModule } from './common-components/common-component.module';
+import { MaterialModule } from '../material-module';
 @NgModule({
   declarations: [
     
@@ -83,7 +84,8 @@ import { CommonComponentModule } from './common-components/common-component.modu
     MatCheckboxModule,
     MatExpansionModule,
     MatButtonModule,
-    CommonComponentModule
+    CommonComponentModule,
+    MaterialModule
   ],
   exports:[
     // BusinessCardComponent

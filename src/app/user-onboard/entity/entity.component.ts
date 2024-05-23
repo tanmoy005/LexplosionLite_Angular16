@@ -52,6 +52,7 @@ export class EntityComponent {
   @Input() countryList: [] = [];
   @Output() selectedEntityEmitter = new EventEmitter<any>();
   @Output() selectedEntityEmitter1 = new EventEmitter<any>();
+  @Output() handleTableDataLoadingFromEntity = new EventEmitter<boolean>();
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -104,6 +105,10 @@ export class EntityComponent {
     this.selectedEntity= entity
     this.selectedEntityEmitter1.emit(this.selectedEntity);
    
+  }
+
+  handleTableDataLoading(state:boolean){
+    this.handleTableDataLoadingFromEntity.emit(state);
   }
   goToSubscription(){
     this.router.navigate(['/subscription'], { state: { entity: '' } });
