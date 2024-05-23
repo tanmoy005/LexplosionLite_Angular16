@@ -8,6 +8,11 @@ import { ApiService } from 'src/app/services/api.service';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+
  
 
 @Component({
@@ -25,13 +30,21 @@ import { MatIconModule } from '@angular/material/icon';
 export class EntityComponent {
   treeDataItem = treeDataitem;
   receivedData: any;
+  encryptStorage = new EncryptStorage(environment.localStorageKey);
   // entityTypesList: any;
   // industryTypesList: any;
   // lawCategoriesList: any;
-  entityTypesList:any= ['company'];
-  industryTypesList: any=['IT'];
-  lawCategoriesList:any= ['labour'];
-  //countryList: any=[];
+   //countryList: any=[];
+
+
+  // entityTypesList:any= ['company'];
+  // industryTypesList: any=['IT'];
+  // lawCategoriesList:any= ['labour'];
+
+  entityTypesList:FieldDefinitionInterfaces.EntityTypes;
+  industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
+  lawCategoriesList:FieldDefinitionInterfaces.komriskLawCategories;
+ 
   isEntityDialogOpen: boolean
   selectedEntity:  any
   
@@ -47,19 +60,25 @@ export class EntityComponent {
     if (navigation && navigation.extras.state) {
       this.receivedData = navigation.extras.state;
     }
+    const savedentityTypes = this.encryptStorage.getItem('entityTypes');
+    const savedindustryActivities = this.encryptStorage.getItem('industryActivities');
+    const savedLawCategories = this.encryptStorage.getItem('komriskLawCategories');
 
-    try{
-    this.apiService.getFieldDefinition(JSON.stringify(["entityTypes","industryActivities","komriskLawCategories"])).subscribe((response) => {
-    fieldDefinitionResponse = response.data;
+    this.entityTypesList = savedentityTypes;
+    this.industryTypesList = savedindustryActivities;
+    this.lawCategoriesList = savedLawCategories;
+  //   try{
+  //   this.apiService.getFieldDefinition(JSON.stringify(["entityTypes","industryActivities","komriskLawCategories"])).subscribe((response) => {
+  //   fieldDefinitionResponse = response.data;
 
-    this.entityTypesList = fieldDefinitionResponse.entityTypes;
-    this.industryTypesList = fieldDefinitionResponse.industryActivities;
-    this.lawCategoriesList = fieldDefinitionResponse.komriskLawCategories;
-    })
-  }
-  catch (error) {
-      console.log(error)
-    }
+  //   this.entityTypesList = fieldDefinitionResponse.entityTypes;
+  //   this.industryTypesList = fieldDefinitionResponse.industryActivities;
+  //   this.lawCategoriesList = fieldDefinitionResponse.komriskLawCategories;
+  //   })
+  // }
+  // catch (error) {
+  //     console.log(error)
+  //   }
   }
   
   handleAddEntity(event: boolean) {

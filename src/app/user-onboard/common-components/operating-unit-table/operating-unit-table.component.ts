@@ -48,6 +48,10 @@ import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details'
 import { DialogService } from 'src/app/services/Dialog.service';
 import { Subscription } from 'rxjs';
 import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+
 
 const ELEMENT_DATA: OPUnitDetails[] = [
 
@@ -80,13 +84,14 @@ function getMaxIdFromGrandchildren (children:TreeNode): number {
 
 export class OperatingUnitTableComponent implements OnInit {
   private subscription: Subscription;
+  encryptStorage = new EncryptStorage(environment.localStorageKey);
   constructor(public dialog: MatDialog, private router: Router, private fieldDefinitionService: ApiService,
     private opDialogService: DialogService
   ) { }
   @Input() entity: any={}; 
   @Input() isDotsCliscked: boolean; 
-  operatingUnitTypes: any=[];
-  states: any=[]
+  operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[]=[];
+  states: FieldDefinitionInterfaces.States[]=[]
 
   ngOnInit(): void {
     //this.fetchOperatingUniTypes();
@@ -98,16 +103,23 @@ export class OperatingUnitTableComponent implements OnInit {
     //     'name':'Singapore'
     //   }]; 
     // }
-    this.fetchstates();
-    this.fetchOperatingUniTypes();
+    // this.fetchstates();
+    // this.fetchOperatingUniTypes();
+    
+    const savedStates = this.encryptStorage.getItem('states');
+    const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
+    // console.log('states',savedStates)
+    // console.log('op unit types',savedUniTypes)
+    this.states = savedStates;
+    this.operatingUnitTypes = savedUniTypes
     
     this.subscription = this.opDialogService.openDialog$.subscribe(() => {
       this.openEntityDialog(this.entity.name);
     });
 
-    console.log('the entity1 is coming',this.entity)
-    console.log('the entity is coming',this.entity)
+    // console.log('the entity1 is coming',this.entity)
+    // console.log('the entity is coming',this.entity)
     
     if (this.isDotsCliscked === true){
       this.openEntityDialog(this.entity.name);
@@ -130,23 +142,25 @@ export class OperatingUnitTableComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  fetchOperatingUniTypes() {
-    const fieldPayload = ['operatingUnitTypes']
+  // fetchOperatingUniTypes() {
+  //   const fieldPayload = ['operatingUnitTypes']
 
-    this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
-      console.log('those are operating unit types', response)
-      this.operatingUnitTypes = response.data.operatingUnitTypes;
-    })
-  }
+  //   this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
+  //     //console.log('those are operating unit types', response)
+  //     this.operatingUnitTypes = response.data.operatingUnitTypes;
+      
 
-  fetchstates() {
-    const fieldPayload = ['states']
+  //   })
+  // }
 
-    this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
-      console.log('those states', response)
-      this.states = response.data.states;
-    })
-  }
+  // fetchstates() {
+  //   const fieldPayload = ['states']
+
+  //   this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
+  //     //console.log('those states', response)
+  //     this.states = response.data.states;
+  //   })
+  // }
   displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
                                 'type', 'location', 'zone', 'employees','activities','laws','actions'];
 
