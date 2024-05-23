@@ -223,7 +223,8 @@ export class OperatingUnitTableComponent implements OnInit {
         entityTable: this, entityName: entityName, industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        entityPosition:this.entity.position
+        entityPosition:this.entity.position,
+        entity:this.entity
       }
     });
   }

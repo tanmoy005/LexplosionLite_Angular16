@@ -8,10 +8,10 @@
         <div class="field-serial-no text_12_500_gray_1000">1</div>
         <app-dropdown
           [label]="'Select Entity'"
-          [options]="BusinessOptions"
+          [options]="entityList"
           [IsMultiSelection]="true"
           [IsRequired]="true"
-         [unchangeableValues]="['option1']"
+         [unchangeableValues]="[data.entity.id]"
           (selectedValueChange)="onSelectedValueChanged($event, 'activity')"
         >
         </app-dropdown>

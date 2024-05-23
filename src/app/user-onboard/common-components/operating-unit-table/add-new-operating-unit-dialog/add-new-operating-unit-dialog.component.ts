@@ -72,16 +72,18 @@ export class AddNewOperatingUnitDialogComponent {
   childLabourDataCount: any;
   ownershipDropdown: string[] = ['Owned', 'Leased'];
   zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
+  entityList:TransformedType[] = []
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[],
-    entityPosition:number},
+    entityPosition:number,
+    entity:any},
     private snackbar: SnackbarService,
     public dialogRef: MatDialogRef<AddNewOperatingUnitDialogComponent>) {
    
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
     this.transformedStates = transformOperatingUnitTypes(this.data.states)
-
+    this.entityList = transformOperatingUnitTypes(this.data.entity.entityList)
   }
   isDataValid(): boolean {
     return (
