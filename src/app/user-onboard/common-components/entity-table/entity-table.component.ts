@@ -72,6 +72,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
   @Output() entitySelected1 = new EventEmitter<EntityInterfaces.BusinessDetails>();
 
+  @Output() entityTableDataLoading = new EventEmitter<boolean>();
+
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
       this.viewAddEntityDialog();
@@ -102,8 +104,17 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     actions: '',
     childrenID: 0,
   };
+  
+  isTableEntitiesLoading:boolean=false;
 
   fetchEntityList() {
+    
+    treeDataitem.id = 1;
+    treeDataitem.label = 'Root Node'
+    treeDataitem.children = []
+
+    this.entityTableDataLoading.emit(true);
+
     const entityFetchPayload = { company: 1 };
     try {
       this.apiService.postFetchEntityList(entityFetchPayload).subscribe((response) => {
@@ -145,8 +156,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
           treeDataitem?.children?.push(this.entityChild);
           position++;
         });
-
         this.table.renderRows(); // Ensure this is a MatTable instance
+        this.entityTableDataLoading.emit(false);
       });
     } catch (error) {
       this.snackbar.showError("Some error occurred while fetching entity list!");

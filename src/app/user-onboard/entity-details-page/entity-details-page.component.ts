@@ -34,7 +34,9 @@ export class EntityDetailsPageComponent {
 
   isAddOperatingUnitClicked: boolean =false;
 
-  isDotsCliscked: boolean
+  isDotsCliscked: boolean;
+
+  isEntityTableLoading:boolean;
   
 
   constructor(private router: Router, private apiService: ApiService) {
@@ -97,5 +99,10 @@ export class EntityDetailsPageComponent {
       //console.log('Back button clicked:', event);
       this.isAddOperatingUnitClicked= false
     }
+  }
+
+  handleEntityLoadingState(state:boolean){
+    //console.log("Table Data loading state", state);
+    this.isEntityTableLoading = state;
   }
 }

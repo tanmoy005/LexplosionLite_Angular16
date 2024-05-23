@@ -1,7 +1,8 @@
+
 <div class="container entity-details-page-container">
+
   <app-reg-header></app-reg-header>
   <mat-divider></mat-divider>
-
   <div class="row">
     <div class="col-lg-12 col-sm-12 col-md-12">
       <app-stepper [currentStep]="0"> </app-stepper>
@@ -54,6 +55,7 @@
       [countryList]="countryList"
       (selectedEntityEmitter)="handleSelectedEntity($event)"
       (selectedEntityEmitter1)="handleSelectedEntity1($event)"
+      (handleTableDataLoadingFromEntity)="handleEntityLoadingState($event)"
     >
     </app-entity>
   </div>
@@ -74,4 +76,11 @@
       </button>
     </div>
   </div> -->
+  
+  <!-- Spinner and backdrop -->
+  <div class="spinner-backdrop" *ngIf="isEntityTableLoading">
+    <mat-spinner></mat-spinner>
+  </div>
 </div>
+
+
