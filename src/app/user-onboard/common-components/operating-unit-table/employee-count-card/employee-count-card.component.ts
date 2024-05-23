@@ -29,10 +29,10 @@ export class EmployeeCountCardComponent {
   @Output() apprenticesChange = new EventEmitter<number>();
   @Output() childLaboursChange = new EventEmitter<number>();
 
-  header_list = ["Direct Employees",
+  header_list = ["Direct",
     "Contract Labours",
     "Inter-State Migrants"
-  ]
+  ];
 
   employeeData = this.header_list.map(header => ({
     header: header,

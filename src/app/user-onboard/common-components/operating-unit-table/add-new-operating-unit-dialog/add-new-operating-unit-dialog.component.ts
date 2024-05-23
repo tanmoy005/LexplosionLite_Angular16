@@ -69,7 +69,9 @@ export class AddNewOperatingUnitDialogComponent {
   ownership: string = '';
   employeeData:any;
   apprenticeDataCount:any;
-  childLabourDataCount: any
+  childLabourDataCount: any;
+  ownershipDropdown: string[] = ['Owned', 'Leased'];
+  zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[],

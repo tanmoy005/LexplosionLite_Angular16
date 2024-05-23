@@ -34,7 +34,7 @@ File: scss
 
 /* You can add global styles to this file, and also import other style files */
 .mat-expansion-panel-body {
-    padding: 0px 0px 0px!important; 
+    padding: 0px 0px 0px !important;
 }
 
 .contain_bg_36_br_16 {
@@ -118,6 +118,14 @@ File: scss
     margin-top: 22px;
 }
 
+.mb-14px {
+    margin-bottom: 14px;
+}
+
+.ml-16px {
+    margin-left: 16px;
+}
+
 .ml-40 {
     margin-left: 40px;
 }
@@ -184,6 +192,45 @@ File: scss
     content: url('../images/Down.png');
     position: absolute;
     top: -15px;
+}
+
+.no_of_emp_container {
+    margin-top: 2px;
+    display: flex;
+}
+
+.emp_input {
+    width: 5.04vw !important;
+    margin: 0 16px;
+
+    .mat-mdc-text-field-wrapper {
+        border: 1px solid $gray-1300;
+        border-radius: 5px;
+    }
+}
+
+.mdc-radio__background { // todo remove comment and fix the radio button size
+    // width: 16px !important;
+    // height: 16px !important;
+}
+input.mdc-radio__native-control:focus, .mdc-radio__native-control:hover{
+    background-color: none;
+}
+.mdc-radio__inner-circle { 
+    // border-width: 8px !important; // todo
+}
+
+.mdc-radio__outer-circle {
+    border-width: 1px !important;
+    border-color: $gray-1400;
+}
+
+.no_of_emp_1st_section {
+    display: flex;
+}
+
+.emp_input_label {
+    text-align: right;
 }
 
 .app-dropdown {

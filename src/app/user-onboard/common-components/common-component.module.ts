@@ -22,6 +22,7 @@ import { TreeStructureComponent } from './tree-structure/tree-structure.componen
 import { MaterialModule } from 'src/app/material-module';
 import { FormsModule } from '@angular/forms';
 import { CompanyStructureCardComponent } from './company-structure-card/company-structure-card.component';
+import { ActivitiesListComponent } from './activities-list/activities-list.component';
 
 
 
@@ -47,8 +48,8 @@ import { CompanyStructureCardComponent } from './company-structure-card/company-
     TableHeaderComponent,
     TermsConditionCardComponent,
     TreeStructureComponent,
-    CompanyStructureCardComponent
-
+    CompanyStructureCardComponent,
+    ActivitiesListComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +69,8 @@ import { CompanyStructureCardComponent } from './company-structure-card/company-
     FeaturesSectionComponent,
     DropdownComponent,
     CompanyStructureCardComponent,
-    LawsTableComponent
+    LawsTableComponent,
+    ActivitiesListComponent
   ]
 })
 export class CommonComponentModule { }

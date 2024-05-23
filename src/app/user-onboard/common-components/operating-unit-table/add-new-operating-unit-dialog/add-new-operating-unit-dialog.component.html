@@ -21,13 +21,10 @@
             <input matInput name="Entity" [(ngModel)]="data.entityName">
           </mat-form-field>
           <section class="radio_selection ml-40">
-            <label class="text_12_400_gray_900">Ownership</label>
+            <label class="text_12_500_gray_1200">Ownership</label>
             <mat-radio-group [(ngModel)]="color">
-              <mat-radio-button class="example-margin" value="Owned">
-                Owned
-              </mat-radio-button>
-              <mat-radio-button class="example-margin" value="Leased">
-                Leased
+              <mat-radio-button class="example-margin"  *ngFor='let value of ownershipDropdown' value="value">
+                {{value}}
               </mat-radio-button>
             </mat-radio-group>
           </section>
@@ -50,22 +47,16 @@
         </div>
         <div class="d-flex">
           <div class="w-240px ">
-            <label class="text_12_400_gray_900">Location</label>
+            <label class="text_12_500_gray_1200">Location</label>
             <app-dropdown [label]="'State'" [options]="transformedStates" [IsMultiSelection]="false" [IsRequired]="true"
               (selectedValueChange)="onSelectedValueChanged($event,'states')">
             </app-dropdown>
           </div>
           <section class="radio_selection ml-40">
-            <label class="text_12_400_gray_900">Zone</label>
+            <label class="text_12_500_gray_1200">Zone</label>
             <mat-radio-group [(ngModel)]="color">
-              <mat-radio-button class="example-margin" value="SEZ">
-                SEZ
-              </mat-radio-button>
-              <mat-radio-button class="example-margin" value="STPI">
-                STPI
-              </mat-radio-button>
-              <mat-radio-button class="example-margin" value="Not Applicable">
-                Not Applicable
+              <mat-radio-button class="example-margin" class="text_12_400_gray_1200"  *ngFor='let value of zoneDropdown' value="value">
+                {{value}}
               </mat-radio-button>
             </mat-radio-group>
           </section>
@@ -77,22 +68,31 @@
           5
         </div>
         <div class="d-flex">
-          <div class="w-240px ">
+        
             <app-dropdown [label]="'Activities'" [options]="BusinessOptions" [IsMultiSelection]="false"
               [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'activity')">
             </app-dropdown>
-            <app-dropdown [options]="BusinessOptions" [IsMultiSelection]="false"
-            [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'activity')">
-          </app-dropdown>
-          </div>
+            <app-activities-list></app-activities-list>
+            <!-- <app-dropdown [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"
+              (selectedValueChange)="onSelectedValueChanged($event,'activity')">
+            </app-dropdown> -->
+          
         </div>
       </div>
       <div class="divider"></div>
+      <div class="field-container text_12_400_gray_900 mt-22">
+        <div class="field-serial-no text_12_500_gray_1000">
+          6
+        </div>
+        <div class="d-flex">
+          <label class="text_12_500_gray_1200">Number of Employees</label>
+        </div>
+      </div>
 
       <!-- <app-dropdown [label]="'Select Entity'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"
         (selectedValueChange)="onSelectedValueChanged($event,'activity')">
       </app-dropdown> -->
-      <mat-form-field appearance="outline" style="margin-right: 10px;">
+      <!-- <mat-form-field appearance="outline" style="margin-right: 10px;">
         <mat-label>Entity</mat-label>
         <input matInput name="Entity" [(ngModel)]="data.entityName">
       </mat-form-field>
@@ -129,10 +129,10 @@
           (selectedValueChange)="onSelectedValueChanged($event,'ownership')">
         </app-dropdown>
 
-      </div>
+      </div> -->
     </form>
-    <!-- <div class=" example-full-width d-flex">
-      <div class="col-lg-8">
+    <div class=" example-full-width d-flex">
+      <!-- <div class="col-lg-8">
         <mat-card>
           <mat-card-content>
             <form #entityForm="ngForm">
@@ -179,16 +179,14 @@
             </form>
           </mat-card-content>
         </mat-card>
-      </div>
-      <div class="col-lg-4">
-        <app-employee-count-card
- (employeeDataChange)="employeeCountData($event)"
- (apprenticesChange)="apprenticesData($event)"
- (childLaboursChange)="childLabourData($event)"
- ></app-employee-count-card>
-      </div>
-
-    </div> -->
+      </div> -->
+      
+    </div>
+    <div class="col-lg-12">
+      <app-employee-count-card (employeeDataChange)="employeeCountData($event)"
+        (apprenticesChange)="apprenticesData($event)"
+        (childLaboursChange)="childLabourData($event)"></app-employee-count-card>
+    </div>
   </mat-dialog-content>
   <mat-dialog-actions>
 

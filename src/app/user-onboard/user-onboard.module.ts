@@ -63,7 +63,7 @@ import { CommonComponentModule } from './common-components/common-component.modu
     EntityComponent,
     BadgeComponentComponent,
     FeatureHeaderComponent,
-    ActivitiesListComponent,
+    // ActivitiesListComponent,
     FeaturesComponent,
     
   ],

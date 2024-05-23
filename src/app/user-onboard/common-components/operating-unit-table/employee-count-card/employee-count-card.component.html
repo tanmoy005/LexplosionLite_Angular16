@@ -1,46 +1,78 @@
 
 
+    <form>
+      <div class="">
 
-
-
-<mat-card>
-    <mat-card-content>
-      <form>
-        <div *ngFor="let header of header_list; let i = index">
-          <p>{{ header }}</p>
-          <div class="example-full-width d-flex">
-            <mat-form-field appearance="outline">
-              <mat-label>Male</mat-label>
-              <input matInput [(ngModel)]="employeeData[i].male" name="male{{i}}" type="number"
-              (input)="onInputChange()">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Female</mat-label>
-              <input matInput [(ngModel)]="employeeData[i].female" name="female{{i}}" type="number"
-              (input)="onInputChange()">
-            </mat-form-field>
+        <div class="row mb-14px">
+          <div class="col-5"></div>
+          <div class="col-2">
+            <p class="text_12_500_gray_1200 ml-16px">
+              Males
+            </p>
+          </div>
+          <div class="col-2">
+            <p class="text_12_500_gray_1200 ml-16px">
+              Females
+            </p>
           </div>
         </div>
+        <div *ngFor="let header of header_list; let i = index" class="row my-4">
+          <!-- <div class="col-1"></div> -->
+          <div class="col-5">
+            <p class="emp_input_label text_12_400_gray_1200">
+              {{header}}
+            </p>
+          </div>
+          <div class="col-2">
 
+            <mat-form-field class="emp_input" appearance="outline">
+              <input matInput [(ngModel)]="employeeData[i].male" name="male{{i}}" type="number"
+                (input)="onInputChange()">
+            </mat-form-field>
+          </div>
+          <div class="col-2">
 
-  <p>Others</p>
-  <div class=" example-full-width d-flex">
-  <mat-form-field appearance="outline">
-    <mat-label>Apprentices</mat-label>
-    <input matInput name="male" type="number" 
-   [(ngModel)]="apprenticesCount" (input)="emitApprenticesCount()">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Child Labours</mat-label>
-    <input matInput name="female" type="number" 
-    [(ngModel)]="childLaboursCount" (input)="emitChildLaboursCount()">
-  </mat-form-field>
-</div>
-      </form>
-    </mat-card-content>
-  </mat-card> 
+            <mat-form-field class="emp_input" appearance="outline">
+              <input matInput [(ngModel)]="employeeData[i].female" name="female{{i}}" type="number"
+                (input)="onInputChange()">
+            </mat-form-field>
+          </div>
+          <div class="col-3"></div>
+        </div>
 
+        <div class="row my-4">
+          <div class="col-5"></div>
+          <div class="col-2">
+            <p class="emp_input_label text_12_500_gray_1200 ml-16px">
+              Apprentices
+            </p>
+          </div>
+          <div class="col-2">
+            <p class="text_12_500_gray_1200 ml-16px">
+              Child Labourers
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5">
+            <p class="emp_input_label text_12_400_gray_1200">
+              Others
+            </p>
+          </div>
+          <div class="col-2">
 
+            <mat-form-field class="emp_input" appearance="outline">
+              <input matInput name="male" type="number" [(ngModel)]="apprenticesCount" (input)="emitApprenticesCount()">
+            </mat-form-field>
+          </div>
+          <div class="col-2">
 
- 
-  
+            <mat-form-field class="emp_input" appearance="outline">
+              <input matInput name="female" type="number" [(ngModel)]="childLaboursCount"
+                (input)="emitChildLaboursCount()">
+            </mat-form-field>
+          </div>
+          <div class="col-3"></div>
+        </div>
+      </div>
+    </form>
