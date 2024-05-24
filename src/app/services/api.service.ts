@@ -19,6 +19,7 @@ export class ApiService {
     addEntity: 'entity-details/entity',
     fetchEntityList: 'entity-details/entity/list',
     addOperatingUnit: 'entity-details/operating-unit',
+    fetchOperatingUnit:'entity-details/operating-unit/list',
     applicableLaws: 'entity-details/applicable-laws',
     entityTree: 'entity-details/entity/tree',
     definition:'definition'
@@ -98,6 +99,9 @@ export class ApiService {
     return this.postData(this.endpoints.fetchEntityList, data)
   }
 
+  fetcheOperatingUnit(data: any): Observable<any> {
+    return this.postData(this.endpoints.fetchOperatingUnit, data)
+  }
   // Method to post operating unit creation data to operating unit creation API url 
   postCreateOperatingUnit(data: any): Observable<any> {
     return this.postData(this.endpoints.addOperatingUnit, data)

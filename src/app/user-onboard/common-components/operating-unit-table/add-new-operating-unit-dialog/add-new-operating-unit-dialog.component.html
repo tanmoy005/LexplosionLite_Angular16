@@ -36,7 +36,7 @@
             (change)="onOwnershipSelectionChange($event)">
              
               <mat-radio-button class="example-margin"  *ngFor='let menu of ownershipDropdown' [value]="menu.value">
-                {{menu.option}}
+                {{menu.label}}
               </mat-radio-button>
             </mat-radio-group>
           </section>
@@ -71,7 +71,7 @@
             <mat-radio-group [(ngModel)]="zone"
             (change)="onZoneSelectionChange($event)">
               <mat-radio-button class="example-margin" class="text_12_400_gray_1200"  *ngFor='let menu of zoneDropdown' [value]="menu.value">
-                {{menu.option}}
+                {{menu.label}}
               </mat-radio-button>
             </mat-radio-group>
           </section>
@@ -88,7 +88,9 @@
               [IsRequired]="true" 
               (selectedValueChange)="onSelectedValueChanged($event,'activity')">
             </app-dropdown>
-            <app-activities-list></app-activities-list>
+            <app-activities-list
+            [selectedActivitiesList]='selectedActivitiesList'>
+          </app-activities-list>
             <!-- <app-dropdown [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"
               (selectedValueChange)="onSelectedValueChanged($event,'activity')">
             </app-dropdown> -->

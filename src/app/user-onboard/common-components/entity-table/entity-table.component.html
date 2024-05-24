@@ -135,7 +135,8 @@
                 matBadgePosition="below after"
                 matBadgeColor="primary"
               >
-                <img src="./assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg" 
+                <img [src]="getImageSource(element.operatingUnit.length)" 
+                
                 />
               </button>
             </td>

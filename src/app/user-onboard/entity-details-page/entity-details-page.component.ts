@@ -10,6 +10,7 @@ import { RegHeaderComponent } from 'src/app/authentication/register/reg-header/r
 import { MatIconModule } from '@angular/material/icon';
 import { OperatingUnitComponent } from '../operating-unit/operating-unit.component';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
 
 
 @Component({
@@ -23,9 +24,9 @@ import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 export class EntityDetailsPageComponent {
 
   receivedData: any;
-  entityTypesList: any;
-  industryTypesList: any;
-  lawCategoriesList: any;
+  entityTypesList: FieldDefinitionInterfaces.EntityTypes;
+  industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
+  lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
   countryList: [];
   isEntityDialogOpen: boolean
   selectedEntity: any;
@@ -47,18 +48,7 @@ export class EntityDetailsPageComponent {
       this.receivedData = navigation.extras.state;
     }
 
-  //   try{
-  //   this.apiService.getFieldDefinition(JSON.stringify(["entityTypes","industryActivities","komriskLawCategories"])).subscribe((response) => {
-  //   fieldDefinitionResponse = response.data;
 
-  //   this.entityTypesList = fieldDefinitionResponse.entityTypes;
-  //   this.industryTypesList = fieldDefinitionResponse.industryActivities;
-  //   this.lawCategoriesList = fieldDefinitionResponse.komriskLawCategories;
-  //   })
-  // }
-  // catch (error) {
-  //     console.log(error)
-  //   }
   }
 
   handleAddEntity(event: boolean) {
