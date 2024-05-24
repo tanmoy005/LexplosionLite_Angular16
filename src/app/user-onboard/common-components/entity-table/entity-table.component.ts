@@ -50,9 +50,9 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   @ViewChild(MatTable) table: MatTable<EntityInterfaces.BusinessDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
-  @Input() entityTypesList: any;
-  @Input() industryTypesList: any;
-  @Input() lawCategoriesList: any;
+  @Input() entityTypesList: FieldDefinitionInterfaces.EntityTypes[];
+  @Input() industryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
+  @Input() lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories[];
   @Input() countryList: any;
 
   @Output() entitySelected = new EventEmitter<EntityInterfaces.BusinessDetails>();
@@ -109,6 +109,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     try {
       this.apiService.postFetchEntityList(entityFetchPayload).subscribe((response) => {
         const entityList = response.data;
+
+        console.log('entity data coming from api',response.data)
         let position = 1;
         //let childrenID = 0;
         //console.log('Entity fetch response', entityList);

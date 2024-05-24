@@ -41,9 +41,9 @@ export class EntityComponent {
   // industryTypesList: any=['IT'];
   // lawCategoriesList:any= ['labour'];
 
-  entityTypesList:FieldDefinitionInterfaces.EntityTypes;
-  industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
-  lawCategoriesList:FieldDefinitionInterfaces.komriskLawCategories;
+  entityTypesList:FieldDefinitionInterfaces.EntityTypes[];
+  industryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
+  lawCategoriesList:FieldDefinitionInterfaces.komriskLawCategories[];
  
   isEntityDialogOpen: boolean
   selectedEntity:  any
