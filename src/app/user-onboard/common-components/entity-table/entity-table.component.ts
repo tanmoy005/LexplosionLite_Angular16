@@ -324,7 +324,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
   getImageSource(opUnitLength:number): string {
    // console.log('the image source',opUnitLength)
-    return opUnitLength > 0 ? './assets/images/icons/Vectoroperating_unit_Icon.png' : './assets/images/icons/Vectordisabled_op_unit_icon.png';
+    return opUnitLength > 0 ? './assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg' : './assets/images/icons/Icons - Lex Kom LiteOperating_Unit_Unavailable.svg';
   }
   
 }
