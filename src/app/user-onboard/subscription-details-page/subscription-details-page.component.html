@@ -13,11 +13,22 @@
 
 
     <div class="col-lg-12 col-sm-12 col-md-12 grid-container">
-
         <app-feature-header class="grid-item">
         </app-feature-header>
     </div>
-    <app-features></app-features>
+
+    <div class="row features-card">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+        <app-card-layout
+        [cardHeaderTitle]="subscriptionFeaturesListTitle"
+        [shade]="subscriptionFeaturesListShade"
+        >
+        <p style="margin:50px; text-align: center;">Features to go here...</p>
+        </app-card-layout>
+    </div>
+    </div>
+
+    <!-- <app-features></app-features>
     <mat-card>
         <mat-card-header class="features-section-card-header">
             <strong>Features</strong>
@@ -26,5 +37,7 @@
         <mat-card-content>
             <app-features></app-features>
         </mat-card-content>
-    </mat-card>
+    </mat-card> -->
+
+
 </div>

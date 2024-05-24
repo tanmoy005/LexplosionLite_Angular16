@@ -14,5 +14,6 @@ import { AppHeaderComponent } from 'src/app/layouts/full/header/header.component
 })
 
 export class SubscriptionDetailsPageComponent {
- 
+  subscriptionFeaturesListTitle = "Features";
+  subscriptionFeaturesListShade = "light";
 }
