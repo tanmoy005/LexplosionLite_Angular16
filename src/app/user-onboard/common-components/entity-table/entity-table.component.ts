@@ -1,14 +1,6 @@
 import { Component, ViewChild, Inject, OnInit, OnDestroy,EventEmitter  } from '@angular/core';
-import { MatTable, MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
-import { NgStyle } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
+import { MatTable } from '@angular/material/table';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Input,Output } from '@angular/core';
@@ -20,9 +12,7 @@ import { TreeNode, treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { AddEntityDialog } from './add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
-import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
 import { DialogService } from 'src/app/services/Dialog.service';
-import { MatBadgeModule } from '@angular/material/badge';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =[];
@@ -41,10 +31,6 @@ function getMaxIdFromChildren(node: TreeNode): number {
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
   styleUrls: ['./entity-table.component.scss'],
-  // standalone: true,
-  // imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-  //   MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,
-  //   TreeStructureComponent,MatBadgeModule]
 })
 
 export class EntityTableComponent implements OnInit, OnDestroy{
@@ -69,9 +55,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   @Input() countryList: any;
 
   @Output() entitySelected = new EventEmitter<EntityInterfaces.BusinessDetails>();
-
   @Output() entitySelected1 = new EventEmitter<EntityInterfaces.BusinessDetails>();
-
   @Output() entityTableDataLoading = new EventEmitter<boolean>();
 
   ngOnInit(): void {
@@ -79,6 +63,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       this.viewAddEntityDialog();
     });
 
+    //fetch entity list on the component's initiation 
     this.fetchEntityList();
   }
 
@@ -114,16 +99,13 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     treeDataitem.children = []
 
     this.entityTableDataLoading.emit(true);
-
     const entityFetchPayload = { company: 1 };
     try {
       this.apiService.postFetchEntityList(entityFetchPayload).subscribe((response) => {
         const entityList = response.data;
         let position = 1;
-        let childrenID = 0;
-
+        //let childrenID = 0;
         //console.log('Entity fetch response', entityList);
-      
         entityList.forEach((entity: any) => {
           const maxId = getMaxIdFromChildren(treeDataitem);
 
@@ -170,12 +152,6 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   
   treeDataItem = treeDataitem;
 
-  // treeDataItem:TreeNode = {
-  //   id: 1,
-  //   label: 'Root Node',
-  //   children: []
-  // };
-
   addEntityData(formData: EntityInterfaces.FormData) {
 
     const createEntityPayload  = {
@@ -187,27 +163,22 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         "industries": formData.industry,
         "komriskLawCategories": formData.lawModules
     }
-
-    console.log("Created payload for saving entity",createEntityPayload);
-
+    //console.log("Created payload for saving entity",createEntityPayload);
     try {
       this.apiService.postCreateEntity(createEntityPayload).subscribe((response) => {
         const entityResponse = response;
-        console.log("Entity Response after saving", entityResponse);
+        //console.log("Entity Response after saving", entityResponse);
         this.snackbar.showSuccess('Entity successfully added.');
         location.reload();
       })
     }
-
    catch (error) {
-    this.snackbar.showError("Some error occurred while fetching entity list!");
+    this.snackbar.showError("Some error occurred while fetching entity list.");
   }
   }
 
   rearrangeDataSource() {
-   
     this.dataSource.sort((a, b) => a.position - b.position);
-   
     for (let i = 0; i < this.dataSource.length; i++) {
       this.dataSource[i].position = i + 1;
     }
@@ -216,22 +187,15 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   removeEntityData(position: number) {
    
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
-
     if (rowIndex !== -1) {
- 
       this.dataSource.splice(rowIndex, 1);
-      
       this.rearrangeDataSource();
-
       this.table.renderRows();
       treeDataitem?.children?.splice(rowIndex, 1)
     }
   }
 
   openEntityDialog() {
-
-    // console.log("RECEIVED COUNTRY in ADD-ENT-TABLE", this.countryList);
-
     const dialogRef = this.dialog.open(AddEntityDialog, {
       data: { entityTable: this }
     });
@@ -259,13 +223,10 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
   navigateToAddOpUnit(entity: EntityInterfaces.BusinessDetails) {
     this.entitySelected.emit(entity);
-    console.log('dots are clicked')
-    // this.router.navigate(['/oprating-unit-details'], { state: entity });
+    // console.log('dots are clicked');
   }
   navigateToAddOpUnit1(entity: EntityInterfaces.BusinessDetails) {
     this.entitySelected1.emit(entity);
-    
-    // this.router.navigate(['/oprating-unit-details'], { state: entity });
   }
 
   entityToSend: any = {};
@@ -301,21 +262,6 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
 
   openEntityMenuDialog1(action: string, position: number) {
-    var blankEntity =  {position: position,
-                        name: '',
-                        country: '',
-                        countryLabel:'',
-                        industry: '',
-                        industryLabel:'',
-                        entityType: '',
-                        entityTypeLabel: '',
-                        emailID: '',
-                        laws: '',
-                        lawModules: [],
-                        lawModulesLabel:[],
-                        operatingUnit: [],
-                        actions: '',
-                        childrenID:0}
     switch (action) {
       case 'Delete':
         this.removeEntityData(position);
