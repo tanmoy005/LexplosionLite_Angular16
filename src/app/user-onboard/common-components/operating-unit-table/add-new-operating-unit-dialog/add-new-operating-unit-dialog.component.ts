@@ -19,12 +19,16 @@ import { TransformedType } from 'src/app/shared/menu-items/transfered-dropdown-m
 
 import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details';
 
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+
 
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
     value: item.id,
     label: item.name,
-    description: item.description
+    description: item?.description??""
   }));
 }
 
@@ -48,7 +52,7 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
 
 
 export class AddNewOperatingUnitDialogComponent {
-
+  encryptStorage = new EncryptStorage(environment.localStorageKey);
   BusinessOptions = [
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
@@ -83,6 +87,17 @@ export class AddNewOperatingUnitDialogComponent {
     {'option': 'Not Applicable','value':2}
 ];
   entityList:TransformedType[] = []
+  industryActivityList:{
+    iId: number,
+    industry: string,
+    subIndustry: string,
+    aId: string,
+    activity: string
+      }[]=[]
+  filteredActivitiesList:{value:string,
+    label:string
+  }[] =[]
+  selectedActivitiesList=[]
   selectedEntities:[]=[]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
@@ -95,6 +110,13 @@ export class AddNewOperatingUnitDialogComponent {
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
     this.transformedStates = transformOperatingUnitTypes(this.data.states)
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList)
+   
+    console.log("filtered Activities List",this.filteredActivitiesList)
+    console.log('the industry id is',this.data.entity.industry)
+    const savedindustryActivities = this.encryptStorage.getItem('industryActivities');
+    this.industryActivityList = savedindustryActivities
+    this.filteredActivitiesList = this.getActivitiesByIndustryId(this.data.entity.industry[0])
+
   }
   isDataValid(): boolean {
     return (
@@ -143,17 +165,17 @@ export class AddNewOperatingUnitDialogComponent {
         position: 1,
         name: this.operatingUnitName,
         entity:'',
-        ownership:'',
+        ownership:this.ownership,
         type: operatingUnitTypeName, 
         location:'',
-        zone:'',
+        zone:this.zone,
         employees:'',
         activities:'',
         laws: '',
         actions:'',
         entityPosition:this.data.entityPosition
       };
-      console.log('op unit added!',newData)
+      //console.log('op unit added!',newData)
       this.data.entityTable.addOpUnitData(newData);
       
       this.snackbar.showSuccess("Sucessfully added Operating Unit");
@@ -174,16 +196,17 @@ export class AddNewOperatingUnitDialogComponent {
      this.state = value
     }
     if (columnvalue === 'activity'){
-     this.activity = value
+    //  this.activity = value
+      this.selectedActivitiesList= value
     }
-    if (columnvalue === 'locatedAt'){
-     this.locatedAt = value
-    }
-    if (columnvalue === 'ownership'){
-     this.ownership = value
-    }
+    // if (columnvalue === 'locatedAt'){
+    //  this.locatedAt = value
+    // }
+    // if (columnvalue === 'ownership'){
+    //  this.ownership = value
+    // }
     if (columnvalue === 'entityList'){
-      this.entityList = value
+      this.selectedEntities = value
       console.log('the selected entity list is',value)
      }
      
@@ -216,6 +239,13 @@ export class AddNewOperatingUnitDialogComponent {
   onZoneSelectionChange(event: any): void {
     this.zone = event.value;
     console.log('Selected zone Value: ', this.zone);
+  }
+
+  getActivitiesByIndustryId(iId: number){
+    return this.industryActivityList
+      .filter(item => item.iId === iId)
+      .map(item => ({ value: item.aId, label: item.activity }));
+    //this.filteredActivitiesList = this.data.entity.industry.filter(country => this..includes(country.value));
   }
 
 
