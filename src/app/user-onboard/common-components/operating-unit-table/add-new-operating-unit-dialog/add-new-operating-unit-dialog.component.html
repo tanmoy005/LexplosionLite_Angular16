@@ -82,8 +82,11 @@
         <div class="field-serial-no text_12_500_gray_1000">5</div>
         <div class="d-flex">
         
-            <app-dropdown [label]="'Activities'" [options]="BusinessOptions" [IsMultiSelection]="false"
-              [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'activity')">
+            <app-dropdown [label]="'Activities'" 
+            [options]="filteredActivitiesList"
+             [IsMultiSelection]="true"
+              [IsRequired]="true" 
+              (selectedValueChange)="onSelectedValueChanged($event,'activity')">
             </app-dropdown>
             <app-activities-list></app-activities-list>
             <!-- <app-dropdown [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"

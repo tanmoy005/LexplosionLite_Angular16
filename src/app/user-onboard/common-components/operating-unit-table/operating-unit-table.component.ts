@@ -53,9 +53,7 @@ import { environment } from 'dotenv';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
 
 
-const ELEMENT_DATA: OPUnitDetails[] = [
-
-];
+// const ELEMENT_DATA: OPUnitDetails[] = [];
 
 function getMaxIdFromGrandchildren (children:TreeNode): number {
   const rootChildren = children.children;
@@ -164,7 +162,9 @@ export class OperatingUnitTableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
                                 'type', 'location', 'zone', 'employees','activities','laws','actions'];
 
-  dataSource = [...ELEMENT_DATA];
+  // dataSource = [...ELEMENT_DATA];
+
+  dataSource:OPUnitDetails[] = []
 
   @ViewChild(MatTable) table: MatTable<OPUnitDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
@@ -174,6 +174,7 @@ export class OperatingUnitTableComponent implements OnInit {
 
   addOpUnitData(newData: OPUnitDetails) {
     newData['position'] = this.dataSource.length + 1
+    console.log('the new op unit data',newData)
     this.dataSource.push(newData);
 
     const childrenToAddGrandChildrenTo = treeDataitem.children?.find((children)=>children.id === this.entity.childrenID) 
