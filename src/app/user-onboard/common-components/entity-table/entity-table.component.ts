@@ -14,6 +14,7 @@ import { AddEntityDialog } from './add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 import { DialogService } from 'src/app/services/Dialog.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =[];
 
@@ -36,7 +37,7 @@ function getMaxIdFromChildren(node: TreeNode): number {
 export class EntityTableComponent implements OnInit, OnDestroy{
 
   private subscription: Subscription;
-  private entityList: any;
+  //private entityList: any;
   entityChild:TreeNode;
 
   constructor(public dialog: MatDialog, private router: Router, 
@@ -293,8 +294,9 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
 
 
-  getImageSource(element:any): string {
-    return element.operatingUnit.length > 0 ? './assets/images/icons/Vectoroperating_unit_Icon.png' : './assets/images/icons/Vectordisabled_op_unit_icon.png';
+  getImageSource(opUnitLength:number): string {
+   // console.log('the image source',opUnitLength)
+    return opUnitLength > 0 ? './assets/images/icons/Vectoroperating_unit_Icon.png' : './assets/images/icons/Vectordisabled_op_unit_icon.png';
   }
   
 }

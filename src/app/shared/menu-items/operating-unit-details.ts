@@ -33,7 +33,7 @@
 export interface OPUnitDetails {
   position: number;
   name: string;
-  entity:string[];
+  entity:number[];
   entityNames:string[];
   ownershipID: number,
   ownership:string;

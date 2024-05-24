@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
-
+import { EmployeeCardInterface } from 'src/app/shared/menu-items/employee-card-data-interface';
 
 @Component({
   selector: 'app-employee-count-card',
@@ -25,7 +25,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, FormControl } f
   // ]
 })
 export class EmployeeCountCardComponent {
-  @Output() employeeDataChange = new EventEmitter<any>();
+  @Output() employeeDataChange = new EventEmitter<EmployeeCardInterface[]>();
   @Output() apprenticesChange = new EventEmitter<number>();
   @Output() childLaboursChange = new EventEmitter<number>();
 
@@ -36,8 +36,8 @@ export class EmployeeCountCardComponent {
 
   employeeData = this.header_list.map(header => ({
     header: header,
-    male: '',
-    female: ''
+    male: 0,
+    female: 0
   }));
 
   

@@ -50,9 +50,11 @@ import { Subscription } from 'rxjs';
 import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
-import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
-
-
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
+import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface';
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+import { EntitiesList } from 'src/app/shared/menu-items/fetch-op-unit-interface';
+import { Activities } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 // const ELEMENT_DATA: OPUnitDetails[] = [];
 
 function getMaxIdFromGrandchildren (children:TreeNode): number {
@@ -81,7 +83,8 @@ export class OperatingUnitTableComponent implements OnInit {
   constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService,
     private opDialogService: DialogService
   ) { }
-  @Input() entity: any={}; 
+  // @Input() entity: any={}; 
+  @Input() entity: EntityDataType; 
   @Input() isDotsCliscked: boolean; 
   operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[]=[];
   states: FieldDefinitionInterfaces.States[]=[]
@@ -124,10 +127,10 @@ export class OperatingUnitTableComponent implements OnInit {
       console.log('fetched op unit values',response)
     
 
-      const opResponseData:OPUnitDetails[]= response.data.map((opUnits: any) => ({
+      const opResponseData:OPUnitDetails[]= response.data.map((opUnits: FetchOPUnits) => ({
         position: opUnits.id,
         name: opUnits.name,
-        entity: opUnits.entities.map((item: any) => item.id),
+        entity: opUnits.entities.map((item: EntitiesList) => item.id),
         entityNames:[],
         ownershipID: opUnits.ownership.id,
         ownership: opUnits.ownership.name,
@@ -136,7 +139,7 @@ export class OperatingUnitTableComponent implements OnInit {
         zone: opUnits.locatedAt.name, 
         locationId: opUnits.locatedAt.id,
         employees: '', 
-        activities: opUnits.activities.map((item:any )=> item.id), 
+        activities: opUnits.activities.map((item:Activities )=> item.id), 
         laws: '', 
         actions: '' 
       }));

@@ -23,8 +23,8 @@ import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
 import { ApiService } from 'src/app/services/api.service';
-
-
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+import { EmployeeCardInterface } from 'src/app/shared/menu-items/employee-card-data-interface';
 
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
@@ -49,16 +49,7 @@ export interface Workforce {
   selector: 'app-add-new-operating-unit-dialog',
   templateUrl: './add-new-operating-unit-dialog.component.html',
   styleUrls: ['./add-new-operating-unit-dialog.component.scss'],
-  // standalone:true,
-  // imports:[MatDialogModule,
-  //   MatButtonModule,
-  //   MatInputModule,
-  //   MatCardModule,
-  //   FormsModule,
-  //   DropdownComponent,
-  //   MatSelectModule,
-  //   EmployeeCountCardComponent
-  // ]
+
 })
 
 
@@ -78,14 +69,14 @@ export class AddNewOperatingUnitDialogComponent {
   transformedStates: TransformedType[] = [];
 
   operatingUnitName: string = '';
-  operatingUnitType: string = '';
-  state: string = '';
+  operatingUnitType: number ;
+  state: number ;
   activity: string = '';
   locatedAt: string = '';
-  ownership: any ;
+  ownership: number ;
   employeeData:any;
  
-  zone:any
+  zone:number
 
 
   noOfDeMale: number = 0;
@@ -119,12 +110,12 @@ export class AddNewOperatingUnitDialogComponent {
     label:string
   }[] =[]
   selectedActivitiesList:[]=[]
-  selectedEntities:string[]=[this.data.entity.id]
+  selectedEntities:number[]=[this.data.entity.id]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[],
     entityPosition:number,
-    entity:any},
+    entity:EntityDataType},
     private snackbar: SnackbarService,
     public dialogRef: MatDialogRef<AddNewOperatingUnitDialogComponent>,
     private apiService:ApiService,) {
@@ -132,24 +123,26 @@ export class AddNewOperatingUnitDialogComponent {
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
     this.transformedStates = transformOperatingUnitTypes(this.data.states)
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList)
+
+    console.log('the entity coming',this.data.entity)
     //this.selectedEntities =  this.data.entity.id
-    console.log("filtered Activities List",this.filteredActivitiesList)
-    console.log('the industry id is',this.data.entity.industry)
+    // console.log("filtered Activities List",this.filteredActivitiesList)
+    // console.log('the industry id is',this.data.entity.industry)
     const savedindustryActivities = this.encryptStorage.getItem('industryActivities');
     this.industryActivityList = savedindustryActivities
     this.filteredActivitiesList = this.getActivitiesByIndustryId(this.data.entity.industry[0])
 
   }
-  isDataValid(): boolean {
-    return (
-      this.operatingUnitName.trim() !== '' &&
-      this.operatingUnitType !== '' &&
-      this.state!== '' &&
-      this.activity.trim() !== '' &&
-      this.locatedAt.trim() !== '' &&
-      this.ownership.trim() !== ''
-    );
-  }
+  // isDataValid(): boolean {
+  //   return (
+  //     this.operatingUnitName.trim() !== '' &&
+  //     this.operatingUnitType !== '' &&
+  //     this.state!== '' &&
+  //     this.activity.trim() !== '' &&
+  //     this.locatedAt.trim() !== '' &&
+  //     this.ownership.trim() !== ''
+  //   );
+  // }
 
   addEntity() {
    
@@ -171,9 +164,9 @@ export class AddNewOperatingUnitDialogComponent {
         ownershipID: this.ownership,
         ownership:ownershipName,
         type: operatingUnitTypeName, 
-        location:zoneName,
+        location:'',
         locationId:this.zone,
-        zone:'',
+        zone:zoneName,
         employees:'',
         activities:'',
         laws: '',
@@ -189,16 +182,16 @@ export class AddNewOperatingUnitDialogComponent {
       
     
   }
-  findOperatingUnitTypeName(id: any): string  {
+  findOperatingUnitTypeName(id: number): string  {
     const operatingUnitType = this.data.operatingUnitTypes.find(type => type.id === id);
     return operatingUnitType ? operatingUnitType.name : '';
   }
 
-  findZoneName(id: any): string  {
+  findZoneName(id: number): string  {
     const zoneType = this.zoneDropdown.find(type => type.value === id);
     return zoneType ? zoneType.label : '';
   }
-  findOwnerShipName(id: any): string  {
+  findOwnerShipName(id: number): string  {
     const ownerShipType = this.ownershipDropdown.find(type => type.value === id);
     return ownerShipType ? ownerShipType.label : '';
   }
@@ -211,31 +204,31 @@ export class AddNewOperatingUnitDialogComponent {
      this.state = value
     }
     if (columnvalue === 'activity'){
-    //  this.activity = value
+   
       this.selectedActivitiesList= value
     }
    
     if (columnvalue === 'entityList'){
       this.selectedEntities = value
-      // this.selectedEntities.push(value);
+     
       console.log('the selected entity list is',value)
      }
      
    }
 
-   employeeCountData(value:any){
+   employeeCountData(value:EmployeeCardInterface[]){
     this.employeeData = value
     console.log('employee data',value)
     this.extractValues(this.employeeData)
     
    }
    
-   apprenticesData(value:any){
+   apprenticesData(value:number){
     this.noOfApprentice = value
     console.log('apprentice data',value)
    }
    
-   childLabourData(value:any){
+   childLabourData(value:number){
     this.noOfChild = value
     console.log('child labour data',value)
    }
@@ -286,7 +279,6 @@ addNewOpUnit(){
   const payload={
     "id": null,
     "name":this.operatingUnitName,
-    // "company": this.data.entity.id,
     "company": [406],
     "entities":this.selectedEntities,
     "operatingUnitType": this.operatingUnitType,
