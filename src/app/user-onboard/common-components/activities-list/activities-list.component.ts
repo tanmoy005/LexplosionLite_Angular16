@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input,OnInit } from '@angular/core';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
 
 export interface Section {
   label: string;
@@ -10,8 +12,15 @@ export interface Section {
   templateUrl: './activities-list.component.html',
   styleUrls: ['./activities-list.component.scss']
 })
-export class ActivitiesListComponent {
-  
+export class ActivitiesListComponent implements OnInit {
+  encryptStorage = new EncryptStorage(environment.localStorageKey);
+
+  @Input() selectedActivitiesList:[]
+
+  ngOnInit(): void {
+    const savedindustryActivities = this.encryptStorage.getItem('industryActivities');
+   
+  }
   activities: Section[] = [
     {
       label:'Activity1',

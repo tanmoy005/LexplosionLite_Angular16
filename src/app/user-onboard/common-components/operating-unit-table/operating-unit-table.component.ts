@@ -72,18 +72,13 @@ function getMaxIdFromGrandchildren (children:TreeNode): number {
   selector: 'app-operating-unit-table',
   templateUrl: 'operating-unit-table.component.html',
   styleUrls: ['./operating-unit-table.component.css'],
-  // standalone: true,
-  // imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-  //   MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule,
-  //   CommonModule, DropdownComponent,
-  //   AddNewOperatingUnitDialogComponent
-  // ]
+ 
 })
 
 export class OperatingUnitTableComponent implements OnInit {
   private subscription: Subscription;
   encryptStorage = new EncryptStorage(environment.localStorageKey);
-  constructor(public dialog: MatDialog, private router: Router, private fieldDefinitionService: ApiService,
+  constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService,
     private opDialogService: DialogService
   ) { }
   @Input() entity: any={}; 
@@ -92,23 +87,12 @@ export class OperatingUnitTableComponent implements OnInit {
   states: FieldDefinitionInterfaces.States[]=[]
 
   ngOnInit(): void {
-    //this.fetchOperatingUniTypes();
-    // if (this.entity.countryLabel === 'India') {
-    //   this.fetchstates();
-    // } else {
-    //   this.states = [{
-    //     'id':1,
-    //     'name':'Singapore'
-    //   }]; 
-    // }
-    // this.fetchstates();
-    // this.fetchOperatingUniTypes();
+    this.fetchOpUnitList()
     
     const savedStates = this.encryptStorage.getItem('states');
     const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
-    // console.log('states',savedStates)
-    // console.log('op unit types',savedUniTypes)
+    
     this.states = savedStates;
     this.operatingUnitTypes = savedUniTypes
     
@@ -116,8 +100,7 @@ export class OperatingUnitTableComponent implements OnInit {
       this.openEntityDialog(this.entity.name);
     });
 
-    // console.log('the entity1 is coming',this.entity)
-    // console.log('the entity is coming',this.entity)
+ 
     
     if (this.isDotsCliscked === true){
       this.openEntityDialog(this.entity.name);
@@ -130,35 +113,40 @@ export class OperatingUnitTableComponent implements OnInit {
     
   }
 
-  // ngOnInit(): void {
-  //   this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
-  //     this.viewAddEntityDialog();
-  //   });
-  // }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  // fetchOperatingUniTypes() {
-  //   const fieldPayload = ['operatingUnitTypes']
+  fetchOpUnitList(){
+    const payLoad={"entity":this.entity.id}
+    this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
+      console.log('fetched op unit values',response)
+    
 
-  //   this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
-  //     //console.log('those are operating unit types', response)
-  //     this.operatingUnitTypes = response.data.operatingUnitTypes;
-      
+      const opResponseData:OPUnitDetails[]= response.data.map((opUnits: any) => ({
+        position: opUnits.id,
+        name: opUnits.name,
+        entity: opUnits.entities.map((item: any) => item.id),
+        entityNames:[],
+        ownershipID: opUnits.ownership.id,
+        ownership: opUnits.ownership.name,
+        type: opUnits.operatingUnitType.name,
+        location: '', 
+        zone: opUnits.locatedAt.name, 
+        locationId: opUnits.locatedAt.id,
+        employees: '', 
+        activities: opUnits.activities.map((item:any )=> item.id), 
+        laws: '', 
+        actions: '' 
+      }));
 
-  //   })
-  // }
-
-  // fetchstates() {
-  //   const fieldPayload = ['states']
-
-  //   this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
-  //     //console.log('those states', response)
-  //     this.states = response.data.states;
-  //   })
-  // }
+      console.log('the transformed op unit datas',opResponseData)
+      this.dataSource = opResponseData
+    })
+    
+  }
+ 
   displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
                                 'type', 'location', 'zone', 'employees','activities','laws','actions'];
 
