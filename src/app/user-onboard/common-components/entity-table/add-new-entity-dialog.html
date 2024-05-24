@@ -10,7 +10,8 @@
               </div>
               <mat-form-field appearance="outline" class="entity-form-field big-text-input ">
                 <mat-label class="text_12_400_gray_900">Name of Entity</mat-label>
-                <input matInput (input)="onTextFieldChange($event,'name')">
+                <input matInput (input)="onTextFieldChange($event,'name')" 
+                value="{{formData.name}}">
               </mat-form-field>
             </div>
           </div>
@@ -19,8 +20,11 @@
               <div class="field-serial-no text_12_500_gray_1000">
                 2
               </div>
-              <app-dropdown [label]="'Type of Entity'" [options]="transformedEntityList" [IsMultiSelection]="false"
-                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'entityType')">
+              <app-dropdown [label]="'Type of Entity'" [options]="transformedEntityList" 
+                [IsMultiSelection]="false"
+                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'entityType')"
+                [changeableValues]="formData.entityType" 
+                >
               </app-dropdown>
             </div>
           </div>
@@ -31,7 +35,9 @@
               </div>
 
               <app-dropdown [label]="'Country'" [options]="countryList" [IsMultiSelection]="false" [IsRequired]="true"
-                (selectedValueChange)="onSelectedValueChanged($event,'country')">
+                (selectedValueChange)="onSelectedValueChanged($event,'country')"
+                [changeableValues]="formData.country"
+                >
               </app-dropdown>
             </div>
           </div>
@@ -41,7 +47,9 @@
                 4
               </div>
               <app-dropdown [label]="'Industries'" [options]="transformedIndustryList" [IsMultiSelection]="true"
-                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'industry')">
+                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'industry')"
+                [changeableValues]="formData.industry"
+                >
               </app-dropdown>
             </div>
           </div>
@@ -52,7 +60,8 @@
                 5
               </div>
               <app-dropdown [label]="'Law Modules'" [options]="transformedLawCategoryList" [IsMultiSelection]="true"
-                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'lawModules')">
+                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'lawModules')"
+                [changeableValues]="formData.lawModules">
               </app-dropdown>
             </div>
           </div>

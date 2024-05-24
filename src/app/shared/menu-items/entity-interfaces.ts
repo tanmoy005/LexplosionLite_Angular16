@@ -37,6 +37,7 @@ export interface BusinessDetails {
 
 
   export interface FormData {
+    id:number | null;
     name: string;
     country: number;
     countryLabel: string;

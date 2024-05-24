@@ -1,4 +1,4 @@
-import { Component, ViewChild, Inject } from '@angular/core';
+import { Component, ViewChild, Inject, OnInit } from '@angular/core';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,7 @@ import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component'
 import { CountryList, CountryData } from 'src/app/shared/menu-items/country-list';
 
 const initialFormData: EntityInterfaces.FormData = {
+    id: null,  
     name: '',
     country: 1,
     countryLabel:'',
@@ -72,7 +73,7 @@ const initialFormData: EntityInterfaces.FormData = {
     //   MatSelectModule, CommonModule, DropdownComponent ]
   })
   
-  export class AddEntityDialog {
+  export class AddEntityDialog implements OnInit{
     industryTypesList: any;
     distinctIndutryTypesList: any;
     transformedEntityList: EntityInterfaces.TransformedType[] = [];
@@ -90,12 +91,30 @@ const initialFormData: EntityInterfaces.FormData = {
     operatingUnit:[]
     dialogHeaderImage: string = 'src/assets/images/Business.png';
     entityChild:TreeNode;
+
+    ngOnInit(): void {
+      console.log("Data first recv. in dialog comp. ",this.data.entity)
+      this.formData = {}; 
+      this.formData = initialFormData;
+      console.log(this.formData);
+    }
   
-    constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent}, 
+    constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent, entity:EntityInterfaces.BusinessDetails|null}, 
     public dialogRef: MatDialogRef<AddEntityDialog>,
     private apiService:ApiService, private snackbar:SnackbarService){
-    
+      
+      this.formData = initialFormData;
+      console.log("In constructor", this.formData)
 
+    if(this.data.entity !== null){
+      this.formData.id = this.data.entity.id;
+      //console.log("Received finally in Add Dialog",this.data.entity);
+      this.formData.name = this.data.entity.name;
+      this.formData.entityType = this.data.entity.entityType;
+      this.formData.country = this.data.entity.country;
+      this.formData.industry = this.data.entity.industry;
+      this.formData.lawModules = this.data.entity.lawModules;
+    }
       
     this.industryTypesList = this.data.entityTable.industryTypesList;
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
@@ -181,6 +200,7 @@ const initialFormData: EntityInterfaces.FormData = {
         //   children: []
         // }
         this.formData.childrenID = 0;
+        
 
         //this.formData.lawModulesLabel = this.formData.lawModules;
         this.data.entityTable.addEntityData(this.formData);
@@ -193,6 +213,7 @@ const initialFormData: EntityInterfaces.FormData = {
   
   
     closeEntityDialog() {
+      this.formData = initialFormData;
       this.dialogRef.close();
     }
   

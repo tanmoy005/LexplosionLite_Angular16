@@ -22,7 +22,24 @@
               Country
             </th>
             <td mat-cell *matCellDef="let element">
-              {{ element.countryLabel }}
+              <button 
+              class="invisible-border-button"
+              (click)="openCountryDialog()"
+              
+              [matBadge]="
+              element.country !== 0
+                ? 1
+                  : null
+              "
+              matBadgeSize="small"
+              matBadgeOverlap="true"
+              matBadgePosition="below after"
+              matBadgeColor="primary"
+              >
+                <img
+                  src="./assets/images/icons/VectorCountry_Icon.svg"
+                />
+              </button>
             </td>
           </ng-container>
 
@@ -31,7 +48,25 @@
               Industry
             </th>
             <td mat-cell *matCellDef="let element">
-              {{ element.industryLabel }}
+              <button 
+              class="invisible-border-button"
+              (click)="openIndustryDialog()"
+              
+              [matBadge]="
+              element.industry.length!== 0
+                ? element.industry.length
+                  : null
+              "
+              matBadgeSize="small"
+              matBadgeOverlap="true"
+              matBadgePosition="below after"
+              matBadgeColor="primary"
+              
+              >
+                <img
+                  src="./assets/images/icons/Icons - Lex Kom LiteIndustry_Icon.svg"
+                />
+              </button>
             </td>
           </ng-container>
 
@@ -58,7 +93,18 @@
             <td mat-cell *matCellDef="let element">
               <button 
               class="invisible-border-button"
-              (click)="openLawDialog()">
+              (click)="openLawDialog()"
+              
+              [matBadge]="
+                element.lawModules !== 0
+                  ? element.lawModules.length
+                  : null
+              "
+              matBadgeSize="small"
+              matBadgeOverlap="true"
+              matBadgePosition="below after"
+              matBadgeColor="primary"
+              >
                 <img
                   src="./assets/images/icons/VectorLawa_Icon.png"
                   
@@ -86,11 +132,10 @@
                 "
                 matBadgeSize="small"
                 matBadgeOverlap="true"
-                
-                
+                matBadgePosition="below after"
+                matBadgeColor="primary"
               >
-                <img [src]="getImageSource(element)" 
-                
+                <img src="./assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg" 
                 />
               </button>
             </td>

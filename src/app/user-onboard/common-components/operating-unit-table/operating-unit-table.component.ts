@@ -146,8 +146,7 @@ export class OperatingUnitTableComponent implements OnInit {
   //   this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
   //     //console.log('those are operating unit types', response)
   //     this.operatingUnitTypes = response.data.operatingUnitTypes;
-      
-
+    
   //   })
   // }
 

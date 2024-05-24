@@ -19,7 +19,7 @@
   <mat-form-field appearance="outline" class="app-dropdown">
     <mat-label class="text_12_400_gray_1000 dropdown-label">{{ label }}</mat-label>
     <mat-select [multiple]="IsMultiSelection" (selectionChange)="onSelectionChange($event)"
-    [value]="unchangeableValues"
+    [value]="changeableValues"
    >
       <mat-option *ngFor="let option of options" [value]="option.value" 
       [disabled]="isValueDisabled(option.value)"

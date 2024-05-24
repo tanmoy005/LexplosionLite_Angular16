@@ -59,8 +59,13 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   @Output() entityTableDataLoading = new EventEmitter<boolean>();
 
   ngOnInit(): void {
-    this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
-      this.viewAddEntityDialog();
+    // this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
+    //   this.viewAddEntityDialog();
+    // });
+
+    this.subscription = this.entityDialogService.openDialog$.subscribe((entity?:EntityInterfaces.BusinessDetails|null) => {
+      console.log("Received entity firstly at subscription", entity);
+      this.viewAddEntityDialog(entity);  // Pass the entity data to the function
     });
 
     //fetch entity list on the component's initiation 
@@ -146,16 +151,17 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     }
   }
 
-  viewAddEntityDialog() {
-    this.openEntityDialog();
+  viewAddEntityDialog(entity?:EntityInterfaces.BusinessDetails|null) {
+    // console.log("Entity received in add entity dialog function",entity);
+    this.openEntityDialog(entity);
   }
   
   treeDataItem = treeDataitem;
 
   addEntityData(formData: EntityInterfaces.FormData) {
-
+    console.log("Form data received to update", formData)
     const createEntityPayload  = {
-        "id": null,
+        "id": formData.id,
         "name": formData.name,
         "company": 1,
         "entityType": formData.entityType,
@@ -195,9 +201,10 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     }
   }
 
-  openEntityDialog() {
+  openEntityDialog(entity?:EntityInterfaces.BusinessDetails | null) {
+    console.log("Entity send at openEntity intr.", entity);
     const dialogRef = this.dialog.open(AddEntityDialog, {
-      data: { entityTable: this }
+      data: { entityTable: this, entity: entity }
     });
   }
 
@@ -255,6 +262,17 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         }
         break
       case 'Edit':
+        var entity = this.dataSource.find((entity) => entity.position === position);
+        console.log(entity);
+        
+        if(entity===undefined){
+          this.snackbar.showError("Some error occurred while adding Operating Unit.")
+        }
+        else { 
+          this.entityDialogService.emitOpenDialog(entity);
+          //this.addEntityData(entity);
+          //this.fetchEntityList();
+        }
         break
       default:
         break;
@@ -290,6 +308,14 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       default:
         break;
     }
+  }
+
+  openCountryDialog(){
+    console.log("Open Country dialog clicked!");
+  }
+
+  openIndustryDialog(){
+    console.log("Open Industry dialog clicked!");
   }
 
 
