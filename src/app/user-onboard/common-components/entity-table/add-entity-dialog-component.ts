@@ -1,34 +1,12 @@
 import { Component, ViewChild, Inject, OnInit } from '@angular/core';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
-import { DropdownComponent } from '../dropdown/dropdown.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EntityTableComponent } from './entity-table.component';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
-import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
 import { CountryList, CountryData } from 'src/app/shared/menu-items/country-list';
-
-const initialFormData: EntityInterfaces.FormData = {
-    id: null,  
-    name: '',
-    country: 1,
-    countryLabel:'',
-    entityType: 0,
-    entityTypeLabel:'',
-    industry: [],
-    industryLabel:'',
-    lawModules: [],
-    lawModulesLabel:[],
-    operatingUnit:[],
-    childrenID:0
-  };
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
   
   function transformEntityTypes(data: EntityInterfaces.OriginalType[]): EntityInterfaces.TransformedType[] {
     return data.map((item) => ({
@@ -54,15 +32,6 @@ const initialFormData: EntityInterfaces.FormData = {
     }));
   }
 
-  // function getMaxIdFromChildren(node: TreeNode): number {
-  //   const rootChildren = treeDataitem.children;
-  //   let maxId = 0;
-  
-  //   if (rootChildren && rootChildren.length > 0) {
-  //     maxId = Math.max(...rootChildren.map(child => child.id));
-  //   }
-  //   return maxId;
-  // }
 
 @Component({
     selector: 'dialog-elements-example-dialog',
@@ -73,97 +42,111 @@ const initialFormData: EntityInterfaces.FormData = {
     //   MatSelectModule, CommonModule, DropdownComponent ]
   })
   
-  export class AddEntityDialog implements OnInit{
-    industryTypesList: any;
-    distinctIndutryTypesList: any;
+  export class AddEntityDialog implements OnInit {
+    industryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
+    distinctIndutryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
     transformedEntityList: EntityInterfaces.TransformedType[] = [];
     transformedIndustryList: EntityInterfaces.TransformedType[] = [];
-    transformedLawCategoryList:EntityInterfaces.TransformedType[]=[];
-    countryList:CountryData[]=[];
+    transformedLawCategoryList: EntityInterfaces.TransformedType[] = [];
+    countryList: CountryData[] = [];
   
-    formData:any;
-    formLabeledData:any;
-    selectedCountry:any;
-    selectedEntity:any;
-    selectedIndustry:any;
-    requiredFormDataFields = ['name','country','entityType', 'industry', 'lawModules'];
+    formData: EntityInterfaces.FormData;
+    // formLabeledData: any;
+    selectedCountry: CountryData | undefined;
+    selectedEntity: EntityInterfaces.TransformedType | undefined;
+    selectedIndustry: EntityInterfaces.TransformedType[];
+    requiredFormDataFields = ['name', 'country', 'entityType', 'industry', 'lawModules'];
     dialogHeaderTitle: string = 'Edit Entity Details';
-    operatingUnit:[]
+    operatingUnit: [] = [];
     dialogHeaderImage: string = 'src/assets/images/Business.png';
-    entityChild:TreeNode;
-
-    ngOnInit(): void {
-      console.log("Data first recv. in dialog comp. ",this.data.entity)
-      this.formData = {}; 
-      this.formData = initialFormData;
-      console.log(this.formData);
+    entityChild: TreeNode;
+  
+    constructor(
+      @Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent, entity: EntityInterfaces.BusinessDetails | null },
+      public dialogRef: MatDialogRef<AddEntityDialog>,
+      private apiService: ApiService,
+      private snackbar: SnackbarService
+    ) { }
+  
+    ngOnInit() {
+      this.initializeFormData();
+  
+      this.industryTypesList = this.data.entityTable.industryTypesList;
+      this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
+      this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
+      let filteredCountryList = CountryList;
+  
+      try {
+        filteredCountryList = CountryList.filter(country => this.data.entityTable.countryList.includes(country.value));
+      } catch (error) {
+        console.log(error);
+      }
+  
+      this.countryList = filteredCountryList;
+      this.distinctIndutryTypesList = [];
+  
+      const seenIds = new Set();
+      for (let industry of this.industryTypesList) {
+        if (!seenIds.has(industry.iId)) {
+          this.distinctIndutryTypesList.push(industry);
+          seenIds.add(industry.iId);
+        }
+      }
+      this.transformedIndustryList = transformIndustryTypes(this.distinctIndutryTypesList);
     }
   
-    constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent, entity:EntityInterfaces.BusinessDetails|null}, 
-    public dialogRef: MatDialogRef<AddEntityDialog>,
-    private apiService:ApiService, private snackbar:SnackbarService){
-      
-      this.formData = initialFormData;
-      console.log("In constructor", this.formData)
-
-    if(this.data.entity !== null){
-      this.formData.id = this.data.entity.id;
-      //console.log("Received finally in Add Dialog",this.data.entity);
-      this.formData.name = this.data.entity.name;
-      this.formData.entityType = this.data.entity.entityType;
-      this.formData.country = this.data.entity.country;
-      this.formData.industry = this.data.entity.industry;
-      this.formData.lawModules = this.data.entity.lawModules;
-    }
-      
-    this.industryTypesList = this.data.entityTable.industryTypesList;
-    this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
-    this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
-    var filteredCountryList = CountryList; 
-    
-    try{
-      filteredCountryList = CountryList.filter(country => this.data.entityTable.countryList.includes(country.value));
-    }
-    catch(error){
-      console.log(error)
-    }
-
-    this.countryList = filteredCountryList;
-    this.distinctIndutryTypesList = [];
-    this.formData = initialFormData
-    this.formLabeledData = initialFormData
-  
-    const seenIds = new Set();
-    for (let industry of this.industryTypesList) {
-      if (!seenIds.has(industry.iId)) {
-        this.distinctIndutryTypesList.push(industry);
-        seenIds.add(industry.iId);
+    initializeFormData() {
+      if (this.data.entity !== null) {
+        this.formData = {
+          id: this.data.entity.id,
+          name: this.data.entity.name,
+          country: this.data.entity.country,
+          countryLabel: '',
+          entityType: this.data.entity.entityType,
+          entityTypeLabel: '',
+          industry: this.data.entity.industry,
+          industryLabel: '',
+          lawModules: this.data.entity.lawModules,
+          lawModulesLabel: [],
+          operatingUnit: [],
+          childrenID: 0
+        };
+      } else {
+        this.formData = {
+          id: null,
+          name: '',
+          country: 1,
+          countryLabel: '',
+          entityType: 0,
+          entityTypeLabel: '',
+          industry: [],
+          industryLabel: '',
+          lawModules: [],
+          lawModulesLabel: [],
+          operatingUnit: [],
+          childrenID: 0
+        };
       }
     }
-    this.transformedIndustryList = transformIndustryTypes(this.distinctIndutryTypesList);
+  
+    onSelectedValueChanged(value: any, field: keyof EntityInterfaces.FormData) {
+      if (field in this.formData) {
+        (this.formData[field] as any) = value;
+      }
     }
   
-    entityDataitem = treeDataitem;
-  
-    onSelectedValueChanged(value:any,field:string){
-      this.formData[field]=value;
+    onTextFieldChange(event: any, field: keyof EntityInterfaces.FormData) {
+      if (field in this.formData) {
+        (this.formData[field] as any) = event.target.value;
+      }
     }
   
-    onTextFieldChange(event:any, field:string){
-      this.formData[field]=event.target.value;
-    }
-  
-   
     addEntity() {
-      //const maxId = getMaxIdFromChildren(treeDataitem);   
       let isAnyFieldBlank = false;
-  
-      console.log(this.formData)
-  
       for (const field of this.requiredFormDataFields) {
         if (this.formData.hasOwnProperty(field)) {
-          const fieldValue = this.formData[field as keyof FormData];
-          if ((field === "lawModules" || "industry") && (fieldValue as string[]).length === 0) {
+          const fieldValue = this.formData[field as keyof EntityInterfaces.FormData];
+          if ((field === 'lawModules' || field === 'industry') && (fieldValue as number[]).length === 0) {
             isAnyFieldBlank = true;
             break;
           } else if (typeof fieldValue === 'string' && fieldValue === '') {
@@ -174,47 +157,31 @@ const initialFormData: EntityInterfaces.FormData = {
       }
   
       if (isAnyFieldBlank) {
-        this.snackbar.showError("Please enter all the field values.")
-      }
+        this.snackbar.showError("Please enter all the field values.");
+      } else {
+        this.selectedCountry = this.countryList.find(country => country.value === this.formData.country);
+        this.selectedEntity = this.transformedEntityList.find(entity => entity.value === this.formData.entityType);
+        this.selectedIndustry = this.transformedIndustryList.filter(industry => this.formData.industry.includes(industry.value));
   
-      else{
-        this.selectedCountry = this.countryList.find((country)=> country.value === this.formData.country);
-        this.selectedEntity = this.transformedEntityList.find((entity)=> entity.value === this.formData.entityType);
-        this.selectedIndustry= [];
-        //this.transformedIndustryList.find((industry)=> industry.value === this.formData.industry);
-    
-        this.formData.countryLabel = this.selectedCountry.label || "";
-        this.formData.entityTypeLabel = this.selectedEntity.label || "";
-        this.formData.industryLabel = this.selectedIndustry.label || "";
-        this.formData.operatingUnit = ['1']
-
-        
-        for(const lawModule of this.formData.lawModules){
-          var law = this.transformedLawCategoryList.find((law)=> law.value === lawModule);
-          this.formData.lawModulesLabel.push(law?.label || "")
+        this.formData.countryLabel = this.selectedCountry?.label || "";
+        this.formData.entityTypeLabel = this.selectedEntity?.label || "";
+        this.formData.industryLabel = this.selectedIndustry.map((industry:any) => industry.label).join(', ');
+        this.formData.operatingUnit = ['1'];
+  
+        for (const lawModule of this.formData.lawModules) {
+          const law = this.transformedLawCategoryList.find(law => law.value === lawModule);
+          if (law) {
+            this.formData.lawModulesLabel.push(law.label);
+          }
         }
-
-        // this.entityChild = {
-        //   id: maxId + 1,
-        //   label: 'Child Node '+String(maxId+1),
-        //   children: []
-        // }
+  
         this.formData.childrenID = 0;
-        
-
-        //this.formData.lawModulesLabel = this.formData.lawModules;
         this.data.entityTable.addEntityData(this.formData);
-       // treeDataitem?.children?.push(this.entityChild);
-        this.snackbar.showSuccess("Successfully added Entity.");
-        console.log("FORMDATA SUBMITTED", this.formData);
         this.dialogRef.close();
       }
     }
   
-  
     closeEntityDialog() {
-      this.formData = initialFormData;
       this.dialogRef.close();
     }
-  
   }

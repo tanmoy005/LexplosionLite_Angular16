@@ -53,7 +53,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   @Input() entityTypesList: FieldDefinitionInterfaces.EntityTypes[];
   @Input() industryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
   @Input() lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories[];
-  @Input() countryList: any;
+  @Input() countryList: number[];
 
   @Output() entitySelected = new EventEmitter<EntityInterfaces.BusinessDetails>();
   @Output() entitySelected1 = new EventEmitter<EntityInterfaces.BusinessDetails>();
@@ -110,7 +110,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       this.apiService.postFetchEntityList(entityFetchPayload).subscribe((response) => {
         const entityList = response.data;
 
-        console.log('entity data coming from api',response.data)
+        // console.log('entity data coming from api',response.data)
         let position = 1;
         //let childrenID = 0;
         //console.log('Entity fetch response', entityList);
@@ -162,7 +162,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   treeDataItem = treeDataitem;
 
   addEntityData(formData: EntityInterfaces.FormData) {
-    console.log("Form data received to update", formData)
+    //console.log("Form data received to update", formData)
     const createEntityPayload  = {
         "id": formData.id,
         "name": formData.name,
@@ -205,7 +205,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
 
   openEntityDialog(entity?:EntityInterfaces.BusinessDetails | null) {
-    console.log("Entity send at openEntity intr.", entity);
+    //console.log("Entity send at openEntity intr.", entity);
     const dialogRef = this.dialog.open(AddEntityDialog, {
       data: { entityTable: this, entity: entity }
     });
@@ -217,7 +217,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       data: { name: name }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     });
   }
   openOpDialog() {
@@ -227,7 +227,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -266,7 +266,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         break
       case 'Edit':
         var entity = this.dataSource.find((entity) => entity.position === position);
-        console.log(entity);
+        //console.log(entity);
         
         if(entity===undefined){
           this.snackbar.showError("Some error occurred while adding Operating Unit.")
