@@ -1,3 +1,4 @@
+// import { entityList } from './entity-to-opunit-data-interface';
 
 // export interface BusinessDetails {
 //     position: number;
@@ -16,6 +17,9 @@
 //     actions: string
 //   }
 
+import { OpUnitDetails } from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import {entityList} from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+
 export interface BusinessDetails {
   position: number;
   id:number;
@@ -30,9 +34,11 @@ export interface BusinessDetails {
   laws: string;
   lawModules: number[],
   lawModulesLabel:string[],
-  operatingUnit: string[];
+  // operatingUnit: string[];
+  operatingUnit: OpUnitDetails[];
   actions: string,
   childrenID: number;
+  entityList:entityList[]
 }
 
 
@@ -73,51 +79,51 @@ export interface BusinessDetails {
 export const EntityColumns = ['position', 'name', 'country', 'industry', 'entityType', 'emailID', 'laws', 'operatingUnit', 'actions'];
 
 
-export const EntityData:BusinessDetails[] =  [
-  {
-    "position": 1,
-    "id":1,
-    "name": "Test Entity 1",
-    "country": 1,
-    "countryLabel": "India",
-    "industry": [3],
-    "industryLabel": "Manufacturing",
-    "entityType": 1,
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      1,2
-    ],
-    "lawModulesLabel": [
-      "Labour",
-      "Operational"
-    ],
-    "operatingUnit": [],
-    "actions": "",
-    "childrenID":0
-  },
-  {
-    "position": 2,
-    "id":2,
-    "name": "Test Entity 2",
-    "country": 1,
-    "countryLabel": "India",
-    "industry": [3],
-    "industryLabel": "Manufacturing",
-    "entityType": 1,
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      1,2
-    ],
-    "lawModulesLabel": [
-      "Labour",
-      "Operational"
-    ],
-    "operatingUnit": ['1','2'],
-    "actions": "",
-    "childrenID":1
-  }
-]
+// export const EntityData:BusinessDetails[] =  [
+//   {
+//     "position": 1,
+//     "id":1,
+//     "name": "Test Entity 1",
+//     "country": 1,
+//     "countryLabel": "India",
+//     "industry": [3],
+//     "industryLabel": "Manufacturing",
+//     "entityType": 1,
+//     "entityTypeLabel": "Company",
+//     "emailID": "",
+//     "laws": "",
+//     "lawModules": [
+//       1,2
+//     ],
+//     "lawModulesLabel": [
+//       "Labour",
+//       "Operational"
+//     ],
+//     "operatingUnit": [],
+//     "actions": "",
+//     "childrenID":0
+//   },
+//   {
+//     "position": 2,
+//     "id":2,
+//     "name": "Test Entity 2",
+//     "country": 1,
+//     "countryLabel": "India",
+//     "industry": [3],
+//     "industryLabel": "Manufacturing",
+//     "entityType": 1,
+//     "entityTypeLabel": "Company",
+//     "emailID": "",
+//     "laws": "",
+//     "lawModules": [
+//       1,2
+//     ],
+//     "lawModulesLabel": [
+//       "Labour",
+//       "Operational"
+//     ],
+//     "operatingUnit": ['1','2'],
+//     "actions": "",
+//     "childrenID":1
+//   }
+// ]

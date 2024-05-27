@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 
  
 
@@ -94,6 +95,19 @@ export class EntityComponent {
   //   this.selectedEntityEmitter.emit(this.selectedEntity);
    
   // }
+  // handleEntitySelected(entity: any) {
+  //   console.log('Selected entity from dots:', entity);
+  //   this.selectedEntity= entity
+  //   this.selectedEntityEmitter.emit(this.selectedEntity);
+   
+  // }
+  // handleEntitySelected1(entity: any) {
+  //   console.log('Selected entity:', entity);
+  //   this.selectedEntity= entity
+  //   this.selectedEntityEmitter1.emit(this.selectedEntity);
+   
+  // }
+
   handleEntitySelected(entity: any) {
     console.log('Selected entity from dots:', entity);
     this.selectedEntity= entity

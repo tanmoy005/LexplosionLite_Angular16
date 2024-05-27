@@ -14,6 +14,8 @@ import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
 import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
 import { CountryList, CountryData } from 'src/app/shared/menu-items/country-list';
+import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-interfaces';
+import { FormData } from 'src/app/shared/menu-items/entity-interfaces';
 
 const initialFormData: EntityInterfaces.FormData = {
     id: null,  
@@ -74,14 +76,17 @@ const initialFormData: EntityInterfaces.FormData = {
   })
   
   export class AddEntityDialog implements OnInit{
-    industryTypesList: any;
-    distinctIndutryTypesList: any;
+    //industryTypesList: any;
+    industryTypesList: IndustryActivies[];
+    // distinctIndutryTypesList: any;
+    distinctIndutryTypesList:  EntityInterfaces.OriginalIndustryType[];
     transformedEntityList: EntityInterfaces.TransformedType[] = [];
     transformedIndustryList: EntityInterfaces.TransformedType[] = [];
     transformedLawCategoryList:EntityInterfaces.TransformedType[]=[];
     countryList:CountryData[]=[];
   
     formData:any;
+    //formData:FormData;
     formLabeledData:any;
     selectedCountry:any;
     selectedEntity:any;
@@ -96,7 +101,7 @@ const initialFormData: EntityInterfaces.FormData = {
       console.log("Data first recv. in dialog comp. ",this.data.entity)
       this.formData = {}; 
       this.formData = initialFormData;
-      console.log(this.formData);
+      //console.log('the form data',this.formData);
     }
   
     constructor(@Inject(MAT_DIALOG_DATA) public data: { entityTable: EntityTableComponent, entity:EntityInterfaces.BusinessDetails|null}, 
@@ -117,6 +122,7 @@ const initialFormData: EntityInterfaces.FormData = {
     }
       
     this.industryTypesList = this.data.entityTable.industryTypesList;
+    console.log('this is industry type list',this.industryTypesList)
     this.transformedEntityList = transformEntityTypes(this.data.entityTable.entityTypesList);
     this.transformedLawCategoryList = transformLawCategories(this.data.entityTable.lawCategoriesList);
     var filteredCountryList = CountryList; 
@@ -140,6 +146,7 @@ const initialFormData: EntityInterfaces.FormData = {
         seenIds.add(industry.iId);
       }
     }
+    //console.log('distinct industry type list',this.distinctIndutryTypesList)
     this.transformedIndustryList = transformIndustryTypes(this.distinctIndutryTypesList);
     }
   

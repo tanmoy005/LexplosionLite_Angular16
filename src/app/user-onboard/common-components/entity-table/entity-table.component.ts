@@ -15,8 +15,14 @@ import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
 import { DialogService } from 'src/app/services/Dialog.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+import { FetchEntityDetails } from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import {Industries} from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import {LawCategories} from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =[];
+//const ELEMENT_DATA:EntityDataType[] =[];
+
 
 function getMaxIdFromChildren(node: TreeNode): number {
   const rootChildren = treeDataitem.children;
@@ -94,6 +100,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     operatingUnit: [],
     actions: '',
     childrenID: 0,
+    entityList:[]
   };
   
   isTableEntitiesLoading:boolean=false;
@@ -114,7 +121,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         let position = 1;
         //let childrenID = 0;
         //console.log('Entity fetch response', entityList);
-        entityList.forEach((entity: any) => {
+        entityList.forEach((entity: FetchEntityDetails) => {
           const maxId = getMaxIdFromChildren(treeDataitem);
 
           this.entityChild = {
@@ -128,12 +135,12 @@ export class EntityTableComponent implements OnInit, OnDestroy{
             position: position,
             id: entity.id,
             name: entity.name,
-            industry: entity.industries.map((industry: any) => industry.id),
-            industryLabel: entity.industries.map((industry: any) => industry.name).join(","),
+            industry: entity.industries.map((industry: Industries) => industry.id),
+            industryLabel: entity.industries.map((industry: Industries) => industry.name).join(","),
             entityType: entity.entityType.id,
             entityTypeLabel: entity.entityType.name,
-            lawModules: entity.komriskLawCategories.map((law: any) => law.id),
-            lawModulesLabel: entity.komriskLawCategories.map((law: any) => law.description),
+            lawModules: entity.komriskLawCategories.map((law: LawCategories) => law.id),
+            lawModulesLabel: entity.komriskLawCategories.map((law: LawCategories) => law.description),
             operatingUnit: entity.operatingUnits,
             country: 1,
             countryLabel: "India",
@@ -239,7 +246,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     this.entitySelected1.emit(entity);
   }
 
-  entityToSend: any = {};
+  // entityToSend: any = {};
+  entityToSend: EntityDataType ;
 
   openEntityMenuDialog(action: string, position: number) {
     switch (action) {
@@ -253,6 +261,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         }
         else { 
           this.entityToSend = entity;
+          
           this.entityToSend['entityList'] = this.dataSource.map((entity: any) => {
             return {
               id: entity.id,
@@ -301,7 +310,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
               name: entity.name
             };
           });
-          //console.log("The sent entity in OP-Unit",this.entityToSend);
+          console.log("The sent entity in OP-Unit",this.entityToSend);
           this.navigateToAddOpUnit1(this.entityToSend);
         }
         break
