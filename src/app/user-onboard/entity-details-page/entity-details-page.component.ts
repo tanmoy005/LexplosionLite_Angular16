@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { OperatingUnitComponent } from '../operating-unit/operating-unit.component';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 
 
 @Component({
@@ -27,11 +28,10 @@ export class EntityDetailsPageComponent {
   entityTypesList: FieldDefinitionInterfaces.EntityTypes;
   industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
   lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
-  countryList: [];
+  countryList: number[];
   isEntityDialogOpen: boolean
-  selectedEntity: any;
-
-  selectedEntity1: any
+  selectedEntity: EntityDataType;
+  selectedEntity1: EntityDataType;
 
   isAddOperatingUnitClicked: boolean =false;
 
@@ -58,7 +58,7 @@ export class EntityDetailsPageComponent {
     }
   }
 
-  getSelectedCountries(value:any){
+  getSelectedCountries(value:number[]){
     this.countryList = value;
     console.log('country data from business card',this.countryList)
   }
@@ -69,14 +69,14 @@ export class EntityDetailsPageComponent {
   }
 
 
-  handleSelectedEntity(entity: any) {
+  handleSelectedEntity(entity: EntityDataType) {
     console.log('Selected entity in page from dots', entity);
     this.isAddOperatingUnitClicked= true
     this.selectedEntity= entity
     this.isDotsCliscked= true
     
   }
-  handleSelectedEntity1(entity: any) {
+  handleSelectedEntity1(entity: EntityDataType) {
     console.log('Selected entity in page:', entity);
     this.isAddOperatingUnitClicked= true
     this.selectedEntity= entity

@@ -134,15 +134,15 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
       }
     }
   
-    onSelectedValueChanged(value: any, field: keyof EntityInterfaces.FormData) {
+    onSelectedValueChanged(value: number | number[], field: keyof EntityInterfaces.FormData) {
       if (field in this.formData) {
-        (this.formData[field] as any) = value;
+        (this.formData[field] as number | number[]) = value;
       }
     }
   
     onTextFieldChange(event: any, field: keyof EntityInterfaces.FormData) {
       if (field in this.formData) {
-        (this.formData[field] as any) = event.target.value;
+        (this.formData[field] as string) = event.target.value;
       }
     }
   
@@ -170,7 +170,7 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
   
         this.formData.countryLabel = this.selectedCountry?.label || "";
         this.formData.entityTypeLabel = this.selectedEntity?.label || "";
-        this.formData.industryLabel = this.selectedIndustry.map((industry:any) => industry.label).join(', ');
+        this.formData.industryLabel = this.selectedIndustry.map((industry) => industry.label).join(', ');
         this.formData.operatingUnit = ['1'];
   
         for (const lawModule of this.formData.lawModules) {

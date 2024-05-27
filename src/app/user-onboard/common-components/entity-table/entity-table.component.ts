@@ -61,8 +61,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   @Input() lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories[];
   @Input() countryList: number[];
 
-  @Output() entitySelected = new EventEmitter<EntityInterfaces.BusinessDetails>();
-  @Output() entitySelected1 = new EventEmitter<EntityInterfaces.BusinessDetails>();
+  @Output() entitySelected = new EventEmitter<EntityDataType>(); 
+  @Output() entitySelected1 = new EventEmitter<EntityDataType>();
   @Output() entityTableDataLoading = new EventEmitter<boolean>();
 
   ngOnInit(): void {
@@ -238,11 +238,11 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     });
   }
 
-  navigateToAddOpUnit(entity: EntityInterfaces.BusinessDetails) {
+  navigateToAddOpUnit(entity: EntityDataType) {
     this.entitySelected.emit(entity);
     // console.log('dots are clicked');
   }
-  navigateToAddOpUnit1(entity: EntityInterfaces.BusinessDetails) {
+  navigateToAddOpUnit1(entity: EntityDataType) {
     this.entitySelected1.emit(entity);
   }
 
@@ -262,7 +262,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         else { 
           this.entityToSend = entity;
           
-          this.entityToSend['entityList'] = this.dataSource.map((entity: any) => {
+          this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
             return {
               id: entity.id,
               name: entity.name
@@ -304,7 +304,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         }
         else { 
           this.entityToSend = entity;
-          this.entityToSend['entityList'] = this.dataSource.map((entity: any) => {
+          this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
             return {
               id: entity.id,
               name: entity.name
