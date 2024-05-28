@@ -209,15 +209,90 @@ File: scss
     }
 }
 
-.mdc-radio__background { // todo remove comment and fix the radio button size
+.mdc-radio__background {
+    // todo remove comment and fix the radio button size
     // width: 16px !important;
     // height: 16px !important;
 }
-input.mdc-radio__native-control:focus, .mdc-radio__native-control:hover{
+
+input.mdc-radio__native-control:focus,
+.mdc-radio__native-control:hover {
     background-color: none;
 }
-.mdc-radio__inner-circle { 
+
+.mdc-radio__inner-circle {
     // border-width: 8px !important; // todo
+}
+
+@mixin small-dropdown-box {
+    padding: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    border: 1px solid $gray-1100;
+}
+
+.activities-section {
+    .mat-expansion-panel-header {
+        // padding: 0!important;
+        // width: 24px!important;
+        // height: 24px!important;
+        // align-items: center!important;
+        // justify-content: center!important;
+        // display: flex!important;
+        // border: 1px solid  $gray-1100;
+        @include small-dropdown-box;
+
+        span.mat-content {
+            display: none;
+        }
+    }
+
+    .mat-expansion-indicator::after {
+        border-width: 0px 1px 1px 0px !important;
+        border-color: $gray-1100;
+        width: 0px !important;
+        height: 0px !important;
+    }
+
+    .mat-expansion-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    button.mdc-button {
+        @include small-dropdown-box;
+        min-width: 24px !important;
+ 
+        .mat-icon {
+            margin: 0 !important;
+            height: 9px !important;
+            width: 20px !important;
+            align-items: center!important;
+            justify-content: center!important;
+            display: flex!important;
+            font-size: 13px!important;
+            color: $gray-1100!important;
+        }
+    }
+    .mdc-list-item{
+        padding-left: 0!important;
+    }
+    .activities-label{
+        margin: 0!important;
+        p{
+            margin-left: 14px;
+            @include text-model($font-12, 400, $gray-1200, Barlow, 24px);
+        }
+    }
+    .mat-badge-content{
+        left:16px!important;
+        background-color: $gray-1600!important;
+        @include text-model($font-12, 700, $gray-1500, Barlow, 14.4px);
+    }
 }
 
 .mdc-radio__outer-circle {

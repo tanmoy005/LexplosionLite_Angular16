@@ -1,6 +1,7 @@
-import { Component, Input,OnInit } from '@angular/core';
+import { Component, Input,OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
+import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 
 export interface Section {
   label: string;
@@ -13,6 +14,7 @@ export interface Section {
   styleUrls: ['./activities-list.component.scss']
 })
 export class ActivitiesListComponent implements OnInit {
+
   encryptStorage = new EncryptStorage(environment.localStorageKey);
 
   @Input() selectedActivitiesList:[]
@@ -49,4 +51,5 @@ export class ActivitiesListComponent implements OnInit {
       this.activities.splice(selectedActivityIndex, 1);
     }
   }
+
 }
