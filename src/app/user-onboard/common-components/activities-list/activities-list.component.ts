@@ -2,6 +2,7 @@ import { Component, Input,OnInit, QueryList, ViewChild, ViewChildren } from '@an
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
+import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-interfaces';
 
 export interface Section {
   label: string;
@@ -17,11 +18,26 @@ export class ActivitiesListComponent implements OnInit {
 
   encryptStorage = new EncryptStorage(environment.localStorageKey);
 
-  @Input() selectedActivitiesList:[]
+  @Input() selectedActivitiesList:number[]
 
   ngOnInit(): void {
-    const savedindustryActivities = this.encryptStorage.getItem('industryActivities');
-   
+    const savedindustryActivities:IndustryActivies[]| undefined  = this.encryptStorage.getItem('industryActivities');
+    console.log('saved activities list',savedindustryActivities)
+
+    if (savedindustryActivities) {
+      console.log('saved activities list', savedindustryActivities);
+
+      const filteredArray = savedindustryActivities
+        .filter((item: IndustryActivies) => this.selectedActivitiesList.includes(item.aId))
+        .map((item: IndustryActivies) => ({ label: item.activity, value: item.aId }));
+
+      this.activities = filteredArray;
+
+     // console.log('filtered activities list', this.activities);
+    } else {
+      //console.log('No saved activities found in storage');
+    }
+
   }
   activities: Section[] = [
     {

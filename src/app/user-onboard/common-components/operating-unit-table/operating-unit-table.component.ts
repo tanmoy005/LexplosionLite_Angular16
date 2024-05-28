@@ -104,36 +104,70 @@ export class OperatingUnitTableComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  fetchOpUnitList(){
-    const payLoad={"entity":this.entity.id}
-    this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
-      console.log('fetched op unit values',response)
+  // fetchOpUnitList(){
+  //   const payLoad={"entity":this.entity.id}
+  //   this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
+  //     console.log('fetched op unit values',response)
     
-      this.opUnitDataFromApi=response.data
-      const opResponseData:OPUnitDetails[]= response.data.map((opUnits: FetchOPUnits) => ({
+  //     this.opUnitDataFromApi=response.data
+  //     const opResponseData:OPUnitDetails[]= response.data.map((opUnits: FetchOPUnits) => ({
+  //      position: opUnits.id,
+  //      count:this.dataSource.length + 1,
+  //       name: opUnits.name,
+  //       entity: opUnits.entities.map((item: EntitiesList) => item.id),
+  //       entityNames:[],
+  //       ownershipID: opUnits.ownership.id,
+  //       ownership: opUnits.ownership.name,
+  //       type: opUnits.operatingUnitType.name,
+  //       location: '', 
+  //       zone: opUnits.locatedAt.name, 
+  //       locationId: opUnits.locatedAt.id,
+  //       employees: '', 
+  //       activities: opUnits.activities.map((item:Activities )=> item.id), 
+  //       laws: '', 
+  //       actions: '' ,
+  //       totalEmployeeCount: opUnits.noOfDeMale+opUnits.noOfDeFemale+opUnits.noOfClMale+opUnits.noOfClFemale
+  //                           +opUnits.noOfChild+opUnits.noOfApprentice
+  //     }));
+
+  //     console.log('the transformed op unit datas',opResponseData)
+  //     this.dataSource = opResponseData
+  //   })
+    
+  // }
+  fetchOpUnitList() {
+    const payLoad = { "entity": this.entity.id };
+    this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
+      console.log('fetched op unit values', response);
+      
+      this.opUnitDataFromApi = response.data;
+      
+      const currentCount = this.dataSource.length; 
+      const opResponseData: OPUnitDetails[] = response.data.map((opUnits: FetchOPUnits, index: number) => ({
         position: opUnits.id,
+        count: currentCount + index + 1,
         name: opUnits.name,
         entity: opUnits.entities.map((item: EntitiesList) => item.id),
-        entityNames:[],
+        entityNames: [],
         ownershipID: opUnits.ownership.id,
         ownership: opUnits.ownership.name,
         type: opUnits.operatingUnitType.name,
-        location: '', 
-        zone: opUnits.locatedAt.name, 
+        location: '',
+        zone: opUnits.locatedAt.name,
         locationId: opUnits.locatedAt.id,
-        employees: '', 
-        activities: opUnits.activities.map((item:Activities )=> item.id), 
-        laws: '', 
-        actions: '' ,
-        totalEmployeeCount: opUnits.noOfDeMale+opUnits.noOfDeFemale+opUnits.noOfClMale+opUnits.noOfClFemale
-                            +opUnits.noOfChild+opUnits.noOfApprentice
+        employees: '',
+        activities: opUnits.activities.map((item: Activities) => item.id),
+        laws: '',
+        actions: '',
+        totalEmployeeCount: opUnits.noOfDeMale + opUnits.noOfDeFemale + opUnits.noOfClMale + opUnits.noOfClFemale
+                            + opUnits.noOfChild + opUnits.noOfApprentice
       }));
-
-      console.log('the transformed op unit datas',opResponseData)
-      this.dataSource = opResponseData
-    })
-    
+  
+      console.log('the transformed op unit datas', opResponseData);
+      this.dataSource = [...this.dataSource, ...opResponseData]; 
+    });
   }
+  
  
   displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
                                 'type', 'location', 'zone', 'employees','activities','laws','actions'];
@@ -149,7 +183,7 @@ export class OperatingUnitTableComponent implements OnInit {
  
 
   addOpUnitData(newData: OPUnitDetails) {
-    newData['position'] = this.dataSource.length + 1
+    newData['count'] = this.dataSource.length + 1
     console.log('the new op unit data',newData)
     this.dataSource.push(newData);
     // if (newData['opUnitPosition']!==0){
