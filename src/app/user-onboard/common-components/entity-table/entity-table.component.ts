@@ -126,7 +126,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
           this.entityChild = {
             id: maxId + 1,
-            label: 'Child Node '+String(maxId+1),
+            //label: 'Child Node '+String(maxId+1),
+            label: entity.name,
             children: []
           }
 

@@ -39,9 +39,16 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
 
 export interface TransformedType1 {
   value: number;
-    label: string;
-    
+  label: string;
 }
+
+export interface TransformedRadioGroup {
+  value:number;
+  label: string;
+  isChecked:boolean;
+}
+
+
 export interface Workforce {
   header: string;
   male: number;
@@ -92,15 +99,16 @@ export class AddNewOperatingUnitDialogComponent implements OnInit{
   noOfApprentice:number =0;
   noOfChild: number=0;
   // ownershipDropdown: string[] = ['Owned', 'Leased'];
-  ownershipDropdown: TransformedType1[] = [
-    {'label':'Owned','value':1},
-    {'label':'Leased','value':2}
+  
+  ownershipDropdown: TransformedRadioGroup[] = [
+    {'label':'Owned','value':1, 'isChecked':false},
+    {'label':'Leased','value':2, 'isChecked':false}
   ];
   // zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
-  zoneDropdown: TransformedType1[] = [
-    {'label':'SEZ','value':1}, 
-    {'label':'STPI','value':2}, 
-    {'label': 'Not Applicable','value':2}
+  zoneDropdown: TransformedRadioGroup [] = [
+    {'label':'SEZ','value':2,'isChecked':false}, 
+    {'label':'STPI','value':1, 'isChecked':false}, 
+    {'label': 'Not Applicable','value':3,'isChecked':false}
 ];
   entityList:TransformedType[] = []
   industryActivityList:{
@@ -152,10 +160,18 @@ export class AddNewOperatingUnitDialogComponent implements OnInit{
       console.log('The opunit position is', this.data.selectedOP);
       this.operatingUnitName = this.data.selectedOP.name
       this.operatingUnitType= this.data.selectedOP.operatingUnitType.id
-      this.ownership =this.data.selectedOP.ownership.id
+      this.ownership =this.data.selectedOP.ownership.id;
+
+      const ownershipSelectedIndex = this.ownershipDropdown.findIndex((ownership)=> ownership.value === this.ownership);
+      this.ownershipDropdown[ownershipSelectedIndex].isChecked = true;
+
+      const zoneSelectedIndex = this.zoneDropdown.findIndex((zone)=>zone.value === this.data.selectedOP.locatedAt.id);
+      this.zoneDropdown[zoneSelectedIndex].isChecked = true;
+
       this.state = this.data.selectedOP.state.id
       this.selectedActivitiesList = this.data.selectedOP.activities.map((item => item.id))
-      console.log('the selected activities are',this.selectedActivitiesList)
+      //console.log('the selected activities are',this.selectedActivitiesList);
+      console.log("Selected ownership", this.ownership);
       // this.editOpUnitDataDetails = this.getOpUnitDetailsForEdit(this.data.opUnitPosition);
       // this.operatingUnitName = this.editOpUnitDataDetails.name;
       // this.operatingUnitType= this.editOpUnitDataDetails.operatingUnitType

@@ -33,6 +33,7 @@
       <td mat-cell *matCellDef="let element">
         <button
         [matBadge]='element.entity.length'
+        matBadgePosition="below after"
           
           class="invisible-border-button"
         >
@@ -72,6 +73,7 @@
       <td mat-cell *matCellDef="let element">
         <button
         [matBadge]='element.totalEmployeeCount'
+        matBadgePosition="below after"
           (click)="openLawDialog()"
           class="invisible-border-button"
         >

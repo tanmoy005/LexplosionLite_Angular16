@@ -29,18 +29,23 @@
             >
             <input matInput name="Entity" [(ngModel)]="operatingUnitName" />
           </mat-form-field>
+
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Ownership</label>
             <mat-radio-group 
             [(ngModel)]="ownership"
-            (change)="onOwnershipSelectionChange($event)">
+            (change)="onOwnershipSelectionChange($event)"
+            >
              
-              <mat-radio-button class="example-margin"  *ngFor='let menu of ownershipDropdown' [value]="menu.value">
+              <mat-radio-button class="example-margin"  
+              *ngFor='let menu of ownershipDropdown' 
+              [value]="menu.value" [checked]="menu.isChecked">
                 {{menu.label}}
               </mat-radio-button>
             </mat-radio-group>
           </section>
         </div>
+        
       </div>
       <div class="divider"></div>
       <div class="field-container text_12_400_gray_900 mt-22">
@@ -72,7 +77,12 @@
             <label class="text_12_500_gray_1200">Zone</label>
             <mat-radio-group [(ngModel)]="zone"
             (change)="onZoneSelectionChange($event)">
-              <mat-radio-button class="example-margin" class="text_12_400_gray_1200"  *ngFor='let menu of zoneDropdown' [value]="menu.value">
+              <mat-radio-button class="example-margin" 
+              class="text_12_400_gray_1200"  
+              *ngFor='let menu of zoneDropdown' 
+              [value]="menu.value"
+              [checked]="menu.isChecked"
+              >
                 {{menu.label}}
               </mat-radio-button>
             </mat-radio-group>
@@ -89,7 +99,7 @@
              [IsMultiSelection]="true"
               [IsRequired]="true" 
               (selectedValueChange)="onSelectedValueChanged($event,'activity')"
-              [unchangeableValues]="selectedActivitiesList">
+              [changeableValues]="selectedActivitiesList">
             </app-dropdown>
             <!-- <app-activities-list
             [selectedActivitiesList]='selectedActivitiesList'>
