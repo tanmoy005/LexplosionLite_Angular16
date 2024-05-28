@@ -1,14 +1,7 @@
 import { Component,Input ,EventEmitter,Output} from '@angular/core';
 import { Router } from '@angular/router';
-import { EntityTableComponent } from '../common-components/entity-table/entity-table.component';
-import { TableHeaderComponent } from '../common-components/table-header/table-add-header.component';
-import { TreeStructureComponent } from '../common-components/tree-structure/tree-structure.component';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { ApiService } from 'src/app/services/api.service';
-import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
@@ -46,13 +39,13 @@ export class EntityComponent {
   industryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
   lawCategoriesList:FieldDefinitionInterfaces.komriskLawCategories[];
  
-  isEntityDialogOpen: boolean
-  selectedEntity:  any
+  isEntityDialogOpen: boolean;
+  selectedEntity:  EntityDataType;
   
 
-  @Input() countryList: [] = [];
-  @Output() selectedEntityEmitter = new EventEmitter<any>();
-  @Output() selectedEntityEmitter1 = new EventEmitter<any>();
+  @Input() countryList: number[] = [];
+  @Output() selectedEntityEmitter = new EventEmitter<EntityDataType>();
+  @Output() selectedEntityEmitter1 = new EventEmitter<EntityDataType>();
   @Output() handleTableDataLoadingFromEntity = new EventEmitter<boolean>();
 
   constructor(private router: Router, private apiService: ApiService) {
@@ -108,13 +101,13 @@ export class EntityComponent {
    
   // }
 
-  handleEntitySelected(entity: any) {
+  handleEntitySelected(entity: EntityDataType) {
     console.log('Selected entity from dots:', entity);
     this.selectedEntity= entity
     this.selectedEntityEmitter.emit(this.selectedEntity);
    
   }
-  handleEntitySelected1(entity: any) {
+  handleEntitySelected1(entity: EntityDataType) {
     console.log('Selected entity:', entity);
     this.selectedEntity= entity
     this.selectedEntityEmitter1.emit(this.selectedEntity);
