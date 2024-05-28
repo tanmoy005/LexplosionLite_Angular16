@@ -28,6 +28,7 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
 import { EmployeeCardInterface } from 'src/app/shared/menu-items/employee-card-data-interface';
 import {OPUnitDetailsWithEntity} from'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface';
+import { opUnitAddResponse } from 'src/app/shared/menu-items/opUnitAddResponse';
 
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
@@ -141,6 +142,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit{
   }[] =[]
   selectedActivitiesList:number[]=[]
   selectedEntities:number[]=[this.data.entity.id]
+  opUnitSaveResponse:opUnitAddResponse
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[],
@@ -214,10 +216,12 @@ export class AddNewOperatingUnitDialogComponent implements OnInit{
       const operatingUnitTypeName = this.findOperatingUnitTypeName(this.operatingUnitType);
       const ownershipName = this.findOwnerShipName(this.ownership) ;
       const zoneName = this.findZoneName(this.zone)
-      
+      const totalEmpCount = this.noOfApprentice+this.noOfChild+this.noOfClFemale+this.noOfClMale
+      +this.noOfDeFemale+this.noOfDeMale+this.noOfIsmFemale+this.noOfIsmMale
      
       const newData: OPUnitDetails = {
-        position: 1,
+        position: this.opUnitSaveResponse.id,
+        count:1,
         name: this.operatingUnitName,
         entity:this.selectedEntities,
         entityNames:[],
@@ -229,10 +233,11 @@ export class AddNewOperatingUnitDialogComponent implements OnInit{
         locationId:this.zone,
         zone:zoneName,
         employees:'',
-        activities:'',
+        // activities:'',
+        activities:this.selectedActivitiesList,
         laws: '',
         actions:'',
-        totalEmployeeCount:0,
+        totalEmployeeCount:totalEmpCount,
         opUnitPosition:this.data.opUnitPosition,
         entityPosition:this.data.entityPosition
       };
@@ -365,6 +370,7 @@ addNewOpUnit(){
  try{
     this.apiService.postCreateOperatingUnit(payload).subscribe((response) => {
       const entityResponse = response;
+      this.opUnitSaveResponse = response.data
       this.snackbar.showSuccess('Operating Unit successfully added.');
    
     })

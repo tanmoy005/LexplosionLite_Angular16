@@ -32,6 +32,7 @@
 
 export interface OPUnitDetails {
   position: number;
+  count:number;
   name: string;
   entity:number[];
   entityNames:string[];
@@ -43,7 +44,8 @@ export interface OPUnitDetails {
 
   zone:string;
   employees:string;
-  activities:string;
+  // activities:string;
+  activities:number[];
   laws: string;  
   actions:string;
   entityPosition:number;
