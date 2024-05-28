@@ -1,9 +1,13 @@
+
+<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
 <app-dialog-layout [dialogHeaderTitle]="dialogHeaderTitle" dialogHeaderImage="dialogHeaderImage">
+  
   <mat-dialog-content class="entity-dialog">
     <form class="entity-form">
-      <div class="conatiner">
+      <div class="container">
+        
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">
                 1
@@ -15,11 +19,14 @@
               </mat-form-field>
             </div>
           </div>
+          </div>
+
+          <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="field-container text_12_400_gray_900">
+            <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">
                 2
-              </div>
+              </div>  
               <app-dropdown [label]="'Type of Entity'" [options]="transformedEntityList" 
                 [IsMultiSelection]="false"
                 [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'entityType')"
@@ -28,6 +35,9 @@
               </app-dropdown>
             </div>
           </div>
+          </div>
+
+          <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">
@@ -41,6 +51,9 @@
               </app-dropdown>
             </div>
           </div>
+        </div>
+
+        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">
@@ -53,7 +66,9 @@
               </app-dropdown>
             </div>
           </div>
+        </div>
 
+        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">
@@ -66,10 +81,12 @@
             </div>
           </div>
         </div>
-      </div>
+
+        </div>
     </form>
+
     <mat-dialog-actions>
-      <div class="conatiner">
+      <div class="container">
         <div class="row">
           <div class="col">
             <button mat-button (click)="closeEntityDialog()" class="btn-primary-outline-md">Back</button>
@@ -81,4 +98,6 @@
       </div>
     </mat-dialog-actions>
   </mat-dialog-content>
+
 </app-dialog-layout>
+<!-- </div> -->

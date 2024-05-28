@@ -60,7 +60,7 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
     selectedEntity: EntityInterfaces.TransformedType | undefined;
     selectedIndustry: EntityInterfaces.TransformedType[];
     requiredFormDataFields = ['name', 'country', 'entityType', 'industry', 'lawModules'];
-    dialogHeaderTitle: string = 'Edit Entity Details';
+    dialogHeaderTitle: string = 'Add New Entity';
     operatingUnit: [] = [];
     dialogHeaderImage: string = 'src/assets/images/Business.png';
     entityChild: TreeNode;
