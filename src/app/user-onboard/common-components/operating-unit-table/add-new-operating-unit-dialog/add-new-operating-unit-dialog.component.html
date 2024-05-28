@@ -50,6 +50,7 @@
           [options]="transformedDataOperatingUnits"
           [IsMultiSelection]="false"
           [IsRequired]="true"
+          [changeableValues]="operatingUnitType"
           (selectedValueChange)="
             onSelectedValueChanged($event, 'operatingUnitType')
           "
@@ -63,7 +64,8 @@
           <div class="w-240px ">
             <label class="text_12_500_gray_1200">Location</label>
             <app-dropdown [label]="'State'" [options]="transformedStates" [IsMultiSelection]="false" [IsRequired]="true"
-              (selectedValueChange)="onSelectedValueChanged($event,'states')">
+              (selectedValueChange)="onSelectedValueChanged($event,'states')"
+              [changeableValues]="state">
             </app-dropdown>
           </div>
           <section class="radio_selection ml-40">
@@ -86,11 +88,12 @@
             [options]="filteredActivitiesList"
              [IsMultiSelection]="true"
               [IsRequired]="true" 
-              (selectedValueChange)="onSelectedValueChanged($event,'activity')">
+              (selectedValueChange)="onSelectedValueChanged($event,'activity')"
+              [unchangeableValues]="selectedActivitiesList">
             </app-dropdown>
-            <app-activities-list
+            <!-- <app-activities-list
             [selectedActivitiesList]='selectedActivitiesList'>
-          </app-activities-list>
+          </app-activities-list> -->
             <!-- <app-dropdown [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"
               (selectedValueChange)="onSelectedValueChanged($event,'activity')">
             </app-dropdown> -->

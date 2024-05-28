@@ -29,7 +29,16 @@
 
     <ng-container matColumnDef="entity">
       <th mat-header-cell *matHeaderCellDef class="mat-header-cell">Entity</th>
-      <td mat-cell *matCellDef="let element">{{ element.entity }}</td>
+      <!-- <td mat-cell *matCellDef="let element">{{ element.entity }}</td> -->
+      <td mat-cell *matCellDef="let element">
+        <button
+        [matBadge]='element.entity.length'
+          
+          class="invisible-border-button"
+        >
+          <img src="./assets/images/icons/EntityIcons.svg" />
+        </button>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="ownership">
@@ -62,7 +71,7 @@
       </th>
       <td mat-cell *matCellDef="let element">
         <button
-          
+        [matBadge]='element.totalEmployeeCount'
           (click)="openLawDialog()"
           class="invisible-border-button"
         >
@@ -119,12 +128,12 @@
         </button>
         <!-- (click)="openopUnitMenuDialog('Add Operating Unit',element.position)" -->
         <mat-menu #menu="matMenu">
-          <button
+          <!-- <button
             mat-menu-item
             (click)="openopUnitMenuDialog('Add Department', element.position)"
           >
             Add Department
-          </button>
+          </button> -->
           <button
             mat-menu-item
             (click)="openopUnitMenuDialog('Edit', element.position)"

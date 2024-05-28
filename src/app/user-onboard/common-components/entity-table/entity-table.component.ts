@@ -310,7 +310,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
               name: entity.name
             };
           });
-          console.log("The sent entity in OP-Unit",this.entityToSend);
+          //console.log("The sent entity in OP-Unit",this.entityToSend);
           this.navigateToAddOpUnit1(this.entityToSend);
         }
         break

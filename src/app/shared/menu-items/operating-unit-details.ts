@@ -46,5 +46,7 @@ export interface OPUnitDetails {
   activities:string;
   laws: string;  
   actions:string;
-  entityPosition:number
+  entityPosition:number;
+  totalEmployeeCount:number;
+  opUnitPosition: number
 }

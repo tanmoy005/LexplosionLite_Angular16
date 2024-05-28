@@ -5,40 +5,22 @@
 //====================================== Testing Version ===========================//
 
 
-import { Component, ViewChild, Inject, OnInit , OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { MatTable, MatTableModule } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
-import { CommonModule, NgStyle } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { EmployeeCountCardComponent } from './employee-count-card/employee-count-card.component';
 
 import { ApiService } from '../../../services/api.service'
 
-import { DropdownComponent } from '../dropdown/dropdown.component';
 
-import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 import {
   MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
 } from '@angular/material/dialog';
-import { DialogData } from '../../component-interfaces';
-import { findIndex } from 'rxjs';
 
 import { AddNewOperatingUnitDialogComponent } from './add-new-operating-unit-dialog/add-new-operating-unit-dialog.component';
 
@@ -88,6 +70,7 @@ export class OperatingUnitTableComponent implements OnInit {
   @Input() isDotsCliscked: boolean; 
   operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[]=[];
   states: FieldDefinitionInterfaces.States[]=[]
+  opUnitDataFromApi:FetchOPUnits[]
 
   ngOnInit(): void {
     this.fetchOpUnitList()
@@ -126,7 +109,7 @@ export class OperatingUnitTableComponent implements OnInit {
     this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
       console.log('fetched op unit values',response)
     
-
+      this.opUnitDataFromApi=response.data
       const opResponseData:OPUnitDetails[]= response.data.map((opUnits: FetchOPUnits) => ({
         position: opUnits.id,
         name: opUnits.name,
@@ -141,7 +124,9 @@ export class OperatingUnitTableComponent implements OnInit {
         employees: '', 
         activities: opUnits.activities.map((item:Activities )=> item.id), 
         laws: '', 
-        actions: '' 
+        actions: '' ,
+        totalEmployeeCount: opUnits.noOfDeMale+opUnits.noOfDeFemale+opUnits.noOfClMale+opUnits.noOfClFemale
+                            +opUnits.noOfChild+opUnits.noOfApprentice
       }));
 
       console.log('the transformed op unit datas',opResponseData)
@@ -167,6 +152,13 @@ export class OperatingUnitTableComponent implements OnInit {
     newData['position'] = this.dataSource.length + 1
     console.log('the new op unit data',newData)
     this.dataSource.push(newData);
+    // if (newData['opUnitPosition']!==0){
+
+    // }
+    // else{
+    //   this.dataSource.push(newData);
+    // }
+   
 
     const childrenToAddGrandChildrenTo = treeDataitem.children?.find((children)=>children.id === this.entity.childrenID) 
     if(childrenToAddGrandChildrenTo !== undefined){
@@ -216,9 +208,35 @@ export class OperatingUnitTableComponent implements OnInit {
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
         entityPosition:this.entity.position,
-        entity:this.entity
+        entity:this.entity,
+        opUnitPosition:0
       }
     });
+  }
+
+  openEntityDialogForEdit(entityName: string, position:number) {
+    console.log('entityName', entityName);
+
+
+    this.dialog.open(AddNewOperatingUnitDialogComponent, {
+      data: {
+        entityTable: this, entityName: entityName, industry: this.entity.industryLabel,
+        operatingUnitTypes: this.operatingUnitTypes,
+        states: this.states,
+        entityPosition:this.entity.position,
+        entity:this.entity,
+        opUnitPosition:position,
+        selectedOP:this.getOpUnitDetailsForEdit(position)
+      }
+    });
+  }
+
+  getOpUnitDetailsForEdit(id: number): FetchOPUnits {
+    const opUnit = this.opUnitDataFromApi.find(item => item.id === id);
+    if (!opUnit) {
+      throw new Error(`Operating unit with id ${id} not found`);
+    }
+    return opUnit;
   }
 
   openLawDialog() {
@@ -242,7 +260,9 @@ export class OperatingUnitTableComponent implements OnInit {
       case 'Delete':
         this.removeEntityData(position);
         break;
-      // Add other cases for different actions if needed
+      case 'Edit':
+        this.openEntityDialogForEdit(this.entity.name,position);  
+        break;
       default:
         break;
     }
