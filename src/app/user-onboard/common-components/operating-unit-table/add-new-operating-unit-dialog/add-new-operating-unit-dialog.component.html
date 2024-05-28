@@ -245,7 +245,12 @@
     <div class="col-lg-12">
       <app-employee-count-card (employeeDataChange)="employeeCountData($event)"
         (apprenticesChange)="apprenticesData($event)"
-        (childLaboursChange)="childLabourData($event)"></app-employee-count-card>
+        (childLaboursChange)="childLabourData($event)"
+        [apprenticeInitial]="editingnoOfApprentice"
+        [childInitial]="editingnoOfChild"
+        [employeeDataInitial]="editingEmployeeData"
+        >
+      </app-employee-count-card>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>

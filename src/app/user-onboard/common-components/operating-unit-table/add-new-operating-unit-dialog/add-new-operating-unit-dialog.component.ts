@@ -85,7 +85,25 @@ export class AddNewOperatingUnitDialogComponent implements OnInit{
   locatedAt: string = '';
   ownership: number ;
   employeeData:EmployeeCardInterface[];
- 
+  editingEmployeeData:EmployeeCardInterface[]=[
+    {
+        "header": "Direct",
+        "male": 0,
+        "female": 0
+    },
+    {
+        "header": "Contract Labours",
+        "male": 0,
+        "female": 0
+    },
+    {
+        "header": "Inter-State Migrants",
+        "male": 0,
+        "female": 0
+    }
+]
+  editingnoOfApprentice:number =0;
+  editingnoOfChild: number=0;
   zone:number
 
   // editOpUnitDataDetails:OPUnitDetailsWithEntity
@@ -172,14 +190,21 @@ export class AddNewOperatingUnitDialogComponent implements OnInit{
       this.selectedActivitiesList = this.data.selectedOP.activities.map((item => item.id))
       //console.log('the selected activities are',this.selectedActivitiesList);
       console.log("Selected ownership", this.ownership);
-      // this.editOpUnitDataDetails = this.getOpUnitDetailsForEdit(this.data.opUnitPosition);
-      // this.operatingUnitName = this.editOpUnitDataDetails.name;
-      // this.operatingUnitType= this.editOpUnitDataDetails.operatingUnitType
-      // // console.log('the op unit ownership',this.editOpUnitDataDetails.ownership)
-      // this.ownership = this.editOpUnitDataDetails.ownership
-      // console.log('the op unit ownership',this.ownership)
-      // this.zone = this.editOpUnitDataDetails.locatedAt
-      // this.state = this.editOpUnitDataDetails.state
+      this.noOfApprentice = this.data.selectedOP.noOfApprentice
+      this.noOfChild = this.data.selectedOP.noOfChild
+      this.noOfDeMale = this.data.selectedOP.noOfDeMale
+      this.noOfDeFemale = this.data.selectedOP.noOfDeFemale
+      this.noOfClMale = this.data.selectedOP.noOfClMale
+      this.noOfClFemale = this.data.selectedOP.noOfClFemale
+      this.noOfIsmMale = this.data.selectedOP.noOfIsmMale
+      this.noOfIsmFemale = this.data.selectedOP.noOfIsmFemale
+      this.zone = this.data.selectedOP.locatedAt.id
+      this.editingEmployeeData = [{'header':'Direct','male':this.noOfDeMale,'female':this.noOfDeFemale},
+      {'header':'Contract Labours','male':this.noOfClMale,'female':this.noOfClFemale},
+      {'header':'Inter-State Migrants','male':this.noOfIsmMale,'female':this.noOfIsmFemale}
+      ]
+      this.editingnoOfApprentice = this.noOfApprentice
+      this.editingnoOfChild = this.noOfChild
     }
   }
 
