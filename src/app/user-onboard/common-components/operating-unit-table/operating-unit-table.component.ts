@@ -5,40 +5,22 @@
 //====================================== Testing Version ===========================//
 
 
-import { Component, ViewChild, Inject, OnInit , OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { MatTable, MatTableModule } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
-import { CommonModule, NgStyle } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { EmployeeCountCardComponent } from './employee-count-card/employee-count-card.component';
 
 import { ApiService } from '../../../services/api.service'
 
-import { DropdownComponent } from '../dropdown/dropdown.component';
 
-import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 import {
   MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
 } from '@angular/material/dialog';
-import { DialogData } from '../../component-interfaces';
-import { findIndex } from 'rxjs';
 
 import { AddNewOperatingUnitDialogComponent } from './add-new-operating-unit-dialog/add-new-operating-unit-dialog.component';
 
@@ -47,10 +29,25 @@ import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details'
 
 import { DialogService } from 'src/app/services/Dialog.service';
 import { Subscription } from 'rxjs';
+import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
+import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface';
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+import { EntitiesList } from 'src/app/shared/menu-items/fetch-op-unit-interface';
+import { Activities } from 'src/app/shared/menu-items/fetch-op-unit-interface';
+// const ELEMENT_DATA: OPUnitDetails[] = [];
 
-const ELEMENT_DATA: OPUnitDetails[] = [
+function getMaxIdFromGrandchildren (children:TreeNode): number {
+  const rootChildren = children.children;
 
-];
+  let maxId = 0;
+  if (rootChildren && rootChildren.length > 0) {
+    maxId = Math.max(...rootChildren.map(child => child.id));
+  }
+  return maxId;
+}
 
 /**
  * @title Adding and removing data when using an array-based datasource.
@@ -59,77 +56,125 @@ const ELEMENT_DATA: OPUnitDetails[] = [
   selector: 'app-operating-unit-table',
   templateUrl: 'operating-unit-table.component.html',
   styleUrls: ['./operating-unit-table.component.css'],
-  standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule,
-    CommonModule, DropdownComponent,
-    AddNewOperatingUnitDialogComponent
-  ]
+ 
 })
 
 export class OperatingUnitTableComponent implements OnInit {
   private subscription: Subscription;
-  constructor(public dialog: MatDialog, private router: Router, private fieldDefinitionService: ApiService,
+  encryptStorage = new EncryptStorage(environment.localStorageKey);
+  constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService,
     private opDialogService: DialogService
   ) { }
-  @Input() entity: any; 
-  operatingUnitTypes: any=[];
-  states: any=[]
+  // @Input() entity: any={}; 
+  @Input() entity: EntityDataType; 
+  @Input() isDotsCliscked: boolean; 
+  operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[]=[];
+  states: FieldDefinitionInterfaces.States[]=[]
+  opUnitDataFromApi:FetchOPUnits[]
 
   ngOnInit(): void {
-    //this.fetchOperatingUniTypes();
-    // if (this.entity.countryLabel === 'India') {
-    //   this.fetchstates();
-    // } else {
-    //   this.states = [{
-    //     'id':1,
-    //     'name':'Singapore'
-    //   }]; 
-    // }
-    this.fetchstates();
-    this.fetchOperatingUniTypes();
+    this.fetchOpUnitList()
+    
+    const savedStates = this.encryptStorage.getItem('states');
+    const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
+    
+    this.states = savedStates;
+    this.operatingUnitTypes = savedUniTypes
     
     this.subscription = this.opDialogService.openDialog$.subscribe(() => {
       this.openEntityDialog(this.entity.name);
     });
 
+ 
+    
+    if (this.isDotsCliscked === true){
+      this.openEntityDialog(this.entity.name);
+    }
+    else{
     if (Array.isArray(this.entity.operatingUnit) && this.entity.operatingUnit.length === 0) {
       this.openEntityDialog(this.entity.name);
     }
   }
+    
+  }
 
-  // ngOnInit(): void {
-  //   this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
-  //     this.viewAddEntityDialog();
-  //   });
-  // }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  fetchOperatingUniTypes() {
-    const fieldPayload = ['operatingUnitTypes']
+  // fetchOpUnitList(){
+  //   const payLoad={"entity":this.entity.id}
+  //   this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
+  //     console.log('fetched op unit values',response)
+    
+  //     this.opUnitDataFromApi=response.data
+  //     const opResponseData:OPUnitDetails[]= response.data.map((opUnits: FetchOPUnits) => ({
+  //      position: opUnits.id,
+  //      count:this.dataSource.length + 1,
+  //       name: opUnits.name,
+  //       entity: opUnits.entities.map((item: EntitiesList) => item.id),
+  //       entityNames:[],
+  //       ownershipID: opUnits.ownership.id,
+  //       ownership: opUnits.ownership.name,
+  //       type: opUnits.operatingUnitType.name,
+  //       location: '', 
+  //       zone: opUnits.locatedAt.name, 
+  //       locationId: opUnits.locatedAt.id,
+  //       employees: '', 
+  //       activities: opUnits.activities.map((item:Activities )=> item.id), 
+  //       laws: '', 
+  //       actions: '' ,
+  //       totalEmployeeCount: opUnits.noOfDeMale+opUnits.noOfDeFemale+opUnits.noOfClMale+opUnits.noOfClFemale
+  //                           +opUnits.noOfChild+opUnits.noOfApprentice
+  //     }));
 
-    this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
-      console.log('those are operating unit types', response)
-      this.operatingUnitTypes = response.data.operatingUnitTypes;
-    })
+  //     console.log('the transformed op unit datas',opResponseData)
+  //     this.dataSource = opResponseData
+  //   })
+    
+  // }
+  fetchOpUnitList() {
+    const payLoad = { "entity": this.entity.id };
+    this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
+      console.log('fetched op unit values', response);
+      
+      this.opUnitDataFromApi = response.data;
+      
+      const currentCount = this.dataSource.length; 
+      const opResponseData: OPUnitDetails[] = response.data.map((opUnits: FetchOPUnits, index: number) => ({
+        position: opUnits.id,
+        count: currentCount + index + 1,
+        name: opUnits.name,
+        entity: opUnits.entities.map((item: EntitiesList) => item.id),
+        entityNames: [],
+        ownershipID: opUnits.ownership.id,
+        ownership: opUnits.ownership.name,
+        type: opUnits.operatingUnitType.name,
+        location: '',
+        zone: opUnits.locatedAt.name,
+        locationId: opUnits.locatedAt.id,
+        employees: '',
+        activities: opUnits.activities.map((item: Activities) => item.id),
+        laws: '',
+        actions: '',
+        totalEmployeeCount: opUnits.noOfDeMale + opUnits.noOfDeFemale + opUnits.noOfClMale + opUnits.noOfClFemale
+                            + opUnits.noOfChild + opUnits.noOfApprentice
+      }));
+  
+      console.log('the transformed op unit datas', opResponseData);
+      this.dataSource = [...this.dataSource, ...opResponseData]; 
+    });
   }
-
-  fetchstates() {
-    const fieldPayload = ['states']
-
-    this.fieldDefinitionService.getFieldDefinition(fieldPayload).subscribe((response) => {
-      console.log('those states', response)
-      this.states = response.data.states;
-    })
-  }
+  
+ 
   displayedColumns: string[] = ['position', 'name', 'entity', 'ownership',
                                 'type', 'location', 'zone', 'employees','activities','laws','actions'];
 
-  dataSource = [...ELEMENT_DATA];
+  // dataSource = [...ELEMENT_DATA];
+
+  dataSource:OPUnitDetails[] = []
 
   @ViewChild(MatTable) table: MatTable<OPUnitDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
@@ -138,17 +183,38 @@ export class OperatingUnitTableComponent implements OnInit {
  
 
   addOpUnitData(newData: OPUnitDetails) {
-    newData['position'] = this.dataSource.length + 1
+    newData['count'] = this.dataSource.length + 1
+    console.log('the new op unit data',newData)
     this.dataSource.push(newData);
-    this.table.renderRows();
+    // if (newData['opUnitPosition']!==0){
 
+    // }
+    // else{
+    //   this.dataSource.push(newData);
+    // }
+   
+
+    const childrenToAddGrandChildrenTo = treeDataitem.children?.find((children)=>children.id === this.entity.childrenID) 
+    if(childrenToAddGrandChildrenTo !== undefined){
+      // console.log("Grand Children", childrenToAddGrandChildrenTo);
+      const grandChildrenAddingIndex = treeDataitem.children?.indexOf(childrenToAddGrandChildrenTo);
+      const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
+
+      const entity = {
+        id: maxId + 1,
+        label: 'Grandchild Node ' + String(maxId+1),
+        children:[]
+      }
+
+      childrenToAddGrandChildrenTo?.children?.push(entity);
+    }
+    
+    this.table.renderRows();
   }
 
 
   rearrangeDataSource() {
-
     this.dataSource.sort((a, b) => a.position - b.position);
-
     for (let i = 0; i < this.dataSource.length; i++) {
       this.dataSource[i].position = i + 1;
     }
@@ -156,10 +222,7 @@ export class OperatingUnitTableComponent implements OnInit {
 
 
   removeEntityData(position: number) {
-
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
-
-
     if (rowIndex !== -1) {
 
       this.dataSource.splice(rowIndex, 1);
@@ -178,9 +241,36 @@ export class OperatingUnitTableComponent implements OnInit {
         entityTable: this, entityName: entityName, industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        entityPosition:this.entity.position
+        entityPosition:this.entity.position,
+        entity:this.entity,
+        opUnitPosition:0
       }
     });
+  }
+
+  openEntityDialogForEdit(entityName: string, position:number) {
+    console.log('entityName', entityName);
+
+
+    this.dialog.open(AddNewOperatingUnitDialogComponent, {
+      data: {
+        entityTable: this, entityName: entityName, industry: this.entity.industryLabel,
+        operatingUnitTypes: this.operatingUnitTypes,
+        states: this.states,
+        entityPosition:this.entity.position,
+        entity:this.entity,
+        opUnitPosition:position,
+        selectedOP:this.getOpUnitDetailsForEdit(position)
+      }
+    });
+  }
+
+  getOpUnitDetailsForEdit(id: number): FetchOPUnits {
+    const opUnit = this.opUnitDataFromApi.find(item => item.id === id);
+    if (!opUnit) {
+      throw new Error(`Operating unit with id ${id} not found`);
+    }
+    return opUnit;
   }
 
   openLawDialog() {
@@ -204,7 +294,9 @@ export class OperatingUnitTableComponent implements OnInit {
       case 'Delete':
         this.removeEntityData(position);
         break;
-      // Add other cases for different actions if needed
+      case 'Edit':
+        this.openEntityDialogForEdit(this.entity.name,position);  
+        break;
       default:
         break;
     }

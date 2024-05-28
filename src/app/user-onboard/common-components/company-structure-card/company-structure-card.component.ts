@@ -7,4 +7,6 @@ import { Component,Input } from '@angular/core';
 })
 export class CompanyStructureCardComponent {
  @Input() treeDataItem:any;
+ companyStructureLabel = "Company Structure";
+ companyStructureCardShade = "light"
 }

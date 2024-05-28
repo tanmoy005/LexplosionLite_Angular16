@@ -17,9 +17,9 @@ import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
   selector: 'app-laws-table',
   templateUrl: './laws-table.component.html',
   styleUrls: ['./laws-table.component.css'],
-  standalone:true,
-  imports:[MatTableModule,CommonModule,MatButtonModule
-  ]
+  // standalone:true,
+  // imports:[MatTableModule,CommonModule,MatButtonModule
+  // ]
 })
 
 
@@ -56,6 +56,17 @@ export class LawsTableComponent {
       });
     });
     return transformedData;
+  }
+
+
+  getImageSource(element: any): string {
+    if (element.applicability === 'Definitely Applicable') {
+      return './assets/images/icons/LawDefiniteny.svg';
+    } else if (element.applicability === 'Maybe Applicable') {
+      return './assets/images/icons/LawMaybeVector.svg';
+    } else {
+      return './assets/images/icons/LawAll.svg';
+    }
   }
 }
 

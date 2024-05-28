@@ -27,5 +27,14 @@ export const applicableLawsItems: ApplicableLaws = {
             komriskCompliances: [99, 100],
             applicability: 'Definitely Applicable',
         },
+        {
+            lawApplicability: 169,
+            komriskLaws: [
+                { id: 27, name: 'EQUAL REMUNERATION ACT, 1976' },
+                { id: 28, name: 'EQUAL REMUNERATION RULES, 1976' }
+            ],
+            komriskCompliances: [99, 100],
+            applicability: 'Maybe Applicable',
+        },
     ]
 };

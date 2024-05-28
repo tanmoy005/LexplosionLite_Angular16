@@ -14,9 +14,12 @@ export class ApiService {
   private endpoints = {
     userLogin: 'login',
     createCompany: 'company',
+    fetchCompanyList:'company/list',
     createUser: 'user',
     addEntity: 'entity-details/entity',
+    fetchEntityList: 'entity-details/entity/list',
     addOperatingUnit: 'entity-details/operating-unit',
+    fetchOperatingUnit:'entity-details/operating-unit/list',
     applicableLaws: 'entity-details/applicable-laws',
     entityTree: 'entity-details/entity/tree',
     definition:'definition'
@@ -76,6 +79,11 @@ export class ApiService {
     return this.postData(this.endpoints.createCompany, data)
   }
 
+  // Method to fetch company list
+  postFetchCompanyList(data: any): Observable<any> {
+    return this.postData(this.endpoints.fetchCompanyList, data)
+  }
+
   // Method to post user registration data to user registration API url 
   postCreateUser(data: any): Observable<any> {
     return this.postData(this.endpoints.createUser, data)
@@ -86,6 +94,14 @@ export class ApiService {
     return this.postData(this.endpoints.addEntity, data)
   }
 
+  // Method to fetch entity list of a company
+  postFetchEntityList(data:any): Observable<any> {
+    return this.postData(this.endpoints.fetchEntityList, data)
+  }
+
+  fetcheOperatingUnit(data: any): Observable<any> {
+    return this.postData(this.endpoints.fetchOperatingUnit, data)
+  }
   // Method to post operating unit creation data to operating unit creation API url 
   postCreateOperatingUnit(data: any): Observable<any> {
     return this.postData(this.endpoints.addOperatingUnit, data)
@@ -108,6 +124,7 @@ export class ApiService {
     return this.postData(this.endpoints.definition, data)
   }
   
+
 }
 
 

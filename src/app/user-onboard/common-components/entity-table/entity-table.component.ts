@@ -1,14 +1,6 @@
 import { Component, ViewChild, Inject, OnInit, OnDestroy,EventEmitter  } from '@angular/core';
-import { MatTable, MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
-import { NgStyle } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
+import { MatTable } from '@angular/material/table';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Input,Output } from '@angular/core';
@@ -20,82 +12,190 @@ import { TreeNode, treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { AddEntityDialog } from './add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-laws-dialog-component';
-import { TreeStructureComponent } from '../tree-structure/tree-structure.component';
 import { DialogService } from 'src/app/services/Dialog.service';
-import { MatBadgeModule } from '@angular/material/badge';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+import { FetchEntityDetails } from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import {Industries} from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import {LawCategories} from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+
+const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =[];
+//const ELEMENT_DATA:EntityDataType[] =[];
 
 
-const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =EntityInterfaces.EntityData;
+function getMaxIdFromChildren(node: TreeNode): number {
+  const rootChildren = treeDataitem.children;
+  let maxId = 0;
+
+  if (rootChildren && rootChildren.length > 0) {
+    maxId = Math.max(...rootChildren.map(child => child.id));
+  }
+  return maxId;
+}
+
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
   styleUrls: ['./entity-table.component.scss'],
-  standalone: true,
-  imports: [MatInputModule, MatCardModule, FormsModule, MatTableModule, NgStyle,
-    MatSelectModule, MatButtonModule, MatIconModule, MatMenuModule, MatFormFieldModule,
-    TreeStructureComponent,MatBadgeModule]
 })
 
 export class EntityTableComponent implements OnInit, OnDestroy{
-  private subscription: Subscription;
 
-  constructor(public dialog: MatDialog, private router: Router, private apiService: ApiService,
-    private entityDialogService: DialogService
-  ) { }
+  private subscription: Subscription;
+  //private entityList: any;
+  entityChild:TreeNode;
+
+  constructor(public dialog: MatDialog, private router: Router, 
+    private entityDialogService: DialogService, private apiService:ApiService, 
+    private snackbar:SnackbarService) { }
+  
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
   dataSource = [...ELEMENT_DATA];
 
   @ViewChild(MatTable) table: MatTable<EntityInterfaces.BusinessDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
-  @Input() entityTypesList: any;
-  @Input() industryTypesList: any;
-  @Input() lawCategoriesList: any;
-  @Input() countryList: any;
+  @Input() entityTypesList: FieldDefinitionInterfaces.EntityTypes[];
+  @Input() industryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
+  @Input() lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories[];
+  @Input() countryList: number[];
 
-  @Output() entitySelected = new EventEmitter<EntityInterfaces.BusinessDetails>();
+  @Output() entitySelected = new EventEmitter<EntityDataType>(); 
+  @Output() entitySelected1 = new EventEmitter<EntityDataType>();
+  @Output() entityTableDataLoading = new EventEmitter<boolean>();
 
   ngOnInit(): void {
-    this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
-      this.viewAddEntityDialog();
+    // this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
+    //   this.viewAddEntityDialog();
+    // });
+
+    this.subscription = this.entityDialogService.openDialog$.subscribe((entity?:EntityInterfaces.BusinessDetails|null) => {
+      console.log("Received entity firstly at subscription", entity);
+      this.viewAddEntityDialog(entity);  // Pass the entity data to the function
     });
+
+    //fetch entity list on the component's initiation 
+    this.fetchEntityList();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  viewAddEntityDialog() {
-    this.openEntityDialog();
-  }
-  treeDataItem = treeDataitem;
-  addEntityData(formData: EntityInterfaces.FormData) {
-    // Create a new row with the same data as the random row
-    const newRow: EntityInterfaces.BusinessDetails = {
+  initialFormData: EntityInterfaces.BusinessDetails = {
+    position: 0,
+    id: 0,
+    name: '',
+    country: 0,
+    countryLabel: '',
+    industry: [],
+    industryLabel: '',
+    entityType: 0,
+    entityTypeLabel: '',
+    emailID: '',
+    laws: '',
+    lawModules: [],
+    lawModulesLabel: [],
+    operatingUnit: [],
+    actions: '',
+    childrenID: 0,
+    entityList:[]
+  };
+  
+  isTableEntitiesLoading:boolean=false;
+
+  fetchEntityList() {
     
-      position: this.dataSource.length + 1, 
-      name: formData.name,
-      country: formData.country,
-      countryLabel:formData.countryLabel,
-      industry: formData.industry,
-      industryLabel: formData.industryLabel,
-      entityType: formData.entityType,
-      entityTypeLabel: formData.entityTypeLabel,
-      emailID: '',
-      laws: '',
-      lawModules:formData.lawModules,
-      lawModulesLabel:formData.lawModulesLabel,
-      operatingUnit: formData.operatingUnit,
-      actions: ''
-    };
-    this.dataSource.push(newRow);
-    this.table.renderRows();
+    treeDataitem.id = 1;
+    treeDataitem.label = 'Root Node'
+    treeDataitem.children = []
+
+    this.entityTableDataLoading.emit(true);
+    const entityFetchPayload = { company: 1 };
+    try {
+      this.apiService.postFetchEntityList(entityFetchPayload).subscribe((response) => {
+        const entityList = response.data;
+
+        // console.log('entity data coming from api',response.data)
+        let position = 1;
+        //let childrenID = 0;
+        //console.log('Entity fetch response', entityList);
+        entityList.forEach((entity: FetchEntityDetails) => {
+          const maxId = getMaxIdFromChildren(treeDataitem);
+
+          this.entityChild = {
+            id: maxId + 1,
+            //label: 'Child Node '+String(maxId+1),
+            label: entity.name,
+            children: []
+          }
+
+          const entityRow: EntityInterfaces.BusinessDetails = {
+            ...this.initialFormData,
+            position: position,
+            id: entity.id,
+            name: entity.name,
+            industry: entity.industries.map((industry: Industries) => industry.id),
+            industryLabel: entity.industries.map((industry: Industries) => industry.name).join(","),
+            entityType: entity.entityType.id,
+            entityTypeLabel: entity.entityType.name,
+            lawModules: entity.komriskLawCategories.map((law: LawCategories) => law.id),
+            lawModulesLabel: entity.komriskLawCategories.map((law: LawCategories) => law.description),
+            operatingUnit: entity.operatingUnits,
+            country: 1,
+            countryLabel: "India",
+            emailID: '',
+            laws: '',
+            actions: '',
+            childrenID: this.entityChild.id
+          };
+          this.dataSource.push(entityRow);
+          treeDataitem?.children?.push(this.entityChild);
+          position++;
+        });
+        this.table.renderRows(); // Ensure this is a MatTable instance
+        this.entityTableDataLoading.emit(false);
+      });
+    } catch (error) {
+      this.snackbar.showError("Some error occurred while fetching entity list!");
+    }
+  }
+
+  viewAddEntityDialog(entity?:EntityInterfaces.BusinessDetails|null) {
+    // console.log("Entity received in add entity dialog function",entity);
+    this.openEntityDialog(entity);
+  }
+  
+  treeDataItem = treeDataitem;
+
+  addEntityData(formData: EntityInterfaces.FormData) {
+    //console.log("Form data received to update", formData)
+    const createEntityPayload  = {
+        "id": formData.id,
+        "name": formData.name,
+        "company": 1,
+        "entityType": formData.entityType,
+        "entityTypeSearch": null,
+        "industries": formData.industry,
+        "komriskLawCategories": formData.lawModules
+    }
+    //console.log("Created payload for saving entity",createEntityPayload);
+    try {
+      this.apiService.postCreateEntity(createEntityPayload).subscribe((response) => {
+        const entityResponse = response;
+        //console.log("Entity Response after saving", entityResponse);
+        this.snackbar.showSuccess('Entity successfully added.');
+        location.reload();
+      })
+    }
+   catch (error) {
+    this.snackbar.showError("Some error occurred while fetching entity list.");
+  }
   }
 
   rearrangeDataSource() {
-   
     this.dataSource.sort((a, b) => a.position - b.position);
-   
     for (let i = 0; i < this.dataSource.length; i++) {
       this.dataSource[i].position = i + 1;
     }
@@ -104,25 +204,18 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   removeEntityData(position: number) {
    
     const rowIndex = this.dataSource.findIndex(row => row.position === position);
-
-
     if (rowIndex !== -1) {
- 
       this.dataSource.splice(rowIndex, 1);
-      
       this.rearrangeDataSource();
-
       this.table.renderRows();
       treeDataitem?.children?.splice(rowIndex, 1)
     }
   }
 
-  openEntityDialog() {
-
-    // console.log("RECEIVED COUNTRY in ADD-ENT-TABLE", this.countryList);
-
+  openEntityDialog(entity?:EntityInterfaces.BusinessDetails | null) {
+    //console.log("Entity send at openEntity intr.", entity);
     const dialogRef = this.dialog.open(AddEntityDialog, {
-      data: { entityTable: this }
+      data: { entityTable: this, entity: entity }
     });
   }
 
@@ -132,7 +225,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       data: { name: name }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     });
   }
   openOpDialog() {
@@ -142,30 +235,22 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     });
   }
 
-  navigateToAddOpUnit(entity: EntityInterfaces.BusinessDetails) {
+  navigateToAddOpUnit(entity: EntityDataType) {
     this.entitySelected.emit(entity);
-    // this.router.navigate(['/oprating-unit-details'], { state: entity });
+    // console.log('dots are clicked');
+  }
+  navigateToAddOpUnit1(entity: EntityDataType) {
+    this.entitySelected1.emit(entity);
   }
 
+  // entityToSend: any = {};
+  entityToSend: EntityDataType ;
+
   openEntityMenuDialog(action: string, position: number) {
-    var blankEntity =  {position: position,
-                        name: '',
-                        country: '',
-                        countryLabel:'',
-                        industry: '',
-                        industryLabel:'',
-                        entityType: '',
-                        entityTypeLabel: '',
-                        emailID: '',
-                        laws: '',
-                        lawModules: [],
-                        lawModulesLabel:[],
-                        operatingUnit: [],
-                        actions: ''}
     switch (action) {
       case 'Delete':
         this.removeEntityData(position);
@@ -173,10 +258,64 @@ export class EntityTableComponent implements OnInit, OnDestroy{
       case 'Add Operating Unit':
         var entity = this.dataSource.find((entity) => entity.position === position);
         if(entity===undefined){
-          entity = blankEntity
-        }  
-        this.navigateToAddOpUnit(entity);
+          this.snackbar.showError("Some error occurred while adding Operating Unit.")
+        }
+        else { 
+          this.entityToSend = entity;
+          
+          this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
+            return {
+              id: entity.id,
+              name: entity.name
+            };
+          });
+
+          //console.log("The sent entity in OP-Unit",this.entityToSend);
+          this.navigateToAddOpUnit(this.entityToSend);
+        }
         break
+      case 'Edit':
+        var entity = this.dataSource.find((entity) => entity.position === position);
+        //console.log(entity);
+        
+        if(entity===undefined){
+          this.snackbar.showError("Some error occurred while adding Operating Unit.")
+        }
+        else { 
+          this.entityDialogService.emitOpenDialog(entity);
+          //this.addEntityData(entity);
+          //this.fetchEntityList();
+        }
+        break
+      default:
+        break;
+    }
+  }
+
+  openEntityMenuDialog1(action: string, position: number) {
+    switch (action) {
+      case 'Delete':
+        this.removeEntityData(position);
+        break;
+      
+     case 'Add Operating Unit':
+        var entity = this.dataSource.find((entity) => entity.position === position);
+        if(entity===undefined){
+          this.snackbar.showError("Some error occurred while adding Operating Unit.")
+        }
+        else { 
+          this.entityToSend = entity;
+          this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
+            return {
+              id: entity.id,
+              name: entity.name
+            };
+          });
+          //console.log("The sent entity in OP-Unit",this.entityToSend);
+          this.navigateToAddOpUnit1(this.entityToSend);
+        }
+        break
+
       case 'Edit':
         break
       default:
@@ -184,9 +323,18 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     }
   }
 
+  openCountryDialog(){
+    console.log("Open Country dialog clicked!");
+  }
 
-  getImageSource(element:any): string {
-    return element.operatingUnit.length > 0 ? './assets/images/icons/Vectoroperating_unit_Icon.png' : './assets/images/icons/Vectordisabled_op_unit_icon.png';
+  openIndustryDialog(){
+    console.log("Open Industry dialog clicked!");
+  }
+
+
+  getImageSource(opUnitLength:number): string {
+   // console.log('the image source',opUnitLength)
+    return opUnitLength > 0 ? './assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg' : './assets/images/icons/Icons - Lex Kom LiteOperating_Unit_Unavailable.svg';
   }
   
 }

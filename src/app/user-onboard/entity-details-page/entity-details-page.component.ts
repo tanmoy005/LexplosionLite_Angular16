@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { EntityTableComponent } from '../common-components/entity-table/entity-table.component';
@@ -10,47 +10,35 @@ import { RegHeaderComponent } from 'src/app/authentication/register/reg-header/r
 import { MatIconModule } from '@angular/material/icon';
 import { OperatingUnitComponent } from '../operating-unit/operating-unit.component';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
+import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+
 
 @Component({
   selector: 'app-entity-details-page',
   templateUrl: './entity-details-page.component.html',
   styleUrls: ['./entity-details-page.component.css'],
- 
+  encapsulation: ViewEncapsulation.None
  
  
 })
 export class EntityDetailsPageComponent {
 
   receivedData: any;
-  entityTypesList: any;
-  industryTypesList: any;
-  lawCategoriesList: any;
-  countryList: [];
+  entityTypesList: FieldDefinitionInterfaces.EntityTypes;
+  industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
+  lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
+  countryList: number[];
   isEntityDialogOpen: boolean
-  selectedEntity: any={
-    "position": 1,
-    "name": "Test Entity",
-    "country": 1,
-    "countryLabel": "India",
-    "industry": 3,
-    "industryLabel": "Manufacturing",
-    "entityType": 1,
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      1,
-      2
-    ],
-    "lawModulesLabel": [
-        "Labour",
-        "Operational"
-    ],
-    "operatingUnit": "",
-    "actions": ""
-  };
+  selectedEntity: EntityDataType;
+  selectedEntity1: EntityDataType;
 
   isAddOperatingUnitClicked: boolean =false;
+
+  isDotsCliscked: boolean;
+
+  isEntityTableLoading:boolean;
+  
 
   constructor(private router: Router, private apiService: ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -60,18 +48,7 @@ export class EntityDetailsPageComponent {
       this.receivedData = navigation.extras.state;
     }
 
-    try{
-    this.apiService.getFieldDefinition(JSON.stringify(["entityTypes","industryActivities","komriskLawCategories"])).subscribe((response) => {
-    fieldDefinitionResponse = response.data;
 
-    this.entityTypesList = fieldDefinitionResponse.entityTypes;
-    this.industryTypesList = fieldDefinitionResponse.industryActivities;
-    this.lawCategoriesList = fieldDefinitionResponse.komriskLawCategories;
-    })
-  }
-  catch (error) {
-      console.log(error)
-    }
   }
 
   handleAddEntity(event: boolean) {
@@ -81,7 +58,7 @@ export class EntityDetailsPageComponent {
     }
   }
 
-  getSelectedCountries(value:any){
+  getSelectedCountries(value:number[]){
     this.countryList = value;
     console.log('country data from business card',this.countryList)
   }
@@ -92,10 +69,18 @@ export class EntityDetailsPageComponent {
   }
 
 
-  handleSelectedEntity(entity: any) {
+  handleSelectedEntity(entity: EntityDataType) {
+    console.log('Selected entity in page from dots', entity);
+    this.isAddOperatingUnitClicked= true
+    this.selectedEntity= entity
+    this.isDotsCliscked= true
+    
+  }
+  handleSelectedEntity1(entity: EntityDataType) {
     console.log('Selected entity in page:', entity);
     this.isAddOperatingUnitClicked= true
     this.selectedEntity= entity
+    this.isDotsCliscked= false
     
   }
 
@@ -104,5 +89,10 @@ export class EntityDetailsPageComponent {
       //console.log('Back button clicked:', event);
       this.isAddOperatingUnitClicked= false
     }
+  }
+
+  handleEntityLoadingState(state:boolean){
+    //console.log("Table Data loading state", state);
+    this.isEntityTableLoading = state;
   }
 }

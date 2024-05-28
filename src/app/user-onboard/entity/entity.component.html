@@ -12,6 +12,8 @@
           [lawCategoriesList]="lawCategoriesList"
           [countryList]="countryList"
           (entitySelected)="handleEntitySelected($event)"
+          (entitySelected1)="handleEntitySelected1($event)"
+          (entityTableDataLoading)="handleTableDataLoading($event)"
         >
         </app-entity-table>
       </div>

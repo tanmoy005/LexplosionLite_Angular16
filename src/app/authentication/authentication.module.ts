@@ -18,31 +18,35 @@ import { AppSideLoginComponent } from '../guest-user/login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
 import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 import { VerifyEmailPageComponent } from './register/verify-email-page/verify-email-page.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MaterialModule } from '../material-module';
+import { CommonComponentModule } from '../user-onboard/common-components/common-component.module';
 //import { BusinessCardComponent } from '../user-onboard/common-components/business-card/business-card.component';
 
 @NgModule({
+  declarations: [
+    AppSideRegisterComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(AuthenticationRoutes),
-    MatIconModule,
-    MatCardModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatButtonModule,
+    // MatIconModule,
+    // MatCardModule,
+    // MatInputModule,
+    // MatCheckboxModule,
+    // MatButtonModule,
+    // MatDividerModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     AppSideLoginComponent,
-    AppSideRegisterComponent,
     RegHeaderComponent,
-    VerifyEmailPageComponent
-    
+    VerifyEmailPageComponent,
+    CommonComponentModule    
    // TablerIconsModule.pick(TablerIcons),
   ],
-  declarations: [
-
-  ],
+  
   exports: [
-    AppSideRegisterComponent
   ]
 })
 export class AuthenticationModule { }

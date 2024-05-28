@@ -1,0 +1,11 @@
+
+<div [ngClass]="shade === 'dark' ? 'card-header-purple-dark':'card-header-purple-light'">
+
+    <img *ngIf="cardHeaderImage" [src]="cardHeaderImage" alt="" srcset="">
+    <div [ngClass]="shade === 'dark' ? 'card-name text_12_700_gray_600':'card-name text_12_700_gray_1000'">
+        {{cardHeaderTitle}}</div>
+    <!-- <div class="card-name text_12_700_gray_600" (click)="handleClicik()">'sdfsdf'</div> -->
+</div>
+<div [ngClass]="shade === 'dark' ? 'card-content-container-dark' : 'card-content-container-light'">
+    <ng-content></ng-content>
+</div>

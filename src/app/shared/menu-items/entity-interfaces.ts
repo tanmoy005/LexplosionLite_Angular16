@@ -1,3 +1,4 @@
+// import { entityList } from './entity-to-opunit-data-interface';
 
 // export interface BusinessDetails {
 //     position: number;
@@ -16,35 +17,44 @@
 //     actions: string
 //   }
 
+import { OpUnitDetails } from 'src/app/shared/menu-items/fetch-entity-details-interface';
+import {entityList} from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+
 export interface BusinessDetails {
   position: number;
+  id:number;
   name: string;
-  country: string;
+  country: number;
   countryLabel: string,
-  industry: string;
+  industry: number[];
   industryLabel:string;
-  entityType: string;
+  entityType: number;
   entityTypeLabel: string;
   emailID: string;
   laws: string;
-  lawModules: string[],
+  lawModules: number[],
   lawModulesLabel:string[],
-  operatingUnit: string[];
-  actions: string
+  // operatingUnit: string[];
+  operatingUnit: OpUnitDetails[];
+  actions: string,
+  childrenID: number;
+  entityList:entityList[]
 }
 
 
   export interface FormData {
+    id:number | null;
     name: string;
-    country: string;
+    country: number;
     countryLabel: string;
-    entityType: string;
+    entityType: number;
     entityTypeLabel: string;
-    industry: string;
+    industry: number[];
     industryLabel: string;
-    lawModules: string[];
+    lawModules: number[];
     lawModulesLabel: string[];
     operatingUnit: string[];
+    childrenID: number;
   }
 
   export interface OriginalType {
@@ -69,49 +79,51 @@ export interface BusinessDetails {
 export const EntityColumns = ['position', 'name', 'country', 'industry', 'entityType', 'emailID', 'laws', 'operatingUnit', 'actions'];
 
 
-export const EntityData:BusinessDetails[] =  [
-  {
-    "position": 1,
-    "name": "Test Entity 1",
-    "country": "1",
-    "countryLabel": "India",
-    "industry": "3",
-    "industryLabel": "Manufacturing",
-    "entityType": "1",
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      "1",
-      "2"
-    ],
-    "lawModulesLabel": [
-      "Labour",
-      "Operational"
-    ],
-    "operatingUnit": [],
-    "actions": ""
-  },
-  {
-    "position": 2,
-    "name": "Test Entity 2",
-    "country": "1",
-    "countryLabel": "India",
-    "industry": "3",
-    "industryLabel": "Manufacturing",
-    "entityType": "1",
-    "entityTypeLabel": "Company",
-    "emailID": "",
-    "laws": "",
-    "lawModules": [
-      "1",
-      "2"
-    ],
-    "lawModulesLabel": [
-      "Labour",
-      "Operational"
-    ],
-    "operatingUnit": ['1','2'],
-    "actions": ""
-  }
-]
+// export const EntityData:BusinessDetails[] =  [
+//   {
+//     "position": 1,
+//     "id":1,
+//     "name": "Test Entity 1",
+//     "country": 1,
+//     "countryLabel": "India",
+//     "industry": [3],
+//     "industryLabel": "Manufacturing",
+//     "entityType": 1,
+//     "entityTypeLabel": "Company",
+//     "emailID": "",
+//     "laws": "",
+//     "lawModules": [
+//       1,2
+//     ],
+//     "lawModulesLabel": [
+//       "Labour",
+//       "Operational"
+//     ],
+//     "operatingUnit": [],
+//     "actions": "",
+//     "childrenID":0
+//   },
+//   {
+//     "position": 2,
+//     "id":2,
+//     "name": "Test Entity 2",
+//     "country": 1,
+//     "countryLabel": "India",
+//     "industry": [3],
+//     "industryLabel": "Manufacturing",
+//     "entityType": 1,
+//     "entityTypeLabel": "Company",
+//     "emailID": "",
+//     "laws": "",
+//     "lawModules": [
+//       1,2
+//     ],
+//     "lawModulesLabel": [
+//       "Labour",
+//       "Operational"
+//     ],
+//     "operatingUnit": ['1','2'],
+//     "actions": "",
+//     "childrenID":1
+//   }
+// ]

@@ -7,6 +7,7 @@ import { OperatingUnitTableComponent } from '../common-components/operating-unit
 import { TreeStructureComponent } from '../common-components/tree-structure/tree-structure.component';
 import { TableHeaderComponent } from '../common-components/table-header/table-add-header.component';
 import { BusinessDetails } from 'src/app/shared/menu-items/entity-interfaces';
+import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 
 
 @Component({
@@ -22,12 +23,15 @@ export class OperatingUnitComponent implements OnChanges
  {
   @Output() isBackClicked = new EventEmitter<boolean>();
   @Input() entityDetails:any;
-  @Input() entity: any;
+  @Input() entity: EntityDataType;
+  @Input() isDotsCliscked: boolean;
+  @Output() handleTableDataLoadingFromOperatingUnit = new EventEmitter<boolean>();
+
 
   entityOpPath: string[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("Received in op-unit",this.entity.name);
+    console.log("Received in op-unit",this.entity);
     
     if (changes['entity'] && changes['entity'].currentValue) {
       this.entityOpPath = ['Entities', this.entity.name, 'Operating Unit'];
@@ -37,5 +41,6 @@ export class OperatingUnitComponent implements OnChanges
   treeDataItem = treeDataitem;
   onBackClick() {
     this.isBackClicked.emit(true);
+    this.handleTableDataLoadingFromOperatingUnit.emit(true);
   }
 }

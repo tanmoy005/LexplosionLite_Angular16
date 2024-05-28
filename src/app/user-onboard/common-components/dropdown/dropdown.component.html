@@ -1,8 +1,29 @@
+<!-- <div style="margin-right: 10px;">
+
+  <mat-form-field appearance="outline" class="app-dropdown">
+    <mat-label class="text_12_400_gray_1000 dropdown-label">{{ label }}</mat-label>
+    <mat-select [multiple]="IsMultiSelection" (selectionChange)="onSelectionChange($event)">
+      <mat-option *ngFor="let option of options" [value]="option.value"
+     
+      >
+        {{ option.label }}
+        <img [src]="option.icon" width="10" height="10">
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+ 
+</div> -->
+
+
 <div style="margin-right: 10px;">
   <mat-form-field appearance="outline" class="app-dropdown">
     <mat-label class="text_12_400_gray_1000 dropdown-label">{{ label }}</mat-label>
-    <mat-select [multiple]="IsMultiSelection"  (selectionChange)="onSelectionChange($event)">
-      <mat-option *ngFor="let option of options" [value]="option.value">
+    <mat-select [multiple]="IsMultiSelection" (selectionChange)="onSelectionChange($event)"
+    [value]="changeableValues"
+   >
+      <mat-option *ngFor="let option of options" [value]="option.value" 
+      [disabled]="isValueDisabled(option.value)"
+      >
         {{ option.label }}
         <img [src]="option.icon" width="10" height="10">
       </mat-option>

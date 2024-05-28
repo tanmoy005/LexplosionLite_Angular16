@@ -1,32 +1,33 @@
-
 <div class="activities-section">
-<div class="activity-section-label">
-    <p><b>Selected Activities</b></p>
-</div>
-<div>
-<mat-accordion>
-    <mat-expansion-panel>
-    <mat-expansion-panel-header class="custom-expansion-header">
-    <mat-panel-title>
-    </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-list>
-        <mat-list-item *ngFor="let activity of activities">
-        <div class="container">
-            <div class="row">
-            <div class="col-4">
-            <button mat-stroked-button aria-label="expand-activities-icon" >
-             <mat-icon>remove</mat-icon>
-            </button>
-            </div>
-            <div class="col-auto activities-label">
-                <p>{{activity.label}}</p>
+    <p class="text_12_500_gray_1200">Selected Activities</p>
+    <div>
+        <div matBadgeSize="small" matBadgePosition="below after"
+            matBadgeOverlap="true">
+            <mat-accordion   #smallDropdown="matAccordion">
+                <mat-expansion-panel class="activites-panel">
+                    <mat-expansion-panel-header class="custom-expansion-header">
+                        <mat-panel-title>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-list>
+                        <mat-list-item *ngFor="let activity of activities;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <button mat-stroked-button aria-label="remove-activity-icon"
+                                            (click)="removeActivity($event,activity)">
+                                            <mat-icon>remove</mat-icon>
+                                        </button>
+                                    </div>
+                                    <div class="col-auto activities-label">
+                                        <p>{{activity.label}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <div>
             </div>
         </div>
-        </div>
-        </mat-list-item>
-    </mat-list>
-    </mat-expansion-panel>
-</mat-accordion>
-</div>
-</div>

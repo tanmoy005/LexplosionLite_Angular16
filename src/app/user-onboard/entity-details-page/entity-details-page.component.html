@@ -1,7 +1,8 @@
+
 <div class="container entity-details-page-container">
+
   <app-reg-header></app-reg-header>
   <mat-divider></mat-divider>
-
   <div class="row">
     <div class="col-lg-12 col-sm-12 col-md-12">
       <app-stepper [currentStep]="0"> </app-stepper>
@@ -53,6 +54,8 @@
     <app-entity
       [countryList]="countryList"
       (selectedEntityEmitter)="handleSelectedEntity($event)"
+      (selectedEntityEmitter1)="handleSelectedEntity1($event)"
+      (handleTableDataLoadingFromEntity)="handleEntityLoadingState($event)"
     >
     </app-entity>
   </div>
@@ -60,7 +63,10 @@
   <div class="entity-operating-unit-section" *ngIf="isAddOperatingUnitClicked">
     <app-operating-unit
     (isBackClicked)="handleBackClick($event)"
-    [entity]="selectedEntity"></app-operating-unit>
+    [entity]="selectedEntity"
+    [isDotsCliscked]="isDotsCliscked"
+    (handleTableDataLoadingFromOperatingUnit)="handleEntityLoadingState($event)"
+    ></app-operating-unit>
   </div>
 
   <!-- <div class="row entity-details-next-button-div">
@@ -70,4 +76,11 @@
       </button>
     </div>
   </div> -->
+  
+  <!-- Spinner and backdrop -->
+  <div class="spinner-backdrop" *ngIf="isEntityTableLoading">
+    <mat-spinner></mat-spinner>
+  </div>
 </div>
+
+

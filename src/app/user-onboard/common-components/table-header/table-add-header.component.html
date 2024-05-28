@@ -1,4 +1,6 @@
-<div class="entity-table-header">
+<div class="entity-table-header ">
+
+
   <div class="entities-layout">
     <p class="route-name">
       <ng-container *ngFor="let segment of path; let i = index">
@@ -7,9 +9,11 @@
       </ng-container>
     </p>
   </div>
-  <div>
+
+  <div class="button-container">
     <button mat-stroked-button (click)="emitAddNewEntity()">
       <mat-icon>add</mat-icon>{{buttonName}}
     </button>
   </div>
+
 </div>
