@@ -31,7 +31,7 @@
 
 
 export interface OPUnitDetails {
-  position: number;
+  opID: number;
   count:number;
   name: string;
   entity:number[];
