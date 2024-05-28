@@ -1,4 +1,5 @@
-import { Component ,Inject} from '@angular/core';
+//import { OPUnitDetailsWithEntity } from './../../../../shared/menu-items/entity-to-opunit-data-interface';
+import { Component ,Inject,OnInit} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
@@ -25,6 +26,8 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
 import { ApiService } from 'src/app/services/api.service';
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { EmployeeCardInterface } from 'src/app/shared/menu-items/employee-card-data-interface';
+import {OPUnitDetailsWithEntity} from'src/app/shared/menu-items/entity-to-opunit-data-interface';
+import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
@@ -36,9 +39,16 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
 
 export interface TransformedType1 {
   value: number;
-    label: string;
-    
+  label: string;
 }
+
+export interface TransformedRadioGroup {
+  value:number;
+  label: string;
+  isChecked:boolean;
+}
+
+
 export interface Workforce {
   header: string;
   male: number;
@@ -54,7 +64,7 @@ export interface Workforce {
 
 
 
-export class AddNewOperatingUnitDialogComponent {
+export class AddNewOperatingUnitDialogComponent implements OnInit{
   encryptStorage = new EncryptStorage(environment.localStorageKey);
   BusinessOptions = [
     { value: 'option1', label: 'Option 1' },
@@ -74,11 +84,30 @@ export class AddNewOperatingUnitDialogComponent {
   activity: string = '';
   locatedAt: string = '';
   ownership: number ;
-  employeeData:any;
- 
+  employeeData:EmployeeCardInterface[];
+  editingEmployeeData:EmployeeCardInterface[]=[
+    {
+        "header": "Direct",
+        "male": 0,
+        "female": 0
+    },
+    {
+        "header": "Contract Labours",
+        "male": 0,
+        "female": 0
+    },
+    {
+        "header": "Inter-State Migrants",
+        "male": 0,
+        "female": 0
+    }
+]
+  editingnoOfApprentice:number =0;
+  editingnoOfChild: number=0;
   zone:number
 
-
+  // editOpUnitDataDetails:OPUnitDetailsWithEntity
+  editOpUnitDataDetails:FetchOPUnits
   noOfDeMale: number = 0;
   noOfDeFemale: number = 0;
   noOfClMale: number = 0;
@@ -88,15 +117,16 @@ export class AddNewOperatingUnitDialogComponent {
   noOfApprentice:number =0;
   noOfChild: number=0;
   // ownershipDropdown: string[] = ['Owned', 'Leased'];
-  ownershipDropdown: TransformedType1[] = [
-    {'label':'Owned','value':1},
-    {'label':'Leased','value':2}
+  
+  ownershipDropdown: TransformedRadioGroup[] = [
+    {'label':'Owned','value':1, 'isChecked':false},
+    {'label':'Leased','value':2, 'isChecked':false}
   ];
   // zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
-  zoneDropdown: TransformedType1[] = [
-    {'label':'SEZ','value':1}, 
-    {'label':'STPI','value':2}, 
-    {'label': 'Not Applicable','value':2}
+  zoneDropdown: TransformedRadioGroup [] = [
+    {'label':'SEZ','value':2,'isChecked':false}, 
+    {'label':'STPI','value':1, 'isChecked':false}, 
+    {'label': 'Not Applicable','value':3,'isChecked':false}
 ];
   entityList:TransformedType[] = []
   industryActivityList:{
@@ -109,13 +139,15 @@ export class AddNewOperatingUnitDialogComponent {
   filteredActivitiesList:{value:string,
     label:string
   }[] =[]
-  selectedActivitiesList:[]=[]
+  selectedActivitiesList:number[]=[]
   selectedEntities:number[]=[this.data.entity.id]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {entityName: string, industry: string,entityTable: 
     OperatingUnitTableComponent,operatingUnitTypes:OriginalType[],states:OriginalType[],
     entityPosition:number,
-    entity:EntityDataType},
+    entity:EntityDataType,
+    opUnitPosition:number,
+    selectedOP:FetchOPUnits},
     private snackbar: SnackbarService,
     public dialogRef: MatDialogRef<AddNewOperatingUnitDialogComponent>,
     private apiService:ApiService,) {
@@ -123,31 +155,60 @@ export class AddNewOperatingUnitDialogComponent {
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(this.data.operatingUnitTypes);
     this.transformedStates = transformOperatingUnitTypes(this.data.states)
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList)
-
-    console.log('the entity coming',this.data.entity)
+    console.log('trans op unit types',this.transformedDataOperatingUnits)
+    //console.log('the op unit coming in modal',this.data.entity.operatingUnit)
     //this.selectedEntities =  this.data.entity.id
     // console.log("filtered Activities List",this.filteredActivitiesList)
-    // console.log('the industry id is',this.data.entity.industry)
+    //console.log('the entity is',this.data.entity)
+
+    // if (this.data.opUnitPosition !== 0){
+    // console.log('the opunit position is',this.getOpUnitDetailsForEdit(this.data.opUnitPosition))
+    // this.editOpUnitDataDetails = this.getOpUnitDetailsForEdit(this.data.opUnitPosition)
+   
+    // }
     const savedindustryActivities = this.encryptStorage.getItem('industryActivities');
     this.industryActivityList = savedindustryActivities
     this.filteredActivitiesList = this.getActivitiesByIndustryId(this.data.entity.industry[0])
 
   }
-  // isDataValid(): boolean {
-  //   return (
-  //     this.operatingUnitName.trim() !== '' &&
-  //     this.operatingUnitType !== '' &&
-  //     this.state!== '' &&
-  //     this.activity.trim() !== '' &&
-  //     this.locatedAt.trim() !== '' &&
-  //     this.ownership.trim() !== ''
-  //   );
-  // }
+
+
+  ngOnInit(): void {
+    if (this.data.opUnitPosition !== 0) {
+      console.log('The opunit position is', this.data.selectedOP);
+      this.operatingUnitName = this.data.selectedOP.name
+      this.operatingUnitType= this.data.selectedOP.operatingUnitType.id
+      this.ownership =this.data.selectedOP.ownership.id;
+
+      const ownershipSelectedIndex = this.ownershipDropdown.findIndex((ownership)=> ownership.value === this.ownership);
+      this.ownershipDropdown[ownershipSelectedIndex].isChecked = true;
+
+      const zoneSelectedIndex = this.zoneDropdown.findIndex((zone)=>zone.value === this.data.selectedOP.locatedAt.id);
+      this.zoneDropdown[zoneSelectedIndex].isChecked = true;
+
+      this.state = this.data.selectedOP.state.id
+      this.selectedActivitiesList = this.data.selectedOP.activities.map((item => item.id))
+      //console.log('the selected activities are',this.selectedActivitiesList);
+      console.log("Selected ownership", this.ownership);
+      this.noOfApprentice = this.data.selectedOP.noOfApprentice
+      this.noOfChild = this.data.selectedOP.noOfChild
+      this.noOfDeMale = this.data.selectedOP.noOfDeMale
+      this.noOfDeFemale = this.data.selectedOP.noOfDeFemale
+      this.noOfClMale = this.data.selectedOP.noOfClMale
+      this.noOfClFemale = this.data.selectedOP.noOfClFemale
+      this.noOfIsmMale = this.data.selectedOP.noOfIsmMale
+      this.noOfIsmFemale = this.data.selectedOP.noOfIsmFemale
+      this.zone = this.data.selectedOP.locatedAt.id
+      this.editingEmployeeData = [{'header':'Direct','male':this.noOfDeMale,'female':this.noOfDeFemale},
+      {'header':'Contract Labours','male':this.noOfClMale,'female':this.noOfClFemale},
+      {'header':'Inter-State Migrants','male':this.noOfIsmMale,'female':this.noOfIsmFemale}
+      ]
+      this.editingnoOfApprentice = this.noOfApprentice
+      this.editingnoOfChild = this.noOfChild
+    }
+  }
 
   addEntity() {
-   
-   
-
       this.addNewOpUnit()
 
       const operatingUnitTypeName = this.findOperatingUnitTypeName(this.operatingUnitType);
@@ -171,7 +232,8 @@ export class AddNewOperatingUnitDialogComponent {
         activities:'',
         laws: '',
         actions:'',
-        
+        totalEmployeeCount:0,
+        opUnitPosition:this.data.opUnitPosition,
         entityPosition:this.data.entityPosition
       };
       //console.log('op unit added!',newData)
@@ -276,8 +338,9 @@ export class AddNewOperatingUnitDialogComponent {
 }
  
 addNewOpUnit(){
+  const id = this.data.opUnitPosition === 0 ? null : this.data.opUnitPosition;
   const payload={
-    "id": null,
+    "id": id,
     "name":this.operatingUnitName,
     "company": [406],
     "entities":this.selectedEntities,
@@ -310,5 +373,15 @@ addNewOpUnit(){
     this.snackbar.showError("Some error occurred while fetching entity list.");
   }
 }
+getOpUnitDetailsForEdit(id: number): OPUnitDetailsWithEntity {
+  const opUnit = this.data.entity.operatingUnit.find(item => item.id === id);
+  if (!opUnit) {
+    throw new Error(`Operating unit with id ${id} not found`);
+  }
+  return opUnit;
+}
+
 
 }
+
+

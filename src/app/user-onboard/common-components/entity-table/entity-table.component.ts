@@ -126,7 +126,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
           this.entityChild = {
             id: maxId + 1,
-            label: 'Child Node '+String(maxId+1),
+            //label: 'Child Node '+String(maxId+1),
+            label: entity.name,
             children: []
           }
 
@@ -310,7 +311,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
               name: entity.name
             };
           });
-          console.log("The sent entity in OP-Unit",this.entityToSend);
+          //console.log("The sent entity in OP-Unit",this.entityToSend);
           this.navigateToAddOpUnit1(this.entityToSend);
         }
         break
