@@ -31,7 +31,6 @@ File: scss
 @import 'text';
 @import "../styles/icons/material-design-iconic-font/css/materialdesignicons.min.css";
 
-
 /* You can add global styles to this file, and also import other style files */
 .mat-expansion-panel-body {
     padding: 0px 0px 0px !important;
@@ -260,31 +259,35 @@ input.mdc-radio__native-control:focus,
     button.mdc-button {
         @include small-dropdown-box;
         min-width: 24px !important;
- 
+
         .mat-icon {
             margin: 0 !important;
             height: 9px !important;
             width: 20px !important;
-            align-items: center!important;
-            justify-content: center!important;
-            display: flex!important;
-            font-size: 13px!important;
-            color: $gray-1100!important;
+            align-items: center !important;
+            justify-content: center !important;
+            display: flex !important;
+            font-size: 13px !important;
+            color: $gray-1100 !important;
         }
     }
-    .mdc-list-item{
-        padding-left: 0!important;
+
+    .mdc-list-item {
+        padding-left: 0 !important;
     }
-    .activities-label{
-        margin: 0!important;
-        p{
+
+    .activities-label {
+        margin: 0 !important;
+
+        p {
             margin-left: 14px;
             @include text-model($font-12, 400, $gray-1200, Barlow, 24px);
         }
     }
-    .mat-badge-content{
-        left:16px!important;
-        background-color: $gray-1600!important;
+
+    .mat-badge-content {
+        left: 16px !important;
+        background-color: $gray-1600 !important;
         @include text-model($font-12, 700, $gray-1500, Barlow, 14.4px);
     }
 }
@@ -302,19 +305,34 @@ input.mdc-radio__native-control:focus,
     text-align: right;
 }
 
+
 .app-dropdown {
     .mat-mdc-text-field-wrapper {
         background-color: $blue-light-200 !important;
-        height: 40px !important;
         border-radius: 3px !important;
         border: 1px solid $blue-light-200 !important;
+        height: 40px !important;
     }
 
     .mat-mdc-select-arrow svg {
         top: -137%;
     }
+ 
 }
 
+.conuntry-dropdown {
+    .mat-mdc-text-field-wrapper {
+        background-color: $blue-light-200 !important;
+        border-radius: 3px !important;
+        border: 1px solid $blue-light-200 !important;
+        height: 56px !important;
+
+    }
+ 
+}
+#cdk-overlay-0{
+    width: 148.1875px !important;
+ }
 .small-dropdown-container {
     width: 24px;
     height: 24px;
@@ -362,4 +380,64 @@ input.mdc-radio__native-control:focus,
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+}
+
+// .register-container {
+//     padding: 7.98vh 13.12vw;
+// }
+@media (min-width: 992px) {
+    .register-container {
+        padding: 8vh 13vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .register-container {
+        padding: 7vh 12vw;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .register-container {
+        padding: 6vh 4.5vw;
+    }
+}
+
+
+.pr-0 {
+    padding-right: 0 !important;
+}
+
+.px-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.phn-section {
+    width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
+}
+@media (min-width: 992px) {
+    .phn-section {
+        width: 102%; // todo chnage it to 100% and adjust rest of the styles accordingly
+    }
+}
+@media (min-width: 1300px) {
+    .phn-section {
+        width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
+    }
+}
+// @media (min-width: 768px) and (max-width: 991.98px) {
+//     .register-container {
+//         padding: 7vh 12vw;
+//     }
+// }
+
+@media (max-width: 767.98px) {
+    .phn-section {
+        width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
+    }
 }

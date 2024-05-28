@@ -1,22 +1,23 @@
 @use 'variable' as var;
 
 @mixin btn-model($background-color, $padding, $border-color, $border-radius, $type: 'filled') {
-    background-color: $background-color;
-    padding: $padding;
-    border: 1px solid $border-color; // todo use gradient
-    border-radius: $border-radius;
+    background-color: $background-color!important;
+    padding: $padding!important;
+    border: 1px solid $border-color!important; // todo use gradient
+    border-radius: $border-radius!important;
 
     @if($type =='filled') {
-        color: var.$gray-400;
+        color: var.$gray-400!important;
     }
 
     @else {
-        color: var.$primary;
+        color: var.$primary!important;
     }
 
-    font-size: var.$font-16;
-    font-weight: 400;
-    cursor: pointer;
+    // font-size: var.$font-16!important;
+    font-size: 1rem!important;
+    font-weight: 400!important;
+    cursor: pointer!important;
 }
 
 

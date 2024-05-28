@@ -142,9 +142,9 @@ export class OperatingUnitTableComponent implements OnInit {
       
       this.opUnitDataFromApi = response.data;
       
-      const currentCount = this.dataSource.length; 
+      const currentCount = 0; 
       const opResponseData: OPUnitDetails[] = response.data.map((opUnits: FetchOPUnits, index: number) => ({
-        position: opUnits.id,
+        opID: opUnits.id,
         count: currentCount + index + 1,
         name: opUnits.name,
         entity: opUnits.entities.map((item: EntitiesList) => item.id),
@@ -164,7 +164,7 @@ export class OperatingUnitTableComponent implements OnInit {
       }));
   
       console.log('the transformed op unit datas', opResponseData);
-      this.dataSource = [...this.dataSource, ...opResponseData]; 
+      this.dataSource = opResponseData; 
     });
   }
   
@@ -182,10 +182,12 @@ export class OperatingUnitTableComponent implements OnInit {
 
  
 
-  addOpUnitData(newData: OPUnitDetails) {
-    newData['count'] = this.dataSource.length + 1
-    console.log('the new op unit data',newData)
-    this.dataSource.push(newData);
+  addOpUnitData() {
+    this.fetchOpUnitList();
+
+    // newData['count'] = this.dataSource.length + 1
+     console.log('the new op unit data',this.dataSource)
+    // this.dataSource.push(newData);
     // if (newData['opUnitPosition']!==0){
 
     // }
@@ -214,15 +216,15 @@ export class OperatingUnitTableComponent implements OnInit {
 
 
   rearrangeDataSource() {
-    this.dataSource.sort((a, b) => a.position - b.position);
+    this.dataSource.sort((a, b) => a.opID - b.opID);
     for (let i = 0; i < this.dataSource.length; i++) {
-      this.dataSource[i].position = i + 1;
+      this.dataSource[i].opID = i + 1;
     }
   }
 
 
   removeEntityData(position: number) {
-    const rowIndex = this.dataSource.findIndex(row => row.position === position);
+    const rowIndex = this.dataSource.findIndex(row => row.opID === position);
     if (rowIndex !== -1) {
 
       this.dataSource.splice(rowIndex, 1);
@@ -248,7 +250,7 @@ export class OperatingUnitTableComponent implements OnInit {
     });
   }
 
-  openEntityDialogForEdit(entityName: string, position:number) {
+  openEntityDialogForEdit(entityName: string, opID:number) {
     console.log('entityName', entityName);
 
 
@@ -259,8 +261,8 @@ export class OperatingUnitTableComponent implements OnInit {
         states: this.states,
         entityPosition:this.entity.position,
         entity:this.entity,
-        opUnitPosition:position,
-        selectedOP:this.getOpUnitDetailsForEdit(position)
+        opUnitPosition:opID,
+        selectedOP:this.getOpUnitDetailsForEdit(opID)
       }
     });
   }
@@ -285,17 +287,17 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
 
-  openopUnitMenuDialog(action: string, position: number) {
-    console.log("ACTION SELECTED", action, position);
+  openopUnitMenuDialog(action: string, opID: number) {
+    console.log("ACTION SELECTED", action, opID);
 
 
 
     switch (action) {
       case 'Delete':
-        this.removeEntityData(position);
+        this.removeEntityData(opID);
         break;
       case 'Edit':
-        this.openEntityDialogForEdit(this.entity.name,position);  
+        this.openEntityDialogForEdit(this.entity.name,opID);  
         break;
       default:
         break;
