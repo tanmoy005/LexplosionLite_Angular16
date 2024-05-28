@@ -24,6 +24,7 @@ export class DropdownComponent implements OnInit {
 
   @Input() unchangeableValues: any[] = [];
   @Input() changeableValues: Number | any[]= [];
+  @Input() type: string= 'default';
   
   valuesReceived: any[] = [];
 
@@ -41,7 +42,6 @@ export class DropdownComponent implements OnInit {
   //selectedValue: any;
   @Output() selectedValueChange: EventEmitter<any> = new EventEmitter<any>();
 
-  type: string = 'small';
   isDropdownOpened: boolean = false;
 
 
