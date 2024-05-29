@@ -315,14 +315,20 @@ input.mdc-radio__native-control:focus,
         align-items: center;
     }
 
+    .mat-mdc-select-min-line {
+        color: $gray-1000 !important;
+        @include text-model($font-12, 400, $gray-1000, Barlow, 20px);
+    }
+
     .mat-mdc-select-arrow svg {
         top: -137%;
     }
 
     .mat-mdc-form-field-infix {
-        padding: 0!important;
+        padding: 0 !important;
         min-height: 0;
     }
+
     // mat-mdc-text-field-wrapper mdc-text-field ng-tns-c3899553609-60 mdc-text-field--outlined
 
 }
