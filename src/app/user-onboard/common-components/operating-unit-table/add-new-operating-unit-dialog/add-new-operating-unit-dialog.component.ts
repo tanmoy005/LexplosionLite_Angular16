@@ -246,6 +246,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     }
     if (columnvalue === 'activity') {
       this.selectedActivitiesList = value;
+      console.log('the selected activity list is',  this.selectedActivitiesList);
     }
 
     if (columnvalue === 'entityList') {
@@ -351,7 +352,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
         },
         error: (error) => {
           this.snackbar.showError(
-            'Some error occurred while fetching entity list.'
+            'Some error occurred while adding Operating Unit List'
           );
           reject(error);
         },
@@ -368,4 +369,9 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     }
     return opUnit;
   }
+  onSelectedActivitiesListChange(updatedList: number[]) {
+    this.selectedActivitiesList = updatedList;
+    console.log('Updated selected activity list:', this.selectedActivitiesList);
+  }
+  
 }
