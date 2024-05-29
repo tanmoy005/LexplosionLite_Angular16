@@ -21,7 +21,7 @@ import { OpUnitDetails } from 'src/app/shared/menu-items/fetch-entity-details-in
 import {entityList} from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 
 export interface BusinessDetails {
-  position: number;
+  // position: number;
   id:number;
   name: string;
   country: number;
@@ -76,7 +76,7 @@ export interface BusinessDetails {
   }
 
 
-export const EntityColumns = ['position', 'name', 'country', 'industry', 'entityType', 'emailID', 'laws', 'operatingUnit', 'actions'];
+export const EntityColumns = ['id', 'name', 'country', 'industry', 'entityType', 'emailID', 'laws', 'operatingUnit', 'actions'];
 
 
 // export const EntityData:BusinessDetails[] =  [

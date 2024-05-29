@@ -85,7 +85,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
 
   initialFormData: EntityInterfaces.BusinessDetails = {
-    position: 0,
+    // position: 0,
     id: 0,
     name: '',
     country: 0,
@@ -120,7 +120,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         const entityList = response.data;
 
         // console.log('entity data coming from api',response.data)
-        let position = 1;
+        // let position = 1;
         //let childrenID = 0;
         //console.log('Entity fetch response', entityList);
         entityList.forEach((entity: FetchEntityDetails) => {
@@ -135,7 +135,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
 
           const entityRow: EntityInterfaces.BusinessDetails = {
             ...this.initialFormData,
-            position: position,
+            // position: position,
             id: entity.id,
             name: entity.name,
             industry: entity.industries.map((industry: Industries) => industry.id),
@@ -154,7 +154,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
           };
           this.dataSource.push(entityRow);
           treeDataitem?.children?.push(this.entityChild);
-          position++;
+          // position++;
         });
         this.table.renderRows(); // Ensure this is a MatTable instance
         this.entityTableDataLoading.emit(false);
@@ -196,23 +196,23 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   }
   }
 
-  rearrangeDataSource() {
-    this.dataSource.sort((a, b) => a.position - b.position);
-    for (let i = 0; i < this.dataSource.length; i++) {
-      this.dataSource[i].position = i + 1;
-    }
-  }
+  // rearrangeDataSource() {
+  //   this.dataSource.sort((a, b) => a.position - b.position);
+  //   for (let i = 0; i < this.dataSource.length; i++) {
+  //     this.dataSource[i].position = i + 1;
+  //   }
+  // }
 
-  removeEntityData(position: number) {
+  // removeEntityData(position: number) {
    
-    const rowIndex = this.dataSource.findIndex(row => row.position === position);
-    if (rowIndex !== -1) {
-      this.dataSource.splice(rowIndex, 1);
-      this.rearrangeDataSource();
-      this.table.renderRows();
-      treeDataitem?.children?.splice(rowIndex, 1)
-    }
-  }
+  //   const rowIndex = this.dataSource.findIndex(row => row.position === position);
+  //   if (rowIndex !== -1) {
+  //     this.dataSource.splice(rowIndex, 1);
+  //     this.rearrangeDataSource();
+  //     this.table.renderRows();
+  //     treeDataitem?.children?.splice(rowIndex, 1)
+  //   }
+  // }
 
   openEntityDialog(entity?:EntityInterfaces.BusinessDetails | null) {
     //console.log("Entity send at openEntity intr.", entity);
@@ -258,13 +258,15 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   // entityToSend: any = {};
   entityToSend: EntityDataType ;
 
-  openEntityMenuDialog(action: string, position: number) {
+  openEntityMenuDialog(action: string, id: number) {
     switch (action) {
       case 'Delete':
-        this.removeEntityData(position);
+        // this.removeEntityData(position);
+        console.log("Entity delete option clicked.");
         break;
       case 'Add Operating Unit':
-        var entity = this.dataSource.find((entity) => entity.position === position);
+        //var entity = this.dataSource.find((entity) => entity.position === position);
+        var entity = this.dataSource.find((entity) => entity.id === id);
         if(entity===undefined){
           this.snackbar.showError("Some error occurred while adding Operating Unit.")
         }
@@ -284,7 +286,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
         break
 
         case 'Add Operating Unit from Icon':
-          var entity = this.dataSource.find((entity) => entity.position === position);
+          var entity = this.dataSource.find((entity) => entity.id === id);
           if(entity===undefined){
             this.snackbar.showError("Some error occurred while adding Operating Unit.")
           }
@@ -303,7 +305,8 @@ export class EntityTableComponent implements OnInit, OnDestroy{
           }
           break
       case 'Edit':
-        var entity = this.dataSource.find((entity) => entity.position === position);
+        //var entity = this.dataSource.find((entity) => entity.position === position);
+        var entity = this.dataSource.find((entity) => entity.id === id);
         //console.log(entity);
         
         if(entity===undefined){

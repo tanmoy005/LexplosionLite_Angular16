@@ -219,41 +219,41 @@ text-align: left;
 // }
 
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-  .cdk-overlay-pane {
-    width: 80vw;
-  }
-  .entity-dialog {
-    width: 75vw;
-  }
-}
+// @media (max-width: 575.98px) {
+//   .cdk-overlay-pane {
+//     width: 80vw;
+//   }
+//   .entity-dialog {
+//     width: 75vw;
+//   }
+// }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .cdk-overlay-pane {
-    width: 80vw;
-  }
-  .entity-dialog {
-    width: 75vw;
-  }
-}
+// @media (min-width: 576px) and (max-width: 767.98px) {
+//   .cdk-overlay-pane {
+//     width: 80vw;
+//   }
+//   .entity-dialog {
+//     width: 75vw;
+//   }
+// }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .cdk-overlay-pane {
-    width: 80vw;
-  }
-  .entity-dialog {
-    width: 45vw;
-  }
-}
+// @media (min-width: 768px) {
+//   .cdk-overlay-pane {
+//     width: 80vw;
+//   }
+//   .entity-dialog {
+//     width: 45vw;
+//   }
+// }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .cdk-overlay-pane {
-    width: 35vw;
-  }
-  .entity-dialog {
-    width: 34.375vw;
-  }
-}
+// @media (min-width: 992px) {
+//   .cdk-overlay-pane {
+//     width: 35vw;
+//   }
+//   .entity-dialog {
+//     width: 34.375vw;
+//   }
+// }

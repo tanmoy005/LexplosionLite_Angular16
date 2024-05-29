@@ -1,6 +1,5 @@
 export interface EntityDataType{
-    
-        position: number,
+        // position: number,
         id: number,
         name: string,
         country: number,

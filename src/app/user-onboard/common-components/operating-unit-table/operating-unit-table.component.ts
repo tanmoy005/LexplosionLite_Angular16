@@ -211,10 +211,11 @@ export class OperatingUnitTableComponent implements OnInit {
         industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        entityPosition: this.entity.position,
-        entity: this.entity,
-        opUnitPosition: 0,
-      },
+        //entityPosition:this.entity.position,
+        entityPosition:this.entity.id,
+        entity:this.entity,
+        opUnitPosition:0
+      }
     });
   }
 
@@ -228,11 +229,12 @@ export class OperatingUnitTableComponent implements OnInit {
         industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        entityPosition: this.entity.position,
-        entity: this.entity,
-        opUnitPosition: opID,
-        selectedOP: this.getOpUnitDetailsForEdit(opID),
-      },
+        //entityPosition:this.entity.position,
+        entityPosition:this.entity.id,
+        entity:this.entity,
+        opUnitPosition:opID,
+        selectedOP:this.getOpUnitDetailsForEdit(opID)
+      }
     });
   }
 
