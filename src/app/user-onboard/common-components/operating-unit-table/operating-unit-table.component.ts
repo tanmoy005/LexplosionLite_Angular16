@@ -189,30 +189,34 @@ export class OperatingUnitTableComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<OPUnitDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
-  addOpUnitData() {
-    this.fetchOpUnitList(); 
-    console.log('the new op unit data', this.dataSource);
+  // addOpUnitData() {
+  //   this.fetchOpUnitList();
+
+    
+  //   console.log('the new op unit data', this.dataSource);
    
-    const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
-      (children) => children.id === this.entity.childrenID
-    );
-    if (childrenToAddGrandChildrenTo !== undefined) {
-      // console.log("Grand Children", childrenToAddGrandChildrenTo);
-      const grandChildrenAddingIndex = treeDataitem.children?.indexOf(
-        childrenToAddGrandChildrenTo
-      );
-      const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
 
-      const entity = {
-        id: maxId + 1,
-        label: 'Grandchild Node ' + String(maxId + 1),
-        children: [],
-      };
-      childrenToAddGrandChildrenTo?.children?.push(entity);
-    }
+  //   const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
+  //     (children) => children.id === this.entity.childrenID
+  //   );
+  //   if (childrenToAddGrandChildrenTo !== undefined) {
+  //     // console.log("Grand Children", childrenToAddGrandChildrenTo);
+  //     const grandChildrenAddingIndex = treeDataitem.children?.indexOf(
+  //       childrenToAddGrandChildrenTo
+  //     );
+  //     const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
 
-    this.table.renderRows();
-  }
+  //     const entity = {
+  //       id: maxId + 1,
+  //       label: 'Grandchild Node ' + String(maxId + 1),
+  //       children: [],
+  //     };
+
+  //     childrenToAddGrandChildrenTo?.children?.push(entity);
+  //   }
+
+  //   this.table.renderRows();
+  // }
 
   rearrangeDataSource() {
     this.dataSource.sort((a, b) => a.opID - b.opID);

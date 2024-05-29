@@ -371,36 +371,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     }
   }
 
-  // openEntityMenuDialog1(action: string, position: number) {
-  //   switch (action) {
-  //     case 'Delete':
-  //       this.removeEntityData(position);
-  //       break;
-      
-  //    case 'Add Operating Unit':
-  //       var entity = this.dataSource.find((entity) => entity.position === position);
-  //       if(entity===undefined){
-  //         this.snackbar.showError("Some error occurred while adding Operating Unit.")
-  //       }
-  //       else { 
-  //         this.entityToSend = entity;
-  //         this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
-  //           return {
-  //             id: entity.id,
-  //             name: entity.name
-  //           };
-  //         });
-  //         //console.log("The sent entity in OP-Unit",this.entityToSend);
-  //         this.navigateToAddOpUnit1(this.entityToSend);
-  //       }
-  //       break
 
-  //     case 'Edit':
-  //       break
-  //     default:
-  //       break;
-  //   }
-  // }
 
   openCountryDialog(){
     console.log("Open Country dialog clicked!");

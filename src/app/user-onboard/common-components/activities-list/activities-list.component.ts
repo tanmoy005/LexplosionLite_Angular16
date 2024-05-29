@@ -1,7 +1,6 @@
-import { Component, Input,OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges,Output,EventEmitter  } from '@angular/core';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
-import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-interfaces';
 
 export interface Section {
@@ -14,58 +13,58 @@ export interface Section {
   templateUrl: './activities-list.component.html',
   styleUrls: ['./activities-list.component.scss']
 })
-export class ActivitiesListComponent implements OnInit {
+export class ActivitiesListComponent implements OnInit, OnChanges {
 
   encryptStorage = new EncryptStorage(environment.localStorageKey);
 
-  @Input() selectedActivitiesList:number[]
+  @Input() selectedActivitiesList: number[] = [];
+  @Output() selectedActivitiesListChange = new EventEmitter<number[]>();
+
+
+  activities: Section[] = [];
 
   ngOnInit(): void {
-    const savedindustryActivities:IndustryActivies[]| undefined  = this.encryptStorage.getItem('industryActivities');
-    console.log('saved activities list',savedindustryActivities)
+    this.updateActivitiesList();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedActivitiesList']) {
+      this.updateActivitiesList();
+    }
+  }
+
+  private updateActivitiesList() {
+    const savedindustryActivities: IndustryActivies[] | undefined = this.encryptStorage.getItem('industryActivities');
+    console.log('saved activities list', savedindustryActivities);
 
     if (savedindustryActivities) {
-      console.log('saved activities list', savedindustryActivities);
-
       const filteredArray = savedindustryActivities
         .filter((item: IndustryActivies) => this.selectedActivitiesList.includes(item.aId))
         .map((item: IndustryActivies) => ({ label: item.activity, value: item.aId }));
 
       this.activities = filteredArray;
-
-     // console.log('filtered activities list', this.activities);
+      console.log('filtered activities list', this.activities);
     } else {
-      //console.log('No saved activities found in storage');
+      console.log('No saved activities found in storage');
     }
-
   }
-  activities: Section[] = [
-    {
-      label:'Activity1',
-      value:1
-    },
-    {
-      label:'Activity2',
-      value:2
-    },
-    {
-      label:'Activity3',
-      value:3
-    },
-    {
-      label:'Activity4',
-      value:4
-    }
-  ];
 
   panelOpenState = false;
 
-  removeActivity(event:any,activity:Section){
-    // console.log("Clicked activity- ", activity);
-    const selectedActivityIndex = this.activities.indexOf(activity)
+  // removeActivity(event: any, activity: Section) {
+  //   const selectedActivityIndex = this.activities.indexOf(activity);
+  //   if (selectedActivityIndex !== -1) {
+  //     this.activities.splice(selectedActivityIndex, 1);
+  //   }
+  // }
+  removeActivity(event: any, activity: Section) {
+    const selectedActivityIndex = this.activities.indexOf(activity);
     if (selectedActivityIndex !== -1) {
       this.activities.splice(selectedActivityIndex, 1);
+
+      // Update the selectedActivitiesList and emit the change
+      this.selectedActivitiesList = this.selectedActivitiesList.filter(aId => aId !== activity.value);
+      this.selectedActivitiesListChange.emit(this.selectedActivitiesList);
     }
   }
-
 }
