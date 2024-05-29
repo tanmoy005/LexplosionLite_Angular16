@@ -184,7 +184,7 @@ File: scss
 .mat-mdc-select-arrow::after {
     content: url('../images/Down.png');
     position: absolute;
-    top: -15px;
+    top: -6px;
 }
 
 .no_of_emp_container {
@@ -312,12 +312,19 @@ input.mdc-radio__native-control:focus,
         border-radius: 3px !important;
         border: 1px solid $blue-light-200 !important;
         height: 40px !important;
+        align-items: center;
     }
 
     .mat-mdc-select-arrow svg {
         top: -137%;
     }
- 
+
+    .mat-mdc-form-field-infix {
+        padding: 0!important;
+        min-height: 0;
+    }
+    // mat-mdc-text-field-wrapper mdc-text-field ng-tns-c3899553609-60 mdc-text-field--outlined
+
 }
 
 .conuntry-dropdown {
@@ -328,11 +335,13 @@ input.mdc-radio__native-control:focus,
         height: 56px !important;
 
     }
- 
+
 }
-#cdk-overlay-0{
+
+#cdk-overlay-0 {
     width: 148.1875px !important;
- }
+}
+
 .small-dropdown-container {
     width: 24px;
     height: 24px;
@@ -420,16 +429,19 @@ input.mdc-radio__native-control:focus,
 .phn-section {
     width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
 }
+
 @media (min-width: 992px) {
     .phn-section {
         width: 102%; // todo chnage it to 100% and adjust rest of the styles accordingly
     }
 }
+
 @media (min-width: 1300px) {
     .phn-section {
         width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
     }
 }
+
 // @media (min-width: 768px) and (max-width: 991.98px) {
 //     .register-container {
 //         padding: 7vh 12vw;
