@@ -169,120 +169,91 @@ text-align: left;
 }
 
 
-@media (max-width: 320px) {
-  .cdk-overlay-pane {
-    width:80vw;
-  }
-  .entity-dialog[_ngcontent-ng-c2140218817] {
-    width: 75vw;
-}
-}
+// @media (max-width: 320px) {
+//   .cdk-overlay-pane {
+//     width:80vw;
+//   }
+//   .entity-dialog[_ngcontent-ng-c2140218817] {
+//     width: 75vw;
+// }
+// }
 
-@media (max-width: 375px) {
-  .cdk-overlay-pane {
-    width:80vw;
-  }
-  .entity-dialog[_ngcontent-ng-c2140218817] {
-    width: 75vw;
-}
-}
+// @media (max-width: 375px) {
+//   .cdk-overlay-pane {
+//     width:80vw;
+//   }
+//   .entity-dialog[_ngcontent-ng-c2140218817] {
+//     width: 75vw;
+// }
+// }
 
+// @media (max-width: 575.98px) {
+//   .cdk-overlay-pane {
+//     width:80vw;
+//   }
+//   .entity-dialog[_ngcontent-ng-c2140218817] {
+//     width: 82.375vw;
+// }
+// }
+
+
+// @media (min-width: 768px) {
+//   .cdk-overlay-pane {
+//     width: 80vw;
+//   }
+
+//   .entity-dialog[_ngcontent-ng-c2140218817] {
+//     width: 45vw;  
+//   }
+  
+// }
+
+// @media (min-width: 992px) {
+//   .cdk-overlay-pane {
+//     width:35vw;
+//   }
+
+//   .entity-dialog[_ngcontent-ng-c2140218817] {
+//     width: 34.375vw;  
+//   }
+// }
+
+/* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
   .cdk-overlay-pane {
-    width:80vw;
+    width: 80vw;
   }
-  .entity-dialog[_ngcontent-ng-c2140218817] {
-    width: 82.375vw;
-}
+  .entity-dialog {
+    width: 75vw;
+  }
 }
 
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .cdk-overlay-pane {
+    width: 80vw;
+  }
+  .entity-dialog {
+    width: 75vw;
+  }
+}
 
+/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .cdk-overlay-pane {
     width: 80vw;
   }
-
-  .entity-dialog[_ngcontent-ng-c2140218817] {
-    width: 45vw;  
+  .entity-dialog {
+    width: 45vw;
   }
-  
 }
 
+/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .cdk-overlay-pane {
-    width:35vw;
+    width: 35vw;
   }
-
-  .entity-dialog[_ngcontent-ng-c2140218817] {
-    width: 34.375vw;  
+  .entity-dialog {
+    width: 34.375vw;
   }
 }
-
-// .entity-dialog[_ngcontent-ng-c2140218817] {
-//   width: 70vw;
-// }
-
-// .container {
-//   width: 100%;
-//   margin: 0 auto;
-//   padding: 0 15px;
-//   box-sizing: border-box;
-// }
-
-// .row {
-//   display: flex;
-//   flex-wrap: wrap;
-//   margin: 0 -15px;
-// }
-
-// .col-lg-12, .col-md-12, .col-sm-12, .col-xs-12 {
-//   padding: 0 15px;
-//   box-sizing: border-box;
-// }
-
-// .col-lg-12 {
-//   flex: 0 0 100%;
-//   max-width: 100%;
-// }
-
-// @media (max-width: 992px) {
-//   .col-md-12 {
-//     flex: 0 0 100%;
-//     max-width: 100%;
-//   }
-// }
-
-// @media (max-width: 768px) {
-//   .col-sm-12 {
-//     flex: 0 0 100%;
-//     max-width: 100%;
-//   }
-// }
-
-// @media (max-width: 576px) {
-//   .col-xs-12 {
-//     flex: 0 0 100%;
-//     max-width: 100%;
-//   }
-// }
-
-// .field-container {
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 15px;
-//   flex-wrap: wrap;
-// }
-
-// .field-serial-no {
-//   width: 30px;
-//   text-align: center;
-//   margin-right: 15px;
-// }
-
-// .entity-form-field {
-//   flex-grow: 1;
-// }
-
-// .big-text-input input {
-//   font-size: 1.25rem;
-// }
