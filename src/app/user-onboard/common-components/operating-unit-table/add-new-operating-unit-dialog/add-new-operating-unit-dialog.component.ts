@@ -1,15 +1,6 @@
 //import { OPUnitDetailsWithEntity } from './../../../../shared/menu-items/entity-to-opunit-data-interface';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButton } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { DropdownComponent } from '../../dropdown/dropdown.component';
-import { MatSelectModule } from '@angular/material/select';
-import { EmployeeCountCardComponent } from '../employee-count-card/employee-count-card.component';
-import { MatButtonModule } from '@angular/material/button';
 import { OperatingUnitTableComponent } from '../operating-unit-table.component';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -18,11 +9,9 @@ import { OriginalType } from 'src/app/shared/menu-items/original-drop-down-menu-
 
 import { TransformedType } from 'src/app/shared/menu-items/transfered-dropdown-menu-items';
 
-import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details';
 
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
-import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
 import { ApiService } from 'src/app/services/api.service';
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { EmployeeCardInterface } from 'src/app/shared/menu-items/employee-card-data-interface';
@@ -136,7 +125,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   selectedActivitiesList: number[] = [];
   selectedEntities: number[] = [this.data.entity.id];
   opUnitSaveResponse: opUnitAddResponse;
-  buttonName: string ="Add"
+  buttonName: string = 'Add';
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
@@ -159,17 +148,8 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     );
     this.transformedStates = transformOperatingUnitTypes(this.data.states);
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList);
-    console.log('trans op unit types', this.transformedDataOperatingUnits);
-    //console.log('the op unit coming in modal',this.data.entity.operatingUnit)
-    //this.selectedEntities =  this.data.entity.id
-    // console.log("filtered Activities List",this.filteredActivitiesList)
-    //console.log('the entity is',this.data.entity)
-
-    // if (this.data.opUnitPosition !== 0){
-    // console.log('the opunit position is',this.getOpUnitDetailsForEdit(this.data.opUnitPosition))
-    // this.editOpUnitDataDetails = this.getOpUnitDetailsForEdit(this.data.opUnitPosition)
-
-    // }
+    //console.log('trans op unit types', this.transformedDataOperatingUnits);
+   
     const savedindustryActivities =
       this.encryptStorage.getItem('industryActivities');
     this.industryActivityList = savedindustryActivities;
@@ -225,22 +205,9 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       ];
       this.editingnoOfApprentice = this.noOfApprentice;
       this.editingnoOfChild = this.noOfChild;
-      this.buttonName = "Update"
+      this.buttonName = 'Update';
     }
   }
-
-  // addOpUnit() {
-  //   this.addNewOpUnit();
-  //   this.data.entityTable.fetchOpUnitList();
-  //   // this.snackbar.showSuccess('Sucessfully added Operating Unit');
-  //   this.dialogRef.close();
-  // }
-  // addOpUnit() {
-  //   this.addNewOpUnit();
-  //   this.data.entityTable.fetchOpUnitList();
-  //   // this.snackbar.showSuccess('Sucessfully added Operating Unit');
-  //   this.dialogRef.close();
-  // }
 
   async addOpUnit() {
     try {
@@ -251,7 +218,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       console.error('Error adding operating unit:', error);
     }
   }
-  
 
   findOperatingUnitTypeName(id: number): string {
     const operatingUnitType = this.data.operatingUnitTypes.find(
@@ -347,48 +313,11 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     });
   }
 
-  // addNewOpUnit() {
-  //   const id = this.data.opUnitPosition === 0 ? null : this.data.opUnitPosition;
-  //   const payload = {
-  //     id: id,
-  //     name: this.operatingUnitName,
-  //     company: [406],
-  //     entities: this.selectedEntities,
-  //     operatingUnitType: this.operatingUnitType,
-  //     state: 36,
-  //     stateSearch: null,
-  //     activities: this.selectedActivitiesList,
-  //     activitySearch: null,
-  //     locatedAt: this.zone,
-  //     ownership: this.ownership,
-  //     noOfDeMale: this.noOfDeMale,
-  //     noOfDeFemale: this.noOfDeFemale,
-  //     noOfClMale: this.noOfClMale,
-  //     noOfClFemale: this.noOfClFemale,
-  //     noOfIsmMale: this.noOfIsmMale,
-  //     noOfIsmFemale: this.noOfIsmFemale,
-  //     noOfApprentice: this.noOfApprentice,
-  //     noOfChild: this.noOfChild,
-  //   };
-
-  //   //console.log('the op payload',payload)
-  //   try {
-  //     this.apiService.postCreateOperatingUnit(payload).subscribe((response) => {
-  //       const entityResponse = response;
-  //       this.opUnitSaveResponse = response.data;
-  //       const msg=id ?'Operating Unit successfully updated.':'Operating Unit successfully added.'
-  //       this.snackbar.showSuccess(msg);
-     
-  //     });
-  //   } catch (error) {
-  //     this.snackbar.showError(
-  //       'Some error occurred while fetching entity list.'
-  //     );
-  //   }
-  // }
+  
   addNewOpUnit(): Promise<void> {
     return new Promise((resolve, reject) => {
-      const id = this.data.opUnitPosition === 0 ? null : this.data.opUnitPosition;
+      const id =
+        this.data.opUnitPosition === 0 ? null : this.data.opUnitPosition;
       const payload = {
         id: id,
         name: this.operatingUnitName,
@@ -410,22 +339,26 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
         noOfApprentice: this.noOfApprentice,
         noOfChild: this.noOfChild,
       };
-  
+
       this.apiService.postCreateOperatingUnit(payload).subscribe({
         next: (response) => {
           this.opUnitSaveResponse = response.data;
-          const msg = id ? 'Operating Unit successfully updated.' : 'Operating Unit successfully added.';
+          const msg = id
+            ? 'Operating Unit successfully updated.'
+            : 'Operating Unit successfully added.';
           this.snackbar.showSuccess(msg);
           resolve();
         },
         error: (error) => {
-          this.snackbar.showError('Some error occurred while fetching entity list.');
+          this.snackbar.showError(
+            'Some error occurred while fetching entity list.'
+          );
           reject(error);
-        }
+        },
       });
     });
   }
-  
+
   getOpUnitDetailsForEdit(id: number): OPUnitDetailsWithEntity {
     const opUnit = this.data.entity.operatingUnit.find(
       (item) => item.id === id

@@ -54,8 +54,9 @@
     <app-entity
       [countryList]="countryList"
       (selectedEntityEmitter)="handleSelectedEntity($event)"
-      (selectedEntityEmitter1)="handleSelectedEntity1($event)"
+      
       (handleTableDataLoadingFromEntity)="handleEntityLoadingState($event)"
+      (isDotsClicked)='handleIsDotsClicked($event)'
     >
     </app-entity>
   </div>
@@ -64,7 +65,7 @@
     <app-operating-unit
     (isBackClicked)="handleBackClick($event)"
     [entity]="selectedEntity"
-    [isDotsCliscked]="isDotsCliscked"
+    [isDotsCliscked]="isDotsClicked"
     (handleTableDataLoadingFromOperatingUnit)="handleEntityLoadingState($event)"
     ></app-operating-unit>
   </div>

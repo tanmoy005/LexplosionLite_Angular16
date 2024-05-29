@@ -64,6 +64,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   @Output() entitySelected = new EventEmitter<EntityDataType>(); 
   @Output() entitySelected1 = new EventEmitter<EntityDataType>();
   @Output() entityTableDataLoading = new EventEmitter<boolean>();
+  @Output() isDotsButtonClicked = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     // this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
@@ -104,6 +105,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   };
   
   isTableEntitiesLoading:boolean=false;
+  //isDotsButtonClicked : boolean
 
   fetchEntityList() {
     
@@ -239,13 +241,19 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     });
   }
 
-  navigateToAddOpUnit(entity: EntityDataType) {
-    this.entitySelected.emit(entity);
-    // console.log('dots are clicked');
+  navigateToAddOpUnit(entity: EntityDataType, action: string) {
+    if (action === 'Add Operating Unit'){
+      this.entitySelected.emit(entity);
+      this.isDotsButtonClicked.emit(true)
+    }
+    else if (action === 'Add Operating Unit from Icon'){
+      this.entitySelected.emit(entity)
+      this.isDotsButtonClicked.emit(false)
+    }
   }
-  navigateToAddOpUnit1(entity: EntityDataType) {
-    this.entitySelected1.emit(entity);
-  }
+  // navigateToAddOpUnit1(entity: EntityDataType) {
+  //   this.entitySelected1.emit(entity);
+  // }
 
   // entityToSend: any = {};
   entityToSend: EntityDataType ;
@@ -271,9 +279,29 @@ export class EntityTableComponent implements OnInit, OnDestroy{
           });
 
           //console.log("The sent entity in OP-Unit",this.entityToSend);
-          this.navigateToAddOpUnit(this.entityToSend);
+          this.navigateToAddOpUnit(this.entityToSend,'Add Operating Unit');
         }
         break
+
+        case 'Add Operating Unit from Icon':
+          var entity = this.dataSource.find((entity) => entity.position === position);
+          if(entity===undefined){
+            this.snackbar.showError("Some error occurred while adding Operating Unit.")
+          }
+          else { 
+            this.entityToSend = entity;
+            
+            this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
+              return {
+                id: entity.id,
+                name: entity.name
+              };
+            });
+  
+            //console.log("The sent entity in OP-Unit",this.entityToSend);
+            this.navigateToAddOpUnit(this.entityToSend,"Add Operating Unit from Icon");
+          }
+          break
       case 'Edit':
         var entity = this.dataSource.find((entity) => entity.position === position);
         //console.log(entity);
@@ -292,36 +320,36 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     }
   }
 
-  openEntityMenuDialog1(action: string, position: number) {
-    switch (action) {
-      case 'Delete':
-        this.removeEntityData(position);
-        break;
+  // openEntityMenuDialog1(action: string, position: number) {
+  //   switch (action) {
+  //     case 'Delete':
+  //       this.removeEntityData(position);
+  //       break;
       
-     case 'Add Operating Unit':
-        var entity = this.dataSource.find((entity) => entity.position === position);
-        if(entity===undefined){
-          this.snackbar.showError("Some error occurred while adding Operating Unit.")
-        }
-        else { 
-          this.entityToSend = entity;
-          this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
-            return {
-              id: entity.id,
-              name: entity.name
-            };
-          });
-          //console.log("The sent entity in OP-Unit",this.entityToSend);
-          this.navigateToAddOpUnit1(this.entityToSend);
-        }
-        break
+  //    case 'Add Operating Unit':
+  //       var entity = this.dataSource.find((entity) => entity.position === position);
+  //       if(entity===undefined){
+  //         this.snackbar.showError("Some error occurred while adding Operating Unit.")
+  //       }
+  //       else { 
+  //         this.entityToSend = entity;
+  //         this.entityToSend['entityList'] = this.dataSource.map((entity: EntityInterfaces.BusinessDetails) => {
+  //           return {
+  //             id: entity.id,
+  //             name: entity.name
+  //           };
+  //         });
+  //         //console.log("The sent entity in OP-Unit",this.entityToSend);
+  //         this.navigateToAddOpUnit1(this.entityToSend);
+  //       }
+  //       break
 
-      case 'Edit':
-        break
-      default:
-        break;
-    }
-  }
+  //     case 'Edit':
+  //       break
+  //     default:
+  //       break;
+  //   }
+  // }
 
   openCountryDialog(){
     console.log("Open Country dialog clicked!");
