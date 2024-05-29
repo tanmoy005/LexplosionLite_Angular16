@@ -37,6 +37,8 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
   return maxId;
 }
 
+
+
 /**
  * @title Adding and removing data when using an array-based datasource.
  */
@@ -92,15 +94,43 @@ export class OperatingUnitTableComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+  addGrandChildren(operatingUnitName:string){
+    const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
+      (children) => children.id === this.entity.childrenID
+    );
+
+    if (childrenToAddGrandChildrenTo !== undefined) {
+      // console.log("Grand Children", childrenToAddGrandChildrenTo);
+      // const grandChildrenAddingIndex = treeDataitem.children?.indexOf(
+      //   childrenToAddGrandChildrenTo
+      // );
+      const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
+      const entity = {
+        id: maxId + 1,
+        // label: 'Grandchild Node ' + String(maxId + 1),
+        label: operatingUnitName,
+        children: [],
+      };
+      var operatingUnitExists = false;
+      childrenToAddGrandChildrenTo.children?.forEach((existingOperatingUnit)=>{
+        if(existingOperatingUnit.label === operatingUnitName){
+          operatingUnitExists = true;
+        }
+      })
+      if(operatingUnitExists === false){
+        childrenToAddGrandChildrenTo?.children?.push(entity);
+     }
+    }
+  }
+
 
   fetchOpUnitList() {
     const payLoad = { entity: this.entity.id };
     this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
       console.log('fetched op unit values', response);
-
       this.opUnitDataFromApi = response.data;
-
       const currentCount = 0;
+
       const opResponseData: OPUnitDetails[] = response.data.map(
         (opUnits: FetchOPUnits, index: number) => ({
           opID: opUnits.id,
@@ -125,8 +155,13 @@ export class OperatingUnitTableComponent implements OnInit {
             opUnits.noOfClFemale +
             opUnits.noOfChild +
             opUnits.noOfApprentice,
-        })
+        }
+      )
       );
+
+      opResponseData.forEach((operatingUnit)=>{
+        this.addGrandChildren(operatingUnit.name)
+      })
 
       console.log('the transformed op unit datas', opResponseData);
       this.dataSource = opResponseData;
@@ -155,12 +190,9 @@ export class OperatingUnitTableComponent implements OnInit {
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
 
   addOpUnitData() {
-    this.fetchOpUnitList();
-
-    
+    this.fetchOpUnitList(); 
     console.log('the new op unit data', this.dataSource);
    
-
     const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
       (children) => children.id === this.entity.childrenID
     );
@@ -176,7 +208,6 @@ export class OperatingUnitTableComponent implements OnInit {
         label: 'Grandchild Node ' + String(maxId + 1),
         children: [],
       };
-
       childrenToAddGrandChildrenTo?.children?.push(entity);
     }
 

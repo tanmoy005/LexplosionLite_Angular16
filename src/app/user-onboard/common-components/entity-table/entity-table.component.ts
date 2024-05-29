@@ -19,6 +19,8 @@ import { FetchEntityDetails } from 'src/app/shared/menu-items/fetch-entity-detai
 import {Industries} from 'src/app/shared/menu-items/fetch-entity-details-interface';
 import {LawCategories} from 'src/app/shared/menu-items/fetch-entity-details-interface';
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] =[];
 //const ELEMENT_DATA:EntityDataType[] =[];
@@ -30,6 +32,23 @@ function getMaxIdFromChildren(node: TreeNode): number {
 
   if (rootChildren && rootChildren.length > 0) {
     maxId = Math.max(...rootChildren.map(child => child.id));
+  }
+  return maxId;
+}
+function getCompanyName() {
+  const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  const { user } = encryptStorage.getItem('login-details');
+  const userCompanies = user.companies;
+  const userCompanyName = userCompanies.length > 0 ? userCompanies[0]['name'] : '';
+  return userCompanyName;
+}
+
+function getMaxIdFromGrandchildren(children: TreeNode): number {
+  const rootChildren = children.children;
+
+  let maxId = 0;
+  if (rootChildren && rootChildren.length > 0) {
+    maxId = Math.max(...rootChildren.map((child) => child.id));
   }
   return maxId;
 }
@@ -107,10 +126,39 @@ export class EntityTableComponent implements OnInit, OnDestroy{
   isTableEntitiesLoading:boolean=false;
   //isDotsButtonClicked : boolean
 
+  
+
+
+  fetchOperatingUnitChildren(entityResponseReceived:FetchEntityDetails, entityReceived:EntityInterfaces.BusinessDetails){  
+    
+    //console.log("RECEIVED entityResponse, entity", entityResponseReceived, entityReceived);
+    //console.log("Children ID", entityReceived.childrenID);
+
+    const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
+      (children) => children.id === entityReceived.childrenID
+    );
+
+    console.log("Child for adding ", childrenToAddGrandChildrenTo);
+    if (childrenToAddGrandChildrenTo !== undefined) {
+      // console.log("Grand Children", childrenToAddGrandChildrenTo);
+      const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
+      entityResponseReceived.operatingUnits.forEach((operatingUnit)=>{
+        const opUnit = {
+          id: maxId + 1,
+          // label: 'Grandchild Node ' + String(maxId + 1),
+          label: operatingUnit.name,
+          children: [],
+        };
+        childrenToAddGrandChildrenTo?.children?.push(opUnit);
+      })
+    }
+  }
+
+
   fetchEntityList() {
     
     treeDataitem.id = 1;
-    treeDataitem.label = 'Root Node'
+    treeDataitem.label = getCompanyName();
     treeDataitem.children = []
 
     this.entityTableDataLoading.emit(true);
@@ -118,8 +166,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     try {
       this.apiService.postFetchEntityList(entityFetchPayload).subscribe((response) => {
         const entityList = response.data;
-
-        // console.log('entity data coming from api',response.data)
+        console.log('entity data coming from api',response.data)
         // let position = 1;
         //let childrenID = 0;
         //console.log('Entity fetch response', entityList);
@@ -154,6 +201,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
           };
           this.dataSource.push(entityRow);
           treeDataitem?.children?.push(this.entityChild);
+          this.fetchOperatingUnitChildren(entity,entityRow);
           // position++;
         });
         this.table.renderRows(); // Ensure this is a MatTable instance
