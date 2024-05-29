@@ -5,7 +5,7 @@
   position: relative;
   padding: 0;
   white-space: nowrap;
-  margin: 0 0 1em;
+  margin: 0 0 0.28em;
 }
 
 .tree li {
@@ -56,12 +56,20 @@
   border-radius: 5px 0 0 0;
 }
 
-.nodeSpan {
-  margin: 15px;
-  display: inline-block;
-  background: #F0F0F0;
-  border-radius: 5px;
-  padding: 4px;
-  border-bottom: 1px dotted #ccc;
-}
+// .nodeSpan {
+//   margin: 15px;
+//   display: inline-block;
+//   background: #F0F0F0;
+//   border-radius: 5px;
+//   padding: 4px;
+//   border-bottom: 1px dotted #ccc;
+// }
 
+.nodeSpan{
+  margin: 8px;
+    display: inline-block;
+    background: #F0F0F0;
+    border-radius: 5px;
+    padding: 4px;
+    border-bottom: 1px dotted #ccc;
+}
