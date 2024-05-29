@@ -8,7 +8,7 @@ export interface EntityDataType{
         industryLabel: string,
         entityType: number,
         entityTypeLabel:string,
-        emailID: string,
+        // emailID: string,
         laws: string,
         lawModules: number[],
         lawModulesLabel: string[],

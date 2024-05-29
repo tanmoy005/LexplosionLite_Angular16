@@ -30,7 +30,7 @@ export interface BusinessDetails {
   industryLabel:string;
   entityType: number;
   entityTypeLabel: string;
-  emailID: string;
+  // emailID: string;
   laws: string;
   lawModules: number[],
   lawModulesLabel:string[],
@@ -76,7 +76,7 @@ export interface BusinessDetails {
   }
 
 
-export const EntityColumns = ['id', 'name', 'country', 'industry', 'entityType', 'emailID', 'laws', 'operatingUnit', 'actions'];
+export const EntityColumns = ['id', 'name', 'country', 'industry', 'entityType', 'laws', 'operatingUnit', 'actions'];
 
 
 // export const EntityData:BusinessDetails[] =  [

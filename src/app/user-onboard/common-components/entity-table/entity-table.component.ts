@@ -113,7 +113,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
     industryLabel: '',
     entityType: 0,
     entityTypeLabel: '',
-    emailID: '',
+    // emailID: '',
     laws: '',
     lawModules: [],
     lawModulesLabel: [],
@@ -194,7 +194,7 @@ export class EntityTableComponent implements OnInit, OnDestroy{
             operatingUnit: entity.operatingUnits,
             country: 1,
             countryLabel: "India",
-            emailID: '',
+            // emailID: '',
             laws: '',
             actions: '',
             childrenID: this.entityChild.id
