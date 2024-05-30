@@ -1,7 +1,4 @@
-import { Component, ViewChild, Inject } from '@angular/core';
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatButtonModule } from "@angular/material/button";
-import { MatListModule } from '@angular/material/list';
+import { Component } from '@angular/core';
 
 
 @Component({

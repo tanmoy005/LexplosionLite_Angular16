@@ -74,7 +74,7 @@
         <button
         [matBadge]='element.totalEmployeeCount'
         matBadgePosition="below after"
-          (click)="openLawDialog()"
+          
           class="invisible-border-button"
         >
           <img src="./assets/images/icons/Vector_Employee.png" />
@@ -90,7 +90,7 @@
         <button
         [matBadge]='element.activities.length'
         matBadgePosition="below after"
-          (click)="openLawDialog()"
+          
           class="invisible-border-button"
         >
           <img src="./assets/images/icons/activities.png" />
@@ -109,7 +109,7 @@
 
         <button
          
-          (click)="openLawDialog()"
+          (click)="openLawDialog(element.opID)"
           class="invisible-border-button"
         >
           <img src="./assets/images/icons/Vectoroperating_unit_Icon.png" />

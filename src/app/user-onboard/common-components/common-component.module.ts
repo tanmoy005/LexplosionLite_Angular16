@@ -23,6 +23,7 @@ import { MaterialModule } from 'src/app/material-module';
 import { FormsModule } from '@angular/forms';
 import { CompanyStructureCardComponent } from './company-structure-card/company-structure-card.component';
 import { ActivitiesListComponent } from './activities-list/activities-list.component';
+import { OpUnitLawsDialogComponent } from './operating-unit-table/op-unit-laws-dialog/op-unit-laws-dialog.component';
 
 
 
@@ -49,7 +50,8 @@ import { ActivitiesListComponent } from './activities-list/activities-list.compo
     TermsConditionCardComponent,
     TreeStructureComponent,
     CompanyStructureCardComponent,
-    ActivitiesListComponent
+    ActivitiesListComponent,
+    OpUnitLawsDialogComponent
   ],
   imports: [
     CommonModule,

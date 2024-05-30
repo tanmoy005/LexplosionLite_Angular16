@@ -57,7 +57,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     SharedModule,
     RouterModule.forRoot(AppRoutes),
     AppSidebarComponent,
-    UserOnboardModule,
+    // UserOnboardModule,
     MatIconModule,
     MatSnackBarModule,
     MatMenuModule,

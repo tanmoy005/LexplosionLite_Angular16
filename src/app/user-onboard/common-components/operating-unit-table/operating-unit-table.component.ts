@@ -12,7 +12,7 @@ import { ApiService } from '../../../services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AddNewOperatingUnitDialogComponent } from './add-new-operating-unit-dialog/add-new-operating-unit-dialog.component';
-
+import { OpUnitLawsDialogComponent } from './op-unit-laws-dialog/op-unit-laws-dialog.component';
 import { OPUnitDetails } from 'src/app/shared/menu-items/operating-unit-details';
 
 import { DialogService } from 'src/app/services/Dialog.service';
@@ -92,6 +92,10 @@ export class OperatingUnitTableComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  fetchApplicableLaws(){
+    
   }
 
   addGrandChildren(operatingUnitName:string){
@@ -281,8 +285,12 @@ export class OperatingUnitTableComponent implements OnInit {
     return opUnit;
   }
 
-  openLawDialog() {
-    const dialogRef = this.dialog.open(ViewLawsDialog);
+  openLawDialog(opID: number) {
+    const dialogRef = this.dialog.open(OpUnitLawsDialogComponent,{
+      // data:{
+
+      // }
+    });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });

@@ -1,3 +1,4 @@
+import { UserOnboardModule } from './user-onboard/user-onboard.module';
 import { Routes } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
@@ -29,7 +30,8 @@ export const AppRoutes: Routes = [
       {
         path: '',
         loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
-      }
+      },
+      
     ]
   },
   {
@@ -52,6 +54,10 @@ export const AppRoutes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: '',
+        loadChildren: () => import('./user-onboard/user-onboard.module').then(m => m.UserOnboardModule)
       }
     ]
   },
