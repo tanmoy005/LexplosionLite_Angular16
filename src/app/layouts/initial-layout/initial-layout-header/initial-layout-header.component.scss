@@ -9,6 +9,7 @@
 
         img {
             width: 100%;
+            min-width: 87.16px;
         }
     }
 
@@ -23,6 +24,7 @@
             // margin: 0 68px;
             cursor: pointer;
             font-family: 'Barlow';
+            text-wrap: nowrap;
         }
 
         .selected {

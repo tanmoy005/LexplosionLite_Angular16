@@ -31,10 +31,10 @@ export const AppRoutes: Routes = [
         path: '',
         loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
       },
-      {
-        path: '',
-        loadChildren: () => import('./user-onboard/user-onboard.module').then(m => m.UserOnboardModule)
-      }
+      // {
+      //   path: '',
+      //   loadChildren: () => import('./user-onboard/user-onboard.module').then(m => m.UserOnboardModule)
+      // }
       
     ]
   },
