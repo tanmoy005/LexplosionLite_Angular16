@@ -8,15 +8,15 @@ export interface TreeNode {
   children?: TreeNode[];
 }
 
-const encryptStorage = new EncryptStorage(environment.localStorageKey);
-const { user } = encryptStorage.getItem('login-details');
-const userCompanies = user.companies;
-const userCompanyName = userCompanies.length > 0 ? userCompanies[0]['name'] : '';
+// const encryptStorage = new EncryptStorage(environment.localStorageKey);
+// const { user } = encryptStorage.getItem('login-details');
+// const userCompanies = user.companies;
+// const userCompanyName = userCompanies.length > 0 ? userCompanies[0]['name'] : '';
 
 export const treeDataitem :TreeNode = {
   id: 1,
-  // label: 'Root Node',
-  label:  userCompanyName,
+  label: 'Root Node',
+  //label:  userCompanyName,
   children: []
 };
 // MenuDataItems: TreeNode =this.treeData;
