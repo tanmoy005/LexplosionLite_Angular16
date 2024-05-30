@@ -19,7 +19,7 @@
 }
 
 .text_24_400_dark {
-    @include text-model(var.$font-24, 400, var.$font-color-dark, Barlow, 40px);
+    @include text-model(var.$font-24, 400, var.$font-color-dark, Barlow, 38px);
 }
 
 .text_24_400_blue {
@@ -29,7 +29,7 @@
 .text_56_800 {
     // font-size: $font-56;
     text-transform: uppercase;
-    @include text-model(var.$font-56, 800, var.$font-color-light, Barlow, 78.79px);
+    @include text-model(var.$font-56, 800, var.$font-color-light, Barlow, 50.79px);
     // font-family: 'Open Sans';
 }
 
@@ -132,7 +132,15 @@
 
 
 @media (min-width: 1024px) {
-
+    .text_56_800 {
+        // font-size: $font-56;
+        text-transform: uppercase;
+        @include text-model(var.$font-56, 800, var.$font-color-light, Barlow, 78.79px);
+        // font-family: 'Open Sans';
+    }
+    .text_24_400_dark {
+        @include text-model(var.$font-24, 400, var.$font-color-dark, Barlow, 40px);
+    }
     .text_12_500_gray_1200, label.mdc-label {
         // todo change the class name like this one, add color code
         @include text-model(var.$font-12, 500, var.$gray-1200, Barlow, 14.4px);

@@ -1,7 +1,7 @@
 /* .stepper-helper-text-container{
     margin: 0px;
 } */
-.lets-get-started-layout{
+/* .lets-get-started-layout{
     width: 181px;
 height: 29px;
 top: 240px;
@@ -45,5 +45,49 @@ color:rgba(88, 89, 91, 1);
     align-items: center;
     justify-content: space-between;
     padding: 0px; 
-  }
+  } */
+
+  .lets-get-started-layout {
+    flex: 1;
+    min-width: 0; 
+    margin-right: 10px; 
+}
+
+.lets-get-started-layout-typography {
+    font-family: Barlow;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28.8px;
+    text-align: left;
+    color: #786ACD;
+    white-space: nowrap;
+    overflow: hidden;  
+    text-overflow: ellipsis; 
+}
+
+.step-no-layout {
+    flex: 0 0 auto;
+    min-width: 55px;
+    height: 14px;
+}
+
+.step-no-typography {
+    font-family: Barlow;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.4px;
+    text-align: left;
+    color: rgba(88, 89, 91, 1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
   

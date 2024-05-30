@@ -11,6 +11,17 @@
         </div>
     </div>
 
+    <div class="row app-helpertext-section">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <app-stepper-helper-text
+            [helperText]="'Select the subscription you want to use!'"
+            [stepText]="'Step 2 of 5'"
+            style="width: 100%"
+          ></app-stepper-helper-text>
+        </div>
+      </div>
+
+
 
     <div class="col-lg-12 col-sm-12 col-md-12 grid-container">
         <app-feature-header class="grid-item">
@@ -26,7 +37,21 @@
         <p style="margin:50px; text-align: center;">Features to go here...</p>
         </app-card-layout>
     </div>
+
+   
+        <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 25px">
+            <button mat-stroked-button (click)="navigateToLawsPage($event)">
+              <mat-icon>keyboard_arrow_right</mat-icon>Next
+            </button>
+          </div>
+
     </div>
+
+   
+
+   
+
+
 
     <!-- <app-features></app-features>
     <mat-card>

@@ -300,34 +300,53 @@ input.mdc-radio__native-control:focus,
     text-align: right;
 }
 
-
-.app-dropdown {
-    .mat-mdc-text-field-wrapper {
-        background-color: $blue-light-200 !important;
-        border-radius: 3px !important;
-        border: 1px solid $blue-light-200 !important;
-        height: 40px !important;
-        align-items: center;
+@mixin app-dropdown($height:40px){
+    .app-dropdown {
+        .mat-mdc-text-field-wrapper {
+            background-color: $blue-light-200 !important;
+            border-radius: 3px !important;
+            border: 1px solid $blue-light-200 !important;
+            height: $height !important;
+            align-items: center;
+        }
+    
+        // .mat-mdc-select-min-line {
+        //     color: $gray-1000 !important;
+        //     @include text-model($font-12, 400, $gray-1000, Barlow, 20px);
+        // }
+    
+        .mat-mdc-select-arrow svg {
+            top: -137%;
+        }
+    
+        .mat-mdc-form-field-infix {
+            padding: 0 !important;
+            min-height: 0;
+        }
+    
+        // mat-mdc-text-field-wrapper mdc-text-field ng-tns-c3899553609-60 mdc-text-field--outlined
+    
     }
-
-    // .mat-mdc-select-min-line {
-    //     color: $gray-1000 !important;
-    //     @include text-model($font-12, 400, $gray-1000, Barlow, 20px);
-    // }
-
-    .mat-mdc-select-arrow svg {
-        top: -137%;
+}
+@mixin dropdown-label($mb:0px){
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: $mb;
+}
+.bg-dropdown{
+    @include app-dropdown(56px);
+    .dropdown-label{
+       @include dropdown-label();
+        // todo set the svg ofdropdown at right position
     }
-
-    .mat-mdc-form-field-infix {
-        padding: 0 !important;
-        min-height: 0;
-    }
-
-    // mat-mdc-text-field-wrapper mdc-text-field ng-tns-c3899553609-60 mdc-text-field--outlined
-
+}
+.dropdown-label{
+    @include dropdown-label(20px);
+    // todo set the svg ofdropdown at right position
 }
 
+@include app-dropdown();
 .conuntry-dropdown {
     .mat-mdc-text-field-wrapper {
         background-color: $blue-light-200 !important;

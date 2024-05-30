@@ -10,4 +10,5 @@ export class CardLayoutComponent {
   @Input() cardHeaderTitle: string;
   @Input() cardHeaderImage: string;
   @Input() shade: string;
+  @Input() headerRequired: boolean = true;
 }
