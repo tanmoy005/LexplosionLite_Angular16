@@ -123,128 +123,8 @@
         </div>
       </div>
 
-      <!-- <app-dropdown [label]="'Select Entity'" [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"
-        (selectedValueChange)="onSelectedValueChanged($event,'activity')">
-      </app-dropdown> -->
-      <!-- <mat-form-field appearance="outline" style="margin-right: 10px;">
-        <mat-label>Entity</mat-label>
-        <input matInput name="Entity" [(ngModel)]="data.entityName" />
-      </mat-form-field>
-
-      <div class="example-full-width d-flex">
-        <mat-form-field appearance="outline" style="margin-right: 10px">
-          <mat-label>Operating Unit Name</mat-label>
-          <input
-            matInput
-            name="operatingUnitName"
-            [(ngModel)]="operatingUnitName"
-            required
-          />
-        </mat-form-field>
-
-        <app-dropdown
-          [label]="'Operating Unit Type'"
-          [options]="transformedDataOperatingUnits"
-          [IsMultiSelection]="false"
-          [IsRequired]="true"
-          (selectedValueChange)="
-            onSelectedValueChanged($event, 'operatingUnitType')
-          "
-        >
-        </app-dropdown>
-      </div>
-
-      <div class="example-full-width d-flex">
-        <app-dropdown
-          [label]="'States'"
-          [options]="transformedStates"
-          [IsMultiSelection]="false"
-          [IsRequired]="true"
-          (selectedValueChange)="onSelectedValueChanged($event, 'states')"
-        >
-        </app-dropdown>
-
-        <app-dropdown
-          [label]="'Activities'"
-          [options]="BusinessOptions"
-          [IsMultiSelection]="false"
-          [IsRequired]="true"
-          (selectedValueChange)="onSelectedValueChanged($event, 'activity')"
-        >
-        </app-dropdown>
-      </div>
-      <div class="example-full-width d-flex">
-        <app-dropdown
-          [label]="'Located At'"
-          [options]="BusinessOptions"
-          [IsMultiSelection]="false"
-          [IsRequired]="true"
-          (selectedValueChange)="onSelectedValueChanged($event, 'locatedAt')"
-        >
-        </app-dropdown>
-
-        <app-dropdown
-          [label]="'Ownarship'"
-          [options]="BusinessOptions"
-          [IsMultiSelection]="false"
-          [IsRequired]="true"
-          (selectedValueChange)="onSelectedValueChanged($event, 'ownership')"
-        >
-        </app-dropdown>
-
-      </div> -->
     </form>
-    <div class=" example-full-width d-flex">
-      <!-- <div class="col-lg-8">
-        <mat-card>
-          <mat-card-content>
-            <form #entityForm="ngForm">
-              <mat-form-field appearance="outline" style="margin-right: 10px;">
-                <mat-label>Entity</mat-label>
-                <input matInput name="Entity" [(ngModel)]="data.entityName">
-              </mat-form-field>
 
-              <div class=" example-full-width d-flex">
-
-                <mat-form-field appearance="outline" style="margin-right: 10px;">
-                  <mat-label>Operating Unit Name</mat-label>
-                  <input matInput name="operatingUnitName" [(ngModel)]="operatingUnitName" required>
-                </mat-form-field>
-
-                <app-dropdown [label]="'Operating Unit Type'" [options]="transformedDataOperatingUnits"
-                  [IsMultiSelection]="false" [IsRequired]="true"
-                  (selectedValueChange)="onSelectedValueChanged($event,'operatingUnitType')">
-                </app-dropdown>
-
-
-              </div>
-
-              <div class=" example-full-width d-flex">
-                <app-dropdown [label]="'States'" [options]="transformedStates" [IsMultiSelection]="false"
-                  [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'states')">
-                </app-dropdown>
-
-                <app-dropdown [label]="'Activities'" [options]="BusinessOptions" [IsMultiSelection]="false"
-                  [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'activity')">
-                </app-dropdown>
-
-              </div>
-              <div class=" example-full-width d-flex">
-                <app-dropdown [label]="'Located At'" [options]="BusinessOptions" [IsMultiSelection]="false"
-                  [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'locatedAt')">
-                </app-dropdown>
-
-                <app-dropdown [label]="'Ownarship'" [options]="BusinessOptions" [IsMultiSelection]="false"
-                  [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'ownership')">
-                </app-dropdown>
-
-              </div>
-            </form>
-          </mat-card-content>
-        </mat-card>
-      </div> -->
-      
-    </div>
     <div class="col-lg-12">
       <app-employee-count-card (employeeDataChange)="employeeCountData($event)"
         (apprenticesChange)="apprenticesData($event)"
@@ -256,11 +136,10 @@
       </app-employee-count-card>
     </div>
   </mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-raised-button color="warn" (click)="addOpUnit()"
-    >{{buttonName}}</button>
-    <button mat-raised-button color="warn" (click)="CloseDialog()">
-      Close
+  <mat-dialog-actions class="mat-dialog-actions-container">
+    <button mat-button class="btn-blue-outline-md"  (click)="CloseDialog()">
+      Back
     </button>
+    <button mat-button  class="btn-primary-md" (click)="addOpUnit()">{{buttonName}}</button>
   </mat-dialog-actions>
 </app-dialog-layout>
