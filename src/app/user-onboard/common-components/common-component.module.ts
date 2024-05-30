@@ -72,7 +72,8 @@ import { OpUnitLawsDialogComponent } from './operating-unit-table/op-unit-laws-d
     DropdownComponent,
     CompanyStructureCardComponent,
     LawsTableComponent,
-    ActivitiesListComponent
+    ActivitiesListComponent,
+    PaymentSectionComponent
   ]
 })
 export class CommonComponentModule { }

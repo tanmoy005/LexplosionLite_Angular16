@@ -10,6 +10,7 @@ import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-detai
 import { EntityComponent } from './entity/entity.component';
 import { SubscriptionDetailsPageComponent } from './subscription-details-page/subscription-details-page.component';
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
+import { GoLivePageComponent } from './go-live-page/go-live-page.component';
 
 export const UserOnboardRoutes: Routes = [
   {
@@ -47,6 +48,10 @@ export const UserOnboardRoutes: Routes = [
   {
     path:'operatingunit',
     component:OperatingUnitComponent
+  },
+  {
+    path:'golive',
+    component: GoLivePageComponent
   }
 ];
 

@@ -1,0 +1,27 @@
+.payment-section-heading{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.subscription-unit-card{
+    margin-bottom: 15px;
+}
+
+.payment-details-columns{
+    margin-bottom: 7px;
+}
+
+.payment-columns-container {
+    display: flex;
+    gap: 20px; /* Adjust this value to add more or less space between items */
+}
+
+.payment-column {
+    /* Optional: additional styling for each column */
+    padding: 10px;
+    /* Other styles you may want to apply */
+}
+
+.payment-details-rows{
+    margin-bottom: 7px;
+}

@@ -518,3 +518,132 @@ input.mdc-radio__native-control:focus,
         width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
     }
 }
+
+
+.example-container table th {
+    background-color: rgba(120, 106, 205, 0.16) !important;
+    font-family: Barlow;
+   
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.4px;
+    text-align: left;
+    width: 40px;
+
+  }
+  .mdc-data-table__cell,  .mdc-data-table__header-cell {
+    padding: 5px!important;
+}
+// .example-container{
+//     table{
+//         tr{
+//             th:first-child{
+//                 width: 14px;
+//             }
+//             th:nth-child(2){
+//                 width: 100px;
+//             }
+//             th:nth-child(3){
+//                 width: 50px;
+//             }
+//             td:nth-child(2){
+//                 width:100px;
+//             }
+//             td:nth-child(3){
+//                 width:50px;
+//             }
+//         }
+//     }
+// }
+  .example-container table tr>th{
+    width: 100px;
+  }
+
+  .example-container table tr>th:first-child{
+   
+    width: 14px;
+  }
+
+  .example-container table tr>th:nth-child(2){
+    width: 50px;
+  }
+  .example-container table tr>th:nth-child(3){
+    width: 50px;
+  }
+
+  .example-container table tr>td:nth-child(2){
+    width: 50px;
+  }
+
+  .example-container table tr>td:nth-child(3){
+    width: 50px;
+  }
+
+
+  .example-container table th:nth-child(2) {
+    // text-align: center;
+  }
+
+  .mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+    background:white;
+}
+
+ 
+
+.mat-column-serialNumber {
+
+  width: 10px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
+}
+
+
+.mat-column-lawName {
+ 
+width: 20px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
+}
+
+.mat-column-applicability {
+  padding-left: 0px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
+}
+
+.mat-column-applicability {
+  padding-left: 0px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
+}
+
+.applicability-text {
+ font-size: 12px;
+ line-height: 14.4px;
+ font-weight: 400;
+ font-family: Barlow;
+}
+
+
+
+.read-with-button {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Barlow));
+  font-size: var(--mdc-typography-body2-font-size, 12px);
+  line-height: var(--mdc-typography-body2-line-height, 14.4px);
+  font-weight: var(--mdc-typography-body2-font-weight, 400);
+  letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
+  -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+  text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
+  text-decoration: underline;
+  text-transform: var(--mdc-typography-body2-text-transform, none);
+}

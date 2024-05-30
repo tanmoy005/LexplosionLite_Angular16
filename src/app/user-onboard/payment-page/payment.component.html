@@ -1,1 +1,39 @@
-<p>payment works!</p>
+<div class="container">
+
+    <app-reg-header></app-reg-header>
+    <mat-divider></mat-divider>
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-md-12">
+        <app-stepper [currentStep]="3"> </app-stepper>
+      </div>
+    </div>
+  
+    <div class="row app-helpertext-section">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <app-stepper-helper-text
+          [helperText]="'Start your Risk Compliance Journey after this step.'"
+          [stepText]="'Step 4 of 5'"
+          style="width: 100%"
+        ></app-stepper-helper-text>
+      </div>
+    </div>
+
+    <div class="row payment-section-portion">
+        <div class="col-lg-8 col-md-12 col-sm-12">
+        <app-payment-section></app-payment-section>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <button mat-fab extended class="custom-green-button" (click)="navigateToGoLivePage($event)">
+              <mat-icon>
+                  <img src="./assets/images/icons/Icons - Lex Kom LitePaymentDoneIcon.svg">
+              </mat-icon>
+              Done
+          </button>
+      </div>
+  </div>
+  
+  </div>
+
