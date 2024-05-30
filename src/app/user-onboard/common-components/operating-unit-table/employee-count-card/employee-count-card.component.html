@@ -15,6 +15,11 @@
               Females
             </p>
           </div>
+          <div class="col-2">
+            <p class="text_12_500_gray_1200 ml-16px">
+              Others
+            </p>
+          </div>
         </div>
         <div *ngFor="let header of header_list; let i = index" class="row my-4">
           <!-- <div class="col-1"></div> -->
@@ -25,19 +30,26 @@
           </div>
           <div class="col-2">
 
-            <mat-form-field class="emp_input" appearance="outline">
+            <mat-form-field class="emp_input square_input_box" appearance="outline">
               <input matInput [(ngModel)]="employeeData[i].male" name="male{{i}}" type="number"
                 (input)="onInputChange()">
             </mat-form-field>
           </div>
           <div class="col-2">
 
-            <mat-form-field class="emp_input" appearance="outline">
+            <mat-form-field class="emp_input square_input_box" appearance="outline">
               <input matInput [(ngModel)]="employeeData[i].female" name="female{{i}}" type="number"
                 (input)="onInputChange()">
             </mat-form-field>
           </div>
-          <div class="col-3"></div>
+          <div class="col-2">
+
+            <mat-form-field class="emp_input square_input_box" appearance="outline">
+              <input matInput [(ngModel)]="employeeData[i].female" name="female{{i}}" type="number"
+                (input)="onInputChange()">
+            </mat-form-field>
+          </div>
+          <div class="col-1"></div>
         </div>
 
         <div class="row my-4">
@@ -61,18 +73,19 @@
           </div>
           <div class="col-2">
 
-            <mat-form-field class="emp_input" appearance="outline">
+            <mat-form-field class="emp_input square_input_box" appearance="outline">
               <input matInput name="male" type="number" [(ngModel)]="apprenticesCount" (input)="emitApprenticesCount()">
             </mat-form-field>
           </div>
           <div class="col-2">
 
-            <mat-form-field class="emp_input" appearance="outline">
+            <mat-form-field class="emp_input square_input_box" appearance="outline">
               <input matInput name="female" type="number" [(ngModel)]="childLaboursCount"
                 (input)="emitChildLaboursCount()">
             </mat-form-field>
           </div>
           <div class="col-3"></div>
         </div>
+        <div class="divider"></div>
       </div>
     </form>

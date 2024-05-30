@@ -57,7 +57,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     { value: 'option3', label: 'Option 3' },
   ];
   dialogHeaderTitle: string = 'Add New Operating Unit';
-  dialogHeaderImage: string = '';
+  dialogHeaderImage: string = 'assets/images/Business.png';
   color: string = '#fff';
 
   transformedDataOperatingUnits: TransformedType[] = [];

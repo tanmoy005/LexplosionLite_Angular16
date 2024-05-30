@@ -62,7 +62,7 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
     requiredFormDataFields = ['name', 'country', 'entityType', 'industry', 'lawModules'];
     dialogHeaderTitle: string = 'Add New Entity';
     operatingUnit: [] = [];
-    dialogHeaderImage: string = 'src/assets/images/Business.png';
+    dialogHeaderImage: string = 'assets/images/Business.png';
     entityChild: TreeNode;
   
     constructor(

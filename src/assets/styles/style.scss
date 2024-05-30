@@ -310,10 +310,10 @@ input.mdc-radio__native-control:focus,
         align-items: center;
     }
 
-    .mat-mdc-select-min-line {
-        color: $gray-1000 !important;
-        @include text-model($font-12, 400, $gray-1000, Barlow, 20px);
-    }
+    // .mat-mdc-select-min-line {
+    //     color: $gray-1000 !important;
+    //     @include text-model($font-12, 400, $gray-1000, Barlow, 20px);
+    // }
 
     .mat-mdc-select-arrow svg {
         top: -137%;
@@ -339,9 +339,9 @@ input.mdc-radio__native-control:focus,
 
 }
 
-#cdk-overlay-0 {
-    width: 148.1875px !important;
-}
+// #cdk-overlay-0 {
+//     width: 148.1875px !important;
+// }
 
 .small-dropdown-container {
     width: 24px;
@@ -427,9 +427,48 @@ input.mdc-radio__native-control:focus,
     padding-left: 0 !important;
 }
 
+.field-container {
+    display: flex !important;
+}
+
+.field-serial-no {
+    margin-right: 35px;
+    margin-left: 11px;
+}
+
 .phn-section {
     width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
 }
+
+.mat-dialog-actions-container {
+    padding: 0 24px !important;
+}
+
+.square_input_box {
+    .mat-mdc-input-element {
+        text-align: center;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 1200px) {
+    .square_input_box {
+        .mat-mdc-text-field-wrapper {
+            height: 38px;
+            padding: 2px;
+        }
+
+        .mat-mdc-form-field-infix {
+            padding: 0 !important;
+            height: 38px !important;
+            min-height: 0 !important;
+            display: flex;
+            align-items: center;
+        }
+
+    }
+}
+
+
 
 @media (min-width: 992px) {
     .phn-section {
@@ -442,12 +481,6 @@ input.mdc-radio__native-control:focus,
         width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
     }
 }
-
-// @media (min-width: 768px) and (max-width: 991.98px) {
-//     .register-container {
-//         padding: 7vh 12vw;
-//     }
-// }
 
 @media (max-width: 767.98px) {
     .phn-section {
