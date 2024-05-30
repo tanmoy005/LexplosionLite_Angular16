@@ -9,9 +9,9 @@
     @if($type =='filled') {
         color: var.$gray-400!important;
     }
-
+    
     @else {
-        color: var.$primary!important;
+        color: $border-color!important;
     }
 
     // font-size: var.$font-16!important;
@@ -34,4 +34,7 @@
 
 .btn-primary-outline-md {
     @include btn-model('transparent', 6px 24px, $primary, 5px, 'outline');
+}
+.btn-blue-outline-md {
+    @include btn-model('transparent', 6px 24px, $blue, 5px, 'outline');
 }
