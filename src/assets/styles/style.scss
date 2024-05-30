@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     padding: 0;
@@ -300,7 +298,7 @@ input.mdc-radio__native-control:focus,
     text-align: right;
 }
 
-@mixin app-dropdown($height:40px){
+@mixin app-dropdown($height: 40px) {
     .app-dropdown {
         .mat-mdc-text-field-wrapper {
             background-color: $blue-light-200 !important;
@@ -309,44 +307,49 @@ input.mdc-radio__native-control:focus,
             height: $height !important;
             align-items: center;
         }
-    
+
         // .mat-mdc-select-min-line {
         //     color: $gray-1000 !important;
         //     @include text-model($font-12, 400, $gray-1000, Barlow, 20px);
         // }
-    
+
         .mat-mdc-select-arrow svg {
             top: -137%;
         }
-    
+
         .mat-mdc-form-field-infix {
             padding: 0 !important;
             min-height: 0;
         }
-    
+
         // mat-mdc-text-field-wrapper mdc-text-field ng-tns-c3899553609-60 mdc-text-field--outlined
-    
+
     }
 }
-@mixin dropdown-label($mb:0px){
+
+@mixin dropdown-label($mb: 0px) {
     height: 100%;
     display: flex;
     align-items: center;
     margin-bottom: $mb;
 }
-.bg-dropdown{
+
+.bg-dropdown {
     @include app-dropdown(56px);
-    .dropdown-label{
-       @include dropdown-label();
+
+    .dropdown-label {
+        @include dropdown-label();
         // todo set the svg ofdropdown at right position
     }
 }
-.dropdown-label{
+
+.dropdown-label {
     @include dropdown-label(20px);
     // todo set the svg ofdropdown at right position
 }
 
 @include app-dropdown();
+
 .conuntry-dropdown {
     .mat-mdc-text-field-wrapper {
         background-color: $blue-light-200 !important;
@@ -361,6 +364,15 @@ input.mdc-radio__native-control:focus,
 // #cdk-overlay-0 {
 //     width: 148.1875px !important;
 // }
+// todo chnage this to 100%
+@media (min-width: 425px) and (max-width: 1024px) {
+    .phn-input {
+        .mat-mdc-text-field-wrapper {
+            width: 95.458%;
+            margin: auto;
+        }
+    }
+}
 
 .small-dropdown-container {
     width: 24px;
