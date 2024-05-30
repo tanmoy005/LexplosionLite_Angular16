@@ -29,8 +29,12 @@
   
             <div class="phn-section row">
               <div class="col-4 pr-0">
-                <app-dropdown [type]="'country'" [label]="'Country'" [options]="countryList" [IsMultiSelection]="false"
-                  [IsRequired]="false"></app-dropdown>
+                <app-dropdown [type]="'country'" [label]="'Country'" 
+                [options]="countryList" [IsMultiSelection]="false"
+                [IsRequired]="false"
+                (selectedValueChange)="handleCountryCodeChange($event)"
+                >
+                </app-dropdown>
               </div>
               <div class="col-8 px-0">
                 <mat-form-field class="example-full-width" appearance="outline">
@@ -47,7 +51,9 @@
   
             </div>
   
-            <mat-checkbox style="margin-left: -10px" color="primary">
+            <mat-checkbox style="margin-left: -10px" color="primary"
+            [(ngModel)]="agreeToTerms" name="agreeToTerms"
+            >
               <span class="agree-to-label">
                 I agree to
                 <button mat-button (click)="termsConditionModalOpen()">
@@ -56,7 +62,9 @@
               </span>
             </mat-checkbox>
   
-            <mat-checkbox style="margin-left: -10px; margin-bottom: 10px" color="primary">
+            <mat-checkbox style="margin-left: -10px; margin-bottom: 10px" color="primary"
+            [(ngModel)]="consentToPromotionalInfo" name="consentToPromotionalInfo"
+            >
               <span class="consent-label">
                 I consent to receiving promotional information about compliance
                 management

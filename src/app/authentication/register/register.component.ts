@@ -27,6 +27,7 @@ import { DropdownComponent } from 'src/app/user-onboard/common-components/dropdo
 
 import { CountryList } from 'src/app/shared/menu-items/country-list';
 import { CountryData } from 'src/app/shared/menu-items/country-list';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 @Component({
   selector: 'app-register',
@@ -54,31 +55,53 @@ import { CountryData } from 'src/app/shared/menu-items/country-list';
 
 export class AppSideRegisterComponent {
 
-  constructor(private authService: UserAuthenticationService, private router: Router ,public dialog: MatDialog) {}
+  constructor(private authService: UserAuthenticationService, 
+    private router: Router ,public dialog: MatDialog,
+    private snackbar: SnackbarService) {}
   
-
-
   usernameFormControl = new FormControl('', [Validators.required]);
   companynameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   passwordFormControl = new FormControl('', [Validators.required]);
 
-  countryCodeFormControl = new FormControl('', [Validators.required, countryCodeValidator]);
+  //countryCodeFormControl = new FormControl('', [Validators.required, countryCodeValidator]);
 
   phoneNumberFormControl = new FormControl('', [Validators.required, phoneNumberValidator]);
-
+  
+  agreeToTerms:boolean=false;
+  consentToPromotionalInfo:boolean=false;
 
   get username() { return this.usernameFormControl.value; }
   get businessname() { return this.companynameFormControl.value; }
   get email() { return this.emailFormControl.value; }
   get password() { return this.passwordFormControl.value; }
-  get countryCode() { return this.countryCodeFormControl.value; }
+  //get countryCode() { return this.countryCodeFormControl.value; }
   get phoneNumber() { return this.phoneNumberFormControl.value; }
 
   
-
+  countryCode: number | null = null;
   countryList : CountryData[] = CountryList
+
+
+  checkRegistrationCredentials(){
+    var registrationCredentialsStatus = false;
+
+    if(this.username?.trim() !== '' && this.businessname?.trim() !== '' && 
+      this.email?.trim() !== '' &&  this.emailFormControl.valid &&
+      this.countryCode !== null && 
+      this.phoneNumber?.trim() !== '' && this.phoneNumberFormControl.valid &&
+      this.agreeToTerms && this.consentToPromotionalInfo){
+        registrationCredentialsStatus=true;
+      }
+
+      return registrationCredentialsStatus;
+  }
+
+  handleCountryCodeChange(value:any){
+    // console.log("Value changed",value);
+    this.countryCode = value;
+  }
 
 
   handleRegistration(event: any){
@@ -89,9 +112,17 @@ export class AppSideRegisterComponent {
     const stateVariabl = {
       businessname: this.businessname,
      
-  };
+    };
 
-    this.router.navigate(['/verify-email'], { state: stateVariabl });
+    const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
+    
+    if(isRegistrationCredentialsFine){
+      this.router.navigate(['/verify-email'], { state: stateVariabl });
+     }
+
+     else{
+      this.snackbar.showError('Please enter all field values in correct format and check terms and conditions.')
+     }
   }
 
   termsConditionModalOpen (){
@@ -106,6 +137,7 @@ export class AppSideRegisterComponent {
 
   function countryCodeValidator(control: AbstractControl): { [key: string]: any } | null {
     const countryCode = control.value;
+    console.log("Country code",countryCode);
     if (countryCode && countryCode.toString().length !== 2) {
       return { 'invalidCountryCode': true };
     }
