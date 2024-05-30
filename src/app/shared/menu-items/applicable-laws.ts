@@ -4,6 +4,11 @@ export interface ApplicableLaws {
         komriskLaws: { id: number; name: string }[];
         komriskCompliances: number[];
         applicability: string;
+        komriskLawCategory: {
+            id: number,
+            name: string,
+            description:string
+          }
     }[];
 }
 
@@ -17,6 +22,11 @@ export const applicableLawsItems: ApplicableLaws = {
             ],
             komriskCompliances: [99, 100],
             applicability: 'Definitely Applicable',
+            "komriskLawCategory": {
+                "id": 1,
+                "name": "LAB",
+                "description": "Labour"
+              }
         },
         {
             lawApplicability: 164,
@@ -26,6 +36,11 @@ export const applicableLawsItems: ApplicableLaws = {
             ],
             komriskCompliances: [99, 100],
             applicability: 'Definitely Applicable',
+            "komriskLawCategory": {
+                "id": 1,
+                "name": "LAB",
+                "description": "Labour"
+              }
         },
         {
             lawApplicability: 169,
@@ -35,6 +50,11 @@ export const applicableLawsItems: ApplicableLaws = {
             ],
             komriskCompliances: [99, 100],
             applicability: 'Maybe Applicable',
+            "komriskLawCategory": {
+                "id": 1,
+                "name": "LAB",
+                "description": "Labour"
+              }
         },
     ]
 };
