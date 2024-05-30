@@ -1,8 +1,16 @@
 
 
    
-   <section class="example-container mat-elevation-z8" tabindex="0">
-   <table mat-table [dataSource]="dataSource">
+   <section class="example-container" >
+   <table mat-table [dataSource]="dataSource"  >
+
+    <ng-container matColumnDef="serialNumber">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let element">  
+       <p class="applicability-text"> {{element.serialNumber}}</p>
+      </td>
+    </ng-container>
+
 
     
     <ng-container matColumnDef="lawName">
@@ -11,26 +19,33 @@
           <div style="margin: 0;">{{ element.lawName }}</div>
           <p style="margin: 0;">
             <button mat-button class="read-with-button"
-             (click)="openDialog()">Read With</button>
+             (click)="openDialog()">Read More</button>
           </p>
-         <p style="margin: 0;">{{ element.lawName }}</p>
-          <div *ngIf="element.noOfCompliances !== undefined" style="margin: 0;">No. of Compliances: {{ element.noOfCompliances }}</div>
+         
         </td>
       </ng-container>
       
    
+     
       <ng-container matColumnDef="applicability">
         <th mat-header-cell *matHeaderCellDef> Applicability </th>
         <td mat-cell *matCellDef="let element">
-          <img [src]="getImageSource(element)" alt="Applicability Icon">
+          <div class="applicability-container">
+            <img [src]="getImageSource(element)" alt="Applicability Icon" class="applicability-icon">
+            <p class="applicability-text">{{element.applicability}}</p>
+          </div>
         </td>
       </ng-container>
+      
+      
     
 
-      <ng-container matColumnDef="Add/RemovefromCP">
-        <th mat-header-cell *matHeaderCellDef> Add/Remove from CP </th>
+ 
+
+      <ng-container matColumnDef="module">
+        <th mat-header-cell *matHeaderCellDef> Module </th>
         <td mat-cell *matCellDef="let element">  
-          <button mat-raised-button>Remove</button>
+         <p class="applicability-text"> {{element.module}}</p>
         </td>
       </ng-container>
   

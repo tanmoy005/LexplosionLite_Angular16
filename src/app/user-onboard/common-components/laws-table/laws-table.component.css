@@ -1,81 +1,127 @@
-.example-container {
-   background-color: rgb(229, 139, 21);
-    overflow: auto;
-  }
-  .example-container table th {
+
+  /* .example-container table th {
     background-color: rgba(120, 106, 205, 0.16);
     font-family: Barlow;
+   
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.4px;
+    text-align: left;
+    width: 40px;
+
+  }
+
+ 
+  .example-container table tr>td:nth-child(1) {
+    width: fit-content;
+  }
+
+
+  .example-container table th:nth-child(2) {
+    text-align: center;
   }
 
   .mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
     background:white;
 }
 
-  .mdc-data-table__cell div  {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Barlow));
-    font-size: var(--mdc-typography-body2-font-size, 10px);
-    line-height: var(--mdc-typography-body2-line-height, 20px);
-    font-weight: var(--mdc-typography-body2-font-weight, 1000);
-    letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
-    -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
-    text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
-    text-transform: var(--mdc-typography-body2-text-transform, none);
+ 
+
+.mat-column-serialNumber {
+ 
+  width: 10px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
 }
 
 
-/* .mdc-data-table__cell button  {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Barlow));
-    font-size: var(--mdc-typography-body2-font-size, 10px);
-    line-height: var(--mdc-typography-body2-line-height, 20px);
-    font-weight: var(--mdc-typography-body2-font-weight, 2000);
-    letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
-    -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
-    text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
-    text-decoration: underline;
-    text-transform: var(--mdc-typography-body2-text-transform, none);
-} */
+.mat-column-lawName {
+ 
+
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
+}
+
+.mat-column-applicability {
+  padding-left: 0px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
+}
+
+.mat-column-applicability {
+  padding-left: 0px;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 700;
+  font-family:Barlow ;
+}
+
+.applicability-text {
+ font-size: 12px;
+ line-height: 14.4px;
+ font-weight: 400;
+ font-family: Barlow;
+}
+
+
 
 .read-with-button {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Barlow));
-  font-size: var(--mdc-typography-body2-font-size, 10px);
-  line-height: var(--mdc-typography-body2-line-height, 20px);
-  font-weight: var(--mdc-typography-body2-font-weight, 2000);
+  font-size: var(--mdc-typography-body2-font-size, 12px);
+  line-height: var(--mdc-typography-body2-line-height, 14.4px);
+  font-weight: var(--mdc-typography-body2-font-weight, 400);
   letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
   -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
   text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
   text-decoration: underline;
   text-transform: var(--mdc-typography-body2-text-transform, none);
-}
-
-.mdc-data-table__cell p  {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Barlow));
-    font-size: var(--mdc-typography-body2-font-size, 10px);
-    line-height: var(--mdc-typography-body2-line-height, 20px);
-    font-weight: var(--mdc-typography-body2-font-weight, 2000);
-    letter-spacing: var(--mdc-typography-body2-letter-spacing, 0.0178571429em);
-    -webkit-text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
-    text-decoration: var(--mdc-typography-body2-text-decoration, inherit);
-    text-transform: var(--mdc-typography-body2-text-transform, none);
-}
+} */
 
 
-.read-more {
-    text-decoration: underline; /* Add underline */
-    cursor: pointer; /* Change cursor to indicate clickable */
+
+
+
+  
+  /* .mdc-data-table__cell, .mdc-data-table__header-cell {
+    padding: 0 250px 0 16px;
+} */
+
+  
+
+  
+/* 
+  .applicability-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  } */
+  
+  /* .applicability-icon {
+    margin-bottom: 5px; 
   }
   
-  
-
-  
-  table {
-    width: 100%;
+  .applicability-text {
+    margin: 0;
   }
+   */
+
+/* 
+   .applicability-container {
+    text-align: center;
+  }
+  
+  .applicability-icon {
+    display: block;
+    margin: 0 auto;
+  } */
   

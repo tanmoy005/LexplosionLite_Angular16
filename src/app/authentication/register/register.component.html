@@ -16,19 +16,19 @@
         <mat-card-content>
           <form>
             <mat-form-field appearance="outline">
-              <mat-label>Name</mat-label>
+              <mat-label class="text_12_400_gray_1000">Name</mat-label>
               <input matInput name="username" [formControl]="usernameFormControl" />
             </mat-form-field>
   
             <mat-form-field appearance="outline">
-              <mat-label>Business Name</mat-label>
+              <mat-label class="text_12_400_gray_1000">Business Name</mat-label>
               <input matInput name="businessname" [formControl]="companynameFormControl" />
               <mat-error *ngIf="companynameFormControl.hasError('required')">Business Name is
                 <strong>required</strong></mat-error>
             </mat-form-field>
   
-            <div class="phn-section row">
-              <div class="col-4 pr-0">
+            <div class="phn-section row ">
+              <div class="col-sm-12 col-md-4 pr-0 bg-dropdown">
                 <app-dropdown [type]="'country'" [label]="'Country'" 
                 [options]="countryList" [IsMultiSelection]="false"
                 [IsRequired]="false"
@@ -36,9 +36,9 @@
                 >
                 </app-dropdown>
               </div>
-              <div class="col-8 px-0">
+              <div class="col-sm-12 col-md-8 phn-input px-0">
                 <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Phone Number</mat-label>
+                  <mat-label class="text_12_400_gray_1000">Phone Number</mat-label>
                   <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"
                     [formControl]="phoneNumberFormControl" />
   
@@ -76,7 +76,7 @@
             </div>
   
             <mat-form-field appearance="outline">
-              <mat-label>Email ID/Username</mat-label>
+              <mat-label class="text_12_400_gray_1000">Email ID/Username</mat-label>
               <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
                 name="email" />
               <mat-error *ngIf="
