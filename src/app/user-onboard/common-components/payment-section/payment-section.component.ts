@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./payment-section.component.scss']
 })
 export class PaymentSectionComponent {
-
+  paymentDetailsColumns: string[] = ["Item", "Particulars", "Rate", "Free Units"]
 }

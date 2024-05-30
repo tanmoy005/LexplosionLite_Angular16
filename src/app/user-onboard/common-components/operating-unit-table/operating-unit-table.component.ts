@@ -175,11 +175,11 @@ export class OperatingUnitTableComponent implements OnInit {
   displayedColumns: string[] = [
     'position',
     'name',
-    'entity',
     'ownership',
     'type',
     'location',
     'zone',
+    'entity',
     'employees',
     'activities',
     'laws',

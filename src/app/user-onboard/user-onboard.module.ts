@@ -50,6 +50,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CompanyStructureCardComponent } from './common-components/company-structure-card/company-structure-card.component';
 import { CommonComponentModule } from './common-components/common-component.module';
 import { MaterialModule } from '../material-module';
+import { GoLivePageComponent } from './go-live-page/go-live-page.component';
 @NgModule({
   declarations: [
     
@@ -66,6 +67,7 @@ import { MaterialModule } from '../material-module';
     FeatureHeaderComponent,
     // ActivitiesListComponent,
     FeaturesComponent,
+    GoLivePageComponent,
     
   ],
   
