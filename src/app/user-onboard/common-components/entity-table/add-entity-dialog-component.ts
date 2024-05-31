@@ -61,6 +61,7 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
     selectedIndustry: EntityInterfaces.TransformedType[];
     requiredFormDataFields = ['name', 'country', 'entityType', 'industry', 'lawModules'];
     dialogHeaderTitle: string = 'Add New Entity';
+    dialogSaveUpdateButtonName:string = 'Save';
     operatingUnit: [] = [];
     dialogHeaderImage: string = 'assets/images/Business.png';
     entityChild: TreeNode;
@@ -116,6 +117,9 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
           operatingUnit: [],
           childrenID: 0
         };
+
+        this.dialogSaveUpdateButtonName = "Update";
+        this.dialogHeaderTitle = "Update Entity Details";
       } else {
         this.formData = {
           id: null,
