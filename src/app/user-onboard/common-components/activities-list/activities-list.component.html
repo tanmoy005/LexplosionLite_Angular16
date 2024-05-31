@@ -15,13 +15,13 @@
                         <mat-list-item *ngFor="let activity of activities;">
                            
                                 <div class="row">
-                                    <div class="col-lg-1">
+                                    <div class="col-lg-1 col-md-1 col-sm-1">
                                         <button mat-stroked-button aria-label="remove-activity-icon"
                                             (click)="removeActivity($event,activity)">
                                             <mat-icon>remove</mat-icon>
                                         </button>
                                     </div>
-                                    <div class="col-lg-10 activities-label">
+                                    <div class="col-lg-10 col-md-10 col-sm-10 activities-label">
                                         <p>{{activity.label}}</p>
                                     </div>
                                 </div>
