@@ -51,12 +51,7 @@ export class ActivitiesListComponent implements OnInit, OnChanges {
 
   panelOpenState = false;
 
-  // removeActivity(event: any, activity: Section) {
-  //   const selectedActivityIndex = this.activities.indexOf(activity);
-  //   if (selectedActivityIndex !== -1) {
-  //     this.activities.splice(selectedActivityIndex, 1);
-  //   }
-  // }
+ 
   removeActivity(event: any, activity: Section) {
     const selectedActivityIndex = this.activities.indexOf(activity);
     if (selectedActivityIndex !== -1) {

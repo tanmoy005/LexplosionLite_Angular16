@@ -1,186 +1,157 @@
 <div class="entity-table">
+  <div>
+    <div class="entity-details-table">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="mat-header-cell">#</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
 
-    <div>
-      <div class="entity-details-table">
-        <table mat-table [dataSource]="dataSource">
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
-              #
-            </th>
-            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-          </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
+            Name
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
 
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
-              Name
-            </th>
-            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="country">
-            <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
-              Country
-            </th>
-            <td mat-cell *matCellDef="let element">
-              <button 
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
+            Country
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button
               class="invisible-border-button"
               (click)="openCountryDialog()"
-              
-              [matBadge]="
-              element.country !== 0
-                ? 1
-                  : null
-              "
+              [matBadge]="element.country !== 0 ? 1 : null"
               matBadgeSize="small"
               matBadgeOverlap="true"
               matBadgePosition="below after"
               matBadgeColor="primary"
-              >
-                <img
-                  src="./assets/images/icons/VectorCountry_Icon.svg"
-                />
-              </button>
-            </td>
-          </ng-container>
+            >
+              <img src="./assets/images/icons/VectorCountry_Icon.svg" />
+            </button>
+          </td>
+        </ng-container>
 
-          <ng-container matColumnDef="industry">
-            <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
-              Industry
-            </th>
-            <td mat-cell *matCellDef="let element">
-              <button 
+        <ng-container matColumnDef="industry">
+          <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
+            Industry
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button
               class="invisible-border-button"
               (click)="openIndustryDialog()"
-              
               [matBadge]="
-              element.industry.length!== 0
-                ? element.industry.length
-                  : null
+                element.industry.length !== 0 ? element.industry.length : null
               "
               matBadgeSize="small"
               matBadgeOverlap="true"
               matBadgePosition="below after"
               matBadgeColor="primary"
-              
-              >
-                <img
-                  src="./assets/images/icons/Icons - Lex Kom LiteIndustry_Icon.svg"
-                />
-              </button>
-            </td>
-          </ng-container>
+            >
+              <img
+                src="./assets/images/icons/Icons - Lex Kom LiteIndustry_Icon.svg"
+              />
+            </button>
+          </td>
+        </ng-container>
 
-          <ng-container matColumnDef="entityType">
-            <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
-              Type
-            </th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.entityTypeLabel }}
-            </td>
-          </ng-container>
+        <ng-container matColumnDef="entityType">
+          <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
+            Type
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.entityTypeLabel }}
+          </td>
+        </ng-container>
 
-          <!-- <ng-container matColumnDef="emailID">
+        <!-- <ng-container matColumnDef="emailID">
             <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
               Email ID
             </th>
             <td mat-cell *matCellDef="let element">{{ element.emailID }}</td>
           </ng-container> -->
 
-          <ng-container matColumnDef="laws">
-            <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
-              Laws
-            </th>
-            <td mat-cell *matCellDef="let element">
-              <button 
+        <ng-container matColumnDef="laws">
+          <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
+            Laws
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button
               class="invisible-border-button"
               (click)="openLawDialog()"
-              
               [matBadge]="
-                element.lawModules !== 0
-                  ? element.lawModules.length
+                element.lawModules !== 0 ? element.lawModules.length : null
+              "
+              matBadgeSize="small"
+              matBadgeOverlap="true"
+              matBadgePosition="below after"
+              matBadgeColor="primary"
+            >
+              <img src="./assets/images/icons/VectorLawa_Icon.png" />
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="operatingUnit">
+          <th mat-header-cell *matHeaderCellDef>Operating Unit</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              class="invisible-border-button"
+              (click)="
+                openEntityMenuDialog('Add Operating Unit from Icon', element.id)
+              "
+              [matBadge]="
+                element.operatingUnit.length !== 0
+                  ? element.operatingUnit.length
                   : null
               "
               matBadgeSize="small"
               matBadgeOverlap="true"
               matBadgePosition="below after"
               matBadgeColor="primary"
-              >
-                <img
-                  src="./assets/images/icons/VectorLawa_Icon.png"
-                  
-                />
-              </button>
-            </td>
-          </ng-container>
+            >
+              <img [src]="getImageSource(element.operatingUnit.length)" />
+            </button>
+          </td>
+        </ng-container>
 
- 
-
-          <ng-container matColumnDef="operatingUnit">
-            <th mat-header-cell *matHeaderCellDef >
-              Operating Unit
-            </th>
-            <td mat-cell *matCellDef="let element">
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+              <mat-icon class="dark-brown-icon">more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
               <button
-              class="invisible-border-button"
-                (click)="
-                  openEntityMenuDialog('Add Operating Unit from Icon', element.id)
-                "
-                [matBadge]="
-                  element.operatingUnit.length !== 0
-                    ? element.operatingUnit.length
-                    : null
-                "
-                matBadgeSize="small"
-                matBadgeOverlap="true"
-                matBadgePosition="below after"
-                matBadgeColor="primary"
+                mat-menu-item
+                (click)="openEntityMenuDialog('Add Operating Unit', element.id)"
               >
-                <img [src]="getImageSource(element.operatingUnit.length)" 
-                
-                />
+                Add Operating Unit
               </button>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
-                <mat-icon class="dark-brown-icon">more_horiz</mat-icon>
+              <button
+                mat-menu-item
+                (click)="openEntityMenuDialog('Edit', element.id)"
+              >
+                Edit
               </button>
-              <mat-menu #menu="matMenu">
-                <button
-                  mat-menu-item
-                  (click)="
-                    openEntityMenuDialog('Add Operating Unit', element.id)
-                  "
-                >
-                  Add Operating Unit
-                </button>
-                <button
-                  mat-menu-item
-                  (click)="openEntityMenuDialog('Edit', element.id)"
-                >
-                  Edit
-                </button>
-                <button
-                  mat-menu-item
-                  (click)="openEntityMenuDialog('Delete', element.id)"
-                >
-                  Delete
-                </button>
-              </mat-menu>
-            </td>
-          </ng-container>
+              <button
+                mat-menu-item
+                (click)="openEntityMenuDialog('Delete', element.id)"
+              >
+                Delete
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
 
-          <tr
-            mat-header-row
-            *matHeaderRowDef="displayedColumns"
-            class="mat-header-row"
-          ></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-      </div>
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          class="mat-header-row"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
     </div>
- 
+  </div>
 </div>
