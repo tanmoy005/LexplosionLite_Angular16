@@ -30,7 +30,7 @@
       <ng-container matColumnDef="applicability">
         <th mat-header-cell *matHeaderCellDef> Applicability </th>
         <td mat-cell *matCellDef="let element">
-          <div class="applicability-container">
+          <div >
             <img [src]="getImageSource(element)" alt="Applicability Icon" class="applicability-icon">
             <p class="applicability-text">{{element.applicability}}</p>
           </div>

@@ -571,6 +571,10 @@ input.mdc-radio__native-control:focus,
     width: 100px;
   }
 
+//   .example-container table th>td:nth-child(3){
+//     text-align: center;
+//   }
+
   .example-container table tr>th:first-child{
    
     width: 14px;
@@ -593,7 +597,7 @@ input.mdc-radio__native-control:focus,
 
 
   .example-container table th:nth-child(2) {
-    // text-align: center;
+  //  text-align: center;
   }
 
   .mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
@@ -627,6 +631,7 @@ width: 20px;
   line-height: 14.4px;
   font-weight: 700;
   font-family:Barlow ;
+  text-align: center;
 }
 
 .mat-column-applicability {
