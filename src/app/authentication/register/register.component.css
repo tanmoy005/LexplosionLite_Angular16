@@ -125,13 +125,7 @@ opacity: 0px;
 /* Target the mat-form-field with outline appearance */
 
 
-.mat-mdc-text-field-wrapper{
-  background-color: #F4F4F4 !important;
-  padding: 8px;
-  border-radius: 0px;
-  font-size: 16px;
-  border-color: #C0C0C0;
-}
+
 
 
 /* .option1{
