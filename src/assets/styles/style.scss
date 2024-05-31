@@ -333,7 +333,19 @@ input.mdc-radio__native-control:focus,
     align-items: center;
     margin-bottom: $mb;
 }
-
+.bg-dropdown-white {
+    // background-color: #F4F4F4 !important;
+    // height: 56px!important;
+    // padding: 8px;
+    // border-radius: 0px;
+    // font-size: 16px;
+    // border-color: #C0C0C0;
+    @include app-dropdown(56px);
+    .dropdown-label {
+        @include dropdown-label();
+        // todo set the svg ofdropdown at right position
+    }
+  }
 .bg-dropdown {
     @include app-dropdown(56px);
 

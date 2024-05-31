@@ -1,4 +1,4 @@
-<div>
+<div class="register-container">
   <mat-card style="display: contents;">
     <app-reg-header></app-reg-header>
     <mat-divider></mat-divider>
@@ -8,7 +8,7 @@
         <p class="verify-email-id-typography">Verify Email ID</p>
       </div>
       <div class="back-button">
-        <button mat-stroked-button (click)="handleBackToRegistration($event)">
+        <button mat-stroked-button class="btn-primary-outline-md" (click)="handleBackToRegistration($event)">
           <mat-icon>keyboard_arrow_left</mat-icon>Back
         </button>
       </div>
@@ -18,15 +18,15 @@
       </div>
       <mat-card-content>
         <form>
-          <mat-form-field appearance="outline">
-            <mat-label>OTP</mat-label>
+          <mat-form-field appearance="outline" class="big-text-input">
+            <mat-label class="text_12_400_gray_1000">OTP</mat-label>
             <input matInput name="username">
           </mat-form-field>
           <button mat-button>
             Resent OTP
           </button>
           <div class="example-button-row">
-            <button mat-raised-button color="warn" (click)="handleRegistration($event)">Verify and Register</button>
+            <button mat-raised-button class="btn-primary-md"  (click)="handleRegistration($event)">Verify and Register</button>
           </div>
 
         </form>
