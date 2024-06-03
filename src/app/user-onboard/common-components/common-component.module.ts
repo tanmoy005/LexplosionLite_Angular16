@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { CompanyStructureCardComponent } from './company-structure-card/company-structure-card.component';
 import { ActivitiesListComponent } from './activities-list/activities-list.component';
 import { OpUnitLawsDialogComponent } from './operating-unit-table/op-unit-laws-dialog/op-unit-laws-dialog.component';
+import { LawsReadMoreDialogComponent } from './laws-table/laws-read-more-dialog/laws-read-more-dialog.component';
 
 
 
@@ -51,7 +52,8 @@ import { OpUnitLawsDialogComponent } from './operating-unit-table/op-unit-laws-d
     TreeStructureComponent,
     CompanyStructureCardComponent,
     ActivitiesListComponent,
-    OpUnitLawsDialogComponent
+    OpUnitLawsDialogComponent,
+    LawsReadMoreDialogComponent
   ],
   imports: [
     CommonModule,

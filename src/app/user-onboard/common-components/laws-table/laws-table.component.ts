@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
 import { Law } from 'src/app/shared/menu-items/applicable-laws';
-
+import { LawsReadMoreDialogComponent } from './laws-read-more-dialog/laws-read-more-dialog.component';
 
 export interface LawsTableData{
   serialNumber: number;
@@ -37,7 +37,7 @@ export class LawsTableComponent {
   }
 
   openDialog() {
-    this.dialog.open(DialogElementsExampleDialog);
+    this.dialog.open(LawsReadMoreDialogComponent);
   }
 
   transformData(
@@ -75,10 +75,4 @@ export class LawsTableComponent {
   }
 }
 
-@Component({
-  selector: 'dialog-elements-example-dialog',
-  templateUrl: 'read-with-law-dialog.html',
-  standalone: true,
-  imports: [MatDialogModule],
-})
-export class DialogElementsExampleDialog {}
+
