@@ -1,19 +1,30 @@
 export interface ApplicableLaws {
-    data: {
+    
         lawApplicability: number;
-        komriskLaws: { id: number; name: string }[];
+        // komriskLaws: { id: number; name: string }[];
+        komriskLaws: Law[];
         komriskCompliances: number[];
         applicability: string;
-        komriskLawCategory: {
-            id: number,
-            name: string,
-            description:string
-          }
-    }[];
+        // komriskLawCategory: { }
+        komriskLawCategory: LawsCategory
+    
 }
 
-export const applicableLawsItems: ApplicableLaws = {
-    data: [
+export interface Law{
+ 
+        id: number;
+        name: string;
+    
+}
+
+export interface LawsCategory{
+    id: number,
+    name: string,
+    description:string
+}
+
+export const applicableLawsItems: ApplicableLaws[] = 
+    [
         {
             lawApplicability: 73,
             komriskLaws: [
@@ -22,24 +33,25 @@ export const applicableLawsItems: ApplicableLaws = {
             ],
             komriskCompliances: [99, 100],
             applicability: 'Definitely Applicable',
-            "komriskLawCategory": {
-                "id": 1,
-                "name": "LAB",
-                "description": "Labour"
+            komriskLawCategory: {
+                id: 1,
+                name: "LAB",
+                description: "Labour"
               }
         },
         {
             lawApplicability: 164,
             komriskLaws: [
                 { id: 27, name: 'EQUAL REMUNERATION ACT, 1976' },
+                { id: 29, name: 'EQUAL REMUNERATION ACT, 2020' },
                 { id: 28, name: 'EQUAL REMUNERATION RULES, 1976' }
             ],
             komriskCompliances: [99, 100],
             applicability: 'Definitely Applicable',
-            "komriskLawCategory": {
-                "id": 1,
-                "name": "LAB",
-                "description": "Labour"
+            komriskLawCategory: {
+                id: 1,
+                name: "LAB",
+                description: "Labour"
               }
         },
         {
@@ -50,11 +62,10 @@ export const applicableLawsItems: ApplicableLaws = {
             ],
             komriskCompliances: [99, 100],
             applicability: 'Maybe Applicable',
-            "komriskLawCategory": {
-                "id": 1,
-                "name": "LAB",
-                "description": "Labour"
+            komriskLawCategory: {
+                id: 1,
+                name: "LAB",
+                description: "Labour"
               }
         },
     ]
-};

@@ -1,29 +1,35 @@
+import { komriskLawCategories } from './../../../shared/menu-items/field-definition-interfaces';
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
+import { Law } from 'src/app/shared/menu-items/applicable-laws';
 
+
+export interface LawsTableData{
+  serialNumber: number;
+    lawName: {name: string, id: number}[];
+    applicability: string;
+    noOfCompliances: number;
+    module: string;
+}
 @Component({
   selector: 'app-laws-table',
   templateUrl: './laws-table.component.html',
   styleUrls: ['./laws-table.component.css'],
  
 })
+
+
 export class LawsTableComponent {
-  @Input() data: ApplicableLaws;
+  @Input() data: ApplicableLaws[];
 
   displayedColumns = ['serialNumber','lawName', 'applicability', 'module'];
-  dataSource: {
-    serialNumber: number;
-    lawName: string;
-    applicability: string;
-    noOfCompliances: number;
-    module: string;
-  }[] = [];
+  dataSource: LawsTableData[] = [];
 
   ngOnChanges() {
     console.log('Input Data:', this.data);
-    this.dataSource = this.transformData(this.data['data']);
+    this.dataSource = this.transformData(this.data);
   }
 
   constructor(public dialog: MatDialog) {
@@ -33,35 +39,30 @@ export class LawsTableComponent {
   openDialog() {
     this.dialog.open(DialogElementsExampleDialog);
   }
+
   transformData(
-    data: any[]
-  ): {
-    serialNumber: number;
-    lawName: string;
-    applicability: string;
-    noOfCompliances: number;
-    module: string;
-  }[] {
-    const transformedData: {
-      serialNumber: number;
-      lawName: string;
-      applicability: string;
-      noOfCompliances: number;
-      module: string;
-    }[] = [];
+    data: ApplicableLaws[]
+  ):LawsTableData[] {
+    const transformedData: LawsTableData[] = [];
     data.forEach((item,index) => {
-      item.komriskLaws.forEach((law: { id: number; name: string }) => {
-        transformedData.push({
+      
+      transformedData.push({
           serialNumber:  index + 1,
-          lawName: law.name,
+          lawName: item.komriskLaws,
           noOfCompliances: item.komriskCompliances.length,
           applicability: item.applicability,
           module: item.komriskLawCategory.description,
-        });
-      });
+          //actLaws: item.komriskLawCategories
+      }
+      )
     });
+    console.log('the transformed data',transformedData)
     return transformedData;
   }
+
+   filterLawsContainingAct(laws: Law[]): Law[] {
+    return laws.filter(law => law.name.toLowerCase().includes('act'));
+}
 
   getImageSource(element: any): string {
     if (element.applicability === 'Definitely Applicable') {

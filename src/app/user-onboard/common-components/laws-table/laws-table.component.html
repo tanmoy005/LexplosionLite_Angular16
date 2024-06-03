@@ -13,7 +13,7 @@
 
 
     
-    <ng-container matColumnDef="lawName">
+    <!-- <ng-container matColumnDef="lawName">
         <th mat-header-cell *matHeaderCellDef> Name of the LAW </th>
         <td mat-cell *matCellDef="let element">
           <div style="margin: 0;">{{ element.lawName }}</div>
@@ -25,6 +25,29 @@
             </button>
           </p>
          
+        </td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="lawName">
+        <th mat-header-cell *matHeaderCellDef> Name of the LAW </th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngFor="let law of element.lawName" style="margin: 0;">
+            <!-- {{ law.name }} -->
+            <div *ngIf="law.name.toLowerCase().includes('act')">
+              {{ law.name }}
+            </div>
+          </div>
+          <p style="margin: 0;">
+            <button mat-button class="read-with-button" (click)="openDialog()">Read More
+              <img src="./assets/images/icons/lawsTableReadMore.svg" alt="read-more-icon" style="margin-left: 8px;">
+            </button>
+          </p>
+          <div *ngFor="let law of element.lawName" style="margin: 0;">
+            <!-- {{ law.name }} -->
+            <div *ngIf="law.name.toLowerCase().includes('rule')">
+              {{ law.name }}
+            </div>
+          </div>
         </td>
       </ng-container>
       

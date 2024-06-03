@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { applicableLawsItems } from 'src/app/shared/menu-items/applicable-laws';
 import { Router } from '@angular/router';
-
+import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
 
 @Component({
   selector: 'app-laws-table-page',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LawsTablePageComponent {
   constructor(private router: Router){ }
 
-  ApplicableLawsItems = applicableLawsItems
+  ApplicableLawsItems:ApplicableLaws[] = applicableLawsItems
 
   navigateToPaymentPage(event:any){
     this.router.navigate(['/payment']);
