@@ -26,19 +26,19 @@
 
 
 .btn-secondary {
-    @include btn-model($dark-red-100, 9.5% 8.5%, $green-100, 8px);
+    @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px);
 }
 
 .btn-primary {
-    @include btn-model($primary, 2.34% 8.5%, $primary, 5px);
+    @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px);
 }
 .btn-primary-md {
-    @include btn-model($primary, 6px 24px, $primary, 5px);
+    @include btn-model(var.$primary, 6px 24px, var.$primary, 5px);
 }
 
 .btn-primary-outline-md {
-    @include btn-model('transparent', 6px 24px, $primary, 5px, 'outline');
+    @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
 }
 .btn-blue-outline-md {
-    @include btn-model('transparent', 6px 24px, $blue, 5px, 'outline');
+    @include btn-model('transparent', 6px 24px, var.$blue, 5px, 'outline');
 }

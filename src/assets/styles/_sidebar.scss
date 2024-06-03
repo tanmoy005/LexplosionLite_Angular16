@@ -1,3 +1,4 @@
+@use 'variable' as var;
 /*
 Template Name: Material Pro Admin
 Author: Themedesigner
@@ -8,6 +9,7 @@ File: scss
 /*******************
 Main sidebar
 ******************/
+
 
 mat-sidenav {
     width: 240px;
@@ -21,12 +23,12 @@ mat-sidenav {
         display: none;
       }
       &.selected > .mdc-list-item__content > a {
-        background: $themecolor-alt;
-        border-radius: $radius;
-        color: $white;
+        background: var.$themecolor-alt;
+        border-radius: var.$radius;
+        color: var.$white;
   
         mat-icon {
-          color: $white;
+          color: var.$white;
         }
         .dd-icon {
           -webkit-transform: rotate(-180deg);
@@ -35,7 +37,7 @@ mat-sidenav {
       }
       &.selected .sub-item .mdc-list-item__content a.selected {
         background: transparent;
-        color: $inverse;
+        color: var.$inverse;
         font-weight: 500;
       }
       .mdc-list-item__content {
@@ -44,7 +46,7 @@ mat-sidenav {
         &:hover {
           background: none;
           > a {
-            color: $themecolor;
+            color: var.$themecolor;
           }
         }
       }
@@ -55,12 +57,12 @@ mat-sidenav {
         display: flex;
         font-size: 15px;
         white-space: nowrap;
-        color: $sidebar-text;
+        color: var.$sidebar-text;
         mat-icon:not(.dd-icon) {
           margin-right: 8px;
         }
         mat-icon {
-          color: $sidebar-icons;
+          color: var.$sidebar-icons;
         }
         .dd-icon {
           font-size: 16px;
@@ -72,12 +74,12 @@ mat-sidenav {
       }
     }
     .mat-mdc-list-item.selected .mdc-list-item__content a{
-      background: $themecolor-alt;
-      border-radius: $radius;
-      color: $white;
+      background: var.$themecolor-alt;
+      border-radius: var.$radius;
+      color: var.$white;
 
       mat-icon {
-        color: $white;
+        color: var.$white;
       }
       .dd-icon {
         -webkit-transform: rotate(-180deg);
@@ -161,7 +163,7 @@ mat-sidenav {
       cursor: pointer;
       white-space: nowrap;
       > a {
-        color: $white !important;
+        color: var.$white !important;
         width: 100%;
         padding: 6px 30px;
         background: rgba(0, 0, 0, 0.5);
