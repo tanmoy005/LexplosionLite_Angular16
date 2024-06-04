@@ -12,4 +12,3 @@ export class CommonComponentsComponent {
   ApplicableLawsItems = applicableLawsItems
  
 }
-console.log('this is applicable laws',applicableLawsItems)

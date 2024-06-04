@@ -36,16 +36,15 @@ import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-int
 @Component({
     selector: 'dialog-elements-example-dialog',
     templateUrl: 'add-new-entity-dialog.html',
-    // standalone: true,
+    
     styleUrls: ['./entity-table.component.scss'],
-    // imports: [MatDialogModule, MatFormFieldModule, FormsModule, MatInputModule, 
-    //   MatSelectModule, CommonModule, DropdownComponent ]
+   
   })
   
   export class AddEntityDialog implements OnInit{
-    //industryTypesList: any;
+   
     industryTypesList: IndustryActivies[];
-    // distinctIndutryTypesList: any;
+
     distinctIndutryTypesList:  EntityInterfaces.OriginalIndustryType[];
     transformedEntityList: EntityInterfaces.TransformedType[] = [];
     transformedIndustryList: EntityInterfaces.TransformedType[] = [];
@@ -53,7 +52,7 @@ import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-int
     countryList: CountryData[] = [];
   
     formData: EntityInterfaces.FormData;
-    // formLabeledData: any;
+ 
     selectedCountry: CountryData | undefined;
     selectedEntity: EntityInterfaces.TransformedType | undefined;
     selectedIndustry: EntityInterfaces.TransformedType[];
@@ -82,7 +81,7 @@ import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-int
       try {
         filteredCountryList = CountryList.filter(country => this.data.entityTable.countryList.includes(country.value));
       } catch (error) {
-        console.log(error);
+        
       }
   
       this.countryList = filteredCountryList;
@@ -95,7 +94,7 @@ import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-int
         seenIds.add(industry.iId);
       }
     }
-    //console.log('distinct industry type list',this.distinctIndutryTypesList)
+  
     this.transformedIndustryList = transformIndustryTypes(this.distinctIndutryTypesList);
     }
   
