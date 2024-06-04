@@ -26,19 +26,19 @@
 }  
 @media (min-width: 992px) {
     .phn-section {
-        width: 102%; // todo chnage it to 100% and adjust rest of the styles accordingly
+        width: 102%; 
     }
 }
 
 @media (min-width: 1300px) {
     .phn-section {
-        width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
+        width: 105%;
     }
 }
 
 @media (max-width: 767.98px) {
     .phn-section {
-        width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
+        width: 105%;
     }
 }
 .card-content-container-dark {
@@ -50,11 +50,5 @@
     overflow-x: auto;
     overflow-y:auto;
     height: 212px;
-//     scrollbar-width: none; /* Firefox */
-//     -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  
-//     /* Hide scrollbar for Chrome, Safari, and Opera */
-//     &::-webkit-scrollbar {
-//     //   display: none;
-//     }
+
 } 

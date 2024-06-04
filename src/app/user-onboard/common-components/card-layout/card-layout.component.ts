@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-card-layout',
   templateUrl: './card-layout.component.html',
   styleUrls: ['./card-layout.component.scss'],
-  // standalone: true
+  
 })
 export class CardLayoutComponent {
   @Input() cardHeaderTitle: string;
