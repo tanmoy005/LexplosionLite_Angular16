@@ -21,7 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { OperatingUnitTableComponent } from './common-components/operating-unit-table/operating-unit-table.component';
 import { EntityDetailsPageComponent } from './entity-details-page/entity-details-page.component';
-import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-details-page.component';
+//import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-details-page.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { TreeStructureComponent } from './common-components/tree-structure/tree-structure.component';
 import { MatCardModule } from '@angular/material/card';
@@ -59,7 +59,7 @@ import { GoLivePageComponent } from './go-live-page/go-live-page.component';
     TermsConditionComponent,
     PaymentComponent,
     EntityDetailsPageComponent,
-    OpUnitDetailsPageComponent,
+   // OpUnitDetailsPageComponent,
     SubscriptionDetailsPageComponent,
     OperatingUnitComponent,
     EntityComponent,
