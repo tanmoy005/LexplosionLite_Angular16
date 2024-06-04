@@ -1,7 +1,5 @@
-import { komriskLawCategories } from './../../../shared/menu-items/field-definition-interfaces';
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
 import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
 import { Law } from 'src/app/shared/menu-items/applicable-laws';
 import { LawsReadMoreDialogComponent } from './laws-read-more-dialog/laws-read-more-dialog.component';
