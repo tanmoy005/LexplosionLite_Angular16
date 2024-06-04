@@ -28,13 +28,11 @@ export class LawsTableComponent {
   dataSource: LawsTableData[] = [];
 
   ngOnChanges() {
-    console.log('Input Data:', this.data);
+   
     this.dataSource = this.transformData(this.data);
   }
 
-  constructor(public dialog: MatDialog) {
-    //this.dataSource = this.transformData(DATA);
-  }
+  constructor(public dialog: MatDialog) {}
 
   openDialog() {
     this.dialog.open(LawsReadMoreDialogComponent);
@@ -56,7 +54,7 @@ export class LawsTableComponent {
       }
       )
     });
-    console.log('the transformed data',transformedData)
+   
     return transformedData;
   }
 

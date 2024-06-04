@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Input, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -68,7 +67,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialog: MatDialog,
-    private router: Router,
     private entityDialogService: DialogService,
     private apiService: ApiService,
     private snackbar: SnackbarService
@@ -93,8 +91,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(
       (entity?: EntityInterfaces.BusinessDetails | null) => {
-        console.log('Received entity firstly at subscription', entity);
-        this.viewAddEntityDialog(entity); // Pass the entity data to the function
+        this.viewAddEntityDialog(entity);
       }
     );
 
@@ -134,7 +131,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       (children) => children.id === entityReceived.childrenID
     );
 
-    console.log('Child for adding ', childrenToAddGrandChildrenTo);
     if (childrenToAddGrandChildrenTo !== undefined) {
       const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
       entityResponseReceived.operatingUnits.forEach((operatingUnit) => {
@@ -166,14 +162,14 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
             this.entityChild = {
               id: maxId + 1,
-              //label: 'Child Node '+String(maxId+1),
+
               label: entity.name,
               children: [],
             };
 
             const entityRow: EntityInterfaces.BusinessDetails = {
               ...this.initialFormData,
-              // position: position,
+
               id: entity.id,
               name: entity.name,
               industry: entity.industries.map(
@@ -202,7 +198,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
-          this.table.renderRows(); // Ensure this is a MatTable instance
+          this.table.renderRows(); 
           this.entityTableDataLoading.emit(false);
         });
     } catch (error) {
@@ -246,7 +242,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   }
 
   openEntityDialog(entity?: EntityInterfaces.BusinessDetails | null) {
-    //console.log("Entity send at openEntity intr.", entity);
     const dialogRef = this.dialog.open(AddEntityDialog, {
       data: { entityTable: this, entity: entity },
     });
@@ -257,9 +252,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
       data: { name: name },
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      //console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
   openOpDialog() {
     const name: string = 'Operating Unit List';
@@ -267,9 +260,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       data: { name: name },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      //console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   navigateToAddOpUnit(entity: EntityDataType, action: string) {
@@ -287,11 +278,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   openEntityMenuDialog(action: string, id: number) {
     switch (action) {
       case 'Delete':
-        // this.removeEntityData(position);
-        console.log('Entity delete option clicked.');
         break;
       case 'Add Operating Unit':
-        //var entity = this.dataSource.find((entity) => entity.position === position);
         var entity = this.dataSource.find((entity) => entity.id === id);
         if (entity === undefined) {
           this.snackbar.showError(
@@ -338,7 +326,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         }
         break;
       case 'Edit':
-        //var entity = this.dataSource.find((entity) => entity.position === position);
+     
         var entity = this.dataSource.find((entity) => entity.id === id);
 
         if (entity === undefined) {
@@ -355,15 +343,15 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   }
 
   openCountryDialog() {
-    console.log('Open Country dialog clicked!');
+   
   }
 
   openIndustryDialog() {
-    console.log('Open Industry dialog clicked!');
+
   }
 
   getImageSource(opUnitLength: number): string {
-    // console.log('the image source',opUnitLength)
+    
     return opUnitLength > 0
       ? './assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg'
       : './assets/images/icons/Icons - Lex Kom LiteOperating_Unit_Unavailable.svg';

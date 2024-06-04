@@ -29,7 +29,7 @@ export class EmployeeCountCardComponent {
   ngOnInit() {
     if (this.employeeDataInitial && this.employeeDataInitial.length) {
       this.employeeData = this.employeeDataInitial;
-      console.log('the emp data coming', this.employeeDataInitial);
+      
     }
 
     if (this.apprenticeInitial != null) {
@@ -47,7 +47,7 @@ export class EmployeeCountCardComponent {
 
   onInputChange() {
     this.emitEmployeeData();
-    console.log('this is new employee data', this.employeeData);
+    
   }
 
   emitEmployeeData() {

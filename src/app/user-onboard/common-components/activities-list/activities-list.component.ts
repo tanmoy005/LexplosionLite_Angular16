@@ -35,7 +35,7 @@ export class ActivitiesListComponent implements OnInit, OnChanges {
 
   private updateActivitiesList() {
     const savedindustryActivities: IndustryActivies[] | undefined = this.encryptStorage.getItem('industryActivities');
-    console.log('saved activities list', savedindustryActivities);
+    
 
     if (savedindustryActivities) {
       const filteredArray = savedindustryActivities
@@ -43,9 +43,9 @@ export class ActivitiesListComponent implements OnInit, OnChanges {
         .map((item: IndustryActivies) => ({ label: item.activity, value: item.aId }));
 
       this.activities = filteredArray;
-      console.log('filtered activities list', this.activities);
+      
     } else {
-      console.log('No saved activities found in storage');
+      
     }
   }
 

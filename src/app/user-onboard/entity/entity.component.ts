@@ -17,7 +17,7 @@ export class EntityComponent {
   private resolveDotsClickedPromise: (() => void) | null = null;
 
   treeDataItem = treeDataitem;
-  //receivedData: any;
+ 
   encryptStorage = new EncryptStorage(environment.localStorageKey);
 
   entityTypesList: FieldDefinitionInterfaces.EntityTypes[];
@@ -57,16 +57,12 @@ export class EntityComponent {
     });
   }
 
-  // handleAddEntity(event: boolean) {
-  //   if (event) {
-  //     console.log('Add New Entity button clicked:', event);
-  //   }
-  // }
+
 
   async handleEntitySelected(entity: EntityDataType) {
     await this.isDotsClickedPromise;
 
-    console.log('if dots clicked!', this.isDataComingFromDots);
+    
     this.selectedEntity = entity;
     this.selectedEntityEmitter.emit(this.selectedEntity);
     this.isDotsClicked.emit(this.isDataComingFromDots);

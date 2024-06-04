@@ -71,7 +71,7 @@ export class OperatingUnitTableComponent implements OnInit {
       this.openEntityDialog(this.entity.name);
     });
 
-    console.log('is request from dots', this.isDotsCliscked);
+ 
 
     if (this.isDotsCliscked === true) {
       this.openEntityDialog(this.entity.name);
@@ -121,7 +121,7 @@ export class OperatingUnitTableComponent implements OnInit {
   fetchOpUnitList() {
     const payLoad = { entity: this.entity.id };
     this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
-      console.log('fetched op unit values', response);
+     
       this.opUnitDataFromApi = response.data;
       const currentCount = 0;
 
@@ -158,7 +158,7 @@ export class OperatingUnitTableComponent implements OnInit {
         this.addGrandChildren(operatingUnit.name);
       });
 
-      console.log('the transformed op unit datas', opResponseData);
+
       this.dataSource = opResponseData;
     });
   }
@@ -201,7 +201,7 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openEntityDialog(entityName: string) {
-    console.log('entityName', entityName);
+  
 
     this.dialog.open(AddNewOperatingUnitDialogComponent, {
       data: {
@@ -210,7 +210,7 @@ export class OperatingUnitTableComponent implements OnInit {
         industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        //entityPosition:this.entity.position,
+       
         entityPosition: this.entity.id,
         entity: this.entity,
         opUnitPosition: 0,
@@ -219,7 +219,7 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openEntityDialogForEdit(entityName: string, opID: number) {
-    console.log('entityName', entityName);
+    
 
     this.dialog.open(AddNewOperatingUnitDialogComponent, {
       data: {
@@ -228,7 +228,7 @@ export class OperatingUnitTableComponent implements OnInit {
         industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        //entityPosition:this.entity.position,
+
         entityPosition: this.entity.id,
         entity: this.entity,
         opUnitPosition: opID,
@@ -247,11 +247,10 @@ export class OperatingUnitTableComponent implements OnInit {
 
   openLawDialog(opID: number) {
     const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {
-      // data:{
-      // }
+     
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      
     });
   }
 
@@ -260,7 +259,7 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openopUnitMenuDialog(action: string, opID: number) {
-    console.log('ACTION SELECTED', action, opID);
+    
 
     switch (action) {
       case 'Delete':
