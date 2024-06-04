@@ -28,7 +28,7 @@ export class LawsTableComponent {
   dataSource: LawsTableData[] = [];
 
   ngOnChanges() {
-    console.log('Input Data:', this.data);
+   
     this.dataSource = this.transformData(this.data);
   }
 
@@ -54,7 +54,7 @@ export class LawsTableComponent {
       }
       )
     });
-    console.log('the transformed data',transformedData)
+   
     return transformedData;
   }
 

@@ -22,19 +22,7 @@ export class FeatureHeaderComponent {
     }
   ];
   
-  // onCheckboxChange(index: number): void {
-  //   // Uncheck all checkboxes
-  //   this.checkboxItems.forEach((item, i) => {
-  //     if (i !== index) {
-  //       item.checked = false;
-  //     }
-  //   });
-
-  //   // Ensure the selected checkbox remains checked
-  //   this.checkboxItems[index].checked = true;
-
-  //   console.log(`Checkbox value of ${this.checkboxItems[index].name}:`, this.checkboxItems[index].checked);
-  // }
+ 
   onCardClick(index: number): void {
     // Uncheck all cards
     this.checkboxItems.forEach((item, i) => {
@@ -46,7 +34,7 @@ export class FeatureHeaderComponent {
     // Ensure the selected card remains checked
     this.checkboxItems[index].checked = true;
 
-    console.log(`Card value of ${this.checkboxItems[index].name}:`, this.checkboxItems[index].checked);
+    
   }
 
 }

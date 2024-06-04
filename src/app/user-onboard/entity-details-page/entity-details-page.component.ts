@@ -28,15 +28,11 @@ export class EntityDetailsPageComponent {
 
   constructor(private router: Router) {}
 
-  // handleAddEntity(event: boolean) {
-  //   if (event) {
-  //     console.log('Add New Entity button clicked:', event);
-  //   }
-  // }
+
 
   getSelectedCountries(value: number[]) {
     this.countryList = value;
-    console.log('country data from business card', this.countryList);
+
   }
 
   treeDataItem = treeDataitem;
@@ -52,7 +48,7 @@ export class EntityDetailsPageComponent {
 
   handleIsDotsClicked(state: boolean) {
     this.isDotsClicked = state;
-    console.log('Selected entity in page from dots or not', this.isDotsClicked);
+   
   }
 
   handleBackClick(event: boolean) {

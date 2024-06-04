@@ -57,16 +57,12 @@ export class EntityComponent {
     });
   }
 
-  // handleAddEntity(event: boolean) {
-  //   if (event) {
-  //     console.log('Add New Entity button clicked:', event);
-  //   }
-  // }
+
 
   async handleEntitySelected(entity: EntityDataType) {
     await this.isDotsClickedPromise;
 
-    console.log('if dots clicked!', this.isDataComingFromDots);
+    
     this.selectedEntity = entity;
     this.selectedEntityEmitter.emit(this.selectedEntity);
     this.isDotsClicked.emit(this.isDataComingFromDots);

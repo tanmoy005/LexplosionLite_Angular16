@@ -25,7 +25,7 @@ export class OperatingUnitComponent implements OnChanges {
   entityOpPath: string[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('Received in op-unit', this.entity);
+ 
 
     if (changes['entity'] && changes['entity'].currentValue) {
       this.entityOpPath = ['Entities', this.entity.name, 'Operating Unit'];

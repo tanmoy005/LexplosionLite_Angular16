@@ -344,15 +344,15 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   }
 
   openCountryDialog() {
-    console.log('Open Country dialog clicked!');
+   
   }
 
   openIndustryDialog() {
-    console.log('Open Industry dialog clicked!');
+
   }
 
   getImageSource(opUnitLength: number): string {
-    // console.log('the image source',opUnitLength)
+    
     return opUnitLength > 0
       ? './assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg'
       : './assets/images/icons/Icons - Lex Kom LiteOperating_Unit_Unavailable.svg';
