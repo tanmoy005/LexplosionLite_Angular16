@@ -210,7 +210,7 @@ export class OperatingUnitTableComponent implements OnInit {
         industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        //entityPosition:this.entity.position,
+       
         entityPosition: this.entity.id,
         entity: this.entity,
         opUnitPosition: 0,
@@ -228,7 +228,7 @@ export class OperatingUnitTableComponent implements OnInit {
         industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-        //entityPosition:this.entity.position,
+
         entityPosition: this.entity.id,
         entity: this.entity,
         opUnitPosition: opID,
@@ -247,8 +247,7 @@ export class OperatingUnitTableComponent implements OnInit {
 
   openLawDialog(opID: number) {
     const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {
-      // data:{
-      // }
+     
     });
     dialogRef.afterClosed().subscribe((result) => {
       

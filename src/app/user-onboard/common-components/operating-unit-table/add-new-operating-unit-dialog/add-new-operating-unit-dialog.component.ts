@@ -90,7 +90,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   editingnoOfChild: number = 0;
   zone: number;
 
-  // editOpUnitDataDetails:OPUnitDetailsWithEntity
+  
   editOpUnitDataDetails: FetchOPUnits;
   noOfDeMale: number = 0;
   noOfDeFemale: number = 0;
@@ -100,13 +100,13 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   noOfIsmFemale: number = 0;
   noOfApprentice: number = 0;
   noOfChild: number = 0;
-  // ownershipDropdown: string[] = ['Owned', 'Leased'];
+
 
   ownershipDropdown: TransformedRadioGroup[] = [
     { label: 'Owned', value: 1, isChecked: false },
     { label: 'Leased', value: 2, isChecked: false },
   ];
-  // zoneDropdown: string[] = ['SEZ', 'STPI', 'Not Applicable'];
+  
   zoneDropdown: TransformedRadioGroup[] = [
     { label: 'SEZ', value: 2, isChecked: false },
     { label: 'STPI', value: 1, isChecked: false },

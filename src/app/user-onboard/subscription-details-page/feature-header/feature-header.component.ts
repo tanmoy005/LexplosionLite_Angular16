@@ -24,14 +24,14 @@ export class FeatureHeaderComponent {
   
  
   onCardClick(index: number): void {
-    // Uncheck all cards
+   
     this.checkboxItems.forEach((item, i) => {
       if (i !== index) {
         item.checked = false;
       }
     });
 
-    // Ensure the selected card remains checked
+  
     this.checkboxItems[index].checked = true;
 
     

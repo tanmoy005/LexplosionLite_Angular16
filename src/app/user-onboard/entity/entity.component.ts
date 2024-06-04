@@ -17,7 +17,7 @@ export class EntityComponent {
   private resolveDotsClickedPromise: (() => void) | null = null;
 
   treeDataItem = treeDataitem;
-  //receivedData: any;
+ 
   encryptStorage = new EncryptStorage(environment.localStorageKey);
 
   entityTypesList: FieldDefinitionInterfaces.EntityTypes[];

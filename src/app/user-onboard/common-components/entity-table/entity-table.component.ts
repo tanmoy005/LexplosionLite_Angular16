@@ -199,7 +199,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
-          this.table.renderRows(); // Ensure this is a MatTable instance
+          this.table.renderRows(); 
           this.entityTableDataLoading.emit(false);
         });
     } catch (error) {
@@ -327,7 +327,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         }
         break;
       case 'Edit':
-        //var entity = this.dataSource.find((entity) => entity.position === position);
+     
         var entity = this.dataSource.find((entity) => entity.id === id);
 
         if (entity === undefined) {

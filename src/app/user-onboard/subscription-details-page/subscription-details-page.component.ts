@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-subscription-details-page',
   templateUrl: './subscription-details-page.component.html',
   styleUrls: ['./subscription-details-page.component.scss'],
-  // standalone:true,
-  // imports:[MatCheckboxModule, FormsModule, MatCardModule,FeaturesComponent]
+
 })
 
 export class SubscriptionDetailsPageComponent {
