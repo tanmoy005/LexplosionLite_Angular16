@@ -8,10 +8,7 @@ import { MaterialModule } from 'src/app/material-module';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

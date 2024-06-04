@@ -7,14 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './reg-header.component.html',
   styleUrls: ['./reg-header.component.css'],
   standalone: true,
-  imports: [
-    MatDividerModule
-  ]
+  imports: [MatDividerModule],
 })
 export class RegHeaderComponent {
-  constructor( private router: Router) {}
+  constructor(private router: Router) {}
   handleClickOnLogo() {
-      this.router.navigate(['/home']);
-
+    this.router.navigate(['/home']);
   }
 }

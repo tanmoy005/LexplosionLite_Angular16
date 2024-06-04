@@ -1,23 +1,22 @@
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px; /* Adjust as needed */
-  }
-  
-  .logo {
-    max-width:179px; /* Adjust the maximum width of the logo */
-    height: auto;
-    margin-right: 20px; /* Adjust the spacing between the image and the text */
-    cursor: pointer;
-  }
-    
-  .lexplosion-product {
-    font-family: Barlow;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14.4px;
-    text-align: left;
-    padding-right: 20px;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+.logo {
+  max-width: 179px;
+  height: auto;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.lexplosion-product {
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  text-align: left;
+  padding-right: 20px;
+}

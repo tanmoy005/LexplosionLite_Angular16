@@ -11,9 +11,7 @@ import { MaterialModule } from '../material-module';
 import { CommonComponentModule } from '../user-onboard/common-components/common-component.module';
 
 @NgModule({
-  declarations: [
-    AppSideRegisterComponent
-  ],
+  declarations: [AppSideRegisterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AuthenticationRoutes),
@@ -23,10 +21,9 @@ import { CommonComponentModule } from '../user-onboard/common-components/common-
     AppSideLoginComponent,
     RegHeaderComponent,
     VerifyEmailPageComponent,
-    CommonComponentModule    
+    CommonComponentModule,
   ],
-  
-  exports: [
-  ]
+
+  exports: [],
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}
