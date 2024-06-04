@@ -1,6 +1,25 @@
 .payment-section-heading{
-    text-align: left;
+    // text-align: left;
     margin-bottom: 10px;
+    margin-left: 12px;
+}
+
+.payment-heading-typography{
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+}
+
+.payment-other-typography{
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
 }
 
 .subscription-unit-card{
