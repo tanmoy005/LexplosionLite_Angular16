@@ -19,7 +19,7 @@
       <div class="divider"></div>
       <div class="field-container text_12_400_gray_900 mt-22">
         <div class="field-serial-no text_12_500_gray_1000">2</div>
-        <div class="d-flex"> 
+        <div class="d-flex">
           <mat-form-field
             appearance="outline"
             class="entity-form-field big-text-input w-240px"
@@ -32,20 +32,21 @@
 
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Ownership</label>
-            <mat-radio-group 
-            [(ngModel)]="ownership"
-            (change)="onOwnershipSelectionChange($event)"
+            <mat-radio-group
+              [(ngModel)]="ownership"
+              (change)="onOwnershipSelectionChange($event)"
             >
-             
-              <mat-radio-button class="example-margin"  
-              *ngFor='let menu of ownershipDropdown' 
-              [value]="menu.value" [checked]="menu.isChecked">
-                {{menu.label}}
+              <mat-radio-button
+                class="example-margin"
+                *ngFor="let menu of ownershipDropdown"
+                [value]="menu.value"
+                [checked]="menu.isChecked"
+              >
+                {{ menu.label }}
               </mat-radio-button>
             </mat-radio-group>
           </section>
         </div>
-        
       </div>
       <div class="divider"></div>
       <div class="field-container text_12_400_gray_900 mt-22">
@@ -66,24 +67,32 @@
       <div class="field-container text_12_400_gray_900 mt-22">
         <div class="field-serial-no text_12_500_gray_1000">4</div>
         <div class="d-flex">
-          <div class="w-240px ">
+          <div class="w-240px">
             <label class="text_12_500_gray_1200">Location</label>
-            <app-dropdown [label]="'State'" [options]="transformedStates" [IsMultiSelection]="false" [IsRequired]="true"
-              (selectedValueChange)="onSelectedValueChanged($event,'states')"
-              [changeableValues]="state">
+            <app-dropdown
+              [label]="'State'"
+              [options]="transformedStates"
+              [IsMultiSelection]="false"
+              [IsRequired]="true"
+              (selectedValueChange)="onSelectedValueChanged($event, 'states')"
+              [changeableValues]="state"
+            >
             </app-dropdown>
           </div>
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Zone</label>
-            <mat-radio-group [(ngModel)]="zone"
-            (change)="onZoneSelectionChange($event)">
-              <mat-radio-button class="example-margin" 
-              class="text_12_400_gray_1200"  
-              *ngFor='let menu of zoneDropdown' 
-              [value]="menu.value"
-              [checked]="menu.isChecked"
+            <mat-radio-group
+              [(ngModel)]="zone"
+              (change)="onZoneSelectionChange($event)"
+            >
+              <mat-radio-button
+                class="example-margin"
+                class="text_12_400_gray_1200"
+                *ngFor="let menu of zoneDropdown"
+                [value]="menu.value"
+                [checked]="menu.isChecked"
               >
-                {{menu.label}}
+                {{ menu.label }}
               </mat-radio-button>
             </mat-radio-group>
           </section>
@@ -93,53 +102,51 @@
       <div class="field-container text_12_400_gray_900 mt-22">
         <div class="field-serial-no text_12_500_gray_1000">5</div>
         <div class="d-flex">
-        
-            <app-dropdown [label]="'Activities'" 
+          <app-dropdown
+            [label]="'Activities'"
             [options]="filteredActivitiesList"
-             [IsMultiSelection]="true"
-              [IsRequired]="true" 
-              (selectedValueChange)="onSelectedValueChanged($event,'activity')"
-              [changeableValues]="selectedActivitiesList">
-            </app-dropdown>
-            <app-activities-list
-            [selectedActivitiesList]='selectedActivitiesList'
-            (selectedActivitiesListChange)="onSelectedActivitiesListChange($event)">
-          </app-activities-list> 
-
-
-            <!-- <app-dropdown [options]="BusinessOptions" [IsMultiSelection]="false" [IsRequired]="true"
-              (selectedValueChange)="onSelectedValueChanged($event,'activity')">
-            </app-dropdown> -->
-          
+            [IsMultiSelection]="true"
+            [IsRequired]="true"
+            (selectedValueChange)="onSelectedValueChanged($event, 'activity')"
+            [changeableValues]="selectedActivitiesList"
+          >
+          </app-dropdown>
+          <app-activities-list
+            [selectedActivitiesList]="selectedActivitiesList"
+            (selectedActivitiesListChange)="
+              onSelectedActivitiesListChange($event)
+            "
+          >
+          </app-activities-list>
         </div>
       </div>
       <div class="divider"></div>
       <div class="field-container text_12_400_gray_900 mt-22">
-        <div class="field-serial-no text_12_500_gray_1000">
-          6
-        </div>
+        <div class="field-serial-no text_12_500_gray_1000">6</div>
         <div class="d-flex">
           <label class="text_12_500_gray_1200">Number of Employees</label>
         </div>
       </div>
-
     </form>
 
     <div class="col-lg-12">
-      <app-employee-count-card (employeeDataChange)="employeeCountData($event)"
+      <app-employee-count-card
+        (employeeDataChange)="employeeCountData($event)"
         (apprenticesChange)="apprenticesData($event)"
         (childLaboursChange)="childLabourData($event)"
         [apprenticeInitial]="editingnoOfApprentice"
         [childInitial]="editingnoOfChild"
         [employeeDataInitial]="editingEmployeeData"
-        >
+      >
       </app-employee-count-card>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions class="mat-dialog-actions-container">
-    <button mat-button class="btn-blue-outline-md"  (click)="CloseDialog()">
+    <button mat-button class="btn-blue-outline-md" (click)="CloseDialog()">
       Back
     </button>
-    <button mat-button  class="btn-primary-md" (click)="addOpUnit()">{{buttonName}}</button>
+    <button mat-button class="btn-primary-md" (click)="addOpUnit()">
+      {{ buttonName }}
+    </button>
   </mat-dialog-actions>
 </app-dialog-layout>

@@ -32,9 +32,7 @@ export class LawsTableComponent {
     this.dataSource = this.transformData(this.data);
   }
 
-  constructor(public dialog: MatDialog) {
-    //this.dataSource = this.transformData(DATA);
-  }
+  constructor(public dialog: MatDialog) {}
 
   openDialog() {
     this.dialog.open(LawsReadMoreDialogComponent);

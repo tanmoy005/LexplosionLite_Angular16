@@ -147,7 +147,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     );
     this.transformedStates = transformOperatingUnitTypes(this.data.states);
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList);
-    //console.log('trans op unit types', this.transformedDataOperatingUnits);
    
     const savedindustryActivities =
       this.encryptStorage.getItem('industryActivities');
@@ -159,7 +158,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data.opUnitPosition !== 0) {
-      console.log('The opunit position is', this.data.selectedOP);
+     
       this.operatingUnitName = this.data.selectedOP.name;
       this.operatingUnitType = this.data.selectedOP.operatingUnitType.id;
       this.ownership = this.data.selectedOP.ownership.id;
@@ -213,7 +212,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.data.entityTable.fetchOpUnitList();
       this.dialogRef.close();
     } catch (error) {
-      console.error('Error adding operating unit:', error);
+    
     }
   }
 
@@ -244,30 +243,30 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     }
     if (columnvalue === 'activity') {
       this.selectedActivitiesList = value;
-      console.log('the selected activity list is',  this.selectedActivitiesList);
+   
     }
 
     if (columnvalue === 'entityList') {
       this.selectedEntities = value;
 
-      console.log('the selected entity list is', value);
+      
     }
   }
 
   employeeCountData(value: EmployeeCardInterface[]) {
     this.employeeData = value;
-    console.log('employee data', value);
+   
     this.extractValues(this.employeeData);
   }
 
   apprenticesData(value: number) {
     this.noOfApprentice = value;
-    console.log('apprentice data', value);
+
   }
 
   childLabourData(value: number) {
     this.noOfChild = value;
-    console.log('child labour data', value);
+    
   }
 
   CloseDialog() {
@@ -276,12 +275,12 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
 
   onOwnershipSelectionChange(event: any): void {
     this.ownership = event.value;
-    console.log('Selected ownership Value: ', this.ownership);
+
   }
 
   onZoneSelectionChange(event: any): void {
     this.zone = event.value;
-    console.log('Selected zone Value: ', this.zone);
+  
   }
 
   getActivitiesByIndustryId(iId: number) {
@@ -369,7 +368,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   }
   onSelectedActivitiesListChange(updatedList: number[]) {
     this.selectedActivitiesList = updatedList;
-    console.log('Updated selected activity list:', this.selectedActivitiesList);
+   
   }
   
 }
