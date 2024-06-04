@@ -1,13 +1,6 @@
 @use 'variable.scss' as var;
-// global
-
-// * {
-//   outline: none;
-//   box-sizing: border-box;
-// }
 
 .mat-step-header {
-  // flex-direction: column-reverse;
   margin-bottom: 10px;
 }
 
@@ -20,7 +13,6 @@ body {
   font-family: var.$bodyfont;
   margin: 0;
   overflow-x: hidden;
-//  // color: var.$bodytext;
   font-weight: 300;
   background: #fff;
 }
@@ -123,7 +115,6 @@ code {
 .button-row button {
   margin-bottom: 5px;
   margin-right: 5px;
-  // color: var.$white;
 }
 .mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent{
   color: var.$white;
@@ -137,7 +128,6 @@ html body {
     position: relative;
   }
 
-  // list
   .clear {
     clear: both;
   }
@@ -271,35 +261,4 @@ html body {
   letter-spacing: normal;
   font-weight: 400;
 }
-
-
-
-
-
-
-// .mat-mdc-card {
-//   border-radius: var(--mdc-elevated-card-container-shape);
-//   background-color: var(--mdc-elevated-card-container-color);
-//   border-width: 0;
-//   border-style: solid;
-  
- 
-//   --mdc-elevated-card-container-shape: 4px;
-//   --mdc-outlined-card-container-shape: 4px;
-//   --mdc-outlined-card-outline-width: 1px;
-// }
-
-// .mat-mdc-raised-button.mat-warn {
-//   --mdc-protected-button-container-color: #786ACD;
-//   --mdc-protected-button-label-text-color: #fff;
-//   text-decoration: none;
-// }
-
-// .mat-mdc-outlined-button {
-//   --mdc-outlined-button-outline-color: #786ACD;
-// }
-
-// .mat-mdc-outlined-button.mat-unthemed {
-// --mdc-outlined-button-label-text-color: #786ACD;
-// }
 

@@ -1,22 +1,25 @@
-import { Component, Injectable, ViewEncapsulation } from '@angular/core';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Injectable } from '@angular/core';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SnackbarService {
-  
-  constructor(public snackBar: MatSnackBar) { }
+  constructor(public snackBar: MatSnackBar) {}
   duration: 2000;
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  
+
   showError(message: string) {
     this.snackBar.open(message, 'close', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: this.duration,
-      panelClass: ['custom-error-snackbar']
+      panelClass: ['custom-error-snackbar'],
     });
   }
 
@@ -25,7 +28,7 @@ export class SnackbarService {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: this.duration,
-      panelClass: ['custom-success-snackbar']
+      panelClass: ['custom-success-snackbar'],
     });
   }
 
@@ -34,7 +37,7 @@ export class SnackbarService {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: this.duration,
-      panelClass: ['custom-info-snackbar']
+      panelClass: ['custom-info-snackbar'],
     });
   }
 
@@ -43,7 +46,7 @@ export class SnackbarService {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: this.duration,
-      panelClass: ['custom-warning-snackbar']
+      panelClass: ['custom-warning-snackbar'],
     });
   }
 }
