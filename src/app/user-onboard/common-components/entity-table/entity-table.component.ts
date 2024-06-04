@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Input, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
