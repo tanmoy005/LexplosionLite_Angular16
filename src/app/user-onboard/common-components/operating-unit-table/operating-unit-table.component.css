@@ -1,5 +1,4 @@
 .mat-header-row {
-    /* height: 35px;  */
     background-color:#F0F0F0; 
   }
   
@@ -12,8 +11,7 @@
   }
 
   .opUnit-details-table{
-    min-height: 248px;
-    max-height: 250px;
+    max-height: 251px;
     overflow-y: auto;
     overflow-x: auto;
   }
