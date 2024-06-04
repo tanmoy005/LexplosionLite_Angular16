@@ -1,14 +1,12 @@
-import { Component, ViewChild, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import * as EntityInterfaces from 'src/app/shared/menu-items/entity-interfaces';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EntityTableComponent } from './entity-table.component';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
-import { treeDataitem, TreeNode } from 'src/app/shared/menu-items/tree-items';
+import { TreeNode } from 'src/app/shared/menu-items/tree-items';
 import { CountryList, CountryData } from 'src/app/shared/menu-items/country-list';
 import { IndustryActivies } from 'src/app/shared/menu-items/field-definition-interfaces';
-import { FormData } from 'src/app/shared/menu-items/entity-interfaces';
-import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces'
   
   function transformEntityTypes(data: EntityInterfaces.OriginalType[]): EntityInterfaces.TransformedType[] {
     return data.map((item) => ({

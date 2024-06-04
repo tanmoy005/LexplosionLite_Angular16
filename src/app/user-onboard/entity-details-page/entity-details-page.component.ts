@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
-import { ApiService } from 'src/app/services/api.service';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 
@@ -12,7 +11,7 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
   encapsulation: ViewEncapsulation.None,
 })
 export class EntityDetailsPageComponent {
-  //receivedData: any;
+ 
   entityTypesList: FieldDefinitionInterfaces.EntityTypes;
   industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
   lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
@@ -27,19 +26,13 @@ export class EntityDetailsPageComponent {
 
   isEntityTableLoading: boolean;
 
-  constructor(private router: Router, private apiService: ApiService) {
-    //const navigation = this.router.getCurrentNavigation();
-    // var fieldDefinitionResponse;
-    // if (navigation && navigation.extras.state) {
-    //   this.receivedData = navigation.extras.state;
-    // }
-  }
+  constructor(private router: Router) {}
 
-  handleAddEntity(event: boolean) {
-    if (event) {
-      console.log('Add New Entity button clicked:', event);
-    }
-  }
+  // handleAddEntity(event: boolean) {
+  //   if (event) {
+  //     console.log('Add New Entity button clicked:', event);
+  //   }
+  // }
 
   getSelectedCountries(value: number[]) {
     this.countryList = value;
@@ -54,7 +47,7 @@ export class EntityDetailsPageComponent {
   handleSelectedEntity(entity: EntityDataType) {
     this.isAddOperatingUnitClicked = true;
     this.selectedEntity = entity;
-    //this.isDotsClicked= true
+    
   }
 
   handleIsDotsClicked(state: boolean) {
