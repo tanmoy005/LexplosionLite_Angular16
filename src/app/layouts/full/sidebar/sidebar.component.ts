@@ -5,17 +5,19 @@ import { MaterialModule } from 'src/app/material-module';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [MaterialModule, NgFor, NgIf, RouterModule, CommonModule, MatIconModule],
+  imports: [MaterialModule, NgFor, NgIf, RouterModule, CommonModule, MatIconModule, MatSidenavModule],
   templateUrl: './sidebar.component.html',
   styleUrls: []
 })
 export class AppSidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
-
+  events: string[] = [];
+  opened: boolean = true;
   private _mobileQueryListener: () => void;
   MenuDataItems: Menu[] = [];
   constructor(

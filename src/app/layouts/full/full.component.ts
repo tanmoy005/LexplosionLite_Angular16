@@ -1,7 +1,8 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component,OnDestroy,AfterViewInit} from '@angular/core';
+import {ChangeDetectorRef, Component,OnDestroy,AfterViewInit, ViewChild, Renderer2, ElementRef} from '@angular/core';
 import { MenuItems } from '../../shared/menu-items/menu-items';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenav } from '@angular/material/sidenav';
 
 /** @title Responsive sidenav */
 @Component({
@@ -10,14 +11,18 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrls: []
 })
 export class FullComponent implements OnDestroy, AfterViewInit {
+  @ViewChild('sidenav') sidenav: ElementRef;
+  isPartiallyClosed = false;
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;
-
+  events: string[] = [];
+  opened: boolean = true;
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    public menuItems: MenuItems
+    public menuItems: MenuItems,
+    private renderer: Renderer2
   ) {
     this.mobileQuery = media.matchMedia('(min-width: 1024px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -28,4 +33,19 @@ export class FullComponent implements OnDestroy, AfterViewInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
   ngAfterViewInit() {}
+  
+  toggleSidebar() {
+    this.isPartiallyClosed = !this.isPartiallyClosed;
+    console.log('isPartiallyClosed', this.isPartiallyClosed);
+    
+    console.log('this.sidenav.nativeElement', this.sidenav.nativeElement);
+    if (this.isPartiallyClosed) {
+      
+      this.renderer.removeClass(this.sidenav.nativeElement, 'opened');
+      this.renderer.addClass(this.sidenav.nativeElement, 'closed');
+    } else {
+      this.renderer.removeClass(this.sidenav.nativeElement, 'closed');
+      this.renderer.addClass(this.sidenav.nativeElement, 'opened');
+    }
+  }
 }

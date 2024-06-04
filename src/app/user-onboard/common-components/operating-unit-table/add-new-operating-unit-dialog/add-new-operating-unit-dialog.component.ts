@@ -1,4 +1,3 @@
-//import { OPUnitDetailsWithEntity } from './../../../../shared/menu-items/entity-to-opunit-data-interface';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { OperatingUnitTableComponent } from '../operating-unit-table.component';
@@ -179,8 +178,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.selectedActivitiesList = this.data.selectedOP.activities.map(
         (item) => item.id
       );
-      //console.log('the selected activities are',this.selectedActivitiesList);
-      //console.log('Selected ownership', this.ownership);
+     
       this.noOfApprentice = this.data.selectedOP.noOfApprentice;
       this.noOfChild = this.data.selectedOP.noOfChild;
       this.noOfDeMale = this.data.selectedOP.noOfDeMale;
@@ -290,7 +288,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     return this.industryActivityList
       .filter((item) => item.iId === iId)
       .map((item) => ({ value: item.aId, label: item.activity }));
-    //this.filteredActivitiesList = this.data.entity.industry.filter(country => this..includes(country.value));
+   
   }
 
   extractValues(data: Workforce[]): void {

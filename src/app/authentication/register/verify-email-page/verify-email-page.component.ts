@@ -40,7 +40,6 @@ export class VerifyEmailPageComponent {
 
     if (navigation && navigation.extras.state) {
       this.stateData = navigation.extras.state;
-      console.log('This is the received data in op-unit page', this.stateData);
       this.businessName = this.stateData['businessname'];
     }
   }

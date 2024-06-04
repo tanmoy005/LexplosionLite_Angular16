@@ -35,13 +35,9 @@ export class EntityComponent {
   @Output() handleTableDataLoadingFromEntity = new EventEmitter<boolean>();
   @Output() isDotsClicked = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private apiService: ApiService) {
-    const navigation = this.router.getCurrentNavigation();
-    //var fieldDefinitionResponse;
-
-    // if (navigation && navigation.extras.state) {
-    //   this.receivedData = navigation.extras.state;
-    // }
+  constructor(private router: Router) {
+    
+ 
     const savedentityTypes = this.encryptStorage.getItem('entityTypes');
     const savedindustryActivities =
       this.encryptStorage.getItem('industryActivities');
@@ -61,11 +57,11 @@ export class EntityComponent {
     });
   }
 
-  handleAddEntity(event: boolean) {
-    if (event) {
-      console.log('Add New Entity button clicked:', event);
-    }
-  }
+  // handleAddEntity(event: boolean) {
+  //   if (event) {
+  //     console.log('Add New Entity button clicked:', event);
+  //   }
+  // }
 
   async handleEntitySelected(entity: EntityDataType) {
     await this.isDotsClickedPromise;
@@ -83,7 +79,7 @@ export class EntityComponent {
     if (this.resolveDotsClickedPromise) {
       this.resolveDotsClickedPromise();
     }
-    //console.log('if dots clicked!', this.isDataComingFromDots);
+    
   }
 
   handleTableDataLoading(state: boolean) {

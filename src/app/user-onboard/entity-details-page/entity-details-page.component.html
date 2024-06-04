@@ -1,6 +1,4 @@
-
 <div class="container">
-
   <app-reg-header></app-reg-header>
   <mat-divider></mat-divider>
   <div class="row">
@@ -24,64 +22,28 @@
     </div>
   </div>
 
-  <!--  
-  <div class="entity-section">
-    <app-entity [countryList]="countryList"
-    (selectedEntityEmitter)="handleSelectedEntity($event)"></app-entity>
-  </div> -->
-  <!-- <div class="entity-operating-unit-section">
-    
-    <app-operating-unit></app-operating-unit>
-  </div> -->
-  
-  <!-- <div class="entity-section"
-  [ngClass]="{'d-none': isAddOperatingUnitClicked}"
-  
-   >
-    <app-entity
-      [countryList]="countryList"
-      (selectedEntityEmitter)="handleSelectedEntity($event)"
-    >
-    </app-entity>
-  </div>
-
-  <div class="entity-operating-unit-section"
-  [ngClass]="{'d-none': !isAddOperatingUnitClicked}" >
-    <app-operating-unit
-    (isBackClicked)="handleBackClick($event)"></app-operating-unit>
-  </div> -->
   <div class="entity-section" *ngIf="!isAddOperatingUnitClicked">
     <app-entity
       [countryList]="countryList"
       (selectedEntityEmitter)="handleSelectedEntity($event)"
-      
       (handleTableDataLoadingFromEntity)="handleEntityLoadingState($event)"
-      (isDotsClicked)='handleIsDotsClicked($event)'
+      (isDotsClicked)="handleIsDotsClicked($event)"
     >
     </app-entity>
   </div>
 
   <div class="entity-operating-unit-section" *ngIf="isAddOperatingUnitClicked">
     <app-operating-unit
-    (isBackClicked)="handleBackClick($event)"
-    [entity]="selectedEntity"
-    [isDotsCliscked]="isDotsClicked"
-    (handleTableDataLoadingFromOperatingUnit)="handleEntityLoadingState($event)"
+      (isBackClicked)="handleBackClick($event)"
+      [entity]="selectedEntity"
+      [isDotsCliscked]="isDotsClicked"
+      (handleTableDataLoadingFromOperatingUnit)="
+        handleEntityLoadingState($event)
+      "
     ></app-operating-unit>
   </div>
 
-  <!-- <div class="row entity-details-next-button-div">
-    <div class="col-12">
-      <button class="entity-details-next-button" (click)="goToSubscription()">
-        Next
-      </button>
-    </div>
-  </div> -->
-  
-  <!-- Spinner and backdrop -->
   <div class="spinner-backdrop" *ngIf="isEntityTableLoading">
     <mat-spinner></mat-spinner>
   </div>
 </div>
-
-

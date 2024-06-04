@@ -1,48 +1,7 @@
-/* .mat-step-header {
-    flex-direction: column-reverse;
-    margin-bottom: 10px;
-  } */
-
-  /* .disabled {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-
-  .stepper-header-above .mat-horizontal-stepper-header-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .stepper-header-above .mat-step-header {
-    text-align: center;
-    flex-grow: 0;
-  } */
-
-/* .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
-  padding: 16px 0 0 0;
-  text-align: center;
-  width: 100%;
-  font-family: Barlow;
-} */
-
-  /* .mat-horizontal-stepper-header-container {
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    padding: 0%;
-}
-
-.stepper-container .mat-horizontal-content-container {
-  padding: 0px 0px 0px 0px;
-} */
-/* ::ng-deep .mat-step-text-label {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  font-family: Barlow;
-} */
-
-::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+::ng-deep
+  .mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header
+  .mat-step-label {
   padding: 16px 0 0 0;
   text-align: center;
   width: 100%;
@@ -54,15 +13,13 @@
   color: #f0eff7;
 }
 
-::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done,.mat-step-header .mat-step-icon-state-edit {
-  background-color: #786ACD;
-  color:#786ACD;
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #786acd;
+  color: #786acd;
 }
 
 ::ng-deep .mat-step-header .mat-step-label.mat-step-label-active {
-  color: #786ACD;
+  color: #786acd;
 }
-
-
-
-
