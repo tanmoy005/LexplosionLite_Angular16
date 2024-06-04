@@ -1,53 +1,16 @@
-/* .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 100% of the viewport height
-  background-color: white;
-} */
-
-/* .mat-card-container {
-  width: 80%;  */
-  /* Adjust card width as needed */
-  /* max-width: 500px;  */
-  /* Maximum width for responsiveness */
-  /* text-align: center;
-  align-items: center;
-  justify-content: center;
-  transition: none !important;
-  box-shadow: none !important;
-} */
-
-/* .login-header-div {
-  margin-top: 10px;
-  margin-bottom: 70px;
-  text-align: center;
-} */
-
-/* .login-container-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
-
 .example-form-field-width {
   width: 100%;
-  margin-bottom: 2px;  /* Adjust spacing between form fields */
- }
-
-/* .login-button-div {
-  margin-top: 20px;
-} */
-
-.login-form .mdc-text-field--filled:not(.mdc-text-field--disabled){
-  background-color: transparent!important;
+  margin-bottom: 2px;
 }
-.custome-check-box label.mdc-label{
-    font-size: 12px!important;
-    font-weight: 400!important;
-    color: rgba(38, 38, 44, 1);
+
+.login-form .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
 }
-.login-form .mat-mdc-form-field-subscript-wrapper{
+.custome-check-box label.mdc-label {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: rgba(38, 38, 44, 1);
+}
+.login-form .mat-mdc-form-field-subscript-wrapper {
   height: 16px;
 }
