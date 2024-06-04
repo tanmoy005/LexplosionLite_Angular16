@@ -1,3 +1,4 @@
+@use 'variable.scss' as var;
 // global
 
 // * {
@@ -16,10 +17,10 @@
 }
 
 body {
-  font-family: $bodyfont;
+  font-family: var.$bodyfont;
   margin: 0;
   overflow-x: hidden;
-//  // color: $bodytext;
+//  // color: var.$bodytext;
   font-weight: 300;
   background: #fff;
 }
@@ -27,7 +28,7 @@ body {
 html {
   position: relative;
   min-height: 100%;
-  background: $white;
+  background: var.$white;
 }
 
 .main-container {
@@ -42,7 +43,7 @@ html {
 }
 
 .mat-drawer-container {
-  background: $bodycolor;
+  background: var.$bodycolor;
 }
 
 html .page-wrapper {
@@ -64,12 +65,12 @@ a {
 }
 
 a.link {
-  color: $headingtext;
+  color: var.$headingtext;
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: $themecolor;
+    color: var.$themecolor;
   }
 }
 
@@ -83,7 +84,7 @@ hr {
   border: 0px;
   height: 1px;
   width: 100%;
-  background: $border;
+  background: var.$border;
 }
 
 html body .mdi:before,
@@ -94,13 +95,13 @@ html body .mdi-set {
 code {
   padding: 0.2rem 0.4rem;
   font-size: 90%;
-  color: $danger;
-  background-color: $light-danger;
+  color: var.$danger;
+  background-color: var.$light-danger;
   border-radius: 0.25rem;
 }
 
 .box {
-  border-radius: $radius;
+  border-radius: var.$radius;
   padding: 10px;
 }
 
@@ -122,13 +123,13 @@ code {
 .button-row button {
   margin-bottom: 5px;
   margin-right: 5px;
-  // color: $white;
+  // color: var.$white;
 }
 .mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent{
-  color: $white;
+  color: var.$white;
 }
 .mat-mdc-tab-header{
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid var.$border;
 }
 
 html body {
@@ -169,7 +170,7 @@ html body {
   }
 
   .rounded {
-    border-radius: $radius;
+    border-radius: var.$radius;
   }
 
   //   flex
@@ -202,7 +203,7 @@ html body {
   }
 
   .radius {
-    border-radius: $radius;
+    border-radius: var.$radius;
   }
 
   .no-shadow {
@@ -241,23 +242,23 @@ html body {
   }
 
   .b-r {
-    border-right: 1px solid $border;
+    border-right: 1px solid var.$border;
   }
 
   .b-l {
-    border-left: 1px solid $border;
+    border-left: 1px solid var.$border;
   }
 
   .b-b {
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid var.$border;
   }
 
   .b-t {
-    border-top: 1px solid $border;
+    border-top: 1px solid var.$border;
   }
 
   .b-all {
-    border: 1px solid $border;
+    border: 1px solid var.$border;
   }
 }
 

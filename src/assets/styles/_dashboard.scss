@@ -1,16 +1,18 @@
+@use 'variable' as var;
+
 /*******************
 Rounds
 *******************/
 .round {
   line-height: 48px;
-  color: $white;
+  color:  var.$white;
   width: 45px;
   height: 45px;
   display: inline-block;
   font-weight: 400;
   text-align: center;
   border-radius: 100%;
-  background: $info;
+  background:  var.$info;
   img {
     border-radius: 100%;
   }
@@ -19,19 +21,19 @@ Rounds
 .message-box {
   ul li {
     .nav-link {
-      border-top: 1px solid $border;
+      border-top: 1px solid  var.$border;
       padding-top: 15px;
     }
   }
   .message-widget {
     position: relative;
     a {
-      border-bottom: 1px solid $border;
+      border-bottom: 1px solid  var.$border;
       display: flex;
       text-decoration: none;
       padding: 9px 15px;
       &:hover {
-        background: $light;
+        background:  var.$light;
       }
       &:last-child {
         border-bottom: 0px;
@@ -48,7 +50,7 @@ Rounds
           width: 100%;
         }
         .profile-status {
-          border: 2px solid $white;
+          border: 2px solid  var.$white;
           border-radius: 50%;
           display: inline-block;
           height: 10px;
@@ -58,16 +60,16 @@ Rounds
           width: 10px;
         }
         .online {
-          background: $success;
+          background:  var.$success;
         }
         .busy {
-          background: $danger;
+          background:  var.$danger;
         }
         .away {
-          background: $warning;
+          background:  var.$warning;
         }
         .offline {
-          background: $warning;
+          background:  var.$warning;
         }
       }
       .mail-contnet {
@@ -85,7 +87,7 @@ Rounds
           margin: 1px 0;
           text-overflow: ellipsis;
           overflow: hidden;
-          //// color: $bodytext;
+          //// color:  var.$bodytext;
           white-space: nowrap;
         }
       }

@@ -1,3 +1,5 @@
+@use 'variable.scss' as var;
+
 /*******************
 Headings
 *******************/
@@ -8,7 +10,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $headingfont;
+  font-family: var.$headingfont;
   font-weight: 400;
 }
 

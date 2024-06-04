@@ -1,3 +1,6 @@
+@use 'variable' as var;
+
+
 /*
 Template Name: Material Pro Admin
 Author: Themedesigner
@@ -37,7 +40,7 @@ File: scss
     .mat-card {
       margin: 15px 0px;
       flex: 1 0 0%;
-      border-left: 1px solid $border;
+      border-left: 1px solid var.$border;
       &:first-child {
         border: 0px;
       }
@@ -50,7 +53,7 @@ File: scss
     margin: 15px 0;
     .mat-card {
       margin: 0 15px;
-      border-top: 1px solid $border;
+      border-top: 1px solid var.$border;
       &:first-child {
         border: 0px;
       }

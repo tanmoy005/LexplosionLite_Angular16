@@ -1,28 +1,28 @@
+@use 'variable' as var;
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-@import 'variable';
 @import 'mixins/spacing';
-@import 'mixins/color';
+// @import 'mixins/color';
 @import 'mixins/font';
 @import 'grid/grid';
-@import 'component/global';
-@import 'component/heading';
+@import 'global';
+@import 'heading';
 @import 'component/header';
-@import 'component/sidebar';
+@import 'sidebar';
 @import 'component/spinner';
 @import 'component/card';
-@import 'component/dashboard';
+@import 'dashboard';
 @import 'font-style';
 @import 'button';
 @import 'snackbar';
 @import 'responsive';
 @import 'input';
 @import 'text';
-@import "../styles/icons/material-design-iconic-font/css/materialdesignicons.min.css";
+// @import "../styles/icons/material-design-iconic-font/css/materialdesignicons.min.css";
 
 /* You can add global styles to this file, and also import other style files */
 .mat-expansion-panel-body {
@@ -30,14 +30,13 @@
 }
 
 .contain_bg_36_br_16 {
-    background-color: $gray-300;
+    background-color: var.$gray-300;
     border-width: 1px;
     border-style: solid;
-    border-color: $gray-400; // todo set borer image  to gradiant
-    // border-image: linear-gradient(to right, $gray-400, rgba(38, 39, 32, 1)) 1 stretch;
+    border-color: var.$gray-400; // todo set borer image  to gradiant
+    // border-image: linear-gradient(to right, var.$gray-400, rgba(38, 39, 32, 1)) 1 stretch;
     border-radius: 16px;
 }
-
 
 .form-container1 {
     display: flex;
@@ -46,8 +45,8 @@
     // height: 55.76vh;
     border-radius: 10px;
     // border: 1px solid rgba(255, 255, 255, 1);
-    background-color: $gray-500;
-    box-shadow: 0 4px 56px 0 $black-100;
+    background-color: var.$gray-500;
+    box-shadow: 0 4px 56px 0 var.$black-100;
     margin: auto;
 }
 
@@ -56,12 +55,12 @@
     width: 100%;
     justify-content: flex-start;
     // background-color: rgba(248, 248, 248, 0.76);
-    padding: $size_16px $size_24px;
+    padding: var.$size_16px var.$size_24px;
 }
 
 .login-formheader {
     // padding: 0.7vw 0.7vw;
-    background-color: $primary;
+    background-color: var.$primary;
     border-radius: 10px 10px 0 0;
 
     .login-header-logo {
@@ -70,7 +69,7 @@
 }
 
 .login-form {
-    padding: 0 $size_56px $size_32px $size_56px;
+    padding: 0 var.$size_56px var.$size_32px var.$size_56px;
 
     .login-field {
         .mat-mdc-text-field-wrapper {
@@ -79,7 +78,7 @@
         }
 
         label {
-            font-size: $font-12;
+            font-size: var.$font-12;
         }
     }
 
@@ -89,13 +88,13 @@
     }
 
     .forgot_pass {
-        @include text_W400($font-12);
-        color: $blue;
+        @include text_W400(var.$font-12);
+        color: var.$blue;
     }
 }
 
 .mt-42 {
-    margin-top: $mt-42;
+    margin-top: var.$mt-42;
 }
 
 .mr-40 {
@@ -103,7 +102,7 @@
 }
 
 .mt--10 {
-    margin-top: -$mt-10;
+    margin-top: -(var.$mt-10);
 }
 
 .mt-22 {
@@ -130,31 +129,31 @@
 
 
 .mat-mdc-raised-button.mat-warn {
-    --mdc-protected-button-container-color: $purple-100;
-    --mdc-protected-button-label-text-color: $white;
+    --mdc-protected-button-container-color: var.$purple-100;
+    --mdc-protected-button-label-text-color: var.$white;
     text-decoration: none;
 }
 
 .mat-mdc-outlined-button {
-    --mdc-outlined-button-outline-color: $purple-100;
+    --mdc-outlined-button-outline-color: var.$purple-100;
 }
 
 .mat-mdc-outlined-button.mat-unthemed {
-    --mdc-outlined-button-label-text-color: $purple-100;
+    --mdc-outlined-button-label-text-color: var.$purple-100;
 }
 
 .mat-mdc-raised-button.mat-warn {
-    --mdc-protected-button-container-color: $purple-100;
-    --mdc-protected-button-label-text-color: $white;
+    --mdc-protected-button-container-color: var.$purple-100;
+    --mdc-protected-button-label-text-color: var.$white;
     text-decoration: none;
 }
 
 .mat-mdc-outlined-button {
-    --mdc-outlined-button-outline-color: $purple-100;
+    --mdc-outlined-button-outline-color: var.$purple-100;
 }
 
 .mat-mdc-outlined-button.mat-unthemed {
-    --mdc-outlined-button-label-text-color: $purple-100;
+    --mdc-outlined-button-label-text-color: var.$purple-100;
 }
 
 .blank-layout-container {
@@ -190,7 +189,7 @@
     margin: 0 16px;
 
     .mat-mdc-text-field-wrapper {
-        border: 1px solid $gray-1300;
+        border: 1px solid var.$gray-1300;
         border-radius: 5px;
     }
 }
@@ -217,7 +216,7 @@ input.mdc-radio__native-control:focus,
     align-items: center !important;
     justify-content: center !important;
     display: flex !important;
-    border: 1px solid $gray-1100;
+    border: 1px solid var.$gray-1100;
 }
 
 .activities-section {
@@ -228,7 +227,7 @@ input.mdc-radio__native-control:focus,
         // align-items: center!important;
         // justify-content: center!important;
         // display: flex!important;
-        // border: 1px solid  $gray-1100;
+        // border: 1px solid  var.$gray-1100;
         @include small-dropdown-box;
 
         span.mat-content {
@@ -238,7 +237,7 @@ input.mdc-radio__native-control:focus,
 
     .mat-expansion-indicator::after {
         border-width: 0px 1px 1px 0px !important;
-        border-color: $gray-1100;
+        border-color: var.$gray-1100;
         width: 0px !important;
         height: 0px !important;
     }
@@ -261,7 +260,7 @@ input.mdc-radio__native-control:focus,
             justify-content: center !important;
             display: flex !important;
             font-size: 13px !important;
-            color: $gray-1100 !important;
+            color: var.$gray-1100 !important;
         }
     }
 
@@ -274,20 +273,20 @@ input.mdc-radio__native-control:focus,
 
         p {
             margin-left: 14px;
-            @include text-model($font-12, 400, $gray-1200, Barlow, 24px);
+            @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 24px);
         }
     }
 
     .mat-badge-content {
         left: 16px !important;
-        background-color: $gray-1600 !important;
-        @include text-model($font-12, 700, $gray-1500, Barlow, 14.4px);
+        background-color: var.$gray-1600 !important;
+        @include text-model(var.$font-12, 700, var.$gray-1500, Barlow, 14.4px);
     }
 }
 
 .mdc-radio__outer-circle {
     border-width: 1px !important;
-    border-color: $gray-1400;
+    border-color: var.$gray-1400;
 }
 
 .no_of_emp_1st_section {
@@ -301,16 +300,16 @@ input.mdc-radio__native-control:focus,
 @mixin app-dropdown($height: 40px) {
     .app-dropdown {
         .mat-mdc-text-field-wrapper {
-            background-color: $blue-light-200 !important;
+            background-color: var.$blue-light-200 !important;
             border-radius: 3px !important;
-            border: 1px solid $blue-light-200 !important;
+            border: 1px solid var.$blue-light-200 !important;
             height: $height !important;
             align-items: center;
         }
 
         // .mat-mdc-select-min-line {
-        //     color: $gray-1000 !important;
-        //     @include text-model($font-12, 400, $gray-1000, Barlow, 20px);
+        //     color: var.$gray-1000 !important;
+        //     @include text-model(var.$font-12, 400, var.$gray-1000, Barlow, 20px);
         // }
 
         .mat-mdc-select-arrow svg {
@@ -364,9 +363,9 @@ input.mdc-radio__native-control:focus,
 
 .conuntry-dropdown {
     .mat-mdc-text-field-wrapper {
-        background-color: $blue-light-200 !important;
+        background-color: var.$blue-light-200 !important;
         border-radius: 3px !important;
-        border: 1px solid $blue-light-200 !important;
+        border: 1px solid var.$blue-light-200 !important;
         height: 56px !important;
 
     }
@@ -390,7 +389,7 @@ input.mdc-radio__native-control:focus,
     width: 24px;
     height: 24px;
     border-radius: 3px;
-    border: 1px solid $gray-1100;
+    border: 1px solid var.$gray-1100;
     cursor: pointer;
 }
 

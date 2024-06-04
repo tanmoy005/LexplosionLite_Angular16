@@ -49,4 +49,12 @@
     background-color: $purple-300;
     overflow-x: auto;
     overflow-y:auto;
+    height: 212px;
+//     scrollbar-width: none; /* Firefox */
+//     -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  
+//     /* Hide scrollbar for Chrome, Safari, and Opera */
+//     &::-webkit-scrollbar {
+//     //   display: none;
+//     }
 } 
