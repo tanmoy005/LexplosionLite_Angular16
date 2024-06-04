@@ -1,36 +1,5 @@
-<!-- User Profile Section -->
-<!-- <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
-    <div class="profile-img">
-        <img src="assets/images/users/profile.png" alt="user">
-    </div>
-    <div class="profile-text">
-        <a [matMenuTriggerFor]="sdprofile">Markarn Doe<i class="ti-angle-down font-12 m-l-5"></i></a>
-    </div>
-    <mat-menu #sdprofile="matMenu">
-        <button mat-menu-item><mat-icon>settings</mat-icon> Settings</button>
-        <button mat-menu-item><mat-icon>account_box</mat-icon> Profile</button>
-        <button mat-menu-item><mat-icon>notifications_off</mat-icon> Disable notifications</button>
-        <button mat-menu-item><mat-icon>exit_to_app</mat-icon> Sign Out</button>
-    </mat-menu>
-</div> -->
 
-<!-- Menu Section -->
-<div class="app-sidebar">
-    <!-- <mat-menu #rootMenu="matMenu"> -->
-        <!-- <app-menu-recursive [menuItems]="MenuDataItems"></app-menu-recursive> -->
-    <!-- </mat-menu> -->
-</div>
-<!-- <div class="app-sidebar">
-<mat-nav-list appAccordion>
-    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected">
-        <a class="" appAccordionToggle [routerLink]="[menuitem.path]" *ngIf="!menuitem.extralink;"  [routerLinkActive]="menuitem.submenu.length != 0 ? '' : 'selected'">
-            <mat-icon>{{ menuitem.icon }}</mat-icon>
-            <span>{{ menuitem.title }}</span>
-            <span fxFlex></span>
-
-        </a>
-
-
-    </mat-list-item>
-
-</mat-nav-list></div> -->
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                (closed)="events.push('close!')">
+      Sidenav content
+    </mat-sidenav>

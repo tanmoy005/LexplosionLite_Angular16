@@ -1,12 +1,12 @@
 <div class="initial-layout-header contain_bg_36_br_16">
     <div class="logo-container">
-        <img src="assets/images/logos/Komrisk-lit-logo.png" alt="Example Image">
+        <img src="assets/images/logos/Komrisk-lit-logo.png" alt="logo">
     </div>
 
     <div class="page-link-container">
-        <div [class.selected]="selectedMenuItem ===  menuItem.path" class="link-item text_16_700" *ngFor="let menuItem of menuItemList" (click)="handleMenuItemClick(menuItem.path)">
+        <div [class.selected]="selectedMenuItem ===  menuItem.path" class="link-item text_16_700"
+            *ngFor="let menuItem of menuItemList" (click)="handleMenuItemClick(menuItem.path)">
             {{menuItem.displayName}}
         </div>
     </div>
-
 </div>

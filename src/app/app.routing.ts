@@ -25,8 +25,8 @@ export const AppRoutes: Routes = [
   },
   {
     path: '',
-    // component: BlankComponent,
-    component: FullComponent,
+    component: BlankComponent,
+    // component: FullComponent,
     children: [
       {
         path: '',
