@@ -27,7 +27,6 @@ import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
-//const ELEMENT_DATA:EntityDataType[] =[];
 
 function getMaxIdFromChildren(node: TreeNode): number {
   const rootChildren = treeDataitem.children;
@@ -64,7 +63,7 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
 })
 export class EntityTableComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  //private entityList: any;
+
   entityChild: TreeNode;
 
   constructor(
@@ -92,10 +91,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   @Output() isDotsButtonClicked = new EventEmitter<boolean>();
 
   ngOnInit(): void {
-    // this.subscription = this.entityDialogService.openDialog$.subscribe(() => {
-    //   this.viewAddEntityDialog();
-    // });
-
     this.subscription = this.entityDialogService.openDialog$.subscribe(
       (entity?: EntityInterfaces.BusinessDetails | null) => {
         console.log('Received entity firstly at subscription', entity);
@@ -103,7 +98,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       }
     );
 
-    //fetch entity list on the component's initiation
     this.fetchEntityList();
   }
 
@@ -112,7 +106,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   }
 
   initialFormData: EntityInterfaces.BusinessDetails = {
-    // position: 0,
     id: 0,
     name: '',
     country: 0,
@@ -121,7 +114,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     industryLabel: '',
     entityType: 0,
     entityTypeLabel: '',
-    // emailID: '',
+
     laws: '',
     lawModules: [],
     lawModulesLabel: [],
@@ -132,27 +125,22 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   };
 
   isTableEntitiesLoading: boolean = false;
-  //isDotsButtonClicked : boolean
 
   fetchOperatingUnitChildren(
     entityResponseReceived: FetchEntityDetails,
     entityReceived: EntityInterfaces.BusinessDetails
   ) {
-    //console.log("RECEIVED entityResponse, entity", entityResponseReceived, entityReceived);
-    //console.log("Children ID", entityReceived.childrenID);
-
     const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
       (children) => children.id === entityReceived.childrenID
     );
 
     console.log('Child for adding ', childrenToAddGrandChildrenTo);
     if (childrenToAddGrandChildrenTo !== undefined) {
-      // console.log("Grand Children", childrenToAddGrandChildrenTo);
       const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
       entityResponseReceived.operatingUnits.forEach((operatingUnit) => {
         const opUnit = {
           id: maxId + 1,
-          // label: 'Grandchild Node ' + String(maxId + 1),
+
           label: operatingUnit.name,
           children: [],
         };
@@ -173,10 +161,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         .postFetchEntityList(entityFetchPayload)
         .subscribe((response) => {
           const entityList = response.data;
-          console.log('entity data coming from api', response.data);
-          // let position = 1;
-          //let childrenID = 0;
-          //console.log('Entity fetch response', entityList);
           entityList.forEach((entity: FetchEntityDetails) => {
             const maxId = getMaxIdFromChildren(treeDataitem);
 
@@ -209,7 +193,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               operatingUnit: entity.operatingUnits,
               country: 1,
               countryLabel: 'India',
-              // emailID: '',
+
               laws: '',
               actions: '',
               childrenID: this.entityChild.id,
@@ -217,7 +201,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             this.dataSource.push(entityRow);
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
-            // position++;
           });
           this.table.renderRows(); // Ensure this is a MatTable instance
           this.entityTableDataLoading.emit(false);
@@ -230,14 +213,12 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   }
 
   viewAddEntityDialog(entity?: EntityInterfaces.BusinessDetails | null) {
-    // console.log("Entity received in add entity dialog function",entity);
     this.openEntityDialog(entity);
   }
 
   treeDataItem = treeDataitem;
 
   addEntityData(formData: EntityInterfaces.FormData) {
-    //console.log("Form data received to update", formData)
     const createEntityPayload = {
       id: formData.id,
       name: formData.name,
@@ -247,13 +228,13 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       industries: formData.industry,
       komriskLawCategories: formData.lawModules,
     };
-    //console.log("Created payload for saving entity",createEntityPayload);
+
     try {
       this.apiService
         .postCreateEntity(createEntityPayload)
         .subscribe((response) => {
           const entityResponse = response;
-          //console.log("Entity Response after saving", entityResponse);
+
           this.snackbar.showSuccess('Entity successfully added.');
           location.reload();
         });
@@ -263,24 +244,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       );
     }
   }
-
-  // rearrangeDataSource() {
-  //   this.dataSource.sort((a, b) => a.position - b.position);
-  //   for (let i = 0; i < this.dataSource.length; i++) {
-  //     this.dataSource[i].position = i + 1;
-  //   }
-  // }
-
-  // removeEntityData(position: number) {
-
-  //   const rowIndex = this.dataSource.findIndex(row => row.position === position);
-  //   if (rowIndex !== -1) {
-  //     this.dataSource.splice(rowIndex, 1);
-  //     this.rearrangeDataSource();
-  //     this.table.renderRows();
-  //     treeDataitem?.children?.splice(rowIndex, 1)
-  //   }
-  // }
 
   openEntityDialog(entity?: EntityInterfaces.BusinessDetails | null) {
     //console.log("Entity send at openEntity intr.", entity);
@@ -318,11 +281,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       this.isDotsButtonClicked.emit(false);
     }
   }
-  // navigateToAddOpUnit1(entity: EntityDataType) {
-  //   this.entitySelected1.emit(entity);
-  // }
 
-  // entityToSend: any = {};
   entityToSend: EntityDataType;
 
   openEntityMenuDialog(action: string, id: number) {
@@ -350,7 +309,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             }
           );
 
-          //console.log("The sent entity in OP-Unit",this.entityToSend);
           this.navigateToAddOpUnit(this.entityToSend, 'Add Operating Unit');
         }
         break;
@@ -373,7 +331,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             }
           );
 
-          //console.log("The sent entity in OP-Unit",this.entityToSend);
           this.navigateToAddOpUnit(
             this.entityToSend,
             'Add Operating Unit from Icon'
@@ -383,7 +340,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       case 'Edit':
         //var entity = this.dataSource.find((entity) => entity.position === position);
         var entity = this.dataSource.find((entity) => entity.id === id);
-        //console.log(entity);
 
         if (entity === undefined) {
           this.snackbar.showError(
@@ -391,8 +347,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           );
         } else {
           this.entityDialogService.emitOpenDialog(entity);
-          //this.addEntityData(entity);
-          //this.fetchEntityList();
         }
         break;
       default:

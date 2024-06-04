@@ -1,8 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { MatTable } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Input } from '@angular/core';
@@ -25,7 +23,6 @@ import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface'
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { EntitiesList } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { Activities } from 'src/app/shared/menu-items/fetch-op-unit-interface';
-// const ELEMENT_DATA: OPUnitDetails[] = [];
 
 function getMaxIdFromGrandchildren(children: TreeNode): number {
   const rootChildren = children.children;
@@ -36,8 +33,6 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
   }
   return maxId;
 }
-
-
 
 /**
  * @title Adding and removing data when using an array-based datasource.
@@ -56,7 +51,7 @@ export class OperatingUnitTableComponent implements OnInit {
     private apiService: ApiService,
     private opDialogService: DialogService
   ) {}
-  // @Input() entity: any={};
+
   @Input() entity: EntityDataType;
   @Input() isDotsCliscked: boolean;
   operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[] = [];
@@ -94,39 +89,34 @@ export class OperatingUnitTableComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  fetchApplicableLaws(){
-    
-  }
+  fetchApplicableLaws() {}
 
-  addGrandChildren(operatingUnitName:string){
+  addGrandChildren(operatingUnitName: string) {
     const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
       (children) => children.id === this.entity.childrenID
     );
 
     if (childrenToAddGrandChildrenTo !== undefined) {
-      // console.log("Grand Children", childrenToAddGrandChildrenTo);
-      // const grandChildrenAddingIndex = treeDataitem.children?.indexOf(
-      //   childrenToAddGrandChildrenTo
-      // );
       const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
       const entity = {
         id: maxId + 1,
-        // label: 'Grandchild Node ' + String(maxId + 1),
+
         label: operatingUnitName,
         children: [],
       };
       var operatingUnitExists = false;
-      childrenToAddGrandChildrenTo.children?.forEach((existingOperatingUnit)=>{
-        if(existingOperatingUnit.label === operatingUnitName){
-          operatingUnitExists = true;
+      childrenToAddGrandChildrenTo.children?.forEach(
+        (existingOperatingUnit) => {
+          if (existingOperatingUnit.label === operatingUnitName) {
+            operatingUnitExists = true;
+          }
         }
-      })
-      if(operatingUnitExists === false){
+      );
+      if (operatingUnitExists === false) {
         childrenToAddGrandChildrenTo?.children?.push(entity);
-     }
+      }
     }
   }
-
 
   fetchOpUnitList() {
     const payLoad = { entity: this.entity.id };
@@ -155,17 +145,18 @@ export class OperatingUnitTableComponent implements OnInit {
           totalEmployeeCount:
             opUnits.noOfDeMale +
             opUnits.noOfDeFemale +
+            opUnits.noOfIsmMale +
+            opUnits.noOfIsmFemale +
             opUnits.noOfClMale +
             opUnits.noOfClFemale +
             opUnits.noOfChild +
             opUnits.noOfApprentice,
-        }
-      )
+        })
       );
 
-      opResponseData.forEach((operatingUnit)=>{
-        this.addGrandChildren(operatingUnit.name)
-      })
+      opResponseData.forEach((operatingUnit) => {
+        this.addGrandChildren(operatingUnit.name);
+      });
 
       console.log('the transformed op unit datas', opResponseData);
       this.dataSource = opResponseData;
@@ -186,41 +177,10 @@ export class OperatingUnitTableComponent implements OnInit {
     'actions',
   ];
 
-  // dataSource = [...ELEMENT_DATA];
-
   dataSource: OPUnitDetails[] = [];
 
   @ViewChild(MatTable) table: MatTable<OPUnitDetails>;
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
-
-  // addOpUnitData() {
-  //   this.fetchOpUnitList();
-
-    
-  //   console.log('the new op unit data', this.dataSource);
-   
-
-  //   const childrenToAddGrandChildrenTo = treeDataitem.children?.find(
-  //     (children) => children.id === this.entity.childrenID
-  //   );
-  //   if (childrenToAddGrandChildrenTo !== undefined) {
-  //     // console.log("Grand Children", childrenToAddGrandChildrenTo);
-  //     const grandChildrenAddingIndex = treeDataitem.children?.indexOf(
-  //       childrenToAddGrandChildrenTo
-  //     );
-  //     const maxId = getMaxIdFromGrandchildren(childrenToAddGrandChildrenTo);
-
-  //     const entity = {
-  //       id: maxId + 1,
-  //       label: 'Grandchild Node ' + String(maxId + 1),
-  //       children: [],
-  //     };
-
-  //     childrenToAddGrandChildrenTo?.children?.push(entity);
-  //   }
-
-  //   this.table.renderRows();
-  // }
 
   rearrangeDataSource() {
     this.dataSource.sort((a, b) => a.opID - b.opID);
@@ -251,10 +211,10 @@ export class OperatingUnitTableComponent implements OnInit {
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
         //entityPosition:this.entity.position,
-        entityPosition:this.entity.id,
-        entity:this.entity,
-        opUnitPosition:0
-      }
+        entityPosition: this.entity.id,
+        entity: this.entity,
+        opUnitPosition: 0,
+      },
     });
   }
 
@@ -269,11 +229,11 @@ export class OperatingUnitTableComponent implements OnInit {
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
         //entityPosition:this.entity.position,
-        entityPosition:this.entity.id,
-        entity:this.entity,
-        opUnitPosition:opID,
-        selectedOP:this.getOpUnitDetailsForEdit(opID)
-      }
+        entityPosition: this.entity.id,
+        entity: this.entity,
+        opUnitPosition: opID,
+        selectedOP: this.getOpUnitDetailsForEdit(opID),
+      },
     });
   }
 
@@ -286,9 +246,8 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openLawDialog(opID: number) {
-    const dialogRef = this.dialog.open(OpUnitLawsDialogComponent,{
+    const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {
       // data:{
-
       // }
     });
     dialogRef.afterClosed().subscribe((result) => {
@@ -315,11 +274,3 @@ export class OperatingUnitTableComponent implements OnInit {
     }
   }
 }
-
-@Component({
-  selector: 'dialog-content-example-dialog',
-  templateUrl: 'example-law-details-dialog.html',
-  standalone: true,
-  imports: [MatDialogModule, MatButtonModule],
-})
-export class ViewLawsDialog {}
