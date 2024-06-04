@@ -1,9 +1,8 @@
 import { Directive, HostListener, Inject } from '@angular/core';
-
 import { AccordionLinkDirective } from './accordionlink.directive';
 
 @Directive({
-  selector: '[appAccordionToggle]'
+  selector: '[appAccordionToggle]',
 })
 export class AccordionAnchorDirective {
   protected navlink: AccordionLinkDirective;

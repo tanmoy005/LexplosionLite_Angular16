@@ -31,17 +31,10 @@ export class ApiService {
   ];
 
   constructor(private http: HttpClient, private snackBar: SnackbarService) {}
-
-  // GET requests: Generic Methods and Endpoint Calls
-  // Example API call to get data
   private getData(apiUrl: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${apiUrl}`);
   }
 
-  // POST requests: Generic Methods and Endpoint Calls
-  // Example API call to post data
-
-  // Sample authtoken fetching method from localstorage
   getAuthToken() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
     const { token } = encryptStorage.getItem('login-details');
@@ -64,37 +57,31 @@ export class ApiService {
       .pipe(
         catchError(({ error }: HttpErrorResponse) => {
           this.snackBar.showError(error?.error);
-          return throwError(() => new Error(error?.error)); // Return a custom error message
+          return throwError(() => new Error(error?.error));
         })
       );
   }
 
-  // Method to post login data to login API url
   postLoginData(data: any): Observable<any> {
     return this.postData(this.endpoints.userLogin, data);
   }
 
-  // Method to post company registration data to company API url
   postCreateCompany(data: any): Observable<any> {
     return this.postData(this.endpoints.createCompany, data);
   }
 
-  // Method to fetch company list
   postFetchCompanyList(data: any): Observable<any> {
     return this.postData(this.endpoints.fetchCompanyList, data);
   }
 
-  // Method to post user registration data to user registration API url
   postCreateUser(data: any): Observable<any> {
     return this.postData(this.endpoints.createUser, data);
   }
 
-  // Method to post entity creation data to entity creation API url
   postCreateEntity(data: any): Observable<any> {
     return this.postData(this.endpoints.addEntity, data);
   }
 
-  // Method to fetch entity list of a company
   postFetchEntityList(data: any): Observable<any> {
     return this.postData(this.endpoints.fetchEntityList, data);
   }
@@ -102,24 +89,19 @@ export class ApiService {
   fetcheOperatingUnit(data: any): Observable<any> {
     return this.postData(this.endpoints.fetchOperatingUnit, data);
   }
-  // Method to post operating unit creation data to operating unit creation API url
+
   postCreateOperatingUnit(data: any): Observable<any> {
     return this.postData(this.endpoints.addOperatingUnit, data);
   }
 
-  // Method to post user entered "company", "entity" and "operatingUnit" to applicable law fetching API url
-  // and fetch applicable laws
   postApplicableLaws(data: any): Observable<any> {
     return this.postData(this.endpoints.applicableLaws, data);
   }
 
-  // Method to post user entered "company", "entity" and "operatingUnit" to the entity tree fetching API url
-  // and fetch the entity tree
   postEntityTree(data: any): Observable<any> {
     return this.postData(this.endpoints.entityTree, data);
   }
 
-  // Method to fetch a field's (Ex. Entity Type, Modules, Laws) possible values
   getFieldDefinition(data: any): Observable<any> {
     return this.postData(this.endpoints.definition, data);
   }

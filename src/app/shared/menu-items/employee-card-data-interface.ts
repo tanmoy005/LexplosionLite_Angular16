@@ -1,6 +1,5 @@
-export interface EmployeeCardInterface{
-        header: string,
-        male: number,
-        female: number
-    }
-  
+export interface EmployeeCardInterface {
+  header: string;
+  male: number;
+  female: number;
+}
