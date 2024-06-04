@@ -31,9 +31,6 @@ export class ApiService {
   ];
 
   constructor(private http: HttpClient, private snackBar: SnackbarService) {}
-  private getData(apiUrl: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${apiUrl}`);
-  }
 
   getAuthToken() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);

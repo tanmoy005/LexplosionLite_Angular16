@@ -17,7 +17,6 @@ import { BlankComponent } from './layouts/blank/blank/blank.component';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
-import { UserOnboardModule } from './user-onboard/user-onboard.module';
 
 import { HomeComponent } from './guest-user/home/home.component'
 
@@ -35,7 +34,6 @@ import { MatListModule } from '@angular/material/list';
 import { CommonDirective } from './common.directive';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { CommonComponentModule } from './user-onboard/common-components/common-component.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({

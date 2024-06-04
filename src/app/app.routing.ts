@@ -8,7 +8,6 @@ import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.
 export const AppRoutes: Routes = [
   {
     path: '',
-    //redirectTo: '/dashboard',
     redirectTo: '/home',
     pathMatch: 'full'
   },
@@ -26,7 +25,6 @@ export const AppRoutes: Routes = [
   {
     path: '',
     component: BlankComponent,
-    // component: FullComponent,
     children: [
       {
         path: '',
@@ -59,11 +57,7 @@ export const AppRoutes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-      // {
-      //   path: '',
-      //   loadChildren: () => import('./user-onboard/user-onboard.module').then(m => m.UserOnboardModule)
-      // }
+      }
     ]
   },
  
