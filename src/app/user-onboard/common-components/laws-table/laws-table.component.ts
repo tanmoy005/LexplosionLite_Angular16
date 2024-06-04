@@ -50,7 +50,7 @@ export class LawsTableComponent {
           noOfCompliances: item.komriskCompliances.length,
           applicability: item.applicability,
           module: item.komriskLawCategory.description,
-          //actLaws: item.komriskLawCategories
+          
       }
       )
     });

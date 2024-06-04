@@ -57,7 +57,7 @@ export class ActivitiesListComponent implements OnInit, OnChanges {
     if (selectedActivityIndex !== -1) {
       this.activities.splice(selectedActivityIndex, 1);
 
-      // Update the selectedActivitiesList and emit the change
+     
       this.selectedActivitiesList = this.selectedActivitiesList.filter(aId => aId !== activity.value);
       this.selectedActivitiesListChange.emit(this.selectedActivitiesList);
     }
