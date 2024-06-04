@@ -50,11 +50,6 @@ $accent: mat.define-palette($mat-secondary, 500);
 $warn: mat.define-palette($mat-warn, 500);
 
 
-// $theme: mat-light-theme($primary, $accent, $warn);
-
-// $background: map-get($theme, background);
-// $foreground: map-get($theme, foreground);
-
 $cyantheme: mat.define-light-theme((color: (primary: $primary,
         accent: $accent,
         warn: $warn,
@@ -64,16 +59,6 @@ $cyantheme: mat.define-light-theme((color: (primary: $primary,
     ));
 
 @include mat.all-component-themes($cyantheme);
-
-// $custom-typography: mat-typography-config(
-//   $font-family: 'Poppins, sans-serif'
-// );
-
-// Override the typography in the core CSS.
-// @include mat-core($custom-typography);
-
-// Default Theme
-//@include angular-material-theme($theme);
 
 // Dark Theme
 
@@ -100,7 +85,7 @@ $themecolor-dark: #028ee1;
 $danger: #fc4b6c;
 $success: #26c6da;
 $warning: #ffb22b;
-// $primary: rgba(116, 96, 238);
+
 $primary: rgba(120, 106, 205, 1);
 $info: #1e88e5;
 $inverse: #fff;

@@ -27,28 +27,17 @@
 }
 
 .text_56_800 {
-    // font-size: $font-56;
     text-transform: uppercase;
     @include text-model(var.$font-56, 800, var.$font-color-light, Barlow, 50.79px);
-    // font-family: 'Open Sans';
 }
 
 .text_16_700 {
     @include text-model(var.$font-16, 700, var.$font-color-dark, Barlow);
 }
 
-// .text_12_700_gray_600 {
-//     @include text-model(var.$font-12, 700, var.$gray-600, Barlow, 14.4px);
-// }
-
 .text_12_700_gray_1000 {
     @include text-model(var.$font-12, 700, var.$gray-1000, Barlow, 14.4px);
 }
-
-// .text_12_400_gray_900 {
-//     // todo change the class name like this one, add color code
-//     @include text-model(var.$font-12, 400, var.$gray-900, Barlow, 14.4px);
-// }
 
 @media (max-width: 425px) {
     .text_12_400_gray_1000, label.mdc-label, .mat-mdc-select-min-line {
@@ -133,10 +122,8 @@
 
 @media (min-width: 1024px) {
     .text_56_800 {
-        // font-size: $font-56;
         text-transform: uppercase;
         @include text-model(var.$font-56, 800, var.$font-color-light, Barlow, 78.79px);
-        // font-family: 'Open Sans';
     }
     .text_24_400_dark {
         @include text-model(var.$font-24, 400, var.$font-color-dark, Barlow, 40px);
@@ -163,17 +150,6 @@
         @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 14.4px);
     }
 }
-
-
-// .text_12_400_gray_1200 {
-//     // todo change the class name like this one, add color code
-//     @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 14.4px);
-// }
-
-// .text_12_500_gray_1200 {
-//     // todo change the class name like this one, add color code
-//     @include text-model(var.$font-12, 500, var.$gray-1200, Barlow, 14.4px);
-// }
 
 .text_12_700_gray_1500 {
     // todo change the class name like this one, add color code
