@@ -9,11 +9,16 @@
   
     <div class="row app-helpertext-section">
       <div class="col-lg-12 col-md-12 col-sm-12">
-        <app-stepper-helper-text
-          [helperText]="'Hi ‘Name’,<br/>Your workspace is getting ready...'"
-          [stepText]="'All Done'"
-          style="width: 100%"
-        ></app-stepper-helper-text>
+        <div class="header">
+          <div class="lets-get-started-layout" style="margin-bottom: 5px;">
+              <p class="lets-get-started-layout-typography">Hi ‘Name’</p>
+              <p class="lets-get-started-layout-typography">Your workspace is getting ready...</p>
+          </div>
+          <div class="step-no-layout" style="margin-bottom: 5px;">
+              <p class="step-no-typography">All Done</p>
+          </div>
+        </div>
+
       </div>
     </div>
 </div>
