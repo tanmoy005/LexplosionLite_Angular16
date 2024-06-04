@@ -1,36 +1,29 @@
 .initial-layout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo-container {
+    width: 13vw;
+    img {
+      width: 100%;
+      min-width: 87.16px;
+    }
+  }
+
+  .page-link-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 0 10%;
+    column-gap: 68px;
 
-    .logo-container {
-        // background-color: aqua;
-        width: 13vw;
-
-        img {
-            width: 100%;
-            min-width: 87.16px;
-        }
+    .link-item {
+      cursor: pointer;
+      font-family: "Barlow";
+      text-wrap: nowrap;
     }
 
-    .page-link-container {
-        // background-color: red;
-        display: flex;
-        // width: 80%;
-        margin: 0 10%;
-        column-gap: 68px;
-
-        .link-item {
-            // margin: 0 68px;
-            cursor: pointer;
-            font-family: 'Barlow';
-            text-wrap: nowrap;
-        }
-
-        .selected {
-            color: #fff;
-        }
-
+    .selected {
+      color: #fff;
     }
-
+  }
 }

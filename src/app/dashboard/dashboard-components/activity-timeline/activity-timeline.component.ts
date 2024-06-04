@@ -7,19 +7,14 @@ import { NgFor, NgIf } from '@angular/common';
   selector: 'app-activity-timeline',
   standalone: true,
   imports: [MaterialModule, NgIf, NgFor],
-  templateUrl: './activity-timeline.component.html'
+  templateUrl: './activity-timeline.component.html',
 })
 export class ActivityTimelineComponent implements OnInit {
-
   activityData: Activity[];
 
   constructor() {
-
     this.activityData = activities;
   }
 
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

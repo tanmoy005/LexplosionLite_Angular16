@@ -1,20 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import {
-  FormControl,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
-
+import { FormControl, Validators, AbstractControl } from '@angular/forms';
 import { UserAuthenticationService } from '../../services/user-authentication.service';
-
-
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
-
 import { CountryList } from 'src/app/shared/menu-items/country-list';
 import { CountryData } from 'src/app/shared/menu-items/country-list';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
@@ -22,24 +12,11 @@ import { SnackbarService } from 'src/app/shared/snackbar.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  // standalone: true,
-  // imports: [MaterialModule, MatButtonModule,
-  //   MatInputModule,
-  //   MatFormFieldModule,
-  //   FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule,
-  //   CommonModule,
-  //   BusinessCardComponent,
-  //   RegHeaderComponent,
-  //   MatDividerModule,
-  //   DropdownComponent
-
-  //   ],
   styleUrls: ['./register.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
 export class AppSideRegisterComponent {
   constructor(
-    private authService: UserAuthenticationService,
     private router: Router,
     public dialog: MatDialog,
     private snackbar: SnackbarService
@@ -53,9 +30,6 @@ export class AppSideRegisterComponent {
   ]);
 
   passwordFormControl = new FormControl('', [Validators.required]);
-
-  //countryCodeFormControl = new FormControl('', [Validators.required, countryCodeValidator]);
-
   phoneNumberFormControl = new FormControl('', [
     Validators.required,
     phoneNumberValidator,
@@ -76,7 +50,7 @@ export class AppSideRegisterComponent {
   get password() {
     return this.passwordFormControl.value;
   }
-  //get countryCode() { return this.countryCodeFormControl.value; }
+
   get phoneNumber() {
     return this.phoneNumberFormControl.value;
   }
@@ -105,21 +79,14 @@ export class AppSideRegisterComponent {
   }
 
   handleCountryCodeChange(value: any) {
-    // console.log("Value changed",value);
     this.countryCode = value;
   }
 
   handleRegistration(event: any) {
-    console.log('Handle login clicked!');
-    console.log('Username - ', this.businessname);
-    console.log('Password - ', this.password);
-
     const stateVariabl = {
       businessname: this.businessname,
     };
-
     const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
-
     if (isRegistrationCredentialsFine) {
       this.router.navigate(['/verify-email'], { state: stateVariabl });
     } else {
@@ -132,17 +99,6 @@ export class AppSideRegisterComponent {
   termsConditionModalOpen() {
     this.dialog.open(TermsConditionDialog);
   }
-}
-
-function countryCodeValidator(
-  control: AbstractControl
-): { [key: string]: any } | null {
-  const countryCode = control.value;
-  console.log('Country code', countryCode);
-  if (countryCode && countryCode.toString().length !== 2) {
-    return { invalidCountryCode: true };
-  }
-  return null;
 }
 
 function phoneNumberValidator(
