@@ -35,7 +35,6 @@
     border-width: 1px;
     border-style: solid;
     border-color: var.$gray-400; // todo set borer image  to gradiant
-    // border-image: linear-gradient(to right, var.$gray-400, rgba(38, 39, 32, 1)) 1 stretch;
     border-radius: 16px;
 }
 
@@ -43,9 +42,7 @@
     display: flex;
     flex-direction: column;
     width: 31.87vw;
-    // height: 55.76vh;
     border-radius: 10px;
-    // border: 1px solid rgba(255, 255, 255, 1);
     background-color: var.$gray-500;
     box-shadow: 0 4px 56px 0 var.$black-100;
     margin: auto;
@@ -55,12 +52,10 @@
     display: flex;
     width: 100%;
     justify-content: flex-start;
-    // background-color: rgba(248, 248, 248, 0.76);
     padding: var.$size_16px var.$size_24px;
 }
 
 .login-formheader {
-    // padding: 0.7vw 0.7vw;
     background-color: var.$primary;
     border-radius: 10px 10px 0 0;
 
@@ -75,7 +70,6 @@
     .login-field {
         .mat-mdc-text-field-wrapper {
             height: 7.885vh !important;
-            //    min-height: 48px;
         }
 
         label {
@@ -194,9 +188,7 @@
 }
 
 .blank-layout-container {
-    // padding: 6.73% 13%;
     padding: 4.73% 11%;
-    // padding: 100px;
 }
 
 
@@ -231,20 +223,11 @@
     }
 }
 
-.mdc-radio__background {
-    // todo remove comment and fix the radio button size
-    // width: 16px !important;
-    // height: 16px !important;
-}
-
 input.mdc-radio__native-control:focus,
 .mdc-radio__native-control:hover {
     background-color: none;
 }
 
-.mdc-radio__inner-circle {
-    // border-width: 8px !important; // todo
-}
 
 @mixin small-dropdown-box {
     padding: 0 !important;
@@ -258,13 +241,6 @@ input.mdc-radio__native-control:focus,
 
 .activities-section {
     .mat-expansion-panel-header {
-        // padding: 0!important;
-        // width: 24px!important;
-        // height: 24px!important;
-        // align-items: center!important;
-        // justify-content: center!important;
-        // display: flex!important;
-        // border: 1px solid  var.$gray-1100;
         @include small-dropdown-box;
 
         span.mat-content {
@@ -344,10 +320,6 @@ input.mdc-radio__native-control:focus,
             align-items: center;
         }
 
-        // .mat-mdc-select-min-line {
-        //     color: var.$gray-1000 !important;
-        //     @include text-model(var.$font-12, 400, var.$gray-1000, Barlow, 20px);
-        // }
 
         .mat-mdc-select-arrow svg {
             top: -137%;
@@ -357,8 +329,6 @@ input.mdc-radio__native-control:focus,
             padding: 0 !important;
             min-height: 0;
         }
-
-        // mat-mdc-text-field-wrapper mdc-text-field ng-tns-c3899553609-60 mdc-text-field--outlined
 
     }
 }
@@ -371,12 +341,7 @@ input.mdc-radio__native-control:focus,
 }
 
 .bg-dropdown-white {
-    // background-color: #F4F4F4 !important;
-    // height: 56px!important;
-    // padding: 8px;
-    // border-radius: 0px;
-    // font-size: 16px;
-    // border-color: #C0C0C0;
+
     @include app-dropdown(56px);
 
     .dropdown-label {
@@ -412,9 +377,7 @@ input.mdc-radio__native-control:focus,
 
 }
 
-// #cdk-overlay-0 {
-//     width: 148.1875px !important;
-// }
+
 // todo chnage this to 100%
 @media (min-width: 425px) and (max-width: 1024px) {
     .phn-input {
@@ -433,26 +396,7 @@ input.mdc-radio__native-control:focus,
     cursor: pointer;
 }
 
-// .app-dropdown-small{
-//     div#cdk-overlay-1{
-//         width: 300px!important;
-//     }
-//     position: absolute;
-//     *{
-//         border: none!important;
-//     }
-//     svg{
-//         display: none;
-//     }
-//     .mat-mdc-text-field-wrapper{
-//         height: 24px!important;
-//         width: 24px!important;
-//         background-color: transparent!important;
-//         // width: 24px!important;
-//         // border-radius: 3px!important;
-//         border: none!important;
-//     }
-// }
+
 .divider {
     width: 100%;
     /* Adjust the width as needed */
@@ -478,9 +422,6 @@ input.mdc-radio__native-control:focus,
     border-radius: 5px;
 }
 
-// .register-container {
-//     padding: 7.98vh 13.12vw;
-// }
 @media (min-width: 992px) {
     .register-container {
         padding: 8vh 13vw;
@@ -592,34 +533,10 @@ input.mdc-radio__native-control:focus,
     padding: 5px !important;
 }
 
-// .example-container{
-//     table{
-//         tr{
-//             th:first-child{
-//                 width: 14px;
-//             }
-//             th:nth-child(2){
-//                 width: 100px;
-//             }
-//             th:nth-child(3){
-//                 width: 50px;
-//             }
-//             td:nth-child(2){
-//                 width:100px;
-//             }
-//             td:nth-child(3){
-//                 width:50px;
-//             }
-//         }
-//     }
-// }
 .example-container table tr>th {
     width: 100px;
 }
 
-//   .example-container table th>td:nth-child(3){
-//     text-align: center;
-//   }
 
 .example-container table tr>th:first-child {
 
@@ -640,11 +557,6 @@ input.mdc-radio__native-control:focus,
 
 .example-container table tr>td:nth-child(3) {
     width: 50px;
-}
-
-
-.example-container table th:nth-child(2) {
-    //  text-align: center;
 }
 
 .mat-mdc-table tbody,
