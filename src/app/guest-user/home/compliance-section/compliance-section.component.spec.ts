@@ -8,7 +8,7 @@ describe('ComplianceSectionComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ComplianceSectionComponent]
+      declarations: [ComplianceSectionComponent],
     });
     fixture = TestBed.createComponent(ComplianceSectionComponent);
     component = fixture.componentInstance;

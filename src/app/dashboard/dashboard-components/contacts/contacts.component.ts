@@ -7,18 +7,14 @@ import { NgFor } from '@angular/common';
   selector: 'app-contacts',
   standalone: true,
   imports: [MaterialModule, NgFor],
-  templateUrl: './contacts.component.html'
+  templateUrl: './contacts.component.html',
 })
 export class ContactsComponent implements OnInit {
-
   contactsData: Contact[];
 
   constructor() {
-
     this.contactsData = contacts;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

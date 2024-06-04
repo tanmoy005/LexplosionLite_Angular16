@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, Scroll } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-
 interface menuItem {
   displayName: string;
   path: string;
@@ -11,19 +10,16 @@ interface menuItem {
   selector: 'app-initial-layout-header',
   templateUrl: './initial-layout-header.component.html',
   styleUrls: ['./initial-layout-header.component.scss'],
-  // standalone: true
 })
-
 export class InitialLayoutHeaderComponent implements OnInit, OnDestroy {
   private routerEventsSubscription: Subscription;
   selectedMenuItem: string | null = null;
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.routerEventsSubscription = this.router.events.subscribe(event => {
+    this.routerEventsSubscription = this.router.events.subscribe((event) => {
       if (event instanceof Scroll) {
-        console.log('Current Route: scroll', event.routerEvent.url);
-        this.selectedMenuItem =  event.routerEvent.url.replace('/', '');
+        this.selectedMenuItem = event.routerEvent.url.replace('/', '');
       }
     });
   }
@@ -34,29 +30,29 @@ export class InitialLayoutHeaderComponent implements OnInit, OnDestroy {
   menuItemList: menuItem[] = [
     {
       displayName: 'Home',
-      path: 'home'
+      path: 'home',
     },
     {
       displayName: 'About us',
-      path: 'about-us'
+      path: 'about-us',
     },
     {
       displayName: 'Features',
-      path: 'features'
+      path: 'features',
     },
     {
       displayName: 'Pricing',
-      path: 'pricing'
+      path: 'pricing',
     },
     {
       displayName: 'Partnership',
-      path: 'partnership'
+      path: 'partnership',
     },
     {
       displayName: 'Login',
-      path: 'login'
-    }
-  ]
+      path: 'login',
+    },
+  ];
   handleMenuItemClick(path: string) {
     this.router.navigate([path]);
   }

@@ -8,7 +8,7 @@ describe('InitialLayoutHeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InitialLayoutHeaderComponent]
+      declarations: [InitialLayoutHeaderComponent],
     });
     fixture = TestBed.createComponent(InitialLayoutHeaderComponent);
     component = fixture.componentInstance;

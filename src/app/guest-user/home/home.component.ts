@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { InitialLayoutComponent } from 'src/app/layouts/initial-layout/initial-layout.component';
 import { ComplianceSectionComponent } from './compliance-section/compliance-section.component';
-import { AppSideRegisterComponent } from 'src/app/authentication/register/register.component';
 import { AppSideLoginComponent } from 'src/app/guest-user/login/login.component';
 
 @Component({
@@ -9,12 +7,6 @@ import { AppSideLoginComponent } from 'src/app/guest-user/login/login.component'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [
-    ComplianceSectionComponent,
-    // AppSideRegisterComponent,
-    AppSideLoginComponent
-    ],
+  imports: [ComplianceSectionComponent, AppSideLoginComponent],
 })
-export class HomeComponent {
-
-}
+export class HomeComponent {}

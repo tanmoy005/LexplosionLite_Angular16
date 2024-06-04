@@ -1,7 +1,37 @@
 .mat-mdc-card {
   box-shadow: none;
+.mat-mdc-card {
+  box-shadow: none;
 }
 
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100vh;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 0px;
+}
+
+.mat-card-title {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.back-button {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -57,8 +87,8 @@ td {
 }
 
 .verify-email-button {
-  background-color: #786acd; /* Change this to your desired color */
-  color: white; /* Text color */
+  background-color: #786acd;
+  color: white;
 }
 
 .verify-email-div {
@@ -84,24 +114,8 @@ td {
 }
 
 .mat-form-field-appearance-outline.mat-focused {
-  /* Your custom CSS styles here */
-  /* For example: */
-  box-shadow: 0 0 5px white; /* Change the box-shadow color when focused */
+  box-shadow: 0 0 5px white;
 }
-
-/* .mat-mdc-raised-button.mat-warn {
-    --mdc-protected-button-container-color: #786ACD;
-    --mdc-protected-button-label-text-color: #fff;
-    text-decoration: none;
-  } */
-
-/* .mat-mdc-outlined-button {
-    --mdc-outlined-button-outline-color: #786ACD;
-}
-
-.mat-mdc-outlined-button.mat-unthemed {
-  --mdc-outlined-button-label-text-color: #786ACD;
-} */
 
 .mat-mdc-button.mat-unthemed {
   --mdc-text-button-label-text-color: #786acd;

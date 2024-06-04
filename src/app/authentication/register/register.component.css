@@ -1,93 +1,59 @@
-/* .container {
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  height: 100vh; 
-  background-color: white;
-  
-} */
-/* .container {
-  display: flex;
-  background-color: white;
-  
-}
-
-.mat-card-container{
-  transition: none !important;
-  box-shadow: none !important;
-  border-radius: 0px;
-} */
-
-
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100vh;
-  }
-  
-  .example-full-width{
-    width: 100%;
-    
+  min-width: 150px;
+  max-width: 500px;
+  width: 100vh;
 }
 
-  
+.example-full-width {
+  width: 100%;
+}
 
-  /* .country-code-full-width {
-    width: 50%;
-  } */
+td {
+  padding-right: 0px;
+}
 
-  td {
-    padding-right: 0px;
-  }
+.mat-card-title {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
 
-
-  .mat-card-title {
-    text-align: center;
-    margin-bottom: 15px; 
-    margin-top: 15px;
-  }
-
- .example-button-row {
+.example-button-row {
   display: flex;
   justify-content: left;
   align-items: left;
   margin-top: 20px;
- }
+}
 
- .contact-title {
+.contact-title {
   margin-top: -10px;
   margin-bottom: 5px;
- }
+}
 
-
- .get-start-for-free {
+.get-start-for-free {
   width: 199px;
   height: 29px;
   top: 136px;
   left: 38px;
   gap: 0px;
   opacity: 0px;
-
- }
-
-
-.get-started-for-free-typography{
- font-family: Barlow;
-font-size: 24px;
-font-weight: 400;
-line-height: 28.8px;
-text-align: left;
-color: #786ACD;
-;
 }
-.about-yourself{
-  width: 176px;
-height: 14px;
-top: 188px;
-left: 40px;
-gap: 0px;
-opacity: 0px;
 
+.get-started-for-free-typography {
+  font-family: Barlow;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.8px;
+  text-align: left;
+  color: #786acd;
+}
+.about-yourself {
+  width: 176px;
+  height: 14px;
+  top: 188px;
+  left: 40px;
+  gap: 0px;
+  opacity: 0px;
 }
 .about-yourself-typography {
   font-family: Barlow;
@@ -95,8 +61,7 @@ opacity: 0px;
   font-weight: 700;
   line-height: 14.4px;
   text-align: left;
-  color: #786ACD;
-
+  color: #786acd;
 }
 
 .agree-to-label {
@@ -107,76 +72,38 @@ opacity: 0px;
   text-align: left;
 }
 
-.consent-label{
+.consent-label {
   font-family: Barlow;
   font-size: 12px;
   font-weight: 400;
   line-height: 14.4px;
   text-align: left;
-
 }
 
-.verify-email-button{
-  background-color: #786ACD; /* Change this to your desired color */
-  color: white; /* Text color */
-  
+.verify-email-button {
+  background-color: #786acd; 
+  color: white; 
 }
-
-/* Target the mat-form-field with outline appearance */
-
-
-
-
-
-/* .option1{
-  background:  url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg")  center / contain no-repeat;
-  white-space: nowrap
-
-}
-
-
-.option2{
-  background:  url("https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg")  center / contain no-repeat;
-  white-space: nowrap;
-  display:inline
-} */
-
-
-
-
-
-
 
 .mat-form-field-appearance-outline.mat-focused {
-  /* Your custom CSS styles here */
-  /* For example: */
-  box-shadow: 0 0 5px white; /* Change the box-shadow color when focused */
+  box-shadow: 0 0 5px white; 
 }
-
-/* .mat-mdc-raised-button.mat-warn  {
-  --mdc-protected-button-container-color: #786ACD;
-  --mdc-protected-button-label-text-color: #fff;
-  text-decoration: none;
-} */
-
-
-
 .login-credential-typography {
   font-family: Barlow;
-font-size: 12px;
-font-weight: 700;
-line-height: 14.4px;
-text-align: left;
-color: #786ACD;
-
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.4px;
+  text-align: left;
+  color: #786acd;
 }
 
-
-
-.mdc-button p{
+.mdc-button p {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--mdc-typography-button-font-family, var(--mdc-typography-font-family, Barlow));
+  font-family: var(
+    --mdc-typography-button-font-family,
+    var(--mdc-typography-font-family, Barlow)
+  );
   font-size: var(--mdc-typography-button-font-size, 12px);
   line-height: var(--mdc-typography-button-line-height, 36px);
   font-weight: var(--mdc-typography-button-font-weight, 500);
@@ -186,6 +113,4 @@ color: #786ACD;
   text-decoration: underline;
   text-decoration-color: blue;
   text-transform: var(--mdc-typography-button-text-transform, none);
-  
 }
-

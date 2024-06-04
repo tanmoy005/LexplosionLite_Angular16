@@ -1,58 +1,64 @@
-<div class="form-container1 mt-42 m-auto ">
+<div class="form-container1 mt-42 m-auto">
   <div class="login-formheader">
-    <img src="assets/images/logos/Komrisk-lit-logo.png" class="login-header-logo" alt="Logo">
+    <img
+      src="assets/images/logos/Komrisk-lit-logo.png"
+      class="login-header-logo"
+      alt="Logo"
+    />
   </div>
   <div class="form-heading-container">
     <h3 class="text_24_400_blue">Login</h3>
   </div>
   <form class="example-form-field-width login-form">
-    <!-- Username field -->
-
-
     <mat-form-field appearance="outline" class="login-field">
       <mat-label>Email ID</mat-label>
-      <input type="email" style="background-color: transparent;" matInput [formControl]="usernameFormControl"
-        placeholder="Email Id">
-      <mat-error *ngIf="usernameFormControl.hasError('email') && !usernameFormControl.hasError('required')">
+      <input
+        type="email"
+        style="background-color: transparent"
+        matInput
+        [formControl]="usernameFormControl"
+        placeholder="Email Id"
+      />
+      <mat-error
+        *ngIf="
+          usernameFormControl.hasError('email') &&
+          !usernameFormControl.hasError('required')
+        "
+      >
         Please enter a valid email address
       </mat-error>
-      <mat-error *ngIf="usernameFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
+      <mat-error *ngIf="usernameFormControl.hasError('required')"
+        >Email is <strong>required</strong></mat-error
+      >
     </mat-form-field>
     <mat-form-field appearance="outline" class="login-field">
       <mat-label>Password</mat-label>
-      <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password">
+      <input
+        type="password"
+        matInput
+        [formControl]="passwordFormControl"
+        placeholder="Password"
+      />
       <mat-error *ngIf="!passwordFormControl.hasError('required')">
         Please enter a valid email address
       </mat-error>
-      <mat-error *ngIf="usernameFormControl.hasError('required')">Email is <strong>required</strong></mat-error>
+      <mat-error *ngIf="usernameFormControl.hasError('required')"
+        >Email is <strong>required</strong></mat-error
+      >
     </mat-form-field>
 
     <div class="mt--10">
       <mat-checkbox class="custome-check-box">Remember Me</mat-checkbox>
     </div>
     <div class="button-container">
-      <button [disabled]="usernameFormControl.invalid || passwordFormControl.invalid" class="btn-primary"
-        (click)="handleLogin($event)">
+      <button
+        [disabled]="usernameFormControl.invalid || passwordFormControl.invalid"
+        class="btn-primary"
+        (click)="handleLogin($event)"
+      >
         Login
       </button>
-      <a routerLink="['/']" class="forgot_pass">Forgot
-        Password ?</a>
+      <a routerLink="['/']" class="forgot_pass">Forgot Password ?</a>
     </div>
-    <!-- Password field -->
-    <!-- <mat-form-field class="example-form-field-width">
-      <mat-label>Password</mat-label>
-      <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password">
-      <mat-error *ngIf="passwordFormControl.hasError('required')">Password is
-        <strong>required</strong></mat-error>
-    </mat-form-field> -->
-
-    <!-- Submit button -->
-    <!-- <div class="login-button-div">
-      <button mat-flat-button color="primary" [disabled]="usernameFormControl.invalid || passwordFormControl.invalid"
-        class="example-button-width" (click)="handleLogin($event)">
-        Login
-      </button>
-    </div> -->
   </form>
-
 </div>

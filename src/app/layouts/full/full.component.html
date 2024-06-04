@@ -1,66 +1,23 @@
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
 <div class="main-container">
-    <!-- ============================================================== -->
-    <!-- Topbar - style you can find in header.scss -->
-    <!-- ============================================================== -->
+  <app-header></app-header>
 
-    <!-- <mat-toolbar color="primary" class="topbar telative">
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 0 : 0"
+  >
+    <app-sidebar></app-sidebar>
 
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.html"><b>
+    <mat-sidenav #sidenav mode="side" opened (closed)="events.push('close!')">
+      <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+      <p>
+        <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>
+      </p>
+    </mat-sidenav>
 
-                    <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo">
-
-                    <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo">
-                </b>
-
-                <span class="text-logo-icon" fxShow="false" fxShow.gt-xs>
-
-                    <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo">
-
-                    <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage">
-                </span>
-            </a>
-        </div>
-
-        <app-header class="d-flex align-items-center ml-auto"></app-header>
-    </mat-toolbar> -->
-    <app-header></app-header>
-
-    <!-- ============================================================== -->
-    <!-- End Topbar - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
-        <!-- ============================================================== -->
-        <!-- Sidebar - style you can find in sidebar.scss -->
-        <!-- ============================================================== -->
-        <!-- <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs" [mode]="mobileQuery.matches ? 'side' : 'over'" fixedTopGap="0" [opened]="true" [disableClose]="mobileQuery.matches"  > -->
-
-        <app-sidebar></app-sidebar>
-
-        <!-- <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" -->
-        <mat-sidenav #sidenav mode="side" opened
-            (closed)="events.push('close!')">
-            <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
-            <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-        </mat-sidenav>
-        <!-- </mat-sidenav> -->
-        <!-- ============================================================== -->
-        <!-- Sidebar - style you can find in sidebar.scss -->
-        <!-- ============================================================== -->
-
-        <!-- ============================================================== -->
-        <!-- Page container - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <mat-sidenav-content class="page-wrapper">
-            <div class="page-content">
-                <router-outlet><app-spinner></app-spinner></router-outlet>
-            </div>
-        </mat-sidenav-content>
-        <!-- ============================================================== -->
-        <!-- Page container - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-    </mat-sidenav-container>
+    <mat-sidenav-content class="page-wrapper">
+      <div class="page-content">
+        <router-outlet><app-spinner></app-spinner></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

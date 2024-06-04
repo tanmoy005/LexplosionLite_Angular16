@@ -10,9 +10,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [MaterialModule, NgFor, NgIf, RouterModule, CommonModule, MatIconModule, MatSidenavModule],
+  imports: [
+    MaterialModule,
+    NgFor,
+    NgIf,
+    RouterModule,
+    CommonModule,
+    MatIconModule,
+    MatSidenavModule,
+  ],
   templateUrl: './sidebar.component.html',
-  styleUrls: []
+  styleUrls: [],
 })
 export class AppSidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
@@ -30,8 +38,7 @@ export class AppSidebarComponent implements OnDestroy {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
   ngOnInit() {
-    this.MenuDataItems= this.menuItems.getMenuitem();
-    // console.log(this.menuItems.getMenuitem);
+    this.MenuDataItems = this.menuItems.getMenuitem();
   }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);

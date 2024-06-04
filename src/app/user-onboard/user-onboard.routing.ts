@@ -5,7 +5,7 @@ import { Routes } from '@angular/router';
 import { LawsTablePageComponent } from './laws-table-page/laws-table.component';
 import { CommonComponentsComponent } from './common-components/common-components.component';
 import { EntityDetailsPageComponent } from './entity-details-page/entity-details-page.component';
-import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-details-page.component';
+//import { OpUnitDetailsPageComponent } from './op-unit-details-page/op-unit-details-page.component';
 
 import { EntityComponent } from './entity/entity.component';
 import { SubscriptionDetailsPageComponent } from './subscription-details-page/subscription-details-page.component';
@@ -33,10 +33,10 @@ export const UserOnboardRoutes: Routes = [
     path: 'entity-details',
     component: EntityDetailsPageComponent,
   },
-  {
-    path: 'oprating-unit-details',
-    component: OpUnitDetailsPageComponent,
-  },
+  // {
+  //   path: 'oprating-unit-details',
+  //   component: OpUnitDetailsPageComponent,
+  // },
   {
     path: 'entity',
     component: EntityComponent,
