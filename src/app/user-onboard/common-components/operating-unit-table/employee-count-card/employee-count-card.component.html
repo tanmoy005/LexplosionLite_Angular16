@@ -44,14 +44,20 @@
       </div>
       <div class="col-2">
         <mat-form-field class="emp_input square_input_box" appearance="outline">
-          <input
+          <!-- <input
             matInput
             [(ngModel)]="employeeData[i].female"
             name="female{{ i }}"
             type="number"
             (input)="onInputChange()"
             class="custom-input"
-          />
+          /> -->
+          <input
+          matInput
+          type="number"
+          (input)="onInputChange()"
+          class="custom-input"
+        />
         </mat-form-field>
       </div>
       <div class="col-1"></div>
@@ -74,7 +80,7 @@
         <mat-form-field class="emp_input square_input_box" appearance="outline">
           <input
             matInput
-            name="male"
+            name="others"
             type="number"
             [(ngModel)]="apprenticesCount"
             (input)="emitApprenticesCount()"
