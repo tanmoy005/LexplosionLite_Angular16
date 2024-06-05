@@ -212,13 +212,16 @@
     display: flex;
 }
 
+@mixin gray-input-box{
+    border: 1px solid var.$gray-1300;
+    border-radius: 5px;
+}
 .emp_input {
     width: 5.04vw !important;
     margin: 0 16px;
 
     .mat-mdc-text-field-wrapper {
-        border: 1px solid var.$gray-1300;
-        border-radius: 5px;
+       @include gray-input-box;
     }
 }
 
@@ -346,6 +349,10 @@ input.mdc-radio__native-control:focus,
     .dropdown-label {
         @include dropdown-label();
         // todo set the svg ofdropdown at right position
+    }
+    .mat-mdc-text-field-wrapper {
+        @include gray-input-box;
+        background-color: var.$gray-800; 
     }
 }
 
