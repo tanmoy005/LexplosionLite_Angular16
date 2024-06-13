@@ -69,8 +69,9 @@ export class AppSideRegisterComponent {
       this.countryCode !== null &&
       this.phoneNumber?.trim() !== '' &&
       this.phoneNumberFormControl.valid &&
-      this.agreeToTerms &&
-      this.consentToPromotionalInfo
+      this.agreeToTerms 
+      // &&
+      // this.consentToPromotionalInfo
     ) {
       registrationCredentialsStatus = true;
     }
