@@ -33,6 +33,7 @@
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Ownership</label>
             <mat-radio-group
+              name="Ownership"
               [(ngModel)]="ownership"
               (change)="onOwnershipSelectionChange($event)"
             >
@@ -82,6 +83,7 @@
           <section class="radio_selection ml-40">
             <label class="text_12_500_gray_1200">Zone</label>
             <mat-radio-group
+              name = "Zone"
               [(ngModel)]="zone"
               (change)="onZoneSelectionChange($event)"
             >

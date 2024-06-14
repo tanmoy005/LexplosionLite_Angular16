@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
@@ -11,7 +11,6 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
   encapsulation: ViewEncapsulation.None,
 })
 export class EntityDetailsPageComponent {
- 
   entityTypesList: FieldDefinitionInterfaces.EntityTypes;
   industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
   lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
@@ -26,13 +25,10 @@ export class EntityDetailsPageComponent {
 
   isEntityTableLoading: boolean;
 
-  constructor(private router: Router) {}
-
-
+  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
 
   getSelectedCountries(value: number[]) {
     this.countryList = value;
-
   }
 
   treeDataItem = treeDataitem;
@@ -43,21 +39,21 @@ export class EntityDetailsPageComponent {
   handleSelectedEntity(entity: EntityDataType) {
     this.isAddOperatingUnitClicked = true;
     this.selectedEntity = entity;
-    
   }
 
   handleIsDotsClicked(state: boolean) {
     this.isDotsClicked = state;
-   
   }
 
   handleBackClick(event: boolean) {
     if (event) {
       this.isAddOperatingUnitClicked = false;
+      this.cdr.detectChanges();
     }
   }
 
   handleEntityLoadingState(state: boolean) {
     this.isEntityTableLoading = state;
+    this.cdr.detectChanges();
   }
 }

@@ -10,42 +10,46 @@ import {
 })
 export class SnackbarService {
   constructor(public snackBar: MatSnackBar) {}
-  duration: 2000;
+ 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  showError(message: string) {
+  showError(message: string ,  duration: number = 3000) {
     this.snackBar.open(message, 'close', {
+      duration: duration,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      duration: this.duration,
+     
       panelClass: ['custom-error-snackbar'],
     });
   }
 
-  showSuccess(message: string) {
+  showSuccess(message: string,  duration: number = 3000) {
     this.snackBar.open(message, 'close', {
+      duration: duration,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      duration: this.duration,
+    
       panelClass: ['custom-success-snackbar'],
     });
   }
 
-  showInfo(message: string) {
+  showInfo(message: string,  duration: number = 3000) {
     this.snackBar.open(message, 'close', {
+      duration: duration,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      duration: this.duration,
+      
       panelClass: ['custom-info-snackbar'],
     });
   }
 
-  showWarning(message: string) {
+  showWarning(message: string,  duration: number = 3000) {
     this.snackBar.open(message, 'close', {
+      duration: duration,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
-      duration: this.duration,
+      
       panelClass: ['custom-warning-snackbar'],
     });
   }

@@ -31,12 +31,20 @@
     color: rgba(88, 89, 91, 1);
 }
 
+// .header {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 0px;
+//     width: 100%;
+//     //white-space: nowrap;
+//     overflow: hidden;
+// }
+
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0px;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
+  }
+  

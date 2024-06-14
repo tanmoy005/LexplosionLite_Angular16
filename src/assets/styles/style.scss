@@ -212,13 +212,16 @@
     display: flex;
 }
 
+@mixin gray-input-box{
+    border: 1px solid var.$gray-1300;
+    border-radius: 5px;
+}
 .emp_input {
     width: 5.04vw !important;
     margin: 0 16px;
 
     .mat-mdc-text-field-wrapper {
-        border: 1px solid var.$gray-1300;
-        border-radius: 5px;
+       @include gray-input-box;
     }
 }
 
@@ -346,6 +349,10 @@ input.mdc-radio__native-control:focus,
     .dropdown-label {
         @include dropdown-label();
         // todo set the svg ofdropdown at right position
+    }
+    .mat-mdc-text-field-wrapper {
+        @include gray-input-box;
+        background-color: var.$gray-800; 
     }
 }
 
@@ -517,13 +524,11 @@ input.mdc-radio__native-control:focus,
 .example-container table th {
     background-color: rgba(120, 106, 205, 0.16) !important;
     font-family: Barlow;
-
     font-size: 12px;
     font-weight: 700;
     line-height: 14.4px;
     text-align: left;
     width: 40px;
-
 }
 
 .mdc-data-table__cell,
@@ -537,7 +542,6 @@ input.mdc-radio__native-control:focus,
 
 
 .example-container table tr>th:first-child {
-
     width: 14px;
 }
 
@@ -582,7 +586,6 @@ input.mdc-radio__native-control:focus,
 
 
 .mat-column-lawName {
-
     width: 20px;
     font-size: 12px;
     line-height: 14.4px;
@@ -640,4 +643,7 @@ input.mdc-radio__native-control:focus,
 }
 .text-center{
     text-align: center!important;
+}
+.mdc-list-item{
+    padding: 16px!important;
 }
