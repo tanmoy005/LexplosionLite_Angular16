@@ -193,14 +193,45 @@ $h10px: 1.25vh; //new
 $w440px: 34.375vw;
 $w776px: 60.625vw;
 
+
+$w8px: 0.625vw; // new (8 / 1280 * 100)
+$w16px: 1.25vw; // new (16 / 1280 * 100)
+$w24px: 1.875vw; // new (24 / 1280 * 100)
+$w32px: 2.5vw; // new (32 / 1280 * 100)
+$w40px: 3.125vw; // new (40 / 1280 * 100)
+$w440px: 34.375vw;
+$w480px: 37.5vw; // new (480 / 1280 * 100)
+$w776px: 60.625vw;
+$w800px: 62.5vw; // new (800 / 1280 * 100)
+$w880px: 68.75vw; // new (880 / 1280 * 100)
+$w960px: 75vw; // new (960 / 1280 * 100)
+$w1040px: 81.25vw; // new (1040 / 1280 * 100)
+
+
+$size_8px: 0.56vw;
 $size_16px: 1.12vw;
-$size_24px: 1.85vw;
+$size_24px: 1.68vw; // new (24 / 1280 * 100)
+$size_32px: 2.24vw; // new (32 / 1280 * 100)
 $size_38px: 2.97vw;
+$size_40px: 3.12vw; // new (40 / 1280 * 100)
+$size_48px: 3.75vw; // new (48 / 1280 * 100)
 $size_56px: 4.8vw;
-$size_32px: 2.5vw;
-$size_8px: 0.56vw;  //new
-$size_20px: 1.4vw; //new
-$size_10px: 0.7vw; //new
+$size_64px: 5.0vw; // new (64 / 1280 * 100)
+$size_72px: 5.62vw; // new (72 / 1280 * 100)
+$size_80px: 6.25vw; // new (80 / 1280 * 100)
+$size_96px: 7.5vw; // new (96 / 1280 * 100)
+$size_10px: 0.7vw;
+$size_20px: 1.4vw;
+
+
+// $size_16px: 1.12vw;
+// $size_24px: 1.85vw;
+// $size_38px: 2.97vw;
+// $size_56px: 4.8vw;
+// $size_32px: 2.5vw;
+// $size_8px: 0.56vw;  //new
+// $size_20px: 1.4vw; //new
+// $size_10px: 0.7vw; //new
 
 $mt-42: 5.77vh;
 $mt-10: 1.2vh;

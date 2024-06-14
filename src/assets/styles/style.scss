@@ -37,21 +37,88 @@
     border-radius: 16px;
 }
 
+:root {
+    --base-unit-large: 8px; 
+    --scale-factor-margin-left: 54.5;
+    --scale-factor-width: 51;
+    --scale-factor-padding: 2; 
+}
+
 .form-container1 {
-    display: flex;
-    flex-direction: column;
-    width: 31.87vw;
+    //width: calc(var(--base-unit-large) * var(--scale-factor-width)); 
     border-radius: 10px;
     background-color: var.$gray-500;
     box-shadow: 0 4px 56px 0 var.$black-100;
-    margin: auto;
+    //margin-left: calc(var(--base-unit-large) * var(--scale-factor-margin-left));
+    
 }
+@media (min-width: 1280px){
+    :root {
+    --base-unit-large: 8px; 
+    }
+    .form-container1 {
+        width:calc(var(--base-unit-large) * var(--scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-large) * var(--scale-factor-margin-left));
+       
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    :root {
+        --base-unit-medium: 4.8px; 
+        
+    }
+    .form-container1 {
+        width: calc(var(--base-unit-medium) * var(--scale-factor-width)); 
+        margin-left: calc(var(--base-unit-medium) * (var(--scale-factor-margin-left))); 
+       
+    }
+}
+
+
+@media (max-width: 767px) {
+    :root {
+        --base-unit-small: 4px; 
+    }
+    .form-container1 {
+        width: calc(var(--base-unit-small) * var(--scale-factor-width)); 
+        margin-left: calc(var(--base-unit-small) * (var(--scale-factor-margin-left) )); 
+        
+    }
+}
+
+@media (max-width: 479px) {
+    :root {
+        --base-unit-phone: 2.5px; 
+    }
+    .form-container1 {
+        width: calc(var(--base-unit-phone) * var(--scale-factor-width)); 
+        margin-left: calc(var(--base-unit-phone) * (var(--scale-factor-margin-left) / 1.2));
+    }
+}
+
+// .form-container1 {
+//     // display: flex;
+//     // flex-direction: column;
+//     // width: 31.87vw;
+//     width: 31.87vw;
+//     border-radius: 10px;
+//     background-color: var.$gray-500;
+//     box-shadow: 0 4px 56px 0 var.$black-100;
+//     margin-left: 34%;
+//     // margin: auto;
+    
+// }
 
 .form-heading-container {
     display: flex;
     width: 100%;
     justify-content: flex-start;
+    padding-left:9.31% ;
+   // padding-top: 0%;
     padding: var.$size_16px var.$size_24px;
+   // padding: var.$size_16px var.$size_24px;
+    // left: 9.31vw //new
 }
 
 .login-formheader {
@@ -187,7 +254,7 @@
 }
 
 .blank-layout-container {
-    padding: 4.73% 11%;
+    padding: 4.73% 13.125%;
 }
 
 
