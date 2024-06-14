@@ -2,7 +2,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { FormControl, Validators, AbstractControl } from '@angular/forms';
-import { UserAuthenticationService } from '../../services/user-authentication.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CountryList } from 'src/app/shared/menu-items/country-list';

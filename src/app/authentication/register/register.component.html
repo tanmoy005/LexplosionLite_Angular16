@@ -137,6 +137,21 @@
               >
             </mat-form-field>
 
+            <mat-form-field appearance="outline" class="big-text-input">
+              <mat-label class="text_12_400_gray_1000"
+                >Password</mat-label
+              >
+              <input
+                type="password"
+                matInput
+                [formControl]="passwordFormControl"
+                name="password"
+              />
+              <mat-error
+                *ngIf="passwordFormControl.hasError('required')"
+              >Password is <strong>required</strong> </mat-error>
+            </mat-form-field>
+
             <button
               mat-button
               (click)="handleRegistration($event)"
