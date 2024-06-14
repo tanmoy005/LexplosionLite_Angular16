@@ -42,6 +42,7 @@
     --scale-factor-margin-left: 54.5;
     --scale-factor-width: 51;
     --scale-factor-padding: 2; 
+    --scale-factor-login-heading-height:14px;
 }
 
 .form-container1 {
@@ -52,7 +53,19 @@
     //margin-left: calc(var(--base-unit-large) * var(--scale-factor-margin-left));
     
 }
-@media (min-width: 1280px){
+
+@media (max-width: 1440px) and (min-width: 1281px){
+    :root {
+    --base-unit-large1: 9px; 
+    }
+    .form-container1 {
+        width:calc(var(--base-unit-large1) * var(--scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-large1) * var(--scale-factor-margin-left));
+       
+    }
+}
+
+@media (width: 1280px){
     :root {
     --base-unit-large: 8px; 
     }
@@ -63,7 +76,18 @@
     }
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
+@media (min-width: 1024px) and (max-width:1279px){
+    :root {
+    --base-unit-medium1: 6.4px; 
+    }
+    .form-container1 {
+        width:calc(var(--base-unit-medium1) * var(--scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-medium1) * var(--scale-factor-margin-left));
+       
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
     :root {
         --base-unit-medium: 4.8px; 
         
@@ -124,9 +148,11 @@
 .login-formheader {
     background-color: var.$primary;
     border-radius: 10px 10px 0 0;
-
+    height: 112px;
     .login-header-logo {
         width: 43.87%;
+        margin-top: 16px;
+        margin-left:24px;
     }
 }
 
