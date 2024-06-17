@@ -23,9 +23,16 @@
     cursor: pointer!important;
 }
 
+.btn-name-style{
+    font-size: 12px !important;
+    font-family: Barlow;
+    font-weight: 400px;
+    line-height: 14.4px;
+}
 
 .btn-secondary {
     @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px);
+  
 }
 
 .btn-primary {
