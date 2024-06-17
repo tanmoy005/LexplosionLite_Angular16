@@ -39,6 +39,18 @@
               >
             </mat-form-field>
 
+            <mat-form-field appearance="outline" class="big-text-input">
+              <mat-label class="text_12_400_gray_1000">Headquarter Address</mat-label>
+              <input
+                matInput
+                name="headquarterAddress"
+                [formControl]="headquarterAddressFormControl"
+              />
+              <mat-error *ngIf="headquarterAddressFormControl.hasError('required')"
+                >Headquarter Address is <strong>required</strong></mat-error
+              >
+            </mat-form-field>
+
             <div class="phn-section row">
               <div class="col-sm-12 col-md-4 pr-0 bg-dropdown-white">
                 <app-dropdown
@@ -137,6 +149,9 @@
               >
             </mat-form-field>
 
+            <div class="row">
+            
+            <div class="col">
             <mat-form-field appearance="outline" class="big-text-input">
               <mat-label class="text_12_400_gray_1000"
                 >Password</mat-label
@@ -147,9 +162,45 @@
                 [formControl]="passwordFormControl"
                 name="password"
               />
-              <mat-error
-                *ngIf="passwordFormControl.hasError('required')"
+              
+              <mat-error *ngIf="passwordFormControl.hasError('required')"
               >Password is <strong>required</strong> </mat-error>
+              
+              <!-- <mat-error *ngIf="passwordFormControl.hasError('passwordInvalid')">
+                Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.
+              </mat-error> -->
+            
+            </mat-form-field>
+            </div>
+
+            <div *ngIf="passwordFormControl.hasError('passwordInvalid')" class="col-1 password-error-icon">
+              <mat-icon>info</mat-icon>
+            </div>
+          </div>
+            
+            <!-- <div *ngIf="passwordFormControl.hasError('passwordInvalid')" style="margin-top: 65px;"> 
+            </div> -->
+            
+            <mat-form-field appearance="outline" class="big-text-input"
+            >
+              <mat-label class="text_12_400_gray_1000"
+              >Confirm Password</mat-label
+              >
+              <input
+                type="password"
+                matInput
+                [formControl]="confirmPasswordFormControl"
+                name="password"
+              />
+              <mat-error
+                *ngIf="!passwordFormControl.hasError('required') && 
+                !confirmPasswordFormControl.hasError('required') &&
+                passwordFormControl.value != confirmPasswordFormControl.value"
+               >Passwords didn't match</mat-error>
+              
+              <mat-error
+                *ngIf="confirmPasswordFormControl.hasError('required')"
+              >Please <strong>re-enter</strong> password</mat-error>
             </mat-form-field>
 
             <button
