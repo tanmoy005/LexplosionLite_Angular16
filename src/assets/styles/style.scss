@@ -54,6 +54,11 @@
     
 }
 
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-text-field__input {
+    display: inline-block;
+    font-family: 'Barlow';
+}
+
 @media (max-width: 1440px) and (min-width: 1281px){
     :root {
     --base-unit-large1: 9px; 

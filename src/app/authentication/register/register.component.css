@@ -114,3 +114,26 @@ td {
   text-decoration-color: blue;
   text-transform: var(--mdc-typography-button-text-transform, none);
 }
+
+::ng-deep .mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper {
+  position: relative !important; 
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0px 0px !important;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+
+.password-error-icon{
+  margin-top: 10px;
+}
+
+/* .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-text-field__input {
+  display: inline-block;
+  font-family: 'Barlow';
+} */
