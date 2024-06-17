@@ -2,7 +2,7 @@
   <mat-card style="display: contents">
     <app-reg-header></app-reg-header>
     <mat-divider></mat-divider>
-    <div class="col-lg-5 row" style="margin-top: 40px">
+    <div class="col-lg-7 row" style="margin-top: 40px">
       <div class="col-12">
         <div
           class="get-start-for-free"
@@ -18,16 +18,19 @@
         </div>
         <mat-card-content>
           <form>
-            <mat-form-field appearance="outline" class="big-text-input">
+            <mat-form-field appearance="outline" class="registration-big-text-input">
               <mat-label class="text_12_400_gray_1000">Name</mat-label>
               <input
                 matInput
                 name="username"
                 [formControl]="usernameFormControl"
               />
+              <mat-error *ngIf="usernameFormControl.hasError('required')"
+              > Name is <strong>required</strong></mat-error
+            >
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="big-text-input">
+            <mat-form-field appearance="outline" class="registration-big-text-input">
               <mat-label class="text_12_400_gray_1000">Business Name</mat-label>
               <input
                 matInput
@@ -39,7 +42,7 @@
               >
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="big-text-input">
+            <mat-form-field appearance="outline" class="registration-big-text-input">
               <mat-label class="text_12_400_gray_1000">Headquarter Address</mat-label>
               <input
                 matInput
@@ -52,7 +55,8 @@
             </mat-form-field>
 
             <div class="phn-section row">
-              <div class="col-sm-12 col-md-4 pr-0 bg-dropdown-white">
+
+              <div class="col-sm-12 col-md-3 pr-0 bg-dropdown-white">
                 <app-dropdown
                   [type]="'country'"
                   [label]="'Country'"
@@ -63,9 +67,10 @@
                 >
                 </app-dropdown>
               </div>
-              <div class="col-sm-12 col-md-8 phn-input px-0">
+
+              <div class="col-sm-12 col-md-9 px-0">
                 <mat-form-field
-                  class="example-full-width big-text-input"
+                  class="example-full-width registration-phone-no-input"
                   appearance="outline"
                 >
                   <mat-label class="text_12_400_gray_1000"
@@ -126,7 +131,7 @@
               </p>
             </div>
 
-            <mat-form-field appearance="outline" class="big-text-input">
+            <mat-form-field appearance="outline" class="registration-big-text-input">
               <mat-label class="text_12_400_gray_1000"
                 >Email ID/Username</mat-label
               >
@@ -148,10 +153,11 @@
                 >Email is <strong>required</strong></mat-error
               >
             </mat-form-field>
-            
+
             <div class="row">
-              <div class="col">
-              <mat-form-field appearance="outline" class="big-text-input">
+
+              <div class="col-lg-8 col-md-8 col-sm-8">
+              <mat-form-field appearance="outline" class="registration-big-text-input">
                 <mat-label class="text_12_400_gray_1000"
                   >Password</mat-label
                 >
@@ -167,7 +173,7 @@
               </mat-form-field>
               </div>
   
-              <div *ngIf="passwordFormControl.hasError('passwordInvalid')" class="col-1 password-error-icon">
+              <div *ngIf="passwordFormControl.hasError('passwordInvalid')" class="col-lg-1 col-md-1 col-sm-1 password-error-icon">
                 <mat-icon 
                 matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long." 
                 [matTooltipPosition]="'above'">
@@ -178,7 +184,7 @@
             
             <div class="row">
               <div class="col">
-                <mat-form-field appearance="outline" class="big-text-input">
+                <mat-form-field appearance="outline" class="registration-big-text-input">
                   <mat-label class="text_12_400_gray_1000">Confirm Password</mat-label>
                   <input
                     type="password"

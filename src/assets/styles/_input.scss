@@ -9,3 +9,23 @@
     }
     
 }
+
+.registration-big-text-input{
+    .mat-mdc-text-field-wrapper{
+        width:296px;
+        height: 56px;
+        border-radius: 5px;
+        border: 1px solid var.$gray-700;
+        background-color: var.$gray-800;
+    }
+}
+
+.registration-phone-no-input{
+    .mat-mdc-text-field-wrapper{
+        width:192px;
+        height: 56px;
+        border-radius: 5px;
+        border: 1px solid var.$gray-700;
+        background-color: var.$gray-800;
+    }
+}

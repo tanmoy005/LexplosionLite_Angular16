@@ -46,6 +46,10 @@
     --scale-factor-button-height:7;
     --scale-factor-button-width:36;
     --scale-margin-left:7;
+    --registration-scale-factor-width:117;
+    --registration-scale-factor-left: 21;
+    --registration-scale-factor-top: 7;
+    
 }
 
 .form-container1 {
@@ -585,6 +589,7 @@ input.mdc-radio__native-control:focus,
     .mat-mdc-text-field-wrapper {
         @include gray-input-box;
         background-color: var.$gray-800; 
+        width: 88px;
     }
 }
 
@@ -660,23 +665,81 @@ input.mdc-radio__native-control:focus,
     border-radius: 5px;
 }
 
-@media (min-width: 992px) {
+// @media (min-width: 992px) {
+//     .register-container {
+//         padding: 8vh 13vw;
+//     }
+// }
+
+// @media (min-width: 768px) and (max-width: 991.98px) {
+//     .register-container {
+//         padding: 7vh 12vw;
+//     }
+// }
+
+// @media (max-width: 767.98px) {
+//     .register-container {
+//         padding: 6vh 4.5vw;
+//     }
+// }
+
+
+
+@media (max-width: 1440px) and (min-width: 1281px){
+    :root {
+    --base-unit-large1: 9px; 
+    }
     .register-container {
-        padding: 8vh 13vw;
+        width:calc(var(--base-unit-large1) * var(--registration-scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-large1) * var(--registration-scale-factor-left));
+        margin-top: calc(var(--base-unit-large1)*var(--registration-scale-factor-top));
     }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (width: 1280px){
+    :root {
+    --base-unit-large: 8px; 
+    }
     .register-container {
-        padding: 7vh 12vw;
+        width:calc(var(--base-unit-large) * var(--registration-scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-large) * var(--registration-scale-factor-left));
+        margin-top: calc(var(--base-unit-large)*var(--registration-scale-factor-top));
     }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 1024px) and (max-width:1279px){
+    :root {
+    --base-unit-medium1: 6.4px; 
+    }
     .register-container {
-        padding: 6vh 4.5vw;
+        width:calc(var(--base-unit-medium1) * var(--registration-scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-medium1) * var(--registration-scale-factor-left));
+        margin-top: calc(var(--base-unit-medium1)*var(--registration-scale-factor-top));
     }
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    :root {
+        --base-unit-medium: 4.8px; 
+    }
+    .register-container {
+        width:calc(var(--base-unit-medium) * var(--registration-scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-medium) * var(--registration-scale-factor-left));
+        margin-top: calc(var(--base-unit-medium)*var(--registration-scale-factor-top));
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --base-unit-small: 4px; 
+    }
+    .register-container {
+        width:calc(var(--base-unit-small) * var(--registration-scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-small) * var(--registration-scale-factor-left));
+        margin-top: calc(var(--base-unit-small)*var(--registration-scale-factor-top));
+    }
+}
+
 
 
 .pr-0 {
@@ -702,7 +765,7 @@ input.mdc-radio__native-control:focus,
 }
 
 .phn-section {
-    width: 105%; // todo chnage it to 100% and adjust rest of the styles accordingly
+    width: 100%; // todo change it to 100% and adjust rest of the styles accordingly
 }
 
 .mat-dialog-actions-container {
