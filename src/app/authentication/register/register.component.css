@@ -130,10 +130,12 @@ td {
 }
 
 .password-error-icon{
-  margin-top: 10px;
+  margin-top: 15px;
+  color: #786acd;
 }
 
-/* .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-text-field__input {
-  display: inline-block;
-  font-family: 'Barlow';
-} */
+.mat-mdc-text-field-wrapper {
+  flex:'auto';
+  height: None;
+}
+
