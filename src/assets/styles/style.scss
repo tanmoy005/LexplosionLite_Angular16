@@ -43,6 +43,9 @@
     --scale-factor-width: 51;
     --scale-factor-padding: 2; 
     --scale-factor-login-heading-height:14px;
+    --scale-factor-button-height:7;
+    --scale-factor-button-width:36;
+    --scale-margin-left:7;
 }
 
 .form-container1 {
@@ -162,13 +165,16 @@
 }
 
 .login-form {
-    padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+    //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
 
     .login-field {
         .mat-mdc-text-field-wrapper {
-            // height: 7.885vh !important;
-            height: 56px !important;
-            width:288px  !important
+            // height: 56px !important;
+            // width:288px  !important;
+            // margin-left: 56px;
+            height: calc(var(--base-unit-large) * var(--scale-factor-button-height)) !important;  
+            width:calc(var(--base-unit-large) * var(--scale-factor-button-width)) !important;
+            margin-left: 56px;
         }
 
         label {
@@ -177,15 +183,141 @@
     }
 
     .button-container {
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
+        margin-left: 56px;
+    }
+
+    .remember-me-containar{
+        margin-left: 48px;
+       
     }
 
     .forgot_pass {
         @include text_W400(var.$font-12);
         color: var.$blue;
+        margin-left: 253px;
+        margin-top: 420px;
     }
 }
+
+// @media (width: 1280px){
+//     :root {
+//     --base-unit-large: 8px; 
+//     }
+//     .login-form {
+//         //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+    
+//         .login-field {
+//             .mat-mdc-text-field-wrapper {
+//                 height: calc(var(--base-unit-large) * var(--scale-factor-button-height));
+//                 width:calc(var(--base-unit-large) * var(--scale-factor-button-width));
+//                 margin-left: 56px;
+//             }
+    
+//             label {
+//                 font-size: var.$font-12;
+//             }
+//         }
+    
+//         .button-container {
+//             // display: flex;
+//             // justify-content: space-between;
+//             margin-left: 56px;
+//         }
+    
+//         .remember-me-containar{
+//             margin-left: 48px;
+           
+//         }
+    
+//         .forgot_pass {
+//             @include text_W400(var.$font-12);
+//             color: var.$blue;
+//             margin-left: 253px;
+//             margin-top: 420px;
+//         }
+//     }
+// }
+
+// @media (min-width: 1024px) and (max-width:1279px){
+//     :root {
+//         --base-unit-medium1: 6.4px; 
+//         }
+//     .login-form {
+//         //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+    
+//         .login-field {
+//             .mat-mdc-text-field-wrapper {
+//                 height: calc(var(--base-unit-medium1) * var(--scale-factor-button-height));
+//                 width:calc(var(--base-unit-medium1) * var(--scale-factor-button-width));
+//                 margin-left: 56px;
+//             }
+    
+//             label {
+//                 font-size: var.$font-12;
+//             }
+//         }
+    
+//         .button-container {
+//             // display: flex;
+//             // justify-content: space-between;
+//             margin-left: 56px;
+//         }
+    
+//         .remember-me-containar{
+//             margin-left: 48px;
+           
+//         }
+    
+//         .forgot_pass {
+//             @include text_W400(var.$font-12);
+//             color: var.$blue;
+//             margin-left: 253px;
+//             margin-top: 420px;
+//         }
+//     }
+// }
+
+// @media (min-width: 768px) and (max-width: 1023px){
+//     :root {
+//         --base-unit-medium: 4.8px; 
+        
+//     }
+//     .login-form {
+//         //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+    
+//         .login-field {
+//             .mat-mdc-text-field-wrapper {
+//                 height: calc(var(--base-unit-medium) * var(--scale-factor-button-height));
+//                 width:calc(var(--base-unit-medium2) * var(--scale-factor-button-width));
+//                // margin-left: 56px;
+//             }
+    
+//             label {
+//                 font-size: var.$font-12;
+//             }
+//         }
+    
+//         .button-container {
+//             // display: flex;
+//             // justify-content: space-between;
+//             margin-left: 56px;
+//         }
+    
+//         .remember-me-containar{
+//             margin-left: 48px;
+           
+//         }
+    
+//         .forgot_pass {
+//             @include text_W400(var.$font-12);
+//             color: var.$blue;
+//             margin-left: 253px;
+//             margin-top: 420px;
+//         }
+//     }
+// }
 
 @mixin header_common {
     display: flex;
