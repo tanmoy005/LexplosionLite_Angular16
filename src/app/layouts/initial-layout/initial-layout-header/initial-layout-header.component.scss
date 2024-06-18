@@ -26,4 +26,48 @@
       color: #fff;
     }
   }
+
+  // Media Queries
+  @media (max-width: 1024px) {
+    .logo-container {
+      width: 10vw; 
+    }
+
+    .page-link-container {
+      margin: 0 5%;
+      column-gap: 48px; 
+    }
+  }
+
+  @media (max-width: 768px) {
+    // flex-direction: column;
+    // align-items: flex-start;
+
+    .logo-container {
+      width: 5vw; 
+    }
+
+    .page-link-container {
+      //flex-direction: column;
+      margin: 0 5%;
+      column-gap: 16px;
+      // row-gap: 16px;
+    }
+  }
+
+  // @media (max-width: 480px) {
+  //   .logo-container {
+  //     width: 30vw; // Further adjust logo container width
+  //   }
+
+  //   .page-link-container {
+  //     column-gap: 12px; // Further reduce gap between links
+  //     row-gap: 12px;
+  //     margin: 0;
+  //   }
+
+  //   .link-item {
+  //     font-size: 14px; // Adjust font size for smaller screens
+  //   }
+  // }
 }

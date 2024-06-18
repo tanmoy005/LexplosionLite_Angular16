@@ -5,7 +5,8 @@
     padding: $padding!important;
     border: 1px solid $border-color!important; // todo use gradient
     border-radius: $border-radius!important;
-
+    height: 40px;
+    width: 136px; //needs to be responsive
     @if($type =='filled') {
         color: var.$gray-400!important;
     }
