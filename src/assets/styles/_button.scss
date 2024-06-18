@@ -27,6 +27,16 @@
         width: calc(var($width-factor) * var(--base-unit-large));
         
     }
+
+    @media (min-width: 1024px) and (max-width:1279px){
+        height: calc(var($height-factor) * var(--base-unit-medium1));
+        width: calc(var($width-factor) * var(--base-unit-medium1));
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px){
+        height: calc(var($height-factor) * var(--base-unit-medium));
+        width: calc(var($width-factor) * var(--base-unit-medium));
+    }
     font-size: .8rem!important;
     font-weight: 400!important;
     cursor: pointer!important;
@@ -43,6 +53,10 @@
     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
 }
 
+// .btn-register {
+//     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
+// }
+
 // .btn-secondary {
 //     @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px);
   
@@ -56,7 +70,7 @@
 //     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,--scale-factor-button-height,--scale-factor-button-width);
 // }
 // .btn-primary-md {
-//     @include btn-model(var.$primary, 6px 24px, var.$primary, 5px);
+//     @include btn-model(var.$primary, 6px 24px, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
 // }
 
 // .btn-primary-outline-md {

@@ -168,6 +168,20 @@
     }
 }
 
+@media (max-width: 1440px) and (min-width: 1281px){
+    .login-formheader {
+        background-color: var.$primary;
+        border-radius: 10px 10px 0 0;
+        height: calc(var(--base-unit-large1)*var(--scale-login-formheader-height));
+        .login-header-logo {
+            width: calc(var(--base-unit-large1)*var(--scale-login-formheader-logo-width));
+            height: calc(var(--base-unit-large1)*var(--scale-login-formheader-logo-height));
+            margin-top: calc(var(--base-unit-large1)*var(--scale-login-formheader-margin-top));
+            margin-left:calc(var(--base-unit-large1)*var(--scale-login-formheader-margin-left));
+        }
+    }
+}
+
 @media (width: 1280px){
     .login-formheader {
         background-color: var.$primary;
@@ -233,6 +247,42 @@
         color: var.$blue;
         margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
         margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
+    }
+}
+
+@media (max-width: 1440px) and (min-width: 1281px){
+    :root {
+    --base-unit-large1: 9px; 
+    }
+    .login-form {
+        //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+    
+        .login-field {
+            .mat-mdc-text-field-wrapper {
+                //height: calc(var(--base-unit-large) * var(--scale-factor-button-height)) !important;
+                height: 56px !important;
+                width:calc(var(--base-unit-large1) * var(--scale-factor-button-width)) !important;
+                margin-left:  calc(var(--base-unit-large1) * var(--scale-margin-left)) !important;
+            }
+        }
+        .button-container {
+            // display: flex;
+            // justify-content: space-between;
+            margin-left: calc(var(--base-unit-large1) * var(--scale-margin-left)) !important;
+            //margin-top: calc(var(--base-unit-large) * var(--scale-factor-login-button-margin-top)) !important;
+        }
+    
+        .remember-me-containar{
+            margin-left: calc(var(--base-unit-large1) * var(--scale-margin-left-remember-me)) !important;
+           
+        }
+        .forgot_pass {
+            @include text_W400(var.$font-12);
+            color: var.$blue;
+            margin-left: calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-left));
+            margin-top:calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-top));
+        }
+    
     }
 }
 
