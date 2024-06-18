@@ -93,6 +93,8 @@ export class AppSideRegisterComponent implements OnInit {
   ]);
 
   agreeToTerms: boolean = false;
+  isAgreeToTermsButtonClicked: boolean = false;
+
   consentToPromotionalInfo: boolean = false;
 
   get username() {
@@ -118,12 +120,18 @@ export class AppSideRegisterComponent implements OnInit {
     return this.phoneNumberFormControl.value;
   }
 
+
+
   countryCode: number | null = null;
   countryList: CountryData[] = CountryList;
 
   updateCheckBoxStateAndOpenConditionModal(checkedStatus:boolean){
       if(checkedStatus){
         this.termsConditionModalOpen();
+      }
+      else{
+        this.isAgreeToTermsButtonClicked = false;
+        this.agreeToTerms = false;
       }
   }
 
@@ -177,6 +185,16 @@ export class AppSideRegisterComponent implements OnInit {
     const dialogRef = this.dialog.open(TermsConditionDialog, {
       data: { registrationPage: this },
     });
+
+    dialogRef.afterClosed().subscribe((termsAndConditionAcceptanceStatus:boolean)=> {
+      if(termsAndConditionAcceptanceStatus){
+        this.agreeToTerms = true;
+      }
+      else{
+        this.agreeToTerms = false;
+      }
+    });
+    
   }
 }
 
@@ -198,7 +216,7 @@ function phoneNumberValidator(
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
-export class TermsConditionDialog {
+export class TermsConditionDialog implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA)
   public data: {
@@ -206,15 +224,25 @@ export class TermsConditionDialog {
   },
   public dialogRef: MatDialogRef<TermsConditionDialog>
 ){ }
+
+  termsAgreeButtonClicked: boolean;
+
+  ngOnInit(): void {
+    this.termsAgreeButtonClicked=false;
+  }
   
   updateCheckBoxStatusAgreed(event:any){
-    this.data.registrationPage.agreeToTerms = true;
-    this.dialogRef.close();
+    this.termsAgreeButtonClicked = true;
+    this.dialogRef.close(this.termsAgreeButtonClicked);
   }
   
   updateCheckBoxStatusDeclined(event:any){
-    this.data.registrationPage.agreeToTerms = false;
-    this.dialogRef.close();
+    this.termsAgreeButtonClicked = false;
+    this.dialogRef.close(this.termsAgreeButtonClicked);
+  }
+
+  closeDialog() {
+    this.dialogRef.close(this.termsAgreeButtonClicked);
   }
 
 }

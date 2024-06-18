@@ -24,7 +24,7 @@
     </style>
   </head>
 
-  <h2 mat-dialog-title>Terms & Condition</h2>
+  <h2 mat-dialog-title (close)="closeDialog()">Terms & Condition</h2>
   <mat-dialog-content>
     <div class="terms-content">
       <h2>1. Introduction</h2>
@@ -52,7 +52,7 @@
           selling, sublicensing and/or otherwise commercializing any website
           material;
         </li>
-        <li>publicly performing and/or showing any website material;</li>
+        <li>publicly performing and/or showing any website matersial;</li>
         <li>
           using this website in any way that is or may be damaging to this
           website;

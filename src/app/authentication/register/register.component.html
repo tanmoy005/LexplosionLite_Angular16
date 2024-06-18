@@ -26,7 +26,7 @@
                 [formControl]="usernameFormControl"
               />
               <mat-error *ngIf="usernameFormControl.hasError('required')"
-              > Name is <strong>required</strong></mat-error
+              > Name is&nbsp;<strong>required</strong></mat-error
             >
             </mat-form-field>
 
@@ -38,7 +38,7 @@
                 [formControl]="companynameFormControl"
               />
               <mat-error *ngIf="companynameFormControl.hasError('required')"
-                >Business Name is <strong>required</strong></mat-error
+                >Business Name is&nbsp; <strong>required</strong></mat-error
               >
             </mat-form-field>
 
@@ -50,7 +50,7 @@
                 [formControl]="headquarterAddressFormControl"
               />
               <mat-error *ngIf="headquarterAddressFormControl.hasError('required')"
-                >Headquarter Address is <strong>required</strong></mat-error
+                >Headquarter Address is&nbsp; <strong>required</strong></mat-error
               >
             </mat-form-field>
 
@@ -69,7 +69,7 @@
               </div>
               <div style="width:5px"></div>
 
-              <div class="px-0">
+              <div class="col-lg-6 px-0">
                 <mat-form-field
                   class="example-full-width registration-phone-no-input"
                   appearance="outline"
@@ -86,7 +86,7 @@
                   />
 
                   <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
-                    >Phone Number is <strong>required</strong></mat-error
+                    >Phone Number is&nbsp;<strong>required</strong></mat-error
                   >
                   <mat-error
                     *ngIf="
@@ -157,11 +157,13 @@
                 >Please enter a valid email address</mat-error
               >
               <mat-error *ngIf="emailFormControl.hasError('required')"
-                >Email is <strong>required</strong></mat-error
+                >Email is&nbsp;<strong>required</strong></mat-error
               >
             </mat-form-field>
 
-            <div class="row" style="margin-left:0px">
+            <!-- style="margin-left:0px" -->
+
+            <div class="row">
               <div class="col-lg-7 col-md-7 col-sm-7">
               <mat-form-field appearance="outline" class="registration-big-text-input">
                 <mat-label class="text_12_400_gray_1000"
@@ -175,7 +177,7 @@
                 />
                 
                 <mat-error *ngIf="passwordFormControl.hasError('required')"
-                >Password is <strong>required</strong> </mat-error>
+                >Password is&nbsp;<strong>required</strong> </mat-error>
               </mat-form-field>
               </div>
   
@@ -188,7 +190,7 @@
               </div>
             </div>
             
-            <div class="row" style="margin-left:0px">
+            <div class="row">
               <div class="col">
                 <mat-form-field appearance="outline" class="registration-big-text-input">
                   <mat-label class="text_12_400_gray_1000">Confirm Password</mat-label>
@@ -199,7 +201,7 @@
                     name="confirmPassword"
                   />
                   <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
-                    Please <strong>re-enter</strong> password
+                    Please&nbsp;<strong>re-enter</strong> password
                   </mat-error>
                   <mat-error *ngIf="!confirmPasswordFormControl.hasError('required') &&
                                     form.hasError('passwordsMismatch') &&

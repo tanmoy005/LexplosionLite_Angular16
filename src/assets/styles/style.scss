@@ -22,6 +22,7 @@
 @import 'responsive';
 @import 'input';
 @import 'text';
+
 // @import "../styles/icons/material-design-iconic-font/css/materialdesignicons.min.css";
 
 /* You can add global styles to this file, and also import other style files */
@@ -37,20 +38,20 @@
     border-radius: 16px;
 }
 
-:root {
-    --base-unit-large: 8px; 
-    --scale-factor-margin-left: 54.5;
-    --scale-factor-width: 51;
-    --scale-factor-padding: 2; 
-    --scale-factor-login-heading-height:14px;
-    --scale-factor-button-height:7;
-    --scale-factor-button-width:36;
-    --scale-margin-left:7;
-    --registration-scale-factor-width:117;
-    --registration-scale-factor-left: 21;
-    --registration-scale-factor-top: 7;
+// :root {
+//     --base-unit-large: 8px; 
+//     --scale-factor-margin-left: 54.5;
+//     --scale-factor-width: 51;
+//     --scale-factor-padding: 2; 
+//     --scale-factor-login-heading-height:14px;
+//     --scale-factor-button-height:7;
+//     --scale-factor-button-width:36;
+//     --scale-margin-left:7;
+//     --registration-scale-factor-width:117;
+//     --registration-scale-factor-left: 21;
+//     --registration-scale-factor-top: 7;
     
-}
+// }
 
 .form-container1 {
     //width: calc(var(--base-unit-large) * var(--scale-factor-width)); 
@@ -758,7 +759,16 @@ input.mdc-radio__native-control:focus,
 //     }
 // }
 
-
+@media (max-width: 2560px) and (min-width: 1441px){
+    :root {
+    --base-unit-4k: 16px; 
+    }
+    .register-container {
+        width:calc(var(--base-unit-4k) * var(--registration-scale-factor-width)); 
+        margin-left:  calc(var(--base-unit-4k) * var(--registration-scale-factor-left));
+        margin-top: calc(var(--base-unit-4k)*var(--registration-scale-factor-top));
+    }
+}
 
 @media (max-width: 1440px) and (min-width: 1281px){
     :root {
