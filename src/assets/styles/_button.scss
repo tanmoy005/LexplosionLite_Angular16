@@ -21,6 +21,11 @@
 
         font-size: 1rem!important;
     }
+    @media (max-width:1440px) and (min-width:1281px) {
+        height: calc(var($height-factor) * var(--base-unit-large1));
+        width: calc(var($width-factor) * var(--base-unit-large1));
+        
+    }
 
     @media (width:1280px) {
         height: calc(var($height-factor) * var(--base-unit-large));

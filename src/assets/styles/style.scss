@@ -234,6 +234,7 @@
             height: calc(var(--base-unit-large) * var(--scale-factor-button-height)) !important;  
             width:calc(var(--base-unit-large) * var(--scale-factor-button-width)) !important;
             margin-left: calc(var(--base-unit-large) * var(--scale-margin-left)) !important;
+            //margin-bottom: 16px;
         }
 
         label {
@@ -245,8 +246,15 @@
     .forgot_pass {
         @include text_W400(var.$font-12);
         color: var.$blue;
-        margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
-        margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
+        //margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
+       // margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
+    }
+    .login-footer-containar{
+         justify-content: space-between;
+         display: flex;
+         margin-bottom: 16px;
+         padding-right: 64px;
+         padding-bottom: 16px;
     }
 }
 
@@ -263,24 +271,26 @@
                 height: 56px !important;
                 width:calc(var(--base-unit-large1) * var(--scale-factor-button-width)) !important;
                 margin-left:  calc(var(--base-unit-large1) * var(--scale-margin-left)) !important;
+                
             }
         }
         .button-container {
             // display: flex;
             // justify-content: space-between;
             margin-left: calc(var(--base-unit-large1) * var(--scale-margin-left)) !important;
-            //margin-top: calc(var(--base-unit-large) * var(--scale-factor-login-button-margin-top)) !important;
+            //margin-top:16px;
         }
     
         .remember-me-containar{
             margin-left: calc(var(--base-unit-large1) * var(--scale-margin-left-remember-me)) !important;
-           
+            //margin-top:16px;
         }
         .forgot_pass {
             @include text_W400(var.$font-12);
             color: var.$blue;
-            margin-left: calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-left));
-            margin-top:calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-top));
+            margin-top: 16px;
+           // margin-left: calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-left));
+            //margin-top:calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-top));
         }
     
     }
@@ -306,17 +316,18 @@
             // justify-content: space-between;
             margin-left: calc(var(--base-unit-large) * var(--scale-margin-left)) !important;
             //margin-top: calc(var(--base-unit-large) * var(--scale-factor-login-button-margin-top)) !important;
+           // margin-top:16px;
         }
     
         .remember-me-containar{
             margin-left: calc(var(--base-unit-large) * var(--scale-margin-left-remember-me)) !important;
-           
+            //margin-top:16px;
         }
         .forgot_pass {
             @include text_W400(var.$font-12);
             color: var.$blue;
-            margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
-            margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
+           // margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
+           // margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
         }
     
     }
@@ -351,8 +362,8 @@
     .forgot_pass {
         @include text_W400(var.$font-12);
         color: var.$blue;
-        margin-left: calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-left));
-        margin-top:calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-top));
+        //margin-left: calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-left));
+        //margin-top:calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-top));
     }
 
 }
@@ -387,8 +398,8 @@
         .forgot_pass {
             @include text_W400(var.$font-12);
             color: var.$blue;
-            margin-left: calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-left));
-            margin-top:calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-top));
+           // margin-left: calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-left));
+            //margin-top:calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-top));
         }
     }
 }
