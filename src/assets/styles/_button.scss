@@ -62,10 +62,10 @@
 //     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
 // }
 
-// .btn-secondary {
-//     @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px);
+.btn-secondary {
+    @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px,'filled',--scale-factor-get-started-button-height,--scale-factor-get-started-button-width);
   
-// }
+}
 
 // .btn-primary {
 //     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px);

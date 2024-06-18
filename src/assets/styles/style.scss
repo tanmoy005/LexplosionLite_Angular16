@@ -252,7 +252,7 @@
     .login-footer-containar{
          justify-content: space-between;
          display: flex;
-         margin-bottom: 16px;
+         //margin-bottom: 16px;
          padding-right: 64px;
          padding-bottom: 16px;
     }
@@ -273,6 +273,12 @@
                 margin-left:  calc(var(--base-unit-large1) * var(--scale-margin-left)) !important;
                 
             }
+            .mat-mdc-form-field-error {
+                display: flex;
+                margin-left: calc(var(--base-unit-large1)*var(--scale-factor-error-margin-left));
+                //font-size: 8px;
+
+            }
         }
         .button-container {
             // display: flex;
@@ -292,7 +298,13 @@
            // margin-left: calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-left));
             //margin-top:calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-top));
         }
-    
+        .login-footer-containar{
+            //justify-content: space-between;
+            //display: flex;
+            //margin-bottom: 16px;
+            padding-right: calc(var(--base-unit-large1)* var(--scale-factor-login-footer-containar-margin-right));
+            //padding-bottom: 16px;
+       }
     }
 }
 
@@ -309,6 +321,12 @@
                 height: 56px !important;
                 width:calc(var(--base-unit-large) * var(--scale-factor-button-width)) !important;
                 margin-left:  calc(var(--base-unit-large) * var(--scale-margin-left)) !important;
+            }
+            .mat-mdc-form-field-error {
+                display: flex;
+                //margin-left: 40px;
+                margin-left: calc(var(--base-unit-large)*var(--scale-factor-error-margin-left));
+                //font-size: 8px;
             }
         }
         .button-container {
@@ -329,6 +347,14 @@
            // margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
            // margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
         }
+
+        .login-footer-containar{
+            //justify-content: space-between;
+            //display: flex;
+            //margin-bottom: 16px;
+            padding-right: calc(var(--base-unit-large)* var(--scale-factor-login-footer-containar-margin-right));
+            //padding-bottom: 16px;
+       }
     
     }
 }
@@ -346,6 +372,10 @@
                         height: 56px !important;
                         width:calc(var(--base-unit-medium1) * var(--scale-factor-button-width))!important;
                         margin-left:  calc(var(--base-unit-medium1) * var(--scale-margin-left)) !important;
+                    }
+                    .mat-mdc-form-field-error {
+                        display: block;
+                        margin-left: calc(var(--base-unit-medium1)*var(--scale-factor-error-margin-left));;
                     }
     }
     .button-container {
@@ -365,7 +395,13 @@
         //margin-left: calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-left));
         //margin-top:calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-top));
     }
-
+    .login-footer-containar{
+        //justify-content: space-between;
+        //display: flex;
+        //margin-bottom: 16px;
+        padding-right: calc(var(--base-unit-medium1)* var(--scale-factor-login-footer-containar-margin-right));
+        //padding-bottom: 16px;
+   }
 }
 }
     
@@ -384,6 +420,10 @@
                 width:calc(var(--base-unit-medium) * var(--scale-factor-button-width)) !important;
                 margin-left:  calc(var(--base-unit-medium) * var(--scale-margin-left)) !important;
             }
+            .mat-mdc-form-field-error {
+                display: block;
+                margin-left: calc(var(--base-unit-medium)*var(--scale-factor-error-margin-left));
+            }
         }
         .button-container {
             // display: flex;
@@ -401,6 +441,13 @@
            // margin-left: calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-left));
             //margin-top:calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-top));
         }
+        .login-footer-containar{
+            //justify-content: space-between;
+            //display: flex;
+            //margin-bottom: 16px;
+            padding-right: calc(var(--base-unit-medium)* var(--scale-factor-login-footer-containar-margin-right));
+            //padding-bottom: 16px;
+       }
     }
 }
 
