@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, AbstractControl,ValidationErrors, ValidatorFn, FormBuilder  } 
@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CountryList } from 'src/app/shared/menu-items/country-list';
 import { CountryData } from 'src/app/shared/menu-items/country-list';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 function passwordValidator(): ValidatorFn {
@@ -30,19 +31,6 @@ function passwordValidator(): ValidatorFn {
   };
 }
 
-
-// function passwordMatchValidator(password:string|null): ValidatorFn {
-//   return (control: AbstractControl): ValidationErrors | null => {
-//     const value = control.value;
-//     if (!value) {
-//       return null;
-//     }
-//   const confirmPassword = value;
-//   console.log("Password",password)
-//   console.log("Confirmation", confirmPassword);
-//   return password && confirmPassword && password === confirmPassword ? null : { passwordsMismatch: true };
-//   }
-// };
 
 const passwordMatchValidator: ValidatorFn = (formGroup: AbstractControl): ValidationErrors | null => {
   const password = formGroup.get('password')?.value;
@@ -133,6 +121,12 @@ export class AppSideRegisterComponent implements OnInit {
   countryCode: number | null = null;
   countryList: CountryData[] = CountryList;
 
+  updateCheckBoxStateAndOpenConditionModal(checkedStatus:boolean){
+      if(checkedStatus){
+        this.termsConditionModalOpen();
+      }
+  }
+
   checkRegistrationCredentials() {
     var registrationCredentialsStatus = false;
 
@@ -178,7 +172,11 @@ export class AppSideRegisterComponent implements OnInit {
   }
 
   termsConditionModalOpen() {
-    this.dialog.open(TermsConditionDialog);
+    //this.dialog.open(TermsConditionDialog);
+
+    const dialogRef = this.dialog.open(TermsConditionDialog, {
+      data: { registrationPage: this },
+    });
   }
 }
 
@@ -200,4 +198,23 @@ function phoneNumberValidator(
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
-export class TermsConditionDialog {}
+export class TermsConditionDialog {
+
+  constructor(@Inject(MAT_DIALOG_DATA)
+  public data: {
+    registrationPage: AppSideRegisterComponent;
+  },
+  public dialogRef: MatDialogRef<TermsConditionDialog>
+){ }
+  
+  updateCheckBoxStatusAgreed(event:any){
+    this.data.registrationPage.agreeToTerms = true;
+    this.dialogRef.close();
+  }
+  
+  updateCheckBoxStatusDeclined(event:any){
+    this.data.registrationPage.agreeToTerms = false;
+    this.dialogRef.close();
+  }
+
+}
