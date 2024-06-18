@@ -162,23 +162,64 @@
     border-radius: 10px 10px 0 0;
     height: 112px;
     .login-header-logo {
-        width: 43.87%;
+        // width: 43.87%;
         margin-top: 16px;
         margin-left:24px;
     }
 }
+
+@media (width: 1280px){
+    .login-formheader {
+        background-color: var.$primary;
+        border-radius: 10px 10px 0 0;
+        height: calc(var(--base-unit-large)*var(--scale-login-formheader-height));
+        .login-header-logo {
+            width: calc(var(--base-unit-large)*var(--scale-login-formheader-logo-width));
+            height: calc(var(--base-unit-large)*var(--scale-login-formheader-logo-height));
+            margin-top: calc(var(--base-unit-large)*var(--scale-login-formheader-margin-top));
+            margin-left:calc(var(--base-unit-large)*var(--scale-login-formheader-margin-left));
+        }
+    }
+}
+
+@media (min-width: 1024px) and (max-width:1279px){
+    .login-formheader {
+        background-color: var.$primary;
+        border-radius: 10px 10px 0 0;
+        height: calc(var(--base-unit-medium1)*var(--scale-login-formheader-height));
+        .login-header-logo {
+            width: calc(var(--base-unit-medium1)*var(--scale-login-formheader-logo-width));
+            height: calc(var(--base-unit-medium1)*var(--scale-login-formheader-logo-height));
+            margin-top: calc(var(--base-unit-medium1)*var(--scale-login-formheader-margin-top));;
+            margin-left:calc(var(--base-unit-medium1)*var(--scale-login-formheader-margin-left));;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+    .login-formheader {
+        background-color: var.$primary;
+        border-radius: 10px 10px 0 0;
+        height: calc(var( --base-unit-medium)*var(--scale-login-formheader-height));
+        .login-header-logo {
+            width: calc(var(--base-unit-medium)*var(--scale-login-formheader-logo-width));
+            height: calc(var(--base-unit-medium)*var(--scale-login-formheader-logo-height));
+            margin-top: calc(var(--base-unit-medium)*var(--scale-login-formheader-margin-top));;
+            margin-left:calc(var(--base-unit-medium)*var(--scale-login-formheader-margin-left));;
+        }
+    }
+}
+
 
 .login-form {
     //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
 
     .login-field {
         .mat-mdc-text-field-wrapper {
-            // height: 56px !important;
-            // width:288px  !important;
-            // margin-left: 56px;
+          
             height: calc(var(--base-unit-large) * var(--scale-factor-button-height)) !important;  
             width:calc(var(--base-unit-large) * var(--scale-factor-button-width)) !important;
-            margin-left: 56px;
+            margin-left: calc(var(--base-unit-large) * var(--scale-margin-left)) !important;
         }
 
         label {
@@ -186,142 +227,122 @@
         }
     }
 
-    .button-container {
-        // display: flex;
-        // justify-content: space-between;
-        margin-left: 56px;
-    }
-
-    .remember-me-containar{
-        margin-left: 48px;
-       
-    }
-
+   
     .forgot_pass {
         @include text_W400(var.$font-12);
         color: var.$blue;
-        margin-left: 253px;
-        margin-top: 420px;
+        margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
+        margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
     }
 }
 
-// @media (width: 1280px){
-//     :root {
-//     --base-unit-large: 8px; 
-//     }
-//     .login-form {
-//         //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+@media (width: 1280px){
+    :root {
+    --base-unit-large: 8px; 
+    }
+    .login-form {
+        //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
     
-//         .login-field {
-//             .mat-mdc-text-field-wrapper {
-//                 height: calc(var(--base-unit-large) * var(--scale-factor-button-height));
-//                 width:calc(var(--base-unit-large) * var(--scale-factor-button-width));
-//                 margin-left: 56px;
-//             }
+        .login-field {
+            .mat-mdc-text-field-wrapper {
+                //height: calc(var(--base-unit-large) * var(--scale-factor-button-height)) !important;
+                height: 56px !important;
+                width:calc(var(--base-unit-large) * var(--scale-factor-button-width)) !important;
+                margin-left:  calc(var(--base-unit-large) * var(--scale-margin-left)) !important;
+            }
+        }
+        .button-container {
+            // display: flex;
+            // justify-content: space-between;
+            margin-left: calc(var(--base-unit-large) * var(--scale-margin-left)) !important;
+            //margin-top: calc(var(--base-unit-large) * var(--scale-factor-login-button-margin-top)) !important;
+        }
     
-//             label {
-//                 font-size: var.$font-12;
-//             }
-//         }
-    
-//         .button-container {
-//             // display: flex;
-//             // justify-content: space-between;
-//             margin-left: 56px;
-//         }
-    
-//         .remember-me-containar{
-//             margin-left: 48px;
+        .remember-me-containar{
+            margin-left: calc(var(--base-unit-large) * var(--scale-margin-left-remember-me)) !important;
            
-//         }
+        }
+        .forgot_pass {
+            @include text_W400(var.$font-12);
+            color: var.$blue;
+            margin-left: calc(var(--base-unit-large)*var(--scale-forgetpass-margin-left));
+            margin-top:calc(var(--base-unit-large)*var(--scale-forgetpass-margin-top));
+        }
     
-//         .forgot_pass {
-//             @include text_W400(var.$font-12);
-//             color: var.$blue;
-//             margin-left: 253px;
-//             margin-top: 420px;
-//         }
-//     }
-// }
+    }
+}
 
-// @media (min-width: 1024px) and (max-width:1279px){
-//     :root {
-//         --base-unit-medium1: 6.4px; 
-//         }
-//     .login-form {
-//         //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
-    
-//         .login-field {
-//             .mat-mdc-text-field-wrapper {
-//                 height: calc(var(--base-unit-medium1) * var(--scale-factor-button-height));
-//                 width:calc(var(--base-unit-medium1) * var(--scale-factor-button-width));
-//                 margin-left: 56px;
-//             }
-    
-//             label {
-//                 font-size: var.$font-12;
-//             }
-//         }
-    
-//         .button-container {
-//             // display: flex;
-//             // justify-content: space-between;
-//             margin-left: 56px;
-//         }
-    
-//         .remember-me-containar{
-//             margin-left: 48px;
-           
-//         }
-    
-//         .forgot_pass {
-//             @include text_W400(var.$font-12);
-//             color: var.$blue;
-//             margin-left: 253px;
-//             margin-top: 420px;
-//         }
-//     }
-// }
+@media (min-width: 1024px) and (max-width:1279px){
+    :root {
+              --base-unit-medium1: 6.4px; 
+                }
+            .login-form {
+                //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+            
+                .login-field {
+                   .mat-mdc-text-field-wrapper {
+                        //height: calc(var(--base-unit-medium1) * var(--scale-factor-button-height))!important;
+                        height: 56px !important;
+                        width:calc(var(--base-unit-medium1) * var(--scale-factor-button-width))!important;
+                        margin-left:  calc(var(--base-unit-medium1) * var(--scale-margin-left)) !important;
+                    }
+    }
+    .button-container {
+        // display: flex;
+        // justify-content: space-between;
+        margin-left: calc(var(--base-unit-medium1) * var(--scale-margin-left)) !important;
+        //margin-top: calc(var(--base-unit-medium1) * var(--scale-factor-login-button-margin-top)) !important;
+    }
 
-// @media (min-width: 768px) and (max-width: 1023px){
-//     :root {
-//         --base-unit-medium: 4.8px; 
+    .remember-me-containar{
+        margin-left:calc(var(--base-unit-medium1) * var(--scale-margin-left-remember-me)) !important;;
+       
+    }
+    .forgot_pass {
+        @include text_W400(var.$font-12);
+        color: var.$blue;
+        margin-left: calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-left));
+        margin-top:calc(var(--base-unit-medium1)*var(--scale-forgetpass-margin-top));
+    }
+
+}
+}
+    
+@media (min-width: 768px) and (max-width: 1023px){
+    :root {
+        --base-unit-medium: 4.8px; 
         
-//     }
-//     .login-form {
-//         //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+    }
+    .login-form {
+        //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
     
-//         .login-field {
-//             .mat-mdc-text-field-wrapper {
-//                 height: calc(var(--base-unit-medium) * var(--scale-factor-button-height));
-//                 width:calc(var(--base-unit-medium2) * var(--scale-factor-button-width));
-//                // margin-left: 56px;
-//             }
-    
-//             label {
-//                 font-size: var.$font-12;
-//             }
-//         }
-    
-//         .button-container {
-//             // display: flex;
-//             // justify-content: space-between;
-//             margin-left: 56px;
-//         }
-    
-//         .remember-me-containar{
-//             margin-left: 48px;
+        .login-field {
+            .mat-mdc-text-field-wrapper {
+                //height: calc(var(--base-unit-medium) * var(--scale-factor-button-height)) !important;
+                height: 56px !important;
+                width:calc(var(--base-unit-medium) * var(--scale-factor-button-width)) !important;
+                margin-left:  calc(var(--base-unit-medium) * var(--scale-margin-left)) !important;
+            }
+        }
+        .button-container {
+            // display: flex;
+            // justify-content: space-between;
+            margin-left: calc(var(--base-unit-medium) * var(--scale-margin-left)) !important;
+            //margin-top: calc(var(--base-unit-medium) * var(--scale-factor-login-button-margin-top)) !important;
+        }
+        .remember-me-containar{
+            margin-left:calc(var(--base-unit-medium) * var(--scale-margin-left-remember-me)) !important;;
            
-//         }
-    
-//         .forgot_pass {
-//             @include text_W400(var.$font-12);
-//             color: var.$blue;
-//             margin-left: 253px;
-//             margin-top: 420px;
-//         }
-//     }
-// }
+        }
+        .forgot_pass {
+            @include text_W400(var.$font-12);
+            color: var.$blue;
+            margin-left: calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-left));
+            margin-top:calc(var(--base-unit-medium)*var(--scale-forgetpass-margin-top));
+        }
+    }
+}
+
 
 @mixin header_common {
     display: flex;
