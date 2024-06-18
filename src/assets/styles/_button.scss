@@ -1,12 +1,14 @@
 @use 'variable' as var;
 
-@mixin btn-model($background-color, $padding, $border-color, $border-radius, $type: 'filled') {
+@mixin btn-model($background-color, $padding, $border-color, $border-radius, $type: 'filled',
+    $height-factor,$width-factor
+    ) {
     background-color: $background-color!important;
     padding: $padding!important;
     border: 1px solid $border-color!important; // todo use gradient
     border-radius: $border-radius!important;
-    height: 40px;
-    width: 136px; //needs to be responsive
+    // height: 40px;
+    // width: 136px; 
     @if($type =='filled') {
         color: var.$gray-400!important;
     }
@@ -18,6 +20,12 @@
     @media (min-width: 1024px) {
 
         font-size: 1rem!important;
+    }
+
+    @media (width:1280px) {
+        height: calc(var($height-factor) * var(--base-unit-large));
+        width: calc(var($width-factor) * var(--base-unit-large));
+        
     }
     font-size: .8rem!important;
     font-weight: 400!important;
@@ -31,21 +39,29 @@
     line-height: 14.4px;
 }
 
-.btn-secondary {
-    @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px);
+.btn-login {
+    @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
+}
+
+// .btn-secondary {
+//     @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px);
   
-}
+// }
 
-.btn-primary {
-    @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px);
-}
-.btn-primary-md {
-    @include btn-model(var.$primary, 6px 24px, var.$primary, 5px);
-}
+// .btn-primary {
+//     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px);
+// }
 
-.btn-primary-outline-md {
-    @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
-}
-.btn-blue-outline-md {
-    @include btn-model('transparent', 6px 24px, var.$blue, 5px, 'outline');
-}
+// .btn-login {
+//     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,--scale-factor-button-height,--scale-factor-button-width);
+// }
+// .btn-primary-md {
+//     @include btn-model(var.$primary, 6px 24px, var.$primary, 5px);
+// }
+
+// .btn-primary-outline-md {
+//     @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
+// }
+// .btn-blue-outline-md {
+//     @include btn-model('transparent', 6px 24px, var.$blue, 5px, 'outline');
+// }
