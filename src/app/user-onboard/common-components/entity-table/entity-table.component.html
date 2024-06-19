@@ -20,7 +20,7 @@
           </th>
           <td mat-cell *matCellDef="let element">
             <button
-              class="invisible-border-button"
+              class="invisible-border-button  custom-badge"
               (click)="openCountryDialog()"
               [matBadge]="element.country !== 0 ? 1 : null"
               matBadgeSize="small"
@@ -39,7 +39,7 @@
           </th>
           <td mat-cell *matCellDef="let element">
             <button
-              class="invisible-border-button"
+              class="invisible-border-button  custom-badge"
               (click)="openIndustryDialog()"
               [matBadge]="
                 element.industry.length !== 0 ? element.industry.length : null
@@ -71,7 +71,7 @@
           </th>
           <td mat-cell *matCellDef="let element">
             <button
-              class="invisible-border-button"
+              class="invisible-border-button  custom-badge"
               (click)="openLawDialog()"
               [matBadge]="
                 element.lawModules !== 0 ? element.lawModules.length : null
@@ -79,7 +79,7 @@
               matBadgeSize="small"
               matBadgeOverlap="true"
               matBadgePosition="below after"
-              matBadgeColor="primary"
+              matBadgeColor="accent"
             >
               <img src="./assets/images/icons/VectorLawa_Icon.png" />
             </button>
@@ -90,7 +90,7 @@
           <th mat-header-cell *matHeaderCellDef>Operating Unit</th>
           <td mat-cell *matCellDef="let element">
             <button
-              class="invisible-border-button"
+              class="invisible-border-button  custom-badge"
               (click)="
                 openEntityMenuDialog('Add Operating Unit from Icon', element.id)
               "

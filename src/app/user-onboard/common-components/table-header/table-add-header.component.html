@@ -12,8 +12,9 @@
   </div>
 
   <div class="button-container">
-    <button mat-stroked-button (click)="emitAddNewEntity()">
-      <mat-icon>add</mat-icon>{{ buttonName }}
+    <button mat-stroked-button class="btn-primary-outline-md" (click)="emitAddNewEntity()">
+      <mat-icon>add</mat-icon>
+      <p class="btn-name-style">{{ buttonName }}</p>
     </button>
   </div>
 </div>
