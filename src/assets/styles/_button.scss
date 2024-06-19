@@ -1,7 +1,7 @@
 @use 'variable' as var;
 
 @mixin btn-model($background-color, $padding, $border-color, $border-radius, $type: 'filled',
-    $height-factor,$width-factor
+    $height-factor:10.5,$width-factor:5
     ) {
     background-color: $background-color!important;
     padding: $padding!important;
@@ -43,8 +43,14 @@
         width: calc(var($width-factor) * var(--base-unit-medium));
     }
     font-size: .8rem!important;
+    //font-size: 12px;
     font-weight: 400!important;
     cursor: pointer!important;
+
+    // .mdc-button .mdc-button__label {
+    //     position: relative;
+    //     font-size: 12px!important;
+    // }
 }
 
 .btn-name-style{
@@ -78,9 +84,9 @@
     @include btn-model(var.$primary, 6px 24px, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
 }
 
-// .btn-primary-outline-md {
-//     @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
-// }
+.btn-primary-outline-md {
+    @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
+}
 // .btn-blue-outline-md {
 //     @include btn-model('transparent', 6px 24px, var.$blue, 5px, 'outline');
 // }

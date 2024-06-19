@@ -40,7 +40,8 @@
         <button
           [matBadge]="element.entity.length"
           matBadgePosition="below after"
-          class="invisible-border-button"
+          class="invisible-border-button custom-badge"
+          matBadgeSize="small"
         >
           <img src="./assets/images/icons/EntityIcons.svg" />
         </button>
@@ -55,7 +56,8 @@
         <button
           [matBadge]="element.totalEmployeeCount"
           matBadgePosition="below after"
-          class="invisible-border-button"
+          class="invisible-border-button custom-badge"
+          matBadgeSize="small"
         >
           <img src="./assets/images/icons/Vector_Employee.png" />
         </button>
@@ -70,7 +72,8 @@
         <button
           [matBadge]="element.activities.length"
           matBadgePosition="below after"
-          class="invisible-border-button"
+          class="invisible-border-button custom-badge"
+          matBadgeSize="small"
         >
           <img src="./assets/images/icons/activities.png" />
         </button>
@@ -82,7 +85,7 @@
       <td mat-cell *matCellDef="let element">
         <button
           (click)="openLawDialog(element.opID)"
-          class="invisible-border-button"
+          class="invisible-border-button custom-badge"
         >
           <img src="./assets/images/icons/VectorLawa_Icon.png" />
         </button>
