@@ -9,7 +9,6 @@ import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 import { VerifyEmailPageComponent } from './register/verify-email-page/verify-email-page.component';
 import { MaterialModule } from '../material-module';
 import { CommonComponentModule } from '../user-onboard/common-components/common-component.module';
-
 @NgModule({
   declarations: [AppSideRegisterComponent],
   imports: [
@@ -21,7 +20,7 @@ import { CommonComponentModule } from '../user-onboard/common-components/common-
     AppSideLoginComponent,
     RegHeaderComponent,
     VerifyEmailPageComponent,
-    CommonComponentModule,
+    CommonComponentModule
   ],
 
   exports: [],

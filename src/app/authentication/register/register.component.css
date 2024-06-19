@@ -170,6 +170,11 @@ td {
   height: 16px;
 }
 
+.phn-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Registration body container working */
 .registration-body-container{
   margin-left: 0px;
@@ -190,4 +195,8 @@ td {
   -webkit-text-decoration: var(--mdc-typography-caption-text-decoration, inherit);
   text-decoration: var(--mdc-typography-caption-text-decoration, inherit);
   text-transform: var(--mdc-typography-caption-text-transform, none);
+}
+
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+  top: 25px !important;
 }

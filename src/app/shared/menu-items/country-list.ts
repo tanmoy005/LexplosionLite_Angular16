@@ -7,12 +7,12 @@ export interface CountryData {
 export const CountryList: CountryData[] = [
   {
     value: 1,
-    label: 'India',
+    label: '+91',
     icon: './assets/images/indian_flag.webp',
   },
   {
     value: 2,
-    label: 'Singapore',
+    label: '+65',
     icon: './assets/images/singapore_flag.png',
   },
 ];

@@ -723,7 +723,7 @@ input.mdc-radio__native-control:focus,
         background-color: var.$gray-800; 
         width: 88px;
         height: 56px;
-        margin-left: 15px;
+        //margin-left: 15px;
     }
 }
 
@@ -1085,3 +1085,8 @@ input.mdc-radio__native-control:focus,
 .mdc-list-item{
     padding: 16px!important;
 }
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
