@@ -22,7 +22,7 @@
 
 .registration-phone-no-input{
     .mat-mdc-text-field-wrapper{
-        width:197px;
+        min-width:197px;
         height: 56px;
         border-radius: 5px;
         border: 1px solid var.$gray-700;

@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CountryList } from 'src/app/shared/menu-items/country-list';
+import { CountryListForPhoneNumberSection } from 'src/app/shared/menu-items/country-list';
 import { CountryData } from 'src/app/shared/menu-items/country-list';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -141,7 +141,7 @@ export class AppSideRegisterComponent implements OnInit {
   }
 
   countryCode: number | null = null;
-  countryList: CountryData[] = CountryList;
+  countryList: CountryData[] = CountryListForPhoneNumberSection;
 
   updateCheckBoxStateAndOpenConditionModal(checkedStatus: boolean) {
     if (checkedStatus) {

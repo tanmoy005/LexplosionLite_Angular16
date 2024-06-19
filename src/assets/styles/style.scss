@@ -721,7 +721,7 @@ input.mdc-radio__native-control:focus,
     .mat-mdc-text-field-wrapper {
         @include gray-input-box;
         background-color: var.$gray-800; 
-        width: 88px;
+        min-width: 88px;
         height: 56px;
         //margin-left: 15px;
     }
