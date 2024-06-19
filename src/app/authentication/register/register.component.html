@@ -2,12 +2,12 @@
   <mat-card style="display: contents">
     <app-reg-header></app-reg-header>
     <mat-divider></mat-divider>
-    <div class="col-lg-7 row registration-body-container" style="margin-top: 55px">
+    <div
+      class="col-lg-7 row registration-body-container"
+      style="margin-top: 55px"
+    >
       <div class="col-12">
-        <div
-          class="get-start-for-free"
-          style="margin-bottom: 23px"
-        >
+        <div class="get-start-for-free" style="margin-bottom: 23px">
           <p class="get-started-for-free-typography">Get started for free</p>
         </div>
 
@@ -18,19 +18,25 @@
         </div>
         <mat-card-content>
           <form>
-            <mat-form-field appearance="outline" class="registration-big-text-input">
+            <mat-form-field
+              appearance="outline"
+              class="registration-big-text-input"
+            >
               <mat-label class="text_12_400_gray_1000">Name</mat-label>
               <input
                 matInput
                 name="username"
                 [formControl]="usernameFormControl"
               />
-              <mat-error *ngIf="usernameFormControl.hasError('required')"
-              > Name is&nbsp;<strong>required</strong></mat-error
-            >
+              <mat-error *ngIf="usernameFormControl.hasError('required')">
+                Name is&nbsp;<strong>required</strong></mat-error
+              >
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="registration-big-text-input">
+            <mat-form-field
+              appearance="outline"
+              class="registration-big-text-input"
+            >
               <mat-label class="text_12_400_gray_1000">Business Name</mat-label>
               <input
                 matInput
@@ -42,15 +48,22 @@
               >
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="registration-big-text-input">
-              <mat-label class="text_12_400_gray_1000">Headquarter Address</mat-label>
+            <mat-form-field
+              appearance="outline"
+              class="registration-big-text-input"
+            >
+              <mat-label class="text_12_400_gray_1000"
+                >Headquarter Address</mat-label
+              >
               <input
                 matInput
                 name="headquarterAddress"
                 [formControl]="headquarterAddressFormControl"
               />
-              <mat-error *ngIf="headquarterAddressFormControl.hasError('required')"
-                >Headquarter Address is&nbsp; <strong>required</strong></mat-error
+              <mat-error
+                *ngIf="headquarterAddressFormControl.hasError('required')"
+                >Headquarter Address is&nbsp;
+                <strong>required</strong></mat-error
               >
             </mat-form-field>
 
@@ -67,9 +80,9 @@
                 >
                 </app-dropdown>
               </div>
-              <div style="width:5px"></div>
+              <div style="width: 5px"></div>
 
-              <div class="col-lg-6 px-0">
+              <div class="col px-0">
                 <mat-form-field
                   class="example-full-width registration-phone-no-input"
                   appearance="outline"
@@ -99,46 +112,49 @@
             </div>
 
             <div>
-            <mat-checkbox
-              style="margin-left: -10px"
-              color="primary"
-              [(ngModel)]="agreeToTerms"
-              name="agreeToTerms"
-              [checked]="agreeToTerms"
-              (change)="updateCheckBoxStateAndOpenConditionModal($event.checked)"
-            >
-              <span class="agree-to-label">
-                I agree to
-                <button mat-button (click)="termsConditionModalOpen()">
-                  <p style="color: blue">terms and conditions</p>
-                </button>
-              </span>
-            </mat-checkbox>
+              <mat-checkbox
+                style="margin-left: -10px"
+                color="primary"
+                [(ngModel)]="agreeToTerms"
+                name="agreeToTerms"
+                [checked]="agreeToTerms"
+                (change)="
+                  updateCheckBoxStateAndOpenConditionModal($event.checked)
+                "
+              >
+                <span class="agree-to-label">
+                  I agree to
+                  <button mat-button (click)="termsConditionModalOpen()">
+                    <p style="color: blue">terms and conditions</p>
+                  </button>
+                </span>
+              </mat-checkbox>
             </div>
 
             <div>
-            <mat-checkbox
-              style="margin-left: -10px; margin-bottom: 10px"
-              color="primary"
-              [(ngModel)]="consentToPromotionalInfo"
-              name="consentToPromotionalInfo"
-            >
-              <span class="consent-label">
-                I consent to receiving promotional information about compliance
-                management
-              </span>
-            </mat-checkbox>
-          </div>
+              <mat-checkbox
+                style="margin-left: -10px; margin-bottom: 10px"
+                color="primary"
+                [(ngModel)]="consentToPromotionalInfo"
+                name="consentToPromotionalInfo"
+              >
+                <span class="consent-label">
+                  I consent to receiving promotional information about
+                  compliance management
+                </span>
+              </mat-checkbox>
+            </div>
 
-            <div
-              style="margin-bottom: 20px; margin-top: 10px"
-            >
+            <div style="margin-bottom: 20px; margin-top: 10px">
               <p class="login-credential-typography">
                 Create login Credentials
               </p>
             </div>
 
-            <mat-form-field appearance="outline" class="registration-big-text-input">
+            <mat-form-field
+              appearance="outline"
+              class="registration-big-text-input"
+            >
               <mat-label class="text_12_400_gray_1000"
                 >Email ID/Username</mat-label
               >
@@ -161,62 +177,76 @@
               >
             </mat-form-field>
 
-            <!-- style="margin-left:0px" -->
-
             <div class="row">
               <div class="col-lg-7 col-md-7 col-sm-7">
-              <mat-form-field appearance="outline" class="registration-big-text-input">
-                <mat-label class="text_12_400_gray_1000"
-                  >Password</mat-label
+                <mat-form-field
+                  appearance="outline"
+                  class="registration-big-text-input"
                 >
-                <input
-                  type="password"
-                  matInput
-                  [formControl]="passwordFormControl"
-                  name="password"
-                />
-                
-                <mat-error *ngIf="passwordFormControl.hasError('required')"
-                >Password is&nbsp;<strong>required</strong> </mat-error>
-              </mat-form-field>
+                  <mat-label class="text_12_400_gray_1000">Password</mat-label>
+                  <input
+                    type="password"
+                    matInput
+                    [formControl]="passwordFormControl"
+                    name="password"
+                  />
+
+                  <mat-error *ngIf="passwordFormControl.hasError('required')"
+                    >Password is&nbsp;<strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
               </div>
-  
-              <div *ngIf="passwordFormControl.hasError('passwordInvalid')" class="col-lg-1 col-md-1 col-sm-1 password-error-icon">
-                <mat-icon 
-                matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long." 
-                [matTooltipPosition]="'above'">
-                info
+
+              <div
+                *ngIf="passwordFormControl.hasError('passwordInvalid')"
+                class="col-lg-1 col-md-1 col-sm-1 password-error-icon"
+              >
+                <mat-icon
+                  matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
+                  [matTooltipPosition]="'above'"
+                >
+                  info
                 </mat-icon>
               </div>
             </div>
-            
+
             <div class="row">
               <div class="col">
-                <mat-form-field appearance="outline" class="registration-big-text-input">
-                  <mat-label class="text_12_400_gray_1000">Confirm Password</mat-label>
+                <mat-form-field
+                  appearance="outline"
+                  class="registration-big-text-input"
+                >
+                  <mat-label class="text_12_400_gray_1000"
+                    >Confirm Password</mat-label
+                  >
                   <input
                     type="password"
                     matInput
                     [formControl]="confirmPasswordFormControl"
                     name="confirmPassword"
                   />
-                  <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
-                    Please&nbsp;<strong>re-enter</strong> password
+                  <mat-error
+                    *ngIf="confirmPasswordFormControl.hasError('required')"
+                  >
+                    Please &nbsp;<strong>re-enter</strong>&nbsp;password
                   </mat-error>
-                  <mat-error *ngIf="!confirmPasswordFormControl.hasError('required') &&
-                                    form.hasError('passwordsMismatch') &&
-                                   confirmPasswordFormControl.touched">
+                  <mat-error
+                    *ngIf="
+                      !confirmPasswordFormControl.hasError('required') &&
+                      form.hasError('passwordsMismatch') &&
+                      confirmPasswordFormControl.touched
+                    "
+                  >
                     Passwords didn't match
                   </mat-error>
                 </mat-form-field>
               </div>
             </div>
-            
-  
+
             <button
               mat-button
               (click)="handleRegistration($event)"
-              class="btn-primary-md registration-email-verification-button"              
+              class="btn-primary-md registration-email-verification-button"
             >
               Verify Email ID
             </button>
