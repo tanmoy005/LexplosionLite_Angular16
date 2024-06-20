@@ -3,9 +3,11 @@
     appearance="outline"
     [ngClass]="type === 'country' ? 'country-dropdown' : 'app-dropdown'"
   >
-    <mat-label class="text_12_400_gray_1000 dropdown-label">{{
+    <mat-label class="text_12_400_gray_1000 dropdown-label">
+      {{
       label
-    }}</mat-label>
+    }}
+    </mat-label>
     <mat-select
       [multiple]="IsMultiSelection"
       (selectionChange)="onSelectionChange($event)"

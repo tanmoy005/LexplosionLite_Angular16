@@ -206,3 +206,24 @@ p {
 .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
   top: 25px !important;
 }
+
+.phone-code-dropdown {
+  width: 88px;
+}
+
+.country-option {
+  display: flex;
+  align-items: center;
+}
+
+.country-code {
+  width: 12px;
+  margin-right: 5px; /* Adjust spacing as needed */
+  display: inline-block;
+  text-align: right; /* Ensures the code is right-aligned within its box */
+}
+
+.country-flag {
+  width: 10px; /* Adjust size as needed */
+  height: auto;
+}

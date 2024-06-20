@@ -67,11 +67,8 @@
               >
             </mat-form-field>
 
-            <div class="row" style="width: 300px">
-              <!-- col-sm-3 col-md-3 col-lg-3 col-xl-3 -->
-              <div
-                class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 bg-dropdown-white"
-              >
+            <div style="width: 296px" class="phn-section">
+              <div class="bg-dropdown-white">
                 <app-dropdown
                   [type]="'country'"
                   [options]="countryList"
@@ -80,9 +77,22 @@
                   (selectedValueChange)="handleCountryCodeChange($event)"
                 >
                 </app-dropdown>
-              </div>
+                </div>
+                <!-- <div style="margin-right: 10px">
+                  <mat-form-field appearance="outline" class="phone-code-dropdown">
+                    <mat-select [formControl]="selectedCountryControl">
+                      <mat-option *ngFor="let country of countryList" [value]="country.value">
+                        <div class="country-option">
+                          <span class="country-code">{{ country.label }}</span>
+                          <img [src]="country.icon" class="country-flag" alt="flag" />
+                        </div>
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>                  
+                </div>
+              </div> -->
 
-              <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+              <div>
                 <mat-form-field
                   class="example-full-width registration-phone-no-input"
                   appearance="outline"
@@ -177,9 +187,7 @@
               >
             </mat-form-field>
 
-            <!-- style="margin-left:0px" -->
-
-            <div class="row">
+            <div class="row" style="width: 550px;">
               <div class="col-lg-7 col-md-7 col-sm-7">
                 <mat-form-field
                   appearance="outline"
@@ -233,13 +241,11 @@
                     Please &nbsp;<strong>re-enter</strong>&nbsp;password
                   </mat-error>
                   <mat-error
-                    *ngIf="
-                      !confirmPasswordFormControl.hasError('required') &&
-                      form.hasError('passwordsMismatch') &&
-                      confirmPasswordFormControl.touched
-                    "
+                    *ngIf="!confirmPasswordFormControl.hasError('required') && 
+                    form.hasError('passwordsMismatch') &&
+                    confirmPasswordFormControl.touched"
                   >
-                    Passwords didn't match
+                    Passwords didn't&nbsp;<strong>match</strong>
                   </mat-error>
                 </mat-form-field>
               </div>

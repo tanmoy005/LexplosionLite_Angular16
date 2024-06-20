@@ -56,9 +56,7 @@ const passwordMatchValidator: ValidatorFn = (
 
   console.log(status);
 
-  return password && confirmPassword && password === confirmPassword
-    ? null
-    : { passwordsMismatch: true };
+  return status;
 };
 
 @Component({
@@ -83,17 +81,17 @@ export class AppSideRegisterComponent implements OnInit {
     Validators.email,
   ]);
 
+  selectedCountryControl = new FormControl();
+
   headquarterAddressFormControl = new FormControl('', [Validators.required]);
 
-  // passwordFormControl = new FormControl('', [Validators.required, passwordValidator()]);
-  // confirmPasswordFormControl = new FormControl('',[Validators.required, passwordMatchValidator(this.passwordFormControl.value)])
   form: FormGroup;
 
   ngOnInit() {
     this.form = this.fb.group(
       {
         password: ['', [Validators.required, passwordValidator()]],
-        confirmPassword: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required, passwordMatchValidator]],
       },
       { validators: passwordMatchValidator }
     );
@@ -164,7 +162,7 @@ export class AppSideRegisterComponent implements OnInit {
       this.password.trim() !== '' &&
       this.passwordFormControl.valid &&
       this.confirmPassword.trim() !== '' &&
-      this.confirmPasswordFormControl.valid &&
+      this.confirmPassword === this.password &&
       this.countryCode !== null &&
       this.phoneNumber?.trim() !== '' &&
       this.phoneNumberFormControl.valid &&

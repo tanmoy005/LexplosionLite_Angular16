@@ -56,7 +56,7 @@ td {
   align-items: left;
   margin-top: 20px;
   margin-bottom: 10px;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .example-button-row {
@@ -117,4 +117,10 @@ td {
 
 .mat-mdc-button.mat-unthemed {
   --mdc-text-button-label-text-color: #786acd;
+}
+
+.mdc-button .mdc-button__label {
+  position: relative;
+  font-family: 'Barlow';
+  font-size: 12px;
 }
