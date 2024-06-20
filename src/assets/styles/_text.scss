@@ -33,6 +33,9 @@
 
 .text_16_700 {
     @include text-model(var.$font-16, 700, var.$font-color-dark, Barlow);
+    // .selected{
+    //     @include text-model(var.$font-16, 700, var.$white, Barlow);
+    // }
 }
 
 .text_12_700_gray_1000 {
