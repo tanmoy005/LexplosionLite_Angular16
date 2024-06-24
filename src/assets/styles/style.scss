@@ -169,6 +169,21 @@
     }
 }
 
+@media (max-width: 2560px) and (min-width: 1441px){
+    .login-formheader {
+        background-color: var.$primary;
+        border-radius: 10px 10px 0 0;
+        height: calc(var(--base-unit-4k)*var(--scale-login-formheader-height));
+        .login-header-logo {
+            width: calc(var(--base-unit-4k)*var(--scale-login-formheader-logo-width));
+            height: calc(var(--base-unit-4k)*var(--scale-login-formheader-logo-height));
+            margin-top: calc(var(--base-unit-4k)*var(--scale-login-formheader-margin-top));
+            margin-left:calc(var(--base-unit-4k)*var(--scale-login-formheader-margin-left));
+        }
+    }
+}
+
+
 @media (max-width: 1440px) and (min-width: 1281px){
     .login-formheader {
         background-color: var.$primary;
@@ -259,6 +274,60 @@
          //margin-bottom: 16px;
          padding-right: 64px;
          padding-bottom: 16px;
+    }
+}
+@media(max-width: 2560px) and (min-width: 1441px){
+    
+    :root {
+        --base-unit-4k: 16px; 
+    }
+    .login-form {
+        //padding: 0 var.$size_56px var.$size_32px var.$size_56px;
+    
+        .login-field {
+            .mat-mdc-text-field-wrapper {
+                //height: calc(var(--base-unit-large) * var(--scale-factor-button-height)) !important;
+                height: 56px !important;
+                width:calc(var(--base-unit-4k) * var(--scale-factor-button-width)) !important;
+                margin-left:  calc(var(--base-unit-4k) * var(--scale-margin-left)) !important;
+                //font-size: 8px !important;
+                
+            }
+            .mat-mdc-form-field-error {
+                display: flex;
+                margin-left: calc(var(--base-unit-4k)*var(--scale-factor-error-margin-left));
+                //font-size: 8px;
+
+            }
+            .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+                font-size: 12px !important;
+            }
+        }
+        .button-container {
+            // display: flex;
+            // justify-content: space-between;
+            margin-left: calc(var(--base-unit-4k1) * var(--scale-margin-left)) !important;
+            //margin-top:16px;
+        }
+    
+        .remember-me-containar{
+            margin-left: calc(var(--base-unit-4k) * var(--scale-margin-left-remember-me)) !important;
+            //margin-top:16px;
+        }
+        .forgot_pass {
+            @include text_W400(var.$font-12);
+            color: var.$blue;
+            margin-top: 16px;
+           // margin-left: calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-left));
+            //margin-top:calc(var(--base-unit-large1)*var(--scale-forgetpass-margin-top));
+        }
+        .login-footer-containar{
+            //justify-content: space-between;
+            //display: flex;
+            //margin-bottom: 16px;
+            padding-right: calc(var(--base-unit-4k)* var(--scale-factor-login-footer-containar-margin-right));
+            //padding-bottom: 16px;
+       }
     }
 }
 
