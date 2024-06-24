@@ -110,7 +110,6 @@ td {
   letter-spacing: var(--mdc-typography-button-letter-spacing, 0.0892857143em);
   -webkit-text-decoration: var(--mdc-typography-button-text-decoration, none);
   text-decoration: var(--mdc-typography-button-text-decoration, none);
-  text-decoration: underline;
   text-decoration-color: blue;
   text-transform: var(--mdc-typography-button-text-transform, none);
 }
