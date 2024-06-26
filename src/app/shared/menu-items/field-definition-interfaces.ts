@@ -35,3 +35,8 @@ export interface States {
   name: string;
   code: string;
 }
+
+export interface entitiesOperatingUnitStatus {
+  entitiesOperatingUnitNullStatus: boolean,
+  entitiesOperatingUnitNullList: string[]
+}

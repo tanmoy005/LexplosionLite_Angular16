@@ -6,6 +6,7 @@ import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 @Component({
   selector: 'app-entity',
@@ -29,13 +30,16 @@ export class EntityComponent {
 
   isDataComingFromDots: boolean;
 
+  entitiesOPUnitNullStatus: boolean = false;
+  entitiesOPUnitNullList: string[];
+
   @Input() countryList: number[] = [];
   @Output() selectedEntityEmitter = new EventEmitter<EntityDataType>();
   @Output() selectedEntityEmitter1 = new EventEmitter<EntityDataType>();
   @Output() handleTableDataLoadingFromEntity = new EventEmitter<boolean>();
   @Output() isDotsClicked = new EventEmitter<boolean>();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private snackbar: SnackbarService) {
     
  
     const savedentityTypes = this.encryptStorage.getItem('entityTypes');
@@ -81,7 +85,29 @@ export class EntityComponent {
   handleTableDataLoading(state: boolean) {
     this.handleTableDataLoadingFromEntity.emit(state);
   }
+
+  handleEntitiesOPUnitStatus(state:FieldDefinitionInterfaces.entitiesOperatingUnitStatus){
+    this.entitiesOPUnitNullStatus = state.entitiesOperatingUnitNullStatus;
+    this.entitiesOPUnitNullList = state.entitiesOperatingUnitNullList;
+    console.log("handleEntitiesOPUnitStatus clicked from entity", state);
+  }
+
+
   goToSubscription() {
+   
+    // Uncomment this portion to restrict the user from going to the Feature List page
+    // If the user doesn't add any operating unit for an entity
+    
+    // ------------------------------------------------------------
+    // if(!this.entitiesOPUnitNullStatus){
+    //   this.router.navigate(['/subscription'], { state: { entity: '' } });
+    // }
+    // else{
+    //   this.snackbar.showWarning("Please add operating unit for all the created entities");
+    // }
+    // ------------------------------------------------------------
+
+    // And Comment this portion
     this.router.navigate(['/subscription'], { state: { entity: '' } });
   }
 }

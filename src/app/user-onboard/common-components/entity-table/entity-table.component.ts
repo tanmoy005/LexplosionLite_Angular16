@@ -55,6 +55,8 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
   return maxId;
 }
 
+
+
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
@@ -87,6 +89,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   @Output() entitySelected1 = new EventEmitter<EntityDataType>();
   @Output() entityTableDataLoading = new EventEmitter<boolean>();
   @Output() isDotsButtonClicked = new EventEmitter<boolean>();
+  @Output() checkAllEntitiesOPUnit = new EventEmitter<FieldDefinitionInterfaces.entitiesOperatingUnitStatus>();
 
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(
@@ -152,6 +155,9 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
     this.entityTableDataLoading.emit(true);
     const entityFetchPayload = { company: 1 };
+    var opUnitNullStatus =  false;
+    var opUnitNullEntitiesList: string[] = [];
+
     try {
       this.apiService
         .postFetchEntityList(entityFetchPayload)
@@ -194,12 +200,22 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               actions: '',
               childrenID: this.entityChild.id,
             };
+
+            if(entityRow.operatingUnit.length === 0){
+              opUnitNullStatus = true;
+              opUnitNullEntitiesList.push(entityRow.name)
+            }
+
             this.dataSource.push(entityRow);
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
           this.table.renderRows(); 
           this.entityTableDataLoading.emit(false);
+          this.checkAllEntitiesOPUnit.emit(
+                                          { entitiesOperatingUnitNullStatus: opUnitNullStatus,
+                                            entitiesOperatingUnitNullList: opUnitNullEntitiesList 
+                                          });
         });
     } catch (error) {
       this.snackbar.showError(
