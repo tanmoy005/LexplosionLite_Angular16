@@ -215,14 +215,21 @@ p {
   align-items: center;
 }
 
-.country-code {
-  width: 12px;
-  margin-right: 5px; /* Adjust spacing as needed */
-  display: inline-block;
-  text-align: right; /* Ensures the code is right-aligned within its box */
+.country-flag {
+  width: 10px; 
+  height: auto;
 }
 
-.country-flag {
-  width: 10px; /* Adjust size as needed */
-  height: auto;
+
+.country-code {
+  font-size: 12px;
+  font-family: 'Barlow';
+  width:17px;
+  height:14px;
+}
+
+.flag-image {
+  width: 32px;
+  height: 24px;
+  margin-right: 1rem; 
 }

@@ -55,6 +55,7 @@
               <mat-label class="text_12_400_gray_1000"
                 >Headquarter Address</mat-label
               >
+
               <input
                 matInput
                 name="headquarterAddress"
@@ -68,30 +69,52 @@
             </mat-form-field>
 
             <div style="width: 296px" class="phn-section">
+              
               <div class="bg-dropdown-white">
-                <app-dropdown
+                <!-- <app-dropdown
                   [type]="'country'"
                   [options]="countryList"
                   [IsMultiSelection]="false"
                   [IsRequired]="false"
                   (selectedValueChange)="handleCountryCodeChange($event)"
                 >
-                </app-dropdown>
+                </app-dropdown> -->
+              
+                <mat-form-field appearance="outline">
+                   <div class="row">
+                    <div class="col-1" style="padding-right: 10px;"> 
+                      <span class="country-code">+91</span>
+                    </div>
+                    <div class="col-6">
+                    <img src="./assets/images/indian_flag.webp" alt="Flag" class="flag-image">
+                    </div>
+                   </div>
+                  <input
+                    matInput
+                    name="countryCode"
+                    [formControl]="countryCodeFormControl"
+                    readonly
+                  />
+                </mat-form-field>
                 </div>
-                <!-- <div style="margin-right: 10px">
-                  <mat-form-field appearance="outline" class="phone-code-dropdown">
-                    <mat-select [formControl]="selectedCountryControl">
-                      <mat-option *ngFor="let country of countryList" [value]="country.value">
-                        <div class="country-option">
-                          <span class="country-code">{{ country.label }}</span>
-                          <img [src]="country.icon" class="country-flag" alt="flag" />
-                        </div>
+
+                <!-- <mat-form-field appearance="outline">
+
+                    <mat-select
+                      [multiple]="IsMultiSelection"
+                      (selectionChange)="onSelectionChange($event)"
+                      [value]="changeableValues"
+                    >
+                      <mat-option
+                        *ngFor="let option of options"
+                        [value]="option.value"
+                        [disabled]="isValueDisabled(option.value)"
+                      >
+                        {{ option.label }}
+                        <img [src]="option.icon" width="10" height="10" />
                       </mat-option>
                     </mat-select>
-                  </mat-form-field>                  
-                </div>
-              </div> -->
-
+                  </mat-form-field> -->
               <div>
                 <mat-form-field
                   class="example-full-width registration-phone-no-input"
@@ -238,7 +261,7 @@
                   <mat-error
                     *ngIf="confirmPasswordFormControl.hasError('required')"
                   >
-                    Please &nbsp;<strong>re-enter</strong>&nbsp;password
+                    Please&nbsp;<strong>re-enter</strong>&nbsp;password
                   </mat-error>
                   <mat-error
                     *ngIf="!confirmPasswordFormControl.hasError('required') && 

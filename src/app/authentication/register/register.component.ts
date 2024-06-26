@@ -16,7 +16,7 @@ import { CountryListForPhoneNumberSection } from 'src/app/shared/menu-items/coun
 import { CountryData } from 'src/app/shared/menu-items/country-list';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -48,13 +48,10 @@ const passwordMatchValidator: ValidatorFn = (
 ): ValidationErrors | null => {
   const password = formGroup.get('password')?.value;
   const confirmPassword = formGroup.get('confirmPassword')?.value;
-  //console.log("Password, Confirm password", password, confirmPassword);
   const status =
     password && confirmPassword && password === confirmPassword
       ? null
       : { passwordsMismatch: true };
-
-  console.log(status);
 
   return status;
 };
@@ -73,7 +70,6 @@ export class AppSideRegisterComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-
   usernameFormControl = new FormControl('', [Validators.required]);
   companynameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [
@@ -84,6 +80,8 @@ export class AppSideRegisterComponent implements OnInit {
   selectedCountryControl = new FormControl();
 
   headquarterAddressFormControl = new FormControl('', [Validators.required]);
+
+  countryCodeFormControl = new FormControl('');
 
   form: FormGroup;
 
@@ -138,7 +136,7 @@ export class AppSideRegisterComponent implements OnInit {
     return this.phoneNumberFormControl.value;
   }
 
-  countryCode: number | null = null;
+  countryCode: number | null = 1;
   countryList: CountryData[] = CountryListForPhoneNumberSection;
 
   updateCheckBoxStateAndOpenConditionModal(checkedStatus: boolean) {
