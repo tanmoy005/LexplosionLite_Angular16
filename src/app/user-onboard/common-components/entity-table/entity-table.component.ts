@@ -141,6 +141,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           id: maxId + 1,
 
           label: operatingUnit.name,
+          level:2, //new
           children: [],
         };
         childrenToAddGrandChildrenTo?.children?.push(opUnit);
@@ -170,6 +171,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               id: maxId + 1,
 
               label: entity.name,
+              level:1, //new
               children: [],
             };
 
@@ -210,6 +212,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
+          console.log('the tree structure from api',treeDataitem)
           this.table.renderRows(); 
           this.entityTableDataLoading.emit(false);
           this.checkAllEntitiesOPUnit.emit(

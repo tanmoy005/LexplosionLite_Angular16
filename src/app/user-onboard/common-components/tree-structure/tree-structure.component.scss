@@ -56,7 +56,9 @@
   border-radius: 5px 0 0 0;
 }
 
-
+// .tree > li:first-child {
+//   background-color: #a897b8;
+// }
 
 .nodeSpan{
   margin: 8px;
@@ -65,4 +67,24 @@
     border-radius: 5px;
     padding: 4px;
     border-bottom: 1px dotted #ccc;
+}
+
+
+// .first-child {
+//   background-color: #a897b8;
+// }
+// .first-level-child {
+//   background-color: lightblue; /* Set your desired background color */
+// }
+
+// .root-node-child {
+//   background-color: lightblue; 
+// }
+
+.level-1 {
+  background-color: #a897b8; 
+}
+
+.level-2 {
+  background-color: #a897b8; 
 }
