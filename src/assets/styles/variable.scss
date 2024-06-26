@@ -254,6 +254,7 @@ $font-36: 2.9375vw;
 
 
 :root {
+  --base-unit-4k: 16px; 
   --base-unit-large: 8px; 
   --base-unit-large1: 9px; 
   --base-unit-medium1: 6.4px; 
@@ -272,7 +273,8 @@ $font-36: 2.9375vw;
   --scale-login-formheader-margin-left:3;
   --scale-login-formheader-logo-width:22.375;
   --scale-login-formheader-logo-height:8.75;
-  --scale-forgetpass-margin-top:49;
+  //--scale-forgetpass-margin-top:49;
+  --scale-forgetpass-margin-top:2;
   --scale-forgetpass-margin-left:31.675;
   --scale-factor-login-button-margin-top:4.5;
   --scale-factor-login-button-width:17;
@@ -284,4 +286,5 @@ $font-36: 2.9375vw;
   --registration-scale-factor-width:117;
   --registration-scale-factor-left: 21;
   --registration-scale-factor-top: 7;
+  --scale-button-font-size:1.5;
 }
