@@ -99,11 +99,18 @@
                 </div>
 
                 <!-- <mat-form-field appearance="outline">
+                  <div class="row">
+                    <div class="col-1" style="padding-right: 10px;"> 
+                      <span class="country-code">+91</span>
+                    </div>
+                    <div class="col-6">
+                    <img src="./assets/images/indian_flag.webp" alt="Flag" class="flag-image">
+                    </div>
+                   </div>
 
                     <mat-select
-                      [multiple]="IsMultiSelection"
-                      (selectionChange)="onSelectionChange($event)"
-                      [value]="changeableValues"
+                      (selectionChange)="handleCountryCodeChange($event)"
+                      [value]=""
                     >
                       <mat-option
                         *ngFor="let option of options"
