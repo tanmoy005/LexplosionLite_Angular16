@@ -28,7 +28,8 @@ export class CompanyStructureCardComponent implements OnInit {
   zoomLevel: number = 1;
 
   ngOnInit(): void {
-    console.log('the active level',this.activeLevel)
+    console.log('the active level in company structure',this.activeLevel)
+    console.log('the tree data item in company structure',this.treeDataItem)
   }
 
   zoomIn() {
