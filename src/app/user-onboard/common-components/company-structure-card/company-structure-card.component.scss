@@ -30,3 +30,18 @@
   overflow-y: auto;
   overflow-x: auto;
 }
+
+
+.tree-container {
+  transform-origin: 0 0;
+  transition: transform 0.3s; 
+}
+
+.zoom-controls {
+  margin-bottom: 10px;
+  display: flex-end;
+}
+
+.zoom-controls button {
+  margin-right: 0px;
+}
