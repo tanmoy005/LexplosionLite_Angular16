@@ -5,9 +5,27 @@
     </mat-card-content>
 </mat-card> -->
 
-<app-card-layout
+<!-- <app-card-layout
 [cardHeaderTitle]="companyStructureLabel"
 [shade]="companyStructureCardShade"
 >
+<div class="zoom-controls">
+    <button (click)="zoomIn()">Zoom In</button>
+    <button (click)="zoomOut()">Zoom Out</button>
+  </div>
 <app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
+</app-card-layout> -->
+
+
+<app-card-layout
+  [cardHeaderTitle]="companyStructureLabel"
+  [shade]="companyStructureCardShade"
+>
+  <div class="zoom-controls">
+    <button mat-icon-button  (click)="zoomIn()"><mat-icon class="dark-brown-icon">zoom_in</mat-icon></button>
+    <button mat-icon-button  (click)="zoomOut()"><mat-icon class="dark-brown-icon">zoom_out</mat-icon></button>
+  </div>
+  <div class="tree-container" [ngStyle]="{'transform': 'scale(' + zoomLevel + ')'}">
+    <app-tree-structure [rootNode]="treeDataItem"></app-tree-structure>
+  </div>
 </app-card-layout>
