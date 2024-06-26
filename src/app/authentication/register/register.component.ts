@@ -100,6 +100,10 @@ export class AppSideRegisterComponent implements OnInit {
     this.confirmPasswordFormControl = this.form.get(
       'confirmPassword'
     ) as FormControl;
+
+    this.form.statusChanges.subscribe(() => {
+      this.confirmPasswordFormControl.updateValueAndValidity({ onlySelf: true });
+    });
   }
 
   passwordFormControl!: FormControl;
@@ -167,8 +171,6 @@ export class AppSideRegisterComponent implements OnInit {
       this.phoneNumber?.trim() !== '' &&
       this.phoneNumberFormControl.valid &&
       this.agreeToTerms
-      // &&
-      // this.consentToPromotionalInfo
     ) {
       registrationCredentialsStatus = true;
     }
