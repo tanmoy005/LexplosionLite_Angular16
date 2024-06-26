@@ -102,6 +102,7 @@ export class OperatingUnitTableComponent implements OnInit {
         id: maxId + 1,
 
         label: operatingUnitName,
+        level:2,
         children: [],
       };
       var operatingUnitExists = false;
