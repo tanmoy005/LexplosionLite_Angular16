@@ -27,10 +27,11 @@ import { TreeNode } from 'src/app/shared/menu-items/tree-items';
 
 export class TreeStructureComponent implements OnInit {
   @Input() rootNode!: TreeNode;
-  activeLevel:number = 2; 
+  @Input() activeLevel : number 
+ // activeLevel1:number = 2; 
 
   ngOnInit() {
-    //console.log('the company structure',this.rootNode);
+    console.log('the active level is',this.activeLevel);
   }
 }
 

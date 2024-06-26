@@ -18,6 +18,7 @@ export class EntityComponent {
   private resolveDotsClickedPromise: (() => void) | null = null;
 
   treeDataItem = treeDataitem;
+  activeLevel: number = 1
  
   encryptStorage = new EncryptStorage(environment.localStorageKey);
 

@@ -24,6 +24,8 @@ export class OperatingUnitComponent implements OnChanges {
 
   entityOpPath: string[] = [];
 
+  activeLevel : number = 2;
+
   ngOnChanges(changes: SimpleChanges) {
  
 
