@@ -258,11 +258,13 @@
                     [formControl]="confirmPasswordFormControl"
                     name="confirmPassword"
                   />
+                 
                   <mat-error
                     *ngIf="confirmPasswordFormControl.hasError('required')"
                   >
                     Please&nbsp;<strong>re-enter</strong>&nbsp;password
                   </mat-error>
+
                   <mat-error
                     *ngIf="!confirmPasswordFormControl.hasError('required') && 
                     form.hasError('passwordsMismatch') &&
@@ -270,6 +272,7 @@
                   >
                     Passwords didn't&nbsp;<strong>match</strong>
                   </mat-error>
+                  
                 </mat-form-field>
               </div>
             </div>

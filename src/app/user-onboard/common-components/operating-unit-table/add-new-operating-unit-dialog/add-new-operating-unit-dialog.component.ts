@@ -349,7 +349,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
         },
         error: (error) => {
           this.snackbar.showError(
-            'Some error occurred while adding Operating Unit List'
+            'Some error occurred while adding Operating Unit. Please check if all the field values are entered and try again.'
           );
           reject(error);
         },

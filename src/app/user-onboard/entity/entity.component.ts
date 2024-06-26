@@ -89,25 +89,22 @@ export class EntityComponent {
   handleEntitiesOPUnitStatus(state:FieldDefinitionInterfaces.entitiesOperatingUnitStatus){
     this.entitiesOPUnitNullStatus = state.entitiesOperatingUnitNullStatus;
     this.entitiesOPUnitNullList = state.entitiesOperatingUnitNullList;
-    console.log("handleEntitiesOPUnitStatus clicked from entity", state);
+    //console.log("handleEntitiesOPUnitStatus clicked from entity", state);
   }
 
 
-  goToSubscription() {
-   
-    // Uncomment this portion to restrict the user from going to the Feature List page
-    // If the user doesn't add any operating unit for an entity
-    
-    // ------------------------------------------------------------
-    // if(!this.entitiesOPUnitNullStatus){
-    //   this.router.navigate(['/subscription'], { state: { entity: '' } });
-    // }
-    // else{
-    //   this.snackbar.showWarning("Please add operating unit for all the created entities");
-    // }
-    // ------------------------------------------------------------
+  goToSubscription() { 
 
-    // And Comment this portion
-    this.router.navigate(['/subscription'], { state: { entity: '' } });
+    // This portion is used to restrict the user from going to the Feature List page
+    // If the user doesn't add any operating unit for an entity
+  
+    if(!this.entitiesOPUnitNullStatus){
+      this.router.navigate(['/subscription'], { state: { entity: '' } });
+    }
+    else{
+      let entityStringLabel = this.entitiesOPUnitNullList.length === 1 ? 'entity' : 'entities';
+      this.snackbar.showWarning("Please add operating unit for the "+entityStringLabel+"- "+this.entitiesOPUnitNullList.join(", "));
+    }
+    
   }
 }

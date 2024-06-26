@@ -53,6 +53,8 @@ const passwordMatchValidator: ValidatorFn = (
       ? null
       : { passwordsMismatch: true };
 
+  console.log(status)
+
   return status;
 };
 
