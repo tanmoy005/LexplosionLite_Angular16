@@ -77,7 +77,21 @@
       </app-card-layout>
     </div>
 
-    <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 25px">
+  </div>
+
+  <div class="row footer-section-buttons-div">
+    <div> 
+      <button
+        mat-stroked-button
+        class="btn-primary-outline-md"
+        (click)="navigateToEntityPage($event)"
+      >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+        <p class="btn-name-style">Back</p>
+      </button>
+    </div>
+
+    <div> 
       <button
         mat-stroked-button
         class="btn-primary-outline-md"
@@ -87,5 +101,5 @@
         <p class="btn-name-style">Next</p>
       </button>
     </div>
-  </div>
+    </div>
 </div>

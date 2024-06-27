@@ -13,7 +13,11 @@ export class LawsTablePageComponent {
 
   ApplicableLawsItems: ApplicableLaws[] = applicableLawsItems;
 
-  navigateToPaymentPage(event: any) {
+  navigateToPaymentsPage(event: any) {
     this.router.navigate(['/payment']);
+  }
+
+  navigateToFeaturesPage(event: any){
+    this.router.navigate(['/subscription'])
   }
 }

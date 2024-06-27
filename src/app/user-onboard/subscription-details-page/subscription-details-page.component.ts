@@ -37,4 +37,8 @@ export class SubscriptionDetailsPageComponent implements OnInit {
   handleSubscriptionType(event: string) {
     this.subscriptionType = event;
   }
+
+  navigateToEntityPage(event:any){
+    this.router.navigate(['/entity-details'], { state: { entity: '' } });
+  }
 }
