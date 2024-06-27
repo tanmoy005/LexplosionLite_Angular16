@@ -205,7 +205,7 @@
                 type="email"
                 matInput
                 [formControl]="emailFormControl"
-                placeholder="Ex. pat@example.com"
+                placeholder="Ex. rahul@company.com"
                 name="email"
               />
               <mat-error
@@ -259,13 +259,12 @@
                 appearance="outline"
                 class="registration-big-text-input"
               >
-                <mat-label class="text_12_400_gray_1000">Password</mat-label>
+                <mat-label class="text_12_400_gray_1000">Confirm Password</mat-label>
                 <input
                   type="password"
                   matInput
                   [formControl]="confirmPasswordFormControl"
                   name="confirmPassword"
-                  required="false"
                 />
                 <mat-error
                     *ngIf="confirmPasswordFormControl.hasError('required')"
@@ -309,7 +308,7 @@
               </div>
             </div>
 
-            <!-- <div class="row">
+             <div class="row">
               <div class="col">
                 <mat-form-field
                   appearance="outline"
