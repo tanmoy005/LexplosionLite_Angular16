@@ -15,9 +15,13 @@
       <span class="nodeSpan">{{ node.label }}</span>
     </div>
       <ul *ngIf="node.children && node.children.length">
-        <li *ngFor="let child of node.children" [ngClass]="{ 'level-2':( child.level === 2 && activeLevel ===2)}">
+        <div>
+        <li *ngFor="let child of node.children" >
+          <div [ngClass]="{ 'level-2':( child.level === 2 && activeLevel ===2)}">
           <app-tree-structure [rootNode]="child" [activeLevel]="activeLevel"></app-tree-structure>
+        </div>
         </li>
+      </div>
       </ul>
     </li>
   </ul>
