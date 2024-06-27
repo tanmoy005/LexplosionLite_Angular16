@@ -48,15 +48,27 @@ const passwordMatchValidator: ValidatorFn = (
 ): ValidationErrors | null => {
   const password = formGroup.get('password')?.value;
   const confirmPassword = formGroup.get('confirmPassword')?.value;
-  const status =
-    password && confirmPassword && password === confirmPassword
-      ? null
-      : { passwordsMismatch: true };
+  const status = { passwordsMismatch: false };
+    // password && confirmPassword && password === confirmPassword
+    //   ? null
+    //   : { passwordsMismatch: true };
 
   console.log(status);
 
   return status;
 };
+
+export function confirmPasswordValidator(passwordControl: AbstractControl): ValidatorFn {
+  return (confirmPasswordControl: AbstractControl): ValidationErrors | null => {
+    const password = passwordControl.value;
+    const confirmPassword = confirmPasswordControl.value;
+
+    if (password !== confirmPassword) {
+      return { passwordsMismatch: true };
+    }
+    return null;
+  };
+}
 
 @Component({
   selector: 'app-register',
@@ -64,7 +76,7 @@ const passwordMatchValidator: ValidatorFn = (
   styleUrls: ['./register.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AppSideRegisterComponent implements OnInit {
+export class AppSideRegisterComponent {
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -87,29 +99,38 @@ export class AppSideRegisterComponent implements OnInit {
 
   form: FormGroup;
 
-  ngOnInit() {
-    this.form = this.fb.group(
-      {
-        password: ['', [Validators.required, passwordValidator()]],
-        confirmPassword: ['', [Validators.required, passwordMatchValidator]],
-      },
-      { validators: passwordMatchValidator }
-    );
+  passwordFormControl= new FormControl ('',[Validators.required, passwordValidator()]);
 
-    this.passwordFormControl = this.form.get('password') as FormControl;
-    this.confirmPasswordFormControl = this.form.get(
-      'confirmPassword'
-    ) as FormControl;
+  confirmPasswordFormControl = new FormControl('', [
+    Validators.required,
+    confirmPasswordValidator(this.passwordFormControl)
+  ]);
 
-    this.form.statusChanges.subscribe(() => {
-      this.confirmPasswordFormControl.updateValueAndValidity({
-        onlySelf: true,
-      });
-    });
-  }
 
-  passwordFormControl!: FormControl;
-  confirmPasswordFormControl!: FormControl;
+ // confirmPasswordFormControl= new FormControl ('',[Validators.required]);
+  // passwordFormControl!: FormControl;
+  // confirmPasswordFormControl!: FormControl;
+
+  // ngOnInit() {
+  //   this.form = this.fb.group(
+  //     {
+  //       password: ['', [Validators.required, passwordValidator()]],
+  //       confirmPassword: ['', [Validators.required, passwordMatchValidator]],
+  //     },
+  //     { validators: passwordMatchValidator }
+  //   );
+
+  //   this.passwordFormControl = this.form.get('password') as FormControl;
+  //   this.confirmPasswordFormControl = this.form.get(
+  //     'confirmPassword'
+  //   ) as FormControl;
+
+  //   this.form.statusChanges.subscribe(() => {
+  //     this.confirmPasswordFormControl.updateValueAndValidity({ onlySelf: true });
+  //   });
+  // }
+
+ 
 
   phoneNumberFormControl = new FormControl('', [
     Validators.required,
@@ -165,9 +186,9 @@ export class AppSideRegisterComponent implements OnInit {
       this.headquarterAddress?.trim() !== '' &&
       this.email?.trim() !== '' &&
       this.emailFormControl.valid &&
-      this.password.trim() !== '' &&
+      this.password?.trim() !== '' &&
       this.passwordFormControl.valid &&
-      this.confirmPassword.trim() !== '' &&
+      this.confirmPassword?.trim() !== '' &&
       this.confirmPassword === this.password &&
       this.countryCode !== null &&
       this.phoneNumber?.trim() !== '' &&

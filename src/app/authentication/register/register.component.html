@@ -256,6 +256,62 @@
             <div class="row">
               <div class="col">
                 <mat-form-field
+                appearance="outline"
+                class="registration-big-text-input"
+              >
+                <mat-label class="text_12_400_gray_1000">Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  [formControl]="confirmPasswordFormControl"
+                  name="confirmPassword"
+                  required="false"
+                />
+                <mat-error
+                    *ngIf="confirmPasswordFormControl.hasError('required')"
+                  >
+                    Please&nbsp;<strong>re-enter</strong>&nbsp;password
+                  </mat-error>
+
+                <mat-error *ngIf="!confirmPasswordFormControl.hasError('required') &&
+                confirmPasswordFormControl.hasError('passwordsMismatch') && confirmPasswordFormControl.touched">
+                  Passwords didn't&nbsp;<strong>match</strong>
+                </mat-error>
+              </mat-form-field>
+              </div>
+            </div>
+
+            <!-- <div class="row">
+              <div class="col">
+                <mat-form-field
+                appearance="outline"
+                class="registration-big-text-input"
+              >
+                <mat-label class="text_12_400_gray_1000">Password</mat-label>
+                <input
+                  type="password"
+                  matInput
+                  [formControl]="confirmPasswordFormControl"
+                  name="confirmPassword"
+                  required="false"
+                />
+                <mat-error
+                    *ngIf="confirmPasswordFormControl.hasError('required')"
+                  >
+                    Please&nbsp;<strong>re-enter</strong>&nbsp;password
+                  </mat-error>
+
+                <mat-error *ngIf="!confirmPasswordFormControl.hasError('required') &&
+                confirmPasswordFormControl.hasError('passwordsMismatch') && confirmPasswordFormControl.touched">
+                  Passwords didn't&nbsp;<strong>match</strong>
+                </mat-error>
+              </mat-form-field>
+              </div>
+            </div>
+
+            <!-- <div class="row">
+              <div class="col">
+                <mat-form-field
                   appearance="outline"
                   class="registration-big-text-input"
                 >
@@ -263,30 +319,17 @@
                     >Confirm Password</mat-label
                   >
                   <input
-                    type="password"
+                   type="password"
                     matInput
                     [formControl]="confirmPasswordFormControl"
                     name="confirmPassword"
                   />
-
-                  <mat-error
-                    *ngIf="confirmPasswordFormControl.hasError('required')"
-                  >
-                    Please&nbsp;<strong>re-enter</strong>&nbsp;password
-                  </mat-error>
-
-                  <mat-error
-                    *ngIf="
-                      !confirmPasswordFormControl.hasError('required') &&
-                      form.hasError('passwordsMismatch') &&
-                      confirmPasswordFormControl.touched
-                    "
-                  >
-                    Passwords didn't&nbsp;<strong>match</strong>
-                  </mat-error>
+                 
+                
+                  
                 </mat-form-field>
               </div>
-            </div>
+            </div> -->
 
             <button
               mat-button
