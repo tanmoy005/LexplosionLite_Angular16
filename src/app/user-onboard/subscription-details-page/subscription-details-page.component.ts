@@ -1,10 +1,6 @@
-import { Component } from '@angular/core';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { FeaturesComponent } from './features/features.component';
-import { AppHeaderComponent } from 'src/app/layouts/full/header/header.component';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as komriskFeaturesInterface from '../../shared/menu-items/demokomriskFeaturesList';
 @Component({
   selector: 'app-subscription-details-page',
   templateUrl: './subscription-details-page.component.html',
@@ -12,14 +8,40 @@ import { Router } from '@angular/router';
 
 })
 
-export class SubscriptionDetailsPageComponent {
+export class SubscriptionDetailsPageComponent implements OnInit {
   subscriptionFeaturesListTitle = "Features";
   subscriptionFeaturesListShade = "light";
+  subscriptionType:string;
+
+  komriskFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
+  komriskLiteFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
 
   constructor(private router: Router){ }
+
+  ngOnInit(): void {
+    try{
+      this.komriskLiteFeaturesList = komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[0].features;
+      this.komriskFeaturesList = komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[1].features;
+      this.subscriptionType='komriskLite';
+    }
+
+    catch(e){
+      console.log(e)
+      this.komriskLiteFeaturesList = [];
+      this.komriskFeaturesList = [];
+    }
+  }
 
   navigateToLawsPage(event:any){
     this.router.navigate(['/laws']);
   }
+
+  handleSubscriptionType(event:string){
+    this.subscriptionType = event;
+
+  }
+
+
+
   
 }

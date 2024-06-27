@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+import { Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-feature-header',
@@ -16,13 +17,16 @@ export class FeatureHeaderComponent {
     },
     {
       imgSrc: './assets/images/logos/Komrisk Lite logo.png',
-      checked: false,
+      checked: true,
       name: 'komriskLite',
       selectedImgSrc:'./assets/images/logos/Komrisk Lite logoWhite.png'
     }
   ];
+
+  checkedSubscriptionType:string = 'komriskLite'; 
+
+  @Output() selectedSubscriptionType = new EventEmitter<string>();
   
- 
   onCardClick(index: number): void {
    
     this.checkboxItems.forEach((item, i) => {
@@ -30,11 +34,10 @@ export class FeatureHeaderComponent {
         item.checked = false;
       }
     });
-
   
     this.checkboxItems[index].checked = true;
-
-    
+    this.checkedSubscriptionType = this.checkboxItems[index].name;
+    this.selectedSubscriptionType.emit(this.checkedSubscriptionType);
   }
 
 }

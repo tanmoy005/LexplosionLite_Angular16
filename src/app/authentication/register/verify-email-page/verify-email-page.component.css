@@ -30,34 +30,6 @@ td {
   margin-bottom: 10px;
   margin-left: 15px;
 }
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100vh;
-}
-
-.example-full-width {
-  width: 100%;
-}
-
-td {
-  padding-right: 0px;
-}
-
-.mat-card-title {
-  text-align: center;
-  margin-bottom: 15px;
-  margin-top: 15px;
-}
-
-.back-button {
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  margin-left: 20px;
-}
 
 .example-button-row {
   display: flex;

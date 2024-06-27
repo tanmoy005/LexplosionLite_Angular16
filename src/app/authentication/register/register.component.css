@@ -88,6 +88,7 @@ td {
 .mat-form-field-appearance-outline.mat-focused {
   box-shadow: 0 0 5px white; 
 }
+
 .login-credential-typography {
   font-family: Barlow;
   font-size: 12px;
@@ -164,6 +165,7 @@ p {
 
 .mdc-button .mdc-button__label {
   position: relative;
+  font-family: 'Barlow';
   font-size: 12px;
 }
 
@@ -202,6 +204,7 @@ p {
   text-transform: var(--mdc-typography-caption-text-transform, none);
 }
 
+/** Common **/
 .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
   top: 25px !important;
 }
