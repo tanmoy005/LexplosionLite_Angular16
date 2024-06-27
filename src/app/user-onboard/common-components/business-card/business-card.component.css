@@ -60,3 +60,7 @@
   text-decoration: var(--mdc-typography-body1-text-decoration, inherit);
   text-transform: var(--mdc-typography-body1-text-transform, none);
 }
+
+/* .width-fixed-business-card-dropdown{
+  width: 240px;
+} */

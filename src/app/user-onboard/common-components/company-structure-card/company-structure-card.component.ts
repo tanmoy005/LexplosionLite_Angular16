@@ -1,17 +1,3 @@
-// import { Component,Input } from '@angular/core';
-
-// @Component({
-//   selector: 'app-company-structure-card',
-//   templateUrl: './company-structure-card.component.html',
-//   styleUrls: ['./company-structure-card.component.scss']
-// })
-// export class CompanyStructureCardComponent {
-//  @Input() treeDataItem:any;
-//  companyStructureLabel = "Company Structure";
-//  companyStructureCardShade = "light"
-// }
-
-
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -21,15 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CompanyStructureCardComponent implements OnInit {
   @Input() treeDataItem: any;
-  //@Input() treeBase: number;
   @Input() activeLevel : number;
   companyStructureLabel = "Company Structure";
   companyStructureCardShade = "light";
   zoomLevel: number = 1;
 
   ngOnInit(): void {
-    console.log('the active level in company structure',this.activeLevel)
-    console.log('the tree data item in company structure',this.treeDataItem)
+    //console.log('the active level in company structure',this.activeLevel)
+    //console.log('the tree data item in company structure',this.treeDataItem)
   }
 
   zoomIn() {

@@ -8,13 +8,15 @@
             <p class="field-name-typography" style="margin-bottom: 10px; margin-left: -10px;">Business</p>
           </div>
           <div class="row">
-            <div class='col-lg-8'>
+           
+            <div class='col-lg-9'>
               <mat-form-field appearance="outline" class="big-text-input">
-                <mat-label>Business Name Here</mat-label>
+                <mat-label>Business Name here</mat-label>
                 <input matInput #business>
               </mat-form-field>
             </div>
-            <div class='col-lg-4' style="margin-left: 0px;">
+           
+            <div class='col-lg-1' style="margin-left: 18px;">
               <button mat-icon-button aria-label="Example icon button with a delete icon" [matMenuTriggerFor]="menu">
                 <mat-icon class="dark-brown-icon">more_horiz</mat-icon>
               </button>
@@ -31,7 +33,7 @@
               Head Quarters Address</p>
           </div>
           <div class="row">
-            <div class='col-lg-8'>
+            <div class='col-lg-9'>
               <mat-form-field appearance="outline"  class="big-text-input">
                 <mat-label>HQ Address here</mat-label>
                 <input matInput>
@@ -40,13 +42,16 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <div class='col-lg-8'>
+          <div class='col-lg-10'>
             <p class="field-name-typography" style="margin-bottom: 10px; margin-left: -10px;">
               Country of Operation</p>
           </div>
           <div class="row bg-dropdown">
-            <div class='col-lg-8'>
-              <app-dropdown [label]="'Country'" [options]="countryList" [IsMultiSelection]="true" [IsRequired]="false"
+            <div class="col-lg-10">
+              <app-dropdown [label]="'Country'" 
+                [options]="countryList"
+                [IsMultiSelection]="true"      
+                [IsRequired]="false"
                 (selectedValueChange)="onCountryValueChange($event)">
               </app-dropdown>
             </div>

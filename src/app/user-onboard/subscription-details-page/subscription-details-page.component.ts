@@ -5,43 +5,36 @@ import * as komriskFeaturesInterface from '../../shared/menu-items/demokomriskFe
   selector: 'app-subscription-details-page',
   templateUrl: './subscription-details-page.component.html',
   styleUrls: ['./subscription-details-page.component.scss'],
-
 })
-
 export class SubscriptionDetailsPageComponent implements OnInit {
-  subscriptionFeaturesListTitle = "Features";
-  subscriptionFeaturesListShade = "light";
-  subscriptionType:string;
+  subscriptionFeaturesListTitle = 'Features';
+  subscriptionFeaturesListShade = 'light';
+  subscriptionType: string;
 
   komriskFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
   komriskLiteFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
 
-  constructor(private router: Router){ }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    try{
-      this.komriskLiteFeaturesList = komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[0].features;
-      this.komriskFeaturesList = komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[1].features;
-      this.subscriptionType='komriskLite';
-    }
-
-    catch(e){
-      console.log(e)
+    try {
+      this.komriskLiteFeaturesList =
+        komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[0].features;
+      this.komriskFeaturesList =
+        komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[1].features;
+      this.subscriptionType = 'komriskLite';
+    } catch (e) {
+      console.log(e);
       this.komriskLiteFeaturesList = [];
       this.komriskFeaturesList = [];
     }
   }
 
-  navigateToLawsPage(event:any){
+  navigateToLawsPage(event: any) {
     this.router.navigate(['/laws']);
   }
 
-  handleSubscriptionType(event:string){
+  handleSubscriptionType(event: string) {
     this.subscriptionType = event;
-
   }
-
-
-
-  
 }

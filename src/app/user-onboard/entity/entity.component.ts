@@ -90,7 +90,6 @@ export class EntityComponent {
   handleEntitiesOPUnitStatus(state:FieldDefinitionInterfaces.entitiesOperatingUnitStatus){
     this.entitiesOPUnitNullStatus = state.entitiesOperatingUnitNullStatus;
     this.entitiesOPUnitNullList = state.entitiesOperatingUnitNullList;
-    //console.log("handleEntitiesOPUnitStatus clicked from entity", state);
   }
 
 

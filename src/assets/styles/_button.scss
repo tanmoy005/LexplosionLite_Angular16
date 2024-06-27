@@ -7,8 +7,7 @@
     padding: $padding!important;
     border: 1px solid $border-color!important; // todo use gradient
     border-radius: $border-radius!important;
-    // height: 40px;
-    // width: 136px; 
+
     @if($type =='filled') {
         color: var.$gray-400!important;
     }
@@ -49,14 +48,8 @@
         width: calc(var($width-factor) * var(--base-unit-medium));
     }
     font-size: .8rem!important;
-    //font-size: 12px;
     font-weight: 400!important;
     cursor: pointer!important;
-
-    // .mdc-button .mdc-button__label {
-    //     position: relative;
-    //     font-size: 12px!important;
-    // }
 }
 
 .btn-name-style{
@@ -79,22 +72,11 @@
     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
 }
 
-// .btn-register {
-//     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
-// }
-
 .btn-secondary {
     @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px,'filled',--scale-factor-get-started-button-height,--scale-factor-get-started-button-width);
   
 }
 
-// .btn-primary {
-//     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px);
-// }
-
-// .btn-login {
-//     @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,--scale-factor-button-height,--scale-factor-button-width);
-// }
 .btn-primary-md {
     @include btn-model(var.$primary, 6px 24px, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
 }
@@ -102,6 +84,3 @@
 .btn-primary-outline-md {
     @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
 }
-// .btn-blue-outline-md {
-//     @include btn-model('transparent', 6px 24px, var.$blue, 5px, 'outline');
-// }

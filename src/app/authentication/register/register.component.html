@@ -69,7 +69,6 @@
             </mat-form-field>
 
             <div style="width: 296px" class="phn-section">
-              
               <div class="bg-dropdown-white">
                 <!-- <app-dropdown
                   [type]="'country'"
@@ -79,16 +78,20 @@
                   (selectedValueChange)="handleCountryCodeChange($event)"
                 >
                 </app-dropdown> -->
-              
+
                 <mat-form-field appearance="outline">
-                   <div class="row">
-                    <div class="col-1" style="padding-right: 10px;"> 
+                  <div class="row">
+                    <div class="col-1" style="padding-right: 10px">
                       <span class="country-code">+91</span>
                     </div>
                     <div class="col-6">
-                    <img src="./assets/images/indian_flag.webp" alt="Flag" class="flag-image">
+                      <img
+                        src="./assets/images/indian_flag.webp"
+                        alt="Flag"
+                        class="flag-image"
+                      />
                     </div>
-                   </div>
+                  </div>
                   <input
                     matInput
                     name="countryCode"
@@ -96,9 +99,9 @@
                     readonly
                   />
                 </mat-form-field>
-                </div>
+              </div>
 
-                <!-- <mat-form-field appearance="outline">
+              <!-- <mat-form-field appearance="outline">
                   <div class="row">
                     <div class="col-1" style="padding-right: 10px;"> 
                       <span class="country-code">+91</span>
@@ -217,7 +220,7 @@
               >
             </mat-form-field>
 
-            <div class="row" style="width: 550px;">
+            <div class="row" style="width: 550px">
               <div class="col-lg-7 col-md-7 col-sm-7">
                 <mat-form-field
                   appearance="outline"
@@ -265,7 +268,7 @@
                     [formControl]="confirmPasswordFormControl"
                     name="confirmPassword"
                   />
-                 
+
                   <mat-error
                     *ngIf="confirmPasswordFormControl.hasError('required')"
                   >
@@ -273,13 +276,14 @@
                   </mat-error>
 
                   <mat-error
-                    *ngIf="!confirmPasswordFormControl.hasError('required') &&
-                    form.hasError('passwordsMismatch') &&
-                    confirmPasswordFormControl.touched"
+                    *ngIf="
+                      !confirmPasswordFormControl.hasError('required') &&
+                      form.hasError('passwordsMismatch') &&
+                      confirmPasswordFormControl.touched
+                    "
                   >
                     Passwords didn't&nbsp;<strong>match</strong>
                   </mat-error>
-                  
                 </mat-form-field>
               </div>
             </div>

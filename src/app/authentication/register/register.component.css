@@ -81,12 +81,12 @@ td {
 }
 
 .verify-email-button {
-  background-color: #786acd; 
-  color: white; 
+  background-color: #786acd;
+  color: white;
 }
 
 .mat-form-field-appearance-outline.mat-focused {
-  box-shadow: 0 0 5px white; 
+  box-shadow: 0 0 5px white;
 }
 
 .login-credential-typography {
@@ -120,8 +120,9 @@ p {
   margin-bottom: 0.3rem;
 }
 
-::ng-deep .mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper {
-  position: relative !important; 
+::ng-deep .mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+  position: relative !important;
   top: 0;
   left: 0;
   right: 0;
@@ -134,16 +135,18 @@ p {
   position: relative;
 }
 
-.password-error-icon{
+.password-error-icon {
   margin-top: 15px;
   color: #786acd;
 }
 
-
 .mdc-button {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--mdc-typography-button-font-family, var(--mdc-typography-font-family, Barlow));
+  font-family: var(
+    --mdc-typography-button-font-family,
+    var(--mdc-typography-font-family, Barlow)
+  );
   font-size: var(--mdc-typography-button-font-size, 14px);
   line-height: var(--mdc-typography-button-line-height, 36px);
   font-weight: var(--mdc-typography-button-font-weight, 500);
@@ -157,7 +160,7 @@ p {
   padding: 0px 0px !important;
 }
 
-.registration-email-verification-button{
+.registration-email-verification-button {
   width: 136px;
   height: 40px;
   font-size: 12px;
@@ -165,7 +168,7 @@ p {
 
 .mdc-button .mdc-button__label {
   position: relative;
-  font-family: 'Barlow';
+  font-family: "Barlow";
   font-size: 12px;
 }
 
@@ -182,7 +185,7 @@ p {
 }
 
 /* Registration body container working */
-.registration-body-container{
+.registration-body-container {
   margin-left: 0px;
 }
 
@@ -191,15 +194,22 @@ p {
   width: max-content !important;
 }
 
-.mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before {
+.mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align::before {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--mdc-typography-caption-font-family, var(--mdc-typography-font-family, Poppins));
+  font-family: var(
+    --mdc-typography-caption-font-family,
+    var(--mdc-typography-font-family, Poppins)
+  );
   font-size: var(--mdc-typography-caption-font-size, 12px);
   line-height: var(--mdc-typography-caption-line-height, 14px);
   font-weight: var(--mdc-typography-caption-font-weight, 400);
   letter-spacing: var(--mdc-typography-caption-letter-spacing, 0.0333333333em);
-  -webkit-text-decoration: var(--mdc-typography-caption-text-decoration, inherit);
+  -webkit-text-decoration: var(
+    --mdc-typography-caption-text-decoration,
+    inherit
+  );
   text-decoration: var(--mdc-typography-caption-text-decoration, inherit);
   text-transform: var(--mdc-typography-caption-text-transform, none);
 }
@@ -219,20 +229,19 @@ p {
 }
 
 .country-flag {
-  width: 10px; 
+  width: 10px;
   height: auto;
 }
 
-
 .country-code {
   font-size: 12px;
-  font-family: 'Barlow';
-  width:17px;
-  height:14px;
+  font-family: "Barlow";
+  width: 17px;
+  height: 14px;
 }
 
 .flag-image {
   width: 32px;
   height: 24px;
-  margin-right: 1rem; 
+  margin-right: 1rem;
 }

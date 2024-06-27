@@ -53,7 +53,7 @@ const passwordMatchValidator: ValidatorFn = (
       ? null
       : { passwordsMismatch: true };
 
-  console.log(status)
+  console.log(status);
 
   return status;
 };
@@ -102,7 +102,9 @@ export class AppSideRegisterComponent implements OnInit {
     ) as FormControl;
 
     this.form.statusChanges.subscribe(() => {
-      this.confirmPasswordFormControl.updateValueAndValidity({ onlySelf: true });
+      this.confirmPasswordFormControl.updateValueAndValidity({
+        onlySelf: true,
+      });
     });
   }
 
@@ -111,7 +113,7 @@ export class AppSideRegisterComponent implements OnInit {
 
   phoneNumberFormControl = new FormControl('', [
     Validators.required,
-    phoneNumberValidator,
+    phoneNumberValidator,     
   ]);
 
   agreeToTerms: boolean = false;
@@ -197,8 +199,6 @@ export class AppSideRegisterComponent implements OnInit {
   }
 
   termsConditionModalOpen() {
-    //this.dialog.open(TermsConditionDialog);
-
     const dialogRef = this.dialog.open(TermsConditionDialog, {
       data: { registrationPage: this },
     });

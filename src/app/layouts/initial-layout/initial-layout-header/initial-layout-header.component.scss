@@ -22,9 +22,6 @@
       text-wrap: nowrap;
     }
 
-    // .selected {
-    //   color: #fff;
-    // }
     .link-item.selected {
       color: #fff!important;
     }
@@ -58,20 +55,4 @@
     }
     
   }
-
-  // @media (max-width: 480px) {
-  //   .logo-container {
-  //     width: 30vw; // Further adjust logo container width
-  //   }
-
-  //   .page-link-container {
-  //     column-gap: 12px; // Further reduce gap between links
-  //     row-gap: 12px;
-  //     margin: 0;
-  //   }
-
-  //   .link-item {
-  //     font-size: 14px; // Adjust font size for smaller screens
-  //   }
-  // }
 }
