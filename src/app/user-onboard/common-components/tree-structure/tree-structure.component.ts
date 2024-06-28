@@ -13,7 +13,7 @@ export class TreeStructureComponent implements OnInit {
   @Input() activeLevel : number 
 
   ngOnInit() {
-    // console.log('Current node:', this.rootNode);
+   
    
   }
 }

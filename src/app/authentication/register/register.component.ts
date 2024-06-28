@@ -43,20 +43,6 @@ function passwordValidator(): ValidatorFn {
   };
 }
 
-const passwordMatchValidator: ValidatorFn = (
-  formGroup: AbstractControl
-): ValidationErrors | null => {
-  const password = formGroup.get('password')?.value;
-  const confirmPassword = formGroup.get('confirmPassword')?.value;
-  const status = { passwordsMismatch: false };
-    // password && confirmPassword && password === confirmPassword
-    //   ? null
-    //   : { passwordsMismatch: true };
-
-  console.log(status);
-
-  return status;
-};
 
 export function confirmPasswordValidator(passwordControl: AbstractControl): ValidatorFn {
   return (confirmPasswordControl: AbstractControl): ValidationErrors | null => {
@@ -107,28 +93,6 @@ export class AppSideRegisterComponent {
   ]);
 
 
- // confirmPasswordFormControl= new FormControl ('',[Validators.required]);
-  // passwordFormControl!: FormControl;
-  // confirmPasswordFormControl!: FormControl;
-
-  // ngOnInit() {
-  //   this.form = this.fb.group(
-  //     {
-  //       password: ['', [Validators.required, passwordValidator()]],
-  //       confirmPassword: ['', [Validators.required, passwordMatchValidator]],
-  //     },
-  //     { validators: passwordMatchValidator }
-  //   );
-
-  //   this.passwordFormControl = this.form.get('password') as FormControl;
-  //   this.confirmPasswordFormControl = this.form.get(
-  //     'confirmPassword'
-  //   ) as FormControl;
-
-  //   this.form.statusChanges.subscribe(() => {
-  //     this.confirmPasswordFormControl.updateValueAndValidity({ onlySelf: true });
-  //   });
-  // }
 
  
 
