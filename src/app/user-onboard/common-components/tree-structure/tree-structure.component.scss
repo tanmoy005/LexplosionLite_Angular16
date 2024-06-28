@@ -22,7 +22,7 @@
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 1px dotted #ccc;
+  border-top: 1px solid #000000;
   width: 50%;
   height: 20px;
 }
@@ -30,7 +30,7 @@
 .tree li::after {
   right: auto;
   left: 50%;
-  border-left: 1px dotted #ccc;
+  border-left: 1px solid #000000;
 }
 
 .tree li:only-child::after,
@@ -48,7 +48,7 @@
 }
 
 .tree li:last-child::before {
-  border-right: 1px dotted #ccc;
+  border-right: 1px solid #000000;
   border-radius: 0 5px 0 0;
 }
 
@@ -63,29 +63,23 @@
 .nodeSpan{
   margin: 8px;
     display: inline-block;
-    background: #F0F0F0;
+    background:#927fa3;
     border-radius: 5px;
     padding: 4px;
     border-bottom: 1px dotted #ccc;
+    font-size: 12px;
+    font-family: barlow;
+    font-weight: 400;
+    
 }
 
 
-// .first-child {
-//   background-color: #a897b8;
-// }
-// .first-level-child {
-//   background-color: lightblue; /* Set your desired background color */
-// }
-
-// .root-node-child {
-//   background-color: lightblue; 
-// }
 
 .level-1 {
-  background-color: #a897b8; 
-  //padding-right:5%;
+  background-color: #e3d6f0; 
+ 
 }
 
 .level-2 {
-  background-color: #a897b8; 
+  background-color: #e3d6f0; 
 }
