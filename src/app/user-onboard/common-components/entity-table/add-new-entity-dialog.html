@@ -2,7 +2,7 @@
 
 <app-dialog-layout [dialogHeaderTitle]="dialogHeaderTitle" [dialogHeaderImage]="dialogHeaderImage">
   
-  <mat-dialog-content class="entity-dialog">
+  <mat-dialog-content class="opunit-dialog">
     <form class="entity-form">
       <div class="container">
         
@@ -12,7 +12,7 @@
               <div class="field-serial-no text_12_500_gray_1000">
                 1
               </div>
-              <mat-form-field appearance="outline" class="entity-form-field big-text-input ">
+              <mat-form-field appearance="outline" class="entity-form-field big-text-input-entity-table ">
                 <mat-label class="text_12_400_gray_900">Name of Entity</mat-label>
                 <input matInput (input)="onTextFieldChange($event,'name')" 
                 value="{{formData.name}}">
@@ -84,6 +84,7 @@
 
         </div>
     </form>
+ 
 
     <mat-dialog-actions>
       <div class="container">
@@ -98,5 +99,4 @@
       </div>
     </mat-dialog-actions>
   </mat-dialog-content>
-
 </app-dialog-layout>

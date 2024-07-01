@@ -52,7 +52,14 @@
 }
 
 .entity-dialog {
-  width: $w440px;
+ //width: $w440px;
+ //width: 60.625vw;
+ width: 400px;
+}
+@media (max-width:2560px) and (min-width:1441px){
+  .entity-dialog{
+    width: 800px;
+  }
 }
 
 .dark-brown-icon {
