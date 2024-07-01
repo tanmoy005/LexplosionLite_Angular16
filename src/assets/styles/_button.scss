@@ -81,6 +81,10 @@
     @include btn-model(var.$primary, 6px 24px, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
 }
 
+.btn-primary-md-in-dialog {
+    @include btn-model(var.$primary, 6px 24px, var.$primary, 5px,'filled');
+}
+
 .btn-primary-outline-md {
     @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
 }
