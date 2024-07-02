@@ -120,8 +120,12 @@
   cursor: pointer;
 }
 
+// .field-serial-no {
+//   margin: 0 1vw;
+// }
+
 .field-serial-no {
-  margin: 0 1vw;
+  margin: 12px 1vw;
 }
 
 
@@ -141,4 +145,9 @@
   text-transform: inherit;
   margin-right: auto;
   font-family: 'Barlow';
+}
+
+.action-button-container{
+  margin-left: 40px;
+  margin-bottom: 20px;
 }

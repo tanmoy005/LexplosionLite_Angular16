@@ -30,6 +30,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonComponentModule } from './common-components/common-component.module';
 import { MaterialModule } from '../material-module';
 import { GoLivePageComponent } from './go-live-page/go-live-page.component';
+import { KomriskSelectedDialogComponent } from './subscription-details-page/komrisk-selected-dialog/komrisk-selected-dialog.component';
 @NgModule({
   declarations: [
     
@@ -44,6 +45,7 @@ import { GoLivePageComponent } from './go-live-page/go-live-page.component';
     FeatureHeaderComponent,
     FeaturesComponent,
     GoLivePageComponent,
+    KomriskSelectedDialogComponent,
     
   ],
   

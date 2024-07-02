@@ -4,6 +4,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { SnackbarService } from '../shared/snackbar.service';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
+import { demoKomriskFeaturesListInterface, demoKomriskAndKomriskLiteAPIFeaturesList } from './../shared/menu-items/demokomriskFeaturesList';
 
 @Injectable({
   providedIn: 'root',
@@ -101,5 +102,8 @@ export class ApiService {
 
   getFieldDefinition(data: any): Observable<any> {
     return this.postData(this.endpoints.definition, data);
+  }
+  getDemoKomriskFeatureData(): demoKomriskFeaturesListInterface {
+    return demoKomriskAndKomriskLiteAPIFeaturesList;
   }
 }
