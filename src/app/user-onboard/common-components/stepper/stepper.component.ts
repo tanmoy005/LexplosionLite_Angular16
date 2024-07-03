@@ -1,4 +1,4 @@
-import { Component,Input  } from '@angular/core';
+import { Component,Input, OnInit, AfterContentInit, AfterViewInit  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
  
 })
 
-export class StepperComponent {
+export class StepperComponent implements AfterViewInit {
   @Input() currentStep: number = 0;
-  stepperSteps = ["Business Details","Subscription Details", "Preliminary List of Laws", "Payment", "Go Live !"]
+  @Input() stepAutoComplete: boolean = false;
+
+  stepperSteps = ["Business Details", "Subscription Details", "Preliminary List of Laws", "Payment", "Go Live !"]
   stepRoutings =["entity-details","subscription","laws","payment","golive"]
   stepForms: FormGroup[];
 
@@ -19,21 +21,22 @@ export class StepperComponent {
     this.stepForms = this.stepperSteps.map(() => this.fb.group({ completed: [false, Validators.requiredTrue] }));
   }
 
+  ngAfterViewInit(): void {
+    if(this.stepAutoComplete){
+      this.getStepControl(this.currentStep).get('completed')?.setValue(true);
+    }
+  } 
+
   getStepControl(index: number): FormGroup {
     return this.stepForms[index];
   }
 
   onStepChange(event: any): void {
     const selectedIndex = event.selectedIndex;
-    // console.log("Can navigate to next step", this.canNavigateToStep(selectedIndex), selectedIndex);
     if (this.canNavigateToStep(selectedIndex)) {
-      // console.log("Navigating to ",this.stepRoutings[selectedIndex])
-      // console.log(this.stepForms[selectedIndex]);
-
-      this.router.navigate([`/${this.stepRoutings[selectedIndex]}`]);
       this.currentStep = selectedIndex;
+      this.router.navigate([`/${this.stepRoutings[selectedIndex]}`]);
     } else {
-      //console.log("Cannot change step")
       // Prevent navigation if step is not completed
       event.previouslySelectedIndex = this.currentStep;
     }

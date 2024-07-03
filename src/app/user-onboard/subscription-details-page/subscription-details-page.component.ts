@@ -1,5 +1,5 @@
 import { KomriskSelectedDialogComponent } from './komrisk-selected-dialog/komrisk-selected-dialog.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import * as komriskFeaturesInterface from '../../shared/menu-items/demokomriskFeaturesList';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +13,7 @@ import { StepperComponent } from '../common-components/stepper/stepper.component
   templateUrl: './subscription-details-page.component.html',
   styleUrls: ['./subscription-details-page.component.scss'],
 })
-export class SubscriptionDetailsPageComponent implements OnInit {
+export class SubscriptionDetailsPageComponent implements OnInit, AfterViewInit {
   subscriptionFeaturesListTitle = 'Features';
   subscriptionFeaturesListShade = 'light';
   subscriptionType: string;
@@ -24,7 +24,8 @@ export class SubscriptionDetailsPageComponent implements OnInit {
 
   @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
 
-  constructor(private router: Router,public dialog: MatDialog,private apiService: ApiService,) {
+  constructor(private router: Router,public dialog: MatDialog,private apiService: ApiService,
+    private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -41,11 +42,11 @@ export class SubscriptionDetailsPageComponent implements OnInit {
     // }
     this.subscriptionType = 'komriskLite';
     this.featureList = this.apiService.getDemoKomriskFeatureData();
-    console.log(this.featureList);
   }
 
-  setStepperCompletionStatus(){
-    this.stepper.getStepControl(0).get('completed')?.setValue(true);
+  ngAfterViewInit(): void {
+    this.stepper.getStepControl(1).get('completed')?.setValue(true);
+    this.cdr.detectChanges(); 
   }
 
   navigateToLawsPage(event: any,subscriptionType: String) {
@@ -61,10 +62,6 @@ export class SubscriptionDetailsPageComponent implements OnInit {
 
   handleSubscriptionType(event: string) {
     this.subscriptionType = event;
-    if(this.subscriptionType === 'komriskLite'){
-      //console.log("Stepper step", this.stepper.getStepControl(1).get('completed'));
-      this.stepper.getStepControl(1).get('completed')?.setValue(true);
-    }
   }
 
   navigateToEntityPage(event:any){
