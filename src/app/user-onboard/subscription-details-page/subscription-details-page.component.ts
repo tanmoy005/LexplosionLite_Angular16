@@ -37,10 +37,10 @@ export class SubscriptionDetailsPageComponent implements OnInit, AfterViewInit {
     //this.setStepperCompletionStatus()
   }
 
-  ngAfterViewInit(): void {
-    console.log("Stepper step", this.stepper.getStepControl(1).get('completed'))
-    this.setStepperCompletionStatus();
-  }
+  // ngAfterViewInit(): void {
+  //   console.log("Stepper step", this.stepper.getStepControl(1).get('completed'))
+  //   this.setStepperCompletionStatus();
+  // }
 
   ngAfterViewInit(): void {
     this.stepper.getStepControl(1).get('completed')?.setValue(true);
