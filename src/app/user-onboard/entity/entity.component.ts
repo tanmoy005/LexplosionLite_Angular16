@@ -39,6 +39,7 @@ export class EntityComponent {
   @Output() selectedEntityEmitter1 = new EventEmitter<EntityDataType>();
   @Output() handleTableDataLoadingFromEntity = new EventEmitter<boolean>();
   @Output() isDotsClicked = new EventEmitter<boolean>();
+  @Output() isEntityCreationSuccessful = new EventEmitter<boolean>();
 
   constructor(private router: Router, private snackbar: SnackbarService) {
     
@@ -90,6 +91,14 @@ export class EntityComponent {
   handleEntitiesOPUnitStatus(state:FieldDefinitionInterfaces.entitiesOperatingUnitStatus){
     this.entitiesOPUnitNullStatus = state.entitiesOperatingUnitNullStatus;
     this.entitiesOPUnitNullList = state.entitiesOperatingUnitNullList;
+
+    if(!this.entitiesOPUnitNullStatus){
+      this.isEntityCreationSuccessful.emit(true);
+    }
+
+    else{
+      this.isEntityCreationSuccessful.emit(false);
+    }
   }
 
 

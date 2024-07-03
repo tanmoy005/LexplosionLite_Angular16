@@ -1,5 +1,5 @@
 import { KomriskSelectedDialogComponent } from './komrisk-selected-dialog/komrisk-selected-dialog.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as komriskFeaturesInterface from '../../shared/menu-items/demokomriskFeaturesList';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { demoKomriskFeaturesListInterface } from './../../shared/menu-items/demokomriskFeaturesList';
 
 
+import { StepperComponent } from '../common-components/stepper/stepper.component';
 @Component({
   selector: 'app-subscription-details-page',
   templateUrl: './subscription-details-page.component.html',
@@ -21,7 +22,10 @@ export class SubscriptionDetailsPageComponent implements OnInit {
   komriskFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
   komriskLiteFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
 
-  constructor(private router: Router,public dialog: MatDialog,private apiService: ApiService,) {}
+  @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
+
+  constructor(private router: Router,public dialog: MatDialog,private apiService: ApiService,) {
+  }
 
   ngOnInit(): void {
     // try {
@@ -40,6 +44,10 @@ export class SubscriptionDetailsPageComponent implements OnInit {
 
   }
 
+  setStepperCompletionStatus(){
+    this.stepper.getStepControl(0).get('completed')?.setValue(true);
+  }
+
   navigateToLawsPage(event: any,subscriptionType: String) {
     //this.router.navigate(['/laws']);
     if (subscriptionType === "komrisk"){
@@ -53,6 +61,10 @@ export class SubscriptionDetailsPageComponent implements OnInit {
 
   handleSubscriptionType(event: string) {
     this.subscriptionType = event;
+    if(this.subscriptionType === 'komriskLite'){
+      //console.log("Stepper step", this.stepper.getStepControl(1).get('completed'));
+      this.stepper.getStepControl(1).get('completed')?.setValue(true);
+    }
   }
 
   navigateToEntityPage(event:any){

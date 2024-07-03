@@ -1,8 +1,11 @@
-import { Component, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild,  ChangeDetectorRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StepperComponent } from '../common-components/stepper/stepper.component';
+
 
 @Component({
   selector: 'app-entity-details-page',
@@ -10,7 +13,7 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
   styleUrls: ['./entity-details-page.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class EntityDetailsPageComponent {
+export class EntityDetailsPageComponent{
   entityTypesList: FieldDefinitionInterfaces.EntityTypes;
   industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
   lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
@@ -22,16 +25,24 @@ export class EntityDetailsPageComponent {
   isAddOperatingUnitClicked: boolean = false;
 
   isDotsClicked: boolean;
+  isEntityCreationSuccessful: boolean;
 
   isEntityTableLoading: boolean;
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
 
+  @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
+
+  constructor(private router: Router, private cdr: ChangeDetectorRef, 
+    private fb: FormBuilder) {
+  }
+  
   getSelectedCountries(value: number[]) {
     this.countryList = value;
   }
 
   treeDataItem = treeDataitem;
+
+
   goToSubscription() {
     this.router.navigate(['/subscription'], { state: { entity: '' } });
   }
@@ -43,6 +54,13 @@ export class EntityDetailsPageComponent {
 
   handleIsDotsClicked(state: boolean) {
     this.isDotsClicked = state;
+  }
+
+  handleSuccessfulEntityCreation(state:boolean){
+    this.isEntityCreationSuccessful = state;
+    if(this.isEntityCreationSuccessful){
+      this.stepper.getStepControl(0).get('completed')?.setValue(true);
+    }
   }
 
   handleBackClick(event: boolean) {
