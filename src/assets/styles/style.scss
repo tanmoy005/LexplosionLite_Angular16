@@ -785,7 +785,7 @@ input.mdc-radio__native-control:focus,
         .mat-mdc-text-field-wrapper {
             background-color: var.$blue-light-200 !important;
             border-radius: 3px !important;
-            border: 1px solid var.$blue-light-200 !important;
+            //border: 1px solid var.$blue-light-200 !important;
             height: $height !important;
             align-items: center;
         }
@@ -801,6 +801,8 @@ input.mdc-radio__native-control:focus,
         }
 
     }
+    
+    
 }
 
 @mixin dropdown-label($mb: 0px) {
@@ -828,6 +830,15 @@ input.mdc-radio__native-control:focus,
 }
 
 .bg-dropdown {
+    @include app-dropdown(56px);
+
+    .dropdown-label {
+        @include dropdown-label();
+        // todo set the svg ofdropdown at right position
+    }
+}
+
+.bg-dropdown-business-card {
     @include app-dropdown(56px);
 
     .dropdown-label {
@@ -1012,7 +1023,8 @@ input.mdc-radio__native-control:focus,
 }
 
 .mat-dialog-actions-container {
-    padding: 0 24px !important;
+    padding: 0px 24px !important;
+    margin-left: 50px !important;
 }
 
 .square_input_box {
@@ -1155,6 +1167,15 @@ input.mdc-radio__native-control:focus,
     font-family: Barlow;
     text-align: center;
 }
+
+.applicability-text-serial-no {
+    font-size: 12px;
+    line-height: 14.4px;
+    font-weight: 400;
+    font-family: Barlow;
+    text-align: left;
+}
+
 
 
 

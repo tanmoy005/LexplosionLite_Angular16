@@ -1,7 +1,15 @@
-.footer-section-buttons-div-lawpage{
+/* .footer-section-buttons-div-lawpage{
     display: flex;
     justify-content: space-between;
     margin-top: 25px;
     margin-left: 12px;
     margin-right: 12px;
+} */
+
+.footer-section-buttons-div-lawpage{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
