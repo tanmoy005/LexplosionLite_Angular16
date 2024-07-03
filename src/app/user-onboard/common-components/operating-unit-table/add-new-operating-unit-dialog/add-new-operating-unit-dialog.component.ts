@@ -35,7 +35,7 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
 //   }));
 // }
 
-function transformOperatingUnitTypes1(data: StateInterface[] | null | undefined): TransformedType1[] {
+function transformStates(data: StateInterface[] | null | undefined): TransformedType1[] {
   if (!data) {
     return [];
   }
@@ -168,7 +168,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.data.operatingUnitTypes
     );
     console.log('the states come to op unit dialog')
-    this.transformedStates = transformOperatingUnitTypes1(this.data.states.states);
+    this.transformedStates = transformStates(this.data.states.states);
     
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList);
    

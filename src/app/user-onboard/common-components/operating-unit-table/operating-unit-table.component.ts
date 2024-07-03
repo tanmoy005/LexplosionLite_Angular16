@@ -68,7 +68,7 @@ export class OperatingUnitTableComponent implements OnInit {
     const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
     const savedStates = this.apiService.getDemoStateData(this.entity.country);
-    console.log('this entity has come to op unit',savedStates)
+    
     this.states = savedStates;
     this.operatingUnitTypes = savedUniTypes;
 

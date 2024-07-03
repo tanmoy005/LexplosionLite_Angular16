@@ -29,21 +29,17 @@ export class SubscriptionDetailsPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // try {
-    //   this.komriskLiteFeaturesList =
-    //     komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[0].features;
-    //   this.komriskFeaturesList =
-    //     komriskFeaturesInterface.demoKomriskAndKomriskLiteAPIFeaturesList.products[1].features;
-    //   this.subscriptionType = 'komriskLite';
-    // } catch (e) {
-      
-    //   this.komriskLiteFeaturesList = [];
-    //   this.komriskFeaturesList = [];
-    // }
+   
     this.subscriptionType = 'komriskLite';
     this.featureList = this.apiService.getDemoKomriskFeatureData();
     this.komriskLiteFeaturesList = this.featureList.products[0].features;
-    this.komriskFeaturesList = this.featureList.products[1].features;    console.log(this.featureList);
+    this.komriskFeaturesList = this.featureList.products[1].features;   
+    //this.setStepperCompletionStatus()
+  }
+
+  ngAfterViewInit(): void {
+    console.log("Stepper step", this.stepper.getStepControl(1).get('completed'))
+    this.setStepperCompletionStatus();
   }
 
   ngAfterViewInit(): void {

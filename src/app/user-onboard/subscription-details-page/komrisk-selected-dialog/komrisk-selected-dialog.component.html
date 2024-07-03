@@ -1,8 +1,14 @@
-<h2 mat-dialog-title>Congratulations! You have choosen Komrisk!</h2>
-<mat-dialog-content>Our Business Executives will connect with you very soon</mat-dialog-content>
+<h2 mat-dialog-title>
+  <div class="congratulations-komrisk-typography">
+    Congratulations! You have choosen Komrisk!
+  </div>
+</h2>
+<mat-dialog-content
+  >Our Business Executives will connect with you very soon</mat-dialog-content
+>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close
-  (click)="navigateToLandingPage($event)"
-  >Explore other features</button>
-  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button mat-dialog-close (click)="navigateToLandingPage($event)" class="btn-primary-outline-md">
+    Explore other features
+  </button>
+  <button mat-button mat-dialog-close  class="btn-primary-outline-md">Close</button>
 </mat-dialog-actions>
