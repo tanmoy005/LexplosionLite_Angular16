@@ -41,7 +41,7 @@ export class SubscriptionDetailsPageComponent implements OnInit {
     // }
     this.subscriptionType = 'komriskLite';
     this.featureList = this.apiService.getDemoKomriskFeatureData();
-
+    console.log(this.featureList);
   }
 
   setStepperCompletionStatus(){
