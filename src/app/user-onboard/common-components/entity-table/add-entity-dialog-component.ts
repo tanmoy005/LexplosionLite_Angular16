@@ -69,7 +69,7 @@ export class AddEntityDialog implements OnInit {
     'lawModules',
   ];
   dialogHeaderTitle: string = 'Add New Entity';
-  dialogSaveUpdateButtonName: string = 'Save';
+  dialogSaveUpdateButtonName: string = 'Add';
   operatingUnit: [] = [];
   dialogHeaderImage: string = 'assets/images/Business.png';
   entityChild: TreeNode;

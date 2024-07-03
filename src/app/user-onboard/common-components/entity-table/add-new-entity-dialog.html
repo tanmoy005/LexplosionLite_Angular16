@@ -43,12 +43,11 @@
               <div class="field-serial-no text_12_500_gray_1000">
                 3
               </div>
-
-              <app-dropdown [label]="'Country'" [options]="countryList" [IsMultiSelection]="false" [IsRequired]="true"
-                (selectedValueChange)="onSelectedValueChanged($event,'country')"
-                [changeableValues]="formData.country"
-                >
-              </app-dropdown>
+              <app-dropdown [label]="'Industries'" [options]="transformedIndustryList" [IsMultiSelection]="true"
+              [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'industry')"
+              [changeableValues]="formData.industry"
+              >
+            </app-dropdown>
             </div>
           </div>
         </div>
@@ -59,11 +58,12 @@
               <div class="field-serial-no text_12_500_gray_1000">
                 4
               </div>
-              <app-dropdown [label]="'Industries'" [options]="transformedIndustryList" [IsMultiSelection]="true"
-                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'industry')"
-                [changeableValues]="formData.industry"
-                >
-              </app-dropdown>
+              <app-dropdown [label]="'Country'" [options]="countryList" [IsMultiSelection]="false" [IsRequired]="true"
+              (selectedValueChange)="onSelectedValueChanged($event,'country')"
+              [changeableValues]="formData.country"
+              >
+            </app-dropdown>
+              
             </div>
           </div>
         </div>
@@ -90,10 +90,14 @@
       <div class="action-button-container">
         <div class="row">
           <div class="col">
-            <button mat-button (click)="closeEntityDialog()" class="btn-primary-outline-md">Back</button>
+            <button mat-button (click)="closeEntityDialog()" class="btn-primary-outline-md">
+            <p class="btn-name-style"> Back</p> 
+            </button>
           </div>
           <div class="col">
-            <button mat-button (click)="addEntity()" class="btn-primary-md-in-dialog">{{dialogSaveUpdateButtonName}}</button>
+            <button mat-button (click)="addEntity()" class="btn-primary-md-in-dialog">
+              <p class="btn-name-style">{{dialogSaveUpdateButtonName}}</p> 
+            </button>
           </div>
         </div>
       </div>

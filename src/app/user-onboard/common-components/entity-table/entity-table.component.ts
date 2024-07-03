@@ -213,6 +213,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
          
+          console.log('the entity come', this.dataSource)
           this.table.renderRows(); 
           this.entityTableDataLoading.emit(false);
           this.checkAllEntitiesOPUnit.emit(

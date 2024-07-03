@@ -17,26 +17,31 @@ export const CountryAPIDemoData: CountryAPIData[] = [
     name: 'India',
     code: 'IN',
   },
+  // {
+  //   id: 2,
+  //   name: 'China',
+  //   code: 'CN',
+  // },
   {
-    id: 2,
-    name: 'China',
-    code: 'CN',
+    id:2,
+    name: 'Singapore',
+    code: "SG"
   },
   {
     id: 3,
     name: 'United States',
     code: 'US',
   },
-  {
-    id: 4,
-    name: 'Germany',
-    code: 'DE',
-  },
-  {
-    id: 5,
-    name: 'United Kingdom',
-    code: 'GB',
-  },
+  // {
+  //   id: 4,
+  //   name: 'Germany',
+  //   code: 'DE',
+  // },
+  // {
+  //   id: 5,
+  //   name: 'United Kingdom',
+  //   code: 'GB',
+  // },
 ];
 
 const indiaFlagIcon = './assets/images/indian_flag.webp';

@@ -147,6 +147,9 @@
   font-family: 'Barlow';
 }
 
+::ng-deep .mdc-list-item {
+  padding: 8px !important;
+}
 .action-button-container{
   margin-left: 40px;
   margin-bottom: 20px;

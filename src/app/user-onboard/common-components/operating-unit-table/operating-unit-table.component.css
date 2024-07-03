@@ -13,6 +13,10 @@
     margin-right: auto;
     font-family: 'Barlow';
   }
+
+  ::ng-deep.mdc-list-item {
+    padding: 8px !important;
+}
   
   .mat-header-cell{
     color:black;
