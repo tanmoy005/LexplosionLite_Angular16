@@ -24,6 +24,8 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
 import { EntitiesList } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { Activities } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 
+import { StateList,StateListInterface,StateInterface } from 'src/app/shared/menu-items/state-list';
+
 function getMaxIdFromGrandchildren(children: TreeNode): number {
   const rootChildren = children.children;
 
@@ -55,15 +57,18 @@ export class OperatingUnitTableComponent implements OnInit {
   @Input() entity: EntityDataType;
   @Input() isDotsCliscked: boolean;
   operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[] = [];
-  states: FieldDefinitionInterfaces.States[] = [];
+  //states: FieldDefinitionInterfaces.States[] = [];
+  states: StateListInterface | undefined
   opUnitDataFromApi: FetchOPUnits[];
 
   ngOnInit(): void {
     this.fetchOpUnitList();
 
-    const savedStates = this.encryptStorage.getItem('states');
+    //const savedStates = this.encryptStorage.getItem('states');
     const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
+    const savedStates = this.apiService.getDemoStateData(this.entity.country);
+    console.log('this entity has come to op unit',savedStates)
     this.states = savedStates;
     this.operatingUnitTypes = savedUniTypes;
 

@@ -5,7 +5,7 @@ import { SnackbarService } from '../shared/snackbar.service';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import { demoKomriskFeaturesListInterface, demoKomriskAndKomriskLiteAPIFeaturesList } from './../shared/menu-items/demokomriskFeaturesList';
-
+import { StateListInterface,StateList } from '../shared/menu-items/state-list';
 @Injectable({
   providedIn: 'root',
 })
@@ -105,5 +105,8 @@ export class ApiService {
   }
   getDemoKomriskFeatureData(): demoKomriskFeaturesListInterface {
     return demoKomriskAndKomriskLiteAPIFeaturesList;
+  }
+  getDemoStateData(id: number): StateListInterface | undefined {
+    return StateList.find(item => item.id === id);
   }
 }

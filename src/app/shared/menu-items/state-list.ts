@@ -1,10 +1,10 @@
 export interface StateListInterface {
     id:number,
     countryName: string,
-    states ?:State[] | null; 
+    states ?:StateInterface[] | null; 
 }
 
-export interface State {
+export interface StateInterface {
     id : number
     name: string
 }

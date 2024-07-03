@@ -17,12 +17,33 @@ import { EmployeeCardInterface } from 'src/app/shared/menu-items/employee-card-d
 import { OPUnitDetailsWithEntity } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { opUnitAddResponse } from 'src/app/shared/menu-items/opUnitAddResponse';
+import { StateInterface, StateListInterface } from 'src/app/shared/menu-items/state-list';
 
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
     value: item.id,
     label: item.name,
     description: item?.description ?? '',
+  }));
+}
+
+// function transformOperatingUnitTypes1(data: StateInterface[] | null | undefined): TransformedType1[] {
+//   return data.map((item) => ({
+//     value: item.id,
+//     label: item.name,
+//     //description: item?.description ?? '',
+//   }));
+// }
+
+function transformOperatingUnitTypes1(data: StateInterface[] | null | undefined): TransformedType1[] {
+  if (!data) {
+    return [];
+  }
+
+  return data.map((item) => ({
+    value: item.id,
+    label: item.name,
+    // description: item?.description ?? '', // Uncomment if you are using description
   }));
 }
 
@@ -60,7 +81,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   color: string = '#fff';
 
   transformedDataOperatingUnits: TransformedType[] = [];
-  transformedStates: TransformedType[] = [];
+  transformedStates: TransformedType1[] = [];
 
   operatingUnitName: string = '';
   operatingUnitType: number;
@@ -132,7 +153,8 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       industry: string;
       entityTable: OperatingUnitTableComponent;
       operatingUnitTypes: OriginalType[];
-      states: OriginalType[];
+     // states: OriginalType[];
+     states: StateListInterface;
       entityPosition: number;
       entity: EntityDataType;
       opUnitPosition: number;
@@ -145,7 +167,9 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(
       this.data.operatingUnitTypes
     );
-    this.transformedStates = transformOperatingUnitTypes(this.data.states);
+    console.log('the states come to op unit dialog')
+    this.transformedStates = transformOperatingUnitTypes1(this.data.states.states);
+    
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList);
    
     const savedindustryActivities =
