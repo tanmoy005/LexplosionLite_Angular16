@@ -4,9 +4,28 @@
 <mat-divider></mat-divider>
 <app-stepper [currentStep]="2"> </app-stepper>
 
+
+
+<!-- <app-stepper-helper-text
+[helperText]="'Almost there ! Meanwhile, here’s a preliminary list of laws for your business'"
+[stepText]="'Step 2 of 5'"
+style="width: 100%"
+></app-stepper-helper-text> -->
+
+<div class="header">
+  <div class="laws-layout" style="margin-bottom: 5px;">
+      <p class="laws-typography">Almost there !</p>
+      <p class="laws-typography">Meanwhile, here’s a preliminary list of laws for your business</p>
+  </div>
+  <div class="step-no-layout" style="margin-bottom: 5px;">
+      <p class="step-no-typography">Step 2 of 5</p>
+  </div>
+</div>
+
 <div>
   <app-laws-table [data]="ApplicableLawsItems"></app-laws-table>
 </div>
+
 
 <div class="row footer-section-buttons-div-lawpage">
   <div> 
