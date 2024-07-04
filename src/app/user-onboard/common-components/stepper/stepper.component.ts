@@ -1,6 +1,6 @@
-import { Component,Input, OnInit, AfterContentInit, AfterViewInit  } from '@angular/core';
+import { Component,Input, OnInit, AfterContentInit, AfterViewInit ,SimpleChanges,OnChanges,Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router ,NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-stepper',
@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
  
 })
 
-export class StepperComponent implements AfterViewInit {
+export class StepperComponent implements  OnInit{
   @Input() currentStep: number = 0;
-  @Input() stepAutoComplete: boolean = false;
+  @Input() stepAutoComplete: boolean = true;
+//  @Output() stepChanged: EventEmitter<number> = new EventEmitter<number>();
 
   stepperSteps = ["Business Details", "Subscription Details", "Preliminary List of Laws", "Payment", "Go Live !"]
   stepRoutings =["entity-details","subscription","laws","payment","golive"]
@@ -20,41 +21,39 @@ export class StepperComponent implements AfterViewInit {
   constructor(private fb: FormBuilder, private router: Router) {
     this.stepForms = this.stepperSteps.map(() => this.fb.group({ completed: [false, Validators.requiredTrue] }));
   }
+  // ngOnInit(): void {
+  //   console.log('Initial currentStep:', this.currentStep);
+  // }
 
-  ngAfterViewInit(): void {
-    if(this.stepAutoComplete){
-      this.getStepControl(this.currentStep).get('completed')?.setValue(true);
-    }
-  } 
-
-  getStepControl(index: number): FormGroup {
-    return this.stepForms[index];
-  }
-
-  onStepChange(event: any): void {
-    const selectedIndex = event.selectedIndex;
-    if (this.canNavigateToStep(selectedIndex)) {
-      this.currentStep = selectedIndex;
-      this.router.navigate([`/${this.stepRoutings[selectedIndex]}`]);
-    } else {
-      // Prevent navigation if step is not completed
-      event.previouslySelectedIndex = this.currentStep;
-    }
-  }
-
-  canNavigateToStep(index: number): boolean {
-    if (index <= this.currentStep) {
-      return true;
-    }
-    for (let i = 0; i < index; i++) {
-      if (!this.stepForms[i].valid) {
-        return false;
+  ngOnInit(): void {
+    console.log('Initial currentStep:', this.currentStep);
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.updateStepper(event.urlAfterRedirects);
       }
-    }
-    return true;
+    });
   }
 
-  isStepDisabled(index: number): boolean {
-    return index !== this.currentStep;
+  updateStepper(url: string) {
+    const lastSegment = url ? url.split('/').pop() : '';
+    console.log('Last segment of URL:', lastSegment);
+    const stepIndex = this.stepRoutings.indexOf(lastSegment as string);
+    if (stepIndex >= 0) {
+      this.currentStep = stepIndex;
+      console.log('Current step index set to:', this.currentStep);
+    }
   }
+
+  navigateToStep(index: number) {
+    console.log('index come to navigate to step',index)
+    if (index >= 0 && index < this.stepperSteps.length && (index === this.currentStep+1 || index < this.currentStep)) {
+      console.log('Navigating to:', this.stepRoutings[index]);
+      this.router.navigate([this.stepRoutings[index]]);
+    }
+  }
+
+  getStepControl(index:number){
+    
+  }
+ 
 }

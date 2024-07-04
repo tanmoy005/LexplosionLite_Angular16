@@ -58,9 +58,9 @@ export class EntityDetailsPageComponent{
 
   handleSuccessfulEntityCreation(state:boolean){
     this.isEntityCreationSuccessful = state;
-    if(this.isEntityCreationSuccessful){
-      this.stepper.getStepControl(0).get('completed')?.setValue(true);
-    }
+    // if(this.isEntityCreationSuccessful){
+    //   this.stepper.getStepControl(0).get('completed')?.setValue(true);
+    // }
   }
 
   handleBackClick(event: boolean) {

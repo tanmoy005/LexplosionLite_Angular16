@@ -13,7 +13,7 @@ import { StepperComponent } from '../common-components/stepper/stepper.component
   templateUrl: './subscription-details-page.component.html',
   styleUrls: ['./subscription-details-page.component.scss'],
 })
-export class SubscriptionDetailsPageComponent implements OnInit, AfterViewInit {
+export class SubscriptionDetailsPageComponent implements OnInit {
   subscriptionFeaturesListTitle = 'Features';
   subscriptionFeaturesListShade = 'light';
   subscriptionType: string;
@@ -42,10 +42,10 @@ export class SubscriptionDetailsPageComponent implements OnInit, AfterViewInit {
   //   this.setStepperCompletionStatus();
   // }
 
-  ngAfterViewInit(): void {
-    this.stepper.getStepControl(1).get('completed')?.setValue(true);
-    this.cdr.detectChanges(); 
-  }
+  // ngAfterViewInit(): void {
+  //   this.stepper.getStepControl(1).get('completed')?.setValue(true);
+  //   this.cdr.detectChanges(); 
+  // }
 
   navigateToLawsPage(event: any,subscriptionType: String) {
     //this.router.navigate(['/laws']);
