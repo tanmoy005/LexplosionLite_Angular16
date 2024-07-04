@@ -55,8 +55,6 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
   return maxId;
 }
 
-
-
 @Component({
   selector: 'app-entity-table',
   templateUrl: './entity-table.component.html',
@@ -89,7 +87,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   @Output() entitySelected1 = new EventEmitter<EntityDataType>();
   @Output() entityTableDataLoading = new EventEmitter<boolean>();
   @Output() isDotsButtonClicked = new EventEmitter<boolean>();
-  @Output() checkAllEntitiesOPUnit = new EventEmitter<FieldDefinitionInterfaces.entitiesOperatingUnitStatus>();
+  @Output() checkAllEntitiesOPUnit =
+    new EventEmitter<FieldDefinitionInterfaces.entitiesOperatingUnitStatus>();
 
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(
@@ -141,7 +140,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           id: maxId + 1,
 
           label: operatingUnit.name,
-          level:2, //new
+          level: 2,
           children: [],
         };
         childrenToAddGrandChildrenTo?.children?.push(opUnit);
@@ -156,7 +155,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
     this.entityTableDataLoading.emit(true);
     const entityFetchPayload = { company: 1 };
-    var opUnitNullStatus =  false;
+    var opUnitNullStatus = false;
     var opUnitNullEntitiesList: string[] = [];
 
     try {
@@ -171,7 +170,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               id: maxId + 1,
 
               label: entity.name,
-              level:1, //new
+              level: 1, 
               children: [],
             };
 
@@ -203,23 +202,22 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               childrenID: this.entityChild.id,
             };
 
-            if(entityRow.operatingUnit.length === 0){
+            if (entityRow.operatingUnit.length === 0) {
               opUnitNullStatus = true;
-              opUnitNullEntitiesList.push(entityRow.name)
+              opUnitNullEntitiesList.push(entityRow.name);
             }
 
             this.dataSource.push(entityRow);
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
-         
-          console.log('the entity come', this.dataSource)
-          this.table.renderRows(); 
+
+          this.table.renderRows();
           this.entityTableDataLoading.emit(false);
-          this.checkAllEntitiesOPUnit.emit(
-                                          { entitiesOperatingUnitNullStatus: opUnitNullStatus,
-                                            entitiesOperatingUnitNullList: opUnitNullEntitiesList 
-                                          });
+          this.checkAllEntitiesOPUnit.emit({
+            entitiesOperatingUnitNullStatus: opUnitNullStatus,
+            entitiesOperatingUnitNullList: opUnitNullEntitiesList,
+          });
         });
     } catch (error) {
       this.snackbar.showError(
@@ -346,7 +344,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         }
         break;
       case 'Edit':
-     
         var entity = this.dataSource.find((entity) => entity.id === id);
 
         if (entity === undefined) {
@@ -362,16 +359,11 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  openCountryDialog() {
-   
-  }
+  openCountryDialog() {}
 
-  openIndustryDialog() {
-
-  }
+  openIndustryDialog() {}
 
   getImageSource(opUnitLength: number): string {
-    
     return opUnitLength > 0
       ? './assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg'
       : './assets/images/icons/Icons - Lex Kom LiteOperating_Unit_Unavailable.svg';

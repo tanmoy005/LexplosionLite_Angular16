@@ -40,18 +40,13 @@
   }
 
   @media (max-width: 768px) {
-    // flex-direction: column;
-    // align-items: flex-start;
-
     .logo-container {
       width: 5vw; 
     }
 
     .page-link-container {
-      //flex-direction: column;
       margin: 0 5%;
       column-gap: 16px;
-      // row-gap: 16px;
     }
     
   }

@@ -2,6 +2,7 @@ import { Component,Input, OnInit, AfterContentInit, AfterViewInit ,SimpleChanges
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router ,NavigationEnd } from '@angular/router';
 
+
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',

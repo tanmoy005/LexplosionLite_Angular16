@@ -20,7 +20,7 @@ import { CommonComponentModule } from '../user-onboard/common-components/common-
     AppSideLoginComponent,
     RegHeaderComponent,
     VerifyEmailPageComponent,
-    CommonComponentModule
+    CommonComponentModule,
   ],
 
   exports: [],

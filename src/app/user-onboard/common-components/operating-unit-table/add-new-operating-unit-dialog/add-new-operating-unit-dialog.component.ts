@@ -8,7 +8,6 @@ import { OriginalType } from 'src/app/shared/menu-items/original-drop-down-menu-
 
 import { TransformedType } from 'src/app/shared/menu-items/transfered-dropdown-menu-items';
 
-
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,7 +16,10 @@ import { EmployeeCardInterface } from 'src/app/shared/menu-items/employee-card-d
 import { OPUnitDetailsWithEntity } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { opUnitAddResponse } from 'src/app/shared/menu-items/opUnitAddResponse';
-import { StateInterface, StateListInterface } from 'src/app/shared/menu-items/state-list';
+import {
+  StateInterface,
+  StateListInterface,
+} from 'src/app/shared/menu-items/state-list';
 
 function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   return data.map((item) => ({
@@ -27,15 +29,9 @@ function transformOperatingUnitTypes(data: OriginalType[]): TransformedType[] {
   }));
 }
 
-// function transformOperatingUnitTypes1(data: StateInterface[] | null | undefined): TransformedType1[] {
-//   return data.map((item) => ({
-//     value: item.id,
-//     label: item.name,
-//     //description: item?.description ?? '',
-//   }));
-// }
-
-function transformStates(data: StateInterface[] | null | undefined): TransformedType1[] {
+function transformStates(
+  data: StateInterface[] | null | undefined
+): TransformedType1[] {
   if (!data) {
     return [];
   }
@@ -111,7 +107,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   editingnoOfChild: number = 0;
   zone: number;
 
-  
   editOpUnitDataDetails: FetchOPUnits;
   noOfDeMale: number = 0;
   noOfDeFemale: number = 0;
@@ -122,12 +117,11 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   noOfApprentice: number = 0;
   noOfChild: number = 0;
 
-
   ownershipDropdown: TransformedRadioGroup[] = [
     { label: 'Owned', value: 1, isChecked: false },
     { label: 'Leased', value: 2, isChecked: false },
   ];
-  
+
   zoneDropdown: TransformedRadioGroup[] = [
     { label: 'SEZ', value: 2, isChecked: false },
     { label: 'STPI', value: 1, isChecked: false },
@@ -153,8 +147,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       industry: string;
       entityTable: OperatingUnitTableComponent;
       operatingUnitTypes: OriginalType[];
-     // states: OriginalType[];
-     states: StateListInterface;
+      states: StateListInterface;
       entityPosition: number;
       entity: EntityDataType;
       opUnitPosition: number;
@@ -167,11 +160,10 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(
       this.data.operatingUnitTypes
     );
-    console.log('the states come to op unit dialog')
     this.transformedStates = transformStates(this.data.states.states);
-    
+
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList);
-   
+
     const savedindustryActivities =
       this.encryptStorage.getItem('industryActivities');
     this.industryActivityList = savedindustryActivities;
@@ -182,7 +174,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data.opUnitPosition !== 0) {
-     
       this.operatingUnitName = this.data.selectedOP.name;
       this.operatingUnitType = this.data.selectedOP.operatingUnitType.id;
       this.ownership = this.data.selectedOP.ownership.id;
@@ -201,7 +192,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.selectedActivitiesList = this.data.selectedOP.activities.map(
         (item) => item.id
       );
-     
+
       this.noOfApprentice = this.data.selectedOP.noOfApprentice;
       this.noOfChild = this.data.selectedOP.noOfChild;
       this.noOfDeMale = this.data.selectedOP.noOfDeMale;
@@ -235,9 +226,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       await this.addNewOpUnit();
       this.data.entityTable.fetchOpUnitList();
       this.dialogRef.close();
-    } catch (error) {
-    
-    }
+    } catch (error) {}
   }
 
   findOperatingUnitTypeName(id: number): string {
@@ -267,30 +256,25 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     }
     if (columnvalue === 'activity') {
       this.selectedActivitiesList = value;
-   
     }
 
     if (columnvalue === 'entityList') {
       this.selectedEntities = value;
-
-      
     }
   }
 
   employeeCountData(value: EmployeeCardInterface[]) {
     this.employeeData = value;
-   
+
     this.extractValues(this.employeeData);
   }
 
   apprenticesData(value: number) {
     this.noOfApprentice = value;
-
   }
 
   childLabourData(value: number) {
     this.noOfChild = value;
-    
   }
 
   CloseDialog() {
@@ -299,19 +283,16 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
 
   onOwnershipSelectionChange(event: any): void {
     this.ownership = event.value;
-
   }
 
   onZoneSelectionChange(event: any): void {
     this.zone = event.value;
-  
   }
 
   getActivitiesByIndustryId(iId: number) {
     return this.industryActivityList
       .filter((item) => item.iId === iId)
       .map((item) => ({ value: item.aId, label: item.activity }));
-   
   }
 
   extractValues(data: Workforce[]): void {
@@ -335,7 +316,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     });
   }
 
-  
   addNewOpUnit(): Promise<void> {
     return new Promise((resolve, reject) => {
       const id =
@@ -392,7 +372,5 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   }
   onSelectedActivitiesListChange(updatedList: number[]) {
     this.selectedActivitiesList = updatedList;
-   
   }
-  
 }

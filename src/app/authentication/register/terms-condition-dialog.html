@@ -100,14 +100,20 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-  
-  <button mat-raised-button color="warn" mat-dialog-close 
-    (click)="updateCheckBoxStatusAgreed($event)">
-    I Agree
-  </button>
+    <button
+      mat-raised-button
+      color="warn"
+      mat-dialog-close
+      (click)="updateCheckBoxStatusAgreed($event)"
+    >
+      I Agree
+    </button>
 
-    <button mat-raised-button color="warn" mat-dialog-close
-    (click)="updateCheckBoxStatusDeclined($event)"
+    <button
+      mat-raised-button
+      color="warn"
+      mat-dialog-close
+      (click)="updateCheckBoxStatusDeclined($event)"
     >
       Decline
     </button>

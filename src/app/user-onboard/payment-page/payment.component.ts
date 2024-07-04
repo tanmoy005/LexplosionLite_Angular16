@@ -11,11 +11,6 @@ export class PaymentComponent  {
   @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
 
   colorPaymentDoneButton:string="#42C997";
-
-  // ngAfterViewInit(): void {
-  //   this.stepper.getStepControl(2).get('completed')?.setValue(true);
-  // }
-
   navigateToGoLivePage(event:any){
     this.router.navigate(['/golive']);
   }
