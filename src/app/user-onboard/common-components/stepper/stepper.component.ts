@@ -26,12 +26,10 @@ export class StepperComponent implements  OnInit{
   constructor(private fb: FormBuilder, private router: Router) {
     this.stepForms = this.stepperSteps.map(() => this.fb.group({ completed: [false, Validators.requiredTrue] }));
   }
-  // ngOnInit(): void {
-  //   console.log('Initial currentStep:', this.currentStep);
-  // }
+
 
   ngOnInit(): void {
-    // console.log('Initial currentStep:', this.currentStep);
+   
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.updateStepper(event.urlAfterRedirects);
@@ -41,7 +39,7 @@ export class StepperComponent implements  OnInit{
 
   updateStepper(url: string) {
     const lastSegment = url ? url.split('/').pop() : '';
-    console.log('Last segment of URL:', lastSegment);
+   
     const stepIndex = this.stepRoutings.indexOf(lastSegment as string);
     if (stepIndex >= 0) {
       this.currentStep = stepIndex;
@@ -50,21 +48,16 @@ export class StepperComponent implements  OnInit{
   }
 
  setIndex(event:any) {
-  console.log(`Selected event index: ${event.selectedIndex}`);
+  
   this.selectedIndex = event.selectedIndex;
    
   }
 
   triggerClick() {
-    console.log(`Selected tab index: ${this.selectedIndex}`);
-    console.log(this.stepRoutings[this.selectedIndex])
+   
     this.navigateToStep(this.selectedIndex);
 
-    if ((this.selectedIndex < this.stepperSteps.length) && (this.selectedIndex !== this.currentStep+1))
-      {
-
-      }
-    //this.router.navigate(["/"+this.stepRoutings[this.selectedIndex]]);
+  
 
   }
 
@@ -75,15 +68,7 @@ export class StepperComponent implements  OnInit{
   }
 
 
-  // navigateToStep(index: number) {
-  //   if (index >= 0 && index < this.stepperSteps.length && (index === this.currentStep + 1 || index < this.currentStep)) {
-  //     console.log('Navigating to:', this.stepRoutings[index]);
-  //     this.router.navigate([this.stepRoutings[index]]);
-  //     this.currentStep = index;
-  //   }
 
-  //   this.updatePointerEvents();
-  // }
   navigateToStep(index: number) {
     if (index >= 0 && index < this.stepperSteps.length && (index === this.currentStep + 1 || index < this.currentStep)) {
       console.log('Navigating to:', this.stepRoutings[index]);
@@ -93,10 +78,7 @@ export class StepperComponent implements  OnInit{
       console.log('the last step in if part',this.lastStep)
     }
     else{
-      alert('Please ')
-      console.log('the last step in else part',this.lastStep)
-      //this.currentStep = this.lastStep
-      //this.router.navigate([this.stepRoutings[this.lastStep]]);
+      alert('You can not skip middle steps!')
       window.location.reload()
     }
     this.updatePointerEvents();
