@@ -1,3 +1,5 @@
+
+
 .mat-mdc-card {
   box-shadow: none;
 }
@@ -28,7 +30,7 @@ td {
   align-items: left;
   margin-top: 20px;
   margin-bottom: 10px;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 
 .example-button-row {
@@ -96,3 +98,15 @@ td {
   font-family: 'Barlow';
   font-size: 12px;
 }
+
+
+/* .mat-mdc-text-field-wrapper{
+    height: 56px;
+    width: 240px;
+    border-radius: 5px;
+    border: 1px solid var.$gray-700;
+    background-color: var.$gray-800;
+}
+.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    font-size: 10px;
+} */
