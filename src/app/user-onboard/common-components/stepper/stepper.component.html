@@ -19,7 +19,7 @@
   </div>
 </div> -->
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <mat-horizontal-stepper
@@ -31,6 +31,26 @@
       >
         <mat-step *ngFor="let step of stepperSteps; let i = index" [stepControl]="getStepControl(i)">
           <ng-template matStepLabel>{{ step }}</ng-template>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <mat-horizontal-stepper
+        #stepper
+        [selectedIndex]="currentStep"
+        [linear]=true
+        labelPosition="bottom"
+      >
+        <mat-step *ngFor="let step of stepperSteps; let index = index" >
+          <ng-template matStepLabel>
+         <button  mat-button (click)="navigateToStep(index)">  {{ step }} </button> 
+          </ng-template>
         </mat-step>
       </mat-horizontal-stepper>
     </div>
