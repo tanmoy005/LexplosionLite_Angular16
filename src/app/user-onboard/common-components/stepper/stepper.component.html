@@ -71,9 +71,11 @@
           [selectedIndex]="currentStep"
           [linear]="false"
           labelPosition="bottom"
-          (selectionChange)="setIndex($event)" (click)="triggerClick()"
+          (selectionChange)=" setIndex($event)"
+          (click)=" triggerClick()"
+         
         >
-          <mat-step *ngFor="let step of stepperSteps; let i = index" [ngClass]="{'disabled-step': stepPointerEventNoneStatus[i]}">
+          <mat-step *ngFor="let step of stepperSteps; let i = index" [completed]="false">
             <ng-template matStepLabel> 
                 {{ step }}
             </ng-template>

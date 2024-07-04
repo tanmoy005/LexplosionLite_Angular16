@@ -33,3 +33,20 @@
   pointer-events: none;
   opacity: 0.5; /* visually indicate that the step is disabled */
 }
+
+.custom-step-header {
+  background-color: #af2727;
+  color: #a70d0d;
+  /* Add any other styles you want to apply */
+}
+
+::ng-deep .custom-stepper .mat-step-header .mat-step-icon-selected,
+::ng-deep .custom-stepper .mat-step-header .mat-step-icon-state-done,
+::ng-deep .custom-stepper .mat-step-header .mat-step-icon-state-edit {
+  background-color: #d3762a;
+  color: #855308;
+}
+
+::ng-deep .custom-stepper .mat-step-header .mat-step-label.mat-step-label-active {
+  color: #b88a0d;
+}

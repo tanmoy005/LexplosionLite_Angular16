@@ -19,7 +19,10 @@ export class StepperComponent implements  OnInit{
   stepPointerEventNoneStatus = [false,false,false,false,false]
   stepForms: FormGroup[];
   selectedIndex: number = 0;
-  
+  isClickable = true;
+  condition: boolean = true; 
+  lastStep: number = 0;
+
   constructor(private fb: FormBuilder, private router: Router) {
     this.stepForms = this.stepperSteps.map(() => this.fb.group({ completed: [false, Validators.requiredTrue] }));
   }
@@ -56,17 +59,46 @@ export class StepperComponent implements  OnInit{
     console.log(`Selected tab index: ${this.selectedIndex}`);
     console.log(this.stepRoutings[this.selectedIndex])
     this.navigateToStep(this.selectedIndex);
+
+    if ((this.selectedIndex < this.stepperSteps.length) && (this.selectedIndex !== this.currentStep+1))
+      {
+
+      }
     //this.router.navigate(["/"+this.stepRoutings[this.selectedIndex]]);
+
+  }
+
+  clickableIndexes(index:number){
+    if (index>=0 && index < this.stepperSteps.length){
+
+    }
   }
 
 
+  // navigateToStep(index: number) {
+  //   if (index >= 0 && index < this.stepperSteps.length && (index === this.currentStep + 1 || index < this.currentStep)) {
+  //     console.log('Navigating to:', this.stepRoutings[index]);
+  //     this.router.navigate([this.stepRoutings[index]]);
+  //     this.currentStep = index;
+  //   }
+
+  //   this.updatePointerEvents();
+  // }
   navigateToStep(index: number) {
     if (index >= 0 && index < this.stepperSteps.length && (index === this.currentStep + 1 || index < this.currentStep)) {
       console.log('Navigating to:', this.stepRoutings[index]);
       this.router.navigate([this.stepRoutings[index]]);
       this.currentStep = index;
+      this.lastStep = index;
+      console.log('the last step in if part',this.lastStep)
     }
-
+    else{
+      alert('Please ')
+      console.log('the last step in else part',this.lastStep)
+      //this.currentStep = this.lastStep
+      //this.router.navigate([this.stepRoutings[this.lastStep]]);
+      window.location.reload()
+    }
     this.updatePointerEvents();
   }
 
@@ -74,6 +106,7 @@ export class StepperComponent implements  OnInit{
     for (let i = 0; i < this.stepPointerEventNoneStatus.length; i++) {
       this.stepPointerEventNoneStatus[i] = !(i === this.currentStep + 1 || i <= this.currentStep);
     }
+    console.log('update Pointer event',this.stepPointerEventNoneStatus)
   }
 
   getStepControl(index:number){
