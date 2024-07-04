@@ -219,6 +219,10 @@ p {
   top: 25px !important;
 }
 
+.mdc-list-item {
+  padding: 6px !important;
+}
+
 .phone-code-dropdown {
   width: 88px;
 }

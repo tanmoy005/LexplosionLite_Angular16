@@ -69,7 +69,7 @@
             </mat-form-field>
 
             <div style="width: 296px" class="phn-section">
-              <div class="bg-dropdown-white">
+              <!-- <div class="bg-dropdown-white">
                 <mat-form-field appearance="outline">
                   <div class="row">
                     <div class="col-1" style="padding-right: 10px">
@@ -90,7 +90,55 @@
                     readonly
                   />
                 </mat-form-field>
+              </div> -->
+
+              <div class="bg-dropdown-white" (click)="toggleDropdown()">
+                <mat-form-field appearance="outline">
+                  <div class="row" *ngIf="!isDropdownOpen">
+                    <div class="col-1" style="padding-right: 10px">
+                      <span class="country-code">{{ selectedCountry?.label }}</span>
+                    </div>
+                    <div class="col-6">
+                      <img
+                        [src]="selectedCountry?.icon"
+                        alt="Flag"
+                        class="flag-image"
+                      />
+                    </div>
+                  </div>
+              
+                  <mat-select
+                    *ngIf="isDropdownOpen"
+                    [formControl]="countryCodeFormControl"
+                    (selectionChange)="onCountryChange($event)"
+                    #countrySelect
+                  >
+                    <mat-option *ngFor="let country of countryList" [value]="country">
+                      <div class="row">
+                        <div class="col-1">
+                          <span class="country-code">{{ country.label }}</span>
+                        </div>
+                        <div class="col-6">
+                          <img
+                            [src]="country.icon"
+                            alt="Flag"
+                            class="flag-image"
+                          />
+                        </div>
+                      </div>
+                    </mat-option>
+                  </mat-select>
+              
+                  <input
+                    matInput
+                    name="countryCode"
+                    [formControl]="countryCodeFormControl"
+                    [readonly]="true"
+                    style="display: none"
+                  />
+                </mat-form-field>
               </div>
+              
 
              
               <div>

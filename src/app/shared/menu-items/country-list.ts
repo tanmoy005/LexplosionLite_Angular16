@@ -46,6 +46,7 @@ export const CountryAPIDemoData: CountryAPIData[] = [
 
 const indiaFlagIcon = './assets/images/indian_flag.webp';
 const singaporeIcon = './assets/images/singapore_flag.png';
+const usIcon = './assets/images/us_flag.png';
 
 var tempCountryList: CountryData[] = [];
 
@@ -58,6 +59,8 @@ CountryAPIDemoData.forEach((country) => {
         ? indiaFlagIcon
         : country.name === 'Singapore'
         ? singaporeIcon
+        : country.name === "United States"
+        ? usIcon
         : '',
     code: country.code,
   });
@@ -78,4 +81,11 @@ export const CountryListForPhoneNumberSection: CountryData[] = [
     icon: './assets/images/singapore_flag.png',
     code: '',
   },
+
+  {
+    value: 3,
+    label: '+1',
+    icon: './assets/images/us_flag.png',
+    code: '',
+  }
 ];

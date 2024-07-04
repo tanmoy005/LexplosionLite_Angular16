@@ -1,4 +1,10 @@
-import { Component, ViewEncapsulation, OnInit, Inject } from '@angular/core';
+import {
+  Component,
+  ViewEncapsulation,
+  OnInit,
+  Inject,
+  ViewChild,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import {
@@ -17,6 +23,7 @@ import { CountryData } from 'src/app/shared/menu-items/country-list';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
 
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -43,8 +50,9 @@ function passwordValidator(): ValidatorFn {
   };
 }
 
-
-export function confirmPasswordValidator(passwordControl: AbstractControl): ValidatorFn {
+export function confirmPasswordValidator(
+  passwordControl: AbstractControl
+): ValidatorFn {
   return (confirmPasswordControl: AbstractControl): ValidationErrors | null => {
     const password = passwordControl.value;
     const confirmPassword = confirmPasswordControl.value;
@@ -62,13 +70,20 @@ export function confirmPasswordValidator(passwordControl: AbstractControl): Vali
   styleUrls: ['./register.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AppSideRegisterComponent {
+export class AppSideRegisterComponent implements OnInit {
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private snackbar: SnackbarService,
     private fb: FormBuilder
   ) {}
+
+  @ViewChild('countrySelect') countrySelect: MatSelect;
+
+  ngOnInit(): void {
+    this.selectedCountry = this.countryList[0]; // Default selection
+    this.countryCodeFormControl.setValue(this.selectedCountry);
+  }
 
   usernameFormControl = new FormControl('', [Validators.required]);
   companynameFormControl = new FormControl('', [Validators.required]);
@@ -77,28 +92,28 @@ export class AppSideRegisterComponent {
     Validators.email,
   ]);
 
-  selectedCountryControl = new FormControl();
-
   headquarterAddressFormControl = new FormControl('', [Validators.required]);
 
-  countryCodeFormControl = new FormControl('');
+  countryCodeFormControl = new FormControl();
 
   form: FormGroup;
 
-  passwordFormControl= new FormControl ('',[Validators.required, passwordValidator()]);
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    passwordValidator(),
+  ]);
 
   confirmPasswordFormControl = new FormControl('', [
     Validators.required,
-    confirmPasswordValidator(this.passwordFormControl)
+    confirmPasswordValidator(this.passwordFormControl),
   ]);
 
-
-
- 
+  isDropdownOpen = false;
+  selectedCountry: CountryData | null = null;
 
   phoneNumberFormControl = new FormControl('', [
     Validators.required,
-    phoneNumberValidator,     
+    phoneNumberValidator,
   ]);
 
   agreeToTerms: boolean = false;
@@ -127,6 +142,19 @@ export class AppSideRegisterComponent {
 
   get phoneNumber() {
     return this.phoneNumberFormControl.value;
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+    if (this.isDropdownOpen) {
+      setTimeout(() => this.countrySelect.open(), 0);
+    }
+  }
+
+  onCountryChange(event: any) {
+    this.selectedCountry = event.value;
+    this.countryCode = this.selectedCountry?.value;
+    this.isDropdownOpen = false;
   }
 
   countryCode: number | null = 1;
