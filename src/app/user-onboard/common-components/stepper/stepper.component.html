@@ -38,21 +38,48 @@
 </div> -->
 
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <mat-horizontal-stepper
         #stepper
         [selectedIndex]="currentStep"
-        [linear]=true
+        [linear]=false
         labelPosition="bottom"
+        (selectionChange)="setIndex($event)" (click)="triggerClick()"
       >
-        <mat-step *ngFor="let step of stepperSteps; let index = index" >
+        <mat-step *ngFor="let step of stepperSteps;">
           <ng-template matStepLabel>
-         <button  mat-button (click)="navigateToStep(index)">  {{ step }} </button> 
+            {{ step }}
+       
           </ng-template>
         </mat-step>
       </mat-horizontal-stepper>
     </div>
   </div>
-</div>
+</div> -->
+
+  <!-- <button  mat-button (click)="navigateToStep(index)">  {{ step }} </button>  -->
+
+
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <mat-horizontal-stepper
+          #stepper
+          [selectedIndex]="currentStep"
+          [linear]="false"
+          labelPosition="bottom"
+          (selectionChange)="setIndex($event)" (click)="triggerClick()"
+        >
+          <mat-step *ngFor="let step of stepperSteps; let i = index" [ngClass]="{'disabled-step': stepPointerEventNoneStatus[i]}">
+            <ng-template matStepLabel> 
+                {{ step }}
+            </ng-template>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </div>
+  

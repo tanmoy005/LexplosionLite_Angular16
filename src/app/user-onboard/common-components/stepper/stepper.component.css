@@ -23,3 +23,13 @@
 ::ng-deep .mat-step-header .mat-step-label.mat-step-label-active {
   color: #786acd;
 }
+
+.mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused, 
+.mat-step-header:hover:not([aria-disabled]), .mat-step-header:hover[aria-disabled=false] {
+  background-color: inherit;
+}
+
+.disabled-step {
+  pointer-events: none;
+  opacity: 0.5; /* visually indicate that the step is disabled */
+}

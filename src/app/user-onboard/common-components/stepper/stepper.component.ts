@@ -16,8 +16,10 @@ export class StepperComponent implements  OnInit{
 
   stepperSteps = ["Business Details", "Subscription Details", "Preliminary List of Laws", "Payment", "Go Live !"]
   stepRoutings =["entity-details","subscription","laws","payment","golive"]
+  stepPointerEventNoneStatus = [false,false,false,false,false]
   stepForms: FormGroup[];
-
+  selectedIndex: number = 0;
+  
   constructor(private fb: FormBuilder, private router: Router) {
     this.stepForms = this.stepperSteps.map(() => this.fb.group({ completed: [false, Validators.requiredTrue] }));
   }
@@ -26,7 +28,7 @@ export class StepperComponent implements  OnInit{
   // }
 
   ngOnInit(): void {
-    console.log('Initial currentStep:', this.currentStep);
+    // console.log('Initial currentStep:', this.currentStep);
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.updateStepper(event.urlAfterRedirects);
@@ -44,11 +46,33 @@ export class StepperComponent implements  OnInit{
     }
   }
 
+ setIndex(event:any) {
+  console.log(`Selected event index: ${event.selectedIndex}`);
+  this.selectedIndex = event.selectedIndex;
+   
+  }
+
+  triggerClick() {
+    console.log(`Selected tab index: ${this.selectedIndex}`);
+    console.log(this.stepRoutings[this.selectedIndex])
+    this.navigateToStep(this.selectedIndex);
+    //this.router.navigate(["/"+this.stepRoutings[this.selectedIndex]]);
+  }
+
+
   navigateToStep(index: number) {
-    console.log('index come to navigate to step',index)
-    if (index >= 0 && index < this.stepperSteps.length && (index === this.currentStep+1 || index < this.currentStep)) {
+    if (index >= 0 && index < this.stepperSteps.length && (index === this.currentStep + 1 || index < this.currentStep)) {
       console.log('Navigating to:', this.stepRoutings[index]);
       this.router.navigate([this.stepRoutings[index]]);
+      this.currentStep = index;
+    }
+
+    this.updatePointerEvents();
+  }
+
+  updatePointerEvents() {
+    for (let i = 0; i < this.stepPointerEventNoneStatus.length; i++) {
+      this.stepPointerEventNoneStatus[i] = !(i === this.currentStep + 1 || i <= this.currentStep);
     }
   }
 
