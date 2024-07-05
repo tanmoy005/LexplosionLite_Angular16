@@ -1,12 +1,12 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
-import { ApiService } from 'src/app/services/api.service';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-definition-interfaces';
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
+import { entityCreationNullStatus } from 'src/app/shared/menu-items/entity-interfaces';
 
 @Component({
   selector: 'app-entity',
@@ -18,8 +18,8 @@ export class EntityComponent {
   private resolveDotsClickedPromise: (() => void) | null = null;
 
   treeDataItem = treeDataitem;
-  activeLevel: number = 1
- 
+  activeLevel: number = 1;
+
   encryptStorage = new EncryptStorage(environment.localStorageKey);
 
   entityTypesList: FieldDefinitionInterfaces.EntityTypes[];
@@ -34,16 +34,17 @@ export class EntityComponent {
   entitiesOPUnitNullStatus: boolean = false;
   entitiesOPUnitNullList: string[];
 
+  entityUnsuccessfulCreationMessage: string;
+
   @Input() countryList: number[] = [];
   @Output() selectedEntityEmitter = new EventEmitter<EntityDataType>();
   @Output() selectedEntityEmitter1 = new EventEmitter<EntityDataType>();
   @Output() handleTableDataLoadingFromEntity = new EventEmitter<boolean>();
   @Output() isDotsClicked = new EventEmitter<boolean>();
-  @Output() isEntityCreationSuccessful = new EventEmitter<boolean>();
+  @Output() isEntityCreationSuccessful =
+    new EventEmitter<entityCreationNullStatus>();
 
   constructor(private router: Router, private snackbar: SnackbarService) {
-    
- 
     const savedentityTypes = this.encryptStorage.getItem('entityTypes');
     const savedindustryActivities =
       this.encryptStorage.getItem('industryActivities');
@@ -63,12 +64,9 @@ export class EntityComponent {
     });
   }
 
-
-
   async handleEntitySelected(entity: EntityDataType) {
     await this.isDotsClickedPromise;
 
-    
     this.selectedEntity = entity;
     this.selectedEntityEmitter.emit(this.selectedEntity);
     this.isDotsClicked.emit(this.isDataComingFromDots);
@@ -81,39 +79,43 @@ export class EntityComponent {
     if (this.resolveDotsClickedPromise) {
       this.resolveDotsClickedPromise();
     }
-    
   }
 
   handleTableDataLoading(state: boolean) {
     this.handleTableDataLoadingFromEntity.emit(state);
   }
 
-  handleEntitiesOPUnitStatus(state:FieldDefinitionInterfaces.entitiesOperatingUnitStatus){
+  handleEntitiesOPUnitStatus(
+    state: FieldDefinitionInterfaces.entitiesOperatingUnitStatus
+  ) {
     this.entitiesOPUnitNullStatus = state.entitiesOperatingUnitNullStatus;
     this.entitiesOPUnitNullList = state.entitiesOperatingUnitNullList;
 
-    if(!this.entitiesOPUnitNullStatus){
-      this.isEntityCreationSuccessful.emit(true);
-    }
-
-    else{
-      this.isEntityCreationSuccessful.emit(false);
+    if (!this.entitiesOPUnitNullStatus) {
+      this.isEntityCreationSuccessful.emit({
+        isEntityHasNullOPUnit: true,
+        entityOPUnitNUllMessage: '',
+      });
+    } else {
+      let entityStringLabel =
+        this.entitiesOPUnitNullList.length === 1 ? 'entity' : 'entities';
+      this.entityUnsuccessfulCreationMessage =
+        'Please add operating unit for the ' +
+        entityStringLabel +
+        '- ' +
+        this.entitiesOPUnitNullList.join(', ');
+      this.isEntityCreationSuccessful.emit({
+        isEntityHasNullOPUnit: false,
+        entityOPUnitNUllMessage: this.entityUnsuccessfulCreationMessage,
+      });
     }
   }
 
-
-  goToSubscription() { 
-
-    // This portion is used to restrict the user from going to the Feature List page
-    // If the user doesn't add any operating unit for an entity
-  
-    if(!this.entitiesOPUnitNullStatus){
+  goToSubscription() {
+    if (!this.entitiesOPUnitNullStatus) {
       this.router.navigate(['/subscription'], { state: { entity: '' } });
+    } else {
+      this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
     }
-    else{
-      let entityStringLabel = this.entitiesOPUnitNullList.length === 1 ? 'entity' : 'entities';
-      this.snackbar.showWarning("Please add operating unit for the "+entityStringLabel+"- "+this.entitiesOPUnitNullList.join(", "));
-    }
-    
   }
 }

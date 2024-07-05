@@ -3,7 +3,6 @@ import {
   Component,
   OnInit,
   ViewChild,
-  AfterViewInit,
   ChangeDetectorRef,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -53,6 +52,12 @@ export class SubscriptionDetailsPageComponent implements OnInit {
 
   handleSubscriptionType(event: string) {
     this.subscriptionType = event;
+
+    if (this.subscriptionType === 'komrisk') {
+      this.stepper.stepCompletionStatus = false;
+      this.stepper.stepCompletionMessage =
+        'Please select the KomriskLite to proceed further.';
+    }
   }
 
   navigateToEntityPage(event: any) {

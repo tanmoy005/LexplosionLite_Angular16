@@ -62,3 +62,9 @@ export const EntityColumns = [
   'operatingUnit',
   'actions',
 ];
+
+
+export interface entityCreationNullStatus{
+  isEntityHasNullOPUnit: boolean;
+  entityOPUnitNUllMessage: string;
+}

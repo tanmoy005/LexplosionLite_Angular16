@@ -11,6 +11,7 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StepperComponent } from '../common-components/stepper/stepper.component';
+import { entityCreationNullStatus } from 'src/app/shared/menu-items/entity-interfaces';
 
 @Component({
   selector: 'app-entity-details-page',
@@ -28,6 +29,7 @@ export class EntityDetailsPageComponent {
   selectedEntity1: EntityDataType;
 
   isAddOperatingUnitClicked: boolean = false;
+  stepCompletionStatus: boolean = false;
 
   isDotsClicked: boolean;
   isEntityCreationSuccessful: boolean;
@@ -61,8 +63,10 @@ export class EntityDetailsPageComponent {
     this.isDotsClicked = state;
   }
 
-  handleSuccessfulEntityCreation(state: boolean) {
-    this.isEntityCreationSuccessful = state;
+  handleSuccessfulEntityCreation(state: entityCreationNullStatus) {
+    this.isEntityCreationSuccessful = state.isEntityHasNullOPUnit;
+    this.stepper.stepCompletionStatus = state.isEntityHasNullOPUnit;
+    this.stepper.stepCompletionMessage = state.entityOPUnitNUllMessage;
   }
 
   handleBackClick(event: boolean) {
