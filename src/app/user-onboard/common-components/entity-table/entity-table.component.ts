@@ -24,6 +24,8 @@ import { LawCategories } from 'src/app/shared/menu-items/fetch-entity-details-in
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
+import { IndustryDialogComponent } from './industry-dialog/industry-dialog.component';
+
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 
@@ -69,7 +71,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private entityDialogService: DialogService,
     private apiService: ApiService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    
   ) {}
 
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
@@ -361,7 +364,24 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
   openCountryDialog() {}
 
-  openIndustryDialog() {}
+  openIndustryDialog( id: number) {
+    var entity = this.dataSource.find((entity) => entity.id === id);
+    console.log('the entity for industry dialog open',entity)
+    if (entity === undefined) {
+      this.snackbar.showError(
+        'Some error occurred while adding Operating Unit.'
+      );
+    } 
+    else{
+      var industries = entity.industry
+      this.dialog.open(IndustryDialogComponent,{
+        data: industries
+      });
+    }
+    
+
+   
+  }
 
   getImageSource(opUnitLength: number): string {
     return opUnitLength > 0

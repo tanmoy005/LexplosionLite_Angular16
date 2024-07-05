@@ -7,17 +7,32 @@
 
   <div class="row subscription-unit-card">
     <div class="col-sm-12 col-md-12 col-lg-12">
-      <app-card-layout [headerRequired]="false">
+      
+      <div>
+      <!-- <mat-card appearance="outlined" >
+        <mat-card-content>Simple card</mat-card-content>
+      </mat-card> -->
+      <app-card-layout-for-payment-page
+      [cardHeight]="40"
+      [cardWidth]="720"></app-card-layout-for-payment-page>
+    </div>
+    
+      <!-- <app-card-layout [headerRequired]="false">
         <div style="padding: 10px">
           <p class="payment-other-typography">Subscription Period</p>
         </div>
-      </app-card-layout>
+      </app-card-layout> -->
     </div>
   </div>
 
   <div class="row payment-details-columns">
     <div class="col-sm-12 col-md-12 col-lg-12">
-      <app-card-layout [headerRequired]="false">
+      <app-card-layout-for-payment-page
+      [cardHeight]="40"
+      [cardWidth]="720">
+    </app-card-layout-for-payment-page>
+  
+      <!-- <app-card-layout [headerRequired]="false">
         <div style="padding: 10px">
           <div class="payment-columns-container">
             <div
@@ -28,40 +43,33 @@
             </div>
           </div>
         </div>
-      </app-card-layout>
+      </app-card-layout> -->
     </div>
   </div>
 
   <div class="row payment-details-rows">
     <div class="col-sm-12 col-md-12 col-lg-12">
-      <app-card-layout [headerRequired]="false">
+      <!-- <app-card-layout [headerRequired]="false">
         <div style="padding: 70px"></div>
-      </app-card-layout>
+      </app-card-layout> -->
+      <app-card-layout-for-payment-page
+      [cardHeight]="112"
+      [cardWidth]="720">
+    </app-card-layout-for-payment-page>
+  
     </div>
   </div>
 
-  <div class="row different-modes-payment-details">
-    <div class="col-sm-12 col-md-12 col-lg-5">
-      <app-card-layout [headerRequired]="false">
-        <div style="padding: 10px; padding-bottom: 70px">
-          <p class="payment-other-typography">Offline Payment Details</p>
-        </div>
-      </app-card-layout>
+  <div class="row different-modes-payment-details no-gutters">
+    <div class="col-sm-12 col-md-12 col-lg-5 mb-3">
+      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="224"></app-card-layout-for-payment-page>
     </div>
-
-    <div class="col-sm-12 col-md-12 col-lg-5">
-      <app-card-layout [headerRequired]="false">
-        <div style="padding: 10px; padding-bottom: 70px">
-          <p class="payment-other-typography">Online Payment Details</p>
-        </div>
-      </app-card-layout>
+    <div class="col-sm-12 col-md-12 col-lg-5 mb-3">
+      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="216"></app-card-layout-for-payment-page>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-2">
-      <app-card-layout [headerRequired]="false">
-        <div style="padding: 10px; padding-bottom: 70px">
-          <p class="payment-other-typography">Total</p>
-        </div>
-      </app-card-layout>
+    <div class="col-sm-12 col-md-12 col-lg-2 mb-3">
+      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="264"></app-card-layout-for-payment-page>
     </div>
   </div>
+  
 </div>

@@ -25,6 +25,8 @@ import { CompanyStructureCardComponent } from './company-structure-card/company-
 import { ActivitiesListComponent } from './activities-list/activities-list.component';
 import { OpUnitLawsDialogComponent } from './operating-unit-table/op-unit-laws-dialog/op-unit-laws-dialog.component';
 import { LawsReadMoreDialogComponent } from './laws-table/laws-read-more-dialog/laws-read-more-dialog.component';
+import { CardLayoutForPaymentPageComponent } from './card-layout-for-payment-page/card-layout-for-payment-page.component';
+import { IndustryDialogComponent } from './entity-table/industry-dialog/industry-dialog.component';
 
 
 
@@ -53,7 +55,9 @@ import { LawsReadMoreDialogComponent } from './laws-table/laws-read-more-dialog/
     CompanyStructureCardComponent,
     ActivitiesListComponent,
     OpUnitLawsDialogComponent,
-    LawsReadMoreDialogComponent
+    LawsReadMoreDialogComponent,
+    CardLayoutForPaymentPageComponent,
+    IndustryDialogComponent
   ],
   imports: [
     CommonModule,

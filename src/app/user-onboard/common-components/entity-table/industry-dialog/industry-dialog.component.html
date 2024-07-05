@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>
+ <p class="dialog-title-typography">   Industries </p>
+</h2>
+<mat-dialog-content>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let item of filteredNames">
+     <p>    {{item}} </p> 
+        </mat-list-item>
+      </mat-list>
+    
+  </mat-dialog-content>
+  <div class="dialog-action-position">
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+</div>
+
