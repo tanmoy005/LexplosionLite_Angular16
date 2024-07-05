@@ -14,3 +14,9 @@
     flex-shrink: 0;
     border-radius: 5px;
 }
+.payment-details-button-container{
+    display: flex;
+   // gap: 10px; 
+   justify-content: space-between;
+
+}

@@ -14,4 +14,7 @@ export class PaymentComponent  {
   navigateToGoLivePage(event:any){
     this.router.navigate(['/golive']);
   }
+  navigateToLawsPage(event:any){
+    this.router.navigate(['/laws']);
+  }
 }
