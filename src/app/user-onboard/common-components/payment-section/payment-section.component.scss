@@ -55,3 +55,69 @@
     opacity: 0px;
 
 }
+
+// .different-modes-payment-details {
+//   // Removes the default gutter (padding) between columns
+//   margin-left: 0;
+//   margin-right: 0;
+
+//   .col-lg-5,
+//   .col-lg-2 {
+//     padding-left: 0;
+//     padding-right: 0;
+
+//     // Optionally, you can add some margin between columns if necessary
+//     &:not(:last-child) {
+//       margin-right: 8px; // Adjust this value as needed
+//     }
+//   }
+// }
+
+
+.payment-page-typography{
+    font-family: Barlow;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    color: #58595B;
+    margin-top:-12px ;
+    margin-left: 12px;
+
+}
+
+.payment-page-section-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    margin-top:-12px ;
+  }
+
+  .checkbox-section{
+    margin-right: 12px;
+    margin-top: -4px;
+    .mdc-form-field>label {
+        margin-left: 0;
+        margin-right: auto;
+        padding-left: 4px;
+        padding-right: 0;
+        order: 0;
+        font-family: barlow;
+    }
+  }
+
+  .payment-details-container {
+    display: flex;
+    gap: 10px; 
+  }
+
+  .payment-page-typography-2{
+    font-family: Barlow;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+
+  }
+  

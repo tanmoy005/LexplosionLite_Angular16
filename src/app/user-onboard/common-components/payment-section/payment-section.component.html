@@ -8,20 +8,24 @@
   <div class="row subscription-unit-card">
     <div class="col-sm-12 col-md-12 col-lg-12">
       
-      <div>
-      <!-- <mat-card appearance="outlined" >
-        <mat-card-content>Simple card</mat-card-content>
-      </mat-card> -->
+     
+      
       <app-card-layout-for-payment-page
       [cardHeight]="40"
-      [cardWidth]="720"></app-card-layout-for-payment-page>
+      [cardWidth]="720">
+      <div class="row payment-page-section-1 ">
+        
+      <p class="payment-page-typography"> Subscription Period</p>
+      <section class="checkbox-section" >
+        <!-- <h4>Select your toppings:</h4> -->
+      <mat-checkbox >Monthly</mat-checkbox>
+        <mat-checkbox >Yearly</mat-checkbox>
+        <!-- <mat-checkbox >Mushroom</mat-checkbox> -->
+      </section>
     </div>
-    
-      <!-- <app-card-layout [headerRequired]="false">
-        <div style="padding: 10px">
-          <p class="payment-other-typography">Subscription Period</p>
-        </div>
-      </app-card-layout> -->
+    </app-card-layout-for-payment-page>
+   
+     
     </div>
   </div>
 
@@ -30,20 +34,13 @@
       <app-card-layout-for-payment-page
       [cardHeight]="40"
       [cardWidth]="720">
+      <div class="payment-details-container">
+      <p class="payment-page-typography" *ngFor="let item of paymentDetailsColumns">
+        {{item}}
+      </p>
+    </div>
     </app-card-layout-for-payment-page>
   
-      <!-- <app-card-layout [headerRequired]="false">
-        <div style="padding: 10px">
-          <div class="payment-columns-container">
-            <div
-              *ngFor="let column of paymentDetailsColumns"
-              class="payment-column"
-            >
-              <p class="payment-other-typography">{{ column }}</p>
-            </div>
-          </div>
-        </div>
-      </app-card-layout> -->
     </div>
   </div>
 
@@ -60,16 +57,23 @@
     </div>
   </div>
 
-  <div class="row different-modes-payment-details no-gutters">
-    <div class="col-sm-12 col-md-12 col-lg-5 mb-3">
-      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="224"></app-card-layout-for-payment-page>
-    </div>
-    <div class="col-sm-12 col-md-12 col-lg-5 mb-3">
-      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="216"></app-card-layout-for-payment-page>
-    </div>
-    <div class="col-sm-12 col-md-12 col-lg-2 mb-3">
-      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="264"></app-card-layout-for-payment-page>
-    </div>
+  <div class="payment-details-container">
+  
+      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="224">
+        <p class="payment-page-typography">Offline Payment Details</p>
+        <p class="payment-page-typography-2">You can make payment through Cheque/NEFT.
+          Please draw the cheque in favor of Lexplosion Solutions Private Limited.</p>
+      </app-card-layout-for-payment-page>
+
+   
+      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="216">
+        <p class="payment-page-typography">Online Payment Details</p>
+      </app-card-layout-for-payment-page>
+    
+      <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="264">
+
+      </app-card-layout-for-payment-page>
+  
   </div>
   
 </div>
