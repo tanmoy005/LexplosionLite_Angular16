@@ -34,14 +34,14 @@
   color: #786acd;
 }
 
-.step-no-layout {
+/* .step-no-layout {
   width: 55px;
   height: 14px;
   top: 252px;
   left: 1051px;
   gap: 0px;
   opacity: 0px;
-}
+} */
 
 .step-no-typography {
   font-family: Barlow;
@@ -52,12 +52,12 @@
   color: rgba(88, 89, 91, 1);
 }
 
-.header {
+/* .header-entity {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0px;
-}
+} */
 
 .spinner-backdrop {
   position: fixed;

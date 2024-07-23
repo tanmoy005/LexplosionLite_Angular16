@@ -1,160 +1,168 @@
-@use 'variable' as var;
-
+@use "variable" as var;
 
 @mixin text_W400($font-size, $font-weight: 400) {
-    font-size: $font-size;
-    font-weight: $font-weight;
+  font-size: $font-size;
+  font-weight: $font-weight;
 }
 
-@mixin text-model($font-size, $font-weight, $font-color, $font-family, $line-height: null) {
-    font-size: $font-size !important;
-    font-weight: $font-weight !important;
-    color: $font-color !important;
-    font-family: $font-family !important;
-    line-height: $line-height !important;
+@mixin text-model(
+  $font-size,
+  $font-weight,
+  $font-color,
+  $font-family,
+  $line-height: null
+) {
+  font-size: $font-size !important;
+  font-weight: $font-weight !important;
+  color: $font-color !important;
+  font-family: $font-family !important;
+  line-height: $line-height !important;
 }
 
 .text_25_700 {
-    @include text-model(1.5rem, 700, var.$font-color-dark, Barlow);
+  @include text-model(2rem, 700, var.$font-color-dark, Barlow);
 }
 
 .text_24_400_dark {
-    @include text-model(var.$font-24, 400, var.$font-color-dark, Barlow, 38px);
+  @include text-model(var.$font-24, 500, var.$font-color-dark, Barlow, 40px);
 }
 
 .text_24_400_blue {
-    @include text-model(var.$font-24, 400, var.$font-color-blue, Barlow, 40px);
+  @include text-model(var.$font-24, 400, var.$font-color-blue, Barlow, 40px);
 }
 
 .text_56_800 {
-    text-transform: uppercase;
-    @include text-model(var.$font-56, 800, var.$font-color-light, Barlow, 50.79px);
+  text-transform: uppercase;
+  @include text-model(2rem, 800, var.$font-color-light, Open Sans);
 }
 
 .text_16_700 {
-    @include text-model(var.$font-16, 700, var.$font-color-dark, Barlow);
-    // .selected{
-    //     @include text-model(var.$font-16, 700, var.$white, Barlow);
-    // }
+  @include text-model(var.$font-16, 700, var.$font-color-dark, Barlow);
+  // .selected{
+  //     @include text-model(var.$font-16, 700, var.$white, Barlow);
+  // }
 }
 
 .text_12_700_gray_1000 {
-    @include text-model(var.$font-12, 700, var.$gray-1000, Barlow, 14.4px);
+  @include text-model(var.$font-12, 700, var.$gray-1000, Barlow, 14.4px);
 }
 
 @media (max-width: 425px) {
-    .text_12_400_gray_1000, label.mdc-label, .mat-mdc-select-min-line {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-36, 400, var.$gray-1000, Barlow, 20px);
+  .text_12_400_gray_1000,
+  label.mdc-label,
+  .mat-mdc-select-min-line {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-36, 400, var.$gray-1000, Barlow, 20px);
+  }
+  .text_12_400_gray_900 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-36, 400, var.$gray-900, Barlow, 14.4px);
+  }
+  .text_12_500_gray_1000 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-36, 500, var.$gray-1000, Barlow, 16px);
+  }
 
-    }
-    .text_12_400_gray_900 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-36, 400, var.$gray-900, Barlow, 14.4px);
-    }
-    .text_12_500_gray_1000 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-36, 500, var.$gray-1000, Barlow, 16px);
-    }
-
-    .text_12_500_gray_1200 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-36, 500, var.$gray-1200, Barlow, 14.4px);
-    }
-    .text_12_400_gray_1200 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-36, 400, var.$gray-1200, Barlow, 14.4px);
-    }
+  .text_12_500_gray_1200 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-36, 500, var.$gray-1200, Barlow, 14.4px);
+  }
+  .text_12_400_gray_1200 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-36, 400, var.$gray-1200, Barlow, 14.4px);
+  }
 }
 
 @media (min-width: 321px) {
-    .text_12_400_gray_1000, label.mdc-label, .mat-mdc-select-min-line {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 400, var.$gray-1000, Barlow, 20px);
+  .text_12_400_gray_1000,
+  label.mdc-label,
+  .mat-mdc-select-min-line {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 400, var.$gray-1000, Barlow, 20px);
+  }
+  .text_12_400_gray_900 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 400, var.$gray-900, Barlow, 14.4px);
+  }
+  .text_12_500_gray_1000 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 500, var.$gray-1000, Barlow, 16px);
+  }
 
-    }
-    .text_12_400_gray_900 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 400, var.$gray-900, Barlow, 14.4px);
-    }
-    .text_12_500_gray_1000 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 500, var.$gray-1000, Barlow, 16px);
-    }
-
-    .text_12_500_gray_1200 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 500, var.$gray-1200, Barlow, 14.4px);
-    }
-    .text_12_400_gray_1200 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 14.4px);
-    }
+  .text_12_500_gray_1200 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 500, var.$gray-1200, Barlow, 14.4px);
+  }
+  .text_12_400_gray_1200 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 14.4px);
+  }
 }
 
 @media (min-width: 767px) {
-    .text_12_400_gray_1000, label.mdc-label, .mat-mdc-select-min-line {
-        // todo change the class name like this one, add color code
-        @include text-model(1.35vw, 400, var.$gray-1000, Barlow, 20px);
+  .text_12_400_gray_1000,
+  label.mdc-label,
+  .mat-mdc-select-min-line {
+    // todo change the class name like this one, add color code
+    @include text-model(1.35vw, 400, var.$gray-1000, Barlow, 20px);
+  }
+  .text_12_400_gray_900 {
+    // todo change the class name like this one, add color code
+    @include text-model(1.35vw, 400, var.$gray-900, Barlow, 14.4px);
+  }
+  .text_12_500_gray_1000 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 500, var.$gray-1000, Barlow, 16px);
+  }
 
-    }
-    .text_12_400_gray_900 {
-        // todo change the class name like this one, add color code
-        @include text-model(1.35vw, 400, var.$gray-900, Barlow, 14.4px);
-    }
-    .text_12_500_gray_1000 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 500, var.$gray-1000, Barlow, 16px);
-    }
+  .text_12_500_gray_1200 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-17, 500, var.$gray-1200, Barlow, 14.4px);
+  }
 
-    .text_12_500_gray_1200 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-17, 500, var.$gray-1200, Barlow, 14.4px);
-    }
-
-    .text_12_700_gray_600 {
-        @include text-model(var.$font-17, 700, var.$gray-600, Barlow, 14.4px);
-    }
-    .text_12_400_gray_1200 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-17, 400, var.$gray-1200, Barlow, 14.4px);
-    }
+  .text_12_700_gray_600 {
+    @include text-model(var.$font-17, 700, var.$gray-600, Barlow, 14.4px);
+  }
+  .text_12_400_gray_1200 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-17, 400, var.$gray-1200, Barlow, 14.4px);
+  }
 }
-
-
 
 @media (min-width: 1024px) {
-    .text_56_800 {
-        text-transform: uppercase;
-        @include text-model(var.$font-56, 800, var.$font-color-light, Barlow, 78.79px);
-    }
-    .text_24_400_dark {
-        @include text-model(var.$font-24, 400, var.$font-color-dark, Barlow, 40px);
-    }
-    .text_12_500_gray_1200, label.mdc-label {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 500, var.$gray-1200, Barlow, 14.4px);
-    }
+  .text_56_800 {
+    text-transform: uppercase;
+    @include text-model(2rem, 800, var.$font-color-light, Open Sans);
+  }
+  .text_24_400_dark {
+    @include text-model(var.$font-24, 400, var.$font-color-dark, Barlow, 40px);
+  }
+  .text_12_500_gray_1200,
+  label.mdc-label {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 500, var.$gray-1200, Barlow, 14.4px);
+  }
 
-    .text_12_700_gray_600 {
-        @include text-model(var.$font-12, 700, var.$gray-600, Barlow, 14.4px);
-    }
-    .text_12_400_gray_1000, label.mdc-label, .mat-mdc-select-min-line {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 400, var.$gray-1000, Barlow, 20px);
-
-    }
-    .text_12_400_gray_900 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 400, var.$gray-900, Barlow, 14.4px);
-    }
-    .text_12_400_gray_1200 {
-        // todo change the class name like this one, add color code
-        @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 14.4px);
-    }
+  .text_12_700_gray_600 {
+    @include text-model(var.$font-12, 700, var.$gray-600, Barlow, 14.4px);
+  }
+  .text_12_400_gray_1000,
+  label.mdc-label,
+  .mat-mdc-select-min-line {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 400, var.$gray-1000, Barlow, 20px);
+  }
+  .text_12_400_gray_900 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 400, var.$gray-900, Barlow, 14.4px);
+  }
+  .text_12_400_gray_1200 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 14.4px);
+  }
 }
 
-.text_12_700_gray_1500 {
-    // todo change the class name like this one, add color code
-    @include text-model(var.$font-12, 700, var.$gray-1500, Barlow, 14.4px);
+.text_12_700_gray_1000 {
+  // todo change the class name like this one, add color code
+  @include text-model(var.$font-12, 700, var.$gray-1000, Barlow, 14.4px);
 }

@@ -10,58 +10,60 @@
     <h3 class="text_24_400_blue">Login</h3>
   </div>
   <form class="example-form-field-width login-form">
-    <mat-form-field appearance="outline" class="login-field">
-      <mat-label>Email ID</mat-label>
-      <input
-        type="email"
-        style="background-color: transparent"
-        matInput
-        [formControl]="usernameFormControl"
-        placeholder="Email ID"
-      />
-      <mat-error
-        *ngIf="
-          usernameFormControl.hasError('email') &&
-          !usernameFormControl.hasError('required')
-        "
-      >
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="usernameFormControl.hasError('required')"
-        >Email is&nbsp;<strong>required</strong></mat-error
-      >
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="login-field">
-      <mat-label>Password</mat-label>
-      <input
-        type="password"
-        matInput
-        [formControl]="passwordFormControl"
-        placeholder="Password"
-      />
-      <mat-error *ngIf="!passwordFormControl.hasError('required')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="usernameFormControl.hasError('required')"
-        >Password is&nbsp;<strong>required</strong></mat-error
-      >
-    </mat-form-field>
+    <div class="form-field-container">
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-label>Email ID</mat-label>
+        <input
+          type="email"
+          style="background-color: transparent"
+          matInput
+          [formControl]="usernameFormControl"
+          placeholder="Email ID"
+        />
+        <mat-error
+          *ngIf="
+            usernameFormControl.hasError('email') &&
+            !usernameFormControl.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="usernameFormControl.hasError('required')"
+          >Email is&nbsp;<strong>required</strong></mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="passwordFormControl"
+          placeholder="Password"
+        />
+        <mat-error *ngIf="!passwordFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="usernameFormControl.hasError('required')"
+          >Password is&nbsp;<strong>required</strong></mat-error
+        >
+      </mat-form-field>
+    </div>
 
     <div class="mt--10 remember-me-containar">
       <mat-checkbox class="custome-check-box">Remember Me</mat-checkbox>
     </div>
     <div class="login-footer-containar">
-    <div class="button-container">
-      <button
-        [disabled]="usernameFormControl.invalid || passwordFormControl.invalid"
-        class="btn-login"
-        (click)="handleLogin($event)"
-      >
-     <p class="btn-name-style">
-        Login
-      </p>
-      </button>
-    </div>
+      <div class="button-container">
+        <button
+          [disabled]="
+            usernameFormControl.invalid || passwordFormControl.invalid
+          "
+          class="btn-login"
+          (click)="handleLogin($event)"
+        >
+          <p class="btn-name-style">Login</p>
+        </button>
+      </div>
       <a routerLink="['/']" class="forgot_pass">Forgot Password ?</a>
     </div>
   </form>

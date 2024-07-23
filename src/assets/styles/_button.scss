@@ -1,90 +1,115 @@
-@use 'variable' as var;
+@use "variable" as var;
 
-@mixin btn-model($background-color, $padding, $border-color, $border-radius, $type: 'filled',
-    $height-factor:10.5,$width-factor:5
-    ) {
-    background-color: $background-color!important;
-    padding: $padding!important;
-    border: 1px solid $border-color!important; // todo use gradient
-    border-radius: $border-radius!important;
+@mixin btn-model(
+  $background-color,
+  $padding,
+  $border-color,
+  $border-radius,
+  $type: "filled",
+  $height-factor: 10.5,
+  $width-factor: 5
+) {
+  background-color: $background-color !important;
+  padding: $padding !important;
+  border: 1px solid $border-color !important; // todo use gradient
+  border-radius: $border-radius !important;
 
-    @if($type =='filled') {
-        color: var.$gray-400!important;
-    }
-    
-    @else {
-        color: $border-color!important;
-    }
+  @if ($type == "filled") {
+    color: var.$gray-400 !important;
+  } @else {
+    color: $border-color !important;
+  }
 
-    @media (min-width: 1024px) {
+  @media (min-width: 1024px) {
+    font-size: 1rem !important;
+  }
+  @media (max-width: 2560px) and (min-width: 1441px) {
+    height: calc(var($height-factor) * var(--base-unit-4k));
+    width: calc(var($width-factor) * var(--base-unit-4k));
+  }
 
-        font-size: 1rem!important;
-    }
-    @media (max-width:2560px) and (min-width:1441px) {
-        height: calc(var($height-factor) * var(--base-unit-4k));
-        width: calc(var($width-factor) * var(--base-unit-4k));
-        
-    }
+  @media (max-width: 1440px) and (min-width: 1281px) {
+    height: calc(var($height-factor) * var(--base-unit-large1));
+    width: calc(var($width-factor) * var(--base-unit-large1));
+  }
 
-    @media (max-width:1440px) and (min-width:1281px) {
-        height: calc(var($height-factor) * var(--base-unit-large1));
-        width: calc(var($width-factor) * var(--base-unit-large1));
-        
-    }
+  @media (width: 1280px) {
+    height: calc(var($height-factor) * var(--base-unit-large));
+    width: calc(var($width-factor) * var(--base-unit-large));
+  }
 
-    @media (width:1280px) {
-        height: calc(var($height-factor) * var(--base-unit-large));
-        width: calc(var($width-factor) * var(--base-unit-large));
-        
-    }
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    height: calc(var($height-factor) * var(--base-unit-medium1));
+    width: calc(var($width-factor) * var(--base-unit-medium1));
+  }
 
-    @media (min-width: 1024px) and (max-width:1279px){
-        height: calc(var($height-factor) * var(--base-unit-medium1));
-        width: calc(var($width-factor) * var(--base-unit-medium1));
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px){
-        height: calc(var($height-factor) * var(--base-unit-medium));
-        width: calc(var($width-factor) * var(--base-unit-medium));
-    }
-    font-size: .8rem!important;
-    font-weight: 400!important;
-    cursor: pointer!important;
+  @media (min-width: 768px) and (max-width: 1023px) {
+    height: calc(var($height-factor) * var(--base-unit-medium));
+    width: calc(var($width-factor) * var(--base-unit-medium));
+  }
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  cursor: pointer !important;
 }
 
-.btn-name-style{
-    font-size: 12px !important;
+.btn-name-style {
+  font-size: 12px !important;
+  font-family: Barlow;
+  font-weight: 400px;
+  line-height: 14.4px;
+}
+
+@media (max-width: 2560px) and (min-width: 1441px) {
+  .btn-name-style {
+    font-size: calc(
+      var(--base-unit-4k) * var(--scale-button-font-size)
+    ) !important;
     font-family: Barlow;
     font-weight: 400px;
     line-height: 14.4px;
-}
-
-@media (max-width:2560px) and (min-width:1441px) {
-    .btn-name-style{
-        font-size: calc(var(--base-unit-4k)*var(--scale-button-font-size)) !important;
-        font-family: Barlow;
-        font-weight: 400px;
-        line-height: 14.4px;
-    }
+  }
 }
 
 .btn-login {
-    @include btn-model(var.$primary, 2.34% 8.5%, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
+  @include btn-model(
+    var.$primary,
+    2.34% 8.5%,
+    var.$primary,
+    5px,
+    "filled",
+    --scale-factor-login-button-height,
+    --scale-factor-login-button-width
+  );
 }
 
 .btn-secondary {
-    @include btn-model(var.$dark-red-100, 9.5% 8.5%, var.$green-100, 8px,'filled',--scale-factor-get-started-button-height,--scale-factor-get-started-button-width);
-  
+  @include btn-model(
+    var.$dark-red-100,
+    5.5% 5.5%,
+    var.$green-100,
+    8px,
+    "filled",
+    --scale-factor-get-started-button-height,
+    --scale-factor-get-started-button-width
+  );
 }
 
 .btn-primary-md {
-    @include btn-model(var.$primary, 6px 24px, var.$primary, 5px,'filled',--scale-factor-login-button-height, --scale-factor-login-button-width);
+  @include btn-model(
+    var.$primary,
+    6px 24px,
+    var.$primary,
+    5px,
+    "filled",
+    --scale-factor-login-button-height,
+    --scale-factor-login-button-width
+  );
 }
 
 .btn-primary-md-in-dialog {
-    @include btn-model(var.$primary, 6px 24px, var.$primary, 5px,'filled');
+  @include btn-model(var.$primary, 6px 24px, var.$primary, 5px, "filled");
 }
 
 .btn-primary-outline-md {
-    @include btn-model('transparent', 6px 24px, var.$primary, 5px, 'outline');
+  @include btn-model("transparent", 6px 24px, var.$primary, 5px, "outline");
 }

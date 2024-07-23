@@ -1,19 +1,17 @@
-// Variables
-
-
 @use "@angular/material" as mat;
 @include mat.core();
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 
-$bodyfont: 'Poppins', sans-serif;
-$headingfont: 'Poppins', sans-serif;
+$bodyfont: "Poppins", sans-serif;
+$headingfont: "Poppins", sans-serif;
 
 $mat-primary: (
   100: #ebf9fa,
   500: #1e88e5,
   700: #1e88e5,
-  contrast: (100: rgba(black, 0.87),
+  contrast: (
+    100: rgba(black, 0.87),
     500: white,
     700: white,
   ),
@@ -22,16 +20,18 @@ $mat-secondary: (
   100: #fff5f2,
   500: #26c6da,
   700: #26c6da,
-  contrast: (100: white,
+  contrast: (
+    100: white,
     500: white,
     700: white,
   ),
 );
 $mat-warn: (
-  100: #FDEDE8,
+  100: #fdede8,
   500: #e91e63,
   700: #e91e63,
-  contrast: (100: white,
+  contrast: (
+    100: white,
     500: white,
     700: white,
   ),
@@ -43,18 +43,21 @@ $primary: mat.define-palette($mat-primary, 500);
 $accent: mat.define-palette($mat-secondary, 500);
 $warn: mat.define-palette($mat-warn, 500);
 
-
-$cyantheme: mat.define-light-theme((color: (primary: $primary,
-        accent: $accent,
-        warn: $warn,
+$cyantheme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: "Poppins",
       ),
-      typography: mat.define-typography-config($font-family: "Poppins",
-      ),
-    ));
+  )
+);
 
 @include mat.all-component-themes($cyantheme);
-
-// Dark Theme
 
 /*Theme Colors*/
 
@@ -114,40 +117,39 @@ $purple: #7460ee;
 $blue: rgba(0, 145, 208, 1);
 $megna: #00897b;
 
-
 /*Red Color*/
 $dark-red-100: rgba(18, 1, 1, 1);
 $red: rgba(215, 86, 109, 1);
-$red-100: rgba(18, 1, 1, 1); 
-$red-200: rgba(215, 86, 109); 
+$red-100: rgba(18, 1, 1, 1);
+$red-200: rgba(215, 86, 109);
 
 /*Green Color*/
-$green-100: rgba(23, 34, 25, 1); 
-$green-200: rgba(30, 70, 32, 1); 
+$green-100: rgba(23, 34, 25, 1);
+$green-200: rgba(30, 70, 32, 1);
 
-$dark-green-100: rgba(23, 34, 25, 1); 
-$dark-green-200: rgba(30, 70, 32); 
+$dark-green-100: rgba(23, 34, 25, 1);
+$dark-green-200: rgba(30, 70, 32);
 $green-100: rgba(57, 87, 63, 1);
 
 /*Blue Color Start*/
-$blue-light-100: rgba(0, 145, 208, 1); 
-$blue-light-200: rgba(213, 230, 239, 1); 
-$blue-dark-100: rgba(1, 67, 97, 1); 
-
+$blue-light-100: rgba(0, 145, 208, 1);
+$blue-light-200: rgba(213, 230, 239, 1);
+$blue-dark-100: rgba(1, 67, 97, 1);
 
 /*Gray Color Start*/
 
 $gray-100: rgba(38, 38, 44, 1);
 $gray-200: rgba(243, 243, 243, 1);
 $gray-300: rgba(217, 217, 217, 0.36);
+$grey-250: rgba(217, 217, 217, 0.1);
 $gray-400: rgba(233, 233, 233, 1);
-$gray-500: rgba(248, 248, 248, 0.76); 
-$gray-600: rgba(247, 247, 248, 1); 
-$gray-700: rgba(192, 192, 192, 1); 
-$gray-800: rgba(244, 244, 244, 1); 
-$gray-900: rgba(164, 164, 164, 1); 
-$gray-1000: rgba(88, 89, 91, 1); 
-$gray-1100: rgba(166, 166, 166, 1); 
+$gray-500: rgba(248, 248, 248, 0.76);
+$gray-600: rgba(247, 247, 248, 1);
+$gray-700: rgba(192, 192, 192, 1);
+$gray-800: rgba(244, 244, 244, 1);
+$gray-900: rgba(164, 164, 164, 1);
+$gray-1000: rgba(88, 89, 91, 1);
+$gray-1100: rgba(166, 166, 166, 1);
 $gray-1200: rgba(63, 63, 63, 1);
 $gray-1300: rgba(192, 192, 192, 1);
 $gray-1400: rgba(217, 217, 217, 1);
@@ -181,61 +183,45 @@ $dark-text: #848a96;
 $radius: 4px;
 $form-brd: #d9d9d9;
 
-// Heights 
 $h8px: 1vh;
 $h16px: 2vh;
-$h40px: 4.80vh;
+$h40px: 4.8vh;
 $h56px: 6.73vh;
-$h20px: 2.5vh; //new
-$h10px: 1.25vh; //new
+$h20px: 2.5vh;
+$h10px: 1.25vh;
 
-// Width
 $w440px: 34.375vw;
 $w776px: 60.625vw;
 
-
-$w8px: 0.625vw; // new (8 / 1280 * 100)
-$w16px: 1.25vw; // new (16 / 1280 * 100)
-$w24px: 1.875vw; // new (24 / 1280 * 100)
-$w32px: 2.5vw; // new (32 / 1280 * 100)
-$w40px: 3.125vw; // new (40 / 1280 * 100)
+$w8px: 0.625vw;
+$w16px: 1.25vw;
+$w24px: 1.875vw;
+$w32px: 2.5vw;
+$w40px: 3.125vw;
 $w440px: 34.375vw;
-$w480px: 37.5vw; // new (480 / 1280 * 100)
+$w480px: 37.5vw;
 $w776px: 60.625vw;
-$w800px: 62.5vw; // new (800 / 1280 * 100)
-$w880px: 68.75vw; // new (880 / 1280 * 100)
-$w960px: 75vw; // new (960 / 1280 * 100)
-$w1040px: 81.25vw; // new (1040 / 1280 * 100)
-
+$w800px: 62.5vw;
+$w880px: 68.75vw;
+$w960px: 75vw;
+$w1040px: 81.25vw;
 
 $size_8px: 0.56vw;
 $size_16px: 1.12vw;
-$size_24px: 1.68vw; // new (24 / 1280 * 100)
-$size_32px: 2.24vw; // new (32 / 1280 * 100)
+$size_24px: 1.68vw;
+$size_32px: 2.24vw;
 $size_38px: 2.97vw;
-$size_40px: 3.12vw; // new (40 / 1280 * 100)
-$size_48px: 3.75vw; // new (48 / 1280 * 100)
+$size_40px: 3.12vw;
+$size_48px: 3.75vw;
 $size_56px: 4.8vw;
-$size_64px: 5.0vw; // new (64 / 1280 * 100)
-$size_72px: 5.62vw; // new (72 / 1280 * 100)
-$size_80px: 6.25vw; // new (80 / 1280 * 100)
-$size_96px: 7.5vw; // new (96 / 1280 * 100)
-$size_10px: 0.7vw;
+$size_64px: 5vw;
+$size_72px: 5.62vw;
+$size_80px: 6.25vw;
+$size_96px: 7.5vw;
 $size_20px: 1.4vw;
-
-
-// $size_16px: 1.12vw;
-// $size_24px: 1.85vw;
-// $size_38px: 2.97vw;
-// $size_56px: 4.8vw;
-// $size_32px: 2.5vw;
-// $size_8px: 0.56vw;  //new
-// $size_20px: 1.4vw; //new
-// $size_10px: 0.7vw; //new
 
 $mt-42: 5.77vh;
 $mt-10: 1.2vh;
-
 
 $font-color-dark: $dark-green-100;
 $font-color-dark2: $gray-100;
@@ -245,48 +231,47 @@ $font-color-blue: $primary;
 $font-color-light-blue: $blue-light-100;
 
 $font-16: 1.12vw;
-$font-24: 1.64vw;
+$font-24: 1.875vw;
 $font-56: $size_56px;
 $font-12: 0.9375vw;
 $font-17: 1.3vw;
 $font-36: 2.9375vw;
 
-
-
 :root {
-  --base-unit-4k: 16px; 
-  --base-unit-large: 8px; 
-  --base-unit-large1: 9px; 
-  --base-unit-medium1: 6.4px; 
-  --base-unit-medium: 4.8px; 
+  --base-unit-4k: 16px;
+  --base-unit-large: 8px;
+  --base-unit-large1: 9px;
+  --base-unit-medium1: 6.4px;
+  --base-unit-medium: 4.8px;
   --scale-factor-margin-left: 54.5;
   --scale-factor-width: 51;
-  --scale-factor-padding: 2; 
-  --scale-factor-login-heading-height:14px;
-  --scale-factor-button-height:7;
-  --scale-factor-button-width:36;
-  --scale-margin-left:7;
-  --scale-margin-left-remember-me:6;
+  --scale-factor-padding: 2;
+  --scale-factor-login-heading-height: 14px;
+  --scale-factor-button-height: 7;
+  --scale-factor-button-width: 36;
+  --scale-margin-left: 7;
+  --scale-margin-left-remember-me: 6;
 
-  --scale-login-formheader-height:14;
-  --scale-login-formheader-margin-top:2;
-  --scale-login-formheader-margin-left:3;
-  --scale-login-formheader-logo-width:22.375;
-  --scale-login-formheader-logo-height:8.75;
-  //--scale-forgetpass-margin-top:49;
-  --scale-forgetpass-margin-top:2;
-  --scale-forgetpass-margin-left:31.675;
-  --scale-factor-login-button-margin-top:4.5;
-  --scale-factor-login-button-width:17;
-  --scale-factor-login-button-height:5;
-  --scale-factor-login-footer-containar-margin-right:8;
-  --scale-factor-get-started-button-height:8;
-  --scale-factor-get-started-button-width:22.625;
-  --scale-factor-error-margin-left:5;  
-  --registration-scale-factor-width:117;
+  --scale-login-formheader-height: 14;
+  --scale-login-formheader-margin-top: 2;
+  --scale-login-formheader-margin-left: 3;
+  --scale-login-formheader-logo-width: 22.375;
+  --scale-login-formheader-logo-height: 8.75;
+
+  --scale-forgetpass-margin-top: 2;
+  --scale-forgetpass-margin-left: 31.675;
+  --scale-factor-login-button-margin-top: 4.5;
+  --scale-factor-login-button-width: 17;
+  --scale-factor-login-button-height: 5;
+  --scale-factor-login-footer-containar-margin-right: 8;
+  --scale-factor-get-started-button-height: 8;
+  --scale-factor-get-started-button-width: 22.625;
+  --scale-factor-error-margin-left: 5;
+  --registration-scale-factor-width: 117;
   --registration-scale-factor-left: 21;
   --registration-scale-factor-top: 7;
-  --scale-button-font-size:1.5;
-  --scale-input-field-width:30;
-  --scale-input-field-height:7;
+  --scale-button-font-size: 1.5;
+  --scale-input-field-width: 30;
+  --scale-input-field-height: 7;
+  --reg-form-field-scale: 37;
 }

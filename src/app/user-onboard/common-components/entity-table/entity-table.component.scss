@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/variable.scss";
+// @import "../../../../assets/styles/variable.scss";
 
 .mat-header-row {
   height: 35px;
@@ -52,12 +52,12 @@
 }
 
 .entity-dialog {
- //width: $w440px;
- //width: 60.625vw;
- width: 400px;
+  //width: $w440px;
+  //width: 60.625vw;
+  width: 400px;
 }
-@media (max-width:2560px) and (min-width:1441px){
-  .entity-dialog{
+@media (max-width: 2560px) and (min-width: 1441px) {
+  .entity-dialog {
     width: 800px;
   }
 }
@@ -128,11 +128,10 @@
   margin: 12px 1vw;
 }
 
-
 .custom-badge .mat-badge-content {
-  background-color: #0073A5;
-  
-  color: white; 
+  background-color: #0073a5;
+
+  color: white;
 }
 
 ::ng-deep .mat-mdc-option .mdc-list-item__primary-text {
@@ -144,13 +143,13 @@
   text-decoration: inherit;
   text-transform: inherit;
   margin-right: auto;
-  font-family: 'Barlow';
+  font-family: "Barlow";
 }
 
 ::ng-deep .mdc-list-item {
   padding: 8px !important;
 }
-.action-button-container{
+.action-button-container {
   margin-left: 40px;
   margin-bottom: 20px;
 }

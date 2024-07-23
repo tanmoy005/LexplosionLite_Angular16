@@ -1,7 +1,8 @@
 .compliance-section {
   display: flex;
   padding: 4.41% 4.71%;
-
+  width: 720px; // to do make this width responsive
+  //height: 264px;
   &__left,
   &__middle,
   &__right {
@@ -15,10 +16,10 @@
     word-break: break-word;
   }
 
-  &__middle {
-    display: flex;
-    align-items: flex-end;
-  }
+  // &__middle {
+  //   display: flex;
+  //   align-items: flex-end;
+  // }
 
   &__right {
     display: flex;
@@ -31,20 +32,25 @@
     }
   }
   @media (min-width: 768px) and (max-width: 1279px) {
-    &__left,
+    &__left {
+      width: 50vw; // Specific width for __left on smaller screens
+    }
+
     &__middle,
     &__right {
-      width: 20vw;
+      width: 30vw;
       margin: 0 1vw;
       font-size: 0.9rem;
     }
   }
 
   @media (min-width: 1280px) {
-    &__left,
+    &__left {
+      width: 50vw; // Specific width for __left on larger screens
+    }
     &__middle,
     &__right {
-      width: 20vw;
+      width: 30vw;
       margin: 0 1vw;
       font-size: 1rem;
     }

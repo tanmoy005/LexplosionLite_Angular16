@@ -18,10 +18,7 @@
         </div>
         <mat-card-content>
           <form>
-            <mat-form-field
-              appearance="outline"
-              class="registration-big-text-input"
-            >
+            <mat-form-field appearance="outline" class="reg-field">
               <mat-label class="text_12_400_gray_1000">Name</mat-label>
               <input
                 matInput
@@ -33,10 +30,7 @@
               >
             </mat-form-field>
 
-            <mat-form-field
-              appearance="outline"
-              class="registration-big-text-input"
-            >
+            <mat-form-field appearance="outline" class="reg-field">
               <mat-label class="text_12_400_gray_1000">Business Name</mat-label>
               <input
                 matInput
@@ -48,10 +42,7 @@
               >
             </mat-form-field>
 
-            <mat-form-field
-              appearance="outline"
-              class="registration-big-text-input"
-            >
+            <mat-form-field appearance="outline" class="reg-field">
               <mat-label class="text_12_400_gray_1000"
                 >Headquarter Address</mat-label
               >
@@ -184,11 +175,17 @@
                   updateCheckBoxStateAndOpenConditionModal($event.checked)
                 "
               >
-                <span class="agree-to-label">
+                <!-- <span class="agree-to-label">
                   I agree to
                   <button mat-button (click)="termsConditionModalOpen()">
                     <p style="color: blue">terms and conditions</p>
                   </button>
+                </span> -->
+                <span class="agree-to-label">
+                  I agree to
+                  <a class="button-link" (click)="termsConditionModalOpen()">
+                    <p style="color: blue">terms and conditions</p>
+                  </a>
                 </span>
               </mat-checkbox>
             </div>
@@ -213,10 +210,7 @@
               </p>
             </div>
 
-            <mat-form-field
-              appearance="outline"
-              class="registration-big-text-input"
-            >
+            <mat-form-field appearance="outline" class="reg-field">
               <mat-label class="text_12_400_gray_1000"
                 >Email ID/Username</mat-label
               >
@@ -241,10 +235,7 @@
 
             <div class="row" style="width: 550px">
               <div class="col-lg-7 col-md-7 col-sm-7">
-                <mat-form-field
-                  appearance="outline"
-                  class="registration-big-text-input"
-                >
+                <mat-form-field appearance="outline" class="reg-field">
                   <mat-label class="text_12_400_gray_1000">Password</mat-label>
                   <input
                     type="password"
@@ -274,10 +265,7 @@
 
             <div class="row">
               <div class="col">
-                <mat-form-field
-                  appearance="outline"
-                  class="registration-big-text-input"
-                >
+                <mat-form-field appearance="outline" class="reg-field">
                   <mat-label class="text_12_400_gray_1000"
                     >Confirm Password</mat-label
                   >

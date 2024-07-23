@@ -192,6 +192,7 @@ p {
 .mat-mdc-form-field-error {
   display: flex !important;
   width: max-content !important;
+  font-size: xx-small;
 }
 
 .mat-mdc-form-field-subscript-wrapper,
@@ -248,4 +249,29 @@ p {
   width: 32px;
   height: 24px;
   margin-right: 1rem;
+}
+
+.button-link {
+  display: inline-block;
+
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: blue;
+}
+
+.button-link:hover,
+.button-link:focus {
+  text-decoration: underline;
+  background-color: rgba(0, 0, 0, 0.04);
 }

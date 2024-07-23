@@ -1,39 +1,44 @@
-@use 'variable' as var;
+@use "variable" as var;
 
-.big-text-input{
-    .mat-mdc-text-field-wrapper{
-        height: 56px;
-        min-width: 240px;
-        border-radius: 5px;
-        border: 1px solid var.$gray-700;
-        background-color: var.$gray-800;
-    }
-    .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-        font-size: 10px;
-    }
+.big-text-input {
+  .mat-mdc-text-field-wrapper {
+    height: 56px;
+    min-width: 240px;
+    border-radius: 5px;
+    //border: 1px solid var.$gray-700;
+    background-color: var.$gray-800;
+  }
+  .mat-mdc-form-field
+    .mdc-text-field--outlined
+    .mdc-notched-outline--upgraded
+    .mdc-floating-label--float-above {
+    font-size: 10px; // to do make this font-size to variable
+  }
 }
 
-.verify-email-big-text-input{
-    .mat-mdc-text-field-wrapper{
-        height: 56px;
-        width: 240px;
-        border-radius: 5px;
-        border: 1px solid var.$gray-700;
-        background-color: var.$gray-800;
-    }
-    .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-        font-size: 10px;
-    }
+.verify-email-big-text-input {
+  .mat-mdc-text-field-wrapper {
+    height: 56px;
+    width: 240px;
+    border-radius: 5px;
+    //border: 1px solid var.$gray-700;
+    background-color: var.$gray-800;
+  }
+  .mat-mdc-form-field
+    .mdc-text-field--outlined
+    .mdc-notched-outline--upgraded
+    .mdc-floating-label--float-above {
+    font-size: 10px;
+  }
 }
 
-
-
-
-.big-text-input{
-    .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
-        font-size: 8px !important;
-    }
-    
+.big-text-input {
+  .mat-mdc-form-field
+    .mdc-text-field--outlined
+    .mdc-notched-outline--upgraded
+    .mdc-floating-label--float-above {
+    font-size: 8px !important;
+  }
 }
 // .big-text-input-opunit-table{
 //     .mat-mdc-text-field-wrapper{
@@ -43,87 +48,77 @@
 //         border: 1px solid var.$gray-700;
 //         background-color: var.$gray-800;
 //     }
-    
+
 // }
 
-@media (min-width: 768px) and (max-width: 1023px){
-    .big-text-input-opunit-table{
-        .mat-mdc-text-field-wrapper{
-            height: 56px;
-            width: calc(var(--scale-input-field-width)*var(--base-unit-medium));;
-           
-        }
-        
+@media (min-width: 768px) and (max-width: 1023px) {
+  .big-text-input-opunit-table {
+    .mat-mdc-text-field-wrapper {
+      height: 56px;
+      width: calc(var(--scale-input-field-width) * var(--base-unit-medium));
     }
+  }
 }
-
 
 .big-text-input-entity-table .mat-mdc-text-field-wrapper {
-    height: 56px;
-    width: 240px;
-    border-radius: 5px;
-    border: 1px solid rgb(192, 192, 192);
-    background-color: rgb(244, 244, 244);
+  height: 56px;
+  width: 240px;
+  border-radius: 5px;
+  // border: 1px solid rgb(192, 192, 192);
+  background-color: rgb(244, 244, 244);
 }
 
-
-@media (max-width:2560px) and (min-width:1441px) {
-    .big-text-input-entity-table .mat-mdc-text-field-wrapper {
-        //height: calc(var(--scale-input-field-height)*var(--base-unit-4k));
-        width: calc(var(--scale-input-field-width)*var(--base-unit-4k));;
-       
-    }
+@media (max-width: 2560px) and (min-width: 1441px) {
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper {
+    //height: calc(var(--scale-input-field-height)*var(--base-unit-4k));
+    width: calc(var(--scale-input-field-width) * var(--base-unit-4k));
+  }
 }
 
 @media (max-width: 1440px) and (min-width: 1281px) {
-    .big-text-input-entity-table .mat-mdc-text-field-wrapper {
-       // height: calc(var(--scale-input-field-height)*var(--base-unit-large1));
-        width: calc(var(--scale-input-field-width)*var(--base-unit-large1));;
-       
-    }
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper {
+    // height: calc(var(--scale-input-field-height)*var(--base-unit-large1));
+    width: calc(var(--scale-input-field-width) * var(--base-unit-large1));
+  }
 }
 
 @media (width: 1280px) {
-    .big-text-input-entity-table .mat-mdc-text-field-wrapper {
-       // height: calc(var(--scale-input-field-height)*var(--base-unit-large));
-        width: calc(var(--scale-input-field-width)*var(--base-unit-large));;
-       
-    }
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper {
+    // height: calc(var(--scale-input-field-height)*var(--base-unit-large));
+    width: calc(var(--scale-input-field-width) * var(--base-unit-large));
+  }
 }
 
-@media (min-width: 1024px) and (max-width:1279px){
-    .big-text-input-entity-table .mat-mdc-text-field-wrapper {
-       // height: calc(var(--scale-input-field-height)*var(--base-unit-medium1));
-        width: calc(var(--scale-input-field-width)*var(--base-unit-medium1));;
-        
-    }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper {
+    // height: calc(var(--scale-input-field-height)*var(--base-unit-medium1));
+    width: calc(var(--scale-input-field-width) * var(--base-unit-medium1));
+  }
 }
 
-@media (min-width: 768px) and (max-width: 1023px){
-    .big-text-input-entity-table .mat-mdc-text-field-wrapper {
-       // height: calc(var(--scale-input-field-height)*var(--base-unit-medium));
-        width: calc(var(--scale-input-field-width)*var(--base-unit-large));;
-        
-    }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper {
+    // height: calc(var(--scale-input-field-height)*var(--base-unit-medium));
+    width: calc(var(--scale-input-field-width) * var(--base-unit-large));
+  }
 }
 
-
-.registration-big-text-input{
-    .mat-mdc-text-field-wrapper{
-        width:296px;
-        height: 56px;
-        border-radius: 5px;
-        border: 1px solid var.$gray-700;
-        background-color: var.$gray-800;
-    }
+.registration-big-text-input {
+  .mat-mdc-text-field-wrapper {
+    width: 296px;
+    height: 56px;
+    border-radius: 5px;
+    border: 1px solid var.$gray-700;
+    background-color: var.$gray-800;
+  }
 }
 
-.registration-phone-no-input{
-    .mat-mdc-text-field-wrapper{
-        width:192px;
-        height: 56px;
-        border-radius: 5px;
-        border: 1px solid var.$gray-700;
-        background-color: var.$gray-800;
-    }
+.registration-phone-no-input {
+  .mat-mdc-text-field-wrapper {
+    width: 192px;
+    height: 56px;
+    border-radius: 5px;
+    border: 1px solid var.$gray-700;
+    background-color: var.$gray-800;
+  }
 }

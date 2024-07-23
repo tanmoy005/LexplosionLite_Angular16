@@ -1,23 +1,27 @@
-.example-card {
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  .example-card.selected {
-    background-color: #786ACD;
-    border-color: #786ACD;
-  }
-  
-  .logo {
-    width: 100%; 
-  }
+// to do set all the colours as variable
+//@import "../../../../assets/styles/variable.scss";
+// @use "../../../../assets/styles/variable.scss" as var;
 
-  .example-card:hover {
-    background-color: rgba(113, 99, 204, 0.04);
-    border-color: rgba(120, 106, 205, 0.4);
-  }
-  
-  .example-card.selected:hover {
-    background-color: #786ACD;
-    border-color: #786ACD;
-  }
+.example-card {
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.example-card.selected {
+  background-color: #786acd;
+  border-color: #786acd;
+}
+
+.logo {
+  width: 100%;
+}
+
+.example-card:hover {
+  background-color: rgba(113, 99, 204, 0.04);
+  border-color: rgba(120, 106, 205, 0.4);
+}
+
+.example-card.selected:hover {
+  background-color: #786acd;
+  border-color: #786acd;
+}
