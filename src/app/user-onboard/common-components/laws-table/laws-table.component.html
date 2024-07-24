@@ -12,22 +12,22 @@
       <td mat-cell *matCellDef="let element">
         <div *ngFor="let law of element.lawName" style="margin: 0">
           <div *ngIf="law.name.toLowerCase().includes('act')">
-            {{ law.name }}
+            <p class="text_12_700_gray_1650">{{ law.name }}</p>
           </div>
         </div>
         <p style="margin: 0">
           <button mat-button class="read-with-button" (click)="openDialog()">
-            Read More
-            <img
+            <p class="text_12_400_gray_1650">Read More</p>
+            <!-- <img
               src="./assets/images/icons/lawsTableReadMore.svg"
               alt="read-more-icon"
               style="margin-left: 8px"
-            />
+            /> -->
           </button>
         </p>
         <div *ngFor="let law of element.lawName" style="margin: 0">
           <div *ngIf="law.name.toLowerCase().includes('rule')">
-            {{ law.name }}
+            <p class="text_12_700_gray_1650">{{ law.name }}</p>
           </div>
         </div>
       </td>

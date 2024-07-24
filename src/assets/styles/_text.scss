@@ -160,9 +160,23 @@
     // todo change the class name like this one, add color code
     @include text-model(var.$font-12, 400, var.$gray-1200, Barlow, 14.4px);
   }
+  .text_12_400_gray_1650 {
+    // todo change the class name like this one, add color code
+    @include text-model(var.$font-12, 400, var.$gray-1650, Barlow, 14.4px);
+  }
 }
 
 .text_12_700_gray_1000 {
   // todo change the class name like this one, add color code
   @include text-model(var.$font-12, 700, var.$gray-1000, Barlow, 14.4px);
+}
+
+.text_12_700_gray_1650 {
+  // todo change the class name like this one, add color code
+  @include text-model(var.$font-12, 700, var.$gray-1650, Barlow, 14.4px);
+}
+
+.text_12_400_gray_400 {
+  // todo change the class name like this one, add color code
+  @include text-model(var.$font-12, 400, var.$gray-400, Barlow, 14.4px);
 }
