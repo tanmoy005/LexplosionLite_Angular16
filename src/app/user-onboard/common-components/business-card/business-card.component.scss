@@ -2,9 +2,9 @@
 //@import url("../../../../assets/styles/variable.scss");
 //@import "../../../../assets/styles/variable.scss";
 
-.example-card {
-  max-width: 400px;
-}
+// .example-card {
+//   max-width: 400px;
+// }
 
 .business-field-container {
   display: flex;
@@ -75,3 +75,13 @@
 // .country-of-operation{
 //   display: fl;
 // }
+
+.margin-left-lg {
+  margin-left: 55px;
+}
+
+@media (max-width: 1279px) {
+  .margin-left-lg {
+    margin-left: 0;
+  }
+}

@@ -5,7 +5,7 @@
 
   <div class="page-link-container">
     <div
-      [class.selected]="selectedMenuItem === menuItem.path"
+      [class.selected]="isSelectedMenuItem(menuItem.path)"
       class="link-item text_16_700"
       *ngFor="let menuItem of menuItemList"
       (click)="handleMenuItemClick(menuItem.path)"

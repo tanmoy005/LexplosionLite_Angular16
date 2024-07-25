@@ -18,7 +18,10 @@
       </div>
       <mat-card-content>
         <form>
-          <mat-form-field appearance="outline" class="reg-field">
+          <mat-form-field
+            appearance="outline"
+            class="registration-big-text-input"
+          >
             <mat-label class="text_12_400_gray_1000">Name</mat-label>
             <input
               matInput
@@ -30,7 +33,10 @@
             >
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="reg-field">
+          <mat-form-field
+            appearance="outline"
+            class="registration-big-text-input"
+          >
             <mat-label class="text_12_400_gray_1000">Business Name</mat-label>
             <input
               matInput
@@ -42,7 +48,10 @@
             >
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="reg-field">
+          <mat-form-field
+            appearance="outline"
+            class="registration-big-text-input"
+          >
             <mat-label class="text_12_400_gray_1000"
               >Headquarter Address</mat-label
             >
@@ -59,29 +68,6 @@
           </mat-form-field>
 
           <div style="width: 296px" class="phn-section">
-            <!-- <div class="bg-dropdown-white">
-                <mat-form-field appearance="outline">
-                  <div class="row">
-                    <div class="col-1" style="padding-right: 10px">
-                      <span class="country-code">+91</span>
-                    </div>
-                    <div class="col-6">
-                      <img
-                        src="./assets/images/indian_flag.webp"
-                        alt="Flag"
-                        class="flag-image"
-                      />
-                    </div>
-                  </div>
-                  <input
-                    matInput
-                    name="countryCode"
-                    [formControl]="countryCodeFormControl"
-                    readonly
-                  />
-                </mat-form-field>
-              </div> -->
-
             <div class="bg-dropdown-white" (click)="toggleDropdown()">
               <mat-form-field appearance="outline">
                 <div class="row" *ngIf="!isDropdownOpen">
@@ -137,7 +123,7 @@
 
             <div>
               <mat-form-field
-                class="example-full-width registration-phone-no-input"
+                class="registration-phone-no-input"
                 appearance="outline"
               >
                 <mat-label class="text_12_400_gray_1000"
@@ -206,7 +192,10 @@
             <p class="login-credential-typography">Create login Credentials</p>
           </div>
 
-          <mat-form-field appearance="outline" class="reg-field">
+          <mat-form-field
+            appearance="outline"
+            class="registration-big-text-input"
+          >
             <mat-label class="text_12_400_gray_1000"
               >Email ID/Username</mat-label
             >
@@ -231,7 +220,10 @@
 
           <div class="row" style="width: 550px">
             <div class="col-lg-7 col-md-7 col-sm-7">
-              <mat-form-field appearance="outline" class="reg-field">
+              <mat-form-field
+                appearance="outline"
+                class="registration-big-text-input"
+              >
                 <mat-label class="text_12_400_gray_1000">Password</mat-label>
                 <input
                   type="password"
@@ -261,7 +253,10 @@
 
           <div class="row">
             <div class="col">
-              <mat-form-field appearance="outline" class="reg-field">
+              <mat-form-field
+                appearance="outline"
+                class="registration-big-text-input"
+              >
                 <mat-label class="text_12_400_gray_1000"
                   >Confirm Password</mat-label
                 >

@@ -18,7 +18,7 @@
                 <input matInput #business />
               </mat-form-field>
             </div>
-            <div class="col-lg-1" style="margin-left: 20px">
+            <div class="col-lg-1" style="margin-left: 18px">
               <button
                 mat-icon-button
                 aria-label="Example icon button with a delete icon"
@@ -54,12 +54,15 @@
 
         <div class="col-lg-4">
           <div class="col-lg-10">
-            <p class="field-name-typography" style="margin-bottom: 10px">
+            <p
+              class="field-name-typography margin-left-lg"
+              style="margin-bottom: 10px"
+            >
               Country of Operation
             </p>
           </div>
           <div class="row bg-dropdown-business-card">
-            <div class="col-lg-10">
+            <div class="col-lg-10 margin-left-lg">
               <app-dropdown
                 [label]="'Select one or more countries'"
                 [options]="countryList"

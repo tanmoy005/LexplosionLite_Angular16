@@ -56,4 +56,10 @@ export class InitialLayoutHeaderComponent implements OnInit, OnDestroy {
   handleMenuItemClick(path: string) {
     this.router.navigate([path]);
   }
+  isSelectedMenuItem(path: string): boolean {
+    return (
+      this.selectedMenuItem === path ||
+      (path === 'home' && this.selectedMenuItem === '')
+    );
+  }
 }

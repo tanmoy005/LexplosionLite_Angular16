@@ -22,23 +22,25 @@
   </div>
 </div> -->
 
-
 <div class="row">
   <div
     class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
     *ngFor="let item of checkboxItems; let i = index"
   >
-    <mat-card 
-    appearance="outlined"
+    <mat-card
+      appearance="outlined"
       class="example-card"
       (click)="onCardClick(i)"
-      [ngClass]="{'selected': item.checked}"
+      [ngClass]="{ selected: item.checked }"
     >
       <mat-card-content>
         <div class="row">
           <div class="col-lg-12">
-            <!-- <img [src]="item.imgSrc" class="logo" /> -->
-            <img [src]="item.checked ? item.selectedImgSrc : item.imgSrc" class="logo" />
+            <img
+              [src]="item.checked ? item.selectedImgSrc : item.imgSrc"
+              class="logo"
+              [ngClass]="{ 'logo-up': item.name === 'komrisk' }"
+            />
           </div>
         </div>
       </mat-card-content>
