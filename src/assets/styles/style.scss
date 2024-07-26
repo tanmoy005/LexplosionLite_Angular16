@@ -753,7 +753,7 @@
   content: url("../images/Down.png");
   position: absolute;
   top: -6px;
-  left: -16px;
+  left: -12px;
 }
 
 .no_of_emp_container {
@@ -1408,4 +1408,10 @@ input.mdc-radio__native-control:focus,
   -webkit-text-decoration: var(--mdc-typography-body1-text-decoration, inherit);
   text-decoration: var(--mdc-typography-body1-text-decoration, inherit);
   text-transform: var(--mdc-typography-body1-text-transform, none);
+}
+
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+  align-items: flex-start;
+  padding: 0%;
+  margin-bottom: -32px;
 }
