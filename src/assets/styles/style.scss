@@ -1028,9 +1028,6 @@ input.mdc-radio__native-control:focus,
     margin-left: calc(
       var(--base-unit-large1) * var(--registration-scale-factor-left)
     );
-    // margin-top: calc(
-    //   var(--base-unit-large1) * var(--registration-scale-factor-top)
-    // );
   }
   .phone-section {
     width: calc(var(--base-unit-large1) * var(--reg-form-field-scale));
@@ -1315,25 +1312,6 @@ input.mdc-radio__native-control:focus,
 .text-center {
   text-align: center !important;
 }
-// .mdc-list-item {
-//   padding: 16px !important;
-// }
-
-// .mat-mdc-menu-content .mat-mdc-menu-item .mdc-list-item__primary-text {
-//   -moz-osx-font-smoothing: grayscale;
-//   // -webkit-font-smoothing: antialiased;
-//   font-family: var(
-//     --mdc-typography-body1-font-family,
-//     var(--mdc-typography-font-family, barlow)
-//   );
-//   font-size: 12px;
-//   line-height: var(--mdc-typography-body1-line-height, 14.4px);
-//   font-weight: var(--mdc-typography-body1-font-weight, 400);
-//   letter-spacing: var(--mdc-typography-body1-letter-spacing, 0.03125em);
-//   -webkit-text-decoration: var(--mdc-typography-body1-text-decoration, inherit);
-//   text-decoration: var(--mdc-typography-body1-text-decoration, inherit);
-//   text-transform: var(--mdc-typography-body1-text-transform, none);
-// }
 
 //=================== reg field =============//
 
@@ -1410,9 +1388,6 @@ input.mdc-radio__native-control:focus,
       width: calc(
         var(--base-unit-medium) * var(--scale-factor-button-width)
       ) !important;
-      // margin-left: calc(
-      //   var(--base-unit-medium) * var(--scale-margin-left)
-      // ) !important;
     }
   }
 }

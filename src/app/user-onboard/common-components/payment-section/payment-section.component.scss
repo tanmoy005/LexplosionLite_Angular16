@@ -1,131 +1,103 @@
-.payment-section-heading{
-   
-    margin-bottom: 10px;
-    margin-left: 12px;
+.payment-section-heading {
+  margin-bottom: 10px;
+  margin-left: 12px;
 }
 
-.payment-heading-typography{
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-
+.payment-heading-typography {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
 }
 
-.payment-other-typography{
-    font-family: Inter;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-
+.payment-other-typography {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
 }
 
-.subscription-unit-card{
-    margin-bottom: 15px;
+.subscription-unit-card {
+  margin-bottom: 15px;
 }
 
-.payment-details-columns{
-    margin-bottom: 7px;
+.payment-details-columns {
+  margin-bottom: 7px;
 }
 
 .payment-columns-container {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .payment-column {
-  
-    padding: 10px;
-   
+  padding: 10px;
 }
 
-.payment-details-rows{
-    margin-bottom: 7px;
+.payment-details-rows {
+  margin-bottom: 7px;
 }
 
-.payment-card-1{
-    width: 720px;
-    height: 40px;
-    // top: 344px;
-    // left: 168px;
-    gap: 0px;
-    border-radius: 5px 0px 0px 0px;
-    opacity: 0px;
-
+.payment-card-1 {
+  width: 720px;
+  height: 40px;
+  gap: 0px;
+  border-radius: 5px 0px 0px 0px;
+  opacity: 0px;
 }
 
-// .different-modes-payment-details {
-//   // Removes the default gutter (padding) between columns
-//   margin-left: 0;
-//   margin-right: 0;
-
-//   .col-lg-5,
-//   .col-lg-2 {
-//     padding-left: 0;
-//     padding-right: 0;
-
-//     // Optionally, you can add some margin between columns if necessary
-//     &:not(:last-child) {
-//       margin-right: 8px; // Adjust this value as needed
-//     }
-//   }
-// }
-
-
-.payment-page-typography{
-    font-family: Barlow;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 24px;
-    text-align: left;
-    color: #58595B;
-    margin-top:-12px ;
-    margin-left: 12px;
-
+.payment-page-typography {
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: #58595b;
+  margin-top: -12px;
+  margin-left: 12px;
 }
 
 .payment-page-section-1 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px;
-    margin-top:-12px ;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+  margin-top: -12px;
+}
 
-  .checkbox-section{
-    margin-right: 12px;
-    margin-top: -4px;
-    .mdc-form-field>label {
-        margin-left: 0;
-        margin-right: auto;
-        padding-left: 4px;
-        padding-right: 0;
-        order: 0;
-        font-family: barlow;
-    }
+.checkbox-section {
+  margin-right: 12px;
+  margin-top: -4px;
+  .mdc-form-field > label {
+    margin-left: 0;
+    margin-right: auto;
+    padding-left: 4px;
+    padding-right: 0;
+    order: 0;
+    font-family: barlow;
   }
+}
 
-  .payment-details-container {
-    display: flex;
-    gap: 10px; 
-  }
+.payment-details-container {
+  display: flex;
+  gap: 10px;
+}
 
-  .payment-page-typography-2{
-    font-family: Barlow;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: left;
+.payment-page-typography-2 {
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+}
 
-  }
-  
-  .payment-page-typography-3{
-    font-family: Barlow;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: left;
-    color: #6188D8;
-  }
+.payment-page-typography-3 {
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  color: #6188d8;
+}

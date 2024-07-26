@@ -39,7 +39,6 @@ function transformStates(
   return data.map((item) => ({
     value: item.id,
     label: item.name,
-    // description: item?.description ?? '', // Uncomment if you are using description
   }));
 }
 

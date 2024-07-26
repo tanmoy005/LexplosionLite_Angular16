@@ -1,50 +1,28 @@
-// .payment-page-card-layout{
-//     // width: 720px;
-//     // height: 40px;
-//     .mat-mdc-card-outlined {
-//         border-width: var(--mdc-outlined-card-outline-width);
-//         border-style: solid;
-//         border-color: var(--mdc-outlined-card-outline-color);
-//         border-radius: var(--mdc-outlined-card-container-shape);
-//         background-color: var(--mdc-outlined-card-container-color);
-//         box-shadow: var(--mdc-outlined-card-container-elevation);
-//         // width: 720px;
-//         // height: 40px;
-//     }
-// }
-
 .payment-page-card-layout {
-    .responsive-card {
-      width: var(--card-width);
-      height: var(--card-height);
-      border-width: var(--mdc-outlined-card-outline-width);
-      border-style: solid;
-      border-color: #786ACD0A;
-      border-radius: var(--mdc-outlined-card-container-shape);
-      background-color: #786ACD0A;
-      ;
-      box-shadow: var(--mdc-outlined-card-container-elevation);
-  
-      // Media queries for responsiveness
-      @media (max-width: 1200px) {
-        width: calc(var(--card-width) * 0.8);
-        //height: calc(var(--card-height) * 0.8);
-      }
-  
-      @media (max-width: 992px) {
-        width: calc(var(--card-width) * 0.6);
-       // height: calc(var(--card-height) * 0.6);
-      }
-  
-      @media (max-width: 768px) {
-        width: calc(var(--card-width) * 0.5);
-       // height: calc(var(--card-height) * 0.5);
-      }
-  
-      @media (max-width: 576px) {
-        width: calc(var(--card-width) * 0.4);
-       // height: calc(var(--card-height) * 0.4);
-      }
+  .responsive-card {
+    width: var(--card-width);
+    height: var(--card-height);
+    border-width: var(--mdc-outlined-card-outline-width);
+    border-style: solid;
+    border-color: #786acd0a;
+    border-radius: var(--mdc-outlined-card-container-shape);
+    background-color: #786acd0a;
+    box-shadow: var(--mdc-outlined-card-container-elevation);
+
+    @media (max-width: 1200px) {
+      width: calc(var(--card-width) * 0.8);
+    }
+
+    @media (max-width: 992px) {
+      width: calc(var(--card-width) * 0.6);
+    }
+
+    @media (max-width: 768px) {
+      width: calc(var(--card-width) * 0.5);
+    }
+
+    @media (max-width: 576px) {
+      width: calc(var(--card-width) * 0.4);
     }
   }
-  
+}
