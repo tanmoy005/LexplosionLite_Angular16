@@ -18,7 +18,7 @@ td {
   margin-top: 15px;
 }
 
-.example-button-row {
+.example-button-row-register {
   display: flex;
   justify-content: left;
   align-items: left;
@@ -167,7 +167,7 @@ p {
 }
 
 .mdc-button .mdc-button__label {
-  position: relative;
+  /* position: relative; */
   font-family: "Barlow";
   font-size: 12px;
 }

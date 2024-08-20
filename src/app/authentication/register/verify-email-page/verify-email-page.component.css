@@ -74,13 +74,13 @@ td {
   color: #786acd;
 }
 
-.mat-mdc-text-field-wrapper {
+/* .mat-mdc-text-field-wrapper {
   background-color: #f4f4f4 !important;
   padding: 8px;
   border-radius: 0px;
   font-size: 16px;
   border-color: #c0c0c0;
-}
+} */
 
 .mat-form-field-appearance-outline.mat-focused {
   box-shadow: 0 0 5px white;
@@ -91,7 +91,13 @@ td {
 }
 
 .mdc-button .mdc-button__label {
-  position: relative;
+  /* position: relative; */
   font-family: "Barlow";
+  font-size: 12px;
+}
+
+.otp-verification-button {
+  width: 136px;
+  height: 40px;
   font-size: 12px;
 }

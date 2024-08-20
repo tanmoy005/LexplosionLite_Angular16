@@ -71,12 +71,12 @@
             <div class="bg-dropdown-white" (click)="toggleDropdown()">
               <mat-form-field appearance="outline">
                 <div class="row" *ngIf="!isDropdownOpen">
-                  <div class="col-1" style="padding-right: 10px">
+                  <div class="col-1" style="padding-right: 5px">
                     <span class="country-code">{{
                       selectedCountry?.label
                     }}</span>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6" style="padding-right: 5px">
                     <img
                       [src]="selectedCountry?.icon"
                       alt="Flag"
