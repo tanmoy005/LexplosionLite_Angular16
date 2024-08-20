@@ -96,6 +96,12 @@ td {
   font-size: 12px;
 }
 
+.mat-mdc-form-field-error {
+  display: flex !important;
+  width: max-content !important;
+  font-size: xx-small;
+}
+
 .otp-verification-button {
   width: 136px;
   height: 40px;
