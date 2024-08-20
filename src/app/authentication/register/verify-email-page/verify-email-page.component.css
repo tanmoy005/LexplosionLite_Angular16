@@ -95,3 +95,9 @@ td {
   font-family: "Barlow";
   font-size: 12px;
 }
+
+.mat-mdc-form-field-error {
+  display: flex !important;
+  width: max-content !important;
+  font-size: xx-small;
+}

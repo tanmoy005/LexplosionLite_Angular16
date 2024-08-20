@@ -4,8 +4,11 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { SnackbarService } from '../shared/snackbar.service';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
-import { demoKomriskFeaturesListInterface, demoKomriskAndKomriskLiteAPIFeaturesList } from './../shared/menu-items/demokomriskFeaturesList';
-import { StateListInterface,StateList } from '../shared/menu-items/state-list';
+import {
+  demoKomriskFeaturesListInterface,
+  demoKomriskAndKomriskLiteAPIFeaturesList,
+} from './../shared/menu-items/demokomriskFeaturesList';
+import { StateListInterface, StateList } from '../shared/menu-items/state-list';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,6 +27,8 @@ export class ApiService {
     applicableLaws: 'entity-details/applicable-laws',
     entityTree: 'entity-details/entity/tree',
     definition: 'definition',
+    sendOTP: 'verification/send-otp',
+    verifyOTP: 'verification/verify-otp',
   };
 
   private endpointsWithoutAuthToken = [
@@ -76,6 +81,14 @@ export class ApiService {
     return this.postData(this.endpoints.createUser, data);
   }
 
+  postSendOTP(data: any): Observable<any> {
+    return this.postData(this.endpoints.sendOTP, data);
+  }
+
+  postVerifyOTP(data: any): Observable<any> {
+    return this.postData(this.endpoints.verifyOTP, data);
+  }
+
   postCreateEntity(data: any): Observable<any> {
     return this.postData(this.endpoints.addEntity, data);
   }
@@ -107,6 +120,6 @@ export class ApiService {
     return demoKomriskAndKomriskLiteAPIFeaturesList;
   }
   getDemoStateData(id: number): StateListInterface | undefined {
-    return StateList.find(item => item.id === id);
+    return StateList.find((item) => item.id === id);
   }
 }

@@ -24,6 +24,7 @@ import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
+import { ApiService } from 'src/app/services/api.service';
 
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -75,7 +76,8 @@ export class AppSideRegisterComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private snackbar: SnackbarService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private apiService: ApiService
   ) {}
 
   @ViewChild('countrySelect') countrySelect: MatSelect;
@@ -198,12 +200,37 @@ export class AppSideRegisterComponent implements OnInit {
   }
 
   handleRegistration(event: any) {
-    const stateVariabl = {
-      businessname: this.businessname,
-    };
     const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
+
     if (isRegistrationCredentialsFine) {
-      this.router.navigate(['/verify-email'], { state: stateVariabl });
+      const stateVariable = {
+        username: this.username,
+        businessname: this.businessname,
+        headquarterAddress: this.headquarterAddress,
+        countryCode: this.countryCode,
+        phoneNumber: this.phoneNumber,
+        email: this.email,
+        password: this.password,
+      };
+      // const payload = { email: this.email };
+      // try {
+      //   this.apiService.postSendOTP(payload).subscribe((response) => {
+      //     if (response.success) {
+      //       this.snackbar.showSuccess('OTP successfully sent to your email.');
+      //       this.router.navigate(['/verify-email'], { state: stateVariable });
+      //     } else {
+      //       this.snackbar.showError(
+      //         'Some error occurred while verifying your email!'
+      //       );
+      //     }
+      //   });
+      // } catch (error) {
+      //   this.snackbar.showError(
+      //     'Some error occurred while verifying your email!'
+      //   );
+      // }
+
+      this.router.navigate(['/verify-email'], { state: stateVariable });
     } else {
       this.snackbar.showError(
         'Please enter all field values in correct format and check terms and conditions.'

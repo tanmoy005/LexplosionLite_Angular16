@@ -21,7 +21,7 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { EncryptStorage } from 'encrypt-storage';
-import { environment } from 'dotenv';
+import { environment, loginSource } from 'dotenv';
 
 @Component({
   selector: 'app-login',
@@ -67,6 +67,7 @@ export class AppSideLoginComponent {
   }
 
   loginResponse: any;
+  loginSource: string = loginSource;
 
   fetchDefinitions() {
     const fieldPayload = [
@@ -97,7 +98,11 @@ export class AppSideLoginComponent {
   }
 
   handleLogin(event: any) {
-    const loginPayload = { unique_key: this.username, password: this.password };
+    const loginPayload = {
+      unique_key: this.username,
+      password: this.password,
+      source: this.loginSource,
+    };
     try {
       this.authService.userLogin(loginPayload).subscribe((response) => {
         this.snackbar.showSuccess('Login Successful!');
