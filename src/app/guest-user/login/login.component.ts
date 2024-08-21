@@ -22,6 +22,7 @@ import {
 } from '@angular/material/snack-bar';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment, loginSource } from 'dotenv';
+import { operatingUnitFetchDefinitions } from 'src/app/user-onboard/component-interfaces';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +47,8 @@ export class AppSideLoginComponent {
     private router: Router,
     private _snackBar: MatSnackBar,
     private apiService: ApiService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private opUnitFetchObj: operatingUnitFetchDefinitions
   ) {}
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
@@ -69,33 +71,35 @@ export class AppSideLoginComponent {
   loginResponse: any;
   loginSource: string = loginSource;
 
-  fetchDefinitions() {
-    const fieldPayload = [
-      'entityTypes',
-      'industryActivities',
-      'states',
-      'operatingUnitTypes',
-      'komriskLawCategories',
-    ];
+  // THIS FUNCTION IS BEING MOVED IN AND EXPORTED FROM - src\app\user-onboard\component-interfaces.ts
 
-    this.apiService.getFieldDefinition(fieldPayload).subscribe((response) => {
-      const encryptStorage = new EncryptStorage(environment.localStorageKey);
-      encryptStorage.setItem('entityTypes', response.data.entityTypes);
-      encryptStorage.setItem(
-        'industryActivities',
-        response.data.industryActivities
-      );
-      encryptStorage.setItem('states', response.data.states);
-      encryptStorage.setItem(
-        'operatingUnitTypes',
-        response.data.operatingUnitTypes
-      );
-      encryptStorage.setItem(
-        'komriskLawCategories',
-        response.data.komriskLawCategories
-      );
-    });
-  }
+  // fetchDefinitions() {
+  //   const fieldPayload = [
+  //     'entityTypes',
+  //     'industryActivities',
+  //     'states',
+  //     'operatingUnitTypes',
+  //     'komriskLawCategories',
+  //   ];
+
+  //   this.apiService.getFieldDefinition(fieldPayload).subscribe((response) => {
+  //     const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //     encryptStorage.setItem('entityTypes', response.data.entityTypes);
+  //     encryptStorage.setItem(
+  //       'industryActivities',
+  //       response.data.industryActivities
+  //     );
+  //     encryptStorage.setItem('states', response.data.states);
+  //     encryptStorage.setItem(
+  //       'operatingUnitTypes',
+  //       response.data.operatingUnitTypes
+  //     );
+  //     encryptStorage.setItem(
+  //       'komriskLawCategories',
+  //       response.data.komriskLawCategories
+  //     );
+  //   });
+  // }
 
   handleLogin(event: any) {
     const loginPayload = {
@@ -103,16 +107,21 @@ export class AppSideLoginComponent {
       password: this.password,
       source: this.loginSource,
     };
-    try {
-      this.authService.userLogin(loginPayload).subscribe((response) => {
-        this.snackbar.showSuccess('Login Successful!');
-        const encryptStorage = new EncryptStorage(environment.localStorageKey);
-        encryptStorage.setItem('login-details', response);
-        this.fetchDefinitions();
-        this.router.navigate(['/entity-details'], { state: { entity: '' } });
-      });
-    } catch (error) {
-      this.snackbar.showError('Some error occurred while logging you in!');
-    }
+
+    // THIS FUNCTION IS BEING MOVED IN AND EXPORTED FROM - src\app\guest-user\login\login.component.ts
+    // try {
+    //   this.authService.userLogin(loginPayload).subscribe((response) => {
+    //     this.snackbar.showSuccess('Login Successful!');
+    //     const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    //     encryptStorage.setItem('login-details', response);
+    //     //this.fetchDefinitions();
+    //     this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
+    //     this.router.navigate(['/entity-details'], { state: { entity: '' } });
+    //   });
+    // } catch (error) {
+    //   this.snackbar.showError('Some error occurred while logging you in!');
+    // }
+
+    this.authService.handleUserLogin(loginPayload);
   }
 }

@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
+import { SnackbarService } from '../shared/snackbar.service';
+import { environment } from 'dotenv';
+import { EncryptStorage } from 'encrypt-storage';
+import { Router } from '@angular/router';
+import { operatingUnitFetchDefinitions } from '../user-onboard/component-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +15,15 @@ export class UserAuthenticationService {
   CreateBusinessURL = 'https://enginebackendqa.komrisk.com/v1/company';
   CreateUserURL = 'https://enginebackendqa.komrisk.com/v1/user';
   loginURL = 'https://enginebackendqa.komrisk.com/v1/login';
+  environment: any = environment;
 
-  constructor(private http: HttpClient, private apiService: ApiService) {}
+  constructor(
+    private http: HttpClient,
+    private apiService: ApiService,
+    private snackbar: SnackbarService,
+    private router: Router,
+    private opUnitFetchObj: operatingUnitFetchDefinitions
+  ) {}
 
   userRegistration(data: any): Observable<any> {
     return this.http.post(this.CreateBusinessURL, data);
@@ -24,7 +36,20 @@ export class UserAuthenticationService {
   userLogin(data: any): Observable<any> {
     return this.apiService.postLoginData(data);
   }
+
+  handleUserLogin(payload: any) {
+    try {
+      this.userLogin(payload).subscribe((response) => {
+        this.snackbar.showSuccess('Login Successful!');
+        const encryptStorage = new EncryptStorage(environment.localStorageKey);
+        encryptStorage.setItem('login-details', response);
+        this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
+        this.router.navigate(['/entity-details'], { state: { entity: '' } });
+      });
+    } catch (error) {
+      this.snackbar.showError('Some error occurred while logging you in!');
+    }
+  }
 }
 
-export class EntityService {
-}
+export class EntityService {}

@@ -16,7 +16,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
-
+import { loginSource } from 'dotenv';
+import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
 @Component({
   selector: 'app-verify-email-page',
   templateUrl: './verify-email-page.component.html',
@@ -47,7 +48,8 @@ export class VerifyEmailPageComponent {
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private authService: UserAuthenticationService
   ) {
     const navigation = this.router.getCurrentNavigation();
 
@@ -62,6 +64,8 @@ export class VerifyEmailPageComponent {
   }
 
   handleRegistration(event: any) {
+    // UNCOMMENT THIS PORTION WHEN THE "VERIFY OTP" API IS READY
+
     // const payload = { otp: this.otp, email: this.stateData.email };
     // try {
     //   this.apiService.postVerifyOTP(payload).subscribe((response) => {
@@ -69,7 +73,42 @@ export class VerifyEmailPageComponent {
     //       this.snackbar.showSuccess(
     //         'OTP verified successfully! You can login to your profile.'
     //       );
-    //       this.router.navigate(['/login']);
+
+    //       const usernameParts = this.stateData.username?.trim().split(' ') || [
+    //         '',
+    //       ];
+
+    //       const payload = {
+    //         name: this.stateData.username,
+    //         description: this.stateData.headquarterAddress,
+    //         firstName: usernameParts[0] || '', // First word as the first name
+    //         lastName: usernameParts.slice(1).join(' ') || '', // Remaining words as the last name
+    //         email: this.stateData.email,
+    //         mobile: this.stateData.phoneNumber,
+    //         password: this.stateData.password,
+    //         source: loginSource,
+    //       };
+
+    //       try {
+    //         this.apiService
+    //           .postCreateAdminCompany(payload)
+    //           .subscribe((response) => {
+    //             if (response.success) {
+    //               const payload = {
+    //                 unique_key: this.stateData.username,
+    //                 password: this.stateData.password,
+    //                 source: loginSource,
+    //               };
+    //               this.authService.handleUserLogin(payload);
+    //             }
+    //           });
+    //       } catch (e) {
+    //         this.snackbar.showError(
+    //           'Some error occurred while creating your admin profile.'
+    //         );
+    //       }
+
+    //       //this.router.navigate(['/login']);
     //     } else {
     //       this.snackbar.showError(
     //         'Some error occurred while verifying your email!'
@@ -82,7 +121,39 @@ export class VerifyEmailPageComponent {
     //   );
     // }
 
-    this.router.navigate(['/login']);
+    // COMMENT OR THIS PORTION AS FOR NOW, JUST ADMIN AND COMPANY CREATION TAKES PLACE
+    const usernameParts = this.stateData.username?.trim().split(' ') || [''];
+
+    const payload = {
+      name: this.stateData.username,
+      description: this.stateData.headquarterAddress,
+      firstName: usernameParts[0] || '', // First word as the first name
+      lastName: usernameParts.slice(1).join(' ') || '', // Remaining words as the last name
+      email: this.stateData.email,
+      mobile: this.stateData.phoneNumber,
+      password: this.stateData.password,
+      source: loginSource,
+    };
+
+    try {
+      this.apiService.postCreateAdminCompany(payload).subscribe((response) => {
+        if (response.success) {
+          const payload = {
+            unique_key: this.stateData.email,
+            password: this.stateData.password,
+            source: loginSource,
+          };
+          this.authService.handleUserLogin(payload);
+        }
+      });
+    } catch (e) {
+      this.snackbar.showError(
+        'Some error occurred while creating your admin profile.'
+      );
+    }
+
+    // UNCOMMENT THIS PORTION AND COMMENT OTHER ONES IF ONLY ROUTING IS WHAT YOU WANT TO ENABLE
+    // this.router.navigate(['/login']);
   }
 
   handleBackToRegistration(event: any) {
