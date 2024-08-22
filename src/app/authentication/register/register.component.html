@@ -67,6 +67,25 @@
             >
           </mat-form-field>
 
+          <!-- <app-dropdown
+            [label]="'Select one or more countries'"
+            [options]="countryList"
+            [IsMultiSelection]="true"
+            [IsRequired]="false"
+            (selectedValueChange)="onCountryValueChange($event)"
+          >
+          </app-dropdown> -->
+          <div class="bg-dropdown-register">
+            <app-dropdown
+              [label]="'Select one or more countries'"
+              [options]="countryNameList"
+              [IsMultiSelection]="true"
+              [IsRequired]="false"
+              (selectedValueChange)="onCountryValueChange($event)"
+            >
+            </app-dropdown>
+          </div>
+
           <div style="width: 296px" class="phn-section">
             <div class="bg-dropdown-white" (click)="toggleDropdown()">
               <mat-form-field appearance="outline">
@@ -290,7 +309,7 @@
             (click)="handleRegistration($event)"
             class="btn-primary-md registration-email-verification-button"
           >
-            Verify Email ID
+            Get OTP
           </button>
         </form>
       </mat-card-content>

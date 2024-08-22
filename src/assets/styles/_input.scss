@@ -126,4 +126,7 @@
     //border: 1px solid var.$gray-700;
     background-color: var.$gray-800;
   }
+  .mat-mdc-form-field-error {
+    color: var(--mdc-theme-error, #e50f21);
+  }
 }

@@ -1013,6 +1013,28 @@ input.mdc-radio__native-control:focus,
   }
 }
 
+@mixin app-dropdown-fixed-width($height: 40px, $width) {
+  .app-dropdown {
+    .mat-mdc-text-field-wrapper {
+      background-color: var.$white !important;
+      border-radius: 3px !important;
+      //border: 1px solid var.$blue-light-200 !important;
+      width: $width;
+      height: $height !important;
+      align-items: center;
+    }
+
+    .mat-mdc-select-arrow svg {
+      top: -137%;
+    }
+
+    .mat-mdc-form-field-infix {
+      padding: 0 !important;
+      min-height: 0;
+    }
+  }
+}
+
 @mixin dropdown-label($mb: 0px) {
   height: 100%;
   display: flex;
@@ -1047,6 +1069,15 @@ input.mdc-radio__native-control:focus,
 
 .bg-dropdown-business-card {
   @include app-dropdown-1(56px, 224px); //to do make this responsive
+
+  .dropdown-label {
+    @include dropdown-label();
+    // todo set the svg ofdropdown at right position
+  }
+}
+
+.bg-dropdown-register {
+  @include app-dropdown-fixed-width(56px, 296px); //to do make this responsive
 
   .dropdown-label {
     @include dropdown-label();

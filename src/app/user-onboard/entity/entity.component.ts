@@ -112,10 +112,12 @@ export class EntityComponent {
   }
 
   goToSubscription() {
-    if (!this.entitiesOPUnitNullStatus) {
-      this.router.navigate(['/subscription'], { state: { entity: '' } });
-    } else {
-      this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
-    }
+    // if (!this.entitiesOPUnitNullStatus) {
+    //   this.router.navigate(['/subscription'], { state: { entity: '' } });
+    // } else {
+    //   this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
+    // }
+
+    this.router.navigate(['/subscription'], { state: { entity: '' } });
   }
 }

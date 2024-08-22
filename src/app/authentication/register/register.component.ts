@@ -26,6 +26,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
 import { ApiService } from 'src/app/services/api.service';
 
+import { CountryList } from 'src/app/shared/menu-items/country-list';
+// import { CountryData } from 'src/app/shared/menu-items/country-list';
+
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
@@ -159,8 +162,14 @@ export class AppSideRegisterComponent implements OnInit {
     this.isDropdownOpen = false;
   }
 
+  onCountryValueChange(value: any) {
+    console.log('the country selected', value);
+  }
+
   countryCode: number | null = 1;
   countryList: CountryData[] = CountryListForPhoneNumberSection;
+
+  countryNameList: CountryData[] = CountryList;
 
   updateCheckBoxStateAndOpenConditionModal(checkedStatus: boolean) {
     if (checkedStatus) {

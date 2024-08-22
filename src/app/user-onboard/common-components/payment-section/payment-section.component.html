@@ -7,41 +7,74 @@
 
   <div class="row subscription-unit-card">
     <div class="col-sm-12 col-md-12 col-lg-12">
-      
-     
-      
       <app-card-layout-for-payment-page
-      [cardHeight]="40"
-      [cardWidth]="720">
-      <div class="row payment-page-section-1 ">
-        
-      <p class="payment-page-typography"> Subscription Period</p>
-      <section class="checkbox-section" >
-        <!-- <h4>Select your toppings:</h4> -->
-      <mat-checkbox >Monthly</mat-checkbox>
-        <mat-checkbox >Yearly</mat-checkbox>
-        <!-- <mat-checkbox >Mushroom</mat-checkbox> -->
-      </section>
-    </div>
-    </app-card-layout-for-payment-page>
-   
-     
+        [cardHeight]="getCardSize(40, 720).height"
+        [cardWidth]="getCardSize(40, 720).width"
+      >
+        <div class="row payment-page-section-1">
+          <p class="payment-page-typography">Subscription Period</p>
+          <section class="checkbox-section">
+            <!-- <h4>Select your toppings:</h4> -->
+            <mat-checkbox>Monthly</mat-checkbox>
+            <mat-checkbox>Yearly</mat-checkbox>
+            <!-- <mat-checkbox >Mushroom</mat-checkbox> -->
+          </section>
+        </div>
+      </app-card-layout-for-payment-page>
     </div>
   </div>
 
-  <div class="row payment-details-columns">
+  <!-- <div class="row payment-details-columns">
     <div class="col-sm-12 col-md-12 col-lg-12">
       <app-card-layout-for-payment-page
-      [cardHeight]="40"
-      [cardWidth]="720">
-      <div class="payment-details-container">
-      <p class="payment-page-typography" *ngFor="let item of paymentDetailsColumns">
-        {{item}}
-      </p>
+        [cardHeight]="getCardSize(40, 720).height"
+        [cardWidth]="getCardSize(40, 720).width"
+      >
+        <div class="payment-details-container">
+          <p
+            class="payment-page-typography"
+            *ngFor="let item of paymentDetailsColumns"
+          >
+            {{ item }}
+          </p>
+        </div>
+      </app-card-layout-for-payment-page>
     </div>
+  </div> -->
+
+  <!-- <div class="row payment-details-columns">
+    <div class="col-12">
+      <app-card-layout-for-payment-page
+        [cardHeight]="getCardSize(40, 720).height"
+        [cardWidth]="getCardSize(40, 720).width"
+      >
+        <div class="payment-details-container">
+          <p
+            class="payment-page-typography"
+            *ngFor="let item of paymentDetailsColumns"
+          >
+            {{ item }}
+          </p>
+        </div>
+      </app-card-layout-for-payment-page>
+    </div>
+  </div> -->
+
+  <div class="payment-details-columns">
+    <app-card-layout-for-payment-page
+      [cardHeight]="getCardSize(40, 720).height"
+      [cardWidth]="getCardSize(40, 720).width"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-3" *ngFor="let item of paymentDetailsColumns">
+            <p class="payment-page-typography">
+              {{ item }}
+            </p>
+          </div>
+        </div>
+      </div>
     </app-card-layout-for-payment-page>
-  
-    </div>
   </div>
 
   <div class="row payment-details-rows">
@@ -50,14 +83,14 @@
         <div style="padding: 70px"></div>
       </app-card-layout> -->
       <app-card-layout-for-payment-page
-      [cardHeight]="112"
-      [cardWidth]="720">
-    </app-card-layout-for-payment-page>
-  
+        [cardHeight]="getCardSize(112, 720).height"
+        [cardWidth]="getCardSize(112, 720).width"
+      >
+      </app-card-layout-for-payment-page>
     </div>
   </div>
 
-  <div class="payment-details-container">
+  <!-- <div class="payment-details-container">
   
       <app-card-layout-for-payment-page [cardHeight]="128" [cardWidth]="224">
         <p class="payment-page-typography">Offline Payment Details</p>
@@ -83,6 +116,54 @@
         <p  class="payment-page-typography-2">IGST (18%)</p>
       </app-card-layout-for-payment-page>
   
+  </div> -->
+
+  <div class="payment-details-container">
+    <app-card-layout-for-payment-page
+      [cardHeight]="getCardSize(128, 224).height"
+      [cardWidth]="getCardSize(128, 224).width"
+    >
+      <p class="payment-page-typography">Offline Payment Details</p>
+      <p class="payment-page-typography-2">
+        You can make payment through Cheque/NEFT. Please draw the cheque in
+        favor of Lexplosion Solutions Private Limited.
+      </p>
+    </app-card-layout-for-payment-page>
+
+    <app-card-layout-for-payment-page
+      [cardHeight]="getCardSize(128, 216).height"
+      [cardWidth]="getCardSize(128, 216).width"
+    >
+      <p class="payment-page-typography">Online Payment Details</p>
+      <img
+        src="./assets/images/icons/image_online_payment_details.png"
+        class="logo"
+        alt="logo"
+      />
+    </app-card-layout-for-payment-page>
+
+    <app-card-layout-for-payment-page
+      [cardHeight]="getCardSize(128, 264).height"
+      [cardWidth]="getCardSize(128, 264).width"
+    >
+      <p class="payment-page-typography-2">Total</p>
+      <p class="payment-page-typography-2">Promo Code</p>
+      <p class="payment-page-typography-3">Have a promo code?</p>
+      <p class="payment-page-typography-2">Subtotal</p>
+      <p class="payment-page-typography-2">IGST (18%)</p>
+    </app-card-layout-for-payment-page>
   </div>
-  
+
+  <div class="row net-payable-amount-section justify-content-end">
+    <div class="col-md-4 col-lg-3">
+      <p class="net-payable-amount-typography">Net Payable Amount</p>
+    </div>
+    <div class="col-md-8 col-lg-6">
+      <app-card-layout-for-payment-page
+        [cardHeight]="getCardSize(40, 184).height"
+        [cardWidth]="getCardSize(40, 184).width"
+      >
+      </app-card-layout-for-payment-page>
+    </div>
+  </div>
 </div>
