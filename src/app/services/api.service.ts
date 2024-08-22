@@ -17,7 +17,7 @@ export class ApiService {
 
   private endpoints = {
     userLogin: 'login',
-    createCompany: 'company',
+    createAdminCompany: 'company',
     fetchCompanyList: 'company/list',
     createUser: 'user',
     addEntity: 'entity-details/entity',
@@ -69,8 +69,8 @@ export class ApiService {
     return this.postData(this.endpoints.userLogin, data);
   }
 
-  postCreateCompany(data: any): Observable<any> {
-    return this.postData(this.endpoints.createCompany, data);
+  postCreateAdminCompany(data: any): Observable<any> {
+    return this.postData(this.endpoints.createAdminCompany, data);
   }
 
   postFetchCompanyList(data: any): Observable<any> {
