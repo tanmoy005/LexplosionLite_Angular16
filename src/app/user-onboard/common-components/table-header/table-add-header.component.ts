@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { DialogService } from 'src/app/services/Dialog.service';
 
 @Component({
@@ -12,8 +12,13 @@ export class TableHeaderComponent {
   @Input() path: string[] = [];
   @Input() buttonName: string = '';
   @Input() secondButtonName: string = '';
+  @Output() isAddNewUserClicked = new EventEmitter<boolean>();
 
   emitAddNewEntity() {
     this.entityDialogService.emitOpenDialog();
+  }
+
+  onAddNewUserClick() {
+    this.isAddNewUserClicked.emit(true);
   }
 }

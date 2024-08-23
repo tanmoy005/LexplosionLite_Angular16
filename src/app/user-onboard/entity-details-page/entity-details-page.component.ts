@@ -32,6 +32,7 @@ export class EntityDetailsPageComponent {
   stepCompletionStatus: boolean = false;
 
   isDotsClicked: boolean;
+  isAddNewUserClicked: boolean;
   isEntityCreationSuccessful: boolean;
 
   isEntityTableLoading: boolean;
@@ -79,5 +80,11 @@ export class EntityDetailsPageComponent {
   handleEntityLoadingState(state: boolean) {
     this.isEntityTableLoading = state;
     this.cdr.detectChanges();
+  }
+
+  handleAddnewUserClicked(state: boolean) {
+    //  this.isDotsClicked(state);
+    this.isAddNewUserClicked = state;
+    console.log('the add new user is clicked', state);
   }
 }

@@ -34,6 +34,8 @@ export class EntityComponent {
   entitiesOPUnitNullStatus: boolean = false;
   entitiesOPUnitNullList: string[];
 
+  isAddNewUserClicked: boolean = false;
+
   entityUnsuccessfulCreationMessage: string;
 
   @Input() countryList: number[] = [];
@@ -43,6 +45,7 @@ export class EntityComponent {
   @Output() isDotsClicked = new EventEmitter<boolean>();
   @Output() isEntityCreationSuccessful =
     new EventEmitter<entityCreationNullStatus>();
+  @Output() isemitedAddNewUserClicked = new EventEmitter<boolean>();
 
   constructor(private router: Router, private snackbar: SnackbarService) {
     const savedentityTypes = this.encryptStorage.getItem('entityTypes');
@@ -119,5 +122,15 @@ export class EntityComponent {
     // }
 
     this.router.navigate(['/subscription'], { state: { entity: '' } });
+  }
+
+  handleIsAddNewUserClicked(state: boolean) {
+    this.isAddNewUserClicked = state;
+
+    this.isemitedAddNewUserClicked.emit(this.isAddNewUserClicked);
+    // this.isDataComingFromDots = state;
+    // if (this.resolveDotsClickedPromise) {
+    //   this.resolveDotsClickedPromise();
+    // }
   }
 }

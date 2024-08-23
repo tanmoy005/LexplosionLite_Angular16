@@ -180,3 +180,8 @@
   // todo change the class name like this one, add color code
   @include text-model(var.$font-12, 400, var.$gray-400, Barlow, 14.4px);
 }
+
+.text_12_700_purple_100 {
+  // todo change the class name like this one, add color code
+  @include text-model(var.$font-12, 700, var.$purple-100, Barlow, 14.4px);
+}

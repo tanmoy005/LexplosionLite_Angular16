@@ -22,18 +22,25 @@
     </div>
   </div>
 
-  <div class="entity-section" *ngIf="!isAddOperatingUnitClicked">
+  <div
+    class="entity-section"
+    *ngIf="!isAddOperatingUnitClicked && !isAddNewUserClicked"
+  >
     <app-entity
       [countryList]="countryList"
       (selectedEntityEmitter)="handleSelectedEntity($event)"
       (handleTableDataLoadingFromEntity)="handleEntityLoadingState($event)"
       (isDotsClicked)="handleIsDotsClicked($event)"
       (isEntityCreationSuccessful)="handleSuccessfulEntityCreation($event)"
+      (isemitedAddNewUserClicked)="handleAddnewUserClicked($event)"
     >
     </app-entity>
   </div>
 
-  <div class="entity-operating-unit-section" *ngIf="isAddOperatingUnitClicked">
+  <div
+    class="entity-operating-unit-section"
+    *ngIf="isAddOperatingUnitClicked && !isAddNewUserClicked"
+  >
     <app-operating-unit
       (isBackClicked)="handleBackClick($event)"
       [entity]="selectedEntity"
@@ -42,6 +49,13 @@
         handleEntityLoadingState($event)
       "
     ></app-operating-unit>
+  </div>
+
+  <div
+    class="entity-operating-unit-section"
+    *ngIf="isAddNewUserClicked && !isAddOperatingUnitClicked"
+  >
+    <app-create-new-user></app-create-new-user>
   </div>
 
   <div class="spinner-backdrop" *ngIf="isEntityTableLoading">

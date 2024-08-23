@@ -1,1 +1,105 @@
-<p>create-new-user works!</p>
+<div class="add-new-user-container">
+  <app-table-add-header
+    [path]="['Entities > > Add New User']"
+    [buttonName]="''"
+    [secondButtonName]="''"
+  >
+  </app-table-add-header>
+  <div class="col-lg-2">
+    <button
+      mat-stroked-button
+      class="btn-primary-outline-md"
+      (click)="handleBackButtonClick($event)"
+    >
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      <p class="btn-name-style">Back</p>
+    </button>
+  </div>
+
+  <div class="col-lg-12">
+    <p class="text_12_700_purple_100">
+      Let’s invite more people to help you collaborate !
+    </p>
+  </div>
+  <div class="col-lg-3">
+    <mat-form-field appearance="outline" class="add-new-user-big-text-input">
+      <mat-label class="text_12_400_gray_1000">Name</mat-label>
+      <input matInput name="username" />
+    </mat-form-field>
+  </div>
+
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="bg-dropdown-white" (click)="toggleDropdown()">
+          <mat-form-field appearance="outline">
+            <div class="row" *ngIf="!isDropdownOpen">
+              <div class="col-1" style="padding-right: 5px">
+                <span class="country-code">{{ selectedCountry?.label }}</span>
+              </div>
+              <div class="col-6" style="padding-right: 5px">
+                <img
+                  [src]="selectedCountry?.icon"
+                  alt="Flag"
+                  class="flag-image-new-user"
+                />
+              </div>
+            </div>
+
+            <mat-select
+              *ngIf="isDropdownOpen"
+              (selectionChange)="onCountryChange($event)"
+              #countrySelect
+            >
+              <mat-option *ngFor="let country of countryList" [value]="country">
+                <div class="row">
+                  <div class="col-1">
+                    <span class="country-code">{{ country.label }}</span>
+                  </div>
+                  <div class="col-4">
+                    <img
+                      [src]="country.icon"
+                      alt="Flag"
+                      class="flag-image-new-user"
+                      style="margin-left: -8px"
+                    />
+                  </div>
+                </div>
+              </mat-option>
+            </mat-select>
+
+            <input
+              matInput
+              name="countryCode"
+              [readonly]="true"
+              style="display: none"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <mat-form-field
+          class="registration-phone-no-input"
+          appearance="outline"
+        >
+          <mat-label class="text_12_400_gray_1000">Phone Number</mat-label>
+          <input
+            matInput
+            type="tel"
+            placeholder="Ex. 9999900000"
+            name="phoneNumber"
+          />
+
+          <!-- <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
+              >Phone Number is&nbsp;<strong>required</strong></mat-error
+            >
+            <mat-error
+              *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')"
+              >Invalid Phone Number</mat-error
+            > -->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>

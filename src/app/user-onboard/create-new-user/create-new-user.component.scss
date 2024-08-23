@@ -1,0 +1,31 @@
+.add-new-user-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adjust the value as needed */
+}
+
+/* Optional: If you want to control the gap more precisely for specific child elements */
+.add-new-user-container > app-table-add-header {
+  margin-bottom: 16px; /* Adjust the value as needed */
+}
+
+.custom-card-content {
+  display: flex;
+  padding: 0 0px; /* Adjust as needed */
+
+  flex-direction: column;
+  gap: 16px;
+}
+
+.flag-image-new-user {
+  width: 32px;
+  height: 24px;
+  margin-right: 1rem;
+}
+
+.country-code {
+  font-size: 12px;
+  font-family: "Barlow";
+  width: 17px;
+  height: 14px;
+}
