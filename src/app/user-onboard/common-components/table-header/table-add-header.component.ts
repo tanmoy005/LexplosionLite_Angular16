@@ -11,6 +11,7 @@ export class TableHeaderComponent {
 
   @Input() path: string[] = [];
   @Input() buttonName: string = '';
+  @Input() secondButtonName: string = '';
 
   emitAddNewEntity() {
     this.entityDialogService.emitOpenDialog();

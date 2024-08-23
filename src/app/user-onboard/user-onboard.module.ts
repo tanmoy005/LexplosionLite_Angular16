@@ -31,6 +31,7 @@ import { CommonComponentModule } from './common-components/common-component.modu
 import { MaterialModule } from '../material-module';
 import { GoLivePageComponent } from './go-live-page/go-live-page.component';
 import { KomriskSelectedDialogComponent } from './subscription-details-page/komrisk-selected-dialog/komrisk-selected-dialog.component';
+import { CreateNewUserComponent } from './create-new-user/create-new-user.component';
 @NgModule({
   declarations: [
     
@@ -46,6 +47,7 @@ import { KomriskSelectedDialogComponent } from './subscription-details-page/komr
     FeaturesComponent,
     GoLivePageComponent,
     KomriskSelectedDialogComponent,
+    CreateNewUserComponent,
     
   ],
   
