@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { treeDataitem } from 'src/app/shared/menu-items/tree-items';
 import { EncryptStorage } from 'encrypt-storage';
@@ -7,13 +7,22 @@ import * as FieldDefinitionInterfaces from 'src/app/shared/menu-items/field-defi
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { entityCreationNullStatus } from 'src/app/shared/menu-items/entity-interfaces';
+import { ApiService } from 'src/app/services/api.service';
 
+function getCompanyId() {
+  const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //return encryptStorage.getItem('company-id');
+  const { user } = encryptStorage.getItem('login-details');
+  const userCompanies = user.companies;
+  const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
+  return userCompanyId;
+}
 @Component({
   selector: 'app-entity',
   templateUrl: './entity.component.html',
   styleUrls: ['./entity.component.scss'],
 })
-export class EntityComponent {
+export class EntityComponent implements OnInit {
   private isDotsClickedPromise: Promise<void> | null = null;
   private resolveDotsClickedPromise: (() => void) | null = null;
 
@@ -47,7 +56,50 @@ export class EntityComponent {
     new EventEmitter<entityCreationNullStatus>();
   @Output() isemitedAddNewUserClicked = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private snackbar: SnackbarService) {
+  newCountryNameList: any;
+  transformedCountries: any;
+
+  companyName: any = '';
+  countryForCompany: any = [];
+  countryForCompanyIdList: any = [];
+  fieldPayload = ['countries'];
+  apiCountryList: any = [];
+
+  fetchCountriesForCompanies(payload: any) {
+    this.apiService.postCountriesforCompanies(payload).subscribe((response) => {
+      if (response) {
+        this.countryForCompany = response['countries'];
+        const countryIds = response['countries'].map(
+          (country: any) => country.company_country.CountryId
+        );
+        // this.countryForCompanyIdList = countryIds;
+        console.log('the country for companies id ent', countryIds);
+        const matchingCountries = this.apiCountryList.filter((country: any) =>
+          countryIds.includes(country.id)
+        );
+        this.countryForCompanyIdList = matchingCountries;
+        console.log('the matching country list ent', matchingCountries);
+      }
+      console.log('the country for company', response['countries']);
+      return response['countries'];
+    });
+  }
+
+  ngOnInit(): void {
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    const savedCountries = this.encryptStorage.getItem('countries');
+    this.apiCountryList = savedCountries;
+    const fetchCountryforCompanyPayload = {
+      companyId: getCompanyId(),
+    };
+    this.fetchCountriesForCompanies(fetchCountryforCompanyPayload);
+  }
+
+  constructor(
+    private router: Router,
+    private snackbar: SnackbarService,
+    private apiService: ApiService
+  ) {
     const savedentityTypes = this.encryptStorage.getItem('entityTypes');
     const savedindustryActivities =
       this.encryptStorage.getItem('industryActivities');

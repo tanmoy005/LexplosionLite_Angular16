@@ -26,7 +26,6 @@ import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import { IndustryDialogComponent } from './industry-dialog/industry-dialog.component';
 
-
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 
 function getMaxIdFromChildren(node: TreeNode): number {
@@ -45,6 +44,15 @@ function getCompanyName() {
   const userCompanyName =
     userCompanies.length > 0 ? userCompanies[0]['name'] : '';
   return userCompanyName;
+}
+
+function getCompanyId() {
+  const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //return encryptStorage.getItem('company-id');
+  const { user } = encryptStorage.getItem('login-details');
+  const userCompanies = user.companies;
+  const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
+  return userCompanyId;
 }
 
 function getMaxIdFromGrandchildren(children: TreeNode): number {
@@ -71,8 +79,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private entityDialogService: DialogService,
     private apiService: ApiService,
-    private snackbar: SnackbarService,
-    
+    private snackbar: SnackbarService
   ) {}
 
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
@@ -84,7 +91,9 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   @Input() entityTypesList: FieldDefinitionInterfaces.EntityTypes[];
   @Input() industryTypesList: FieldDefinitionInterfaces.IndustryActivies[];
   @Input() lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories[];
-  @Input() countryList: number[];
+  // @Input() countryList: number[];
+
+  @Input() countryList: any[];
 
   @Output() entitySelected = new EventEmitter<EntityDataType>();
   @Output() entitySelected1 = new EventEmitter<EntityDataType>();
@@ -100,6 +109,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       }
     );
 
+    console.log('the country list come in entity table', this.countryList);
     this.fetchEntityList();
   }
 
@@ -157,7 +167,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     treeDataitem.children = [];
 
     this.entityTableDataLoading.emit(true);
-    const entityFetchPayload = { company: 1 };
+    //const entityFetchPayload = { company: 1 };
+    const entityFetchPayload = { company: getCompanyId() };
     var opUnitNullStatus = false;
     var opUnitNullEntitiesList: string[] = [];
 
@@ -173,7 +184,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               id: maxId + 1,
 
               label: entity.name,
-              level: 1, 
+              level: 1,
               children: [],
             };
 
@@ -239,7 +250,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     const createEntityPayload = {
       id: formData.id,
       name: formData.name,
-      company: 1,
+      //company: 1,
+      company: getCompanyId(),
       entityType: formData.entityType,
       entityTypeSearch: null,
       industries: formData.industry,
@@ -364,23 +376,19 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
   openCountryDialog() {}
 
-  openIndustryDialog( id: number) {
+  openIndustryDialog(id: number) {
     var entity = this.dataSource.find((entity) => entity.id === id);
-    console.log('the entity for industry dialog open',entity)
+    console.log('the entity for industry dialog open', entity);
     if (entity === undefined) {
       this.snackbar.showError(
         'Some error occurred while adding Operating Unit.'
       );
-    } 
-    else{
-      var industries = entity.industry
-      this.dialog.open(IndustryDialogComponent,{
-        data: industries
+    } else {
+      var industries = entity.industry;
+      this.dialog.open(IndustryDialogComponent, {
+        data: industries,
       });
     }
-    
-
-   
   }
 
   getImageSource(opUnitLength: number): string {

@@ -27,6 +27,7 @@ export class DropdownComponent implements OnInit {
 
   ngOnInit(): void {
     this.combineValues();
+    console.log('the unchangable values', this.unchangeableValues);
   }
 
   combineValues(): void {

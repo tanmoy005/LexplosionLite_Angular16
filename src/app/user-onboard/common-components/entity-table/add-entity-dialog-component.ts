@@ -95,15 +95,23 @@ export class AddEntityDialog implements OnInit {
     this.transformedLawCategoryList = transformLawCategories(
       this.data.entityTable.lawCategoriesList
     );
-    let filteredCountryList = CountryList;
+    let filteredCountryList = this.data.entityTable.countryList;
+    this.countryList = filteredCountryList.map(
+      (country: { id: any; name: any }) => ({
+        value: country.id,
+        label: country.name,
+        icon: undefined,
+      })
+    );
+    // let filteredCountryList = CountryList;
 
-    try {
-      filteredCountryList = CountryList.filter((country) =>
-        this.data.entityTable.countryList.includes(country.value)
-      );
-    } catch (error) {}
+    // try {
+    //   filteredCountryList = CountryList.filter((country) =>
+    //     this.data.entityTable.countryList.includes(country.value)
+    //   );
+    // } catch (error) {}
 
-    this.countryList = filteredCountryList;
+    // this.countryList = filteredCountryList;
     this.distinctIndutryTypesList = [];
 
     const seenIds = new Set();
@@ -163,6 +171,12 @@ export class AddEntityDialog implements OnInit {
     if (field in this.formData) {
       (this.formData[field] as number | number[]) = value;
     }
+  }
+  selectedCountryList: any;
+
+  onCountryValueChange(value: any) {
+    console.log('the country selected', value);
+    this.selectedCountryList = value;
   }
 
   onTextFieldChange(event: any, field: keyof EntityInterfaces.FormData) {

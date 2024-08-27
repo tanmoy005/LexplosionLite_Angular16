@@ -15,7 +15,7 @@
                 <mat-label class="text_12_400_gray_1000">
                   Business Name here
                 </mat-label>
-                <input matInput #business />
+                <input matInput #business value="{{ companyName }}" />
               </mat-form-field>
             </div>
             <div class="col-lg-1" style="margin-left: 18px">
@@ -65,10 +65,11 @@
             <div class="col-lg-10 margin-left-lg">
               <app-dropdown
                 [label]="'Select one or more countries'"
-                [options]="countryList"
+                [options]="transformedCountries"
                 [IsMultiSelection]="true"
                 [IsRequired]="false"
                 (selectedValueChange)="onCountryValueChange($event)"
+                [changeableValues]="countryForCompanyIdList"
               >
               </app-dropdown>
             </div>

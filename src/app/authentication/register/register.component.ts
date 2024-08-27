@@ -29,6 +29,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { CountryList } from 'src/app/shared/menu-items/country-list';
 import { loginSource } from 'dotenv';
 import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
 
 // import { CountryData } from 'src/app/shared/menu-items/country-list';
 
@@ -89,11 +91,36 @@ export class AppSideRegisterComponent implements OnInit {
 
   @ViewChild('countrySelect') countrySelect: MatSelect;
 
+  fieldPayload = ['countries'];
+
+  fetchEntityOPUnitDefinitions() {
+    this.apiService
+      .getFieldDefinition(this.fieldPayload)
+      .subscribe((response) => {
+        const encryptStorage = new EncryptStorage(environment.localStorageKey);
+        encryptStorage.setItem('countries', response.data.countries);
+      });
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    return encryptStorage.getItem('countries');
+  }
+
   ngOnInit(): void {
+    // const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    // this.countryList = this.fetchEntityOPUnitDefinitions();
+    this.newCountryNameList = this.fetchEntityOPUnitDefinitions();
+    this.transformedCountries = this.newCountryNameList.map(
+      (country: { id: any; name: any }) => ({
+        value: country.id,
+        label: country.name,
+        icon: undefined,
+      })
+    );
     this.selectedCountry = this.countryList[0]; // Default selection
     this.countryCodeFormControl.setValue(this.selectedCountry);
   }
 
+  newCountryNameList: any;
+  transformedCountries: any;
   usernameFormControl = new FormControl('', [Validators.required]);
   companynameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [
@@ -168,10 +195,12 @@ export class AppSideRegisterComponent implements OnInit {
 
   onCountryValueChange(value: any) {
     console.log('the country selected', value);
+    this.selectedCountryList = value;
   }
-
+  selectedCountryList: any;
   countryCode: number | null = 1;
   countryList: CountryData[] = CountryListForPhoneNumberSection;
+  //countryList: CountryData[];
 
   countryNameList: CountryData[] = CountryList;
 
@@ -212,45 +241,6 @@ export class AppSideRegisterComponent implements OnInit {
     this.countryCode = value;
   }
 
-  // handleRegistration(event: any) {
-  //   const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
-
-  //   if (isRegistrationCredentialsFine) {
-  //     const stateVariable = {
-  //       username: this.username,
-  //       businessname: this.businessname,
-  //       headquarterAddress: this.headquarterAddress,
-  //       countryCode: this.countryCode,
-  //       phoneNumber: this.phoneNumber,
-  //       email: this.email,
-  //       password: this.password,
-  //     };
-  //     // const payload = { email: this.email };
-  //     // try {
-  //     //   this.apiService.postSendOTP(payload).subscribe((response) => {
-  //     //     if (response.success) {
-  //     //       this.snackbar.showSuccess('OTP successfully sent to your email.');
-  //     //       this.router.navigate(['/verify-email'], { state: stateVariable });
-  //     //     } else {
-  //     //       this.snackbar.showError(
-  //     //         'Some error occurred while verifying your email!'
-  //     //       );
-  //     //     }
-  //     //   });
-  //     // } catch (error) {
-  //     //   this.snackbar.showError(
-  //     //     'Some error occurred while verifying your email!'
-  //     //   );
-  //     // }
-
-  //     this.router.navigate(['/verify-email'], { state: stateVariable });
-  //   } else {
-  //     this.snackbar.showError(
-  //       'Please enter all field values in correct format and check terms and conditions.'
-  //     );
-  //   }
-  // }
-
   handleRegistration(event: any) {
     const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
 
@@ -266,25 +256,11 @@ export class AppSideRegisterComponent implements OnInit {
         mobile: this.phoneNumber,
         password: this.password,
         source: loginSource,
-        countries: [1],
+        //countries: [1],
+        countries: this.selectedCountryList,
       };
       this.authService.handleAdminUserCreation(payload);
       this.router.navigate(['/verify-email'], { state: payload });
-      // try {
-      //   this.apiService
-      //     .postCreateAdminCompany(payload)
-      //     .subscribe((response) => {
-      //       if (response.success) {
-      //         this.router.navigate(['/verify-email'], { state: payload });
-      //       }
-      //     });
-      // } catch (e) {
-      //   this.snackbar.showError(
-      //     'Some error occurred while creating your admin profile.'
-      //   );
-      // }
-
-      //this.router.navigate(['/verify-email'], { state: payload });
     } else {
       this.snackbar.showError(
         'Please enter all field values in correct format and check terms and conditions.'

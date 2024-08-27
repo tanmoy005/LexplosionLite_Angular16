@@ -78,7 +78,7 @@
           <div class="bg-dropdown-register">
             <app-dropdown
               [label]="'Select one or more countries'"
-              [options]="countryNameList"
+              [options]="transformedCountries"
               [IsMultiSelection]="true"
               [IsRequired]="false"
               (selectedValueChange)="onCountryValueChange($event)"

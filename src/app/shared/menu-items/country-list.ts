@@ -2,13 +2,18 @@ export interface CountryData {
   value: any;
   label: string;
   icon?: string;
-  code: string;
+  code?: string;
 }
 
+// export interface CountryAPIData {
+//   id: number;
+//   name: string;
+//   code: string;
+// }
 export interface CountryAPIData {
   id: number;
   name: string;
-  code: string;
+  code?: string;
 }
 
 export const CountryAPIDemoData: CountryAPIData[] = [
@@ -18,9 +23,9 @@ export const CountryAPIDemoData: CountryAPIData[] = [
     code: 'IN',
   },
   {
-    id:2,
+    id: 2,
     name: 'Singapore',
-    code: "SG"
+    code: 'SG',
   },
   {
     id: 3,
@@ -44,7 +49,7 @@ CountryAPIDemoData.forEach((country) => {
         ? indiaFlagIcon
         : country.name === 'Singapore'
         ? singaporeIcon
-        : country.name === "United States"
+        : country.name === 'United States'
         ? usIcon
         : '',
     code: country.code,
@@ -72,5 +77,5 @@ export const CountryListForPhoneNumberSection: CountryData[] = [
     label: '+1',
     icon: './assets/images/us_flag.png',
     code: '',
-  }
+  },
 ];

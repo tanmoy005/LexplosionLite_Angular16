@@ -29,6 +29,7 @@ export class ApiService {
     definition: 'definition',
     sendOTP: 'verification/send-otp',
     verifyOTP: 'verification/verify-otp',
+    countriesForCompany: 'company/getCountriesForCompany',
   };
 
   private endpointsWithoutAuthToken = [
@@ -145,5 +146,9 @@ export class ApiService {
   }
   getDemoStateData(id: number): StateListInterface | undefined {
     return StateList.find((item) => item.id === id);
+  }
+
+  postCountriesforCompanies(data: any): Observable<any> {
+    return this.postData(this.endpoints.countriesForCompany, data);
   }
 }

@@ -19,6 +19,7 @@ export class operatingUnitFetchDefinitions {
     'states',
     'operatingUnitTypes',
     'komriskLawCategories',
+    'countries',
   ];
   constructor(private apiService: ApiService) {}
 
@@ -41,6 +42,7 @@ export class operatingUnitFetchDefinitions {
           'komriskLawCategories',
           response.data.komriskLawCategories
         );
+        encryptStorage.setItem('countries', response.data.countries);
       });
   }
 }
