@@ -4,4 +4,6 @@ export const environment = {
   //   debugMode: process.env.DEBUG_MODE === 'true'
 };
 
-export const loginSource = 'lite';
+// export const loginSource = 'lite';
+
+export const loginSource = 'engine';

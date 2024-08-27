@@ -25,9 +25,9 @@ export class UserAuthenticationService {
     private opUnitFetchObj: operatingUnitFetchDefinitions
   ) {}
 
-  userRegistration(data: any): Observable<any> {
-    return this.http.post(this.CreateBusinessURL, data);
-  }
+  // userRegistration(data: any): Observable<any> {
+  //   return this.http.post(this.CreateBusinessURL, data);
+  // }
 
   userCreateUser(data: any): Observable<any> {
     return this.http.post(this.CreateUserURL, data);
@@ -37,14 +37,35 @@ export class UserAuthenticationService {
     return this.apiService.postLoginData(data);
   }
 
+  userRegistration(data: any): Observable<any> {
+    return this.apiService.postCreateAdminCompany(data);
+  }
+
   handleUserLogin(payload: any) {
     try {
       this.userLogin(payload).subscribe((response) => {
-        this.snackbar.showSuccess('Login Successful!');
+        this.snackbar.showSuccess('Login Successfull');
         const encryptStorage = new EncryptStorage(environment.localStorageKey);
         encryptStorage.setItem('login-details', response);
         this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
         this.router.navigate(['/entity-details'], { state: { entity: '' } });
+      });
+    } catch (error) {
+      this.snackbar.showError('Some error occurred while user creation!');
+    }
+  }
+  // postCreateAdminCompany(data: any): Observable<any> {
+  //   return this.postData(this.endpoints.createAdminCompany, data);
+  // }
+
+  handleAdminUserCreation(payload: any) {
+    try {
+      this.userRegistration(payload).subscribe((response) => {
+        this.snackbar.showSuccess('User Creation Successful!');
+        const encryptStorage = new EncryptStorage(environment.localStorageKey);
+        encryptStorage.setItem('login-details', response);
+        this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
+        // this.router.navigate(['/entity-details'], { state: { entity: '' } });
       });
     } catch (error) {
       this.snackbar.showError('Some error occurred while logging you in!');

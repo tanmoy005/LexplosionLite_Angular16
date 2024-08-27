@@ -1,32 +1,36 @@
-@import '../../../../assets/styles/variable.scss';
+@import "../../../../assets/styles/variable.scss";
 
-@mixin card-struncture{
-    display: flex;
-    align-items: center!important;
-    @media (max-width: 320px) {
-        padding: $h8px $size_32px;
-    }
-    @media (min-width: 320px) {
-        padding: $h16px $size_32px;
-    }
-    align-items: flex-end;
-    .card-name{
-        margin-left: 24px;
-    }
+@mixin card-struncture {
+  display: flex;
+  align-items: center !important;
+  @media (max-width: 320px) {
+    padding: $h8px $size_32px;
+  }
+  @media (min-width: 320px) {
+    padding: $h16px $size_32px;
+  }
+  align-items: flex-end;
+  .card-name {
+    margin-left: 24px;
+  }
 }
 
-
 .card-header-purple-dark {
-    background-color: $purple-100;
-    @include card-struncture;
-}  
+  background-color: $purple-100;
+  @include card-struncture;
+}
 .card-header-purple-light {
-    background-color: $purple-200;
-    @include card-struncture;
-}  
+  background-color: $purple-200;
+  @include card-struncture;
+}
+
+.card-header-purple-medium {
+  background-color: $purple-400;
+  @include card-struncture;
+}
 // @media (min-width: 992px) {
 //     .phn-section {
-//         width: 102%; 
+//         width: 102%;
 //     }
 // }
 
@@ -42,13 +46,12 @@
 //     }
 // }
 .card-content-container-dark {
-    overflow-x: auto;
-    overflow-y:auto;
-} 
+  overflow-x: auto;
+  overflow-y: auto;
+}
 .card-content-container-light {
-    background-color: $purple-300;
-    overflow-x: auto;
-    overflow-y:auto;
-    height: 212px;
-
-} 
+  background-color: $purple-300;
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 212px;
+}

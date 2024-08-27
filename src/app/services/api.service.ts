@@ -34,6 +34,7 @@ export class ApiService {
   private endpointsWithoutAuthToken = [
     this.endpoints.userLogin,
     this.endpoints.definition,
+    this.endpoints.createAdminCompany,
   ];
 
   constructor(private http: HttpClient, private snackBar: SnackbarService) {}
@@ -42,6 +43,29 @@ export class ApiService {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
     const { token } = encryptStorage.getItem('login-details');
     return token;
+  }
+
+  // getCompanyId() {
+  //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //   const { token } = encryptStorage.getItem('login-details');
+  //   return token;
+  // }
+
+  getCompanyId() {
+    // Retrieve the login details from encrypted storage
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    const loginDetails = encryptStorage.getItem('login-details');
+
+    const { user } = loginDetails;
+
+    const companyId = user?.companies?.[0]?.id;
+
+    if (companyId) {
+      encryptStorage.setItem('company-id', companyId);
+      console.log(`Company ID ${companyId} stored successfully.`);
+    } else {
+      console.error('No company ID found to store.');
+    }
   }
 
   private postData(apiUrl: string, data: any): Observable<any> {

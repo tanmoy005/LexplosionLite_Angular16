@@ -32,6 +32,7 @@ import { MaterialModule } from '../material-module';
 import { GoLivePageComponent } from './go-live-page/go-live-page.component';
 import { KomriskSelectedDialogComponent } from './subscription-details-page/komrisk-selected-dialog/komrisk-selected-dialog.component';
 import { CreateNewUserComponent } from './create-new-user/create-new-user.component';
+import { UserSuccessfulModalComponent } from './create-new-user/user-successful-modal/user-successful-modal.component';
 @NgModule({
   declarations: [
     
@@ -48,6 +49,7 @@ import { CreateNewUserComponent } from './create-new-user/create-new-user.compon
     GoLivePageComponent,
     KomriskSelectedDialogComponent,
     CreateNewUserComponent,
+    UserSuccessfulModalComponent,
     
   ],
   

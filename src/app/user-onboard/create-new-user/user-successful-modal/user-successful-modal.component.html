@@ -1,0 +1,37 @@
+<app-dialog-layout [dialogHeaderTitle]="''" [dialogHeaderImage]="''">
+  <mat-dialog-content>
+    <div>
+      <mat-icon class="dark-purple-icon">check_circle</mat-icon>
+    </div>
+
+    <div class="user-added-successfully">
+      <p class="text_14_400_black_100">User added successfully</p>
+    </div>
+    <button
+      mat-stroked-button
+      class="btn-primary-outline-md btn-spacing"
+      (click)="closeSuccessDialog()"
+    >
+      <p class="btn-name-style-add-new-user-success-modal">
+        <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
+        Exit
+      </p>
+    </button>
+    <button mat-button class="btn-primary-md">
+      <p class="btn-name-style-add-new-user-success-modal">
+        <img src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg" />
+        Create New User
+      </p>
+    </button>
+  </mat-dialog-content>
+</app-dialog-layout>
+
+<!-- <app-card-layout
+  [cardHeaderTitle]="''"
+  [cardHeaderImage]="''"
+  [shade]="'medium'"
+>
+  <div>
+    <img src="./assets/images/icons/VectorGreenSuccess.svg" />
+  </div>
+</app-card-layout> -->

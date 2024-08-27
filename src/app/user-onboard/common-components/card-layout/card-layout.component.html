@@ -1,8 +1,10 @@
 <div
   *ngIf="headerRequired"
-  [ngClass]="
-    shade === 'dark' ? 'card-header-purple-dark' : 'card-header-purple-light'
-  "
+  [ngClass]="{
+    'card-header-purple-dark': shade === 'dark',
+    'card-header-purple-light': shade === 'light',
+    'card-header-purple-medium': shade === 'medium'
+  }"
 >
   <img *ngIf="cardHeaderImage" [src]="cardHeaderImage" alt="" srcset="" />
   <div

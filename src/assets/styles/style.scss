@@ -1016,7 +1016,7 @@ input.mdc-radio__native-control:focus,
 @mixin app-dropdown-fixed-width($height: 40px, $width) {
   .app-dropdown {
     .mat-mdc-text-field-wrapper {
-      background-color: var.$white !important;
+      background-color: var.$gray-800 !important;
       border-radius: 3px !important;
       //border: 1px solid var.$blue-light-200 !important;
       width: $width;

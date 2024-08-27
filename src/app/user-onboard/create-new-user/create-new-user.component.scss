@@ -4,6 +4,10 @@
   gap: 16px; /* Adjust the value as needed */
 }
 
+.create-user-form {
+  gap: 10px;
+}
+
 /* Optional: If you want to control the gap more precisely for specific child elements */
 .add-new-user-container > app-table-add-header {
   margin-bottom: 16px; /* Adjust the value as needed */
@@ -29,3 +33,63 @@
   width: 17px;
   height: 14px;
 }
+
+@media (min-width: 1280px) {
+  .custom-col {
+    flex: 0 0 16.6666666667%;
+    max-width: 10.666667%;
+  }
+}
+
+.btn-name-style-add-new-user {
+  font-size: 12px !important;
+  font-family: Barlow;
+  font-weight: 400px;
+  line-height: 14.4px;
+  display: flex;
+  align-items: center;
+}
+
+.add-new-user-button-containar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.role-containar {
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+// @media (min-width: 1280px) {
+//   .custom-col-1 {
+//     flex: 0 0 16.6666666667%;
+//     max-width: 14.666667%;
+//   }
+// }
+
+/* For screens 1280px and up */
+@media (min-width: 1280px) {
+  .custom-col-1 {
+    flex: 0 0 16.6667%;
+    max-width: 16.6667%;
+  }
+}
+
+/* For screens 1368px and up */
+@media (min-width: 1366px) {
+  .custom-col-1 {
+    flex: 0 0 14.6667%;
+    max-width: 14.6667%;
+  }
+}
+
+/* For screens 1440px and up */
+@media (min-width: 1440px) {
+  .custom-col-1 {
+    flex: 0 0 12.6667%;
+    max-width: 12.6667%;
+  }
+}
+
+/* Add more media queries as needed */

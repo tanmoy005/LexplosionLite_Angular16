@@ -27,6 +27,9 @@ import { MatSelect } from '@angular/material/select';
 import { ApiService } from 'src/app/services/api.service';
 
 import { CountryList } from 'src/app/shared/menu-items/country-list';
+import { loginSource } from 'dotenv';
+import { UserAuthenticationService } from 'src/app/services/user-authentication.service';
+
 // import { CountryData } from 'src/app/shared/menu-items/country-list';
 
 function passwordValidator(): ValidatorFn {
@@ -80,7 +83,8 @@ export class AppSideRegisterComponent implements OnInit {
     public dialog: MatDialog,
     private snackbar: SnackbarService,
     private fb: FormBuilder,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private authService: UserAuthenticationService
   ) {}
 
   @ViewChild('countrySelect') countrySelect: MatSelect;
@@ -208,38 +212,79 @@ export class AppSideRegisterComponent implements OnInit {
     this.countryCode = value;
   }
 
+  // handleRegistration(event: any) {
+  //   const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
+
+  //   if (isRegistrationCredentialsFine) {
+  //     const stateVariable = {
+  //       username: this.username,
+  //       businessname: this.businessname,
+  //       headquarterAddress: this.headquarterAddress,
+  //       countryCode: this.countryCode,
+  //       phoneNumber: this.phoneNumber,
+  //       email: this.email,
+  //       password: this.password,
+  //     };
+  //     // const payload = { email: this.email };
+  //     // try {
+  //     //   this.apiService.postSendOTP(payload).subscribe((response) => {
+  //     //     if (response.success) {
+  //     //       this.snackbar.showSuccess('OTP successfully sent to your email.');
+  //     //       this.router.navigate(['/verify-email'], { state: stateVariable });
+  //     //     } else {
+  //     //       this.snackbar.showError(
+  //     //         'Some error occurred while verifying your email!'
+  //     //       );
+  //     //     }
+  //     //   });
+  //     // } catch (error) {
+  //     //   this.snackbar.showError(
+  //     //     'Some error occurred while verifying your email!'
+  //     //   );
+  //     // }
+
+  //     this.router.navigate(['/verify-email'], { state: stateVariable });
+  //   } else {
+  //     this.snackbar.showError(
+  //       'Please enter all field values in correct format and check terms and conditions.'
+  //     );
+  //   }
+  // }
+
   handleRegistration(event: any) {
     const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
 
+    const usernameParts = this.username?.trim().split(' ') || [''];
+
     if (isRegistrationCredentialsFine) {
-      const stateVariable = {
-        username: this.username,
-        businessname: this.businessname,
-        headquarterAddress: this.headquarterAddress,
-        countryCode: this.countryCode,
-        phoneNumber: this.phoneNumber,
+      const payload = {
+        name: this.username,
+        description: this.headquarterAddress,
+        firstName: usernameParts[0] || '',
+        lastName: usernameParts.slice(1).join(' ') || '',
         email: this.email,
+        mobile: this.phoneNumber,
         password: this.password,
+        source: loginSource,
+        countries: [1],
       };
-      // const payload = { email: this.email };
+      this.authService.handleAdminUserCreation(payload);
+      this.router.navigate(['/verify-email'], { state: payload });
       // try {
-      //   this.apiService.postSendOTP(payload).subscribe((response) => {
-      //     if (response.success) {
-      //       this.snackbar.showSuccess('OTP successfully sent to your email.');
-      //       this.router.navigate(['/verify-email'], { state: stateVariable });
-      //     } else {
-      //       this.snackbar.showError(
-      //         'Some error occurred while verifying your email!'
-      //       );
-      //     }
-      //   });
-      // } catch (error) {
+      //   this.apiService
+      //     .postCreateAdminCompany(payload)
+      //     .subscribe((response) => {
+      //       if (response.success) {
+      //         this.router.navigate(['/verify-email'], { state: payload });
+      //       }
+      //     });
+      // } catch (e) {
       //   this.snackbar.showError(
-      //     'Some error occurred while verifying your email!'
+      //     'Some error occurred while creating your admin profile.'
       //   );
       // }
 
-      this.router.navigate(['/verify-email'], { state: stateVariable });
+      //this.router.navigate(['/verify-email'], { state: payload });
     } else {
       this.snackbar.showError(
         'Please enter all field values in correct format and check terms and conditions.'

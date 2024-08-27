@@ -10,8 +10,11 @@ import {
   ValidatorFn,
   FormBuilder,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+
 import { CountryList } from 'src/app/shared/menu-items/country-list';
 import { CountryListForPhoneNumberSection } from 'src/app/shared/menu-items/country-list';
+import { UserSuccessfulModalComponent } from './user-successful-modal/user-successful-modal.component';
 
 @Component({
   selector: 'app-create-new-user',
@@ -19,6 +22,7 @@ import { CountryListForPhoneNumberSection } from 'src/app/shared/menu-items/coun
   styleUrls: ['./create-new-user.component.scss'],
 })
 export class CreateNewUserComponent implements OnInit {
+  constructor(public dialog: MatDialog) {}
   isDropdownOpen = false;
   selectedCountry: CountryData | null = null;
 
@@ -26,6 +30,8 @@ export class CreateNewUserComponent implements OnInit {
 
   countryList: CountryData[] = CountryListForPhoneNumberSection;
   countryCode: number | null = 1;
+
+  countryNameList: CountryData[] = CountryList;
 
   ngOnInit(): void {
     this.selectedCountry = this.countryList[0]; // Default selection
@@ -50,5 +56,13 @@ export class CreateNewUserComponent implements OnInit {
     this.selectedCountry = event.value;
     this.countryCode = this.selectedCountry?.value;
     this.isDropdownOpen = false;
+  }
+
+  onBusinessValueChange(value: any) {
+    console.log('the business selected', value);
+  }
+
+  openSuccessUserDialog() {
+    const dialogRef = this.dialog.open(UserSuccessfulModalComponent);
   }
 }
