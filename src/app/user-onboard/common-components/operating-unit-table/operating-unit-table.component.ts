@@ -24,7 +24,11 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
 import { EntitiesList } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { Activities } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 
-import { StateList,StateListInterface,StateInterface } from 'src/app/shared/menu-items/state-list';
+import {
+  StateList,
+  StateListInterface,
+  StateInterface,
+} from 'src/app/shared/menu-items/state-list';
 
 function getMaxIdFromGrandchildren(children: TreeNode): number {
   const rootChildren = children.children;
@@ -57,23 +61,22 @@ export class OperatingUnitTableComponent implements OnInit {
   @Input() entity: EntityDataType;
   @Input() isDotsCliscked: boolean;
   operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[] = [];
-  states: StateListInterface | undefined
+  states: StateListInterface | undefined;
   opUnitDataFromApi: FetchOPUnits[];
 
   ngOnInit(): void {
     this.fetchOpUnitList();
     const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
-    const savedStates = this.apiService.getDemoStateData(this.entity.country);
-    
+    // const savedStates = this.apiService.getDemoStateData(this.entity.country);
+    const savedStates = this.apiService.getDemoStateData(1);
+
     this.states = savedStates;
     this.operatingUnitTypes = savedUniTypes;
 
     this.subscription = this.opDialogService.openDialog$.subscribe(() => {
       this.openEntityDialog(this.entity.name);
     });
-
- 
 
     if (this.isDotsCliscked === true) {
       this.openEntityDialog(this.entity.name);
@@ -104,7 +107,7 @@ export class OperatingUnitTableComponent implements OnInit {
         id: maxId + 1,
 
         label: operatingUnitName,
-        level:2,
+        level: 2,
         children: [],
       };
       var operatingUnitExists = false;
@@ -124,7 +127,6 @@ export class OperatingUnitTableComponent implements OnInit {
   fetchOpUnitList() {
     const payLoad = { entity: this.entity.id };
     this.apiService.fetcheOperatingUnit(payLoad).subscribe((response) => {
-     
       this.opUnitDataFromApi = response.data;
       const currentCount = 0;
 
@@ -160,7 +162,6 @@ export class OperatingUnitTableComponent implements OnInit {
       opResponseData.forEach((operatingUnit) => {
         this.addGrandChildren(operatingUnit.name);
       });
-
 
       this.dataSource = opResponseData;
     });
@@ -204,8 +205,6 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openEntityDialog(entityName: string) {
-  
-
     this.dialog.open(AddNewOperatingUnitDialogComponent, {
       data: {
         entityTable: this,
@@ -213,7 +212,7 @@ export class OperatingUnitTableComponent implements OnInit {
         industry: this.entity.industryLabel,
         operatingUnitTypes: this.operatingUnitTypes,
         states: this.states,
-       
+
         entityPosition: this.entity.id,
         entity: this.entity,
         opUnitPosition: 0,
@@ -222,8 +221,6 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openEntityDialogForEdit(entityName: string, opID: number) {
-    
-
     this.dialog.open(AddNewOperatingUnitDialogComponent, {
       data: {
         entityTable: this,
@@ -249,12 +246,8 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openLawDialog(opID: number) {
-    const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {
-     
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      
-    });
+    const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {});
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   navigateBackToEntityDetailsPage() {
@@ -262,8 +255,6 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openopUnitMenuDialog(action: string, opID: number) {
-    
-
     switch (action) {
       case 'Delete':
         this.removeEntityData(opID);

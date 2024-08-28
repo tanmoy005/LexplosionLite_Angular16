@@ -4,7 +4,8 @@ import { entityList } from 'src/app/shared/menu-items/entity-to-opunit-data-inte
 export interface BusinessDetails {
   id: number;
   name: string;
-  country: number;
+  // country: number;
+  country: number[];
   countryLabel: string;
   industry: number[];
   industryLabel: string;
@@ -22,7 +23,8 @@ export interface BusinessDetails {
 export interface FormData {
   id: number | null;
   name: string;
-  country: number;
+  // country: number;
+  country: number[];
   countryLabel: string;
   entityType: number;
   entityTypeLabel: string;
@@ -63,8 +65,7 @@ export const EntityColumns = [
   'actions',
 ];
 
-
-export interface entityCreationNullStatus{
+export interface entityCreationNullStatus {
   isEntityHasNullOPUnit: boolean;
   entityOPUnitNUllMessage: string;
 }

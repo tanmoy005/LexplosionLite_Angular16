@@ -129,6 +129,7 @@ export class AddEntityDialog implements OnInit {
 
   initializeFormData() {
     if (this.data.entity !== null) {
+      console.log('the entity to edit', this.data.entity);
       this.formData = {
         id: this.data.entity.id,
         name: this.data.entity.name,
@@ -150,7 +151,7 @@ export class AddEntityDialog implements OnInit {
       this.formData = {
         id: null,
         name: '',
-        country: 1,
+        country: [1],
         countryLabel: '',
         entityType: 0,
         entityTypeLabel: '',
@@ -172,11 +173,13 @@ export class AddEntityDialog implements OnInit {
       (this.formData[field] as number | number[]) = value;
     }
   }
-  selectedCountryList: any;
+  selectedCountryList: any = [1];
 
   onCountryValueChange(value: any) {
+    console.log('the cuntry value change called');
     console.log('the country selected', value);
     this.selectedCountryList = value;
+    console.log('the selected countries', this.selectedCountryList);
   }
 
   onTextFieldChange(event: any, field: keyof EntityInterfaces.FormData) {
@@ -191,6 +194,7 @@ export class AddEntityDialog implements OnInit {
       if (this.formData.hasOwnProperty(field)) {
         const fieldValue =
           this.formData[field as keyof EntityInterfaces.FormData];
+        console.log('the field values', this.formData);
         if (
           (field === 'lawModules' || field === 'industry') &&
           (fieldValue as number[]).length === 0
@@ -207,9 +211,12 @@ export class AddEntityDialog implements OnInit {
     if (isAnyFieldBlank) {
       this.snackbar.showError('Please enter all the field values.');
     } else {
-      this.selectedCountry = this.countryList.find(
-        (country) => country.value === this.formData.country
-      );
+      // this.selectedCountry = this.countryList.find(
+      //   (country) => country.value === this.formData.country
+      // );
+      // this.selectedCountryList = this.formData.country;
+      this.formData.country = this.selectedCountryList;
+      console.log('country', this.selectedCountryList);
       this.selectedEntity = this.transformedEntityList.find(
         (entity) => entity.value === this.formData.entityType
       );
@@ -235,6 +242,7 @@ export class AddEntityDialog implements OnInit {
 
       this.formData.childrenID = 0;
       this.data.entityTable.addEntityData(this.formData);
+      console.log('the form data of entity', this.formData);
       this.dialogRef.close();
     }
   }

@@ -1,7 +1,8 @@
 export interface EntityDataType {
   id: number;
   name: string;
-  country: number;
+  // country: number;
+  country: number[];
   countryLabel: string;
   industry: number[];
   industryLabel: string;

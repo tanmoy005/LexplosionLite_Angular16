@@ -59,6 +59,15 @@ export interface Workforce {
   female: number;
 }
 
+function getCompanyId() {
+  const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //return encryptStorage.getItem('company-id');
+  const { user } = encryptStorage.getItem('login-details');
+  const userCompanies = user.companies;
+  const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
+  return userCompanyId;
+}
+
 @Component({
   selector: 'app-add-new-operating-unit-dialog',
   templateUrl: './add-new-operating-unit-dialog.component.html',
@@ -322,7 +331,9 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       const payload = {
         id: id,
         name: this.operatingUnitName,
-        company: [406],
+        //company: [406],
+        company: getCompanyId(),
+        countryId: 1,
         entities: this.selectedEntities,
         operatingUnitType: this.operatingUnitType,
         state: 36,

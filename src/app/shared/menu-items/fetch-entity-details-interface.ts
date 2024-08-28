@@ -9,6 +9,7 @@ export interface FetchEntityDetails {
   operatingUnits: OpUnitDetails[];
   industries: Industries[];
   komriskLawCategories: LawCategories[];
+  countries: Entitycountries[];
 }
 
 export interface CompanyInterface {
@@ -77,5 +78,15 @@ export interface OpUnitDetails {
     isHeadOffice: boolean;
     entityId: number;
     operatingUnitId: number;
+  };
+}
+
+export interface Entitycountries {
+  id: number;
+  name: string;
+  entityCountry: {
+    version: number;
+    entityId: number;
+    countryId: number;
   };
 }

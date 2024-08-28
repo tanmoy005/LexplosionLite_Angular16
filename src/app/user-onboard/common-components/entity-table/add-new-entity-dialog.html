@@ -69,7 +69,7 @@
                 [options]="countryList"
                 [IsMultiSelection]="true"
                 [IsRequired]="true"
-                (selectedValueChange)="onSelectedValueChanged($event,'country')"
+                (selectedValueChange)="onCountryValueChange($event)"
                 [changeableValues]="formData.country"
               >
               </app-dropdown>

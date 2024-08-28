@@ -120,7 +120,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   initialFormData: EntityInterfaces.BusinessDetails = {
     id: 0,
     name: '',
-    country: 0,
+    // country: 0,
+    country: [0],
     countryLabel: '',
     industry: [],
     industryLabel: '',
@@ -161,6 +162,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     }
   }
 
+  countryForCompanyIdList: any = [];
+
   fetchEntityList() {
     treeDataitem.id = 1;
     treeDataitem.label = getCompanyName();
@@ -178,6 +181,10 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         .subscribe((response) => {
           const entityList = response.data;
           entityList.forEach((entity: FetchEntityDetails) => {
+            const countryIds = entity['countries'].map(
+              (country: any) => country.id
+            );
+            this.countryForCompanyIdList = countryIds;
             const maxId = getMaxIdFromChildren(treeDataitem);
 
             this.entityChild = {
@@ -208,7 +215,10 @@ export class EntityTableComponent implements OnInit, OnDestroy {
                 (law: LawCategories) => law.description
               ),
               operatingUnit: entity.operatingUnits,
-              country: 1,
+              // country: [1],
+              // countryLabel: 'India',
+              // country: [1],
+              country: countryIds,
               countryLabel: 'India',
 
               laws: '',
@@ -256,6 +266,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       entityTypeSearch: null,
       industries: formData.industry,
       komriskLawCategories: formData.lawModules,
+      countries: formData.country,
     };
 
     try {
@@ -360,6 +371,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         break;
       case 'Edit':
         var entity = this.dataSource.find((entity) => entity.id === id);
+        console.log('the entity to edit in table', entity);
 
         if (entity === undefined) {
           this.snackbar.showError(
