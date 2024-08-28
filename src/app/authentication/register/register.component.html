@@ -254,6 +254,10 @@
                 <mat-error *ngIf="passwordFormControl.hasError('required')"
                   >Password is&nbsp;<strong>required</strong>
                 </mat-error>
+                <mat-error
+                  *ngIf="passwordFormControl.hasError('passwordInvalid')"
+                  >Password is&nbsp;<strong>invalid</strong>
+                </mat-error>
               </mat-form-field>
             </div>
 

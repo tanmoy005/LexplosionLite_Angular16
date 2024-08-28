@@ -22,148 +22,187 @@
     </p>
   </div>
   <div class="create-user-form">
-    <div class="col-lg-3 col-md-6">
-      <mat-form-field appearance="outline" class="add-new-user-big-text-input">
-        <mat-label class="text_12_400_gray_1000">Name</mat-label>
-        <input matInput name="username" />
-      </mat-form-field>
-    </div>
+    <form>
+      <div class="col-lg-3">
+        <mat-form-field
+          appearance="outline"
+          class="registration-big-text-input"
+        >
+          <mat-label class="text_12_400_gray_1000">Name</mat-label>
+          <input matInput name="username" [formControl]="nameFormControl" />
+          <mat-error *ngIf="nameFormControl.hasError('required')">
+            Name is&nbsp;<strong>required</strong></mat-error
+          >
+        </mat-form-field>
+      </div>
 
-    <div class="col-lg-12 col-md-6">
-      <div class="row">
-        <div class="col-lg-2 col-md-4 custom-col">
-          <div class="bg-dropdown-white" (click)="toggleDropdown()">
-            <mat-form-field appearance="outline">
-              <div class="row" *ngIf="!isDropdownOpen">
-                <div class="col-1" style="padding-right: 5px">
-                  <span class="country-code">{{ selectedCountry?.label }}</span>
-                </div>
-                <div class="col-6" style="padding-right: 5px">
-                  <img
-                    [src]="selectedCountry?.icon"
-                    alt="Flag"
-                    class="flag-image-new-user"
-                  />
-                </div>
-              </div>
-
-              <mat-select
-                *ngIf="isDropdownOpen"
-                (selectionChange)="onCountryChange($event)"
-                #countrySelect
-              >
-                <mat-option
-                  *ngFor="let country of countryList"
-                  [value]="country"
-                >
-                  <div class="row">
-                    <div class="col-1">
-                      <span class="country-code">{{ country.label }}</span>
-                    </div>
-                    <div class="col-4">
-                      <img
-                        [src]="country.icon"
-                        alt="Flag"
-                        class="flag-image-new-user"
-                        style="margin-left: -8px"
-                      />
-                    </div>
+      <div class="col-lg-12 col-md-6">
+        <div class="row">
+          <div class="col-lg-2 col-md-4 custom-col">
+            <div class="bg-dropdown-white" (click)="toggleDropdown()">
+              <mat-form-field appearance="outline">
+                <div class="row" *ngIf="!isDropdownOpen">
+                  <div class="col-1" style="padding-right: 5px">
+                    <span class="country-code">{{
+                      selectedCountry?.label
+                    }}</span>
                   </div>
-                </mat-option>
-              </mat-select>
+                  <div class="col-6" style="padding-right: 5px">
+                    <img
+                      [src]="selectedCountry?.icon"
+                      alt="Flag"
+                      class="flag-image-new-user"
+                    />
+                  </div>
+                </div>
 
+                <mat-select
+                  *ngIf="isDropdownOpen"
+                  [formControl]="countryCodeFormControl"
+                  (selectionChange)="onCountryChange($event)"
+                  #countrySelect
+                >
+                  <mat-option
+                    *ngFor="let country of countryList"
+                    [value]="country"
+                  >
+                    <div class="row">
+                      <div class="col-1">
+                        <span class="country-code">{{ country.label }}</span>
+                      </div>
+                      <div class="col-4">
+                        <img
+                          [src]="country.icon"
+                          alt="Flag"
+                          class="flag-image-new-user"
+                          style="margin-left: -8px"
+                        />
+                      </div>
+                    </div>
+                  </mat-option>
+                </mat-select>
+
+                <input
+                  matInput
+                  name="countryCode"
+                  [readonly]="true"
+                  style="display: none"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-8">
+            <mat-form-field
+              class="registration-phone-no-input"
+              appearance="outline"
+            >
+              <mat-label class="text_12_400_gray_1000">Phone Number</mat-label>
               <input
                 matInput
-                name="countryCode"
-                [readonly]="true"
-                style="display: none"
+                type="tel"
+                placeholder="Ex. 9999900000"
+                name="phoneNumber"
+                [formControl]="phoneNumberFormControl"
               />
+
+              <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
+                >Phone Number is&nbsp;<strong>required</strong></mat-error
+              >
+              <mat-error
+                *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')"
+                >Invalid Phone Number</mat-error
+              >
             </mat-form-field>
           </div>
         </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <!-- <app-dropdown
+          [label]="'Business Name'"
+          [options]="countryNameList"
+          [IsMultiSelection]="true"
+          [IsRequired]="false"
+          (selectedValueChange)="onBusinessValueChange($event)"
+        >
+        </app-dropdown> -->
+        <mat-form-field
+          appearance="outline"
+          class="registration-big-text-input"
+        >
+          <mat-label class="text_12_400_gray_1000"> Business Name </mat-label>
+          <input matInput #business value="{{ companyName }}" disabled="true" />
+        </mat-form-field>
+      </div>
 
-        <div class="col-lg-6 col-md-8">
-          <mat-form-field
-            class="registration-phone-no-input"
-            appearance="outline"
+      <div class="col-lg-3 col-md-6">
+        <mat-form-field
+          appearance="outline"
+          class="add-new-user-big-text-input"
+        >
+          <mat-label class="text_12_400_gray_1000">Email ID </mat-label>
+          <input
+            matInput
+            name="email"
+            [formControl]="emailFormControl"
+            placeholder="Ex. rahul@company.com"
+          />
+          <mat-error
+            *ngIf="
+              emailFormControl.hasError('email') &&
+              !emailFormControl.hasError('required')
+            "
+            >Please enter a valid email address</mat-error
           >
-            <mat-label class="text_12_400_gray_1000">Phone Number</mat-label>
-            <input
-              matInput
-              type="tel"
-              placeholder="Ex. 9999900000"
-              name="phoneNumber"
-            />
+          <mat-error *ngIf="emailFormControl.hasError('required')"
+            >Email is&nbsp;<strong>required</strong></mat-error
+          >
+        </mat-form-field>
+      </div>
 
-            <!-- <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
-              >Phone Number is&nbsp;<strong>required</strong></mat-error
+      <div class="role-containar col-lg-12">
+        <p class="text_12_700_purple_100">Role</p>
+      </div>
+
+      <div class="bg-dropdown-register col-lg-3 col-md-6">
+        <app-dropdown
+          [label]="'Select Role'"
+          [options]="roleList"
+          [IsMultiSelection]="true"
+          [IsRequired]="false"
+          (selectedValueChange)="onBusinessValueChange($event)"
+        >
+        </app-dropdown>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="custom-col-1 col-lg-2">
+            <button mat-stroked-button class="btn-primary-outline-md">
+              <p class="btn-name-style-add-new-user">
+                <img
+                  src="./assets/images/icons/Icons - Lex Kom Litecross.svg"
+                />
+                Cancel
+              </p>
+            </button>
+          </div>
+          <div class="col-lg-2">
+            <button
+              mat-button
+              class="btn-primary-md"
+              (click)="handleRegistration($event)"
             >
-            <mat-error
-              *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')"
-              >Invalid Phone Number</mat-error
-            > -->
-          </mat-form-field>
+              <p class="btn-name-style-add-new-user">
+                <img
+                  src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
+                />
+                Add User
+              </p>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="bg-dropdown-register col-lg-3 col-md-6">
-      <app-dropdown
-        [label]="'Business Name'"
-        [options]="countryNameList"
-        [IsMultiSelection]="true"
-        [IsRequired]="false"
-        (selectedValueChange)="onBusinessValueChange($event)"
-      >
-      </app-dropdown>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-      <mat-form-field appearance="outline" class="add-new-user-big-text-input">
-        <mat-label class="text_12_400_gray_1000">Email ID </mat-label>
-        <input matInput name="email" />
-      </mat-form-field>
-    </div>
-
-    <div class="role-containar col-lg-12">
-      <p class="text_12_700_purple_100">Role</p>
-    </div>
-
-    <div class="bg-dropdown-register col-lg-3 col-md-6">
-      <app-dropdown
-        [label]="'Select Role'"
-        [options]="countryNameList"
-        [IsMultiSelection]="true"
-        [IsRequired]="false"
-        (selectedValueChange)="onBusinessValueChange($event)"
-      >
-      </app-dropdown>
-    </div>
-
-    <div class="col-lg-12">
-      <div class="row">
-        <div class="custom-col-1 col-lg-2">
-          <button mat-stroked-button class="btn-primary-outline-md">
-            <p class="btn-name-style-add-new-user">
-              <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
-              Cancel
-            </p>
-          </button>
-        </div>
-        <div class="col-lg-2">
-          <button
-            mat-button
-            class="btn-primary-md"
-            (click)="openSuccessUserDialog()"
-          >
-            <p class="btn-name-style-add-new-user">
-              <img
-                src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
-              />
-              Add User
-            </p>
-          </button>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 </div>

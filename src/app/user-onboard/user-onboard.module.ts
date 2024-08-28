@@ -13,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { EntityDetailsPageComponent } from './entity-details-page/entity-details-page.component';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { LawsTablePageComponent } from './laws-table-page/laws-table.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,7 +23,7 @@ import { FeaturesComponent } from './subscription-details-page/features/features
 import { EntityComponent } from './entity/entity.component';
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
 import { MatListModule } from '@angular/material/list';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatureHeaderComponent } from './subscription-details-page/feature-header/feature-header.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -33,9 +33,10 @@ import { GoLivePageComponent } from './go-live-page/go-live-page.component';
 import { KomriskSelectedDialogComponent } from './subscription-details-page/komrisk-selected-dialog/komrisk-selected-dialog.component';
 import { CreateNewUserComponent } from './create-new-user/create-new-user.component';
 import { UserSuccessfulModalComponent } from './create-new-user/user-successful-modal/user-successful-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
-    
     CommonComponentsComponent,
     LawsTablePageComponent,
     TermsConditionComponent,
@@ -50,9 +51,8 @@ import { UserSuccessfulModalComponent } from './create-new-user/user-successful-
     KomriskSelectedDialogComponent,
     CreateNewUserComponent,
     UserSuccessfulModalComponent,
-    
   ],
-  
+
   imports: [
     CommonModule,
     RouterModule.forChild(UserOnboardRoutes),
@@ -69,10 +69,9 @@ import { UserSuccessfulModalComponent } from './create-new-user/user-successful-
     MatExpansionModule,
     MatButtonModule,
     CommonComponentModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ],
-  exports:[
-    CommonComponentModule
-  ]
+  exports: [CommonComponentModule],
 })
-export class UserOnboardModule { }
+export class UserOnboardModule {}

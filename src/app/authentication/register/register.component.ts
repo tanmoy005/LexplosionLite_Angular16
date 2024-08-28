@@ -248,7 +248,8 @@ export class AppSideRegisterComponent implements OnInit {
 
     if (isRegistrationCredentialsFine) {
       const payload = {
-        name: this.username,
+        // name: this.username,
+        name: this.businessname,
         description: this.headquarterAddress,
         firstName: usernameParts[0] || '',
         lastName: usernameParts.slice(1).join(' ') || '',
@@ -260,7 +261,7 @@ export class AppSideRegisterComponent implements OnInit {
         countries: this.selectedCountryList,
       };
       this.authService.handleAdminUserCreation(payload);
-      this.router.navigate(['/verify-email'], { state: payload });
+      // this.router.navigate(['/verify-email'], { state: payload });
     } else {
       this.snackbar.showError(
         'Please enter all field values in correct format and check terms and conditions.'
