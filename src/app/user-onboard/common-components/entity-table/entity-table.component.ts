@@ -102,7 +102,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   @Output() checkAllEntitiesOPUnit =
     new EventEmitter<FieldDefinitionInterfaces.entitiesOperatingUnitStatus>();
 
-  // @Output() isNoEntity = new EventEmitter<boolean>();
+  @Output() isNoEntity = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(
@@ -251,7 +251,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             entitiesOperatingUnitNullList: opUnitNullEntitiesList,
           });
 
-          //this.isNoEntity.emit(false);
+          this.isNoEntity.emit(entityNullStatus);
         });
     } catch (error) {
       this.snackbar.showError(

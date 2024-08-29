@@ -87,4 +87,9 @@ export class EntityDetailsPageComponent {
     this.isAddNewUserClicked = state;
     console.log('the add new user is clicked', state);
   }
+  handleIsnoEntity(state: string) {
+    console.log('no entity there');
+    this.stepper.stepCompletionStatus = false;
+    this.stepper.stepCompletionMessage = state;
+  }
 }

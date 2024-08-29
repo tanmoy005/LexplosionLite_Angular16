@@ -56,6 +56,8 @@ export class EntityComponent implements OnInit {
     new EventEmitter<entityCreationNullStatus>();
   @Output() isemitedAddNewUserClicked = new EventEmitter<boolean>();
 
+  @Output() isNoEntityThere = new EventEmitter<string>();
+
   newCountryNameList: any;
   transformedCountries: any;
 
@@ -64,6 +66,8 @@ export class EntityComponent implements OnInit {
   countryForCompanyIdList: any = [];
   fieldPayload = ['countries'];
   apiCountryList: any = [];
+
+  entityListNullStatus: boolean = false;
 
   fetchCountriesForCompanies(payload: any) {
     this.apiService.postCountriesforCompanies(payload).subscribe((response) => {
@@ -167,7 +171,9 @@ export class EntityComponent implements OnInit {
   }
 
   goToSubscription() {
-    if (!this.entitiesOPUnitNullStatus) {
+    if (this.entityListNullStatus) {
+      this.snackbar.showWarning('Add atlease one Entity');
+    } else if (!this.entitiesOPUnitNullStatus) {
       this.router.navigate(['/subscription'], { state: { entity: '' } });
     } else {
       this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
@@ -183,6 +189,17 @@ export class EntityComponent implements OnInit {
     // this.isDataComingFromDots = state;
     // if (this.resolveDotsClickedPromise) {
     //   this.resolveDotsClickedPromise();
+    // }
+  }
+
+  handleEntityListStatus(state: boolean) {
+    console.log('the entity status', state);
+    this.entityListNullStatus = state;
+    if (state === true) {
+      this.isNoEntityThere.emit('Add atlease one Entity');
+    }
+    // else{
+    //   this.isNoEntityThere.emit('Add atlease one Entity');
     // }
   }
 }
