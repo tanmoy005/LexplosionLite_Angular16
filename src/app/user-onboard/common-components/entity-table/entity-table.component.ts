@@ -102,6 +102,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   @Output() checkAllEntitiesOPUnit =
     new EventEmitter<FieldDefinitionInterfaces.entitiesOperatingUnitStatus>();
 
+  // @Output() isNoEntity = new EventEmitter<boolean>();
+
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(
       (entity?: EntityInterfaces.BusinessDetails | null) => {
@@ -175,11 +177,17 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     var opUnitNullStatus = false;
     var opUnitNullEntitiesList: string[] = [];
 
+    var entityNullStatus: boolean = false;
+
     try {
       this.apiService
         .postFetchEntityList(entityFetchPayload)
         .subscribe((response) => {
           const entityList = response.data;
+          if (entityList.length === 0) {
+            entityNullStatus = true;
+            console.log('no entity exists');
+          }
           entityList.forEach((entity: FetchEntityDetails) => {
             const countryIds = entity['countries'].map(
               (country: any) => country.id
@@ -242,6 +250,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             entitiesOperatingUnitNullStatus: opUnitNullStatus,
             entitiesOperatingUnitNullList: opUnitNullEntitiesList,
           });
+
+          //this.isNoEntity.emit(false);
         });
     } catch (error) {
       this.snackbar.showError(

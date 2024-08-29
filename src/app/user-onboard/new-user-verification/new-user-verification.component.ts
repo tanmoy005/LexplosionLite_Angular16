@@ -11,6 +11,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
+import { Router } from '@angular/router';
 
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -60,7 +61,8 @@ export class NewUserVerificationComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private router: Router
   ) {}
 
   token: string | null = null; // Variable to store the token
@@ -103,6 +105,7 @@ export class NewUserVerificationComponent implements OnInit {
         if (response) {
           // this.router.navigate(['/entity-details'], { state: { entity: '' } });
           this.snackbar.showSuccess('Your Password is set');
+          this.router.navigate(['/login']);
         }
       });
     } catch (e) {
@@ -112,5 +115,9 @@ export class NewUserVerificationComponent implements OnInit {
     //const payload = { otp: this.otp, email: this.stateData.email };
     //this.authService.handleAdminUserCreation(payload);
     // this.router.navigate(['/verify-email'], { state: payload });
+  }
+
+  handleCancleClick(event: any) {
+    this.router.navigate(['/login']);
   }
 }

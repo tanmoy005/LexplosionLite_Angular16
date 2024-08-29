@@ -23,6 +23,7 @@ import { FetchOPUnits } from 'src/app/shared/menu-items/fetch-op-unit-interface'
 import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-interface';
 import { EntitiesList } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { Activities } from 'src/app/shared/menu-items/fetch-op-unit-interface';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 import {
   StateList,
@@ -40,6 +41,15 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
   return maxId;
 }
 
+function getCompanyId() {
+  const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //return encryptStorage.getItem('company-id');
+  const { user } = encryptStorage.getItem('login-details');
+  const userCompanies = user.companies;
+  const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
+  return userCompanyId;
+}
+
 /**
  * @title Adding and removing data when using an array-based datasource.
  */
@@ -55,7 +65,8 @@ export class OperatingUnitTableComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private apiService: ApiService,
-    private opDialogService: DialogService
+    private opDialogService: DialogService,
+    private snackbar: SnackbarService
   ) {}
 
   @Input() entity: EntityDataType;
@@ -246,8 +257,26 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openLawDialog(opID: number) {
-    const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {});
-    dialogRef.afterClosed().subscribe((result) => {});
+    // const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {});
+    // dialogRef.afterClosed().subscribe((result) => {});
+    const payload = {
+      company: getCompanyId(),
+      entity: this.entity.id,
+      operatingUnit: [opID],
+    };
+    console.log('the payload for laws', payload);
+
+    try {
+      this.apiService.postApplicableLaws(payload).subscribe((response) => {
+        if (response) {
+          this.router.navigate(['/laws']);
+          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+          //this.snackbar.showSuccess('A new user is created');
+        }
+      });
+    } catch (e) {
+      this.snackbar.showError('Some error occurred while fetching Laws');
+    }
   }
 
   navigateBackToEntityDetailsPage() {
