@@ -34,6 +34,7 @@ import { KomriskSelectedDialogComponent } from './subscription-details-page/komr
 import { CreateNewUserComponent } from './create-new-user/create-new-user.component';
 import { UserSuccessfulModalComponent } from './create-new-user/user-successful-modal/user-successful-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NewUserVerificationComponent } from './new-user-verification/new-user-verification.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     KomriskSelectedDialogComponent,
     CreateNewUserComponent,
     UserSuccessfulModalComponent,
+    NewUserVerificationComponent,
   ],
 
   imports: [

@@ -9,18 +9,20 @@ export const AppRoutes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '',
     component: InitialLayoutComponent,
     children: [
-  
       {
         path: '',
-        loadChildren: () => import('./guest-user/guest-user.module').then(m => m.GuestUserModule)
-      }
-    ]
+        loadChildren: () =>
+          import('./guest-user/guest-user.module').then(
+            (m) => m.GuestUserModule
+          ),
+      },
+    ],
   },
   {
     path: '',
@@ -28,38 +30,50 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+        loadChildren: () =>
+          import('./authentication/authentication.module').then(
+            (m) => m.AuthenticationModule
+          ),
       },
       {
         path: '',
-        loadChildren: () => import('./user-onboard/user-onboard.module').then(m => m.UserOnboardModule)
-      }
-      
-    ]
+        loadChildren: () =>
+          import('./user-onboard/user-onboard.module').then(
+            (m) => m.UserOnboardModule
+          ),
+      },
+      // {
+      //   path: '',
+      //   loadChildren: () =>
+      //     import('./new-user-auth/new-user-auth.module').then(
+      //       (m) => m.NewUserAuthModule
+      //     ),
+      // },
+    ],
   },
   {
     path: '',
     component: InitialLayoutComponent,
-  
+
     children: [
-  
       {
         path: '',
-        loadChildren: () => import('./guest-user/guest-user.module').then(m => m.GuestUserModule)
-      }
-    ]
+        loadChildren: () =>
+          import('./guest-user/guest-user.module').then(
+            (m) => m.GuestUserModule
+          ),
+      },
+    ],
   },
   {
     path: '',
     component: FullComponent,
     children: [
-     
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      }
-    ]
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      },
+    ],
   },
- 
-
 ];

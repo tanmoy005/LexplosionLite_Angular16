@@ -1,0 +1,27 @@
+.user-verification-form {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  height: 100vh; /* Full height of the viewport */
+  gap: 90px;
+}
+
+// form {
+//   width: 100%; /* Make the form take up the full width available */
+//   max-width: 400px; /* Optional: Limit the form's width */
+// }
+
+// .col-lg-3 {
+//   width: 100%; /* Ensure the inner div takes the full width */
+// }
+
+.input-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.password-error-icon {
+  display: flex;
+  align-items: center;
+  color: #ee0b03;
+}
