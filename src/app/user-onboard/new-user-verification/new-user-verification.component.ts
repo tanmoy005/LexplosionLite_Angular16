@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -8,6 +8,9 @@ import {
   ValidatorFn,
   FormBuilder,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
 
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -53,7 +56,23 @@ export function confirmPasswordValidator(
   templateUrl: './new-user-verification.component.html',
   styleUrls: ['./new-user-verification.component.scss'],
 })
-export class NewUserVerificationComponent {
+export class NewUserVerificationComponent implements OnInit {
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private snackbar: SnackbarService
+  ) {}
+
+  token: string | null = null; // Variable to store the token
+
+  ngOnInit(): void {
+    // Retrieve the 'token' parameter from the URL
+    this.route.queryParamMap.subscribe((params) => {
+      this.token = params.get('token');
+      console.log('Token:', this.token);
+    });
+  }
+
   passwordFormControl = new FormControl('', [
     Validators.required,
     passwordValidator(),
@@ -70,5 +89,28 @@ export class NewUserVerificationComponent {
 
   get confirmPassword() {
     return this.confirmPasswordFormControl.value;
+  }
+
+  handleSetPassword(event: any) {
+    // const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
+
+    const payload = { token: this.token, newPassword: this.password };
+
+    console.log('the create new user payload', payload);
+
+    try {
+      this.apiService.postNewUserVerification(payload).subscribe((response) => {
+        if (response) {
+          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+          this.snackbar.showSuccess('Your Password is set');
+        }
+      });
+    } catch (e) {
+      this.snackbar.showError('Some error occurred while setting Password');
+    }
+
+    //const payload = { otp: this.otp, email: this.stateData.email };
+    //this.authService.handleAdminUserCreation(payload);
+    // this.router.navigate(['/verify-email'], { state: payload });
   }
 }

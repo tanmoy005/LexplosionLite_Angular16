@@ -30,12 +30,14 @@ export class ApiService {
     sendOTP: 'verification/send-otp',
     verifyOTP: 'verification/verify-otp',
     countriesForCompany: 'company/getCountriesForCompany',
+    newUserVerification: 'verification/verify-email',
   };
 
   private endpointsWithoutAuthToken = [
     this.endpoints.userLogin,
     this.endpoints.definition,
     this.endpoints.createAdminCompany,
+    this.endpoints.newUserVerification,
   ];
 
   constructor(private http: HttpClient, private snackBar: SnackbarService) {}
@@ -150,5 +152,9 @@ export class ApiService {
 
   postCountriesforCompanies(data: any): Observable<any> {
     return this.postData(this.endpoints.countriesForCompany, data);
+  }
+
+  postNewUserVerification(data: any): Observable<any> {
+    return this.postData(this.endpoints.newUserVerification, data);
   }
 }

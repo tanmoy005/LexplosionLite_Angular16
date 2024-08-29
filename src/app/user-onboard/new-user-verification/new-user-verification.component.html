@@ -1,9 +1,14 @@
 <!-- <p>new-user-verification works!</p> -->
-<div class="user-verification-form">
+<div>
+  <app-reg-header></app-reg-header>
+  <mat-divider></mat-divider>
+
+  <p class="set-password-typography">Your Email ID is confirmed</p>
+
   <form>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="input-with-icon">
+    <div class="col-lg-12">
+      <div class="row">
+        <div>
           <mat-form-field
             appearance="outline"
             class="registration-big-text-input"
@@ -23,23 +28,24 @@
               >Password is&nbsp;<strong>invalid</strong>
             </mat-error>
           </mat-form-field>
+        </div>
 
-          <div
-            *ngIf="passwordFormControl.hasError('passwordInvalid')"
-            class="password-error-icon"
+        <div
+          *ngIf="passwordFormControl.hasError('passwordInvalid')"
+          class="password-error-icon"
+        >
+          <mat-icon
+            matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
+            [matTooltipPosition]="'above'"
           >
-            <mat-icon
-              matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
-              [matTooltipPosition]="'above'"
-            >
-              info
-            </mat-icon>
-          </div>
+            info
+          </mat-icon>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
+
+    <div class="col-lg-12">
+      <div class="row">
         <mat-form-field
           appearance="outline"
           class="registration-big-text-input"
@@ -67,6 +73,37 @@
             Passwords didn't&nbsp;<strong>match</strong>
           </mat-error>
         </mat-form-field>
+      </div>
+    </div>
+    <div style="margin-left: -15px">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="custom-col-1 col-lg-2">
+            <button mat-stroked-button class="btn-primary-outline-md">
+              <p class="btn-name-style-confirm-pass-login">
+                <img
+                  src="./assets/images/icons/Icons - Lex Kom Litecross.svg"
+                />
+                Cancel
+              </p>
+            </button>
+          </div>
+          <div class="col-lg-2">
+            <button
+              mat-button
+              class="btn-primary-md"
+              (click)="handleSetPassword($event)"
+            >
+              <!-- <p class="btn-name-style">Set Password</p> -->
+              <p class="btn-name-style-confirm-pass-login">
+                <img
+                  src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
+                />
+                Confirm and Login
+              </p>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </form>

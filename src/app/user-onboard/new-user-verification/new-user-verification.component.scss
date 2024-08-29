@@ -25,3 +25,64 @@
   align-items: center;
   color: #ee0b03;
 }
+
+.example-card {
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+}
+
+.example-card {
+  background-color: rgba(113, 99, 204, 0.04);
+  border-color: rgba(120, 106, 205, 0.4);
+}
+
+.logo {
+  display: block;
+  margin: 10px auto 30px auto;
+  width: 400px;
+}
+
+.set-password-typography {
+  font-family: Barlow;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.8px;
+  margin: 40px auto 28px auto;
+  color: #786acd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-name-style-confirm-pass-login {
+  font-size: 12px !important;
+  font-family: Barlow;
+  font-weight: 400px;
+  line-height: 14.4px;
+  display: flex;
+  align-items: left;
+}
+
+@media (min-width: 1280px) {
+  .custom-col-1 {
+    flex: 0 0 16.6667%;
+    max-width: 16.6667%;
+  }
+}
+
+/* For screens 1368px and up */
+@media (min-width: 1366px) {
+  .custom-col-1 {
+    flex: 0 0 14.6667%;
+    max-width: 14.6667%;
+  }
+}
+
+/* For screens 1440px and up */
+@media (min-width: 1440px) {
+  .custom-col-1 {
+    flex: 0 0 12.6667%;
+    max-width: 12.6667%;
+  }
+}
