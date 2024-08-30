@@ -3,6 +3,7 @@
     [path]="entityOpPath"
     [buttonName]="'Add New Operating Unit'"
     [secondButtonName]="'Add New User'"
+    (isAddNewUserClicked)="handleIsAddNewUserClicked($event)"
   >
   </app-table-add-header>
   <div class="row opUnit-details-page-entity-section">

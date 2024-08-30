@@ -49,13 +49,11 @@
       (handleTableDataLoadingFromOperatingUnit)="
         handleEntityLoadingState($event)
       "
+      (isemitedAddNewUserClicked)="handleAddnewUserClicked($event)"
     ></app-operating-unit>
   </div>
 
-  <div
-    class="entity-operating-unit-section"
-    *ngIf="isAddNewUserClicked && !isAddOperatingUnitClicked"
-  >
+  <div class="entity-operating-unit-section" *ngIf="isAddNewUserClicked">
     <app-create-new-user></app-create-new-user>
   </div>
 

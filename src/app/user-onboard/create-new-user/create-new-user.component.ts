@@ -155,7 +155,7 @@ export class CreateNewUserComponent implements OnInit {
     };
 
     console.log('the create new user payload', payload);
-    // this.openSuccessUserDialog();
+    //this.openSuccessUserDialog();
 
     try {
       this.apiService.postCreateUser(payload).subscribe((response) => {

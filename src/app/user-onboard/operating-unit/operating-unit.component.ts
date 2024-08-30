@@ -22,13 +22,14 @@ export class OperatingUnitComponent implements OnChanges {
   @Output() handleTableDataLoadingFromOperatingUnit =
     new EventEmitter<boolean>();
 
+  @Output() isemitedAddNewUserClicked = new EventEmitter<boolean>();
+
   entityOpPath: string[] = [];
 
-  activeLevel : number = 2;
+  activeLevel: number = 2;
+  isAddNewUserClicked: boolean = false;
 
   ngOnChanges(changes: SimpleChanges) {
- 
-
     if (changes['entity'] && changes['entity'].currentValue) {
       this.entityOpPath = ['Entities', this.entity.name, 'Operating Unit'];
     }
@@ -38,5 +39,14 @@ export class OperatingUnitComponent implements OnChanges {
   onBackClick() {
     this.isBackClicked.emit(true);
     this.handleTableDataLoadingFromOperatingUnit.emit(true);
+  }
+  handleIsAddNewUserClicked(state: boolean) {
+    this.isAddNewUserClicked = state;
+
+    this.isemitedAddNewUserClicked.emit(this.isAddNewUserClicked);
+    // this.isDataComingFromDots = state;
+    // if (this.resolveDotsClickedPromise) {
+    //   this.resolveDotsClickedPromise();
+    // }
   }
 }
