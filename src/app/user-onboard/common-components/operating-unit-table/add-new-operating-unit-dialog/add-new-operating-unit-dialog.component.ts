@@ -160,6 +160,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       entity: EntityDataType;
       opUnitPosition: number;
       selectedOP: FetchOPUnits;
+      countryIdList: number[];
     },
     private snackbar: SnackbarService,
     public dialogRef: MatDialogRef<AddNewOperatingUnitDialogComponent>,
@@ -180,8 +181,34 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     );
   }
 
+  countryForCompany: any = [];
+  apiCountryList: any = [];
+  countryForCompanyIdList: any = [];
+  countryList: any = [];
+
+  fetchCountriesForOpunit() {
+    const savedCountries = this.encryptStorage.getItem('countries');
+    this.apiCountryList = savedCountries;
+    const countryforOP = this.data.countryIdList;
+
+    const matchingCountries = this.apiCountryList.filter((country: any) =>
+      countryforOP.includes(country.id)
+    );
+
+    console.log('the matching countries', matchingCountries);
+    this.countryList = matchingCountries.map(
+      (country: { id: any; name: any }) => ({
+        value: country.id,
+        label: country.name,
+        icon: undefined,
+      })
+    );
+  }
+
   ngOnInit(): void {
+    this.fetchCountriesForOpunit();
     if (this.data.opUnitPosition !== 0) {
+      console.log('the opunit to edit', this.data.selectedOP);
       this.operatingUnitName = this.data.selectedOP.name;
       this.operatingUnitType = this.data.selectedOP.operatingUnitType.id;
       this.ownership = this.data.selectedOP.ownership.id;
@@ -261,6 +288,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     }
     if (columnvalue === 'states') {
       this.state = value;
+      console.log('the state value', value);
     }
     if (columnvalue === 'activity') {
       this.selectedActivitiesList = value;
@@ -336,7 +364,8 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
         countryId: 1,
         entities: this.selectedEntities,
         operatingUnitType: this.operatingUnitType,
-        state: 36,
+        // state: 36,
+        state: this.state,
         stateSearch: null,
         activities: this.selectedActivitiesList,
         activitySearch: null,

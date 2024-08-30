@@ -216,6 +216,7 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openEntityDialog(entityName: string) {
+    console.log('the op unit dialog for entity', this.entity);
     this.dialog.open(AddNewOperatingUnitDialogComponent, {
       data: {
         entityTable: this,
@@ -227,6 +228,7 @@ export class OperatingUnitTableComponent implements OnInit {
         entityPosition: this.entity.id,
         entity: this.entity,
         opUnitPosition: 0,
+        countryIdList: this.entity.country,
       },
     });
   }
@@ -244,6 +246,7 @@ export class OperatingUnitTableComponent implements OnInit {
         entity: this.entity,
         opUnitPosition: opID,
         selectedOP: this.getOpUnitDetailsForEdit(opID),
+        countryIdList: this.entity.country,
       },
     });
   }
