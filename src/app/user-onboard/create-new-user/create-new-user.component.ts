@@ -155,19 +155,19 @@ export class CreateNewUserComponent implements OnInit {
     };
 
     console.log('the create new user payload', payload);
-    this.openSuccessUserDialog();
+    // this.openSuccessUserDialog();
 
-    // try {
-    //   this.apiService.postCreateUser(payload).subscribe((response) => {
-    //     if (response) {
-    //       // this.router.navigate(['/entity-details'], { state: { entity: '' } });
-    //       this.snackbar.showSuccess('A new user is created');
-    //       // this.openSuccessUserDialog();
-    //     }
-    //   });
-    // } catch (e) {
-    //   this.snackbar.showError('Some error occurred while creating user');
-    // }
+    try {
+      this.apiService.postCreateUser(payload).subscribe((response) => {
+        if (response) {
+          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+          this.snackbar.showSuccess('A new user is created');
+          this.openSuccessUserDialog();
+        }
+      });
+    } catch (e) {
+      this.snackbar.showError('Some error occurred while creating user');
+    }
 
     //const payload = { otp: this.otp, email: this.stateData.email };
     //this.authService.handleAdminUserCreation(payload);
