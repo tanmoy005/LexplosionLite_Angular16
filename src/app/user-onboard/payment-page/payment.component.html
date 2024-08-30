@@ -23,16 +23,7 @@
     </div>
   </div>
 
-  <div class="payment-details-button-container">
-    <!-- <div class="col-lg-12 col-md-12 col-sm-12">
-          <button mat-fab extended class="custom-green-button" (click)="navigateToGoLivePage($event)">
-              <mat-icon>
-                  <img src="./assets/images/icons/Icons - Lex Kom LitePaymentDoneIcon.svg">
-              </mat-icon>
-              Done
-          </button>
-      </div> -->
-
+  <!-- <div class="payment-details-button-container">
     <button
       mat-stroked-button
       class="btn-primary-outline-md"
@@ -41,13 +32,49 @@
       <mat-icon>keyboard_arrow_left</mat-icon>
       <p class="btn-name-style">Back</p>
     </button>
-    <button class="custom-green-button" (click)="navigateToGoLivePage($event)">
-      <mat-icon>
-        <img
-          src="./assets/images/icons/Icons - Lex Kom LitePaymentDoneIcon.svg"
-        />
-      </mat-icon>
-      Done
+    <button
+      class="btn-primary-outline-md"
+      (click)="navigateToGoLivePage($event)"
+    >
+      <p class="btn-name-style-online-payment">
+        <img src="./assets/images/icons/Icons - Lex Kom LitePayOffline.svg" />
+        Pay Online
+      </p>
     </button>
+    <button class="btn-payment-online" (click)="navigateToGoLivePage($event)">
+      <p class="btn-name-style-online-payment">
+        <img src="./assets/images/icons/Icons - Lex Kom LitePayOnline.svg" />
+        Pay Online
+      </p>
+    </button>
+  </div> -->
+
+  <div class="payment-details-button-container">
+    <button
+      mat-stroked-button
+      class="btn-primary-outline-md"
+      (click)="navigateToLawsPage($event)"
+    >
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      <p class="btn-name-style">Back</p>
+    </button>
+
+    <div class="payment-details-buttons">
+      <button
+        class="btn-primary-outline-md"
+        (click)="openOnlinePaymentDialog()"
+      >
+        <p class="btn-name-style-online-payment">
+          <img src="./assets/images/icons/Icons - Lex Kom LitePayOffline.svg" />
+          Pay Offline
+        </p>
+      </button>
+      <button class="btn-payment-online" (click)="openOfflinePaymentDialog()">
+        <p class="btn-name-style-online-payment">
+          <img src="./assets/images/icons/Icons - Lex Kom LitePayOnline.svg" />
+          Pay Online
+        </p>
+      </button>
+    </div>
   </div>
 </div>

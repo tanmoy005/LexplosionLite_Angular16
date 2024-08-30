@@ -113,3 +113,7 @@
 .btn-primary-outline-md {
   @include btn-model("transparent", 6px 24px, var.$primary, 5px, "outline");
 }
+
+.btn-payment-online {
+  @include btn-model(var.$green-600, 6px 24px, var.$green-600, 5px, "filled");
+}

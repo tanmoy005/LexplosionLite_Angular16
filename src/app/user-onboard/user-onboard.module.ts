@@ -35,6 +35,8 @@ import { CreateNewUserComponent } from './create-new-user/create-new-user.compon
 import { UserSuccessfulModalComponent } from './create-new-user/user-successful-modal/user-successful-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewUserVerificationComponent } from './new-user-verification/new-user-verification.component';
+import { OfflinePaymentDialogComponent } from './payment-page/offline-payment-dialog/offline-payment-dialog.component';
+import { OnlinePaymentDialogComponent } from './payment-page/online-payment-dialog/online-payment-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { NewUserVerificationComponent } from './new-user-verification/new-user-v
     CreateNewUserComponent,
     UserSuccessfulModalComponent,
     NewUserVerificationComponent,
+    OfflinePaymentDialogComponent,
+    OnlinePaymentDialogComponent,
   ],
 
   imports: [
