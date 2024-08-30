@@ -119,6 +119,9 @@ export class CreateNewUserComponent implements OnInit {
 
   openSuccessUserDialog() {
     const dialogRef = this.dialog.open(UserSuccessfulModalComponent);
+    dialogRef.componentInstance.isAddNewUserClickedModal.subscribe(() => {
+      this.handleCancelClick();
+    });
   }
 
   get name() {
@@ -152,20 +155,31 @@ export class CreateNewUserComponent implements OnInit {
     };
 
     console.log('the create new user payload', payload);
+    this.openSuccessUserDialog();
 
-    try {
-      this.apiService.postCreateUser(payload).subscribe((response) => {
-        if (response) {
-          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
-          this.snackbar.showSuccess('A new user is created');
-        }
-      });
-    } catch (e) {
-      this.snackbar.showError('Some error occurred while creating user');
-    }
+    // try {
+    //   this.apiService.postCreateUser(payload).subscribe((response) => {
+    //     if (response) {
+    //       // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+    //       this.snackbar.showSuccess('A new user is created');
+    //       // this.openSuccessUserDialog();
+    //     }
+    //   });
+    // } catch (e) {
+    //   this.snackbar.showError('Some error occurred while creating user');
+    // }
 
     //const payload = { otp: this.otp, email: this.stateData.email };
     //this.authService.handleAdminUserCreation(payload);
     // this.router.navigate(['/verify-email'], { state: payload });
+  }
+
+  handleCancelClick() {
+    this.nameFormControl.reset('');
+    this.phoneNumberFormControl.reset('');
+    this.emailFormControl.reset('');
+    this.selectedCountry = this.countryList[0]; // Resetting to default selected country
+    this.countryCodeFormControl.setValue(this.selectedCountry);
+    this.countryCode = 1; // Reset to default country code
   }
 }

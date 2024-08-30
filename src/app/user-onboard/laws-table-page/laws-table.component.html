@@ -1,14 +1,6 @@
-<!-- <app-stepper [currentStep]="1"></app-stepper>
-<app-stepper-helper-text [currentStep]="2" [subStep]="2"></app-stepper-helper-text> -->
 <app-reg-header></app-reg-header>
 <mat-divider></mat-divider>
 <app-stepper [currentStep]="2"> </app-stepper>
-
-<!-- <app-stepper-helper-text
-[helperText]="'Almost there ! Meanwhile, here’s a preliminary list of laws for your business'"
-[stepText]="'Step 2 of 5'"
-style="width: 100%"
-></app-stepper-helper-text> -->
 
 <div class="header">
   <div class="laws-layout" style="margin-bottom: 5px">
@@ -48,4 +40,8 @@ style="width: 100%"
       <p class="btn-name-style">Next</p>
     </button>
   </div>
+</div>
+
+<div class="spinner-backdrop" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
 </div>

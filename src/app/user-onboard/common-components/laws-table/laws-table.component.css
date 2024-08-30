@@ -1,5 +1,4 @@
-
-  /* .example-container table th {
+/* .example-container table th {
     background-color: rgba(120, 106, 205, 0.16);
     font-family: Barlow;
    
@@ -85,18 +84,10 @@
   text-transform: var(--mdc-typography-body2-text-transform, none);
 } */
 
-
-
-
-
-  
-  /* .mdc-data-table__cell, .mdc-data-table__header-cell {
+/* .mdc-data-table__cell, .mdc-data-table__header-cell {
     padding: 0 250px 0 16px;
 } */
 
-  
-
-  
 /* 
   .applicability-container {
     display: flex;
@@ -105,8 +96,8 @@
     justify-content: center;
     text-align: center;
   } */
-  
-  /* .applicability-icon {
+
+/* .applicability-icon {
     margin-bottom: 5px; 
   }
   
@@ -124,4 +115,9 @@
     display: block;
     margin: 0 auto;
   } */
-  
+
+.table-container {
+  max-height: 400px; /* Set the desired height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Optional: Hide horizontal scrolling */
+}

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -8,9 +8,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class UserSuccessfulModalComponent {
   constructor(public dialogRef: MatDialogRef<UserSuccessfulModalComponent>) {}
+  @Output() isAddNewUserClickedModal = new EventEmitter<void>();
 
   closeSuccessDialog() {
     console.log('close dialog clicked');
+    window.location.reload();
+    this.dialogRef.close();
+  }
+  addNewUserClick() {
+    this.isAddNewUserClickedModal.emit();
     this.dialogRef.close();
   }
 }

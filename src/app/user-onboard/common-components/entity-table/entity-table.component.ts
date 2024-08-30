@@ -25,6 +25,7 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import { IndustryDialogComponent } from './industry-dialog/industry-dialog.component';
+import { Router } from '@angular/router';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 
@@ -79,7 +80,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private entityDialogService: DialogService,
     private apiService: ApiService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private router: Router
   ) {}
 
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
@@ -301,12 +303,22 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  openLawDialog() {
-    const name: string = 'Law List';
-    const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
-      data: { name: name },
+  // openLawDialog() {
+  //   const name: string = 'Law List';
+  //   const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
+  //     data: { name: name },
+  //   });
+  //   dialogRef.afterClosed().subscribe((result) => {});
+  // }
+  openLawDialog(entityId: number) {
+    this.router.navigate(['/laws'], {
+      state: { entity: entityId },
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    // const name: string = 'Law List';
+    // const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
+    //   data: { name: name },
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {});
   }
   openOpDialog() {
     const name: string = 'Operating Unit List';
