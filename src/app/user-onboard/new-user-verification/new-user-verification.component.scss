@@ -64,6 +64,13 @@
   align-items: left;
 }
 
+@media (max-width: 1279px) {
+  .custom-col-1 {
+    flex: 0 0 18.6667%;
+    max-width: 18.6667%;
+  }
+}
+
 @media (min-width: 1280px) {
   .custom-col-1 {
     flex: 0 0 16.6667%;

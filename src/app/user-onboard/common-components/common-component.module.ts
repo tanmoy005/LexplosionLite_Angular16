@@ -5,7 +5,10 @@ import { CardLayoutComponent } from './card-layout/card-layout.component';
 import { AddEntityDialog } from './entity-table/add-entity-dialog-component';
 import { ViewEntityLawsDialog } from './entity-table/entity-laws-dialog-component';
 import { BusinessCardComponent } from './business-card/business-card.component';
-import { DialogDepartmentDetailsComponent, DialogLawDetailsComponent } from './dialog/dialog.component';
+import {
+  DialogDepartmentDetailsComponent,
+  DialogLawDetailsComponent,
+} from './dialog/dialog.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { EntityTableComponent } from './entity-table/entity-table.component';
 import { FeaturesSectionComponent } from './features-section/features-section/features-section.component';
@@ -27,8 +30,6 @@ import { OpUnitLawsDialogComponent } from './operating-unit-table/op-unit-laws-d
 import { LawsReadMoreDialogComponent } from './laws-table/laws-read-more-dialog/laws-read-more-dialog.component';
 import { CardLayoutForPaymentPageComponent } from './card-layout-for-payment-page/card-layout-for-payment-page.component';
 import { IndustryDialogComponent } from './entity-table/industry-dialog/industry-dialog.component';
-
-
 
 @NgModule({
   declarations: [
@@ -57,13 +58,9 @@ import { IndustryDialogComponent } from './entity-table/industry-dialog/industry
     OpUnitLawsDialogComponent,
     LawsReadMoreDialogComponent,
     CardLayoutForPaymentPageComponent,
-    IndustryDialogComponent
+    IndustryDialogComponent,
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule
-  ],
+  imports: [CommonModule, MaterialModule, FormsModule],
   exports: [
     StepperComponent,
     TableHeaderComponent,
@@ -79,7 +76,8 @@ import { IndustryDialogComponent } from './entity-table/industry-dialog/industry
     CompanyStructureCardComponent,
     LawsTableComponent,
     ActivitiesListComponent,
-    PaymentSectionComponent
-  ]
+    PaymentSectionComponent,
+    CardLayoutForPaymentPageComponent,
+  ],
 })
-export class CommonComponentModule { }
+export class CommonComponentModule {}
