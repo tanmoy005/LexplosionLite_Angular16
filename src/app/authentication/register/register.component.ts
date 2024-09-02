@@ -92,7 +92,7 @@ export class AppSideRegisterComponent implements OnInit {
   @ViewChild('countrySelect') countrySelect: MatSelect;
 
   fieldPayload = ['countries'];
-
+  isLoading: boolean = false;
   fetchEntityOPUnitDefinitions() {
     this.apiService
       .getFieldDefinition(this.fieldPayload)
@@ -245,7 +245,7 @@ export class AppSideRegisterComponent implements OnInit {
     const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
 
     const usernameParts = this.username?.trim().split(' ') || [''];
-
+    this.isLoading = true;
     if (isRegistrationCredentialsFine) {
       const payload = {
         // name: this.username,
@@ -261,11 +261,13 @@ export class AppSideRegisterComponent implements OnInit {
         countries: this.selectedCountryList,
       };
       this.authService.handleAdminUserCreation(payload);
+      this.isLoading = false;
       // this.router.navigate(['/verify-email'], { state: payload });
     } else {
       this.snackbar.showError(
         'Please enter all field values in correct format and check terms and conditions.'
       );
+      this.isLoading = false;
     }
   }
 

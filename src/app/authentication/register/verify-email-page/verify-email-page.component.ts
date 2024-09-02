@@ -95,4 +95,19 @@ export class VerifyEmailPageComponent {
   handleBackToRegistration(event: any) {
     this.router.navigate(['/register']);
   }
+  handleResendOTP() {
+    const payload = { email: this.stateData.email };
+    try {
+      this.apiService.postSendOTP(payload).subscribe((response) => {
+        if (response) {
+          this.snackbar.showSuccess('OTP has been sent to your email');
+          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+        }
+      });
+    } catch (e) {
+      this.snackbar.showError(
+        'Some error occurred while creating your admin profile.'
+      );
+    }
+  }
 }
