@@ -5,7 +5,7 @@
     [secondButtonName]="''"
   >
   </app-table-add-header>
-  <div class="col-lg-2">
+  <div class="col-lg-2 col-md-2">
     <button
       mat-stroked-button
       class="btn-primary-outline-md"
@@ -16,14 +16,14 @@
     </button>
   </div>
 
-  <div class="col-lg-12">
+  <div class="col-lg-12 col-md-12">
     <p class="text_12_700_purple_100">
       Let’s invite more people to help you collaborate !
     </p>
   </div>
   <div class="create-user-form">
     <form>
-      <div class="col-lg-3">
+      <div class="col-lg-3 col-md-3">
         <mat-form-field
           appearance="outline"
           class="registration-big-text-input"
@@ -42,12 +42,12 @@
             <div class="bg-dropdown-white" (click)="toggleDropdown()">
               <mat-form-field appearance="outline">
                 <div class="row" *ngIf="!isDropdownOpen">
-                  <div class="col-1" style="padding-right: 5px">
+                  <div class="col-lg-1 col-md-1" style="padding-right: 5px">
                     <span class="country-code">{{
                       selectedCountry?.label
                     }}</span>
                   </div>
-                  <div class="col-6" style="padding-right: 5px">
+                  <div class="col-lg-6 col-md-6" style="padding-right: 5px">
                     <img
                       [src]="selectedCountry?.icon"
                       alt="Flag"
@@ -118,14 +118,6 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
-        <!-- <app-dropdown
-          [label]="'Business Name'"
-          [options]="countryNameList"
-          [IsMultiSelection]="true"
-          [IsRequired]="false"
-          (selectedValueChange)="onBusinessValueChange($event)"
-        >
-        </app-dropdown> -->
         <mat-form-field
           appearance="outline"
           class="registration-big-text-input"
@@ -135,7 +127,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-3 col-md-3">
         <mat-form-field
           appearance="outline"
           class="add-new-user-big-text-input"
@@ -175,9 +167,9 @@
         </app-dropdown>
       </div>
 
-      <div class="col-lg-12">
+      <div class="col-lg-12 col-md-12">
         <div class="row">
-          <div class="custom-col-1 col-lg-2">
+          <div class="custom-col-1 col-lg-2 col-md-2">
             <button
               mat-stroked-button
               class="btn-primary-outline-md"
@@ -191,7 +183,7 @@
               </p>
             </button>
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-2 col-md-2">
             <button
               mat-button
               class="btn-primary-md"
