@@ -37,7 +37,7 @@ export const AppRoutes: Routes = [
           ),
       },
       {
-        path: '#',
+        path: '',
         loadChildren: () =>
           import('./user-onboard/user-onboard.module').then(
             (m) => m.UserOnboardModule
@@ -60,14 +60,21 @@ export const AppRoutes: Routes = [
     ],
   },
   {
-    path: '',
-    component: FullComponent,
+    path: '#',
+    component: BlankComponent,
     children: [
       {
         path: 'dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
+      // {
+      //   path: 'verify',
+      //   loadChildren: () =>
+      //     import(
+      //       './user-onboard/create-new-user/create-new-user.component'
+      //     ).then((m) => m.CreateNewUserComponent),
+      // },
     ],
   },
 ];

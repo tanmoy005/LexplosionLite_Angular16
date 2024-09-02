@@ -73,8 +73,10 @@
             <button
               class="invisible-border-button custom-badge"
               (click)="openLawDialog(element.id)"
+              [disabled]="element.operatingUnit.length === 0"
             >
-              <img src="./assets/images/icons/VectorLawa_Icon.png" />
+              <!-- <img src="./assets/images/icons/Vectorlaw.svg" /> -->
+              <img [src]="getImageSourceLwas(element.operatingUnit.length)" />
             </button>
           </td>
         </ng-container>

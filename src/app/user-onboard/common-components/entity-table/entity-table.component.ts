@@ -430,4 +430,9 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       ? './assets/images/icons/Icons - Lex Kom LiteOperating_Unit.svg'
       : './assets/images/icons/Icons - Lex Kom LiteOperating_Unit_Unavailable.svg';
   }
+  getImageSourceLwas(opUnitLength: number): string {
+    return opUnitLength > 0
+      ? './assets/images/icons/Vectorlaw.svg'
+      : './assets/images/icons/Vectorlaw_Disabled.svg';
+  }
 }
