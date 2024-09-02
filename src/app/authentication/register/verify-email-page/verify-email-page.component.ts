@@ -58,6 +58,7 @@ export class VerifyEmailPageComponent {
       this.stateData = navigation.extras.state;
       this.businessName = this.stateData['businessname'];
       this.maskedEmail = this.maskEmail(this.stateData.email);
+      console.log('the masked mail', this.maskedEmail);
     }
   }
 

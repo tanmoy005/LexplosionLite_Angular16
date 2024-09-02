@@ -243,9 +243,8 @@ export class AppSideRegisterComponent implements OnInit {
 
   handleRegistration(event: any) {
     const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
-
     const usernameParts = this.username?.trim().split(' ') || [''];
-    this.isLoading = true;
+    //this.isLoading = true;
     if (isRegistrationCredentialsFine) {
       const payload = {
         // name: this.username,
@@ -260,15 +259,39 @@ export class AppSideRegisterComponent implements OnInit {
         //countries: [1],
         countries: this.selectedCountryList,
       };
-      this.authService.handleAdminUserCreation(payload);
-      this.isLoading = false;
-      // this.router.navigate(['/verify-email'], { state: payload });
+      this.router.navigate(['/verify-email'], { state: payload });
     } else {
       this.snackbar.showError(
         'Please enter all field values in correct format and check terms and conditions.'
       );
-      this.isLoading = false;
+      //this.isLoading = false;
     }
+    // const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
+    // const usernameParts = this.username?.trim().split(' ') || [''];
+    // this.isLoading = true;
+    // if (isRegistrationCredentialsFine) {
+    //   const payload = {
+    //     // name: this.username,
+    //     name: this.businessname,
+    //     description: this.headquarterAddress,
+    //     firstName: usernameParts[0] || '',
+    //     lastName: usernameParts.slice(1).join(' ') || '',
+    //     email: this.email,
+    //     mobile: this.phoneNumber,
+    //     password: this.password,
+    //     source: loginSource,
+    //     //countries: [1],
+    //     countries: this.selectedCountryList,
+    //   };
+    //   this.authService.handleAdminUserCreation(payload);
+    //   this.isLoading = false;
+    //   // this.router.navigate(['/verify-email'], { state: payload });
+    // } else {
+    //   this.snackbar.showError(
+    //     'Please enter all field values in correct format and check terms and conditions.'
+    //   );
+    //   this.isLoading = false;
+    // }
   }
 
   termsConditionModalOpen() {

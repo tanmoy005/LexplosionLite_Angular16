@@ -160,11 +160,11 @@ p {
   padding: 0px 0px !important;
 }
 
-.registration-email-verification-button {
+/* .registration-email-verification-button {
   width: 136px;
   height: 40px;
   font-size: 12px;
-}
+} */
 
 .mdc-button .mdc-button__label {
   /* position: relative; */
