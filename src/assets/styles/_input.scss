@@ -4,7 +4,8 @@
   // to do make this responsive with media quary
   .mat-mdc-text-field-wrapper {
     height: 56px;
-    min-width: 240px;
+    // min-width: 240px;
+    width: 18.75vw;
     border-radius: 5px;
     //border: 1px solid var.$gray-700;
     background-color: var.$gray-800;
