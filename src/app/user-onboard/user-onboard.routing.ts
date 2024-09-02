@@ -51,7 +51,9 @@ export const UserOnboardRoutes: Routes = [
     component: GoLivePageComponent,
   },
   {
-    path: 'newuserVerification',
+    // path: 'newuserVerification',
+    path: 'verify',
+    //path: '%23/verify',
     component: NewUserVerificationComponent,
   },
 ];

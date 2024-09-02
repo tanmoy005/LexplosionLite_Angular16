@@ -10,6 +10,7 @@ export const AppRoutes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
+    // pathMatch: 'prefix',
   },
   {
     path: '',
@@ -36,19 +37,12 @@ export const AppRoutes: Routes = [
           ),
       },
       {
-        path: '',
+        path: '#',
         loadChildren: () =>
           import('./user-onboard/user-onboard.module').then(
             (m) => m.UserOnboardModule
           ),
       },
-      // {
-      //   path: '',
-      //   loadChildren: () =>
-      //     import('./new-user-auth/new-user-auth.module').then(
-      //       (m) => m.NewUserAuthModule
-      //     ),
-      // },
     ],
   },
   {
