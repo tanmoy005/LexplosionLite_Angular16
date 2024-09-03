@@ -45,8 +45,13 @@
                 <div class="row align-items-center" *ngIf="!isDropdownOpen">
                   <span class="country-code" style="margin-left: 16px">{{
                     selectedCountry?.label
-                    }}</span>
-                  <img style="margin-left: 5px;" [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
+                  }}</span>
+                  <img
+                    style="margin-left: 5px"
+                    [src]="selectedCountry?.icon"
+                    alt="Flag"
+                    class="flag-image-new-user"
+                  />
                 </div>
 
                 <mat-select
@@ -197,7 +202,7 @@
               class="btn-primary-outline-md"
               (click)="handleBackButtonClick($event)"
             >
-              <p class="btn-name-style-add-new-user">
+              <p class="btn-name-style btn-name-style-add-new-user">
                 <img
                   src="./assets/images/icons/Icons - Lex Kom Litecross.svg"
                 />
@@ -211,7 +216,7 @@
               class="btn-primary-md"
               (click)="handleRegistration($event)"
             >
-              <p class="btn-name-style-add-new-user">
+              <p class="btn-name-style btn-name-style-add-new-user">
                 <img
                   src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
                 />
