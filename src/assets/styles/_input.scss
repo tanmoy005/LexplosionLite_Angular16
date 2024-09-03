@@ -1,6 +1,7 @@
 @use "variable" as var;
 
 .big-text-input {
+
   // to do make this responsive with media quary
   .mat-mdc-text-field-wrapper {
     height: 56px;
@@ -10,10 +11,8 @@
     //border: 1px solid var.$gray-700;
     background-color: var.$gray-800;
   }
-  .mat-mdc-form-field
-    .mdc-text-field--outlined
-    .mdc-notched-outline--upgraded
-    .mdc-floating-label--float-above {
+
+  .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
     font-size: 10px; // to do make this font-size to variable
   }
 }
@@ -26,22 +25,18 @@
     //border: 1px solid var.$gray-700;
     background-color: var.$gray-800;
   }
-  .mat-mdc-form-field
-    .mdc-text-field--outlined
-    .mdc-notched-outline--upgraded
-    .mdc-floating-label--float-above {
+
+  .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
     font-size: 10px;
   }
 }
 
 .big-text-input {
-  .mat-mdc-form-field
-    .mdc-text-field--outlined
-    .mdc-notched-outline--upgraded
-    .mdc-floating-label--float-above {
+  .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
     font-size: 8px !important;
   }
 }
+
 // .big-text-input-opunit-table{
 //     .mat-mdc-text-field-wrapper{
 //         height: 56px;
@@ -68,6 +63,16 @@
   border-radius: 5px;
   // border: 1px solid rgb(192, 192, 192);
   background-color: rgb(244, 244, 244);
+}
+
+@media (max-width: 1023px) {
+
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper,
+  .verify-email-big-text-input .mat-mdc-text-field-wrapper,
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper,
+  .entity-form .mat-mdc-text-field-wrapper {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 2560px) and (min-width: 1441px) {
@@ -108,12 +113,13 @@
 .registration-big-text-input {
   .mat-mdc-text-field-wrapper {
     //to do make them responsive
-    width: 296px;
+    width: 100%;
     height: 56px;
     border-radius: 5px;
     //border: 1px solid var.$gray-700;
     background-color: var.$gray-800;
   }
+
   .mat-mdc-form-field-error {
     color: var(--mdc-theme-error, #e50f21);
   }
@@ -121,12 +127,13 @@
 
 .registration-phone-no-input {
   .mat-mdc-text-field-wrapper {
-    width: 192px;
+    width: 100%;
     height: 56px;
     border-radius: 5px;
     //border: 1px solid var.$gray-700;
     background-color: var.$gray-800;
   }
+
   .mat-mdc-form-field-error {
     color: var(--mdc-theme-error, #e50f21);
   }
@@ -135,22 +142,17 @@
 .add-new-user-big-text-input {
   .mat-mdc-text-field-wrapper {
     height: 56px;
-    min-width: 296px;
+    min-width: 100%;
     border-radius: 5px;
     //border: 1px solid var.$gray-700;
     background-color: var.$gray-800;
   }
-  .mat-mdc-form-field
-    .mdc-text-field--outlined
-    .mdc-notched-outline--upgraded
-    .mdc-floating-label--float-above {
+
+  .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
     font-size: 10px; // to do make this font-size to variable
   }
 
-  .mat-mdc-form-field
-    .mdc-text-field--outlined
-    .mdc-notched-outline--upgraded
-    .mdc-floating-label--float-above {
+  .mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
     font-size: 8px !important;
   }
 }
