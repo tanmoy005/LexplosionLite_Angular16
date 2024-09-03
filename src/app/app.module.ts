@@ -56,7 +56,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     FormsModule,
     HttpClientModule,
     SharedModule,
-    RouterModule.forRoot(AppRoutes),
+    RouterModule.forRoot(AppRoutes, { useHash: true }),
     AppSidebarComponent,
     // UserOnboardModule,
     MatIconModule,

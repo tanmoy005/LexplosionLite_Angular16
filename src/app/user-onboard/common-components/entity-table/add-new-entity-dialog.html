@@ -1,4 +1,7 @@
-<app-dialog-layout [dialogHeaderTitle]="dialogHeaderTitle" [dialogHeaderImage]="dialogHeaderImage">
+<app-dialog-layout
+  [dialogHeaderTitle]="dialogHeaderTitle"
+  [dialogHeaderImage]="dialogHeaderImage"
+>
   <mat-dialog-content class="entity-dialog">
     <form class="entity-form">
       <div class="container">
@@ -6,9 +9,18 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">1</div>
-              <mat-form-field appearance="outline" class="entity-form-field big-text-input-entity-table">
-                <mat-label class="text_12_400_gray_900">Name of Entity</mat-label>
-                <input matInput (input)="onTextFieldChange($event,'name')" value="{{formData.name}}" />
+              <mat-form-field
+                appearance="outline"
+                class="entity-form-field big-text-input-entity-table"
+              >
+                <mat-label class="text_12_400_gray_900"
+                  >Name of Entity</mat-label
+                >
+                <input
+                  matInput
+                  (input)="onTextFieldChange($event,'name')"
+                  value="{{formData.name}}"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -18,11 +30,18 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">2</div>
-              <div class="row bg-dropdown-business-card h-100 align-items-center">
+              <div
+                class="row bg-dropdown-business-card h-100 align-items-center"
+              >
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                  <app-dropdown [label]="'Type of Entity'" [options]="transformedEntityList" [IsMultiSelection]="false"
-                    [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'entityType')"
-                    [changeableValues]="formData.entityType">
+                  <app-dropdown
+                    [label]="'Type of Entity'"
+                    [options]="transformedEntityList"
+                    [IsMultiSelection]="false"
+                    [IsRequired]="true"
+                    (selectedValueChange)="onSelectedValueChanged($event,'entityType')"
+                    [changeableValues]="formData.entityType"
+                  >
                   </app-dropdown>
                 </div>
               </div>
@@ -34,10 +53,21 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">3</div>
-              <app-dropdown [label]="'Industries'" [options]="transformedIndustryList" [IsMultiSelection]="true"
-                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'industry')"
-                [changeableValues]="formData.industry">
-              </app-dropdown>
+              <div
+                class="row bg-dropdown-business-card h-100 align-items-center"
+              >
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <app-dropdown
+                    [label]="'Industries'"
+                    [options]="transformedIndustryList"
+                    [IsMultiSelection]="true"
+                    [IsRequired]="true"
+                    (selectedValueChange)="onSelectedValueChanged($event,'industry')"
+                    [changeableValues]="formData.industry"
+                  >
+                  </app-dropdown>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -46,9 +76,21 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">4</div>
-              <app-dropdown [label]="'Country'" [options]="countryList" [IsMultiSelection]="true" [IsRequired]="true"
-                (selectedValueChange)="onCountryValueChange($event)" [changeableValues]="formData.country">
-              </app-dropdown>
+              <div
+                class="row bg-dropdown-business-card h-100 align-items-center"
+              >
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <app-dropdown
+                    [label]="'Country'"
+                    [options]="countryList"
+                    [IsMultiSelection]="true"
+                    [IsRequired]="true"
+                    (selectedValueChange)="onCountryValueChange($event)"
+                    [changeableValues]="formData.country"
+                  >
+                  </app-dropdown>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -57,10 +99,21 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="field-container">
               <div class="field-serial-no text_12_500_gray_1000">5</div>
-              <app-dropdown [label]="'Law Modules'" [options]="transformedLawCategoryList" [IsMultiSelection]="true"
-                [IsRequired]="true" (selectedValueChange)="onSelectedValueChanged($event,'lawModules')"
-                [changeableValues]="formData.lawModules">
-              </app-dropdown>
+              <div
+                class="row bg-dropdown-business-card h-100 align-items-center"
+              >
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <app-dropdown
+                    [label]="'Law Modules'"
+                    [options]="transformedLawCategoryList"
+                    [IsMultiSelection]="true"
+                    [IsRequired]="true"
+                    (selectedValueChange)="onSelectedValueChanged($event,'lawModules')"
+                    [changeableValues]="formData.lawModules"
+                  >
+                  </app-dropdown>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -72,12 +125,20 @@
     <div class="action-button-container">
       <div class="row">
         <div class="col">
-          <button mat-button (click)="closeEntityDialog()" class="btn-primary-outline-md">
+          <button
+            mat-button
+            (click)="closeEntityDialog()"
+            class="btn-primary-outline-md"
+          >
             <p class="btn-name-style">Back</p>
           </button>
         </div>
         <div class="col">
-          <button mat-button (click)="addEntity()" class="btn-primary-md-in-dialog">
+          <button
+            mat-button
+            (click)="addEntity()"
+            class="btn-primary-md-in-dialog"
+          >
             <p class="btn-name-style">{{dialogSaveUpdateButtonName}}</p>
           </button>
         </div>
