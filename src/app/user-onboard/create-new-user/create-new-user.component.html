@@ -45,21 +45,8 @@
                 <div class="row align-items-center" *ngIf="!isDropdownOpen">
                   <span class="country-code" style="margin-left: 16px">{{
                     selectedCountry?.label
-                  }}</span>
-                  <img
-                    style="margin-left: 5px"
-                    [src]="selectedCountry?.icon"
-                    alt="Flag"
-                    class="flag-image-new-user"
-                  />
-                  <!-- <div class="col-lg-1 col-md-1" >
-                    <span class="country-code">{{
-                      selectedCountry?.label
-                      }}</span>
-                  </div>
-                  <div class="col-lg-6 col-md-6" >
-                    <img [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
-                  </div> -->
+                    }}</span>
+                  <img style="margin-left: 5px;" [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
                 </div>
 
                 <mat-select

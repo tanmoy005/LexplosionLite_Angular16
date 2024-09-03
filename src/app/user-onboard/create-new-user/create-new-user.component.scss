@@ -25,20 +25,15 @@
   gap: 16px;
 }
 
-.flag-image-new-user {
-  // width: 32px;
-  // height: 24px;
-  width: 2.343vw;
-  height: 1.756vw;
-  margin-right: 1rem;
-}
+// .flag-image-new-user {
+//   // width: 32px;
+//   // height: 24px;
+//   width: 2.343vw;
+//   height: 1.756vw;
+//   margin-right: 1rem;
+// }
 
-.country-code {
-  font-size: 12px;
-  font-family: "Barlow";
-  width: 17px;
-  // height: 14px;
-}
+
 
 @media (min-width: 1280px) {
   .custom-col {
@@ -112,11 +107,11 @@
   }
 }
 
-@media (max-width: 1279px) {
-  .flag-image-new-user {
-    width: 2.5vw;
-    height: 1.875vw;
-  }
-}
+// @media (max-width: 1279px) {
+//   .flag-image-new-user {
+//     width: 2.5vw;
+//     height: 1.875vw;
+//   }
+// }
 
 /* Add more media queries as needed */
