@@ -137,7 +137,7 @@ export class CreateNewUserComponent implements OnInit {
   }
 
   handleRegistration(event: any) {
-    this.openSuccessUserDialog();
+    //this.openSuccessUserDialog();
     // const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
 
     const usernameParts = this.name?.trim().split(' ') || [''];

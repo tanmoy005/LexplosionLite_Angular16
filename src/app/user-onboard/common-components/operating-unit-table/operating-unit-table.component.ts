@@ -24,6 +24,7 @@ import { EntityDataType } from 'src/app/shared/menu-items/entity-to-opunit-data-
 import { EntitiesList } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { Activities } from 'src/app/shared/menu-items/fetch-op-unit-interface';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
+import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
 
 import {
   StateList,
@@ -48,6 +49,38 @@ function getCompanyId() {
   const userCompanies = user.companies;
   const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
   return userCompanyId;
+}
+
+function summarizeLaws(data: any) {
+  // Initialize an empty map to keep track of unique law IDs for each entity
+  const entityLawsMap = new Map();
+
+  // Iterate through each item in the data array
+  data.forEach((item: any) => {
+    const entityId = item.operatingUnit.id;
+    const komriskLaws = item.komriskLaws;
+
+    // Ensure the map has a set initialized for the entity
+    if (!entityLawsMap.has(entityId)) {
+      entityLawsMap.set(entityId, new Set());
+    }
+
+    // Get the current set of law IDs for this entity
+    const lawIdSet = entityLawsMap.get(entityId);
+
+    // Add each law ID to the set (duplicates will automatically be ignored)
+    komriskLaws.forEach((law: any) => {
+      lawIdSet.add(law.id);
+    });
+  });
+
+  // Convert the map to an array of objects with the count of unique laws
+  const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
+    id,
+    noOfLaws: lawIdSet.size,
+  }));
+
+  return result;
 }
 
 /**
@@ -77,6 +110,7 @@ export class OperatingUnitTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchOpUnitList();
+    this.fetchLawsList();
     const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
     // const savedStates = this.apiService.getDemoStateData(this.entity.country);
@@ -99,6 +133,34 @@ export class OperatingUnitTableComponent implements OnInit {
         this.openEntityDialog(this.entity.name);
       }
     }
+  }
+
+  ApplicableLawsItems: ApplicableLaws[] = [];
+  LawSummary: any = [];
+
+  fetchLawsList() {
+    const payload = {
+      company: getCompanyId(),
+    };
+    try {
+      this.apiService.postApplicableLaws(payload).subscribe((response) => {
+        if (response) {
+          console.log('the applicable laws', response.data);
+          this.ApplicableLawsItems = response.data;
+          //this.isLoading = false;
+          const summary = summarizeLaws(response.data);
+          console.log('the summarized law', summary);
+          this.LawSummary = summary;
+        }
+      });
+    } catch (e) {
+      this.snackbar.showError('Some error occurred while fetching Laws');
+      // this.isLoading = false;
+    }
+  }
+  getBadgeCount(id: number): number | null {
+    const data = this.LawSummary.find((item: any) => item.id === id);
+    return data ? data.noOfLaws : null;
   }
 
   ngOnDestroy(): void {

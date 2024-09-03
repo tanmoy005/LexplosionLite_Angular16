@@ -26,6 +26,7 @@ import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import { IndustryDialogComponent } from './industry-dialog/industry-dialog.component';
 import { Router } from '@angular/router';
+import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
 
 const ELEMENT_DATA: EntityInterfaces.BusinessDetails[] = [];
 
@@ -64,6 +65,64 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
     maxId = Math.max(...rootChildren.map((child) => child.id));
   }
   return maxId;
+}
+
+// function summarizeLaws(data: any) {
+//   // Initialize an empty map to keep track of laws count for each entity
+//   const entityLawsMap = new Map();
+
+//   // Iterate through each item in the data array
+//   data.forEach((item: any) => {
+//     const entityId = item.entity.id;
+//     const numberOfLaws = item.komriskLaws.length;
+
+//     // Update the count of laws for each entity
+//     if (entityLawsMap.has(entityId)) {
+//       entityLawsMap.set(entityId, entityLawsMap.get(entityId) + numberOfLaws);
+//     } else {
+//       entityLawsMap.set(entityId, numberOfLaws);
+//     }
+//   });
+
+//   // Convert the map to an array of objects
+//   const result = Array.from(entityLawsMap, ([id, noOfLaws]) => ({
+//     id,
+//     noOfLaws,
+//   }));
+
+//   return result;
+// }
+
+function summarizeLaws(data: any) {
+  // Initialize an empty map to keep track of unique law IDs for each entity
+  const entityLawsMap = new Map();
+
+  // Iterate through each item in the data array
+  data.forEach((item: any) => {
+    const entityId = item.entity.id;
+    const komriskLaws = item.komriskLaws;
+
+    // Ensure the map has a set initialized for the entity
+    if (!entityLawsMap.has(entityId)) {
+      entityLawsMap.set(entityId, new Set());
+    }
+
+    // Get the current set of law IDs for this entity
+    const lawIdSet = entityLawsMap.get(entityId);
+
+    // Add each law ID to the set (duplicates will automatically be ignored)
+    komriskLaws.forEach((law: any) => {
+      lawIdSet.add(law.id);
+    });
+  });
+
+  // Convert the map to an array of objects with the count of unique laws
+  const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
+    id,
+    noOfLaws: lawIdSet.size,
+  }));
+
+  return result;
 }
 
 @Component({
@@ -115,6 +174,34 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
     console.log('the country list come in entity table', this.countryList);
     this.fetchEntityList();
+    this.fetchLawsList();
+  }
+  ApplicableLawsItems: ApplicableLaws[] = [];
+  LawSummary: any = [];
+
+  fetchLawsList() {
+    const payload = {
+      company: getCompanyId(),
+    };
+    try {
+      this.apiService.postApplicableLaws(payload).subscribe((response) => {
+        if (response) {
+          console.log('the applicable laws', response.data);
+          this.ApplicableLawsItems = response.data;
+          //this.isLoading = false;
+          const summary = summarizeLaws(response.data);
+          console.log('the summarized law', summary);
+          this.LawSummary = summary;
+        }
+      });
+    } catch (e) {
+      this.snackbar.showError('Some error occurred while fetching Laws');
+      // this.isLoading = false;
+    }
+  }
+  getBadgeCount(id: number): number | null {
+    const data = this.LawSummary.find((item: any) => item.id === id);
+    return data ? data.noOfLaws : null;
   }
 
   ngOnDestroy(): void {

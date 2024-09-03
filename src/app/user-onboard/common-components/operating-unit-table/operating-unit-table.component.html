@@ -86,8 +86,13 @@
         <button
           (click)="openLawDialog(element.opID)"
           class="invisible-border-button custom-badge"
+          [matBadge]="getBadgeCount(element.opID)"
+          matBadgeSize="small"
+          matBadgeOverlap="true"
+          matBadgePosition="below after"
+          matBadgeColor="primary"
         >
-          <img src="./assets/images/icons/VectorLawa_Icon.png" />
+          <img src="./assets/images/icons/Vectorlaw.svg" />
         </button>
       </td>
     </ng-container>

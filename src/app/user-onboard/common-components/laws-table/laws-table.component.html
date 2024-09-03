@@ -8,7 +8,7 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="lawName">
+      <!-- <ng-container matColumnDef="lawName">
         <th mat-header-cell *matHeaderCellDef>Name of the LAW</th>
         <td mat-cell *matCellDef="let element">
           <div *ngFor="let law of element.lawName" style="margin: 0">
@@ -19,16 +19,67 @@
           <p style="margin: 0">
             <button mat-button class="read-with-button" (click)="openDialog()">
               <p class="text_12_400_gray_1650">Read More</p>
-              <!-- <img
-              src="./assets/images/icons/lawsTableReadMore.svg"
-              alt="read-more-icon"
-              style="margin-left: 8px"
-            /> -->
             </button>
           </p>
           <div *ngFor="let law of element.lawName" style="margin: 0">
             <div *ngIf="law.name.toLowerCase().includes('rule')">
               <p class="text_12_700_gray_1650">{{ law.name }}</p>
+            </div>
+          </div>
+        </td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="lawName">
+        <th mat-header-cell *matHeaderCellDef>Name of the LAW</th>
+        <td mat-cell *matCellDef="let element">
+          <!-- Display laws containing 'act' -->
+          <div
+            *ngFor="let law of element.lawName; let i = index"
+            style="margin: 0"
+          >
+            <div *ngIf="law.name.toLowerCase().includes('act')">
+              <p class="text_12_700_gray_1650">
+                {{ law.name
+                }}<span *ngIf="i !== element.lawName.length - 1">, </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- 'Read More' button -->
+          <p style="margin: 0">
+            <button mat-button class="read-with-button" (click)="openDialog()">
+              <p class="text_12_400_gray_1650">Read More</p>
+            </button>
+          </p>
+
+          <!-- Display laws containing 'rule' -->
+          <div
+            *ngFor="let law of element.lawName; let i = index"
+            style="margin: 0"
+          >
+            <div *ngIf="law.name.toLowerCase().includes('rule')">
+              <p class="text_12_700_gray_1650">
+                {{ law.name
+                }}<span *ngIf="i !== element.lawName.length - 1">, </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Display remaining laws (that do not contain 'act' or 'rule') -->
+          <div
+            *ngFor="let law of element.lawName; let i = index"
+            style="margin: 0"
+          >
+            <div
+              *ngIf="
+                !law.name.toLowerCase().includes('act') &&
+                !law.name.toLowerCase().includes('rule')
+              "
+            >
+              <p class="text_12_700_gray_1650">
+                {{ law.name
+                }}<span *ngIf="i !== element.lawName.length - 1">, </span>
+              </p>
             </div>
           </div>
         </td>
