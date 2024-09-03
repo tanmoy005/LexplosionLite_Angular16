@@ -34,7 +34,7 @@
                   <span class="country-code" style="margin-left: 16px;">{{
                     selectedCountry?.label
                     }}</span>
-                  <img style="margin-left: 5px;" [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user"  />
+                  <img style="margin-left: 5px;" [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
                   <!-- <div class="col-lg-1 col-md-1" >
                     <span class="country-code">{{
                       selectedCountry?.label
@@ -129,31 +129,27 @@
       <div class="role-containar col-lg-12 col-md-12">
         <p class="text_12_700_purple_100">Role</p>
       </div>
-
-      <div class="bg-dropdown-register col-lg-3 col-md-6">
+      <div class="bg-dropdown-register col-lg-12 col-md-12">
         <app-dropdown [label]="'Select Role'" [options]="roleList" [IsMultiSelection]="true" [IsRequired]="false"
           (selectedValueChange)="onBusinessValueChange($event)">
         </app-dropdown>
       </div>
 
+
       <div class="col-lg-12 col-md-12">
-        <div class="row">
-          <div class="custom-col-1 col-lg-2 col-md-2">
-            <button mat-stroked-button class="btn-primary-outline-md" (click)="handleBackButtonClick($event)">
-              <p class="btn-name-style-add-new-user">
-                <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
-                Cancel
-              </p>
-            </button>
-          </div>
-          <div class="col-lg-2 col-md-2">
-            <button mat-button class="btn-primary-md" (click)="handleRegistration($event)">
-              <p class="btn-name-style-add-new-user">
-                <img src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg" />
-                Add User
-              </p>
-            </button>
-          </div>
+        <div class="row justify-content-between">
+          <button mat-stroked-button class="btn-primary-outline-md" (click)="handleBackButtonClick($event)">
+            <p class="btn-name-style-add-new-user">
+              <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
+              Cancel
+            </p>
+          </button>
+          <button mat-button class="btn-primary-md" (click)="handleRegistration($event)">
+            <p class="btn-name-style-add-new-user">
+              <img src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg" />
+              Add User
+            </p>
+          </button>
         </div>
       </div>
     </form>
