@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "material-pro-angular-lite": {
+    "komrisk-lite": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
             "allowedCommonJsDependencies": [
               "apexcharts"
             ],
-            "outputPath": "dist/material-pro-angular-lite",
+            "outputPath": "dist/komrisk-lite",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "material-pro-angular-lite:build:production"
+              "browserTarget": "komrisk-lite:build:production"
             },
             "development": {
-              "browserTarget": "material-pro-angular-lite:build:development"
+              "browserTarget": "komrisk-lite:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-pro-angular-lite:build"
+            "browserTarget": "komrisk-lite:build"
           }
         },
         "test": {

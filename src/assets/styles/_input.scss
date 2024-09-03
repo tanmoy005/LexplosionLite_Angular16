@@ -74,11 +74,22 @@
     width: 100% !important;
   }
 }
-
-@media (max-width: 2560px) and (min-width: 1441px) {
+@media (max-width: 2560px) and (min-width: 1921px) {
   .big-text-input-entity-table .mat-mdc-text-field-wrapper {
     //height: calc(var(--scale-input-field-height)*var(--base-unit-4k));
     width: calc(var(--scale-input-field-width) * var(--base-unit-4k));
+  }
+}
+@media (max-width: 1920px) and (min-width: 1681px) {
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper {
+    //height: calc(var(--scale-input-field-height)*var(--base-unit-4k));
+    width: calc(var(--scale-input-field-width) * var(--base-unit-1920));
+  }
+}
+@media (max-width: 1680px) and (min-width: 1441px) {
+  .big-text-input-entity-table .mat-mdc-text-field-wrapper {
+    //height: calc(var(--scale-input-field-height)*var(--base-unit-4k));
+    width: calc(var(--scale-input-field-width) * var(--base-unit-1680));
   }
 }
 

@@ -69,13 +69,13 @@
   align-items: center;
 }
 
-@media (max-width: 2560px) and (min-width: 1441px) {
-  .btn-name-style {
-    font-size: calc(
-      var(--base-unit-4k) * var(--scale-button-font-size)
-    ) !important;
-    font-family: Barlow;
-    font-weight: 400px;
-    line-height: 14.4px;
-  }
-}
+// @media (max-width: 2560px) and (min-width: 1441px) {
+//   .btn-name-style {
+//     font-size: calc(
+//       var(--base-unit-4k) * var(--scale-button-font-size)
+//     ) !important;
+//     font-family: Barlow;
+//     font-weight: 400px;
+//     line-height: 14.4px;
+//   }
+// }
