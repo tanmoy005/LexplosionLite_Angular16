@@ -4,11 +4,10 @@
   <mat-divider></mat-divider>
 
   <p class="set-password-typography">Your Email ID is confirmed</p>
-
-  <form>
-    <div class="col-lg-12">
-      <div class="row">
-        <div>
+  <div class="user-verification-form">
+    <form>
+      <div class="col-lg-12 col-md-12">
+        <div class="row">
           <mat-form-field
             appearance="outline"
             class="registration-big-text-input"
@@ -28,57 +27,58 @@
               >Password is&nbsp;<strong>invalid</strong>
             </mat-error>
           </mat-form-field>
-        </div>
 
-        <div
-          *ngIf="passwordFormControl.hasError('passwordInvalid')"
-          class="password-error-icon"
-        >
-          <mat-icon
-            matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
-            [matTooltipPosition]="'above'"
+          <div
+            *ngIf="passwordFormControl.hasError('passwordInvalid')"
+            class="password-error-icon"
           >
-            info
-          </mat-icon>
+            <mat-icon
+              matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
+              [matTooltipPosition]="'above'"
+            >
+              info
+            </mat-icon>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-lg-12">
-      <div class="row">
-        <mat-form-field
-          appearance="outline"
-          class="registration-big-text-input"
-        >
-          <mat-label class="text_12_400_gray_1000">Confirm Password</mat-label>
-          <!-- <input matInput name="confirmPassword" /> -->
-
-          <input
-            type="password"
-            matInput
-            [formControl]="confirmPasswordFormControl"
-            name="confirmPassword"
-          />
-          <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
-            Please&nbsp;<strong>re-enter</strong>&nbsp;password
-          </mat-error>
-
-          <mat-error
-            *ngIf="
-              !confirmPasswordFormControl.hasError('required') &&
-              confirmPasswordFormControl.hasError('passwordsMismatch') &&
-              confirmPasswordFormControl.touched
-            "
-          >
-            Passwords didn't&nbsp;<strong>match</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div style="margin-left: -15px">
-      <div class="col-lg-12">
+      <div class="col-lg-12 col-md-12">
         <div class="row">
-          <div class="custom-col-1 col-lg-2">
+          <mat-form-field
+            appearance="outline"
+            class="registration-big-text-input"
+          >
+            <mat-label class="text_12_400_gray_1000"
+              >Confirm Password</mat-label
+            >
+            <!-- <input matInput name="confirmPassword" /> -->
+
+            <input
+              type="password"
+              matInput
+              [formControl]="confirmPasswordFormControl"
+              name="confirmPassword"
+            />
+            <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+              Please&nbsp;<strong>re-enter</strong>&nbsp;password
+            </mat-error>
+
+            <mat-error
+              *ngIf="
+                !confirmPasswordFormControl.hasError('required') &&
+                confirmPasswordFormControl.hasError('passwordsMismatch') &&
+                confirmPasswordFormControl.touched
+              "
+            >
+              Passwords didn't&nbsp;<strong>match</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12">
+        <div class="row">
+          <div class="col-lg-5 col-md-5">
             <button
               mat-stroked-button
               class="btn-primary-outline-md"
@@ -92,7 +92,7 @@
               </p>
             </button>
           </div>
-          <div class="col-lg-2">
+          <div class="col-lg-2 col-md-2">
             <button
               mat-button
               class="btn-primary-md"
@@ -109,6 +109,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

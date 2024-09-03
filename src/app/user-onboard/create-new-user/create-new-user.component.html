@@ -203,29 +203,35 @@
       </div>
 
       <div class="col-lg-12 col-md-12">
-        <div class="row justify-content-between">
-          <button
-            mat-stroked-button
-            class="btn-primary-outline-md"
-            (click)="handleBackButtonClick($event)"
-          >
-            <p class="btn-name-style-add-new-user">
-              <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
-              Cancel
-            </p>
-          </button>
-          <button
-            mat-button
-            class="btn-primary-md"
-            (click)="handleRegistration($event)"
-          >
-            <p class="btn-name-style-add-new-user">
-              <img
-                src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
-              />
-              Add User
-            </p>
-          </button>
+        <div class="row">
+          <div class="col-lg-5 col-md-5">
+            <button
+              mat-stroked-button
+              class="btn-primary-outline-md"
+              (click)="handleBackButtonClick($event)"
+            >
+              <p class="btn-name-style-add-new-user">
+                <img
+                  src="./assets/images/icons/Icons - Lex Kom Litecross.svg"
+                />
+                Cancel
+              </p>
+            </button>
+          </div>
+          <div class="col-lg-2 col-md-5">
+            <button
+              mat-button
+              class="btn-primary-md"
+              (click)="handleRegistration($event)"
+            >
+              <p class="btn-name-style-add-new-user">
+                <img
+                  src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
+                />
+                Add User
+              </p>
+            </button>
+          </div>
         </div>
       </div>
     </form>
