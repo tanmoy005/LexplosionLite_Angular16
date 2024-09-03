@@ -23,7 +23,7 @@
   </div>
   <div class="create-user-form">
     <form>
-      <div class="col-lg-3 col-md-3">
+      <div class="col-lg-12 col-md-12">
         <mat-form-field
           appearance="outline"
           class="registration-big-text-input"
@@ -36,24 +36,30 @@
         </mat-form-field>
       </div>
 
-      <div class="col-lg-12 col-md-6">
-        <div class="row">
-          <div class="col-lg-2 col-md-4 custom-col">
+      <div class="col-lg-12 col-md-12">
+        <div class="row gap-0">
+          <!-- <div class="col-lg-2 col-md-4 custom-col"> -->
+          <div class="col-lg-4 col-md-4 pe-0">
             <div class="bg-dropdown-white" (click)="toggleDropdown()">
               <mat-form-field appearance="outline">
-                <div class="row" *ngIf="!isDropdownOpen">
-                  <div class="col-" style="padding-right: 5px">
+                <div class="row align-items-center" *ngIf="!isDropdownOpen">
+                  <span class="country-code" style="margin-left: 16px">{{
+                    selectedCountry?.label
+                  }}</span>
+                  <img
+                    style="margin-left: 5px"
+                    [src]="selectedCountry?.icon"
+                    alt="Flag"
+                    class="flag-image-new-user"
+                  />
+                  <!-- <div class="col-lg-1 col-md-1" >
                     <span class="country-code">{{
                       selectedCountry?.label
-                    }}</span>
+                      }}</span>
                   </div>
-                  <div class="col-lg-6 col-md-6" style="padding-right: 5px">
-                    <img
-                      [src]="selectedCountry?.icon"
-                      alt="Flag"
-                      class="flag-image-new-user"
-                    />
-                  </div>
+                  <div class="col-lg-6 col-md-6" >
+                    <img [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
+                  </div> -->
                 </div>
 
                 <mat-select
@@ -90,9 +96,39 @@
                 />
               </mat-form-field>
             </div>
+            <!-- <div class="bg-dropdown-white" (click)="toggleDropdown()">
+              <mat-form-field appearance="outline">
+                <div class="row" *ngIf="!isDropdownOpen">
+                  <div class="col-lg-1 col-md-1" style="padding-right: 5px">
+                    <span class="country-code">{{
+                      selectedCountry?.label
+                      }}</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6" style="padding-right: 5px">
+                    <img [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
+                  </div>
+                </div>
+
+                <mat-select *ngIf="isDropdownOpen" [formControl]="countryCodeFormControl"
+                  (selectionChange)="onCountryChange($event)" #countrySelect>
+                  <mat-option *ngFor="let country of countryList" [value]="country">
+                    <div class="row">
+                      <div class="col-1">
+                        <span class="country-code">{{ country.label }}</span>
+                      </div>
+                      <div class="col-4">
+                        <img [src]="country.icon" alt="Flag" class="flag-image-new-user" style="margin-left: -8px" />
+                      </div>
+                    </div>
+                  </mat-option>
+                </mat-select>
+
+                <input matInput name="countryCode" [readonly]="true" style="display: none" />
+              </mat-form-field>
+            </div> -->
           </div>
 
-          <div class="col-lg-6 col-md-8">
+          <div class="col-lg-8 col-md-8">
             <mat-form-field
               class="registration-phone-no-input"
               appearance="outline"
@@ -117,15 +153,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6">
-        <!-- <app-dropdown
-          [label]="'Business Name'"
-          [options]="countryNameList"
-          [IsMultiSelection]="true"
-          [IsRequired]="false"
-          (selectedValueChange)="onBusinessValueChange($event)"
-        >
-        </app-dropdown> -->
+      <div class="col-lg-12 col-md-12">
         <mat-form-field
           appearance="outline"
           class="registration-big-text-input"
@@ -135,7 +163,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-12 col-md-12">
         <mat-form-field
           appearance="outline"
           class="add-new-user-big-text-input"
@@ -145,7 +173,7 @@
             matInput
             name="email"
             [formControl]="emailFormControl"
-            placeholder="Ex. rahul@company.com"
+            placeholder="Ex. mailto:rahul@company.com"
           />
           <mat-error
             *ngIf="
@@ -160,11 +188,10 @@
         </mat-form-field>
       </div>
 
-      <div class="role-containar col-lg-12">
+      <div class="role-containar col-lg-12 col-md-12">
         <p class="text_12_700_purple_100">Role</p>
       </div>
-
-      <div class="bg-dropdown-register col-lg-3 col-md-6">
+      <div class="bg-dropdown-register col-lg-12 col-md-12">
         <app-dropdown
           [label]="'Select Role'"
           [options]="roleList"
@@ -175,36 +202,30 @@
         </app-dropdown>
       </div>
 
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="custom-col-1 col-lg-2">
-            <button
-              mat-stroked-button
-              class="btn-primary-outline-md"
-              (click)="handleBackButtonClick($event)"
-            >
-              <p class="btn-name-style-add-new-user">
-                <img
-                  src="./assets/images/icons/Icons - Lex Kom Litecross.svg"
-                />
-                Cancel
-              </p>
-            </button>
-          </div>
-          <div class="col-lg-2">
-            <button
-              mat-button
-              class="btn-primary-md"
-              (click)="handleRegistration($event)"
-            >
-              <p class="btn-name-style-add-new-user">
-                <img
-                  src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
-                />
-                Add User
-              </p>
-            </button>
-          </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="row justify-content-between">
+          <button
+            mat-stroked-button
+            class="btn-primary-outline-md"
+            (click)="handleBackButtonClick($event)"
+          >
+            <p class="btn-name-style-add-new-user">
+              <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
+              Cancel
+            </p>
+          </button>
+          <button
+            mat-button
+            class="btn-primary-md"
+            (click)="handleRegistration($event)"
+          >
+            <p class="btn-name-style-add-new-user">
+              <img
+                src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
+              />
+              Add User
+            </p>
+          </button>
         </div>
       </div>
     </form>

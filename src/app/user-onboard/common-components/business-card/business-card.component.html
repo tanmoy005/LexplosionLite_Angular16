@@ -62,17 +62,17 @@
         <!-- Country of Operation Section -->
 
         <div class="col-lg-4 col-md-4">
-          <p class="field-name-typography margin-left-lg inputField-margin">
-            Country of Operation
-          </p>
-          <div class="row bg-dropdown-business-card h-100 align-items-center">
-            <div class="col-lg-9 col-md-9 col-sm-11">
-              <app-dropdown [label]="'Select one or more countries'" [options]="transformedCountries"
-                [IsMultiSelection]="true" [IsRequired]="false" (selectedValueChange)="onCountryValueChange($event)"
-                [changeableValues]="countryForCompanyIdList">
-              </app-dropdown>
+            <p class="field-name-typography inputField-margin">
+              Country of Operation
+            </p>
+            <div class="row bg-dropdown-business-card h-100 align-items-center">
+              <div class="col-lg-9 col-md-9 col-sm-11">
+                <app-dropdown [label]="'Select one or more countries'" [options]="transformedCountries"
+                  [IsMultiSelection]="true" [IsRequired]="false" (selectedValueChange)="onCountryValueChange($event)"
+                  [changeableValues]="countryForCompanyIdList">
+                </app-dropdown>
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

@@ -977,7 +977,8 @@ input.mdc-radio__native-control:focus,
 }
 
 .bg-dropdown-register {
-  @include app-dropdown-fixed-width(56px, 296px); //to do make this responsive
+  // @include app-dropdown-fixed-width(56px, 296px); //to do make this responsive
+  @include app-dropdown-fixed-width(56px, 100%); //to do make this responsive
 
   .dropdown-label {
     @include dropdown-label();
