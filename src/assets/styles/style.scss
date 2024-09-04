@@ -156,6 +156,13 @@
   width: 400px;
 }
 
+.bussiness-edit-menu {
+  display: flex!important;
+  align-items: end;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+
 @media (max-width: 2560px) and (min-width: 1921px) {
   :root {
     --base-unit-4k: 16px;
