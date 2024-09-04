@@ -23,6 +23,10 @@
   @include text-model(2rem, 700, var.$font-color-dark, Barlow);
 }
 
+.text_24_500 {
+  @include text-model(2rem, 500, var.$font-color-dark, Barlow);
+}
+
 .text_24_400_dark {
   @include text-model(var.$font-24, 500, var.$font-color-dark, Barlow, 40px);
 }
