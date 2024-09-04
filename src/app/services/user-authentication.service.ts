@@ -12,9 +12,9 @@ import { operatingUnitFetchDefinitions } from '../user-onboard/component-interfa
   providedIn: 'root',
 })
 export class UserAuthenticationService {
-  CreateBusinessURL = 'https://enginebackendqa.komrisk.com/v1/company';
-  CreateUserURL = 'https://enginebackendqa.komrisk.com/v1/user';
-  loginURL = 'https://enginebackendqa.komrisk.com/v1/login';
+  // CreateBusinessURL = 'https://enginebackendqa.komrisk.com/v1/company';
+  // CreateUserURL = 'https://enginebackendqa.komrisk.com/v1/user';
+  // loginURL = 'https://enginebackendqa.komrisk.com/v1/login';
   environment: any = environment;
 
   constructor(
@@ -29,9 +29,9 @@ export class UserAuthenticationService {
   //   return this.http.post(this.CreateBusinessURL, data);
   // }
 
-  userCreateUser(data: any): Observable<any> {
-    return this.http.post(this.CreateUserURL, data);
-  }
+  // userCreateUser(data: any): Observable<any> {
+  //   return this.http.post(this.CreateUserURL, data);
+  // }
 
   userLogin(data: any): Observable<any> {
     return this.apiService.postLoginData(data);

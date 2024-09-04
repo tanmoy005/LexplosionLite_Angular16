@@ -200,6 +200,42 @@
 //   // todo change the class name like this one, add color code
 //   @include text-model(var.$font-12, 700, var.$gray-1650, Barlow, 14.4px);
 // }
+// @mixin text-model-responsive(
+//   $font-size,
+//   $font-weight,
+//   $font-color,
+//   $font-family,
+//   $line-height: null
+// ) {
+//   // Default styles
+//   font-size: $font-size !important;
+//   font-weight: $font-weight !important;
+//   color: $font-color !important;
+//   font-family: $font-family !important;
+//   @if $line-height != null {
+//     line-height: $line-height !important;
+//   }
+
+//   // 4K screens
+//   @media (max-width: 2560px) and (min-width: 1921px) {
+//     font-size: calc(var(--base-unit-4k) * var(--scale-button-font-size));
+//   }
+
+//   // 1920px wide screens
+//   @media (max-width: 1920px) and (min-width: 1681px) {
+//     font-size: calc(var(--base-unit-1920) * var(--scale-button-font-size));
+//   }
+
+//   // 1680px wide screens
+//   @media (max-width: 1680px) and (min-width: 1441px) {
+//     font-size: calc(var(--base-unit-1690) * var(--scale-button-font-size));
+//   }
+
+//   // 1440px wide screens
+//   @media (max-width: 1440px) and (min-width: 1281px) {
+//     font-size: calc(var(--base-unit-large1) * var(--scale-button-font-size));
+//   }
+// }
 
 .text_12_700_gray_1650_responsive {
   font-size: 12px !important;
@@ -242,6 +278,57 @@
 
 @media (max-width: 1440px) and (min-width: 1281px) {
   .text_12_700_gray_1650_responsive {
+    font-size: calc(
+      var(--base-unit-large1) * var(--scale-button-font-size)
+    ) !important;
+    line-height: calc(
+      var(--base-unit-large1) * var(--scale-factor-line-height)
+    );
+    //line-height: 14.4px;
+  }
+}
+
+.text_12_400_black_responsive {
+  font-size: 12px !important;
+  font-family: Barlow;
+  font-weight: 400px;
+  //line-height: 14.4px;
+  color: black;
+}
+
+@media (max-width: 2560px) and (min-width: 1921px) {
+  .text_12_400_black_responsive {
+    font-size: calc(
+      var(--base-unit-4k) * var(--scale-button-font-size)
+    ) !important;
+
+    line-height: calc(var(--base-unit-4k) * var(--scale-factor-line-height));
+  }
+}
+
+@media (max-width: 1920px) and (min-width: 1681px) {
+  .text_12_400_black_responsive {
+    font-size: calc(
+      var(--base-unit-1920) * var(--scale-button-font-size)
+    ) !important;
+    line-height: calc(var(--base-unit-1920) * var(--scale-factor-line-height));
+
+    // line-height: 14.4px;
+  }
+}
+
+@media (max-width: 1680px) and (min-width: 1441px) {
+  .text_12_400_black_responsive {
+    font-size: calc(
+      var(--base-unit-1680) * var(--scale-button-font-size)
+    ) !important;
+    line-height: calc(var(--base-unit-1680) * var(--scale-factor-line-height));
+    //line-height: 14.4px;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1281px) {
+  .text_12_400_black_responsive {
     font-size: calc(
       var(--base-unit-large1) * var(--scale-button-font-size)
     ) !important;
