@@ -78,7 +78,10 @@
 
       <div class="col-lg-12 col-md-12">
         <div class="row">
-          <div class="col-lg-5 col-md-5">
+          <div
+            class="col-lg-5 col-md-5"
+            style="margin-right: 15px; margin-left: -15px"
+          >
             <button
               mat-stroked-button
               class="btn-primary-outline-md"
@@ -92,17 +95,18 @@
               </p>
             </button>
           </div>
-          <div class="col-lg-2 col-md-2">
+          <div class="col-lg-5 col-md-5">
             <button
               mat-button
               class="btn-primary-md"
               (click)="handleSetPassword($event)"
             >
+              <!-- <p class="btn-name-style">Set Password</p> -->
               <p class="btn-name-style btn-name-style-add-new-user">
                 <img
                   src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg"
                 />
-                Confirm and Login
+                Confirm & Login
               </p>
             </button>
           </div>

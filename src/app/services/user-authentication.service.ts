@@ -49,6 +49,7 @@ export class UserAuthenticationService {
         encryptStorage.setItem('login-details', response);
         this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
         this.router.navigate(['/entity-details'], { state: { entity: '' } });
+        // window.location.reload();
       });
     } catch (error) {
       this.snackbar.showError('Some error occurred while logging you in!');
