@@ -162,8 +162,9 @@
   }
 }
 
-.entity-dialog {
-  width: 400px;
+
+.add-operating-unit {
+  width: 60.625vw;
 }
 
 .bussiness-edit-menu {
@@ -172,7 +173,20 @@
   padding-bottom: 15px;
   padding-left: 15px;
 }
+.add-operating-unit {
+  width: 60.625vw;
+}
 
+.entity-dialog {
+  // width: 426.875px;
+  width: 31.25vw;
+}
+.operating-unit-small-dropdown{
+  width: 13.59vw;
+}
+.operating-unit-big-dropdown{
+  width: 16.72vw;
+}
 @media (max-width: 2560px) and (min-width: 1921px) {
   :root {
     --base-unit-4k: 16px;
@@ -892,6 +906,11 @@
   .phone-section {
     width: 296px !important;
   }
+
+  // .add-operating-unit {
+  //   width: 60.625vw;
+  // }
+
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
@@ -1129,6 +1148,10 @@
     margin-left: calc(
       var(--base-unit-medium) * (var(--scale-factor-margin-left))
     );
+  }
+
+  .add-operating-unit {
+    width: 60.625vw;
   }
 
   .entity-dialog {
