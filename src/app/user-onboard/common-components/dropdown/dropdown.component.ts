@@ -22,6 +22,7 @@ export class DropdownComponent implements OnInit {
   @Input() unchangeableValues: any[] = [];
   @Input() changeableValues: Number | any[] = [];
   @Input() type: string = 'default';
+  @Input() isDisabled: boolean = false;
 
   valuesReceived: any[] = [];
 
