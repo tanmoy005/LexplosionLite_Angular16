@@ -1812,6 +1812,11 @@ input.mdc-radio__native-control:focus,
   width: 40px;
 }
 
+.btn-nowrap {
+  text-wrap: nowrap;
+  display: flex;
+  align-items: center;
+}
 @media (max-width: 2560px) and (min-width: 1921px) {
   .example-container table th {
     font-size: calc(
