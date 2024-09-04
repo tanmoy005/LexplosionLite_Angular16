@@ -49,14 +49,12 @@
   width: 60px;
 }
 
-.entity-dialog {
-  width: 400px;
-}
-@media (max-width: 2560px) and (min-width: 1441px) {
-  .entity-dialog {
-    width: 800px;
-  }
-}
+
+// @media (max-width: 2560px) and (min-width: 1441px) {
+//   .entity-dialog {
+//     width: 800px;
+//   }
+// }
 
 .dark-brown-icon {
   color: rgba(120, 106, 205, 1);
