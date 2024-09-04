@@ -260,6 +260,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     try {
       await this.addNewOpUnit();
       this.data.entityTable.fetchOpUnitList();
+      this.data.entityTable.fetchLawsList();
       this.dialogRef.close();
     } catch (error) {}
   }

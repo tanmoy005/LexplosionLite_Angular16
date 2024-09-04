@@ -38,7 +38,7 @@
             style="margin: 0"
           >
             <div *ngIf="law.name.toLowerCase().includes('act')">
-              <p class="text_12_700_gray_1650">
+              <p class="text_12_700_gray_1650_responsive">
                 {{ law.name
                 }}<span *ngIf="i !== element.lawName.length - 1">, </span>
               </p>
@@ -48,7 +48,7 @@
           <!-- 'Read More' button -->
           <p style="margin: 0">
             <button mat-button class="read-with-button" (click)="openDialog()">
-              <p class="text_12_400_gray_1650">Read More</p>
+              <p class="text_12_700_gray_1650_responsive">Read More</p>
             </button>
           </p>
 
@@ -58,7 +58,7 @@
             style="margin: 0"
           >
             <div *ngIf="law.name.toLowerCase().includes('rule')">
-              <p class="text_12_700_gray_1650">
+              <p class="text_12_700_gray_1650_responsive">
                 {{ law.name
                 }}<span *ngIf="i !== element.lawName.length - 1">, </span>
               </p>
@@ -76,7 +76,7 @@
                 !law.name.toLowerCase().includes('rule')
               "
             >
-              <p class="text_12_700_gray_1650">
+              <p class="text_12_700_gray_1650_responsive">
                 {{ law.name
                 }}<span *ngIf="i !== element.lawName.length - 1">, </span>
               </p>
