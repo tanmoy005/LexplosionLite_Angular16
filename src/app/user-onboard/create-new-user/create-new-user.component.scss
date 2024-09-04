@@ -5,10 +5,19 @@
   /* Adjust the value as needed */
 }
 
+// .create-user-form {
+//   gap: 10px;
+//   width: 23.13vw;
+//   // width: 25vw;
+// }
+
 .create-user-form {
   gap: 10px;
-  // width: 23.13vw;
-  width: 25vw;
+  width: 23.13vw;
+
+  @media (max-width: 1024px) {
+    width: 30vw;
+  }
 }
 
 /* Optional: If you want to control the gap more precisely for specific child elements */
