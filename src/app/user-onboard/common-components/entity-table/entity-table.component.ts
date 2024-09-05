@@ -244,7 +244,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       entityResponseReceived.operatingUnits.forEach((operatingUnit) => {
         const opUnit = {
           id: maxId + 1,
-
           label: operatingUnit.name,
           level: 2,
           children: [],
@@ -335,7 +334,9 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
-
+          console.log('treeDataitem');
+          // treeDataitem     
+          
           this.table.renderRows();
           this.entityTableDataLoading.emit(false);
           this.checkAllEntitiesOPUnit.emit({

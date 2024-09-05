@@ -186,9 +186,13 @@
 }
 
 .password-icon-container {
-  position: absolute; /* Position element absolutely within the container */
-  top: 50%; /* Move down 50% from the top */ /* Move right 50% from the left */
-  transform: translate(0, -50%); /* Move element up and left by half its size */
+  position: absolute;
+  /* Position element absolutely within the container */
+  top: 50%;
+  /* Move down 50% from the top */
+  /* Move right 50% from the left */
+  transform: translate(0, -50%);
+  /* Move element up and left by half its size */
   right: -30px;
 }
 
@@ -1715,6 +1719,14 @@ input.mdc-radio__native-control:focus,
   width: 2.343vw;
   height: 1.756vw;
   margin-right: 1rem;
+}
+
+.ml-22px {
+  margin-left: 22px;
+}
+
+.btn-fit-content {
+  width: fit-content !important;
 }
 
 //=================== reg field =============//
