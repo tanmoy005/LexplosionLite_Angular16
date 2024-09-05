@@ -73,6 +73,7 @@ export class AddEntityDialog implements OnInit {
   operatingUnit: [] = [];
   dialogHeaderImage: string = 'assets/images/Business.png';
   entityChild: TreeNode;
+  entitySaveTitle: string = 'Entity Successfully added!';
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -147,6 +148,7 @@ export class AddEntityDialog implements OnInit {
 
       this.dialogSaveUpdateButtonName = 'Update';
       this.dialogHeaderTitle = 'Update Entity Details';
+      this.entitySaveTitle = 'Entity Successfully Updated';
     } else {
       this.formData = {
         id: null,
@@ -241,7 +243,7 @@ export class AddEntityDialog implements OnInit {
       }
 
       this.formData.childrenID = 0;
-      this.data.entityTable.addEntityData(this.formData);
+      this.data.entityTable.addEntityData(this.formData, this.entitySaveTitle);
       console.log('the form data of entity', this.formData);
       this.dialogRef.close();
     }

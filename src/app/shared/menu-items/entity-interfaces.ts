@@ -18,6 +18,7 @@ export interface BusinessDetails {
   actions: string;
   childrenID: number;
   entityList: entityList[];
+  count: number;
 }
 
 export interface FormData {

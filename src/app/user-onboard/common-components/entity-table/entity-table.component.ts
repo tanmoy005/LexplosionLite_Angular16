@@ -226,6 +226,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     actions: '',
     childrenID: 0,
     entityList: [],
+    count: 0,
   };
 
   isTableEntitiesLoading: boolean = false;
@@ -277,7 +278,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             entityNullStatus = true;
             console.log('no entity exists');
           }
-          entityList.forEach((entity: FetchEntityDetails) => {
+          const currentCount = 0;
+          entityList.forEach((entity: FetchEntityDetails, index: number) => {
             const countryIds = entity['countries'].map(
               (country: any) => country.id
             );
@@ -297,6 +299,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
               id: entity.id,
               name: entity.name,
+              count: currentCount + index + 1,
               industry: entity.industries.map(
                 (industry: Industries) => industry.id
               ),
@@ -355,7 +358,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
   treeDataItem = treeDataitem;
 
-  addEntityData(formData: EntityInterfaces.FormData) {
+  addEntityData(formData: EntityInterfaces.FormData, successMessage: string) {
     const createEntityPayload = {
       id: formData.id,
       name: formData.name,
@@ -374,7 +377,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         .subscribe((response) => {
           const entityResponse = response;
 
-          this.snackbar.showSuccess('Entity successfully added.');
+          this.snackbar.showSuccess(successMessage);
           location.reload();
         });
     } catch (error) {
