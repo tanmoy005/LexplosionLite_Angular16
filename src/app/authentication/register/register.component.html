@@ -18,7 +18,6 @@
           <mat-error *ngIf="usernameFormControl.hasError('required')">
             Name is&nbsp;<strong>required</strong></mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="registration-big-text-input">
           <mat-label class="text_12_400_gray_1000">Business Name</mat-label>
           <input matInput name="businessname" [formControl]="companynameFormControl" />
@@ -42,7 +41,7 @@
             (selectedValueChange)="onCountryValueChange($event)"
           >
           </app-dropdown> -->
-        <div class="bg-dropdown-register">
+        <div class="bg-dropdown-register mt-16px">
           <app-dropdown [label]="'Select one or more countries'" [options]="transformedCountries"
             [IsMultiSelection]="true" [IsRequired]="false" (selectedValueChange)="onCountryValueChange($event)">
           </app-dropdown>
