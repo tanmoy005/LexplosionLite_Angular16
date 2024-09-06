@@ -1,4 +1,10 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { MatSelect } from '@angular/material/select';
 import { CountryData } from 'src/app/shared/menu-items/country-list';
 import {
@@ -63,6 +69,7 @@ export class CreateNewUserComponent implements OnInit {
   countryCode: number | null = 1;
 
   countryNameList: CountryData[] = CountryList;
+  @Output() isBackClicked = new EventEmitter<boolean>();
 
   phoneNumberFormControl = new FormControl('', [
     Validators.required,
@@ -96,8 +103,8 @@ export class CreateNewUserComponent implements OnInit {
   nameFormControl = new FormControl('', [Validators.required]);
 
   handleBackButtonClick(event: any) {
-    window.location.reload();
-    // this.isBackClicked.emit(true);
+    // window.location.reload();
+    this.isBackClicked.emit(true);
     // this.handleTableDataLoadingFromOperatingUnit.emit(true);
   }
   toggleDropdown() {
@@ -176,11 +183,13 @@ export class CreateNewUserComponent implements OnInit {
   }
 
   handleCancelClick() {
-    this.nameFormControl.reset('');
-    this.phoneNumberFormControl.reset('');
-    this.emailFormControl.reset('');
-    this.selectedCountry = this.countryList[0]; // Resetting to default selected country
-    this.countryCodeFormControl.setValue(this.selectedCountry);
-    this.countryCode = 1; // Reset to default country code
+    // this.nameFormControl.reset('');
+    // this.phoneNumberFormControl.reset('');
+    // this.emailFormControl.reset('');
+    // this.selectedCountry = this.countryList[0]; // Resetting to default selected country
+    // this.countryCodeFormControl.setValue(this.selectedCountry);
+    // this.countryCode = 1; // Reset to default country code
+
+    this.isBackClicked.emit(true);
   }
 }

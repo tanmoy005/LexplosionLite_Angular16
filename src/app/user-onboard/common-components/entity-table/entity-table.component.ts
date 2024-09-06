@@ -379,7 +379,10 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           const entityResponse = response;
 
           this.snackbar.showSuccess(successMessage);
-          location.reload();
+          // location.reload();
+          this.dataSource = [];
+          this.fetchEntityList();
+          this.fetchLawsList();
         });
     } catch (error) {
       this.snackbar.showError(

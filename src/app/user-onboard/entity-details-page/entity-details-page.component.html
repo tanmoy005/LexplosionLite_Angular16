@@ -54,7 +54,9 @@
   </div>
 
   <div class="entity-operating-unit-section" *ngIf="isAddNewUserClicked">
-    <app-create-new-user></app-create-new-user>
+    <app-create-new-user
+      (isBackClicked)="handleBackClickFromCreateUser($event)"
+    ></app-create-new-user>
   </div>
 
   <div class="spinner-backdrop" *ngIf="isEntityTableLoading">

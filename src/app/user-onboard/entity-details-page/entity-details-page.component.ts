@@ -77,6 +77,10 @@ export class EntityDetailsPageComponent {
     }
   }
 
+  handleBackClickFromCreateUser(event: boolean) {
+    this.isAddNewUserClicked = false;
+  }
+
   handleEntityLoadingState(state: boolean) {
     this.isEntityTableLoading = state;
     this.cdr.detectChanges();
