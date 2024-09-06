@@ -1,10 +1,5 @@
 import { KomriskSelectedDialogComponent } from './komrisk-selected-dialog/komrisk-selected-dialog.component';
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import * as komriskFeaturesInterface from '../../shared/menu-items/demokomriskFeaturesList';
 import { MatDialog } from '@angular/material/dialog';
@@ -57,6 +52,8 @@ export class SubscriptionDetailsPageComponent implements OnInit {
       this.stepper.stepCompletionStatus = false;
       this.stepper.stepCompletionMessage =
         'Please select the KomriskLite to proceed further.';
+    } else {
+      this.stepper.stepCompletionStatus = true;
     }
   }
 

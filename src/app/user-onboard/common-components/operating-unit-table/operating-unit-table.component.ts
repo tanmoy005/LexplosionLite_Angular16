@@ -51,36 +51,60 @@ function getCompanyId() {
   return userCompanyId;
 }
 
-function summarizeLaws(data: any) {
-  // Initialize an empty map to keep track of unique law IDs for each entity
-  const entityLawsMap = new Map();
+// function summarizeLaws(data: any) {
+//   // Initialize an empty map to keep track of unique law IDs for each entity
+//   const entityLawsMap = new Map();
 
-  // Iterate through each item in the data array
-  data.forEach((item: any) => {
+//   // Iterate through each item in the data array
+//   data.forEach((item: any) => {
+//     const entityId = item.operatingUnit.id;
+//     const komriskLaws = item.komriskLaws;
+
+//     // Ensure the map has a set initialized for the entity
+//     if (!entityLawsMap.has(entityId)) {
+//       entityLawsMap.set(entityId, new Set());
+//     }
+
+//     // Get the current set of law IDs for this entity
+//     const lawIdSet = entityLawsMap.get(entityId);
+
+//     // Add each law ID to the set (duplicates will automatically be ignored)
+//     komriskLaws.forEach((law: any) => {
+//       lawIdSet.add(law.id);
+//     });
+//   });
+
+//   // Convert the map to an array of objects with the count of unique laws
+//   const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
+//     id,
+//     noOfLaws: lawIdSet.size,
+//   }));
+
+//   return result;
+// }
+interface EntityLawCount {
+  id: number;
+  noOfLaws: number;
+}
+
+function summarizeLaws(data: ApplicableLaws[]): EntityLawCount[] {
+  const entityLawMap: { [key: number]: Set<number> } = {};
+
+  data.forEach((item) => {
     const entityId = item.operatingUnit.id;
-    const komriskLaws = item.komriskLaws;
+    const lawApplicability = item.lawApplicability;
 
-    // Ensure the map has a set initialized for the entity
-    if (!entityLawsMap.has(entityId)) {
-      entityLawsMap.set(entityId, new Set());
+    if (!entityLawMap[entityId]) {
+      entityLawMap[entityId] = new Set<number>();
     }
 
-    // Get the current set of law IDs for this entity
-    const lawIdSet = entityLawsMap.get(entityId);
-
-    // Add each law ID to the set (duplicates will automatically be ignored)
-    komriskLaws.forEach((law: any) => {
-      lawIdSet.add(law.id);
-    });
+    entityLawMap[entityId].add(lawApplicability);
   });
 
-  // Convert the map to an array of objects with the count of unique laws
-  const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
-    id,
-    noOfLaws: lawIdSet.size,
+  return Object.keys(entityLawMap).map((key) => ({
+    id: +key,
+    noOfLaws: entityLawMap[+key].size,
   }));
-
-  return result;
 }
 
 /**

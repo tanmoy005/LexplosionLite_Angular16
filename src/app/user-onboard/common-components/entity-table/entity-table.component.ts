@@ -93,37 +93,95 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
 //   return result;
 // }
 
-function summarizeLaws(data: any) {
-  // Initialize an empty map to keep track of unique law IDs for each entity
-  const entityLawsMap = new Map();
+// function summarizeLaws(data: any) {
+//   const entityLawsMap = new Map();
 
-  // Iterate through each item in the data array
-  data.forEach((item: any) => {
+//   data.forEach((item: any) => {
+//     const entityId = item.entity.id;
+//     const komriskLaws = item.komriskLaws;
+
+//     if (!entityLawsMap.has(entityId)) {
+//       entityLawsMap.set(entityId, new Set());
+//     }
+
+//     const lawIdSet = entityLawsMap.get(entityId);
+
+//     komriskLaws.forEach((law: any) => {
+//       lawIdSet.add(law.id);
+//     });
+//   });
+
+//   const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
+//     id,
+//     noOfLaws: lawIdSet.size,
+//   }));
+
+//   return result;
+// }
+
+interface EntityLawCount {
+  id: number;
+  noOfLaws: number;
+}
+
+interface EntityLawAndOpUnitCount {
+  id: number;
+  noOfOpUnits: number;
+  noOfLaws: number;
+}
+
+function summarizeLaws(data: ApplicableLaws[]): EntityLawAndOpUnitCount[] {
+  const entitySummaryMap: {
+    [key: number]: { opUnits: Set<number>; laws: Set<number> };
+  } = {};
+
+  data.forEach((item) => {
     const entityId = item.entity.id;
-    const komriskLaws = item.komriskLaws;
+    const operatingUnitId = item.operatingUnit.id;
+    const lawApplicability = item.lawApplicability;
 
-    // Ensure the map has a set initialized for the entity
-    if (!entityLawsMap.has(entityId)) {
-      entityLawsMap.set(entityId, new Set());
+    if (!entitySummaryMap[entityId]) {
+      entitySummaryMap[entityId] = {
+        opUnits: new Set<number>(),
+        laws: new Set<number>(),
+      };
     }
 
-    // Get the current set of law IDs for this entity
-    const lawIdSet = entityLawsMap.get(entityId);
-
-    // Add each law ID to the set (duplicates will automatically be ignored)
-    komriskLaws.forEach((law: any) => {
-      lawIdSet.add(law.id);
-    });
+    entitySummaryMap[entityId].opUnits.add(operatingUnitId);
+    entitySummaryMap[entityId].laws.add(lawApplicability);
   });
 
-  // Convert the map to an array of objects with the count of unique laws
-  const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
-    id,
-    noOfLaws: lawIdSet.size,
-  }));
+  console.log('the summarized laws and operating units', entitySummaryMap);
 
-  return result;
+  return Object.keys(entitySummaryMap).map((key) => ({
+    id: +key,
+    noOfOpUnits: entitySummaryMap[+key].opUnits.size,
+    noOfLaws: entitySummaryMap[+key].laws.size,
+  }));
 }
+
+// function summarizeLaws(data: ApplicableLaws[]): EntityLawCount[] {
+//   // Define the type for the map where entityId is the key and the count of laws is the value
+//   const entityLawMap: { [key: number]: number } = {};
+
+//   data.forEach((item) => {
+//     const entityId = item.entity.id;
+
+//     // If the entityId is not in the map, initialize it with 0
+//     if (!entityLawMap[entityId]) {
+//       entityLawMap[entityId] = 0;
+//     }
+
+//     // Increment the law count for each occurrence of lawApplicability
+//     entityLawMap[entityId]++;
+//   });
+
+//   // Convert the map into the desired structure
+//   return Object.keys(entityLawMap).map((key) => ({
+//     id: +key, // Convert key to number
+//     noOfLaws: entityLawMap[+key], // Use the value as the count of laws
+//   }));
+// }
 
 @Component({
   selector: 'app-entity-table',
@@ -335,8 +393,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
           console.log('treeDataitem');
-          // treeDataitem     
-          
+          // treeDataitem
+
           this.table.renderRows();
           this.entityTableDataLoading.emit(false);
           this.checkAllEntitiesOPUnit.emit({
