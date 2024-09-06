@@ -20,7 +20,7 @@ export class DropdownComponent implements OnInit {
   @Input() IsRequired: boolean = false;
 
   @Input() unchangeableValues: any[] = [];
-  @Input() changeableValues: Number | any[] = [];
+  @Input() changeableValues: Number | any[] | null = [];
   @Input() type: string = 'default';
   @Input() isDisabled: boolean = false;
 

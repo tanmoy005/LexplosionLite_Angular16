@@ -89,10 +89,11 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
 
   operatingUnitName: string = '';
   operatingUnitType: number;
-  state: number;
+  state: number | null;
   activity: string = '';
   locatedAt: string = '';
   ownership: number;
+  country: number;
   employeeData: EmployeeCardInterface[];
   editingEmployeeData: EmployeeCardInterface[] = [
     {
@@ -155,7 +156,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       industry: string;
       entityTable: OperatingUnitTableComponent;
       operatingUnitTypes: OriginalType[];
-      states: StateListInterface;
+      states: StateInterface[];
       entityPosition: number;
       entity: EntityDataType;
       opUnitPosition: number;
@@ -169,7 +170,8 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(
       this.data.operatingUnitTypes
     );
-    this.transformedStates = transformStates(this.data.states.states);
+    console.log('the selected op', this.data.selectedOP);
+    this.transformedStates = transformStates(this.data.states);
 
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList);
 
@@ -185,6 +187,9 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   apiCountryList: any = [];
   countryForCompanyIdList: any = [];
   countryList: any = [];
+
+  selectedCountryID: number | null = null;
+  isStateDropdownDisabled: boolean = true;
 
   fetchCountriesForOpunit() {
     const savedCountries = this.encryptStorage.getItem('countries');
@@ -224,6 +229,8 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.zoneDropdown[zoneSelectedIndex].isChecked = true;
 
       this.state = this.data.selectedOP.state.id;
+      this.country = this.data.selectedOP.countryId;
+      this.selectedCountryID = this.data.selectedOP.countryId;
       this.selectedActivitiesList = this.data.selectedOP.activities.map(
         (item) => item.id
       );
@@ -298,6 +305,18 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     if (columnvalue === 'entityList') {
       this.selectedEntities = value;
     }
+    if (columnvalue === 'country') {
+      console.log('the country value', value);
+      this.selectedCountryID = value;
+      if (value !== 1) {
+        this.transformedStates = [];
+        this.state = null;
+      } else {
+        this.transformedStates = transformStates(this.data.states);
+      }
+
+      this.isStateDropdownDisabled = false;
+    }
   }
 
   employeeCountData(value: EmployeeCardInterface[]) {
@@ -362,7 +381,8 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
         name: this.operatingUnitName,
         //company: [406],
         company: getCompanyId(),
-        countryId: 1,
+        // countryId: 1,
+        countryId: this.selectedCountryID,
         entities: this.selectedEntities,
         operatingUnitType: this.operatingUnitType,
         // state: 36,

@@ -116,12 +116,48 @@
     margin: 0 auto;
   } */
 
+/* .table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+} */
+
 .table-container {
-  max-height: 400px; /* Set the desired height */
-  overflow-y: auto; /* Enable vertical scrolling */
-  overflow-x: hidden; /* Optional: Hide horizontal scrolling */
+  max-height: 400px;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.table-container:hover {
+  overflow-y: auto;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .applicability-text {
   text-align: center;
+}
+
+.app-icon-text-gap {
+  margin-top: 20px;
+}
+
+.button-link {
+  display: inline-block;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+  font-weight: 400;
 }

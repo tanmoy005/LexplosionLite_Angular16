@@ -1,3 +1,4 @@
+import { CountryAPIData } from './country-list';
 export interface FetchOPUnits {
   id: number;
   name: string;
@@ -33,6 +34,7 @@ export interface FetchOPUnits {
   entities: EntitiesList[];
   activities: Activities[];
   isHeadOffice: boolean;
+  countryId: number;
 }
 
 export interface Company {

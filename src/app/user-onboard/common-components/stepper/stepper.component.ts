@@ -308,6 +308,8 @@ export class StepperComponent implements OnInit {
 
     console.log('the current URL', currentUrl);
     console.log('the stepcompletion status', this.stepCompletionStatus);
+    console.log('the curr index ', currindex);
+    console.log('the curr index want to go ', index);
     if (this.stepCompletionStatus) {
       if (
         index >= 0 &&

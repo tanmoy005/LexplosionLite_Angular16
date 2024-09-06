@@ -129,7 +129,8 @@ export class OperatingUnitTableComponent implements OnInit {
   @Input() entity: EntityDataType;
   @Input() isDotsCliscked: boolean;
   operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[] = [];
-  states: StateListInterface | undefined;
+  // states: StateListInterface | undefined;
+  states: StateInterface[] | undefined;
   opUnitDataFromApi: FetchOPUnits[];
 
   ngOnInit(): void {
@@ -138,7 +139,8 @@ export class OperatingUnitTableComponent implements OnInit {
     const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
     // const savedStates = this.apiService.getDemoStateData(this.entity.country);
-    const savedStates = this.apiService.getDemoStateData(1);
+    //const savedStates = this.apiService.getDemoStateData(1);
+    const savedStates = this.encryptStorage.getItem('states');
 
     this.states = savedStates;
     this.operatingUnitTypes = savedUniTypes;
