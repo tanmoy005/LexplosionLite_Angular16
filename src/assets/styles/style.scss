@@ -196,6 +196,11 @@
   right: -30px;
 }
 
+.mat-mdc-form-field-error {
+  font-size: xx-small !important;
+  padding: 0!important;
+}
+
 @media (max-width: 2560px) and (min-width: 1921px) {
   :root {
     --base-unit-4k: 16px;
@@ -398,7 +403,7 @@
       }
 
       .mat-mdc-form-field-error {
-        font-size: xx-small;
+        // font-size: xx-small;
         display: flex;
         margin-left: calc(var(--base-unit-1680) * var(--scale-factor-error-margin-left));
       }
@@ -1723,6 +1728,10 @@ input.mdc-radio__native-control:focus,
 
 .ml-22px {
   margin-left: 22px;
+}
+
+.mt-8px {
+  margin-top: 8px;
 }
 
 .btn-fit-content {
