@@ -209,6 +209,7 @@ export class StepperComponent implements OnInit {
   }
 
   setIndex(event: any) {
+    console.log('click is triggered from setIndex');
     this.selectedIndex = event.selectedIndex;
     this.currentStep = event.selectedIndex;
   }
@@ -216,6 +217,7 @@ export class StepperComponent implements OnInit {
   triggerClick() {
     //  this.selectedIndex = event.selectedIndex;
     // const selInd = event.selectedIndex;
+    console.log('click is triggered');
     this.navigateToStep(this.selectedIndex);
   }
 

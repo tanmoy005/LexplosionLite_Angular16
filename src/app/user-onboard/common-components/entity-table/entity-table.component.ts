@@ -130,58 +130,58 @@ interface EntityLawAndOpUnitCount {
   noOfLaws: number;
 }
 
-function summarizeLaws(data: ApplicableLaws[]): EntityLawAndOpUnitCount[] {
-  const entitySummaryMap: {
-    [key: number]: { opUnits: Set<number>; laws: Set<number> };
-  } = {};
-
-  data.forEach((item) => {
-    const entityId = item.entity.id;
-    const operatingUnitId = item.operatingUnit.id;
-    const lawApplicability = item.lawApplicability;
-
-    if (!entitySummaryMap[entityId]) {
-      entitySummaryMap[entityId] = {
-        opUnits: new Set<number>(),
-        laws: new Set<number>(),
-      };
-    }
-
-    entitySummaryMap[entityId].opUnits.add(operatingUnitId);
-    entitySummaryMap[entityId].laws.add(lawApplicability);
-  });
-
-  console.log('the summarized laws and operating units', entitySummaryMap);
-
-  return Object.keys(entitySummaryMap).map((key) => ({
-    id: +key,
-    noOfOpUnits: entitySummaryMap[+key].opUnits.size,
-    noOfLaws: entitySummaryMap[+key].laws.size,
-  }));
-}
-
-// function summarizeLaws(data: ApplicableLaws[]): EntityLawCount[] {
-//   // Define the type for the map where entityId is the key and the count of laws is the value
-//   const entityLawMap: { [key: number]: number } = {};
+// function summarizeLaws(data: ApplicableLaws[]): EntityLawAndOpUnitCount[] {
+//   const entitySummaryMap: {
+//     [key: number]: { opUnits: Set<number>; laws: Set<number> };
+//   } = {};
 
 //   data.forEach((item) => {
 //     const entityId = item.entity.id;
+//     const operatingUnitId = item.operatingUnit.id;
+//     const lawApplicability = item.lawApplicability;
 
-//     // If the entityId is not in the map, initialize it with 0
-//     if (!entityLawMap[entityId]) {
-//       entityLawMap[entityId] = 0;
+//     if (!entitySummaryMap[entityId]) {
+//       entitySummaryMap[entityId] = {
+//         opUnits: new Set<number>(),
+//         laws: new Set<number>(),
+//       };
 //     }
 
-//     // Increment the law count for each occurrence of lawApplicability
-//     entityLawMap[entityId]++;
+//     entitySummaryMap[entityId].opUnits.add(operatingUnitId);
+//     entitySummaryMap[entityId].laws.add(lawApplicability);
 //   });
 
-//   // Convert the map into the desired structure
-//   return Object.keys(entityLawMap).map((key) => ({
-//     id: +key, // Convert key to number
-//     noOfLaws: entityLawMap[+key], // Use the value as the count of laws
+//   console.log('the summarized laws and operating units', entitySummaryMap);
+
+//   return Object.keys(entitySummaryMap).map((key) => ({
+//     id: +key,
+//     noOfOpUnits: entitySummaryMap[+key].opUnits.size,
+//     noOfLaws: entitySummaryMap[+key].laws.size,
 //   }));
 // }
+
+function summarizeLaws(data: ApplicableLaws[]): EntityLawCount[] {
+  // Define the type for the map where entityId is the key and the count of laws is the value
+  const entityLawMap: { [key: number]: number } = {};
+
+  data.forEach((item) => {
+    const entityId = item.entity.id;
+
+    // If the entityId is not in the map, initialize it with 0
+    if (!entityLawMap[entityId]) {
+      entityLawMap[entityId] = 0;
+    }
+
+    // Increment the law count for each occurrence of lawApplicability
+    entityLawMap[entityId]++;
+  });
+
+  // Convert the map into the desired structure
+  return Object.keys(entityLawMap).map((key) => ({
+    id: +key, // Convert key to number
+    noOfLaws: entityLawMap[+key], // Use the value as the count of laws
+  }));
+}
 
 @Component({
   selector: 'app-entity-table',
