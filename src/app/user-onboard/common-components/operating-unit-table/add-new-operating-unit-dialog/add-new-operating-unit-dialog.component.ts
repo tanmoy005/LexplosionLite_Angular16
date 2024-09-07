@@ -228,7 +228,9 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       );
       this.zoneDropdown[zoneSelectedIndex].isChecked = true;
 
-      this.state = this.data.selectedOP.state.id;
+      // this.state = this.data.selectedOP.state.id;
+      this.state = this.data.selectedOP?.state?.id ?? null;
+
       this.country = this.data.selectedOP.countryId;
       this.selectedCountryID = this.data.selectedOP.countryId;
       this.selectedActivitiesList = this.data.selectedOP.activities.map(
