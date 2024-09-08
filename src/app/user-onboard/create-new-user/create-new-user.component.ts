@@ -72,7 +72,7 @@ export class CreateNewUserComponent implements OnInit {
   @Output() isBackClicked = new EventEmitter<boolean>();
 
   phoneNumberFormControl = new FormControl('', [
-    Validators.required,
+    // Validators.required,
     phoneNumberValidator,
   ]);
 
