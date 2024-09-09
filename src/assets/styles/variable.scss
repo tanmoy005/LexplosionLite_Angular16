@@ -248,11 +248,11 @@ $font-14: 1.094vw;
   --base-unit-4k: 16px;
   --base-unit-1920: 12px;
   --base-unit-1680: 10.5px;
-  --base-unit-large: 8px;
-  --base-unit-large1: 9px;
-  --base-unit-large2: 8.5px;
-  --base-unit-medium1: 6.4px;
-  --base-unit-medium: 4.8px;
+  --base-unit-large: 8px;   //1280
+  --base-unit-large1: 9px;  //1440
+  --base-unit-large2: 8.5px; //1366
+  --base-unit-medium1: 6.4px; //1024
+  --base-unit-medium: 4.8px; //768
   --scale-factor-margin-left: 54.5;
   --scale-factor-width: 51;
   --scale-factor-padding: 2;
@@ -287,4 +287,6 @@ $font-14: 1.094vw;
   --scale-factor-line-height: 1.8;
   --scale-factor-button-font-14: 1.75;
   --scale-factor-button-font-24: 3;
+
+  --scale-dropdown-list: 37.5;
 }
