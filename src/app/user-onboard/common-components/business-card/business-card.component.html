@@ -24,7 +24,12 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-1 p-1">
               <div class="d-flex h-100 bussiness-edit-menu">
-                <button disabled mat-icon-button aria-label="Example icon button with a delete icon" [matMenuTriggerFor]="menu">
+                <button
+                  disabled
+                  mat-icon-button
+                  aria-label="Example icon button with a delete icon"
+                  [matMenuTriggerFor]="menu"
+                >
                   <mat-icon class="dark-brown-icon">more_horiz</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -38,12 +43,14 @@
         <div class="col-lg-4 col-md-4">
           <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-11">
-              <p class="field-name-typography inputField-margin"> Head Quarters Address </p>
+              <p class="field-name-typography inputField-margin">
+                Head Quarters Address
+              </p>
               <mat-form-field appearance="outline" class="big-text-input">
                 <mat-label class="text_12_400_gray_1000">
                   HQ Address here
                 </mat-label>
-                <input matInput />
+                <input matInput value="{{ companyHqadd }}" />
               </mat-form-field>
             </div>
           </div>
@@ -54,11 +61,18 @@
           <div class="row">
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-9 col-md-9 col-sm-11">
-              <p class="field-name-typography inputField-margin">Country of Operation</p>
+              <p class="field-name-typography inputField-margin">
+                Country of Operation
+              </p>
               <div class="bg-dropdown-business-card">
-                <app-dropdown [label]="'Select one or more countries'" [options]="transformedCountries"
-                  [IsMultiSelection]="true" [IsRequired]="false" (selectedValueChange)="onCountryValueChange($event)"
-                  [changeableValues]="countryForCompanyIdList">
+                <app-dropdown
+                  [label]="'Select one or more countries'"
+                  [options]="transformedCountries"
+                  [IsMultiSelection]="true"
+                  [IsRequired]="false"
+                  (selectedValueChange)="onCountryValueChange($event)"
+                  [changeableValues]="countryForCompanyIdList"
+                >
                 </app-dropdown>
               </div>
             </div>

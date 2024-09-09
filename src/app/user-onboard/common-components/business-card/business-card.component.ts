@@ -35,6 +35,7 @@ export class BusinessCardComponent implements OnInit {
   countryForCompanyIdList: any = [];
   fieldPayload = ['countries'];
   apiCountryList: any = [];
+  companyHqadd: string = '';
 
   fetchCountriesForCompanies(payload: any) {
     this.apiService.postCountriesforCompanies(payload).subscribe((response) => {
@@ -63,8 +64,12 @@ export class BusinessCardComponent implements OnInit {
     const userCompanies = user.companies;
     const userCompanyName =
       userCompanies.length > 0 ? userCompanies[0]['name'] : '';
+
+    const userCompanyAdd =
+      userCompanies.length > 0 ? userCompanies[0]['companyDescription'] : '';
     // return userCompanyName;
     this.companyName = userCompanyName;
+    this.companyHqadd = userCompanyAdd;
 
     const savedCountries = this.encryptStorage.getItem('countries');
     this.apiCountryList = savedCountries;

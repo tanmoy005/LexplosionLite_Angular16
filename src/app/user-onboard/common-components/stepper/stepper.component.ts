@@ -208,17 +208,30 @@ export class StepperComponent implements OnInit {
     }
   }
 
+  isSetIndexTriggered: boolean = false; // Flag to track setIndex trigger
+
   setIndex(event: any) {
     console.log('click is triggered from setIndex');
     this.selectedIndex = event.selectedIndex;
     this.currentStep = event.selectedIndex;
+    this.isSetIndexTriggered = true;
   }
 
+  // triggerClick() {
+  //   //  this.selectedIndex = event.selectedIndex;
+  //   // const selInd = event.selectedIndex;
+  //   console.log('click is triggered');
+  //   this.navigateToStep(this.selectedIndex);
+  // }
   triggerClick() {
-    //  this.selectedIndex = event.selectedIndex;
-    // const selInd = event.selectedIndex;
-    console.log('click is triggered');
+    if (!this.isSetIndexTriggered) {
+      console.log('setIndex was not triggered, triggerClick will not proceed');
+      return; // If setIndex was not triggered, exit the function
+    }
+
+    console.log('triggerClick triggered');
     this.navigateToStep(this.selectedIndex);
+    this.isSetIndexTriggered = false; // Reset the flag after click is handled
   }
 
   clickableIndexes(index: number) {}
