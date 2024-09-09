@@ -61,6 +61,8 @@ export class LawsTablePageComponent implements OnInit {
           console.log('the applicable laws', response.data);
           this.ApplicableLawsItems = response.data;
           this.isLoading = false;
+        } else {
+          this.isLoading = false;
         }
       });
     } catch (e) {
