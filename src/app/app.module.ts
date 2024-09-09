@@ -7,6 +7,7 @@ import {
   CommonModule,
   LocationStrategy,
   PathLocationStrategy,
+  HashLocationStrategy,
 } from '@angular/common';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
@@ -77,10 +78,11 @@ import { AuthenticationModule } from './authentication/authentication.module';
   exports: [AppHeaderComponent],
   providers: [
     DialogService,
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy,
-    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // {
+    //   provide: LocationStrategy,
+    //   useClass: PathLocationStrategy,
+    // },
   ],
   bootstrap: [AppComponent],
 })

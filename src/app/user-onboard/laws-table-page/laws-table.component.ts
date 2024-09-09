@@ -39,6 +39,30 @@ export class LawsTablePageComponent implements OnInit {
   isLoading: boolean = false;
   receivedData: any;
 
+  // ngOnInit(): void {
+  //   const payload = {
+  //     company: getCompanyId(),
+  //   };
+  //   if (this.receivedData) {
+  //     Object.assign(payload, this.receivedData);
+  //   }
+
+  //   this.isLoading = true;
+  //   try {
+  //     this.apiService.postApplicableLaws(payload).subscribe((response) => {
+  //       if (response) {
+  //         console.log('the applicable laws', response.data);
+  //         this.ApplicableLawsItems = response.data;
+  //         this.isLoading = false;
+  //       } else {
+  //         this.isLoading = false;
+  //       }
+  //     });
+  //   } catch (e) {
+  //     this.snackbar.showError('Some error occurred while fetching Laws');
+  //     this.isLoading = false;
+  //   }
+  // }
   ngOnInit(): void {
     const payload = {
       company: getCompanyId(),
@@ -46,29 +70,30 @@ export class LawsTablePageComponent implements OnInit {
     if (this.receivedData) {
       Object.assign(payload, this.receivedData);
     }
-    // if (this.receivedData) {
-    //   if (this.receivedData.entity) {
-    //     payload['entity'] = this.receivedData.entity;
-    //   }
-    //   if (this.receivedData.operatingUnit) {
-    //     payload.operatingUnit = this.receivedData.operatingUnit;
-    //   }
-    // }
+
     this.isLoading = true;
-    try {
-      this.apiService.postApplicableLaws(payload).subscribe((response) => {
+
+    this.apiService.postApplicableLaws(payload).subscribe(
+      (response) => {
         if (response) {
           console.log('the applicable laws', response.data);
           this.ApplicableLawsItems = response.data;
-          this.isLoading = false;
-        } else {
-          this.isLoading = false;
         }
-      });
-    } catch (e) {
-      this.snackbar.showError('Some error occurred while fetching Laws');
-      this.isLoading = false;
-    }
+        this.isLoading = false; // Ensure loading spinner is turned off after successful response
+      },
+      (error) => {
+        this.isLoading = false; // Turn off loading even if an error occurs
+        if (error.status === 500) {
+          this.snackbar.showError(
+            'Internal Server Error (500): Failed to fetch applicable laws'
+          );
+        } else {
+          this.snackbar.showError(
+            'internal server error. please try again after a while.'
+          );
+        }
+      }
+    );
   }
 
   ApplicableLawsItems: ApplicableLaws[] = applicableLawsItems;

@@ -262,6 +262,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.editingnoOfApprentice = this.noOfApprentice;
       this.editingnoOfChild = this.noOfChild;
       this.buttonName = 'Update';
+      //this.isStateDropdownDisabled = false;
     }
   }
 
