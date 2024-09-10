@@ -5,6 +5,8 @@
   padding: 0;
   white-space: nowrap;
   margin: 0 0 0.28em;
+  display: flex;
+  justify-content: center;
 }
 
 .tree li {
@@ -59,15 +61,17 @@
 .node-container {
   position: relative;
 }
+
 .vertical-divider-bg {
   top: 30px;
   right: 50%;
-  position: absolute!important;
+  position: absolute !important;
 }
+
 .vertical-divider-sm {
   top: 26px;
   right: 50%;
-  position: absolute!important;
+  position: absolute !important;
 }
 
 .nodeSpan {

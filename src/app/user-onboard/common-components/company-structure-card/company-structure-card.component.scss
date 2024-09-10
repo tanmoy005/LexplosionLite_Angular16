@@ -36,7 +36,9 @@
   transform-origin: 0 0;
   transition: transform 0.3s; 
 }
-
+.full-screen-content-container{
+  padding: 0 50px;
+}
 .zoom-controls {
   margin-bottom: -5px;
   display: flex-end;

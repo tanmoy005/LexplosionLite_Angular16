@@ -199,7 +199,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     private apiService: ApiService,
     private snackbar: SnackbarService,
     private router: Router
-  ) {}
+  ) { }
 
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
   dataSource = [...ELEMENT_DATA];
@@ -478,7 +478,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       data: { name: name },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => { });
   }
 
   navigateToAddOpUnit(entity: EntityDataType, action: string) {
@@ -560,7 +560,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  openCountryDialog() {}
+  openCountryDialog() { }
 
   openIndustryDialog(id: number) {
     var entity = this.dataSource.find((entity) => entity.id === id);
