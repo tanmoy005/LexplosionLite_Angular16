@@ -38,7 +38,12 @@
             <mat-label class="text_12_400_gray_900"
               >Enter Name of Operating Unit</mat-label
             >
-            <input matInput name="Entity" [(ngModel)]="operatingUnitName" />
+            <input
+              matInput
+              name="Entity"
+              [(ngModel)]="operatingUnitName"
+              class="text_12_400_gray_1000_responsive"
+            />
           </mat-form-field>
 
           <section class="radio_selection ml-40">
@@ -176,7 +181,6 @@
                   (selectedValueChange)="
                     onSelectedValueChanged($event, 'activity')
                   "
-                  
                   [changeableValues]="selectedActivitiesList"
                 >
                 </app-dropdown>

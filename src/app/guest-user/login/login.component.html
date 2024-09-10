@@ -1,5 +1,5 @@
 <div class="login-outer-container">
-  <div class="form-container1  mt-42">
+  <div class="form-container1 mt-42">
     <div class="login-formheader">
       <img
         src="assets/images/logos/Komrisk-lit-logo.png"
@@ -20,6 +20,7 @@
             matInput
             [formControl]="usernameFormControl"
             placeholder="Email ID"
+            class="text_12_400_gray_1000_responsive"
           />
           <mat-error
             *ngIf="
@@ -40,6 +41,7 @@
             matInput
             [formControl]="passwordFormControl"
             placeholder="Password"
+            class="text_12_400_gray_1000_responsive"
           />
           <mat-error *ngIf="!passwordFormControl.hasError('required')">
             Please enter a valid email address
@@ -49,7 +51,7 @@
           >
         </mat-form-field>
       </div>
-  
+
       <div class="mt--10 remember-me-containar">
         <mat-checkbox class="custome-check-box">Remember Me</mat-checkbox>
       </div>

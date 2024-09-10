@@ -1,3 +1,27 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <mat-horizontal-stepper
+        #stepper
+        [selectedIndex]="currentStep"
+        [linear]="false"
+        labelPosition="bottom"
+        (selectionChange)="setIndex($event)"
+        (click)="triggerClick()"
+      >
+        <mat-step
+          *ngFor="let step of stepperSteps; let i = index"
+          [completed]="false"
+        >
+          <ng-template matStepLabel>
+            <p class="text_12_400_gray_1000_responsive">{{ step }}</p>
+          </ng-template>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
+</div> -->
+
 <div class="container">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -14,7 +38,14 @@
           [completed]="false"
         >
           <ng-template matStepLabel>
-            {{ step }}
+            <p
+              [ngClass]="{
+                text_12_400_gray_1000_responsive: i !== currentStep,
+                text_12_700_purple_100: i === currentStep
+              }"
+            >
+              {{ step }}
+            </p>
           </ng-template>
         </mat-step>
       </mat-horizontal-stepper>

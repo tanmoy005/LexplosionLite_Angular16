@@ -6,12 +6,19 @@
         <div class="col-lg-4 col-md-4">
           <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-11">
-              <p class="field-name-typography inputField-margin">Business</p>
+              <p class="text_12_400_gray_1000_responsive inputField-margin">
+                Business
+              </p>
               <mat-form-field appearance="outline" class="big-text-input">
                 <mat-label class="text_12_400_gray_1000">
                   Business Name here
                 </mat-label>
-                <input matInput #business value="{{ companyName }}" />
+                <input
+                  matInput
+                  #business
+                  value="{{ companyName }}"
+                  class="text_12_400_gray_1000_responsive"
+                />
               </mat-form-field>
               <!-- <div class="d-flex align-items-center">
                 <button mat-icon-button aria-label="Example icon button with a delete icon" [matMenuTriggerFor]="menu">
@@ -43,14 +50,18 @@
         <div class="col-lg-4 col-md-4">
           <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-11">
-              <p class="field-name-typography inputField-margin">
+              <p class="text_12_400_gray_1000_responsive inputField-margin">
                 Head Quarters Address
               </p>
               <mat-form-field appearance="outline" class="big-text-input">
                 <mat-label class="text_12_400_gray_1000">
                   HQ Address here
                 </mat-label>
-                <input matInput value="{{ companyHqadd }}" />
+                <input
+                  matInput
+                  class="text_12_400_gray_1000_responsive"
+                  value="{{ companyHqadd }}"
+                />
               </mat-form-field>
             </div>
           </div>
@@ -61,7 +72,7 @@
           <div class="row">
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-9 col-md-9 col-sm-11">
-              <p class="field-name-typography inputField-margin">
+              <p class="text_12_400_gray_1000_responsive inputField-margin">
                 Country of Operation
               </p>
               <div class="bg-dropdown-business-card">

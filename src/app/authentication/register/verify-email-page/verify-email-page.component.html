@@ -57,30 +57,46 @@
 
     <mat-card-content>
       <div class="col-lg-4" style="margin-top: 40px">
-        <div class="verify-email-id" style="margin-bottom: 50px">
-          <p class="verify-email-id-typography">Verify Email ID</p>
+        <div style="margin-bottom: 50px">
+          <p class="text_24_400_dark_28">Verify Email ID</p>
         </div>
-        <div class="back-button">
-          <button mat-stroked-button class="btn-primary-outline-md" (click)="handleBackToRegistration($event)">
-            <mat-icon>keyboard_arrow_left</mat-icon>Back
+        <div>
+          <button
+            mat-stroked-button
+            class="btn-primary-outline-md"
+            (click)="handleBackToRegistration($event)"
+          >
+            <mat-icon>keyboard_arrow_left</mat-icon>
+            <p class="btn-name-style">Back</p>
           </button>
         </div>
         <div verify-email-div style="margin-bottom: 30px; margin-top: 30px">
-          <p class="verify-email-typography">
+          <p class="text_12_700_purple_100">
             An OTP has been sent to your email ID {{ maskedEmail }}. Please
             enter below to verify your email ID
           </p>
         </div>
 
         <form>
-          <mat-form-field appearance="outline" class="verify-email-big-text-input">
+          <mat-form-field
+            appearance="outline"
+            class="verify-email-big-text-input"
+          >
             <mat-label class="text_12_400_gray_1000">OTP</mat-label>
             <input matInput name="otp" [formControl]="otpFormControl" />
-            <mat-error *ngIf="otpFormControl.hasError('required')">OTP is&nbsp;<strong>required</strong></mat-error>
+            <mat-error *ngIf="otpFormControl.hasError('required')"
+              >OTP is&nbsp;<strong>required</strong></mat-error
+            >
           </mat-form-field>
-          <button mat-button (click)="handleResendOTP()">Resend OTP</button>
+          <button mat-button (click)="handleResendOTP()">
+            <p class="btn-name-style">Resend OTP</p>
+          </button>
           <div class="example-button-row">
-            <button mat-button class="btn-primary-md btn-fit-content" (click)="handleRegistration($event)">
+            <button
+              mat-button
+              class="btn-primary-md btn-fit-content"
+              (click)="handleRegistration($event)"
+            >
               <p class="btn-name-style btn-nowrap">Verify and Register</p>
             </button>
           </div>

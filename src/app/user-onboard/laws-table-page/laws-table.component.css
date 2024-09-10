@@ -45,6 +45,7 @@
 .laws-layout {
   flex: 1;
   min-width: 0;
+  padding: 0px 0px 2% 0px;
   /* margin-right: 10px; */
 }
 

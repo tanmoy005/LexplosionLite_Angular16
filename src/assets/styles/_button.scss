@@ -1,26 +1,33 @@
 @use "variable" as var;
 
-@mixin btn-model($background-color,
+@mixin btn-model(
+  $background-color,
   $padding,
   $border-color,
   $border-radius,
   $type: "filled",
   $height-factor: 10.5,
-  $width-factor: 5) {
+  $width-factor: 5
+) {
   background-color: $background-color !important;
   padding: $padding !important;
   border: 1px solid $border-color !important; // todo use gradient
   border-radius: $border-radius !important;
-  @if ($type =="filled") {
+  @if ($type == "filled") {
     color: var.$gray-400 !important;
-  }
-
-  @else {
+  } @else {
     color: $border-color !important;
   }
 
   @media (min-width: 1024px) {
     font-size: 1rem !important;
+  }
+  .btn-name-style {
+    font-size: 12px !important;
+    font-family: Barlow;
+    font-weight: 400px;
+    line-height: 14.4px;
+    margin: 0;
   }
 
   @media (max-width: 2560px) and (min-width: 1921px) {
@@ -28,7 +35,9 @@
     width: calc(var($width-factor) * var(--base-unit-4k));
 
     .btn-name-style {
-      font-size: calc(var(--base-unit-4k) * var(--scale-button-font-size)) !important;
+      font-size: calc(
+        var(--base-unit-4k) * var(--scale-button-font-size)
+      ) !important;
       font-family: Barlow;
       font-weight: 400px;
       line-height: 14.4px;
@@ -40,7 +49,9 @@
     width: calc(var($width-factor) * var(--base-unit-1920));
 
     .btn-name-style {
-      font-size: calc(var(--base-unit-1920) * var(--scale-button-font-size)) !important;
+      font-size: calc(
+        var(--base-unit-1920) * var(--scale-button-font-size)
+      ) !important;
       font-family: Barlow;
       font-weight: 400px;
       line-height: 14.4px;
@@ -52,7 +63,9 @@
     width: calc(var($width-factor) * var(--base-unit-1680));
 
     .btn-name-style {
-      font-size: calc(var(--base-unit-1680) * var(--scale-button-font-size)) !important;
+      font-size: calc(
+        var(--base-unit-1680) * var(--scale-button-font-size)
+      ) !important;
       font-family: Barlow;
       font-weight: 400px;
       line-height: 14.4px;
@@ -64,7 +77,9 @@
     width: calc(var($width-factor) * var(--base-unit-large1));
 
     .btn-name-style {
-      font-size: calc(var(--base-unit-large1) * var(--scale-button-font-size)) !important;
+      font-size: calc(
+        var(--base-unit-large1) * var(--scale-button-font-size)
+      ) !important;
       font-family: Barlow;
       font-weight: 400px;
       line-height: 14.4px;
@@ -91,45 +106,40 @@
   cursor: pointer !important;
 }
 
-.btn-name-style {
-  font-size: 12px !important;
-  font-family: Barlow;
-  font-weight: 400px;
-  line-height: 14.4px;
-  margin: 0;
-}
-
-
 .btn-login {
-  @include btn-model(var.$primary,
+  @include btn-model(
+    var.$primary,
     2.34% 8.5%,
     var.$primary,
     5px,
     "filled",
     --scale-factor-login-button-height,
-    --scale-factor-login-button-width);
+    --scale-factor-login-button-width
+  );
 }
 
 .btn-secondary {
-  @include btn-model(var.$dark-red-100,
+  @include btn-model(
+    var.$dark-red-100,
     5.5% 5.5%,
     var.$green-100,
     8px,
     "filled",
     --scale-factor-get-started-button-height,
-    --scale-factor-get-started-button-width);
+    --scale-factor-get-started-button-width
+  );
 }
 
 .btn-primary-md {
-
-  @include btn-model(var.$primary,
+  @include btn-model(
+    var.$primary,
     6px 24px,
     var.$primary,
     5px,
     "filled",
     --scale-factor-login-button-height,
-    --scale-factor-login-button-width);
-  
+    --scale-factor-login-button-width
+  );
 }
 
 .btn-primary-md-in-dialog {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-go-live-page',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./go-live-page.component.scss'],
 })
 export class GoLivePageComponent {
+  constructor(private router: Router) {}
   workSpaceColumns: string[] = ['#', 'Name', 'Admin'];
   screenWidth: number;
   getCardSize(defaultHeight: number | string, defaultWidth: string | number) {
@@ -14,5 +16,11 @@ export class GoLivePageComponent {
     } else {
       return { height: defaultHeight, width: defaultWidth };
     }
+  }
+
+  goToSubscription() {
+    this.router.navigate(['/payment']);
+
+    // this.router.navigate(['/subscription'], { state: { entity: '' } });
   }
 }

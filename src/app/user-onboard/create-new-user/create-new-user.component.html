@@ -29,7 +29,12 @@
           class="registration-big-text-input"
         >
           <mat-label class="text_12_400_gray_1000">Name</mat-label>
-          <input matInput name="username" [formControl]="nameFormControl" />
+          <input
+            matInput
+            name="username"
+            [formControl]="nameFormControl"
+            class="text_12_400_gray_1000_responsive"
+          />
           <mat-error *ngIf="nameFormControl.hasError('required')">
             Name is&nbsp;<strong>required</strong></mat-error
           >
@@ -58,7 +63,6 @@
                   [formControl]="countryCodeFormControl"
                   (selectionChange)="onCountryChange($event)"
                   #countrySelect
-                  
                 >
                   <mat-option
                     *ngFor="let country of countryList"
@@ -132,6 +136,7 @@
                 placeholder="Ex. 9999900000"
                 name="phoneNumber"
                 [formControl]="phoneNumberFormControl"
+                class="text_12_400_gray_1000_responsive"
               />
 
               <!-- <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
@@ -151,7 +156,13 @@
           class="registration-big-text-input"
         >
           <mat-label class="text_12_400_gray_1000"> Business Name </mat-label>
-          <input matInput #business value="{{ companyName }}" disabled="true" />
+          <input
+            matInput
+            #business
+            value="{{ companyName }}"
+            disabled="true"
+            class="text_12_400_gray_1000_responsive"
+          />
         </mat-form-field>
       </div>
 
@@ -166,6 +177,7 @@
             name="email"
             [formControl]="emailFormControl"
             placeholder="Ex. mailto:rahul@company.com"
+            class="text_12_400_gray_1000_responsive"
           />
           <mat-error
             *ngIf="
@@ -181,7 +193,7 @@
       </div>
 
       <div class="role-containar col-lg-12 col-md-12">
-        <p class="text_12_700_purple_100 mt-8px ">Role</p>
+        <p class="text_12_700_purple_100 mt-8px">Role</p>
       </div>
       <div class="bg-dropdown-register col-lg-12 col-md-12">
         <app-dropdown

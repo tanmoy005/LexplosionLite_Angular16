@@ -31,6 +31,10 @@
   @include text-model(var.$font-24, 500, var.$font-color-dark, Barlow, 40px);
 }
 
+// .text_24_400_dark_28 {
+//   @include text-model(var.$font-24, 400, var.$primary, Barlow, 28.8px);
+// }
+
 .text_24_400_blue {
   @include text-model(var.$font-24, 400, var.$font-color-blue, Barlow, 40px);
 }
@@ -185,10 +189,10 @@
   @include text-model(var.$font-12, 400, var.$gray-400, Barlow, 14.4px);
 }
 
-.text_12_700_purple_100 {
-  // todo change the class name like this one, add color code
-  @include text-model(var.$font-12, 700, var.$purple-100, Barlow, 14.4px);
-}
+// .text_12_700_purple_100 {
+//   // todo change the class name like this one, add color code
+//   @include text-model(var.$font-12, 700, var.$purple-100, Barlow, 14.4px);
+// }
 
 .text_14_400_black_100 {
   // todo change the class name like this one, add color code
@@ -204,42 +208,61 @@
 //   // todo change the class name like this one, add color code
 //   @include text-model(var.$font-12, 700, var.$gray-1650, Barlow, 14.4px);
 // }
-// @mixin text-model-responsive(
-//   $font-size,
-//   $font-weight,
-//   $font-color,
-//   $font-family,
-//   $line-height: null
-// ) {
-//   // Default styles
-//   font-size: $font-size !important;
-//   font-weight: $font-weight !important;
-//   color: $font-color !important;
-//   font-family: $font-family !important;
-//   @if $line-height != null {
-//     line-height: $line-height !important;
-//   }
 
-//   // 4K screens
-//   @media (max-width: 2560px) and (min-width: 1921px) {
-//     font-size: calc(var(--base-unit-4k) * var(--scale-button-font-size));
-//   }
+@mixin text-model-responsive(
+  $font-size,
+  $font-weight,
+  $font-color,
+  $font-family,
+  $line-height: null
+) {
+  // Default styles
+  // font-size: $font-size !important;
+  font-weight: $font-weight !important;
+  color: $font-color !important;
+  font-family: $font-family !important;
 
-//   // 1920px wide screens
-//   @media (max-width: 1920px) and (min-width: 1681px) {
-//     font-size: calc(var(--base-unit-1920) * var(--scale-button-font-size));
-//   }
+  // @if $line-height != null {
+  //   line-height: $line-height !important;
+  // }
 
-//   // 1680px wide screens
-//   @media (max-width: 1680px) and (min-width: 1441px) {
-//     font-size: calc(var(--base-unit-1690) * var(--scale-button-font-size));
-//   }
+  // 4K screens
+  @media (max-width: 2560px) and (min-width: 1921px) {
+    font-size: calc(#{$font-size} * var(--base-unit-4k)) !important;
+    line-height: calc(#{$line-height} * var(--base-unit-4k)) !important;
+  }
 
-//   // 1440px wide screens
-//   @media (max-width: 1440px) and (min-width: 1281px) {
-//     font-size: calc(var(--base-unit-large1) * var(--scale-button-font-size));
-//   }
-// }
+  // 1920px wide screens
+  @media (max-width: 1920px) and (min-width: 1681px) {
+    font-size: calc(#{$font-size} * var(--base-unit-1920)) !important;
+    line-height: calc(#{$line-height} * var(--base-unit-1920)) !important;
+  }
+
+  // 1680px wide screens
+  @media (max-width: 1680px) and (min-width: 1441px) {
+    font-size: calc(#{$font-size} * var(--base-unit-1680)) !important;
+    line-height: calc(#{$line-height} * var(--base-unit-1680)) !important;
+  }
+
+  // 1440px wide screens
+  @media (max-width: 1440px) and (min-width: 1367px) {
+    font-size: calc(#{$font-size} * var(--base-unit-large1)) !important;
+    line-height: calc(#{$line-height} * var(--base-unit-large1)) !important;
+  }
+  @media (max-width: 1366px) and (min-width: 1281px) {
+    font-size: calc(#{$font-size} * var(--base-unit-large2)) !important;
+    line-height: calc(#{$line-height} * var(--base-unit-large2)) !important;
+  }
+  @media (max-width: 1280px) and (min-width: 1025px) {
+    font-size: calc(#{$font-size} * var(--base-unit-large)) !important;
+    line-height: calc(#{$line-height} * var(--base-unit-large)) !important;
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    font-size: calc(#{$font-size} * var(--base-unit-medium1)) !important;
+    line-height: calc(#{$line-height} * var(--base-unit-medium1)) !important;
+  }
+}
 
 .text_12_700_gray_1650_responsive {
   font-size: 12px !important;
@@ -255,7 +278,9 @@
       var(--base-unit-4k) * var(--scale-button-font-size)
     ) !important;
 
-    line-height: calc(var(--base-unit-4k) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-4k) * var(--scale-factor-line-height-14_4)
+    );
   }
 }
 
@@ -264,7 +289,9 @@
     font-size: calc(
       var(--base-unit-1920) * var(--scale-button-font-size)
     ) !important;
-    line-height: calc(var(--base-unit-1920) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-1920) * var(--scale-factor-line-height-14_4)
+    );
 
     // line-height: 14.4px;
   }
@@ -275,7 +302,9 @@
     font-size: calc(
       var(--base-unit-1680) * var(--scale-button-font-size)
     ) !important;
-    line-height: calc(var(--base-unit-1680) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-1680) * var(--scale-factor-line-height-14_4)
+    );
     //line-height: 14.4px;
   }
 }
@@ -286,7 +315,7 @@
       var(--base-unit-large1) * var(--scale-button-font-size)
     ) !important;
     line-height: calc(
-      var(--base-unit-large1) * var(--scale-factor-line-height)
+      var(--base-unit-large1) * var(--scale-factor-line-height-14_4)
     );
     //line-height: 14.4px;
   }
@@ -306,7 +335,9 @@
       var(--base-unit-4k) * var(--scale-button-font-size)
     ) !important;
 
-    line-height: calc(var(--base-unit-4k) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-4k) * var(--scale-factor-line-height-14_4)
+    );
   }
 }
 
@@ -315,7 +346,9 @@
     font-size: calc(
       var(--base-unit-1920) * var(--scale-button-font-size)
     ) !important;
-    line-height: calc(var(--base-unit-1920) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-1920) * var(--scale-factor-line-height-14_4)
+    );
 
     // line-height: 14.4px;
   }
@@ -326,7 +359,9 @@
     font-size: calc(
       var(--base-unit-1680) * var(--scale-button-font-size)
     ) !important;
-    line-height: calc(var(--base-unit-1680) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-1680) * var(--scale-factor-line-height-14_4)
+    );
     //line-height: 14.4px;
   }
 }
@@ -337,7 +372,7 @@
       var(--base-unit-large1) * var(--scale-button-font-size)
     ) !important;
     line-height: calc(
-      var(--base-unit-large1) * var(--scale-factor-line-height)
+      var(--base-unit-large1) * var(--scale-factor-line-height-14_4)
     );
     //line-height: 14.4px;
   }
@@ -358,7 +393,9 @@
       var(--base-unit-4k) * var(--scale-button-font-size)
     ) !important;
 
-    line-height: calc(var(--base-unit-4k) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-4k) * var(--scale-factor-line-height-14_4)
+    );
   }
 }
 
@@ -367,7 +404,9 @@
     font-size: calc(
       var(--base-unit-1920) * var(--scale-button-font-size)
     ) !important;
-    line-height: calc(var(--base-unit-1920) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-1920) * var(--scale-factor-line-height-14_4)
+    );
 
     // line-height: 14.4px;
   }
@@ -378,7 +417,9 @@
     font-size: calc(
       var(--base-unit-1680) * var(--scale-button-font-size)
     ) !important;
-    line-height: calc(var(--base-unit-1680) * var(--scale-factor-line-height));
+    line-height: calc(
+      var(--base-unit-1680) * var(--scale-factor-line-height-14_4)
+    );
     //line-height: 14.4px;
   }
 }
@@ -389,8 +430,66 @@
       var(--base-unit-large1) * var(--scale-button-font-size)
     ) !important;
     line-height: calc(
-      var(--base-unit-large1) * var(--scale-factor-line-height)
+      var(--base-unit-large1) * var(--scale-factor-line-height-14_4)
     );
     //line-height: 14.4px;
   }
+}
+
+.text_24_400_dark_28 {
+  @include text-model-responsive(
+    var(--scale-factor-button-font-24),
+    400,
+    var.$primary,
+    Barlow,
+    var(--scale-factor-line-height-28_8)
+  );
+}
+
+.text_12_700_purple_100 {
+  // todo change the class name like this one, add color code
+  @include text-model-responsive(
+    var(--scale-factor-button-font-12),
+    700,
+    var.$purple-100,
+    Barlow,
+    // 14.4px
+    var(--scale-factor-line-height-14_4)
+  );
+}
+
+.text_12_400_gray_100 {
+  // todo change the class name like this one, add color code
+  @include text-model-responsive(
+    var(--scale-factor-button-font-12),
+    400,
+    var.$gray-100,
+    Barlow,
+    //14.4px
+    var(--scale-factor-line-height-14_4)
+  );
+}
+
+.text_12_400_gray_1000_responsive {
+  // todo change the class name like this one, add color code
+  @include text-model-responsive(
+    var(--scale-factor-button-font-12),
+    400,
+    var.$gray-1000,
+    Barlow,
+    // 14.4px
+    var(--scale-factor-line-height-14_4)
+  );
+}
+
+.text_12_700_gray_100 {
+  // todo change the class name like this one, add color code
+  @include text-model-responsive(
+    var(--scale-factor-button-font-12),
+    700,
+    var.$gray-1000,
+    Barlow,
+    // 14.4px
+    var(--scale-factor-line-height-14_4)
+  );
 }
