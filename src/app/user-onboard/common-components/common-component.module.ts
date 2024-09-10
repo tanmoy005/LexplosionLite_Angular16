@@ -30,6 +30,7 @@ import { OpUnitLawsDialogComponent } from './operating-unit-table/op-unit-laws-d
 import { LawsReadMoreDialogComponent } from './laws-table/laws-read-more-dialog/laws-read-more-dialog.component';
 import { CardLayoutForPaymentPageComponent } from './card-layout-for-payment-page/card-layout-for-payment-page.component';
 import { IndustryDialogComponent } from './entity-table/industry-dialog/industry-dialog.component';
+import { CompanyStructureDialogueComponent } from './company-structure-card/company-structure-dialogue/company-structure-dialogue.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { IndustryDialogComponent } from './entity-table/industry-dialog/industry
     LawsReadMoreDialogComponent,
     CardLayoutForPaymentPageComponent,
     IndustryDialogComponent,
+    CompanyStructureDialogueComponent
   ],
   imports: [CommonModule, MaterialModule, FormsModule],
   exports: [

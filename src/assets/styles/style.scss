@@ -196,7 +196,9 @@
 .password-input-container {
   position: relative;
 }
-
+.full-screen-modal{
+  width: 80vw;
+}
 .password-icon-container {
   position: absolute;
   /* Position element absolutely within the container */
@@ -219,6 +221,9 @@
     // max-width: 300px !important;
     width: 300px !important;
   }
+}
+.justify-content-between{
+  justify-content: space-between;
 }
 
 @media (max-width: 2560px) and (min-width: 1921px) {
@@ -1955,7 +1960,10 @@ input.mdc-radio__native-control:focus,
   padding: 0px 24px !important;
   margin-left: 50px !important;
 }
-
+.full-screen-content-container{
+  padding-left: 35px;
+  padding-right: 35px;
+}
 .square_input_box {
   .mat-mdc-input-element {
     text-align: center;
