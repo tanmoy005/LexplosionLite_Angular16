@@ -35,12 +35,12 @@
   <li style="margin: 5px" *ngFor="let node of [rootNode]">
     <div [ngClass]="{ 'level-1': node.level === 1 && activeLevel === 1 } ">
       <div class="node-container">
+        <!-- <div *ngIf="node && node.length === 1" class="vertical-upper-divider-sm"></div> -->
         <span class="nodeSpan">{{ node.label }}</span>
-  <li *ngIf="node.children && node.children.length"
-   [ngClass]="{
+  <div *ngIf="node.children && node.children.length" [ngClass]="{
     'vertical-divider-bg': node.children.length === 1,
     'vertical-divider-sm': node.children.length > 1
-  }"></li>
+  }"></div>
   </div>
   </div>
   <ul *ngIf="node.children && node.children.length">
