@@ -4,29 +4,25 @@ import { ApplicableLaws } from 'src/app/shared/menu-items/applicable-laws';
 import { Law } from 'src/app/shared/menu-items/applicable-laws';
 import { LawsReadMoreDialogComponent } from './laws-read-more-dialog/laws-read-more-dialog.component';
 
-export interface LawsTableData{
+export interface LawsTableData {
   serialNumber: number;
-    lawName: {name: string, id: number}[];
-    applicability: string;
-    noOfCompliances: number;
-    module: string;
+  lawName: { name: string; id: number }[];
+  applicability: string;
+  noOfCompliances: number;
+  module: string;
 }
 @Component({
   selector: 'app-laws-table',
   templateUrl: './laws-table.component.html',
   styleUrls: ['./laws-table.component.css'],
- 
 })
-
-
 export class LawsTableComponent {
   @Input() data: ApplicableLaws[];
 
-  displayedColumns = ['serialNumber','lawName', 'applicability', 'module'];
+  displayedColumns = ['serialNumber', 'lawName', 'applicability', 'module'];
   dataSource: LawsTableData[] = [];
 
   ngOnChanges() {
-   
     this.dataSource = this.transformData(this.data);
   }
 
@@ -36,29 +32,24 @@ export class LawsTableComponent {
     this.dialog.open(LawsReadMoreDialogComponent);
   }
 
-  transformData(
-    data: ApplicableLaws[]
-  ):LawsTableData[] {
+  transformData(data: ApplicableLaws[]): LawsTableData[] {
     const transformedData: LawsTableData[] = [];
-    data.forEach((item,index) => {
-      
+    data.forEach((item, index) => {
       transformedData.push({
-          serialNumber:  index + 1,
-          lawName: item.komriskLaws,
-          noOfCompliances: item.komriskCompliances.length,
-          applicability: item.applicability,
-          module: item.komriskLawCategory.description,
-          
-      }
-      )
+        serialNumber: index + 1,
+        lawName: item.komriskLaws,
+        noOfCompliances: item.komriskCompliances.length,
+        applicability: item.applicability,
+        module: item.komriskLawCategory.description,
+      });
     });
-   
+    console.log('the laws table data', transformedData);
     return transformedData;
   }
 
-   filterLawsContainingAct(laws: Law[]): Law[] {
-    return laws.filter(law => law.name.toLowerCase().includes('act'));
-}
+  filterLawsContainingAct(laws: Law[]): Law[] {
+    return laws.filter((law) => law.name.toLowerCase().includes('act'));
+  }
 
   getImageSource(element: any): string {
     if (element.applicability === 'Definitely Applicable') {
@@ -70,5 +61,3 @@ export class LawsTableComponent {
     }
   }
 }
-
-

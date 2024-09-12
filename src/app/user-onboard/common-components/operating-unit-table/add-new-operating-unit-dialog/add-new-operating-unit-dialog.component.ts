@@ -313,7 +313,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.selectedCountryID = value;
       if (value !== 1) {
         this.transformedStates = [];
-        this.state = null;
+        this.state = 38;
       } else {
         this.transformedStates = transformStates(this.data.states);
       }

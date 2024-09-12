@@ -196,7 +196,7 @@
 .password-input-container {
   position: relative;
 }
-.full-screen-modal{
+.full-screen-modal {
   width: 80vw;
 }
 .password-icon-container {
@@ -222,7 +222,7 @@
     width: 300px !important;
   }
 }
-.justify-content-between{
+.justify-content-between {
   justify-content: space-between;
 }
 
@@ -1960,7 +1960,7 @@ input.mdc-radio__native-control:focus,
   padding: 0px 24px !important;
   margin-left: 50px !important;
 }
-.full-screen-content-container{
+.full-screen-content-container {
   padding-left: 35px;
   padding-right: 35px;
 }
@@ -1971,12 +1971,13 @@ input.mdc-radio__native-control:focus,
 }
 
 .example-container table th {
-  background-color: rgba(120, 106, 205, 0.16) !important;
+  // background-color: rgba(120, 106, 205, 0.16) !important;
+  background-color: var.$purple-200 !important;
   // background-color: var.$purple-100;
   font-family: Barlow;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 14.4px;
+  //font-size: 12px;
+  //font-weight: 700;
+  // line-height: 14.4px;
   text-align: left;
   width: 40px;
   //filter: blur(2px);
@@ -2156,29 +2157,29 @@ input.mdc-radio__native-control:focus,
   padding: 5px !important;
 }
 
-.example-container table tr > th {
-  width: 100px;
-}
+// .example-container table tr > th {
+//   width: 100px;
+// }
 
-.example-container table tr > th:first-child {
-  width: 14px;
-}
+// .example-container table tr > th:first-child {
+//   width: 14px;
+// }
 
-.example-container table tr > th:nth-child(2) {
-  width: 50px;
-}
+// .example-container table tr > th:nth-child(2) {
+//   width: 50px;
+// }
 
-.example-container table tr > th:nth-child(3) {
-  width: 50px;
-}
+// .example-container table tr > th:nth-child(3) {
+//   width: 50px;
+// }
 
-.example-container table tr > td:nth-child(2) {
-  width: 50px;
-}
+// .example-container table tr > td:nth-child(2) {
+//   width: 50px;
+// }
 
-.example-container table tr > td:nth-child(3) {
-  width: 50px;
-}
+// .example-container table tr > td:nth-child(3) {
+//   width: 50px;
+// }
 
 .mat-mdc-table tbody,
 .mat-mdc-table tfoot,
@@ -2192,52 +2193,62 @@ input.mdc-radio__native-control:focus,
   background: white;
 }
 
+// .example-container.mdc-data-table__cell,
+// .example-container .mdc-data-table__header-cell {
+//   padding: 0 80px 0 -1px !important;
+// }
+// .example-containar .mdc-data-table__cell,
+// .example-containar .mdc-data-table__header-cell {
+//   padding: 0 40px 0 40px !important;
+// }
+
 .mat-column-serialNumber {
-  width: 10px;
-  font-size: 12px;
-  line-height: 14.4px;
-  font-weight: 700;
-  font-family: Barlow;
-}
-
-.mat-column-lawName {
-  width: 20px;
-  font-size: 12px;
-  line-height: 14.4px;
-  font-weight: 700;
-  font-family: Barlow;
-}
-
-.mat-column-applicability {
-  padding-left: 0px;
-  font-size: 12px;
-  line-height: 14.4px;
-  font-weight: 700;
+  // width: 10px;
+  // font-size: 12px;
+  // line-height: 14.4px;
+  // font-weight: 700;
   font-family: Barlow;
   text-align: center;
 }
 
-.mat-column-applicability {
-  padding-left: 0px;
-  font-size: 12px;
-  line-height: 14.4px;
-  font-weight: 700;
-  font-family: Barlow;
-}
+// .mat-column-lawName {
+//   width: 20px;
+//   font-size: 12px;
+//   line-height: 14.4px;
+//   font-weight: 700;
+//   font-family: Barlow;
+// }
 
-.applicability-text {
-  font-size: 12px;
-  line-height: 14.4px;
-  font-weight: 400;
-  font-family: Barlow;
+.mat-column-applicability {
+  // padding-left: 0px;
+  // font-size: 12px;
+  // line-height: 14.4px;
+  // font-weight: 700;
+  // font-family: Barlow;
   text-align: center;
 }
+
+// .mat-column-applicability {
+//   padding-left: 0px;
+//   font-size: 12px;
+//   line-height: 14.4px;
+//   font-weight: 700;
+//   font-family: Barlow;
+// }
+
+// .applicability-text {
+//   font-size: 12px;
+//   line-height: 14.4px;
+//   font-weight: 400;
+//   font-family: Barlow;
+//   text-align: center;
+// }
 
 .applicability-text-serial-no {
-  font-size: 12px;
-  line-height: 14.4px;
-  font-weight: 400;
-  font-family: Barlow;
+  // font-size: 12px;
+  // line-height: 14.4px;
+  // font-weight: 400;
+  // font-family: Barlow;
   text-align: left;
 }
 
