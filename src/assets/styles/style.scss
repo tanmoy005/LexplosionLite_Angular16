@@ -219,7 +219,9 @@
 .mdc-notched-outline__notch {
   padding: 0 !important;
   width: fit-content !important;
-
+  label[ng-reflect-floating=true] {
+    margin: auto;
+  }
   label[ng-reflect-floating=false] {
     position: absolute !important;
     top: 50% !important;
