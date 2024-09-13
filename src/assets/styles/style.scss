@@ -1853,6 +1853,9 @@ input.mdc-radio__native-control:focus,
   left: 0;
   position: sticky;
 }
+.mr-24px{
+  margin-right: 24px;
+}
 
 @mixin app-dropdown($height: 40px) {
   .app-dropdown {
