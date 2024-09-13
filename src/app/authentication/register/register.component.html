@@ -2,10 +2,7 @@
   <!-- <mat-card style="display: contents"> -->
   <app-reg-header></app-reg-header>
   <mat-divider></mat-divider>
-  <div
-    class="col-lg-7 row registration-body-container"
-    style="margin-top: 55px"
-  >
+  <div class="col-lg-7 row registration-body-container" style="margin-top: 55px">
     <div style="margin-bottom: 23px">
       <p class="text_24_400_dark_28">Get started for free</p>
     </div>
@@ -15,54 +12,28 @@
     </div>
     <mat-card-content>
       <form>
-        <mat-form-field
-          appearance="outline"
-          class="registration-big-text-input"
-        >
+        <mat-form-field appearance="outline" class="registration-big-text-input">
           <mat-label class="text_12_400_gray_1000_responsive">Name</mat-label>
-          <input
-            matInput
-            name="username"
-            class="text_12_400_gray_1000_responsive"
-            [formControl]="usernameFormControl"
-          />
+          <input matInput name="username" class="text_12_400_gray_1000_responsive"
+            [formControl]="usernameFormControl" />
           <mat-error *ngIf="usernameFormControl.hasError('required')">
-            Name is&nbsp;<strong>required</strong></mat-error
-          >
+            Name is&nbsp;<strong>required</strong></mat-error>
         </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          class="registration-big-text-input"
-        >
+        <mat-form-field appearance="outline" class="registration-big-text-input">
           <mat-label class="text_12_400_gray_1000">Business Name</mat-label>
-          <input
-            matInput
-            name="businessname"
-            [formControl]="companynameFormControl"
-            class="text_12_400_gray_1000_responsive"
-          />
-          <mat-error *ngIf="companynameFormControl.hasError('required')"
-            >Business Name is&nbsp; <strong>required</strong></mat-error
-          >
+          <input matInput name="businessname" [formControl]="companynameFormControl"
+            class="text_12_400_gray_1000_responsive" />
+          <mat-error *ngIf="companynameFormControl.hasError('required')">Business Name is&nbsp;
+            <strong>required</strong></mat-error>
         </mat-form-field>
 
-        <mat-form-field
-          appearance="outline"
-          class="registration-big-text-input"
-        >
-          <mat-label class="text_12_400_gray_1000"
-            >Headquarter Address</mat-label
-          >
+        <mat-form-field appearance="outline" class="registration-big-text-input">
+          <mat-label class="text_12_400_gray_1000">Headquarter Address</mat-label>
 
-          <input
-            matInput
-            name="headquarterAddress"
-            [formControl]="headquarterAddressFormControl"
-            class="text_12_400_gray_1000_responsive"
-          />
-          <mat-error *ngIf="headquarterAddressFormControl.hasError('required')"
-            >Headquarter Address is&nbsp; <strong>required</strong></mat-error
-          >
+          <input matInput name="headquarterAddress" [formControl]="headquarterAddressFormControl"
+            class="text_12_400_gray_1000_responsive" />
+          <mat-error *ngIf="headquarterAddressFormControl.hasError('required')">Headquarter Address is&nbsp;
+            <strong>required</strong></mat-error>
         </mat-form-field>
 
         <!-- <app-dropdown
@@ -74,64 +45,38 @@
           >
           </app-dropdown> -->
         <div class="bg-dropdown-register mt-16px">
-          <app-dropdown
-            [label]="'Select one or more countries'"
-            [options]="transformedCountries"
-            [IsMultiSelection]="true"
-            [IsRequired]="false"
-            (selectedValueChange)="onCountryValueChange($event)"
-          >
+          <app-dropdown [label]="'Select one or more countries'" [options]="transformedCountries"
+            [IsMultiSelection]="true" [IsRequired]="false" (selectedValueChange)="onCountryValueChange($event)">
           </app-dropdown>
         </div>
+
         <div class="row gap-0">
           <!-- <div class="col-lg-2 col-md-4 custom-col"> -->
           <div class="col-lg-4 col-md-4 pe-0">
-            <div class="bg-dropdown-white" (click)="toggleDropdown()">
+            <div class="bg-dropdown-white" (click)="toggleDropdown()" >
               <mat-form-field appearance="outline">
                 <div class="row align-items-center" *ngIf="!isDropdownOpen">
                   <span class="country-code" style="margin-left: 16px">{{
                     selectedCountry?.label
-                  }}</span>
-                  <img
-                    style="margin-left: 5px"
-                    [src]="selectedCountry?.icon"
-                    alt="Flag"
-                    class="flag-image-new-user"
-                  />
+                    }}</span>
+                  <img style="margin-left: 5px" [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
                 </div>
-
-                <mat-select
-                  *ngIf="isDropdownOpen"
-                  [formControl]="countryCodeFormControl"
-                  (selectionChange)="onCountryChange($event)"
-                  #countrySelect
-                >
-                  <mat-option
-                    *ngFor="let country of countryList"
-                    [value]="country"
-                  >
+                  
+                <mat-select *ngIf="isDropdownOpen" [formControl]="countryCodeFormControl"
+                  (selectionChange)="onCountryChange($event)" (openedChange)="onDropdownStateChange($event)" #countrySelect>
+                  <mat-option *ngFor="let country of countryList" [value]="country">
                     <div class="row">
                       <div class="col-1">
                         <span class="country-code">{{ country.label }}</span>
                       </div>
                       <div class="col-4">
-                        <img
-                          [src]="country.icon"
-                          alt="Flag"
-                          class="flag-image-new-user"
-                          style="margin-left: -8px"
-                        />
+                        <img [src]="country.icon" alt="Flag" class="flag-image-new-user" style="margin-left: -8px" />
                       </div>
                     </div>
                   </mat-option>
                 </mat-select>
 
-                <input
-                  matInput
-                  name="countryCode"
-                  [readonly]="true"
-                  style="display: none"
-                />
+                <input matInput name="countryCode" [readonly]="true" style="display: none" />
               </mat-form-field>
             </div>
             <!-- <div class="bg-dropdown-white" (click)="toggleDropdown()">
@@ -167,27 +112,14 @@
           </div>
 
           <div class="col-lg-8 col-md-8">
-            <mat-form-field
-              class="registration-phone-no-input"
-              appearance="outline"
-            >
+            <mat-form-field class="registration-phone-no-input" appearance="outline">
               <mat-label class="text_12_400_gray_1000">Phone Number</mat-label>
-              <input
-                matInput
-                type="tel"
-                placeholder="Ex. 9999900000"
-                name="phoneNumber"
-                [formControl]="phoneNumberFormControl"
-                class="text_12_400_gray_1000_responsive"
-              />
+              <input matInput type="tel" placeholder="Ex. 9999900000" name="phoneNumber"
+                [formControl]="phoneNumberFormControl" class="text_12_400_gray_1000_responsive" />
 
-              <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
-                >Phone Number is&nbsp;<strong>required</strong></mat-error
-              >
-              <mat-error
-                *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')"
-                >Invalid Phone Number</mat-error
-              >
+              <mat-error *ngIf="phoneNumberFormControl.hasError('required')">Phone Number
+                is&nbsp;<strong>required</strong></mat-error>
+              <mat-error *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')">Invalid Phone Number</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -273,14 +205,8 @@
           </div> -->
 
         <div>
-          <mat-checkbox
-            style="margin-left: -10px"
-            color="primary"
-            [(ngModel)]="agreeToTerms"
-            name="agreeToTerms"
-            [checked]="agreeToTerms"
-            (change)="updateCheckBoxStateAndOpenConditionModal($event.checked)"
-          >
+          <mat-checkbox style="margin-left: -10px" color="primary" [(ngModel)]="agreeToTerms" name="agreeToTerms"
+            [checked]="agreeToTerms" (change)="updateCheckBoxStateAndOpenConditionModal($event.checked)">
             <!-- <span class="agree-to-label">
                   I agree to
                   <button mat-button (click)="termsConditionModalOpen()">
@@ -297,12 +223,8 @@
         </div>
 
         <div>
-          <mat-checkbox
-            style="margin-left: -10px; margin-bottom: 10px"
-            color="primary"
-            [(ngModel)]="consentToPromotionalInfo"
-            name="consentToPromotionalInfo"
-          >
+          <mat-checkbox style="margin-left: -10px; margin-bottom: 10px" color="primary"
+            [(ngModel)]="consentToPromotionalInfo" name="consentToPromotionalInfo">
             <span class="text_12_400_gray_100">
               I consent to receiving promotional information about compliance
               management
@@ -314,59 +236,31 @@
           <p class="text_12_700_purple_100">Create login Credentials</p>
         </div>
 
-        <mat-form-field
-          appearance="outline"
-          class="registration-big-text-input"
-        >
+        <mat-form-field appearance="outline" class="registration-big-text-input">
           <mat-label class="text_12_400_gray_1000">Email ID/Username</mat-label>
-          <input
-            type="email"
-            matInput
-            [formControl]="emailFormControl"
-            placeholder="Ex. rahul@company.com"
-            name="email"
-            class="text_12_400_gray_1000_responsive"
-          />
-          <mat-error
-            *ngIf="
+          <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. rahul@company.com" name="email"
+            class="text_12_400_gray_1000_responsive" />
+          <mat-error *ngIf="
               emailFormControl.hasError('email') &&
               !emailFormControl.hasError('required')
-            "
-            >Please enter a valid email address</mat-error
-          >
-          <mat-error *ngIf="emailFormControl.hasError('required')"
-            >Email is&nbsp;<strong>required</strong></mat-error
-          >
+            ">Please enter a valid email address</mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">Email is&nbsp;<strong>required</strong></mat-error>
         </mat-form-field>
         <div class="password-input-container">
-          <mat-form-field
-            appearance="outline"
-            class="registration-big-text-input"
-          >
+          <mat-form-field appearance="outline" class="registration-big-text-input">
             <mat-label class="text_12_400_gray_1000">Password</mat-label>
-            <input
-              type="password"
-              matInput
-              [formControl]="passwordFormControl"
-              name="password"
-              class="text_12_400_gray_1000_responsive"
-            />
-            <mat-error *ngIf="passwordFormControl.hasError('required')"
-              >Password is&nbsp;<strong>required</strong>
+            <input type="password" matInput [formControl]="passwordFormControl" name="password"
+              class="text_12_400_gray_1000_responsive" />
+            <mat-error *ngIf="passwordFormControl.hasError('required')">Password is&nbsp;<strong>required</strong>
             </mat-error>
-            <mat-error *ngIf="passwordFormControl.hasError('passwordInvalid')"
-              >Password is&nbsp;<strong>invalid</strong>
+            <mat-error *ngIf="passwordFormControl.hasError('passwordInvalid')">Password is&nbsp;<strong>invalid</strong>
             </mat-error>
           </mat-form-field>
           <div class="password-icon-container">
-            <div
-              *ngIf="passwordFormControl.hasError('passwordInvalid')"
-              class="password-error-icon"
-            >
+            <div *ngIf="passwordFormControl.hasError('passwordInvalid')" class="password-error-icon">
               <mat-icon
                 matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
-                [matTooltipPosition]="'above'"
-              >
+                [matTooltipPosition]="'above'">
                 info
               </mat-icon>
             </div>
@@ -388,44 +282,26 @@
 
         <div class="row">
           <div class="col">
-            <mat-form-field
-              appearance="outline"
-              class="registration-big-text-input"
-            >
-              <mat-label class="text_12_400_gray_1000"
-                >Confirm Password</mat-label
-              >
-              <input
-                type="password"
-                matInput
-                [formControl]="confirmPasswordFormControl"
-                name="confirmPassword"
-                class="text_12_400_gray_1000_responsive"
-              />
-              <mat-error
-                *ngIf="confirmPasswordFormControl.hasError('required')"
-              >
+            <mat-form-field appearance="outline" class="registration-big-text-input">
+              <mat-label class="text_12_400_gray_1000">Confirm Password</mat-label>
+              <input type="password" matInput [formControl]="confirmPasswordFormControl" name="confirmPassword"
+                class="text_12_400_gray_1000_responsive" />
+              <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
                 Please&nbsp;<strong>re-enter</strong>&nbsp;password
               </mat-error>
 
-              <mat-error
-                *ngIf="
+              <mat-error *ngIf="
                   !confirmPasswordFormControl.hasError('required') &&
                   confirmPasswordFormControl.hasError('passwordsMismatch') &&
                   confirmPasswordFormControl.touched
-                "
-              >
+                ">
                 Passwords didn't&nbsp;<strong>match</strong>
               </mat-error>
             </mat-form-field>
           </div>
         </div>
 
-        <button
-          mat-button
-          (click)="handleRegistration($event)"
-          class="btn-primary-md"
-        >
+        <button mat-button (click)="handleRegistration($event)" class="btn-primary-md">
           <p class="btn-name-style">Get OTP</p>
         </button>
       </form>
