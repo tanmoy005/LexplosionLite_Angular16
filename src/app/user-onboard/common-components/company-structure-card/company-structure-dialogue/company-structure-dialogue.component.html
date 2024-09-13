@@ -2,7 +2,7 @@
     <app-dialog-layout [dialogHeaderTitle]="dialogHeaderTitle">
         <mat-dialog-content>
             <!-- <div class="tree-container" [ngStyle]="{ transform: 'scale(' + zoomLevel + ')' }"> -->
-            <div class="full-screen-content-container">
+            <div class="full-screen-content-container" #scrollContainer>
                 <div class="tree-container">
                     <app-tree-structure [rootNode]="treeDataItem" [activeLevel]="activeLevel">
                     </app-tree-structure>

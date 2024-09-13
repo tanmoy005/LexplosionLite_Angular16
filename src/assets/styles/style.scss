@@ -253,6 +253,23 @@
   // }
 }
 
+.company-structure-action-btn-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.company-structure-container {
+  position: relative;
+}
+.register-container {
+  width: calc(var(--base-unit-1920) * var(--registration-scale-factor-width));
+  margin: auto;
+}
+
 @media (max-width: 2560px) and (min-width: 1921px) {
   :root {
     --base-unit-4k: 16px;
@@ -345,9 +362,7 @@
 
   .register-container {
     width: calc(var(--base-unit-4k) * var(--registration-scale-factor-width));
-    margin-left: calc(
-      var(--base-unit-4k) * var(--registration-scale-factor-left)
-    );
+    // margin-left: calc(var(--base-unit-4k) * var(--registration-scale-factor-left));
   }
 
   .phone-section {
@@ -480,9 +495,6 @@
 
   .register-container {
     width: calc(var(--base-unit-1920) * var(--registration-scale-factor-width));
-    margin-left: calc(
-      var(--base-unit-1920) * var(--registration-scale-factor-left)
-    );
   }
 
   .phone-section {
@@ -629,9 +641,7 @@
 
   .register-container {
     width: calc(var(--base-unit-1680) * var(--registration-scale-factor-width));
-    margin-left: calc(
-      var(--base-unit-1680) * var(--registration-scale-factor-left)
-    );
+    // margin-left: calc(var(--base-unit-1680) * var(--registration-scale-factor-left));
   }
 
   .phone-section {
@@ -760,12 +770,8 @@
   }
 
   .register-container {
-    width: calc(
-      var(--base-unit-large1) * var(--registration-scale-factor-width)
-    );
-    margin-left: calc(
-      var(--base-unit-large1) * var(--registration-scale-factor-left)
-    );
+    width: calc(var(--base-unit-large1) * var(--registration-scale-factor-width));
+    // margin-left: calc(var(--base-unit-large1) * var(--registration-scale-factor-left));
   }
 
   .phone-section {
@@ -911,12 +917,8 @@
   }
 
   .register-container {
-    width: calc(
-      var(--base-unit-large2) * var(--registration-scale-factor-width)
-    );
-    margin-left: calc(
-      var(--base-unit-large2) * var(--registration-scale-factor-left)
-    );
+    width: calc(var(--base-unit-large2) * var(--registration-scale-factor-width));
+    // margin-left: calc(var(--base-unit-large2) * var(--registration-scale-factor-left));
   }
 
   .phone-section {
@@ -1066,12 +1068,8 @@
   }
 
   .register-container {
-    width: calc(
-      var(--base-unit-large) * var(--registration-scale-factor-width)
-    );
-    margin-left: calc(
-      var(--base-unit-large) * var(--registration-scale-factor-left)
-    );
+    width: calc(var(--base-unit-large) * var(--registration-scale-factor-width));
+    // margin-left: calc(var(--base-unit-large) * var(--registration-scale-factor-left));
     // margin-top: calc(
     //   var(--base-unit-large) * var(--registration-scale-factor-top)
     // );
@@ -1211,12 +1209,8 @@
   }
 
   .register-container {
-    width: calc(
-      var(--base-unit-medium1) * var(--registration-scale-factor-width)
-    );
-    margin-left: calc(
-      var(--base-unit-medium1) * var(--registration-scale-factor-left)
-    );
+    width: calc(var(--base-unit-medium1) * var(--registration-scale-factor-width));
+    // margin-left: calc(var(--base-unit-medium1) * var(--registration-scale-factor-left));
     // margin-top: calc(
     //   var(--base-unit-medium1) * var(--registration-scale-factor-top)
     // );
@@ -1332,12 +1326,8 @@
   }
 
   .register-container {
-    width: calc(
-      var(--base-unit-medium) * var(--registration-scale-factor-width)
-    );
-    margin-left: calc(
-      var(--base-unit-medium) * var(--registration-scale-factor-left)
-    );
+    width: calc(var(--base-unit-medium) * var(--registration-scale-factor-width));
+    // margin-left: calc(var(--base-unit-medium) * var(--registration-scale-factor-left));
     // margin-top: calc(
     //   var(--base-unit-medium) * var(--registration-scale-factor-top)
     // );
@@ -1482,12 +1472,8 @@
   }
 
   .register-container {
-    width: calc(
-      var(--base-unit-small) * var(--registration-scale-factor-width)
-    );
-    margin-left: calc(
-      var(--base-unit-small) * var(--registration-scale-factor-left)
-    );
+    width: calc(var(--base-unit-small) * var(--registration-scale-factor-width));
+    // margin-left: calc(var(--base-unit-small) * var(--registration-scale-factor-left));
     // margin-top: calc(
     //   var(--base-unit-small) * var(--registration-scale-factor-top)
     // );
@@ -1859,6 +1845,15 @@ input.mdc-radio__native-control:focus,
   }
 }
 
+.company-structure-action-btn {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  position: sticky;
+}
+
 @mixin app-dropdown($height: 40px) {
   .app-dropdown {
     .mat-mdc-text-field-wrapper {
@@ -2109,6 +2104,7 @@ input.mdc-radio__native-control:focus,
 .full-screen-content-container {
   padding-left: 35px;
   padding-right: 35px;
+  overflow: scroll;
 }
 
 .square_input_box {

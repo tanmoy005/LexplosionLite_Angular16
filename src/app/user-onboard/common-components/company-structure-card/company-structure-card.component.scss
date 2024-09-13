@@ -34,10 +34,12 @@
 
 .tree-container {
   transform-origin: 0 0;
-  transition: transform 0.3s; 
+  transition: transform 0.3s;
+  width: 0%!important;
 }
 .full-screen-content-container{
   padding: 0 50px;
+
 }
 .zoom-controls {
   margin-bottom: -5px;
