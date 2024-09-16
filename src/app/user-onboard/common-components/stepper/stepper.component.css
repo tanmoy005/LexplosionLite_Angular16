@@ -1,11 +1,12 @@
-::ng-deep
-  .mat-stepper-label-position-bottom
-  .mat-horizontal-stepper-header
-  .mat-step-label {
+::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
   padding: 16px 0 0 0;
   text-align: center;
   width: 100%;
   font-family: Barlow;
+}
+
+::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+  padding: 24px 0 !important;
 }
 
 ::ng-deep .mat-step-header .mat-step-icon {
@@ -33,7 +34,8 @@
 
 .disabled-step {
   pointer-events: none;
-  opacity: 0.5; /* visually indicate that the step is disabled */
+  opacity: 0.5;
+  /* visually indicate that the step is disabled */
 }
 
 .custom-step-header {
@@ -49,11 +51,14 @@
   color: #855308;
 }
 
-::ng-deep
-  .custom-stepper
-  .mat-step-header
-  .mat-step-label.mat-step-label-active {
+::ng-deep .custom-stepper .mat-step-header .mat-step-label.mat-step-label-active {
   color: #b88a0d;
+}
+::ng-deep mat-step-header {
+  align-items: start!important;
+}
+::ng-deep mat-step-header:last-child {
+  align-items: end!important;
 }
 
 /* .mat-step-header .mat-step-icon-selected,
