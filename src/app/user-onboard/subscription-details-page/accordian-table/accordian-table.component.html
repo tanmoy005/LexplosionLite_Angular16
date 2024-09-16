@@ -1,0 +1,121 @@
+<!-- <mat-table
+  [dataSource]="dataSource"
+  multiTemplateDataRows
+  class="mat-elevation-z8"
+>
+  <ng-container
+    matColumnDef="{{ column }}"
+    *ngFor="let column of columnsToDisplay"
+  >
+    <mat-header-cell *matHeaderCellDef> {{ column }} </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element[column] }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <mat-cell *matCellDef="let element">
+      <div
+        class="example-element-detail"
+        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+      >
+        <div class="example-element-diagram">
+          <div class="example-element-position">{{ element.position }}</div>
+          <div class="example-element-symbol">{{ element.symbol }}</div>
+          <div class="example-element-name">{{ element.name }}</div>
+          <div class="example-element-weight">{{ element.weight }}</div>
+        </div>
+        <div class="example-element-description">
+          {{ element.description }}
+          <span class="example-element-description-attribution">
+            -- Wikipedia
+          </span>
+        </div>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row
+    *matRowDef="let element; columns: columnsToDisplay"
+    class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element"
+  >
+  </mat-row>
+  <mat-row
+    *matRowDef="let row; columns: ['expandedDetail']"
+    class="example-detail-row"
+  ></mat-row>
+</mat-table> -->
+
+<mat-table
+  [dataSource]="dataSource"
+  multiTemplateDataRows
+  class="mat-elevation-z8"
+>
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.description }} </mat-cell>
+  </ng-container>
+
+  <!-- KomriskLite Column -->
+  <ng-container matColumnDef="komriskLite">
+    <mat-header-cell *matHeaderCellDef> KomriskLite </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.komriskLite }} </mat-cell>
+  </ng-container>
+
+  <!-- Komrisk Column -->
+  <ng-container matColumnDef="komrisk">
+    <mat-header-cell *matHeaderCellDef> Komrisk </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.komrisk }} </mat-cell>
+  </ng-container>
+
+  <!-- Expanded Content Column - Detailed Row -->
+  <ng-container matColumnDef="expandedDetail">
+    <mat-cell *matCellDef="let element" colspan="5">
+      <div
+        class="element-detail"
+        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+      >
+        <table class="features-table">
+          <tr *ngFor="let feature of element.features">
+            <td>{{ feature.id }}</td>
+            <td>{{ feature.name }}</td>
+            <td>{{ feature.description }}</td>
+            <td>{{ feature.komriskLite }}</td>
+            <td>{{ feature.komrisk }}</td>
+          </tr>
+        </table>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Header Row -->
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+
+  <!-- Main Data Row -->
+  <mat-row
+    *matRowDef="let element; columns: columnsToDisplay"
+    class="element-row"
+    [class.expanded]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element"
+  ></mat-row>
+
+  <!-- Expanded Detail Row -->
+  <mat-row
+    *matRowDef="let row; columns: ['expandedDetail']"
+    class="detail-row"
+  ></mat-row>
+</mat-table>

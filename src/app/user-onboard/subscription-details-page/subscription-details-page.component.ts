@@ -20,6 +20,7 @@ export class SubscriptionDetailsPageComponent implements OnInit {
   featureList: demoKomriskFeaturesListInterface;
   komriskFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
   komriskLiteFeaturesList: komriskFeaturesInterface.komriskFeaturesInterface[];
+  displayedColumns = ['Features', 'DETAILS', 'KOMRISK', 'KOMISK_LITE'];
 
   @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
 

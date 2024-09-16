@@ -29,13 +29,13 @@
   >
     <mat-card
       appearance="outlined"
-      class="example-card"
+      class="example-card subs-header-card"
       (click)="onCardClick(i)"
       [ngClass]="{ selected: item.checked }"
     >
       <mat-card-content>
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12 col-md-12 col-sm-12">
             <img
               [src]="item.checked ? item.selectedImgSrc : item.imgSrc"
               class="logo"

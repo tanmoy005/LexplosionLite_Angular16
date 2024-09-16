@@ -37,6 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NewUserVerificationComponent } from './new-user-verification/new-user-verification.component';
 import { OfflinePaymentDialogComponent } from './payment-page/offline-payment-dialog/offline-payment-dialog.component';
 import { OnlinePaymentDialogComponent } from './payment-page/online-payment-dialog/online-payment-dialog.component';
+import { AccordianTableComponent } from './subscription-details-page/accordian-table/accordian-table.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { OnlinePaymentDialogComponent } from './payment-page/online-payment-dial
     NewUserVerificationComponent,
     OfflinePaymentDialogComponent,
     OnlinePaymentDialogComponent,
+    AccordianTableComponent,
   ],
 
   imports: [

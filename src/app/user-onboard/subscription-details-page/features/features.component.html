@@ -1,1 +1,353 @@
-<p>Features Goes here</p>
+<!-- <div class="subscription-table">
+  <div class="subscription-details-table">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="FEATURES">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
+          <p class="text_12_700_gray_100">FEATURES</p>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.FEATURES }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="DETAILS">
+        <th mat-header-cell *matHeaderCellDef class="mat-header-cell">
+          <p class="text_12_700_gray_100">DETAILS</p>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.DETAILS }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="KOMRISK">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [ngClass]="{
+            'highlight-komrisk-header': SubscriptionType === 'komrisk'
+          }"
+        >
+          <p class="text_12_700_gray_100">KOMRISK</p>
+        </th>
+
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [ngClass]="{
+            'highlight-komrisk': SubscriptionType === 'komrisk'
+          }"
+        >
+          {{ element.KOMRISK }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="KOMISK_LITE">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          [ngClass]="{
+            'highlight-komrisk-header': SubscriptionType === 'komriskLite'
+          }"
+        >
+          <p class="text_12_700_gray_100">KOMISK LITE</p>
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [ngClass]="{
+            'highlight-komrisk': SubscriptionType === 'komriskLite'
+          }"
+        >
+          {{ element.KOMISK_LITE }}
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns; sticky: true"
+        class="mat-header-row"
+      ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div> -->
+
+<!-- <div class="subscription-table">
+  <div class="subscription-details-table">
+
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef>
+          <p class="text_12_700_gray_100">Name</p>
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef>
+          <p class="text_12_700_gray_100">Description</p>
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="Komrisk">
+        <th mat-header-cell *matHeaderCellDef>
+          <p class="text_12_700_gray_100">Komrisk</p>
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="Komrisk Lite">
+        <th mat-header-cell *matHeaderCellDef>
+          <p class="text_12_700_gray_100">Komrisk Lite</p>
+        </th>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="['Name', 'Description', 'Komrisk', 'Komrisk Lite']"
+      ></tr>
+    </table>
+
+    <mat-accordion multi>
+      <mat-expansion-panel *ngFor="let module of dataSource">
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            <p class="text_12_700_gray_100">{{ module.name }}</p>
+          </mat-panel-description>
+          <mat-panel-description>
+            <p class="text_12_700_gray_100">{{ module.description }}</p>
+          </mat-panel-description>
+          <mat-panel-description class="applicability_icon_container">
+            <p class="text_12_700_gray_100">{{ module.komriskLite }}</p>
+          </mat-panel-description>
+          <mat-panel-description>
+            <p class="text_12_700_gray_100">{{ module.komrisk }}</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div> -->
+
+<!-- <div class="subscription-details-table">
+  <table mat-table>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="text_12_700_gray_100">Name</p>
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="text_12_700_gray_100">Description</p>
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="Komrisk">
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="text_12_700_gray_100">Komrisk</p>
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="Komrisk Lite">
+      <th mat-header-cell *matHeaderCellDef>
+        <p class="text_12_700_gray_100">Komrisk Lite</p>
+      </th>
+    </ng-container>
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="['Name', 'Description', 'Komrisk', 'Komrisk Lite']"
+    ></tr>
+  </table>
+
+  <mat-accordion multi>
+    <mat-expansion-panel *ngFor="let module of dataSource">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="row w-100">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <p class="text_12_700_gray_100">{{ module.name }}</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <p class="text_12_700_gray_100">{{ module.description }}</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komriskLite">check</mat-icon>
+                <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
+              </p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komrisk">check</mat-icon>
+                <mat-icon *ngIf="!module.komrisk">close</mat-icon>
+              </p>
+            </div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="feature" *ngFor="let feature of module.features">
+        <div class="row w-100">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <p class="text_12_700_gray_100">{{ feature.name }}</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <p class="text_12_400_gray_100">
+              {{ feature.description }}
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <p class="text_12_400_gray_100">
+              <mat-icon *ngIf="feature.komrisk">check</mat-icon>
+              <mat-icon *ngIf="!feature.komrisk">close</mat-icon>
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <p class="text_12_400_gray_100">
+              <mat-icon *ngIf="feature.komriskLite">check</mat-icon>
+              <mat-icon *ngIf="!feature.komriskLite">close</mat-icon>
+            </p>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div> -->
+
+<!-- <div class="subscription-details-table">
+  <div class="header-row d-flex w-100">
+    <div class="col-lg-3 col-md-3 col-sm-3" style="margin-left: 20px">
+      <p class="text_12_700_gray_100">FEATURE</p>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+      <p class="text_12_700_gray_100">DETAILS</p>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <p class="text_12_700_gray_100">Komrisk Lite</p>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <p class="text_12_700_gray_100">Komrisk</p>
+    </div>
+  </div>
+
+  <mat-accordion multi>
+    <mat-expansion-panel *ngFor="let module of dataSource">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <div class="row w-100">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <p class="text_12_700_gray_100">{{ module.name }}</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <p class="text_12_700_gray_100">{{ module.description }}</p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komriskLite">check</mat-icon>
+                <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
+              </p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komrisk">check</mat-icon>
+                <mat-icon *ngIf="!module.komrisk">close</mat-icon>
+              </p>
+            </div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="feature" *ngFor="let feature of module.features">
+        <div class="row w-100">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <p class="text_12_700_gray_100">{{ feature.name }}</p>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <p class="text_12_400_gray_100">
+              {{ feature.description }}
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <p class="text_12_400_gray_100">
+              <mat-icon *ngIf="feature.komrisk">check</mat-icon>
+              <mat-icon *ngIf="!feature.komrisk">close</mat-icon>
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <p class="text_12_400_gray_100">
+              <mat-icon *ngIf="feature.komriskLite">check</mat-icon>
+              <mat-icon *ngIf="!feature.komriskLite">close</mat-icon>
+            </p>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div> -->
+
+<div class="subs-detail-containar">
+  <div class="subscription-details-table w-100 row">
+    <div class="subs-header-card margin-left">
+      <p class="text_12_700_gray_100">FEATURE</p>
+    </div>
+    <div class="detail-col">
+      <p class="text_12_700_gray_100">DETAILS</p>
+    </div>
+    <div class="subs-header-card text-center">
+      <p class="text_12_700_gray_100">Komrisk Lite</p>
+    </div>
+    <div class="subs-header-card text-center">
+      <p class="text_12_700_gray_100">Komrisk</p>
+    </div>
+  </div>
+
+  <mat-accordion multi>
+    <mat-expansion-panel *ngFor="let module of dataSource">
+      <mat-expansion-panel-header class="custom-extension">
+        <mat-panel-description>
+          <div class="row">
+            <div class="subs-header-card">
+              <p class="text_12_700_gray_100">{{ module.name }}</p>
+            </div>
+            <div class="detail-col">
+              <p class="text_12_700_gray_100">{{ module.description }}</p>
+            </div>
+            <div class="subs-header-card text-center">
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komriskLite">check</mat-icon>
+                <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
+              </p>
+            </div>
+            <div class="subs-header-card text-center">
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komrisk">check</mat-icon>
+                <mat-icon *ngIf="!module.komrisk">close</mat-icon>
+              </p>
+            </div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="feature" *ngFor="let feature of module.features">
+        <div class="row margin-left">
+          <div class="subs-header-card">
+            <p class="text_12_700_gray_100">{{ feature.name }}</p>
+          </div>
+          <div class="detail-col">
+            <p class="text_12_400_gray_100">
+              {{ feature.description }}
+            </p>
+          </div>
+          <div class="subs-header-card text-center">
+            <p class="text_12_400_gray_100">
+              <mat-icon *ngIf="feature.komrisk">check</mat-icon>
+              <mat-icon *ngIf="!feature.komrisk">close</mat-icon>
+            </p>
+          </div>
+          <div class="subs-header-card text-center">
+            <p class="text_12_400_gray_100">
+              <mat-icon *ngIf="feature.komriskLite">check</mat-icon>
+              <mat-icon *ngIf="!feature.komriskLite">close</mat-icon>
+            </p>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
