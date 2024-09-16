@@ -2609,7 +2609,7 @@ input.mdc-radio__native-control:focus,
   height: 1px;
   top: 35px;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: #786acd;
 }
 
 .steper-container-col {
@@ -2637,7 +2637,7 @@ input.mdc-radio__native-control:focus,
   width: 20px !important;
   flex-shrink: 0;
   position: relative;
-
+  border: 1px solid #786acd;
   &:hover {
     // box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
     -webkit-box-shadow: -1.5px -1.5px 16px 16px rgba(119, 106, 204, 0.28);
