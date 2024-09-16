@@ -13,11 +13,9 @@
       >
         <div class="row payment-page-section-1">
           <p class="payment-page-typography">Subscription Period</p>
-          <section class="checkbox-section">
+          <section *ngFor="let  subsriptionPlan of subsriptionPlanList, let i = index" class="checkbox-section">
             <!-- <h4>Select your toppings:</h4> -->
-            <mat-checkbox>Monthly</mat-checkbox>
-            <mat-checkbox>Yearly</mat-checkbox>
-            <!-- <mat-checkbox >Mushroom</mat-checkbox> -->
+            <mat-checkbox [checked]="selectedOption  === subsriptionPlan.label" (change)="updateSubscriptionPeriod(subsriptionPlan.label)">{{subsriptionPlan.label}}</mat-checkbox>
           </section>
         </div>
       </app-card-layout-for-payment-page>

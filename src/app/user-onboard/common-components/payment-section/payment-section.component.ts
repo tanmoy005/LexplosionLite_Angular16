@@ -1,5 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 
+interface SubscriptionPlan {
+  label: string;
+}
 @Component({
   selector: 'app-payment-section',
   templateUrl: './payment-section.component.html',
@@ -12,7 +15,16 @@ export class PaymentSectionComponent {
     'Rate',
     'Free Units',
   ];
+  subsriptionPlanList: SubscriptionPlan[] = [
+    {
+      label: 'Monthly'
+    },
+    {
+      label: 'Yearly'
+    }
 
+  ]
+  selectedOption: string | null = null;
   screenWidth: number;
 
   constructor() {
@@ -48,4 +60,14 @@ export class PaymentSectionComponent {
       return { height: defaultHeight, width: defaultWidth };
     }
   }
+  updateSubscriptionPeriod(subscriptionPlanLabel: string) {
+    if (this.selectedOption === subscriptionPlanLabel) {
+      // Uncheck if already selected (optional, if you want to allow deselection)
+      this.selectedOption = null;
+    } else {
+      // Set the new selected option
+      this.selectedOption = subscriptionPlanLabel;
+    }
+  }
 }
+
