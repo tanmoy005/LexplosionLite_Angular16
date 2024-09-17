@@ -1,6 +1,7 @@
 .example-card {
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  //margin-right: 10px;
 }
 
 .example-card.selected {
@@ -25,4 +26,8 @@
 .logo-up {
   margin-top: 0px;
   margin-bottom: 16px;
+}
+
+.first-card-margin {
+  margin-right: 12px; /* Adjust the value as needed */
 }

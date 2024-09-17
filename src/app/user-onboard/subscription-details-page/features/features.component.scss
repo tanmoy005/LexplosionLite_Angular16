@@ -52,9 +52,9 @@
   width: 250px;
 }
 
-.margin-left {
-  margin-left: 25px;
-}
+// .margin-left {
+//   margin-left: 25px;
+// }
 
 .mat-expansion-panel-header-title,
 .mat-expansion-panel-header-description {
@@ -99,4 +99,29 @@
 .header-row {
   //  / padding: 10px;
   background-color: #f0f0f0;
+}
+
+.highlight {
+  background-color: #e0e0e0;
+  border: 2px solid #6200ea; /* Adjust to your desired highlight border color */
+}
+
+// .highlight-box {
+//   background-color: rgba(120, 106, 205, 0.08);
+//   width: 184px;
+//   //border-radius: 4px;
+//   height: 56px;
+//   display: flex;
+//   justify-content: center; /* Center horizontally (optional) */
+//   align-items: center;
+// }
+
+.gap-div {
+  gap: 10px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  // gap: 10px; /* Gap between elements */
 }

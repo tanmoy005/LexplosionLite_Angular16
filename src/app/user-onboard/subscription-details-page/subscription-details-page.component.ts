@@ -1,5 +1,12 @@
 import { KomriskSelectedDialogComponent } from './komrisk-selected-dialog/komrisk-selected-dialog.component';
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ChangeDetectorRef,
+  AfterViewInit,
+  ElementRef,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import * as komriskFeaturesInterface from '../../shared/menu-items/demokomriskFeaturesList';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,12 +14,13 @@ import { ApiService } from 'src/app/services/api.service';
 import { demoKomriskFeaturesListInterface } from './../../shared/menu-items/demokomriskFeaturesList';
 
 import { StepperComponent } from '../common-components/stepper/stepper.component';
+
 @Component({
   selector: 'app-subscription-details-page',
   templateUrl: './subscription-details-page.component.html',
   styleUrls: ['./subscription-details-page.component.scss'],
 })
-export class SubscriptionDetailsPageComponent implements OnInit {
+export class SubscriptionDetailsPageComponent implements OnInit, AfterViewInit {
   subscriptionFeaturesListTitle = 'Features';
   subscriptionFeaturesListShade = 'light';
   subscriptionType: string;
@@ -23,6 +31,13 @@ export class SubscriptionDetailsPageComponent implements OnInit {
   displayedColumns = ['Features', 'DETAILS', 'KOMRISK', 'KOMISK_LITE'];
 
   @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
+  @ViewChild('featureCardcontainerElement') containerElement!: ElementRef;
+
+  ngAfterViewInit() {
+    const containerHeight = this.containerElement.nativeElement.offsetHeight;
+    console.log('Container height:', containerHeight);
+    // You can now use `containerHeight` as needed
+  }
 
   constructor(
     private router: Router,

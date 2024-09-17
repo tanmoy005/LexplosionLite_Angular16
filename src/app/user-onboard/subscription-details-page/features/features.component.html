@@ -281,73 +281,169 @@
   </mat-accordion>
 </div> -->
 
-<div class="subs-detail-containar">
-  <div class="subscription-details-table w-100 row">
-    <div class="subs-header-card margin-left">
-      <p class="text_12_700_gray_100">FEATURE</p>
-    </div>
-    <div class="detail-col">
-      <p class="text_12_700_gray_100">DETAILS</p>
-    </div>
-    <div class="subs-header-card text-center">
-      <p class="text_12_700_gray_100">Komrisk Lite</p>
-    </div>
-    <div class="subs-header-card text-center">
-      <p class="text_12_700_gray_100">Komrisk</p>
-    </div>
+<!-- <div class="subscription-details-table row">
+  <div class="subs-header-card text-center">
+    <p class="text_12_700_gray_100">FEATURE</p>
   </div>
+  <div class="detail-col">
+    <p class="text_12_700_gray_100">DETAILS</p>
+  </div>
+  <div
+    class="subs-header-card text-center"
+    [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
+  >
+    <p class="text_12_700_gray_100">Komrisk</p>
+  </div>
+  <div
+    class="subs-header-card text-center"
+    [ngClass]="{ 'highlight-box': SubscriptionType === 'komriskLite' }"
+  >
+    <p class="text_12_700_gray_100">Komrisk Lite</p>
+  </div>
+</div> -->
 
-  <mat-accordion multi>
-    <mat-expansion-panel *ngFor="let module of dataSource">
-      <mat-expansion-panel-header class="custom-extension">
-        <mat-panel-description>
-          <div class="row">
-            <div class="subs-header-card">
-              <p class="text_12_700_gray_100">{{ module.name }}</p>
+<mat-accordion multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="custom-extension">
+      <mat-panel-description class="custom-extension-desc">
+        <div class="row pannel-item-row">
+          <div class="flex-container">
+            <div class="subs-header-card center-subs">
+              <p class="text_12_700_gray_100">FEATURE</p>
             </div>
-            <div class="detail-col">
-              <p class="text_12_700_gray_100">{{ module.description }}</p>
+            <div class="detail-col center-subs">
+              <p class="text_12_700_gray_100">DETAILS</p>
             </div>
-            <div class="subs-header-card text-center">
+            <!-- <div
+              class="subs-header-card text-center"
+              [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
+            >
               <p class="text_12_700_gray_100">
                 <mat-icon *ngIf="module.komriskLite">check</mat-icon>
                 <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
               </p>
             </div>
-            <div class="subs-header-card text-center">
+            <div
+              class="subs-header-card text-center"
+              [ngClass]="{
+                'highlight-box': SubscriptionType === 'komriskLite'
+              }"
+            >
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komrisk">check</mat-icon>
+                <mat-icon *ngIf="!module.komrisk">close</mat-icon>
+              </p>
+            </div> -->
+
+            <div
+              class="subs-header-card text-center"
+              [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
+            >
+              <p class="text_12_700_gray_100">Komrisk</p>
+            </div>
+            <div
+              class="subs-header-card text-center"
+              [ngClass]="{
+                'highlight-box': SubscriptionType === 'komriskLite'
+              }"
+            >
+              <p class="text_12_700_gray_100">Komrisk Lite</p>
+            </div>
+          </div>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion multi>
+  <mat-expansion-panel *ngFor="let module of dataSource">
+    <mat-expansion-panel-header class="custom-extension">
+      <mat-panel-description class="custom-extension-desc">
+        <div class="row pannel-item-row">
+          <div class="flex-container">
+            <div class="subs-header-card center-subs">
+              <p class="text_12_700_gray_100">{{ module.name }}</p>
+            </div>
+            <div class="detail-col center-subs">
+              <p class="text_12_700_gray_100">{{ module.description }}</p>
+            </div>
+            <!-- <div
+              class="subs-header-card text-center"
+              [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
+            >
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komriskLite">check</mat-icon>
+                <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
+              </p>
+            </div>
+            <div
+              class="subs-header-card text-center"
+              [ngClass]="{
+                'highlight-box': SubscriptionType === 'komriskLite'
+              }"
+            >
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komrisk">check</mat-icon>
+                <mat-icon *ngIf="!module.komrisk">close</mat-icon>
+              </p>
+            </div> -->
+
+            <div
+              class="subs-header-card text-center"
+              [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
+            >
+              <p class="text_12_700_gray_100">
+                <mat-icon *ngIf="module.komriskLite">check</mat-icon>
+                <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
+              </p>
+            </div>
+            <div
+              class="subs-header-card text-center"
+              [ngClass]="{
+                'highlight-box': SubscriptionType === 'komriskLite'
+              }"
+            >
               <p class="text_12_700_gray_100">
                 <mat-icon *ngIf="module.komrisk">check</mat-icon>
                 <mat-icon *ngIf="!module.komrisk">close</mat-icon>
               </p>
             </div>
           </div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-      <div class="feature" *ngFor="let feature of module.features">
-        <div class="row margin-left">
-          <div class="subs-header-card">
-            <p class="text_12_700_gray_100">{{ feature.name }}</p>
-          </div>
-          <div class="detail-col">
-            <p class="text_12_400_gray_100">
-              {{ feature.description }}
-            </p>
-          </div>
-          <div class="subs-header-card text-center">
-            <p class="text_12_400_gray_100">
-              <mat-icon *ngIf="feature.komrisk">check</mat-icon>
-              <mat-icon *ngIf="!feature.komrisk">close</mat-icon>
-            </p>
-          </div>
-          <div class="subs-header-card text-center">
-            <p class="text_12_400_gray_100">
-              <mat-icon *ngIf="feature.komriskLite">check</mat-icon>
-              <mat-icon *ngIf="!feature.komriskLite">close</mat-icon>
-            </p>
-          </div>
+    <div class="feature" *ngFor="let feature of module.features">
+      <div class="row margin-left">
+        <div class="subs-header-card center-subs">
+          <p class="text_12_700_gray_100">{{ feature.name }}</p>
+        </div>
+        <div class="detail-col center-subs">
+          <p class="text_12_400_gray_100">
+            {{ feature.description }}
+          </p>
+        </div>
+
+        <div
+          class="subs-header-card text-center"
+          [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
+        >
+          <p class="text_12_400_gray_100">
+            <mat-icon *ngIf="feature.komrisk">check</mat-icon>
+            <mat-icon *ngIf="!feature.komrisk">close</mat-icon>
+          </p>
+        </div>
+        <div
+          class="subs-header-card text-center"
+          [ngClass]="{ 'highlight-box': SubscriptionType === 'komriskLite' }"
+        >
+          <p class="text_12_400_gray_100">
+            <mat-icon *ngIf="feature.komriskLite">check</mat-icon>
+            <mat-icon *ngIf="!feature.komriskLite">close</mat-icon>
+          </p>
         </div>
       </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
