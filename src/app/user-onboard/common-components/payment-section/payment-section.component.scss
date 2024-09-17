@@ -47,9 +47,9 @@
   border-radius: 5px 0px 0px 0px;
   opacity: 0px;
 }
-.payment-page-typography{
-  
-}
+
+.payment-page-typography {}
+
 .payment-page-typography {
   font-family: Barlow;
   font-size: 12px;
@@ -58,21 +58,22 @@
   text-align: left;
   color: #58595b;
   margin-top: -12px;
-  margin-left: 12px;
+  // margin-left: 12px;
 }
 
 .payment-page-section-1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px;
+  padding: 0 14px;
   margin-top: -12px;
 }
 
 .checkbox-section {
   margin-right: 12px;
   margin-top: -4px;
-  .mdc-form-field > label {
+
+  .mdc-form-field>label {
     margin-left: 0;
     margin-right: auto;
     padding-left: 4px;
@@ -90,27 +91,49 @@
 .payment-details-container {
   display: flex;
   justify-content: space-between;
-  gap: 10px; /* Add space between cards */
+  gap: 10px;
+  /* Add space between cards */
 }
 
 @media (max-width: 1280px) {
   .payment-details-container {
-    flex-direction: column;
-    align-items: center; /* Center align items in the column */
+    // flex-direction: column;
+    // align-items: center; /* Center align items in the column */
   }
 
   app-card-layout-for-payment-page {
-    width: 100%; /* Make the cards take full width of the container */
-    max-width: 100%; /* Prevent any overflow issues */
+    width: 100%;
+    /* Make the cards take full width of the container */
+    max-width: 100%;
+    /* Prevent any overflow issues */
   }
 }
 
 .payment-page-typography-2 {
+  // font-family: Barlow;
+  // font-size: 12px;
+  // font-weight: 500;
+  // line-height: 16px;
+  // text-align: left;
+
+
+
   font-family: Barlow;
   font-size: 12px;
   font-weight: 500;
-  line-height: 16px;
+  line-height: 24px;
   text-align: left;
+  // color: #58595b;
+  // margin-top: -12px;
+}
+
+.payment-page-typography-title {
+  font-family: Barlow;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  margin-top: -12px;
 }
 
 .payment-page-typography-3 {
@@ -135,7 +158,8 @@
 // }
 
 .mr-3 {
-  margin-right: 1rem; /* Adjust as needed */
+  margin-right: 1rem;
+  /* Adjust as needed */
 }
 
 .margin-bottom {
