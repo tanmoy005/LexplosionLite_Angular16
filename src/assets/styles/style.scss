@@ -411,6 +411,12 @@
       var(var(--base-unit-4k)) * var(--scale-subs-card-height)
     ) !important;
   }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-4k) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-4k)) * var(--scale-subs-card-height)
+    ) !important;
+  }
   .subscription-details-table {
     width: calc(
       var(--base-unit-4k) * var(--scale-subscription-details-cont-width)
@@ -435,6 +441,12 @@
       var(var(--base-unit-4k)) * var(--scale-subs-card-height)
     ) !important;
   }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-4k) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-4k)) * var(--scale-subs-card-height)
+    ) !important;
+  }
   .subscription-details-table {
     width: calc(
       var(--base-unit-4k) * var(--scale-subscription-details-cont-width)
@@ -449,6 +461,11 @@
     width: calc(var(--base-unit-4k) * var(--scale-details-col-width));
   }
   .custom-extension {
+    width: calc(
+      var(--base-unit-4k) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
     width: calc(
       var(--base-unit-4k) * var(--scale-subscription-details-cont-width)
     ) !important;
@@ -609,6 +626,12 @@
       var(var(--base-unit-1920)) * var(--scale-subs-card-height)
     ) !important;
   }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-1920) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-1920)) * var(--scale-subs-card-height)
+    ) !important;
+  }
   .subscription-details-table {
     width: calc(
       var(--base-unit-1920) * var(--scale-subscription-details-cont-width)
@@ -633,6 +656,12 @@
       var(var(--base-unit-1920)) * var(--scale-subs-card-height)
     ) !important;
   }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-1920) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-1920)) * var(--scale-subs-card-height)
+    ) !important;
+  }
   .subscription-details-table {
     width: calc(
       var(--base-unit-1920) * var(--scale-subscription-details-cont-width)
@@ -647,6 +676,11 @@
     width: calc(var(--base-unit-1920) * var(--scale-details-col-width));
   }
   .custom-extension {
+    width: calc(
+      var(--base-unit-1920) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
     width: calc(
       var(--base-unit-1920) * var(--scale-subscription-details-cont-width)
     ) !important;
@@ -790,25 +824,7 @@
       var(var(--base-unit-1680)) * var(--scale-subs-card-height)
     ) !important;
   }
-  .subscription-details-table {
-    width: calc(
-      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
-    );
-  }
-  .blank-layout-container {
-    width: calc(var(--base-unit-1680) * var(--scale-containar-width));
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .detail-col {
-    width: calc(var(--base-unit-1680) * var(--scale-details-col-width));
-  }
-  .custom-extension {
-    width: calc(
-      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
-    ) !important;
-  }
-  .subs-header-card {
+  .subs-header-card-feature {
     width: calc(var(--base-unit-1680) * var(--scale-subs-card-width));
     height: calc(
       var(var(--base-unit-1680)) * var(--scale-subs-card-height)
@@ -828,6 +844,46 @@
     width: calc(var(--base-unit-1680) * var(--scale-details-col-width));
   }
   .custom-extension {
+    width: calc(
+      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
+    width: calc(
+      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .subs-header-card {
+    width: calc(var(--base-unit-1680) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-1680)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-1680) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-1680)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subscription-details-table {
+    width: calc(
+      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
+    );
+  }
+  .blank-layout-container {
+    width: calc(var(--base-unit-1680) * var(--scale-containar-width));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .detail-col {
+    width: calc(var(--base-unit-1680) * var(--scale-details-col-width));
+  }
+  .custom-extension {
+    width: calc(
+      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
     width: calc(
       var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
     ) !important;
@@ -986,25 +1042,7 @@
       var(var(--base-unit-large1)) * var(--scale-subs-card-height)
     ) !important;
   }
-  .subscription-details-table {
-    width: calc(
-      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
-    );
-  }
-  .blank-layout-container {
-    width: calc(var(--base-unit-large1) * var(--scale-containar-width));
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .detail-col {
-    width: calc(var(--base-unit-large1) * var(--scale-details-col-width));
-  }
-  .custom-extension {
-    width: calc(
-      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
-    ) !important;
-  }
-  .subs-header-card {
+  .subs-header-card-feature {
     width: calc(var(--base-unit-large1) * var(--scale-subs-card-width));
     height: calc(
       var(var(--base-unit-large1)) * var(--scale-subs-card-height)
@@ -1024,6 +1062,46 @@
     width: calc(var(--base-unit-large1) * var(--scale-details-col-width));
   }
   .custom-extension {
+    width: calc(
+      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
+    width: calc(
+      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .subs-header-card {
+    width: calc(var(--base-unit-large1) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-large1)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-large1) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-large1)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subscription-details-table {
+    width: calc(
+      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
+    );
+  }
+  .blank-layout-container {
+    width: calc(var(--base-unit-large1) * var(--scale-containar-width));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .detail-col {
+    width: calc(var(--base-unit-large1) * var(--scale-details-col-width));
+  }
+  .custom-extension {
+    width: calc(
+      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
     width: calc(
       var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
     ) !important;
@@ -1194,26 +1272,7 @@
       var(var(--base-unit-large2)) * var(--scale-subs-card-height)
     ) !important;
   }
-  .subscription-details-table {
-    width: calc(
-      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
-    );
-  }
-  .blank-layout-container {
-    width: calc(var(--base-unit-large2) * var(--scale-containar-width));
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .detail-col {
-    width: calc(var(--base-unit-large2) * var(--scale-details-col-width));
-  }
-  .custom-extension {
-    width: calc(
-      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
-    ) !important;
-  }
-
-  .subs-header-card {
+  .subs-header-card-feature {
     width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
     height: calc(
       var(var(--base-unit-large2)) * var(--scale-subs-card-height)
@@ -1233,6 +1292,47 @@
     width: calc(var(--base-unit-large2) * var(--scale-details-col-width));
   }
   .custom-extension {
+    width: calc(
+      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
+    width: calc(
+      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+
+  .subs-header-card {
+    width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-large2)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-large2)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subscription-details-table {
+    width: calc(
+      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
+    );
+  }
+  .blank-layout-container {
+    width: calc(var(--base-unit-large2) * var(--scale-containar-width));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .detail-col {
+    width: calc(var(--base-unit-large2) * var(--scale-details-col-width));
+  }
+  .custom-extension {
+    width: calc(
+      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
     width: calc(
       var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
     ) !important;
@@ -1403,6 +1503,12 @@
       var(var(--base-unit-large)) * var(--scale-subs-card-height)
     ) !important;
   }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-large) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-large)) * var(--scale-subs-card-height)
+    ) !important;
+  }
   .subscription-details-table {
     width: calc(
       var(--base-unit-large) * var(--scale-subscription-details-cont-width)
@@ -1427,6 +1533,11 @@
     );
   }
   .custom-extension {
+    width: calc(
+      var(--base-unit-large) * var(--scale-subscription-details-cont-width)
+    ) !important;
+  }
+  .custom-extension-header {
     width: calc(
       var(--base-unit-large) * var(--scale-subscription-details-cont-width)
     ) !important;
@@ -1566,6 +1677,12 @@
       var(var(--base-unit-medium1)) * var(--scale-subs-card-height)
     ) !important;
   }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-medium1) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-medium1)) * var(--scale-subs-card-height)
+    ) !important;
+  }
   .subscription-details-table {
     width: calc(
       var(--base-unit-medium1) * var(--scale-subscription-details-cont-width)
@@ -1580,6 +1697,12 @@
     width: calc(var(--base-unit-medium1) * var(--scale-details-col-width));
   }
   .subs-header-card {
+    width: calc(var(--base-unit-medium1) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-medium1)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subs-header-card-feature {
     width: calc(var(--base-unit-medium1) * var(--scale-subs-card-width));
     height: calc(
       var(var(--base-unit-medium1)) * var(--scale-subs-card-height)
@@ -1746,6 +1869,12 @@
       var(var(--base-unit-medium)) * var(--scale-subs-card-height)
     ) !important;
   }
+  .subs-header-card-feature {
+    width: calc(var(--base-unit-medium) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-medium)) * var(--scale-subs-card-height)
+    ) !important;
+  }
   .subscription-details-table {
     width: calc(
       var(--base-unit-medium) * var(--scale-subscription-details-cont-width)
@@ -1760,6 +1889,12 @@
     width: calc(var(--base-unit-medium) * var(--scale-details-col-width));
   }
   .subs-header-card {
+    width: calc(var(--base-unit-medium) * var(--scale-subs-card-width));
+    height: calc(
+      var(var(--base-unit-medium)) * var(--scale-subs-card-height)
+    ) !important;
+  }
+  .subs-header-card-feature {
     width: calc(var(--base-unit-medium) * var(--scale-subs-card-width));
     height: calc(
       var(var(--base-unit-medium)) * var(--scale-subs-card-height)
@@ -3040,7 +3175,7 @@ input.mdc-radio__native-control:focus,
   display: flex !important;
   flex-direction: row-reverse !important;
   align-items: center !important;
-  padding: 0 13px !important;
+  //padding: 0 13px !important;
   border-radius: inherit;
   //transition: height 225ms cubic-bezier(0.4, 0, 0.2, 1);
   height: 56px !important;
@@ -3052,6 +3187,44 @@ input.mdc-radio__native-control:focus,
   gap: 0;
   justify-content: space-between !important;
   place-content: flex-end;
+  &:hover {
+    background-color: var.$purple-500 !important; // Ensure no background change on hover
+    color: inherit !important; // Ensure no text color change on hover
+    .mat-expansion-indicator {
+      color: inherit !important; // Prevent hover color changes for the icon
+    }
+  }
+}
+
+.custom-extension-header {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  padding: 0 13px !important;
+  border-radius: inherit;
+  //transition: height 225ms cubic-bezier(0.4, 0, 0.2, 1);
+  height: 56px !important;
+  background-color: var.$purple-200;
+  // width: 936px !important;
+  transition: none !important;
+  //justify-content: space-between !important;
+  padding: 0px !important;
+  gap: 0;
+  justify-content: space-between !important;
+  place-content: flex-end;
+  &:hover {
+    background-color: var.$purple-200 !important; // Ensure no background change on hover
+    color: inherit !important; // Ensure no text color change on hover
+    .mat-expansion-indicator {
+      color: inherit !important; // Prevent hover color changes for the icon
+    }
+  }
+}
+.accordian-arr {
+  .mat-expansion-panel-header-description,
+  .mat-expansion-indicator::after {
+    color: transparent;
+  }
 }
 
 .feature {
@@ -3112,4 +3285,10 @@ app-features {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.subs-header-card-feature {
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
