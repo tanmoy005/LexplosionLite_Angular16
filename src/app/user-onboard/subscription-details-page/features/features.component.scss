@@ -149,12 +149,7 @@
   color: rgb(207 12 12 / 54%) !important;
 }
 
-.mat-expansion-indicator::after {
-  //border-style: solid;
-  border-width: 0 2px 2px 0;
-  //content: "";
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
-  vertical-align: middle;
+.mat-expansion-panel-header.mat-expanded:focus,
+.mat-expansion-panel-header.mat-expanded:hover {
+  background-color: rgba(120, 106, 205, 0.08) !important;
 }
