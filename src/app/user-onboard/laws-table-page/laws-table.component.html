@@ -1,6 +1,10 @@
 <app-reg-header></app-reg-header>
 <mat-divider></mat-divider>
-<app-stepper [currentStep]="2"> </app-stepper>
+<div class="row stepper-row">
+  <div class="col-lg-12 col-sm-12 col-md-12 px-0">
+    <app-stepper [currentStep]="2"> </app-stepper>
+  </div>
+</div>
 
 <div class="header">
   <div class="laws-layout">
@@ -20,22 +24,14 @@
 
 <div class="row footer-section-buttons-div-lawpage">
   <div>
-    <button
-      mat-stroked-button
-      class="btn-primary-outline-md"
-      (click)="navigateToFeaturesPage($event)"
-    >
+    <button mat-stroked-button class="btn-primary-outline-md" (click)="navigateToFeaturesPage($event)">
       <mat-icon>keyboard_arrow_left</mat-icon>
       <p class="btn-name-style">Back</p>
     </button>
   </div>
 
   <div>
-    <button
-      mat-stroked-button
-      class="btn-primary-outline-md"
-      (click)="navigateToPaymentsPage($event)"
-    >
+    <button mat-stroked-button class="btn-primary-outline-md" (click)="navigateToPaymentsPage($event)">
       <mat-icon>keyboard_arrow_right</mat-icon>
       <p class="btn-name-style">Next</p>
     </button>

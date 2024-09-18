@@ -1,158 +1,38 @@
-<!-- <div class="container">
-  <app-reg-header></app-reg-header>
-  <mat-divider></mat-divider>
-
-  <div class="row">
-    <div class="col-lg-12 col-sm-12 col-md-12">
-      <app-stepper [currentStep]="1"> </app-stepper>
-    </div>
-  </div>
-
-  <div class="row app-helpertext-section">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <app-stepper-helper-text
-        [helperText]="'Select the subscription you want to use!'"
-        [stepText]="'Step 2 of 5'"
-        style="width: 100%"
-      ></app-stepper-helper-text>
-    </div>
-  </div>
-
-  <div class="col-lg-12 col-sm-12 col-md-12 grid-container">
-    <app-feature-header
-      class="grid-item"
-      (selectedSubscriptionType)="handleSubscriptionType($event)"
-    >
-    </app-feature-header>
-  </div>
-
-  <div class="row features-card">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <app-card-layout
-        [cardHeaderTitle]="subscriptionFeaturesListTitle"
-        [shade]="subscriptionFeaturesListShade"
-      >
-        <div *ngIf="subscriptionType === 'komrisk'" class="features-list-div">
-          <div *ngFor="let feature of komriskFeaturesList" class="row">
-            <div class="col-sm-12 col-md-2 col-lg-2" style="text-align: center">
-              <mat-icon>check</mat-icon>
-            </div>
-            <div
-              class="col-sm-12 col-md-4 col-lg-3"
-              style="text-align: center; font-family: 'Barlow'"
-            >
-              {{ feature.feature }}
-            </div>
-            <div
-              class="col-sm-12 col-md-5 col-lg-3"
-              style="text-align: center; font-family: 'Barlow'"
-            >
-              {{ feature.description }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          *ngIf="subscriptionType === 'komriskLite'"
-          class="features-list-div"
-        >
-          <div *ngFor="let feature of komriskLiteFeaturesList" class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2" style="text-align: center">
-              <mat-icon>check</mat-icon>
-            </div>
-            <div
-              class="col-sm-4 col-md-4 col-lg-3"
-              style="text-align: center; font-family: 'Barlow'"
-            >
-              {{ feature.feature }}
-            </div>
-            <div
-              class="col-sm-5 col-md-5 col-lg-3"
-              style="text-align: center; font-family: 'Barlow'"
-            >
-              {{ feature.description }}
-            </div>
-          </div>
-        </div>
-      </app-card-layout>
-    </div>
-  </div>
-
-  <div class="row footer-section-buttons-div">
-    <div>
-      <button
-        mat-stroked-button
-        class="btn-primary-outline-md"
-        (click)="navigateToEntityPage($event)"
-      >
-        <mat-icon>keyboard_arrow_left</mat-icon>
-        <p class="btn-name-style">Back</p>
-      </button>
-    </div>
-
-    <div>
-      <button
-        mat-stroked-button
-        class="btn-primary-outline-md"
-        (click)="navigateToLawsPage($event, subscriptionType)"
-      >
-        <mat-icon>keyboard_arrow_right</mat-icon>
-        <p class="btn-name-style">Next</p>
-      </button>
-    </div>
-  </div>
-</div> -->
-
 <div class="container">
   <app-reg-header></app-reg-header>
   <mat-divider></mat-divider>
 
-  <div class="row">
-    <div class="col-lg-12 col-sm-12 col-md-12">
+  <div class="row stepper-row">
+    <div class="col-lg-12 col-sm-12 col-md-12 px-0">
       <app-stepper [currentStep]="1"> </app-stepper>
     </div>
   </div>
 
   <div class="row app-helpertext-section">
     <div class="col-lg-12 col-md-12 col-sm-12">
-      <app-stepper-helper-text
-        [helperText]="'Select the subscription you want to use!'"
-        [stepText]="'Step 2 of 5'"
-        style="width: 100%"
-      ></app-stepper-helper-text>
+      <app-stepper-helper-text [helperText]="'Select the subscription you want to use!'" [stepText]="'Step 2 of 5'"
+        style="width: 100%"></app-stepper-helper-text>
     </div>
   </div>
 
   <div class="col-lg-12 col-sm-12 col-md-12 grid-container">
-    <app-feature-header
-      class="grid-item"
-      (selectedSubscriptionType)="handleSubscriptionType($event)"
-    >
+    <app-feature-header class="grid-item" (selectedSubscriptionType)="handleSubscriptionType($event)">
     </app-feature-header>
   </div>
 
   <div class="row features-card" #featureCardcontainerElement>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <app-features [SubscriptionType]="subscriptionType"></app-features>
-      <!-- <app-accordian-table></app-accordian-table> -->
     </div>
   </div>
 
   <div class="row footer-section-buttons-div">
-    <button
-      mat-stroked-button
-      class="btn-primary-outline-md"
-      (click)="navigateToEntityPage($event)"
-    >
+    <button mat-stroked-button class="btn-primary-outline-md" (click)="navigateToEntityPage($event)">
       <mat-icon>keyboard_arrow_left</mat-icon>
       <p class="btn-name-style">Back</p>
     </button>
 
-    <button
-      mat-stroked-button
-      class="btn-primary-outline-md"
-      (click)="navigateToLawsPage($event, subscriptionType)"
-    >
+    <button mat-stroked-button class="btn-primary-outline-md" (click)="navigateToLawsPage($event, subscriptionType)">
       <mat-icon>keyboard_arrow_right</mat-icon>
       <p class="btn-name-style">Next</p>
     </button>
