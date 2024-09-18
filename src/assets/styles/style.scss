@@ -265,6 +265,17 @@
   margin: auto;
 }
 
+.route-name {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
 @media (max-width: 2560px) and (min-width: 1921px) {
   :root {
     --base-unit-4k: 16px;
@@ -373,12 +384,12 @@
     width: calc(var(--base-unit-4k) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-4k)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-4k) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-4k)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-4k)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-4k) * var(--scale-subscription-details-cont-width));
   }
@@ -401,12 +412,12 @@
     width: calc(var(--base-unit-4k) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-4k)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-4k) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-4k)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-4k)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-4k) * var(--scale-subscription-details-cont-width));
   }
@@ -424,15 +435,13 @@
   .custom-extension {
     width: calc(var(--base-unit-4k) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-4k) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-4k) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-4k) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-4k) * var(--scale-subscription-details-cont-width)) !important;
   }
 }
 
@@ -558,12 +567,12 @@
     width: calc(var(--base-unit-1920) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-1920)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-1920) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-1920)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-1920)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-1920) * var(--scale-subscription-details-cont-width));
   }
@@ -586,12 +595,12 @@
     width: calc(var(--base-unit-1920) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-1920)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-1920) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-1920)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-1920)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-1920) * var(--scale-subscription-details-cont-width));
   }
@@ -609,15 +618,13 @@
   .custom-extension {
     width: calc(var(--base-unit-1920) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-1920) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-1920) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-1920) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-1920) * var(--scale-subscription-details-cont-width)) !important;
   }
 }
 
@@ -732,12 +739,12 @@
     width: calc(var(--base-unit-1680) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-1680)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-1680) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-1680)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-1680)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-1680) * var(--scale-subscription-details-cont-width));
   }
@@ -755,21 +762,21 @@
   .custom-extension {
     width: calc(var(--base-unit-1680) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-1680) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .subs-header-card {
     width: calc(var(--base-unit-1680) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-1680)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-1680) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-1680)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-1680)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-1680) * var(--scale-subscription-details-cont-width));
   }
@@ -787,15 +794,13 @@
   .custom-extension {
     width: calc(var(--base-unit-1680) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-1680) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-1680) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-1680) * var(--scale-subscription-details-cont-width)) !important;
   }
 }
 
@@ -915,12 +920,12 @@
     width: calc(var(--base-unit-large1) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-large1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-large1) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-large1)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-large1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-large1) * var(--scale-subscription-details-cont-width));
   }
@@ -938,21 +943,21 @@
   .custom-extension {
     width: calc(var(--base-unit-large1) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-large1) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .subs-header-card {
     width: calc(var(--base-unit-large1) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-large1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-large1) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-large1)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-large1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-large1) * var(--scale-subscription-details-cont-width));
   }
@@ -970,15 +975,13 @@
   .custom-extension {
     width: calc(var(--base-unit-large1) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-large1) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-large1) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-large1) * var(--scale-subscription-details-cont-width)) !important;
   }
 }
 
@@ -1111,12 +1114,12 @@
     width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-large2)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-large2)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-large2)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-large2) * var(--scale-subscription-details-cont-width));
   }
@@ -1134,27 +1137,25 @@
   .custom-extension {
     width: calc(var(--base-unit-large2) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-large2) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-large2) * var(--scale-subscription-details-cont-width)) !important;
   }
 
   .subs-header-card {
     width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-large2)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-large2)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-large2)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-large2) * var(--scale-subscription-details-cont-width));
   }
@@ -1172,11 +1173,11 @@
   .custom-extension {
     width: calc(var(--base-unit-large2) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-large2) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-large2) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .highlight-box {
     width: calc(var(--base-unit-large2) * var(--scale-subs-card-width));
   }
@@ -1315,12 +1316,12 @@
     width: calc(var(--base-unit-large) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-large)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-large) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-large)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-large)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-large) * var(--scale-subscription-details-cont-width));
   }
@@ -1347,11 +1348,11 @@
   .custom-extension {
     width: calc(var(--base-unit-large) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .custom-extension-header {
-    width: calc(
-      var(--base-unit-large) * var(--scale-subscription-details-cont-width)
-    ) !important;
+    width: calc(var(--base-unit-large) * var(--scale-subscription-details-cont-width)) !important;
   }
+
   .highlight-box {
     width: calc(var(--base-unit-large) * var(--scale-subs-card-width));
   }
@@ -1457,12 +1458,12 @@
     width: calc(var(--base-unit-medium1) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-medium1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-medium1) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-medium1)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-medium1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-medium1) * var(--scale-subscription-details-cont-width));
   }
@@ -1481,12 +1482,12 @@
     width: calc(var(--base-unit-medium1) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-medium1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-medium1) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-medium1)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-medium1)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-medium1) * var(--scale-subscription-details-cont-width));
   }
@@ -1616,12 +1617,12 @@
     width: calc(var(--base-unit-medium) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-medium)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-medium) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-medium)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-medium)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-medium) * var(--scale-subscription-details-cont-width));
   }
@@ -1640,12 +1641,12 @@
     width: calc(var(--base-unit-medium) * var(--scale-subs-card-width));
     height: calc(var(var(--base-unit-medium)) * var(--scale-subs-card-height)) !important;
   }
+
   .subs-header-card-feature {
     width: calc(var(--base-unit-medium) * var(--scale-subs-card-width));
-    height: calc(
-      var(var(--base-unit-medium)) * var(--scale-subs-card-height)
-    ) !important;
+    height: calc(var(var(--base-unit-medium)) * var(--scale-subs-card-height)) !important;
   }
+
   .subscription-details-table {
     width: calc(var(--base-unit-medium) * var(--scale-subscription-details-cont-width));
   }
@@ -2406,10 +2407,12 @@ input.mdc-radio__native-control:focus,
 .app-helpertext-section {
   margin-bottom: 10px;
 }
-.stepper-row{
+
+.stepper-row {
   margin: auto;
   width: 100%;
 }
+
 @media (max-width: 2560px) and (min-width: 1921px) {
   .example-container table th {
     font-size: calc(var(--base-unit-4k) * var(--scale-button-font-size)) !important;
@@ -2891,9 +2894,11 @@ input.mdc-radio__native-control:focus,
   gap: 0;
   justify-content: space-between !important;
   place-content: flex-end;
+
   &:hover {
     background-color: var.$purple-500 !important; // Ensure no background change on hover
     color: inherit !important; // Ensure no text color change on hover
+
     .mat-expansion-indicator {
       color: inherit !important; // Prevent hover color changes for the icon
     }
@@ -2916,15 +2921,19 @@ input.mdc-radio__native-control:focus,
   gap: 0;
   justify-content: space-between !important;
   place-content: flex-end;
+
   &:hover {
     background-color: var.$purple-200 !important; // Ensure no background change on hover
     color: inherit !important; // Ensure no text color change on hover
+
     .mat-expansion-indicator {
       color: inherit !important; // Prevent hover color changes for the icon
     }
   }
 }
+
 .accordian-arr {
+
   .mat-expansion-panel-header-description,
   .mat-expansion-indicator::after {
     color: transparent;
