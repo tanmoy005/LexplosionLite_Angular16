@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank/blank.component';
 import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
+import { authGuard } from './auth.guard';
 
 export const AppRoutes: Routes = [
   {
@@ -42,6 +43,7 @@ export const AppRoutes: Routes = [
           import('./user-onboard/user-onboard.module').then(
             (m) => m.UserOnboardModule
           ),
+        canActivate: [authGuard],
       },
     ],
   },
@@ -60,7 +62,7 @@ export const AppRoutes: Routes = [
     ],
   },
   {
-    path: '#',
+    path: '',
     component: BlankComponent,
     children: [
       {
@@ -68,13 +70,6 @@ export const AppRoutes: Routes = [
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
-      // {
-      //   path: 'verify',
-      //   loadChildren: () =>
-      //     import(
-      //       './user-onboard/create-new-user/create-new-user.component'
-      //     ).then((m) => m.CreateNewUserComponent),
-      // },
     ],
   },
 ];

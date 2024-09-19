@@ -41,37 +41,75 @@ export class UserAuthenticationService {
     return this.apiService.postCreateAdminCompany(data);
   }
 
+  // handleUserLogin(payload: any) {
+  //   try {
+  //     this.userLogin(payload).subscribe((response) => {
+  //       this.snackbar.showSuccess('Login Successfull');
+  //       const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //       encryptStorage.setItem('login-details', response);
+  //       this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
+  //       this.router.navigate(['/entity-details'], { state: { entity: '' } });
+  //       // window.location.reload();
+  //     });
+  //   } catch (error) {
+  //     this.snackbar.showError('Some error occurred while logging you in!');
+  //   }
+  // }
+
   handleUserLogin(payload: any) {
-    try {
-      this.userLogin(payload).subscribe((response) => {
-        this.snackbar.showSuccess('Login Successfull');
+    this.userLogin(payload).subscribe({
+      next: (response) => {
+        this.snackbar.showSuccess('Login Successful');
         const encryptStorage = new EncryptStorage(environment.localStorageKey);
         encryptStorage.setItem('login-details', response);
-        this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
-        this.router.navigate(['/entity-details'], { state: { entity: '' } });
-        // window.location.reload();
-      });
-    } catch (error) {
-      this.snackbar.showError('Some error occurred while logging you in!');
-    }
+
+        // Provide a callback function
+        this.opUnitFetchObj.fetchEntityOPUnitDefinitions(() => {
+          this.router.navigate(['/entity-details'], { state: { entity: '' } });
+          // Optionally reload the page
+          // window.location.reload();
+        });
+      },
+      error: () => {
+        this.snackbar.showError('Some error occurred while logging you in!');
+      },
+    });
   }
+
   // postCreateAdminCompany(data: any): Observable<any> {
   //   return this.postData(this.endpoints.createAdminCompany, data);
   // }
 
+  // handleAdminUserCreation(payload: any) {
+  //   try {
+  //     this.userRegistration(payload).subscribe((response) => {
+  //       this.snackbar.showSuccess('User Creation Successful!');
+  //       const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //       encryptStorage.setItem('login-details', response);
+  //       this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
+  //       // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+  //       this.router.navigate(['/verify-email'], { state: payload });
+  //     });
+  //   } catch (error) {
+  //     this.snackbar.showError('Some error occured while user creation !');
+  //   }
+  // }
   handleAdminUserCreation(payload: any) {
-    try {
-      this.userRegistration(payload).subscribe((response) => {
+    this.userRegistration(payload).subscribe({
+      next: (response) => {
         this.snackbar.showSuccess('User Creation Successful!');
         const encryptStorage = new EncryptStorage(environment.localStorageKey);
         encryptStorage.setItem('login-details', response);
-        this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
-        // this.router.navigate(['/entity-details'], { state: { entity: '' } });
-        this.router.navigate(['/verify-email'], { state: payload });
-      });
-    } catch (error) {
-      this.snackbar.showError('Some error occured while user creation !');
-    }
+
+        // Provide a callback function
+        this.opUnitFetchObj.fetchEntityOPUnitDefinitions(() => {
+          this.router.navigate(['/verify-email'], { state: payload });
+        });
+      },
+      error: () => {
+        this.snackbar.showError('Some error occurred while creating the user!');
+      },
+    });
   }
 }
 

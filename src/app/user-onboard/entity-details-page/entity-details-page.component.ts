@@ -20,6 +20,9 @@ import { entityCreationNullStatus } from 'src/app/shared/menu-items/entity-inter
   encapsulation: ViewEncapsulation.None,
 })
 export class EntityDetailsPageComponent {
+  // ngOnInit(): void {
+  //   window.location.reload();
+  // }
   entityTypesList: FieldDefinitionInterfaces.EntityTypes;
   industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
   lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
