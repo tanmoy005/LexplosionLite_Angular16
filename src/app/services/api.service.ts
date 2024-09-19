@@ -31,6 +31,7 @@ export class ApiService {
     verifyOTP: 'verification/verify-otp',
     countriesForCompany: 'company/getCountriesForCompany',
     newUserVerification: 'verification/verify-email',
+    fetchFeatures: 'definition/features-list',
   };
 
   private endpointsWithoutAuthToken = [
@@ -156,5 +157,8 @@ export class ApiService {
 
   postNewUserVerification(data: any): Observable<any> {
     return this.postData(this.endpoints.newUserVerification, data);
+  }
+  postFetchFeatureList(data: any): Observable<any> {
+    return this.postData(this.endpoints.fetchFeatures, data);
   }
 }

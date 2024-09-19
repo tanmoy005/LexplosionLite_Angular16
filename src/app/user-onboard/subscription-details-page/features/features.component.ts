@@ -7,6 +7,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { ApiService } from 'src/app/services/api.service';
 
 const ELEMENT_DATA: any[] = [
   { FEATURES: 1, DETAILS: 'Hydrogen', KOMRISK: 1.0079, KOMISK_LITE: 'H' },
@@ -134,9 +135,54 @@ const mainData = [
 export class FeaturesComponent implements OnInit {
   displayedColumns = ['FEATURES', 'DETAILS', 'KOMRISK', 'KOMISK_LITE'];
   dataSource = mainData;
-
+  constructor(private apiService: ApiService) {}
+  featuresList: any = [];
+  restructuredData: any = [];
   @Input() SubscriptionType: string;
+  restructureFeaturesList() {
+    this.featuresList.forEach((parentFeature: any) => {
+      let mismatchFound = false;
+
+      // Check if any of the child features have the mismatch
+      parentFeature.features.forEach((feature: any) => {
+        if (feature.komriskLite === false && feature.komrisk === true) {
+          mismatchFound = true;
+        }
+      });
+
+      // If a mismatch is found, restructure the parent data accordingly
+      if (mismatchFound) {
+        this.restructuredData.push({
+          id: parentFeature.id,
+          name: parentFeature.name,
+          description: parentFeature.description,
+          features: parentFeature.features,
+          komriskLite: true,
+          komrisk: false,
+        });
+      }
+    });
+    console.log('the restructured data', this.restructuredData);
+    this.dataSource = this.restructuredData;
+  }
   ngOnInit(): void {
     console.log('the substype', this.SubscriptionType);
+    const payload = null;
+    try {
+      this.apiService.postFetchFeatureList(payload).subscribe((response) => {
+        if (response) {
+          //this.snackbar.showSuccess('OTP has been sent to your email');
+          console.log('the feature list', response);
+          this.featuresList = response;
+          this.restructureFeaturesList();
+          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+        }
+      });
+    } catch (e) {
+      console.log('error fetching feature list');
+      // this.snackbar.showError(
+      //   'Some error occurred while creating your admin profile.'
+      // );
+    }
   }
 }

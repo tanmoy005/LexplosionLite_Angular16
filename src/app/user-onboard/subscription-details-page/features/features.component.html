@@ -351,35 +351,17 @@
             <div class="detail-col center-subs">
               <p class="text_12_700_gray_100">{{ module.description }}</p>
             </div>
-            <!-- <div
-              class="subs-header-card text-center"
-              [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
-            >
-              <p class="text_12_700_gray_100">
-                <mat-icon *ngIf="module.komriskLite">check</mat-icon>
-                <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
-              </p>
-            </div>
-            <div
-              class="subs-header-card text-center"
-              [ngClass]="{
-                'highlight-box': SubscriptionType === 'komriskLite'
-              }"
-            >
-              <p class="text_12_700_gray_100">
-                <mat-icon *ngIf="module.komrisk">check</mat-icon>
-                <mat-icon *ngIf="!module.komrisk">close</mat-icon>
-              </p>
-            </div> -->
 
             <div
               class="subs-header-card text-center"
               [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
             >
-              <p class="text_12_700_gray_100">
-                <mat-icon *ngIf="module.komriskLite">check</mat-icon>
-                <mat-icon *ngIf="!module.komriskLite">close</mat-icon>
-              </p>
+              <mat-icon *ngIf="module.komriskLite" class="icon-style green-icon"
+                >check</mat-icon
+              >
+              <mat-icon *ngIf="!module.komriskLite" class="icon-style red-icon"
+                >close</mat-icon
+              >
             </div>
             <div
               class="subs-header-card text-center"
@@ -387,10 +369,29 @@
                 'highlight-box': SubscriptionType === 'komriskLite'
               }"
             >
-              <p class="text_12_700_gray_100">
-                <mat-icon *ngIf="module.komrisk">check</mat-icon>
-                <mat-icon *ngIf="!module.komrisk">close</mat-icon>
-              </p>
+              <!-- <mat-icon>check</mat-icon>
+              <p class="text_12_400_gray_100" *ngIf="!module.komrisk">
+                Limited
+              </p> -->
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <mat-icon class="icon-style green-icon">check</mat-icon>
+                <p class="text_12_400_gray_100" *ngIf="!module.komrisk">
+                  Limited
+                </p>
+              </div>
+
+              <!-- <p
+                class="text_12_400_gray_100"
+                *ngIf="!module.komrisk"
+                class="text-limited"
+                >Limited</span
+              > -->
             </div>
           </div>
         </div>
@@ -400,7 +401,7 @@
     <div class="feature" *ngFor="let feature of module.features">
       <div class="row">
         <div class="subs-header-card-feature subs-header-left-margin">
-          <p class="text_12_700_gray_100">{{ feature.name }}</p>
+          <p class="text_12_400_gray_100">{{ feature.name }}</p>
         </div>
         <div class="detail-col center-subs">
           <p class="text_12_400_gray_100">
@@ -412,19 +413,23 @@
           class="subs-header-card text-center"
           [ngClass]="{ 'highlight-box': SubscriptionType === 'komrisk' }"
         >
-          <p class="text_12_400_gray_100">
-            <mat-icon *ngIf="feature.komrisk">check</mat-icon>
-            <mat-icon *ngIf="!feature.komrisk">close</mat-icon>
-          </p>
+          <mat-icon *ngIf="feature.komrisk" class="icon-style green-icon"
+            >check</mat-icon
+          >
+          <mat-icon *ngIf="!feature.komrisk" class="icon-style red-icon"
+            >close</mat-icon
+          >
         </div>
         <div
           class="subs-header-card text-center"
           [ngClass]="{ 'highlight-box': SubscriptionType === 'komriskLite' }"
         >
-          <p class="text_12_400_gray_100">
-            <mat-icon *ngIf="feature.komriskLite">check</mat-icon>
-            <mat-icon *ngIf="!feature.komriskLite">close</mat-icon>
-          </p>
+          <mat-icon *ngIf="feature.komriskLite" class="icon-style green-icon"
+            >check</mat-icon
+          >
+          <mat-icon *ngIf="!feature.komriskLite" class="icon-style red-icon"
+            >close</mat-icon
+          >
         </div>
       </div>
     </div>

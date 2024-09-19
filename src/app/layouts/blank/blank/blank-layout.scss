@@ -1,0 +1,27 @@
+// html,
+// body {
+//   height: 100%;
+//   margin: 0;
+// }
+
+// .blank-layout-container {
+//   flex: 1;
+// }
+
+// .footer-container {
+//   position: relative;
+//   bottom: 0;
+//   width: 100%;
+// }
+
+// body {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
+
+.footer-container {
+  width: -webkit-fill-available; /* Preserve the full width */
+  margin-top: 20px; /* Add space between the content and footer */
+  height: 40px;
+}
