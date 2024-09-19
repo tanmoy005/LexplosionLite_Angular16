@@ -1668,6 +1668,7 @@
     width: calc(var(--base-unit-large) * var(--scale-containar-width));
     margin-left: auto;
     margin-right: auto;
+    min-height: 100%;
   }
 
   .detail-col {
@@ -2091,6 +2092,7 @@
     width: calc(var(--base-unit-medium) * var(--scale-containar-width));
     margin-left: auto;
     margin-right: auto;
+    height: 100%;
   }
 
   .detail-col {
@@ -3496,4 +3498,19 @@ app-features {
   display: flex;
   align-items: center;
   justify-content: left;
+}
+
+.footer {
+  background-color: var.$purple-600 !important;
+  height: 40px;
+}
+
+.footer-card {
+  background-color: var.$purple-600 !important;
+  //height: 40px;
+}
+
+.abcd {
+  margin-top: auto; /* Pushes the footer to the bottom */
+  width: 100%; /* Ensure the footer spans the full width */
 }

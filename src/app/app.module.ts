@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 
 import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
+// import { FooterComponent } from './layouts/full/footer/footer.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
@@ -39,6 +40,7 @@ import { CommonDirective } from './common.directive';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { FooterComponent } from './layouts/full/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     InitialLayoutHeaderComponent,
     InitialLayoutComponent,
     CommonDirective,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     MatListModule,
     AuthenticationModule,
   ],
-  exports: [AppHeaderComponent],
+  exports: [AppHeaderComponent, FooterComponent],
   providers: [
     DialogService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },

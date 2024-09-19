@@ -493,3 +493,27 @@
     var(--scale-factor-line-height-14_4)
   );
 }
+
+.text_12_400_footer {
+  // todo change the class name like this one, add color code
+  @include text-model-responsive(
+    var(--scale-factor-button-font-12),
+    400,
+    var.$gray-1700,
+    Barlow,
+    // 14.4px
+    var(--scale-factor-line-height-14_4)
+  );
+}
+
+.text_12_400_footer_puple {
+  // todo change the class name like this one, add color code
+  @include text-model-responsive(
+    var(--scale-factor-button-font-12),
+    400,
+    var.$purple-700,
+    Barlow,
+    // 14.4px
+    var(--scale-factor-line-height-14_4)
+  );
+}
