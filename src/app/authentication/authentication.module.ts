@@ -9,6 +9,8 @@ import { RegHeaderComponent } from './register/reg-header/reg-header.component';
 import { VerifyEmailPageComponent } from './register/verify-email-page/verify-email-page.component';
 import { MaterialModule } from '../material-module';
 import { CommonComponentModule } from '../user-onboard/common-components/common-component.module';
+import { MatMenuModule } from '@angular/material/menu'; // Import MatMenuModule
+
 @NgModule({
   declarations: [AppSideRegisterComponent],
   imports: [
@@ -21,6 +23,7 @@ import { CommonComponentModule } from '../user-onboard/common-components/common-
     RegHeaderComponent,
     VerifyEmailPageComponent,
     CommonComponentModule,
+    MatMenuModule,
   ],
 
   exports: [],
