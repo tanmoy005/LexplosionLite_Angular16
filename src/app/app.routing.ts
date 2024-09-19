@@ -5,6 +5,7 @@ import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank/blank.component';
 import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
 import { authGuard } from './auth.guard';
+import { NewUserVerificationComponent } from './user-onboard/new-user-verification/new-user-verification.component';
 
 export const AppRoutes: Routes = [
   {
@@ -43,7 +44,7 @@ export const AppRoutes: Routes = [
           import('./user-onboard/user-onboard.module').then(
             (m) => m.UserOnboardModule
           ),
-        canActivate: [authGuard],
+        //canActivate: [authGuard],
       },
     ],
   },
@@ -71,5 +72,10 @@ export const AppRoutes: Routes = [
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
     ],
+  },
+  {
+    // component: InitialLayoutComponent,
+    path: 'verify',
+    component: NewUserVerificationComponent,
   },
 ];

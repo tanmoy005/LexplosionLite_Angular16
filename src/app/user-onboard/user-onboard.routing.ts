@@ -11,44 +11,53 @@ import { SubscriptionDetailsPageComponent } from './subscription-details-page/su
 import { OperatingUnitComponent } from './operating-unit/operating-unit.component';
 import { GoLivePageComponent } from './go-live-page/go-live-page.component';
 import { NewUserVerificationComponent } from './new-user-verification/new-user-verification.component';
-
+import { authGuard } from '../auth.guard';
 export const UserOnboardRoutes: Routes = [
   {
     path: 'laws',
     component: LawsTablePageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'terms-condition',
     component: TermsConditionComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'payment',
     component: PaymentComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'common-component',
     component: CommonComponentsComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'entity-details',
     component: EntityDetailsPageComponent,
+    canActivate: [authGuard],
   },
 
   {
     path: 'entity',
     component: EntityComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'subscription',
     component: SubscriptionDetailsPageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'operatingunit',
     component: OperatingUnitComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'golive',
     component: GoLivePageComponent,
+    canActivate: [authGuard],
   },
   {
     // path: 'newuserVerification',
