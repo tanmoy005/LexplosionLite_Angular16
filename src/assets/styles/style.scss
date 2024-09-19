@@ -1867,9 +1867,10 @@
   }
 
   .subs-header-left-margin {
-    margin-left: calc(
-      var(--base-unit-medium1) * var(--scale-subs-content-left-margin)
-    );
+    // margin-left: calc(
+    //   var(--base-unit-medium1) * var(--scale-subs-content-left-margin)
+    // );
+    margin-left: var(--fixed-subs-page-accordion-left-margin);
   }
 
   .subscription-details-table {
@@ -2075,9 +2076,10 @@
   }
 
   .subs-header-left-margin {
-    margin-left: calc(
-      var(--base-unit-medium) * var(--scale-subs-content-left-margin)
-    );
+    // margin-left: calc(
+    //   var(--base-unit-medium) * var(--scale-subs-content-left-margin)
+    // );
+    margin-left: var(--fixed-subs-page-accordion-left-margin);
   }
   .subscription-details-table {
     width: calc(
