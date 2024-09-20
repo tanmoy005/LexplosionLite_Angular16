@@ -67,10 +67,16 @@ export class EntityDetailsPageComponent {
     this.isDotsClicked = state;
   }
 
+  // handleSuccessfulEntityCreation(state: entityCreationNullStatus) {
+  //   this.isEntityCreationSuccessful = state.isEntityHasNullOPUnit;
+  //   this.stepper.stepCompletionStatus = state.isEntityHasNullOPUnit;
+  //   this.stepper.stepCompletionMessage = state.entityOPUnitNUllMessage;
+  // }
+
   handleSuccessfulEntityCreation(state: entityCreationNullStatus) {
-    this.isEntityCreationSuccessful = state.isEntityHasNullOPUnit;
-    this.stepper.stepCompletionStatus = state.isEntityHasNullOPUnit;
-    this.stepper.stepCompletionMessage = state.entityOPUnitNUllMessage;
+    //this.isEntityCreationSuccessful = state.isEntityHasNullOPUnit;
+    this.stepper.stepCompletionStatus = true;
+    //this.stepper.stepCompletionMessage = state.entityOPUnitNUllMessage;
   }
 
   handleBackClick(event: boolean) {
@@ -96,6 +102,11 @@ export class EntityDetailsPageComponent {
   }
   handleIsnoEntity(state: string) {
     console.log('no entity there');
+    this.stepper.stepCompletionStatus = false;
+    this.stepper.stepCompletionMessage = state;
+  }
+  handleIsnoOpUnit(state: string) {
+    console.log('no Op Unit there');
     this.stepper.stepCompletionStatus = false;
     this.stepper.stepCompletionMessage = state;
   }

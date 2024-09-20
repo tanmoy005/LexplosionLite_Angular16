@@ -199,7 +199,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     private apiService: ApiService,
     private snackbar: SnackbarService,
     private router: Router
-  ) { }
+  ) {}
 
   displayedColumns: string[] = EntityInterfaces.EntityColumns;
   dataSource = [...ELEMENT_DATA];
@@ -222,6 +222,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     new EventEmitter<FieldDefinitionInterfaces.entitiesOperatingUnitStatus>();
 
   @Output() isNoEntity = new EventEmitter<boolean>();
+  @Output() isNoOpUnit = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     this.subscription = this.entityDialogService.openDialog$.subscribe(
@@ -317,7 +318,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     treeDataitem.id = 1;
     treeDataitem.label = getCompanyName();
     treeDataitem.children = [];
-
+    let isNoOpUnit = true;
     this.entityTableDataLoading.emit(true);
     //const entityFetchPayload = { company: 1 };
     const entityFetchPayload = { company: getCompanyId() };
@@ -331,6 +332,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         .postFetchEntityList(entityFetchPayload)
         .subscribe((response) => {
           const entityList = response.data;
+          console.log('the entity list from API', entityList);
           if (entityList.length === 0) {
             entityNullStatus = true;
             console.log('no entity exists');
@@ -383,9 +385,15 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               childrenID: this.entityChild.id,
             };
 
+            // if (entityRow.operatingUnit.length === 0) {
+            //   opUnitNullStatus = true;
+            //   opUnitNullEntitiesList.push(entityRow.name);
+            // }
             if (entityRow.operatingUnit.length === 0) {
               opUnitNullStatus = true;
               opUnitNullEntitiesList.push(entityRow.name);
+            } else {
+              isNoOpUnit = false;
             }
 
             this.dataSource.push(entityRow);
@@ -401,8 +409,12 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             entitiesOperatingUnitNullStatus: opUnitNullStatus,
             entitiesOperatingUnitNullList: opUnitNullEntitiesList,
           });
-
+          console.log('the check all op', {
+            entitiesOperatingUnitNullStatus: opUnitNullStatus,
+            entitiesOperatingUnitNullList: opUnitNullEntitiesList,
+          });
           this.isNoEntity.emit(entityNullStatus);
+          this.isNoOpUnit.emit(isNoOpUnit);
         });
     } catch (error) {
       this.snackbar.showError(
@@ -478,7 +490,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       data: { name: name },
     });
 
-    dialogRef.afterClosed().subscribe((result) => { });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   navigateToAddOpUnit(entity: EntityDataType, action: string) {
@@ -560,7 +572,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  openCountryDialog() { }
+  openCountryDialog() {}
 
   openIndustryDialog(id: number) {
     var entity = this.dataSource.find((entity) => entity.id === id);

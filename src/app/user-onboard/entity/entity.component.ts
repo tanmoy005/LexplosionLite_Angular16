@@ -57,6 +57,7 @@ export class EntityComponent implements OnInit {
   @Output() isemitedAddNewUserClicked = new EventEmitter<boolean>();
 
   @Output() isNoEntityThere = new EventEmitter<string>();
+  @Output() isNoOpUnitThere = new EventEmitter<string>();
 
   newCountryNameList: any;
   transformedCountries: any;
@@ -68,6 +69,7 @@ export class EntityComponent implements OnInit {
   apiCountryList: any = [];
 
   entityListNullStatus: boolean = false;
+  opUnitListNullStatus: boolean = false;
 
   fetchCountriesForCompanies(payload: any) {
     this.apiService.postCountriesforCompanies(payload).subscribe((response) => {
@@ -170,13 +172,26 @@ export class EntityComponent implements OnInit {
     }
   }
 
+  // goToSubscription() {
+  //   if (this.entityListNullStatus) {
+  //     this.snackbar.showWarning('Add atlease one Entity');
+  //   } else if (!this.entitiesOPUnitNullStatus) {
+  //     this.router.navigate(['/subscription'], { state: { entity: '' } });
+  //   } else {
+  //     this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
+  //   }
+
+  //   // this.router.navigate(['/subscription'], { state: { entity: '' } });
+  // }
   goToSubscription() {
     if (this.entityListNullStatus) {
       this.snackbar.showWarning('Add atlease one Entity');
-    } else if (!this.entitiesOPUnitNullStatus) {
-      this.router.navigate(['/subscription'], { state: { entity: '' } });
+    } else if (this.opUnitListNullStatus) {
+      //this.router.navigate(['/subscription'], { state: { entity: '' } });
+      this.snackbar.showWarning('Add atlease one Operating Unit');
     } else {
-      this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
+      //this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
+      this.router.navigate(['/subscription'], { state: { entity: '' } });
     }
 
     // this.router.navigate(['/subscription'], { state: { entity: '' } });
@@ -197,6 +212,16 @@ export class EntityComponent implements OnInit {
     this.entityListNullStatus = state;
     if (state === true) {
       this.isNoEntityThere.emit('Add atlease one Entity');
+    }
+    // else{
+    //   this.isNoEntityThere.emit('Add atlease one Entity');
+    // }
+  }
+  handleOpUnitListStatus(state: boolean) {
+    console.log('the op unit status', state);
+    this.opUnitListNullStatus = state;
+    if (state === true) {
+      this.isNoOpUnitThere.emit('Add atlease one Oerating Unit');
     }
     // else{
     //   this.isNoEntityThere.emit('Add atlease one Entity');
