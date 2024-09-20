@@ -30,10 +30,10 @@ export class CompanyStructureDialogueComponent {
     }
     ngAfterViewInit(): void {
         // Attach scroll event listener to the first scrollable element
-        this.scrollBox1.nativeElement.addEventListener('scroll', this.handleScroll.bind(this, 'Box 1'));
+        this.scrollBox1?.nativeElement.addEventListener('scroll', this.handleScroll.bind(this, 'Box 1'));
 
         // Attach scroll event listener to the second scrollable element
-        this.scrollBox2.nativeElement.addEventListener('scroll', this.handleScroll.bind(this, 'Box 2'));
+        this.scrollBox2?.nativeElement.addEventListener('scroll', this.handleScroll.bind(this, 'Box 2'));
 
         window.addEventListener('scroll', () => {
             console.log('The document is being scrolled');

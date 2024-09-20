@@ -293,6 +293,19 @@
   @include payment-details-container;
 }
 
+.layout-container {
+  //background-image: url("../../../assets/images/background/pexels-nurseryart.png");
+  // background-image: url("../../../assets/images/background/pexels-nurseryart-363766\ 1@2x.svg");
+  background-image: url("../../assets/images/background/pexels-nurseryart-363766\ 1@2x.svg");
+  background-size: cover;
+  //background-position: center;
+  background-repeat: no-repeat;
+  // height: 100vh;
+  height: 100vh;
+  padding: 2.5% 2.1%;
+  width: 100%;
+}
+
 @media (max-width: 2560px) and (min-width: 1921px) {
   :root {
     --base-unit-4k: 16px;
@@ -1308,6 +1321,11 @@
 
   .total-payment-details-container {
     width: calc(var(--base-unit-large2) * var(--scale-total-payment-card-width));
+  }
+  .layout-container {
+    //background-image: url("../../../assets/images/background/pexels-nurseryart.png");
+    // height: 100vh;
+    height: fit-content;
   }
 }
 
