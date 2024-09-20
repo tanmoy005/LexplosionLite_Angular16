@@ -61,7 +61,7 @@
         </button>
 
         <mat-menu #profileMenu="matMenu" class="cdk-overlay-pane">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="handleClickOnLogOut()">
             <span>Logout</span>
           </button>
         </mat-menu>

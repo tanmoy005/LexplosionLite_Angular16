@@ -3,6 +3,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
 
 @Component({
   selector: 'app-reg-header',
@@ -18,5 +20,38 @@ export class RegHeaderComponent {
 
   handleClickOnLogo() {
     this.router.navigate(['/home']);
+  }
+  // handleClickOnLogOut() {
+  //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //   encryptStorage.removeItem('company-id');
+  //   encryptStorage.removeItem('login-details');
+  //   encryptStorage.removeItem('entityTypes');
+  //   encryptStorage.removeItem('states');
+  //   encryptStorage.removeItem('countries');
+  //   encryptStorage.removeItem('komriskLawCategories');
+  //   this.router.navigate(['/home']);
+  // }
+  handleClickOnLogOut() {
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
+
+    // Remove all necessary items from encryptStorage
+    Promise.all([
+      encryptStorage.removeItem('company-id'),
+      encryptStorage.removeItem('login-details'),
+      encryptStorage.removeItem('entityTypes'),
+      encryptStorage.removeItem('states'),
+      encryptStorage.removeItem('countries'),
+      encryptStorage.removeItem('komriskLawCategories'),
+      encryptStorage.removeItem('industryActivities'),
+      encryptStorage.removeItem('operatingUnitTypes'),
+    ])
+      .then(() => {
+        // Once all items are removed, navigate to the home page
+        this.router.navigate(['/home']);
+      })
+      .catch((error) => {
+        console.error('Error during storage cleanup:', error);
+        // Optionally, handle the error or show a message to the user
+      });
   }
 }
