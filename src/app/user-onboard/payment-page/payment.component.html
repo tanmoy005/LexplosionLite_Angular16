@@ -14,9 +14,29 @@
     </div>
   </div>
 
-  <div class="row payment-section-portion">
-    <div class="col-lg-8 col-md-12 col-sm-12">
+  <div class="payment-section-portion">
+    <!-- <div class="col-lg-8 col-md-12 col-sm-12"> -->
       <app-payment-section></app-payment-section>
+    <!-- </div> -->
+    <div class="payment-details-button-container">
+      <button mat-stroked-button class="btn-primary-outline-md" (click)="navigateToLawsPage($event)">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+        <p class="btn-name-style">Back</p>
+      </button>
+      <div class="payment-details-buttons">
+        <button class="btn-primary-outline-md" (click)="openOnlinePaymentDialog()">
+          <p class="btn-name-style btn-name-style-online-payment">
+            <img src="./assets/images/icons/Icons - Lex Kom LitePayOffline.svg" />
+            Pay Offline
+          </p>
+        </button>
+        <button class="btn-payment-online" (click)="openOfflinePaymentDialog()">
+          <p class="btn-name-style btn-name-style-online-payment">
+            <img src="./assets/images/icons/Icons - Lex Kom LitePayOnline.svg" />
+            Pay Online
+          </p>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -46,7 +66,7 @@
     </button>
   </div> -->
 
-    <div class="col-lg-8 col-md-12 col-sm-12">
+    <!-- <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="payment-details-button-container">
         <button mat-stroked-button class="btn-primary-outline-md" (click)="navigateToLawsPage($event)">
           <mat-icon>keyboard_arrow_left</mat-icon>
@@ -67,5 +87,5 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
 </div>

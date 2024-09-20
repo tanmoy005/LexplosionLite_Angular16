@@ -7,15 +7,14 @@
 
   <div class="row subscription-unit-card">
     <div class="col-sm-12 col-md-12 col-lg-12">
-      <app-card-layout-for-payment-page
-        [cardHeight]="getCardSize(40, 720).height"
-        [cardWidth]="getCardSize(40, 720).width"
-      >
+      <app-card-layout-for-payment-page [cardHeight]="getCardSize(40, 720).height"
+        [cardWidth]="getCardSize(40, 720).width">
         <div class="row payment-page-section-1">
           <p class="payment-page-typography">Subscription Period</p>
           <section *ngFor="let  subsriptionPlan of subsriptionPlanList, let i = index" class="checkbox-section">
             <!-- <h4>Select your toppings:</h4> -->
-            <mat-checkbox [checked]="selectedOption  === subsriptionPlan.label" (change)="updateSubscriptionPeriod(subsriptionPlan.label)">{{subsriptionPlan.label}}</mat-checkbox>
+            <mat-checkbox [checked]="selectedOption  === subsriptionPlan.label"
+              (change)="updateSubscriptionPeriod(subsriptionPlan.label)">{{subsriptionPlan.label}}</mat-checkbox>
           </section>
         </div>
       </app-card-layout-for-payment-page>
@@ -23,10 +22,8 @@
   </div>
 
   <div class="payment-details-columns">
-    <app-card-layout-for-payment-page
-      [cardHeight]="getCardSize(40, 720).height"
-      [cardWidth]="getCardSize(40, 720).width"
-    >
+    <app-card-layout-for-payment-page [cardHeight]="getCardSize(40, 720).height"
+      [cardWidth]="getCardSize(40, 720).width">
       <div class="container">
         <div class="row">
           <div class="col-3" *ngFor="let item of paymentDetailsColumns">
@@ -44,15 +41,13 @@
       <!-- <app-card-layout [headerRequired]="false">
         <div style="padding: 70px"></div>
       </app-card-layout> -->
-      <app-card-layout-for-payment-page
-        [cardHeight]="getCardSize(112, 720).height"
-        [cardWidth]="getCardSize(112, 720).width"
-      >
+      <app-card-layout-for-payment-page [cardHeight]="getCardSize(112, 720).height"
+        [cardWidth]="getCardSize(112, 720).width">
       </app-card-layout-for-payment-page>
     </div>
   </div>
 
-  <div class="payment-details-container">
+  <!-- <div class="payment-details-container">
     <app-card-layout-for-payment-page
       [cardHeight]="getCardSize(128, 224).height"
       [cardWidth]="getCardSize(128, 224).width"
@@ -86,17 +81,55 @@
       <p class="payment-page-typography-2">Subtotal</p>
       <p class="payment-page-typography-2">IGST (18%)</p>
     </app-card-layout-for-payment-page>
-  </div>
+  </div> -->
 
+  <div class="payment-details-container">
+    <div class="offline-payment-details-container">
+      <p class="payment-page-typography">Offline Payment Details</p>
+      <p class="payment-page-typography-2">
+        You can make payment through Cheque/NEFT. Please draw the cheque in
+        favor of Lexplosion Solutions Private Limited.
+      </p>
+    </div>
+    <div class="online-payment-details-container">
+      <p class="payment-page-typography">Offline Payment Details</p>
+      <img src="./assets/images/icons/image_online_payment_details.png" class="logo" alt="logo" />
+    </div>
+    <div class="total-payment-details-container">
+      <p class="payment-page-typography-title">Total</p>
+      <p class="payment-page-typography-2">Promo Code</p>
+      <p class="payment-page-typography-3">Have a promo code?</p>
+      <p class="payment-page-typography-2">Subtotal</p>
+      <p class="payment-page-typography-2">IGST (18%)</p>
+    </div>
+    <!-- <app-card-layout-for-payment-page [cardHeight]="getCardSize(128, 224).height"
+      [cardWidth]="getCardSize(128, 224).width">
+      <p class="payment-page-typography">Online Payment Details</p>
+      <img src="./assets/images/icons/image_online_payment_details.png" class="logo" alt="logo" />
+    </app-card-layout-for-payment-page> -->
+
+    <!-- <app-card-layout-for-payment-page [cardHeight]="getCardSize(128, 216).height"
+      [cardWidth]="getCardSize(128, 216).width">
+      <p class="payment-page-typography">Online Payment Details</p>
+      <img src="./assets/images/icons/image_online_payment_details.png" class="logo" alt="logo" />
+    </app-card-layout-for-payment-page> -->
+
+    <!-- <app-card-layout-for-payment-page [cardHeight]="getCardSize(128, 264).height"
+      [cardWidth]="getCardSize(128, 264).width">
+      <p class="payment-page-typography-title">Total</p>
+      <p class="payment-page-typography-2">Promo Code</p>
+      <p class="payment-page-typography-3">Have a promo code?</p>
+      <p class="payment-page-typography-2">Subtotal</p>
+      <p class="payment-page-typography-2">IGST (18%)</p>
+    </app-card-layout-for-payment-page> -->
+  </div>
   <div class="row net-payable-amount-section justify-content-end">
     <div class="col-md-4 col-lg-3">
       <p class="net-payable-amount-typography">Net Payable Amount</p>
     </div>
     <div class="col-md-8 col-lg-6">
-      <app-card-layout-for-payment-page
-        [cardHeight]="getCardSize(40, 184).height"
-        [cardWidth]="getCardSize(40, 184).width"
-      >
+      <app-card-layout-for-payment-page [cardHeight]="getCardSize(40, 184).height"
+        [cardWidth]="getCardSize(40, 184).width">
       </app-card-layout-for-payment-page>
     </div>
   </div>

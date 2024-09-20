@@ -22,7 +22,6 @@ export class PaymentSectionComponent {
     {
       label: 'Yearly'
     }
-
   ]
   selectedOption: string | null = null;
   screenWidth: number;
@@ -54,6 +53,7 @@ export class PaymentSectionComponent {
   // }
 
   getCardSize(defaultHeight: number | string, defaultWidth: string | number) {
+    
     if (this.screenWidth <= 1280) {
       return { height: '100%', width: '100%' };
     } else {

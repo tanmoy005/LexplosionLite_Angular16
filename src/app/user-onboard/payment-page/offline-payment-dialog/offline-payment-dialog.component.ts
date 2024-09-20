@@ -11,14 +11,14 @@ export class OfflinePaymentDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<OfflinePaymentDialogComponent>,
     private router: Router
-  ) {}
+  ) { }
   closeSuccessDialog() {
     console.log('close dialog clicked');
     // window.location.reload();
     this.dialogRef.close();
   }
-  navigateToGoLivePage(event: any) {
+  navigateToGoLivePage(mode: string) {
     this.dialogRef.close();
-    this.router.navigate(['/golive']);
+    this.router.navigate(['/golive'], { state: { mode: mode } });
   }
 }

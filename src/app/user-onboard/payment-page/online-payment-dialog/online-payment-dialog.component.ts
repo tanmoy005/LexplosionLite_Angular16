@@ -18,8 +18,8 @@ export class OnlinePaymentDialogComponent {
     this.dialogRef.close();
   }
 
-  navigateToGoLivePage(event: any) {
+  navigateToGoLivePage(mode: string) {
     this.dialogRef.close();
-    this.router.navigate(['/golive']);
+    this.router.navigate(['/golive'], { state: { mode: mode } });
   }
 }
