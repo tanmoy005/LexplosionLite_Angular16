@@ -163,8 +163,7 @@ export class FeaturesComponent implements OnInit {
       }
     });
     console.log('the restructured data', this.restructuredData);
-    // this.dataSource = this.restructuredData;
-    this.dataSource = [...mainData, ...mainData, ...mainData];
+    this.dataSource = this.restructuredData;
   }
   ngOnInit(): void {
     console.log('the substype', this.SubscriptionType);

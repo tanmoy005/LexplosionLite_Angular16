@@ -20,7 +20,7 @@ export class GoLivePageComponent {
 
   paymentMode: any;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     const data = this.router.getCurrentNavigation()?.extras.state;
     console.log('data423', data);
     this.paymentMode = data?.['mode'];
@@ -48,56 +48,16 @@ export class GoLivePageComponent {
   ngOnInit() {
     this.dataSource = [
       {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
+        serialNumber: 1,
+        workSpaceName: 'Workspace Name',
+        adminName: 'Admin Name'
+      },
       {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-      {
-      serialNumber: 1,
-      workSpaceName: 'Test',
-      adminName: 'Test'
-    },
-  ];
+        serialNumber: 2,
+        workSpaceName: 'Workspace Name',
+        adminName: 'Admin Name'
+      }
+    ];
   }
   goToSubscription() {
     this.router.navigate(['/payment']);

@@ -50,7 +50,7 @@
       Create Workspace
     </p>
   </button>
-  <button mat-stroked-button class="btn-primary-outline-md ml-16px flex-btn">
+  <button *ngIf="paymentMode === 'offline'" mat-stroked-button class="btn-primary-outline-md ml-16px flex-btn">
     <img src="./assets/images/icons/save_alt.svg" />
     <p class="btn-name-style">Download Invoice</p>
   </button>
@@ -134,39 +134,19 @@
         <th mat-header-cell *matHeaderCellDef>
           <p class="text_12_700_gray_100">#</p>
         </th>
-        <td mat-cell *matCellDef="let element">
-          <p class="text_12_700_gray_100">
-            <!-- Payment Confirmation Pending... -->
-          </p>
-        </td>
+
       </ng-container>
       <ng-container matColumnDef="workSpaceName">
         <th mat-header-cell *matHeaderCellDef>
           <p class="text_12_700_gray_100">Name</p>
         </th>
-        <td mat-cell *matCellDef="let element">
-          <!-- <p class="text_12_700_gray_100">
-            {{ element.workSpaceName }}
-          </p> -->
-        </td>
+
       </ng-container>
       <ng-container matColumnDef="adminName">
         <th mat-header-cell *matHeaderCellDef>
           <p class="text_12_700_gray_100">Admin</p>
         </th>
-        <td mat-cell *matCellDef="let element">
-          <!-- <div class="d-flex align-items-center">
-            <p class="text_12_700_gray_100">
-              {{ element.adminName }}
-            </p>
-            <button mat-button class="btn-primary-md btn-green  flex-btn ml-74">
-              <img src="./assets/images/icons/workspace-white.svg" />
-              <p class="btn-name-style btn-name-style-add-new-user">
-                Go Workspace
-              </p>
-            </button>
-          </div> -->
-        </td>
+ 
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="workSpaceColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: workSpaceColumns"></tr>
