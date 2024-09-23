@@ -1,5 +1,5 @@
 <app-card-layout [cardHeaderTitle]="companyStructureLabel" [shade]="companyStructureCardShade">
-  
+
   <div class="company-structure-action-btn">
     <div class="zoom-controls">
       <button mat-icon-button (click)="zoomIn()">
@@ -13,8 +13,10 @@
       <mat-icon class="dark-brown-icon">fullscreen</mat-icon>
     </button>
   </div>
+
   <div class="tree-container" [ngStyle]="{ transform: 'scale(' + zoomLevel + ')' }">
     <app-tree-structure [rootNode]="treeDataItem" [activeLevel]="activeLevel">
     </app-tree-structure>
   </div>
+
 </app-card-layout>

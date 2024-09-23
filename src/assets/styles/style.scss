@@ -103,7 +103,7 @@
 }
 
 @mixin scrollbar-style {
-  overflow: auto!important;
+  overflow: auto !important;
   // scrollbar-width: thin!important;
 }
 
@@ -2706,6 +2706,16 @@ input.mdc-radio__native-control:focus,
   max-height: 400px;
   min-height: 200px;
   overflow-y: scroll;
+  position: relative;
+}
+
+// .fullscreen-btn {
+//   position: sticky !important;
+//   top: 0;
+//   right: 0;
+// }
+
+.company-structure-short-view {
   position: relative;
 }
 

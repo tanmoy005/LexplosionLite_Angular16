@@ -1,6 +1,7 @@
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogService } from 'src/app/services/Dialog.service';
+import { ZoomService } from 'src/app/services/Zoom-Service';
 
 @Component({
     selector: 'app-company-structure-dialogue',
@@ -18,11 +19,13 @@ export class CompanyStructureDialogueComponent {
             activeLevel: any;
         },
         public dialog: MatDialog,
-        public dialogRef: MatDialogRef<CompanyStructureDialogueComponent>
+        public dialogRef: MatDialogRef<CompanyStructureDialogueComponent>,
+        private zoomService: ZoomService
     ) { }
     dialogHeaderTitle: string = 'Company Structure';
     treeDataItem: any;
     activeLevel: any;
+    zoomLevel: number = 1;
     // Component logic goes here
     ngOnInit(): void {
         console.log('');
@@ -69,5 +72,12 @@ export class CompanyStructureDialogueComponent {
     }
     closeCompanyStructureDialog() {
         this.dialogRef.close();
+    }
+    zoomIn() {
+        this.zoomLevel = this.zoomService.zoomIn(this.zoomLevel); // Use service
+    }
+
+    zoomOut() {
+        this.zoomLevel = this.zoomService.zoomOut(this.zoomLevel); // Use service
     }
 }
