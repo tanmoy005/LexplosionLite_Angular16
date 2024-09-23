@@ -7,27 +7,31 @@ import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.
 import { authGuard } from './auth.guard';
 import { NewUserVerificationComponent } from './user-onboard/new-user-verification/new-user-verification.component';
 import { loginGuard } from './login.guard';
+import { loginResolver } from './services/default-redirect.resolver';
+import { redirectGuard } from './default-redirect.guard';
 
 export const AppRoutes: Routes = [
   {
     path: '',
+    //canActivate: [redirectGuard],
     redirectTo: '/home',
     pathMatch: 'full',
+
     // pathMatch: 'prefix',
   },
   // {
   //   path: '',
-  //   component: InitialLayoutComponent,
-  //   children: [
-  //     {
-  //       path: '',
-  //       loadChildren: () =>
-  //         import('./guest-user/guest-user.module').then(
-  //           (m) => m.GuestUserModule
-  //         ),
-  //     },
-  //   ],
+  //   resolve: {
+  //     route: loginResolver,
+  //   },
   // },
+  // {
+  //   path: '',
+  //   redirectTo: '', // Keep this empty for now (or default to another path)
+  //   pathMatch: 'full',
+  //   canActivate: [redirectGuard], // This will dynamically redirect based on authentication
+  // },
+
   {
     path: '',
     component: BlankComponent,
@@ -46,7 +50,6 @@ export const AppRoutes: Routes = [
           import('./user-onboard/user-onboard.module').then(
             (m) => m.UserOnboardModule
           ),
-        //canActivate: [authGuard],
       },
     ],
   },

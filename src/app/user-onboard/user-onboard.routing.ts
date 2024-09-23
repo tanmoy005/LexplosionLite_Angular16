@@ -12,6 +12,7 @@ import { OperatingUnitComponent } from './operating-unit/operating-unit.componen
 import { GoLivePageComponent } from './go-live-page/go-live-page.component';
 import { NewUserVerificationComponent } from './new-user-verification/new-user-verification.component';
 import { authGuard } from '../auth.guard';
+import { redirectGuard } from '../default-redirect.guard';
 export const UserOnboardRoutes: Routes = [
   {
     path: 'laws',
