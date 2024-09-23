@@ -25,6 +25,116 @@
 
 // @import "../styles/icons/material-design-iconic-font/css/materialdesignicons.min.css";
 
+@mixin app-dropdown($height: 40px) {
+  .app-dropdown {
+    .mat-mdc-text-field-wrapper {
+      background-color: var.$blue-light-200 !important;
+      border-radius: 3px !important;
+      //border: 1px solid var.$blue-light-200 !important;
+      height: $height !important;
+      // align-items: center;
+    }
+
+    .mat-mdc-select-arrow svg {
+      top: -137%;
+    }
+
+    .mat-mdc-form-field-infix {
+      // padding: 0 !important;
+      min-height: 0;
+      width: 93%;
+    }
+  }
+}
+
+@mixin app-dropdown-1($height: 40px, $width) {
+  .app-dropdown {
+    .mat-mdc-text-field-wrapper {
+      background-color: var.$blue-light-200 !important;
+      border-radius: 3px !important;
+      //border: 1px solid var.$blue-light-200 !important;
+      min-width: $width;
+      height: $height !important;
+      // align-items: center;
+    }
+
+    .mat-mdc-select-arrow svg {
+      top: -137%;
+    }
+
+    .mat-mdc-form-field-infix {
+      // padding: 0 !important;
+      min-height: 0;
+    }
+  }
+}
+
+@mixin app-dropdown-fixed-width($height: 40px, $width) {
+  .app-dropdown {
+    .mat-mdc-text-field-wrapper {
+      background-color: var.$gray-800 !important;
+      border-radius: 3px !important;
+      //border: 1px solid var.$blue-light-200 !important;
+      width: $width;
+      height: $height !important;
+      align-items: center;
+    }
+
+    .mat-mdc-select-arrow svg {
+      top: -137%;
+    }
+
+    .mat-mdc-form-field-infix {
+      // padding: 0 !important;
+      min-height: 0;
+      width: 93%;
+    }
+
+    .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+    }
+  }
+}
+
+@mixin dropdown-label($mb: 0px) {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: $mb;
+}
+
+@mixin scrollbar-style {
+  overflow: auto !important;
+  // scrollbar-width: thin!important;
+}
+
+@mixin payment-details-container {
+  background-color: rgba(120, 106, 205, 0.04);
+  padding: 18px;
+}
+
+@mixin header_common {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+  /* Adjust as needed */
+}
+
+@mixin gray-input-box {
+  border: 1px solid var.$gray-1300;
+  border-radius: 5px;
+}
+
+@mixin small-dropdown-box {
+  padding: 0 !important;
+  width: 24px !important;
+  height: 24px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  display: flex !important;
+  border: 1px solid var.$gray-1100;
+}
+
 /* You can add global styles to this file, and also import other style files */
 .mat-expansion-panel-body {
   padding: 0px 0px 0px !important;
@@ -282,11 +392,6 @@
     display: flex;
     align-items: center;
   }
-}
-
-@mixin payment-details-container {
-  background-color: rgba(120, 106, 205, 0.04);
-  padding: 18px;
 }
 
 .offline-payment-details-container {
@@ -1614,6 +1719,7 @@
       var(--base-unit-large2) * var(--scale-total-payment-card-width)
     );
   }
+
   .layout-container {
     //background-image: url("../../../assets/images/background/pexels-nurseryart.png");
     // height: 100vh;
@@ -2536,14 +2642,6 @@
   margin-top: 10px;
 }
 
-@mixin header_common {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px;
-  /* Adjust as needed */
-}
-
 .header {
   @include header_common;
 }
@@ -2669,11 +2767,6 @@
   display: flex;
 }
 
-@mixin gray-input-box {
-  border: 1px solid var.$gray-1300;
-  border-radius: 5px;
-}
-
 .emp_input {
   width: 5.04vw !important;
   margin: 0 16px;
@@ -2686,16 +2779,6 @@
 input.mdc-radio__native-control:focus,
 .mdc-radio__native-control:hover {
   background-color: none;
-}
-
-@mixin small-dropdown-box {
-  padding: 0 !important;
-  width: 24px !important;
-  height: 24px !important;
-  align-items: center !important;
-  justify-content: center !important;
-  display: flex !important;
-  border: 1px solid var.$gray-1100;
 }
 
 .activities-section {
@@ -3067,7 +3150,11 @@ input.mdc-radio__native-control:focus,
 .full-screen-content-container {
   padding-left: 35px;
   padding-right: 35px;
-  overflow: scroll;
+  @include scrollbar-style;
+}
+
+.tree-container {
+  // @include scrollbar-style;
 }
 
 .square_input_box {
@@ -3156,6 +3243,16 @@ input.mdc-radio__native-control:focus,
   max-height: 400px;
   min-height: 200px;
   overflow-y: scroll;
+  position: relative;
+}
+
+// .fullscreen-btn {
+//   position: sticky !important;
+//   top: 0;
+//   right: 0;
+// }
+
+.company-structure-short-view {
   position: relative;
 }
 
