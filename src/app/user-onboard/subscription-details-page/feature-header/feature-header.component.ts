@@ -9,7 +9,7 @@ import { Input, Output } from '@angular/core';
 export class FeatureHeaderComponent {
   checkboxItems = [
     {
-      imgSrc: './assets/images/logos/komrisk_logo_23-09-24.svg',
+      imgSrc: './assets/images/logos/Komrisk-Logo.svg',
       checked: false,
       name: 'komrisk',
       selectedImgSrc: './assets/images/logos/Property 1=Komrisk Logo L.svg',
