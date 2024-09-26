@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import {
   animate,
   state,
@@ -135,10 +135,16 @@ const mainData = [
 export class FeaturesComponent implements OnInit {
   displayedColumns = ['FEATURES', 'DETAILS', 'KOMRISK', 'KOMISK_LITE'];
   dataSource = mainData;
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
   featuresList: any = [];
   restructuredData: any = [];
+  subcriptionHighlighterHeight: number;
+  subcriptionHighlighterPosition: number;
+
   @Input() SubscriptionType: string;
+  @ViewChild('subcriptionTableRef') subcriptionTableRef!: ElementRef;
+  @ViewChild('subcriptionHiglighterRef') subcriptionHiglighterRef!: ElementRef;
+  private resizeObserver!: ResizeObserver;
   restructureFeaturesList() {
     this.featuresList.forEach((parentFeature: any) => {
       let mismatchFound = false;
@@ -184,5 +190,37 @@ export class FeaturesComponent implements OnInit {
       //   'Some error occurred while creating your admin profile.'
       // );
     }
+
+  }
+  ngAfterViewInit() {
+
+    const element = this.subcriptionTableRef.nativeElement;
+
+    // Initialize the ResizeObserver to monitor height changes
+    this.resizeObserver = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        this.subcriptionHighlighterHeight = entry.contentRect.height + 48;
+      }
+    });
+
+    // Start observing the element
+    this.resizeObserver.observe(element);
+
+    this.setSubcriptionHighlighterPosition();
+  }
+  ngOnChanges(changes: any) {
+    if (changes['SubscriptionType']) {
+      this.setSubcriptionHighlighterPosition();
+    }
+  }
+  ngOnDestroy() {
+    // Clean up the observer when the component is destroyed
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+  }
+  private setSubcriptionHighlighterPosition() {
+    const subcriptionHighlighterWidth = this.subcriptionHiglighterRef.nativeElement.clientWidth;
+    this.subcriptionHighlighterPosition = this.SubscriptionType === 'komriskLite' ? 0 : subcriptionHighlighterWidth + 12;
   }
 }
