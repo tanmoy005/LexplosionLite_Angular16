@@ -47,16 +47,36 @@
           class="invisible-border-button"
           [matMenuTriggerFor]="profileMenu"
           #menuTrigger
+          [disabled]="!isProfileActive"
         >
-          <img
+          <!-- <img
             src="../../../../assets/images/icons/VectorProfileIcon.svg"
             alt="profile-icon"
             class="responsive-svg"
-          />
+          /> -->
           <img
+            [src]="
+              isProfileActive
+                ? '../../../../assets/images/icons/VectorProfileIcon.svg'
+                : '../../../../assets/images/icons/UserIconVector_Inactive.svg'
+            "
+            alt="profile-icon"
+            class="responsive-svg"
+          />
+          <!-- <img
             src="../../../../assets/images/icons/VectorDown Arrow.svg"
             style="margin-left: 12px"
             class="responsive-svg-down-arr"
+          /> -->
+          <img
+            [src]="
+              isProfileActive
+                ? '../../../../assets/images/icons/VectorDown Arrow.svg'
+                : '../../../../assets/images/icons/UserDropdownIconVector_Inactive.svg'
+            "
+            alt="profile-icon"
+            style="margin-left: 12px"
+            class="responsive-svg"
           />
         </button>
 

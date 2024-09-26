@@ -1,4 +1,5 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { treeDataitem } from './../../../shared/menu-items/tree-items';
+import { Component, ViewChild, ViewEncapsulation, Input } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +18,7 @@ import { environment } from 'dotenv';
 export class RegHeaderComponent {
   constructor(private router: Router) {}
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
+  @Input() isProfileActive: boolean = true;
 
   handleClickOnLogo() {
     this.router.navigate(['/home']);
