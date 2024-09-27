@@ -439,9 +439,12 @@
   background-color: rgba(120, 106, 205, 0.08);
   border-radius: 5px;
 }
+
 .table-container::-webkit-scrollbar {
-  width: 2px; /* Width of the scrollbar */
-  height: 2px; /* Height for horizontal scrollbar */
+  width: 2px;
+  /* Width of the scrollbar */
+  height: 2px;
+  /* Height for horizontal scrollbar */
 }
 
 .table-container::-webkit-scrollbar-track {
@@ -458,17 +461,37 @@
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.8); /* Color when hovered */
+  background: rgba(0, 0, 0, 0.8);
+  /* Color when hovered */
 }
+
 .table-container::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255, 255, 255, 0.3);
 }
 
 /* Custom scrollbar for Firefox */
 .table-container {
-  scrollbar-width: thin; /* Make the scrollbar thin */
-  scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* Thumb color and track color */
+  scrollbar-width: thin;
+  /* Make the scrollbar thin */
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  /* Thumb color and track color */
+  max-height: 400px;
+  height: max-content;
+  min-height: 200px;
+  overflow: auto;
+  position: relative;
+  background-color: #FAF9FD;
 }
+
+.serial-number-col {
+  // width: 82px !important;
+  width: 15.28% !important;
+}
+
+.name-col {
+  width: 15.28% !important;
+}
+
 @media (max-width: 2560px) and (min-width: 1921px) {
   :root {
     --base-unit-4k: 16px;
@@ -2896,14 +2919,6 @@ input.mdc-radio__native-control:focus,
   }
 }
 
-.table-container {
-  max-height: 400px;
-  height: max-content;
-  min-height: 200px;
-  overflow: auto;
-  position: relative;
-  background-color: #FAF9FD;
-}
 
 // .fullscreen-btn {
 //   position: sticky !important;
