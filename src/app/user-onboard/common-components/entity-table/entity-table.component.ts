@@ -239,6 +239,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
   LawSummary: any = [];
 
   fetchLawsList() {
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
     const payload = {
       company: getCompanyId(),
     };
@@ -251,6 +252,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           const summary = summarizeLaws(response.data);
           console.log('the summarized law', summary);
           this.LawSummary = summary;
+          encryptStorage.setItem('companyLaws', response.data);
         }
       });
     } catch (e) {

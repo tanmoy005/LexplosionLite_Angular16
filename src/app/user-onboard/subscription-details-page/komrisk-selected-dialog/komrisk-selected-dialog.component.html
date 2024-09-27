@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>
+<!-- <h2 mat-dialog-title>
   <div class="congratulations-komrisk-typography">
     Congratulations! You have choosen Komrisk!
   </div>
@@ -11,4 +11,44 @@
     Explore other features
   </button>
   <button mat-button mat-dialog-close  class="btn-primary-outline-md">Close</button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->
+
+<app-dialog-layout
+  [dialogHeaderTitle]="''"
+  [dialogHeaderImage]="''"
+  [shade]="'medium'"
+>
+  <mat-dialog-content>
+    <div>
+      <!-- <mat-icon class="dark-purple-icon">check_circle</mat-icon> -->
+      <img src="./assets/images/icons/Vectorstar.svg" />
+    </div>
+
+    <div class="response-area">
+      <p class="text_14_400_black_100">Thank you for your interest!</p>
+      <p class="text_14_400_black_100">
+        Our Business Development team will get in touch with you
+      </p>
+    </div>
+    <div class="button-container-dialog">
+      <button
+        mat-stroked-button
+        mat-dialog-close
+        class="btn-primary-outline-md btn-spacing"
+        (click)="navigateToLandingPage($event)"
+      >
+        <p class="btn-name-style-add-new-user-success-modal">
+          <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
+          Exit
+        </p>
+      </button>
+      <button mat-button mat-dialog-close class="btn-primary-md-in-dialog">
+        <p class="btn-name-style-add-new-user-success-modal">
+          <!-- <img src="./assets/images/icons/Icons - Lex Kom LiteAddUserDark.svg" /> -->
+          <mat-icon class="icon-style white-icon">check</mat-icon>
+          Ok
+        </p>
+      </button>
+    </div>
+  </mat-dialog-content>
+</app-dialog-layout>

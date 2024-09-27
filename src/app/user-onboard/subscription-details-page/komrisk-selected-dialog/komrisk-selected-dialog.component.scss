@@ -1,11 +1,36 @@
-.congratulations-komrisk-typography{
-    font-family: Barlow;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 28.8px;
-    text-align: left;
-    color: #786ACD;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.congratulations-komrisk-typography {
+  font-family: Barlow;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28.8px;
+  text-align: left;
+  color: #786acd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-name-style-add-new-user-success-modal {
+  font-size: 12px !important;
+  font-family: Barlow;
+  font-weight: 400px;
+  line-height: 14.4px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-spacing {
+  margin-right: 80px;
+}
+
+.response-area {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.button-container-dialog {
+  display: flex;
+  justify-content: center;
+  //gap: 80px;
+  gap: 112px;
 }

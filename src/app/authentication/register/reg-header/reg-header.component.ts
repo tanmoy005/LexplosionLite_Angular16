@@ -23,16 +23,7 @@ export class RegHeaderComponent {
   handleClickOnLogo() {
     this.router.navigate(['/home']);
   }
-  // handleClickOnLogOut() {
-  //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //   encryptStorage.removeItem('company-id');
-  //   encryptStorage.removeItem('login-details');
-  //   encryptStorage.removeItem('entityTypes');
-  //   encryptStorage.removeItem('states');
-  //   encryptStorage.removeItem('countries');
-  //   encryptStorage.removeItem('komriskLawCategories');
-  //   this.router.navigate(['/home']);
-  // }
+
   handleClickOnLogOut() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
 
@@ -46,6 +37,7 @@ export class RegHeaderComponent {
       encryptStorage.removeItem('komriskLawCategories'),
       encryptStorage.removeItem('industryActivities'),
       encryptStorage.removeItem('operatingUnitTypes'),
+      encryptStorage.removeItem('companyLaws'),
     ])
       .then(() => {
         // Once all items are removed, navigate to the home page

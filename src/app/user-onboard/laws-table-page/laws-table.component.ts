@@ -39,30 +39,6 @@ export class LawsTablePageComponent implements OnInit {
   isLoading: boolean = false;
   receivedData: any;
 
-  // ngOnInit(): void {
-  //   const payload = {
-  //     company: getCompanyId(),
-  //   };
-  //   if (this.receivedData) {
-  //     Object.assign(payload, this.receivedData);
-  //   }
-
-  //   this.isLoading = true;
-  //   try {
-  //     this.apiService.postApplicableLaws(payload).subscribe((response) => {
-  //       if (response) {
-  //         console.log('the applicable laws', response.data);
-  //         this.ApplicableLawsItems = response.data;
-  //         this.isLoading = false;
-  //       } else {
-  //         this.isLoading = false;
-  //       }
-  //     });
-  //   } catch (e) {
-  //     this.snackbar.showError('Some error occurred while fetching Laws');
-  //     this.isLoading = false;
-  //   }
-  // }
   ngOnInit(): void {
     const payload = {
       company: getCompanyId(),
@@ -79,10 +55,10 @@ export class LawsTablePageComponent implements OnInit {
           console.log('the applicable laws', response.data);
           this.ApplicableLawsItems = response.data;
         }
-        this.isLoading = false; // Ensure loading spinner is turned off after successful response
+        this.isLoading = false;
       },
       (error) => {
-        this.isLoading = false; // Turn off loading even if an error occurs
+        this.isLoading = false;
         if (error.status === 500) {
           this.snackbar.showError(
             'Internal Server Error (500): Failed to fetch applicable laws'
