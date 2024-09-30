@@ -5,6 +5,9 @@
     'card-header-purple-light': shade === 'light',
     'card-header-purple-medium': shade === 'medium'
   }"
+  [ngStyle]="
+    isCrossRequired ? { display: 'flex', 'justify-content': 'end' } : {}
+  "
 >
   <img *ngIf="cardHeaderImage" [src]="cardHeaderImage" alt="" srcset="" />
   <div
@@ -16,6 +19,9 @@
   >
     {{ cardHeaderTitle }}
   </div>
+  <button *ngIf="isCrossRequired">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
 <div
   [ngClass]="
