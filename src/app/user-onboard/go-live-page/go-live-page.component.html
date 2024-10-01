@@ -47,7 +47,11 @@
   </div>
 </div>
 <div class="d-flex mt-16px">
-  <button mat-button class="btn-primary-md flex-btn">
+  <button
+    mat-button
+    class="btn-primary-md flex-btn"
+    (click)="handleCreateWorkspece()"
+  >
     <img src="./assets/images/icons/workspace-white.svg" />
     <p class="btn-name-style btn-name-style-add-new-user">Create Workspace</p>
   </button>
@@ -93,7 +97,12 @@
 
 <div class="laws-table mt-16px payment-section-portion">
   <div class="example-container">
-    <table *ngIf="paymentMode === 'online'" mat-table [dataSource]="dataSource">
+    <!-- <table *ngIf="paymentMode === 'online'" mat-table [dataSource]="dataSource"> -->
+    <table
+      *ngIf="paymentMode === 'online' || paymentMode === undefined"
+      mat-table
+      [dataSource]="dataSource"
+    >
       <ng-container matColumnDef="serialNumber">
         <th mat-header-cell *matHeaderCellDef class="serial-number-col">
           <p class="text_12_700_gray_100">#</p>
@@ -123,7 +132,11 @@
             <p class="text_12_700_gray_100">
               {{ element.adminName }}
             </p>
-            <button mat-button class="btn-primary-md btn-green flex-btn ml-74">
+            <button
+              mat-button
+              class="btn-primary-md btn-green flex-btn ml-74"
+              (click)="handleGotoWorkSpace()"
+            >
               <img src="./assets/images/icons/workspace-white.svg" />
               <p class="btn-name-style btn-name-style-add-new-user">
                 Go Workspace
@@ -135,6 +148,12 @@
       <tr mat-header-row *matHeaderRowDef="workSpaceColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: workSpaceColumns"></tr>
     </table>
+    <br />
+    <div class="p-5px">
+      <p *ngIf="showWorkspaceSetupMessage" class="text_12_700_gray_100">
+        {{ workspaceSetupMessage }}
+      </p>
+    </div>
     <!-- <table *ngIf="paymentMode === 'online'" mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="serialNumber">
         <th mat-header-cell *matHeaderCellDef class="serial-number-col">
@@ -155,24 +174,25 @@
       <tr mat-header-row *matHeaderRowDef="workSpaceColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: workSpaceColumns"></tr>
     </table> -->
-    <table *ngIf="paymentMode === 'offline'" mat-table [dataSource]="dataSource">
+    <table
+      *ngIf="paymentMode === 'offline'"
+      mat-table
+      [dataSource]="dataSource"
+    >
       <ng-container matColumnDef="serialNumber">
-        <th mat-header-cell *matHeaderCellDef  class="serial-number-col">
+        <th mat-header-cell *matHeaderCellDef class="serial-number-col">
           <p class="text_12_700_gray_100">#</p>
         </th>
-
       </ng-container>
       <ng-container matColumnDef="workSpaceName">
         <th mat-header-cell *matHeaderCellDef class="name-col">
           <p class="text_12_700_gray_100">Name</p>
         </th>
-
       </ng-container>
       <ng-container matColumnDef="adminName">
         <th mat-header-cell *matHeaderCellDef>
           <p class="text_12_700_gray_100">Admin</p>
         </th>
-
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="workSpaceColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: workSpaceColumns"></tr>

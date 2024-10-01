@@ -4,15 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ZoomService {
-  private minZoomLevel = 0.1; // Minimum zoom level
-  private maxZoomLevel = 5; // Maximum zoom level (if you want to set one)
+  private minZoomLevel = 0.1;
+  private maxZoomLevel = 5;
 
   constructor() {}
 
   zoomIn(currentZoom: number = 1): number {
     let newZoom = currentZoom + 0.1;
     if (newZoom > this.maxZoomLevel) {
-      newZoom = this.maxZoomLevel; // Limit the zoom level if needed
+      newZoom = this.maxZoomLevel;
     }
     return newZoom;
   }

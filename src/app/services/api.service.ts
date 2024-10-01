@@ -9,6 +9,7 @@ import {
   demoKomriskAndKomriskLiteAPIFeaturesList,
 } from './../shared/menu-items/demokomriskFeaturesList';
 import { StateListInterface, StateList } from '../shared/menu-items/state-list';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -32,6 +33,8 @@ export class ApiService {
     countriesForCompany: 'company/getCountriesForCompany',
     newUserVerification: 'verification/verify-email',
     fetchFeatures: 'definition/features-list',
+    saveLaws: 'entity-details/entity-result/saveLawsKomriskLite',
+    createWorkSpace: 'api/workspaces/createNewWorkSpace',
   };
 
   private endpointsWithoutAuthToken = [
@@ -160,5 +163,11 @@ export class ApiService {
   }
   postFetchFeatureList(data: any): Observable<any> {
     return this.postData(this.endpoints.fetchFeatures, data);
+  }
+  postSaveLawsList(data: any): Observable<any> {
+    return this.postData(this.endpoints.saveLaws, data);
+  }
+  postCreateWorkSpace(data: any): Observable<any> {
+    return this.postData(this.endpoints.createWorkSpace, data);
   }
 }
