@@ -36,7 +36,7 @@
     >
       <div class="container">
         <div class="row">
-          <div class="col-3" *ngFor="let item of paymentDetailsColumns">
+          <div [ngClass]="paymentDetailsColClass" *ngFor="let item of paymentDetailsColumns">
             <p class="payment-page-typography">
               {{ item }}
             </p>
@@ -51,10 +51,18 @@
       <!-- <app-card-layout [headerRequired]="false">
         <div style="padding: 70px"></div>
       </app-card-layout> -->
-      <app-card-layout-for-payment-page
-        [cardHeight]="getCardSize(112, 720).height"
-        [cardWidth]="getCardSize(112, 720).width"
-      >
+      <app-card-layout-for-payment-page [cardHeight]="getCardSize(112, 720).height"
+        [cardWidth]="getCardSize(112, 720).width">
+        <div class="container">
+          <div class="row mt-16px" *ngFor="let orderItems of orderData">
+            <div [ngClass]="paymentDetailsColClass"
+              *ngFor="let orderItem of orderItems.slice(1, paymentDetailsColumns.length+1); let i = index">
+              <p class="payment-page-typography">
+                {{ orderItem }}
+              </p>
+            </div>
+          </div>
+        </div>
       </app-card-layout-for-payment-page>
     </div>
   </div>
@@ -116,38 +124,29 @@
       <p class="payment-page-typography-2">Promo Code</p>
       <p class="payment-page-typography-3">Have a promo code?</p>
       <p class="payment-page-typography-2">Subtotal</p>
-      <p class="payment-page-typography-2">IGST (18%)</p>
+      <div *ngFor="let tax of taxes">
+        <p class="payment-page-typography-2">{{tax.name}}({{tax.rate}}%)</p>
+      </div>
     </div>
-    <!-- <app-card-layout-for-payment-page [cardHeight]="getCardSize(128, 224).height"
-      [cardWidth]="getCardSize(128, 224).width">
-      <p class="payment-page-typography">Online Payment Details</p>
-      <img src="./assets/images/icons/image_online_payment_details.png" class="logo" alt="logo" />
-    </app-card-layout-for-payment-page> -->
+    <div class="total-payment-details-container">
+      <p class="payment-page-typography-title">{{total.amount}}</p>
+      <p class="payment-page-typography-2">N/A</p>
+      <p class="payment-page-typography-3">N/A</p>
+      <p class="payment-page-typography-2">{{subTotal.amount}}</p>
+      <div *ngFor="let tax of taxes">
+        <p class="payment-page-typography-2">{{tax.amount}}</p>
+      </div>
+    </div>
 
-    <!-- <app-card-layout-for-payment-page [cardHeight]="getCardSize(128, 216).height"
-      [cardWidth]="getCardSize(128, 216).width">
-      <p class="payment-page-typography">Online Payment Details</p>
-      <img src="./assets/images/icons/image_online_payment_details.png" class="logo" alt="logo" />
-    </app-card-layout-for-payment-page> -->
-
-    <!-- <app-card-layout-for-payment-page [cardHeight]="getCardSize(128, 264).height"
-      [cardWidth]="getCardSize(128, 264).width">
-      <p class="payment-page-typography-title">Total</p>
-      <p class="payment-page-typography-2">Promo Code</p>
-      <p class="payment-page-typography-3">Have a promo code?</p>
-      <p class="payment-page-typography-2">Subtotal</p>
-      <p class="payment-page-typography-2">IGST (18%)</p>
-    </app-card-layout-for-payment-page> -->
   </div>
   <div class="row net-payable-amount-section justify-content-end">
     <div class="col-md-4 col-lg-3">
       <p class="net-payable-amount-typography">Net Payable Amount</p>
     </div>
     <div class="col-md-8 col-lg-6">
-      <app-card-layout-for-payment-page
-        [cardHeight]="getCardSize(40, 184).height"
-        [cardWidth]="getCardSize(40, 184).width"
-      >
+      <app-card-layout-for-payment-page [cardHeight]="getCardSize(40, 184).height"
+        [cardWidth]="getCardSize(40, 184).width">
+        {{netPayableAmount}}
       </app-card-layout-for-payment-page>
     </div>
   </div>

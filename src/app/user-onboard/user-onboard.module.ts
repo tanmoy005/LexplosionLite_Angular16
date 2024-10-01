@@ -80,6 +80,6 @@ import { AccordianTableComponent } from './subscription-details-page/accordian-t
     MaterialModule,
     ReactiveFormsModule,
   ],
-  exports: [CommonComponentModule],
+  exports: [CommonComponentModule]
 })
 export class UserOnboardModule {}

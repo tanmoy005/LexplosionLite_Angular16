@@ -4,6 +4,13 @@ import { StepperComponent } from '../common-components/stepper/stepper.component
 import { OfflinePaymentDialogComponent } from './offline-payment-dialog/offline-payment-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { OnlinePaymentDialogComponent } from './online-payment-dialog/online-payment-dialog.component';
+import { ApiService } from 'src/app/services/api.service';
+import { EncryptStorage } from 'encrypt-storage';
+import { environment } from 'dotenv';
+import { PaymentService } from 'src/app/services/Payment.service';
+import { SnackbarService } from 'src/app/shared/snackbar.service';
+
+
 
 @Component({
   selector: 'app-payment',
@@ -11,7 +18,12 @@ import { OnlinePaymentDialogComponent } from './online-payment-dialog/online-pay
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent {
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(private router: Router,
+    public dialog: MatDialog,
+    private apiService: ApiService,
+    private paymentService: PaymentService,
+    private snackbar: SnackbarService
+  ) { }
   @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
 
   colorPaymentDoneButton: string = '#42C997';
@@ -23,15 +35,37 @@ export class PaymentComponent {
   }
 
   openOnlinePaymentDialog() {
-    const dialogRef = this.dialog.open(OfflinePaymentDialogComponent);
+    const dialogRef = this.dialog.open(OnlinePaymentDialogComponent);
     // dialogRef.componentInstance.isAddNewUserClickedModal.subscribe(() => {
     //   this.handleCancelClick();
     // });
   }
   openOfflinePaymentDialog() {
-    const dialogRef = this.dialog.open(OnlinePaymentDialogComponent);
+    const dialogRef = this.dialog.open(OfflinePaymentDialogComponent);
     // dialogRef.componentInstance.isAddNewUserClickedModal.subscribe(() => {
     //   this.handleCancelClick();
     // });
+  }
+  handleClickOnOnlinePayment() {
+    // return this.apiService.initiatePayment();
+    this.redirectUserToPaymentPage();
+    this.openOnlinePaymentDialog();
+  }
+  private redirectUserToPaymentPage() {
+    const { amount, promoCode, companyId } = this.paymentService.getData();
+    try {
+      this.apiService.initiatePayment(amount, companyId, promoCode).subscribe((response) => {
+        console.log('response', response);
+        const { success, redirectUrl } = response
+        if (success) {
+          console.log('redirectUrl', redirectUrl);
+        }
+      });
+
+    } catch (error) {
+      this.snackbar.showError(
+        'Some error occurred, please try again'
+      );
+    }
   }
 }

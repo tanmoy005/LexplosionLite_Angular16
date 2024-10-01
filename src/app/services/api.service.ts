@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { SnackbarService } from '../shared/snackbar.service';
 import { EncryptStorage } from 'encrypt-storage';
@@ -35,6 +35,8 @@ export class ApiService {
     fetchFeatures: 'definition/features-list',
     saveLaws: 'entity-details/entity-result/saveLawsKomriskLite',
     createWorkSpace: 'api/workspaces/createNewWorkSpace',
+    getOrderDetails: 'komrisk/getOrderDetails',
+    initiatePayment: 'initiate-payment'
   };
 
   private endpointsWithoutAuthToken = [
@@ -44,7 +46,7 @@ export class ApiService {
     this.endpoints.newUserVerification,
   ];
 
-  constructor(private http: HttpClient, private snackBar: SnackbarService) {}
+  constructor(private http: HttpClient, private snackBar: SnackbarService) { }
 
   getAuthToken() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
@@ -75,19 +77,33 @@ export class ApiService {
     }
   }
 
-  private postData(apiUrl: string, data: any): Observable<any> {
-    var headerJSON;
-
-    if (this.endpointsWithoutAuthToken.includes(apiUrl)) {
-      headerJSON = { 'Content-Type': 'application/json' };
-    } else {
-      headerJSON = {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.getAuthToken()}`,
-      };
+  private setHeaderJson(apiUrl: string) {
+    // var headerJSON;
+    let headerJSON = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    if (!this.endpointsWithoutAuthToken.includes(apiUrl)) {
+      // headerJSON = { 'Content-Type': 'application/json' };
+      headerJSON = headerJSON.set('Authorization', `Bearer ${this.getAuthToken()}`);
     }
+    return headerJSON
+  }
+
+  private postData(apiUrl: string, data: any): Observable<any> {
+    const headerJSON = this.setHeaderJson(apiUrl);
     return this.http
       .post<any>(`${this.baseUrl}/${apiUrl}`, data, { headers: headerJSON })
+      .pipe(
+        catchError(({ error }: HttpErrorResponse) => {
+          this.snackBar.showError(error?.error);
+          return throwError(() => new Error(error?.error));
+        })
+      );
+  }
+  private getData(apiUrl: string): Observable<any> {
+    const headerJSON = this.setHeaderJson(apiUrl);
+    return this.http
+      .get<any>(`${this.baseUrl}/${apiUrl}`, { headers: headerJSON })
       .pipe(
         catchError(({ error }: HttpErrorResponse) => {
           this.snackBar.showError(error?.error);
@@ -170,4 +186,11 @@ export class ApiService {
   postCreateWorkSpace(data: any): Observable<any> {
     return this.postData(this.endpoints.createWorkSpace, data);
   }
+  getOrderDetails(data: any): Observable<any> {
+    return this.postData(this.endpoints.getOrderDetails, data);
+  }
+  initiatePayment(amount: string, companyId: string, promoCode: string | null): Observable<any> {
+    return this.getData(`${this.endpoints.initiatePayment}?amount=${amount}&company_id=${companyId}&promo_code=${promoCode}`);
+  }
+
 }

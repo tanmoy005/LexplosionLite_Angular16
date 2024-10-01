@@ -24,13 +24,13 @@
         <p class="btn-name-style">Back</p>
       </button>
       <div class="payment-details-buttons">
-        <button class="btn-primary-outline-md" (click)="openOnlinePaymentDialog()">
+        <button class="btn-primary-outline-md" (click)="openOfflinePaymentDialog()">
           <p class="btn-name-style btn-name-style-online-payment">
             <img src="./assets/images/icons/Icons - Lex Kom LitePayOffline.svg" />
             Pay Offline
           </p>
         </button>
-        <button class="btn-payment-online" (click)="openOfflinePaymentDialog()">
+        <button class="btn-payment-online" (click)="handleClickOnOnlinePayment()">
           <p class="btn-name-style btn-name-style-online-payment">
             <img src="./assets/images/icons/Icons - Lex Kom LitePayOnline.svg" />
             Pay Online
