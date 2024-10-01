@@ -130,36 +130,6 @@ interface EntityLawAndOpUnitCount {
   noOfLaws: number;
 }
 
-// function summarizeLaws(data: ApplicableLaws[]): EntityLawAndOpUnitCount[] {
-//   const entitySummaryMap: {
-//     [key: number]: { opUnits: Set<number>; laws: Set<number> };
-//   } = {};
-
-//   data.forEach((item) => {
-//     const entityId = item.entity.id;
-//     const operatingUnitId = item.operatingUnit.id;
-//     const lawApplicability = item.lawApplicability;
-
-//     if (!entitySummaryMap[entityId]) {
-//       entitySummaryMap[entityId] = {
-//         opUnits: new Set<number>(),
-//         laws: new Set<number>(),
-//       };
-//     }
-
-//     entitySummaryMap[entityId].opUnits.add(operatingUnitId);
-//     entitySummaryMap[entityId].laws.add(lawApplicability);
-//   });
-
-//   console.log('the summarized laws and operating units', entitySummaryMap);
-
-//   return Object.keys(entitySummaryMap).map((key) => ({
-//     id: +key,
-//     noOfOpUnits: entitySummaryMap[+key].opUnits.size,
-//     noOfLaws: entitySummaryMap[+key].laws.size,
-//   }));
-// }
-
 function summarizeLaws(data: ApplicableLaws[]): EntityLawCount[] {
   // Define the type for the map where entityId is the key and the count of laws is the value
   const entityLawMap: { [key: number]: number } = {};
@@ -231,7 +201,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
       }
     );
 
-    console.log('the country list come in entity table', this.countryList);
     this.fetchEntityList();
     this.fetchLawsList();
   }
@@ -246,11 +215,10 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     try {
       this.apiService.postApplicableLaws(payload).subscribe((response) => {
         if (response) {
-          console.log('the applicable laws', response.data);
           this.ApplicableLawsItems = response.data;
           //this.isLoading = false;
           const summary = summarizeLaws(response.data);
-          console.log('the summarized law', summary);
+
           this.LawSummary = summary;
           encryptStorage.setItem('companyLaws', response.data);
         }
@@ -334,10 +302,9 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         .postFetchEntityList(entityFetchPayload)
         .subscribe((response) => {
           const entityList = response.data;
-          console.log('the entity list from API', entityList);
+
           if (entityList.length === 0) {
             entityNullStatus = true;
-            console.log('no entity exists');
           }
           const currentCount = 0;
           entityList.forEach((entity: FetchEntityDetails, index: number) => {
@@ -402,7 +369,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             treeDataitem?.children?.push(this.entityChild);
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
-          console.log('treeDataitem');
+
           // treeDataitem
 
           this.table.renderRows();
@@ -411,10 +378,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             entitiesOperatingUnitNullStatus: opUnitNullStatus,
             entitiesOperatingUnitNullList: opUnitNullEntitiesList,
           });
-          console.log('the check all op', {
-            entitiesOperatingUnitNullStatus: opUnitNullStatus,
-            entitiesOperatingUnitNullList: opUnitNullEntitiesList,
-          });
+
           this.isNoEntity.emit(entityNullStatus);
           this.isNoOpUnit.emit(isNoOpUnit);
         });
@@ -559,7 +523,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         break;
       case 'Edit':
         var entity = this.dataSource.find((entity) => entity.id === id);
-        console.log('the entity to edit in table', entity);
 
         if (entity === undefined) {
           this.snackbar.showError(
@@ -578,7 +541,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
 
   openIndustryDialog(id: number) {
     var entity = this.dataSource.find((entity) => entity.id === id);
-    console.log('the entity for industry dialog open', entity);
+
     if (entity === undefined) {
       this.snackbar.showError(
         'Some error occurred while adding Operating Unit.'

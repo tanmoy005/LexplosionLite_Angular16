@@ -40,12 +40,8 @@ export class RegHeaderComponent {
       encryptStorage.removeItem('companyLaws'),
     ])
       .then(() => {
-        // Once all items are removed, navigate to the home page
         this.router.navigate(['/home']);
       })
-      .catch((error) => {
-        console.error('Error during storage cleanup:', error);
-        // Optionally, handle the error or show a message to the user
-      });
+      .catch((error) => {});
   }
 }

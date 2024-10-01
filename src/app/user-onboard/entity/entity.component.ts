@@ -78,15 +78,13 @@ export class EntityComponent implements OnInit {
         const countryIds = response['countries'].map(
           (country: any) => country.company_country.CountryId
         );
-        // this.countryForCompanyIdList = countryIds;
-        console.log('the country for companies id ent', countryIds);
+
         const matchingCountries = this.apiCountryList.filter((country: any) =>
           countryIds.includes(country.id)
         );
         this.countryForCompanyIdList = matchingCountries;
-        console.log('the matching country list ent', matchingCountries);
       }
-      console.log('the country for company', response['countries']);
+
       return response['countries'];
     });
   }
@@ -208,23 +206,15 @@ export class EntityComponent implements OnInit {
   }
 
   handleEntityListStatus(state: boolean) {
-    console.log('the entity status', state);
     this.entityListNullStatus = state;
     if (state === true) {
       this.isNoEntityThere.emit('Add atlease one Entity');
     }
-    // else{
-    //   this.isNoEntityThere.emit('Add atlease one Entity');
-    // }
   }
   handleOpUnitListStatus(state: boolean) {
-    console.log('the op unit status', state);
     this.opUnitListNullStatus = state;
     if (state === true) {
       this.isNoOpUnitThere.emit('Add atlease one Oerating Unit');
     }
-    // else{
-    //   this.isNoEntityThere.emit('Add atlease one Entity');
-    // }
   }
 }

@@ -35,7 +35,7 @@ export class SubscriptionDetailsPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const containerHeight = this.containerElement.nativeElement.offsetHeight;
-    console.log('Container height:', containerHeight);
+
     // You can now use `containerHeight` as needed
   }
 

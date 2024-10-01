@@ -193,12 +193,11 @@ export class AppSideRegisterComponent implements OnInit {
     this.isDropdownOpen = false;
   }
   onDropdownStateChange(isOpen: boolean): void {
-      if (isOpen === false) {
-        this.toggleDropdown();
-      }
+    if (isOpen === false) {
+      this.toggleDropdown();
+    }
   }
   onCountryValueChange(value: any) {
-    console.log('the country selected', value);
     this.selectedCountryList = value;
   }
   selectedCountryList: any;

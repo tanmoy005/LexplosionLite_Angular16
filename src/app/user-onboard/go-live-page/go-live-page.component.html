@@ -64,40 +64,9 @@
     <p class="btn-name-style">Download Invoice</p>
   </button>
 </div>
-<!-- <div class="go-live-details">
-  <div class="go-live-columns">
-    <app-card-layout-for-payment-page [cardHeight]="getCardSize(40, 720).height"
-      [cardWidth]="getCardSize(40, 720).width">
-      <div class="container">
-        <div class="row">
-          <div class="col-3" *ngFor="let item of workSpaceColumns">
-            <p class="go-live-typography">
-              {{ item }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </app-card-layout-for-payment-page>
-  </div>
-  <app-card-layout-for-payment-page [cardHeight]="getCardSize(288, 720).height"
-    [cardWidth]="getCardSize(288, 720).width">
-    <p>Payment Confirmation Pending...</p>
-  </app-card-layout-for-payment-page>
-  <app-card-layout-for-payment-page [cardHeight]="getCardSize(288, 720).height"
-    [cardWidth]="getCardSize(288, 720).width">
-    <p>Payment Confirmation Pending...</p>
-  </app-card-layout-for-payment-page>
-  <div class="col-lg-12" style="margin-top: 25px">
-    <button mat-stroked-button class="btn-primary-outline-md" (click)="goToSubscription()">
-      <mat-icon>keyboard_arrow_left</mat-icon>
-      <p class="btn-name-style">Back</p>
-    </button>
-  </div>
-</div> -->
 
 <div class="laws-table mt-16px payment-section-portion">
   <div class="example-container">
-    <!-- <table *ngIf="paymentMode === 'online'" mat-table [dataSource]="dataSource"> -->
     <table
       *ngIf="paymentMode === 'online' || paymentMode === undefined"
       mat-table
@@ -154,26 +123,7 @@
         {{ workspaceSetupMessage }}
       </p>
     </div>
-    <!-- <table *ngIf="paymentMode === 'online'" mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="serialNumber">
-        <th mat-header-cell *matHeaderCellDef class="serial-number-col">
-          <p class="text_12_700_gray_100">#</p>
-        </th>
 
-      </ng-container>
-      <ng-container matColumnDef="workSpaceName">
-        <th mat-header-cell *matHeaderCellDef class="name-col">
-          <p class="text_12_700_gray_100">Name</p>
-        </th>
-      </ng-container>
-      <ng-container matColumnDef="adminName">
-        <th mat-header-cell *matHeaderCellDef>
-          <p class="text_12_700_gray_100">Admin</p>
-        </th>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="workSpaceColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: workSpaceColumns"></tr>
-    </table> -->
     <table
       *ngIf="paymentMode === 'offline'"
       mat-table

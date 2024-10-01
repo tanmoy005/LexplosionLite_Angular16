@@ -36,7 +36,6 @@ function summarizeLaws(data: ApplicableLaws[]): EntityLawCount[] {
     entityLawMap[entityId]++;
   });
 
-  // Convert the map into the desired structure
   return Object.keys(entityLawMap).map((key) => ({
     id: +key,
     noOfLaws: entityLawMap[+key],
@@ -104,21 +103,6 @@ interface Law {
   };
 }
 
-// Define the interface for the structure of the output data
-interface ProcessedLaw {
-  appLaws: {
-    companyId: number;
-    entity: number;
-    operatingUnit: number[];
-    lawApplicability: number;
-    komriskLaws: {
-      id: number;
-      name: string;
-    }[];
-  }[];
-}
-
-// Updated function to process laws
 function processLaws(
   inputLaws: any[],
   companyId: number
@@ -128,10 +112,9 @@ function processLaws(
   entity: number;
   operatingUnit: number[];
 } {
-  const appLaws: any[] = []; // Result array to hold the processed laws
+  const appLaws: any[] = [];
 
   inputLaws.forEach((item) => {
-    // Create a new law object for output
     const lawObject = {
       entity: {
         id: item.entity.id,
@@ -166,7 +149,7 @@ function processLaws(
 
 function getCompanyId() {
   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //return encryptStorage.getItem('company-id');
+
   const { user } = encryptStorage.getItem('login-details');
   const userCompanies = user.companies;
   const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
@@ -175,7 +158,7 @@ function getCompanyId() {
 
 function getFirstName() {
   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //return encryptStorage.getItem('company-id');
+
   const { user } = encryptStorage.getItem('login-details');
   const userFirstName = user.firstName;
 
@@ -183,7 +166,7 @@ function getFirstName() {
 }
 function getLastName() {
   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //return encryptStorage.getItem('company-id');
+
   const { user } = encryptStorage.getItem('login-details');
   const userLastName = user.lastName;
 
@@ -222,7 +205,7 @@ export class GoLivePageComponent {
     private snackbar: SnackbarService
   ) {
     const data = this.router.getCurrentNavigation()?.extras.state;
-    console.log('data423', data);
+
     this.paymentMode = data?.['mode'];
   }
 
@@ -231,12 +214,6 @@ export class GoLivePageComponent {
   dataSource: WorkspaceDetails[] = [];
   showWorkspaceSetupMessage: boolean = false;
   workspaceSetupMessage: string = '';
-
-  // ngOnChanges() {
-  //   this.dataSource = [{
-  //     serialNumber: 1,
-  //   }];
-  // }
 
   getCardSize(defaultHeight: number | string, defaultWidth: string | number) {
     if (this.screenWidth <= 1280) {
@@ -249,45 +226,6 @@ export class GoLivePageComponent {
   LawSummary: any = [];
   isLoading: boolean = false;
 
-  // fetchLawsList() {
-  //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //   const payload = {
-  //     company: getCompanyId(),
-  //   };
-  //   try {
-  //     this.apiService.postApplicableLaws(payload).subscribe((response) => {
-  //       if (response) {
-  //         console.log('the applicable laws', response.data);
-  //         this.ApplicableLawsItems = response.data;
-  //         //this.isLoading = false;
-  //         const summary = groupByEntity(response.data);
-  //         console.log('the summarized law in go live', summary);
-  //         this.LawSummary = summary;
-  //         //const processedSummaries = processLaws(summary[0], getCompanyId());
-  //         const processedSummaries = summary.map((item) =>
-  //           processLaws(item, getCompanyId())
-  //         );
-
-  //         console.log('the processed law in go live', processedSummaries);
-
-  //         processedSummaries.forEach((summaryItem) => {
-  //           this.apiService.postSaveLawsList(summaryItem).subscribe(
-  //             (apiResponse) => {
-  //               console.log('API response for summary item', apiResponse);
-  //               // Handle each API response here
-  //             },
-  //             (error) => {
-  //               console.error('Error calling API for summary item', error);
-  //             }
-  //           );
-  //         });
-  //       }
-  //     });
-  //   } catch (e) {
-  //     this.snackbar.showError('Some error occurred while fetching Laws');
-  //     // this.isLoading = false;
-  //   }
-  // }
   fetchLawsList() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
     this.isLoading = true;
@@ -308,16 +246,12 @@ export class GoLivePageComponent {
             processLaws(item, getCompanyId())
           );
 
-          // const apiCalls = processedSummaries.map((summaryItem) =>
-          //   this.apiService.postSaveLawsList(summaryItem)
-          // );
           const apiCalls = processedSummaries.map((summaryItem) =>
             this.apiService.postSaveLawsList(summaryItem).pipe(
               catchError((error) => {
-                // Log error and stop further API calls
                 this.isLoading = false;
                 this.snackbar.showError('An error occurred while saving laws');
-                console.error('Error in postSaveLawsList:', error);
+
                 return throwError(() => error);
               })
             )
@@ -325,8 +259,6 @@ export class GoLivePageComponent {
 
           forkJoin(apiCalls).subscribe(
             (apiResponses) => {
-              console.log('All API responses for summary items:', apiResponses);
-
               const adminPayload = {
                 domainName: 'lexplosionlogictic22.com',
                 companyName: getCompanyName(),
@@ -346,13 +278,11 @@ export class GoLivePageComponent {
                 },
                 (error) => {
                   this.isLoading = false;
-                  console.error('Error creating admin company:', error);
                 }
               );
             },
             (error) => {
               this.isLoading = false;
-              console.error('Error in postSaveLawsList API calls:', error);
             }
           );
         }
@@ -364,18 +294,6 @@ export class GoLivePageComponent {
   }
 
   ngOnInit() {
-    // this.dataSource = [
-    //   {
-    //     serialNumber: 1,
-    //     workSpaceName: 'Workspace Name',
-    //     adminName: 'Admin Name',
-    //   },
-    //   {
-    //     serialNumber: 2,
-    //     workSpaceName: 'Workspace Name',
-    //     adminName: 'Admin Name',
-    //   },
-    // ];
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
     const loginDetails = encryptStorage.getItem('login-details');
 

@@ -135,7 +135,7 @@ const mainData = [
 export class FeaturesComponent implements OnInit {
   displayedColumns = ['FEATURES', 'DETAILS', 'KOMRISK', 'KOMISK_LITE'];
   dataSource = mainData;
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
   featuresList: any = [];
   restructuredData: any = [];
   subcriptionHighlighterHeight: number;
@@ -168,36 +168,32 @@ export class FeaturesComponent implements OnInit {
         });
       }
     });
-    console.log('the restructured data', this.restructuredData);
+
     this.dataSource = this.restructuredData;
   }
   ngOnInit(): void {
-    console.log('the substype', this.SubscriptionType);
     const payload = null;
     try {
       this.apiService.postFetchFeatureList(payload).subscribe((response) => {
         if (response) {
           //this.snackbar.showSuccess('OTP has been sent to your email');
-          console.log('the feature list', response);
+
           this.featuresList = response;
           this.restructureFeaturesList();
           // this.router.navigate(['/entity-details'], { state: { entity: '' } });
         }
       });
     } catch (e) {
-      console.log('error fetching feature list');
       // this.snackbar.showError(
       //   'Some error occurred while creating your admin profile.'
       // );
     }
-
   }
   ngAfterViewInit() {
-
     const element = this.subcriptionTableRef.nativeElement;
 
     // Initialize the ResizeObserver to monitor height changes
-    this.resizeObserver = new ResizeObserver(entries => {
+    this.resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         this.subcriptionHighlighterHeight = entry.contentRect.height + 48;
       }
@@ -220,7 +216,11 @@ export class FeaturesComponent implements OnInit {
     }
   }
   private setSubcriptionHighlighterPosition() {
-    const subcriptionHighlighterWidth = this.subcriptionHiglighterRef.nativeElement.clientWidth;
-    this.subcriptionHighlighterPosition = this.SubscriptionType === 'komriskLite' ? 0 : subcriptionHighlighterWidth + 12;
+    const subcriptionHighlighterWidth =
+      this.subcriptionHiglighterRef.nativeElement.clientWidth;
+    this.subcriptionHighlighterPosition =
+      this.SubscriptionType === 'komriskLite'
+        ? 0
+        : subcriptionHighlighterWidth + 12;
   }
 }

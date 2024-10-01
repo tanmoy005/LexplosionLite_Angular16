@@ -11,10 +11,8 @@ export class OfflinePaymentDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<OfflinePaymentDialogComponent>,
     private router: Router
-  ) { }
+  ) {}
   closeSuccessDialog() {
-    console.log('close dialog clicked');
-    // window.location.reload();
     this.dialogRef.close();
   }
   navigateToGoLivePage(mode: string) {

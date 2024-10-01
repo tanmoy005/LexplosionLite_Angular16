@@ -11,7 +11,6 @@ export class UserSuccessfulModalComponent {
   @Output() isAddNewUserClickedModal = new EventEmitter<void>();
 
   closeSuccessDialog() {
-    console.log('close dialog clicked');
     window.location.reload();
     this.dialogRef.close();
   }

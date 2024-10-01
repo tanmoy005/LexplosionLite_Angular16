@@ -71,7 +71,6 @@ export class NewUserVerificationComponent implements OnInit {
     // Retrieve the 'token' parameter from the URL
     this.route.queryParamMap.subscribe((params) => {
       this.token = params.get('token');
-      console.log('Token:', this.token);
     });
   }
 
@@ -94,16 +93,11 @@ export class NewUserVerificationComponent implements OnInit {
   }
 
   handleSetPassword(event: any) {
-    // const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
-
     const payload = { token: this.token, newPassword: this.password };
-
-    console.log('the create new user payload', payload);
 
     try {
       this.apiService.postNewUserVerification(payload).subscribe((response) => {
         if (response) {
-          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
           this.snackbar.showSuccess('Your Password is set');
           this.router.navigate(['/login']);
         }
@@ -111,10 +105,6 @@ export class NewUserVerificationComponent implements OnInit {
     } catch (e) {
       this.snackbar.showError('Some error occurred while setting Password');
     }
-
-    //const payload = { otp: this.otp, email: this.stateData.email };
-    //this.authService.handleAdminUserCreation(payload);
-    // this.router.navigate(['/verify-email'], { state: payload });
   }
 
   handleCancleClick(event: any) {

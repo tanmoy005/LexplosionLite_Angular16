@@ -130,7 +130,6 @@ export class AddEntityDialog implements OnInit {
 
   initializeFormData() {
     if (this.data.entity !== null) {
-      console.log('the entity to edit', this.data.entity);
       this.formData = {
         id: this.data.entity.id,
         name: this.data.entity.name,
@@ -178,10 +177,7 @@ export class AddEntityDialog implements OnInit {
   selectedCountryList: any = [1];
 
   onCountryValueChange(value: any) {
-    console.log('the cuntry value change called');
-    console.log('the country selected', value);
     this.selectedCountryList = value;
-    console.log('the selected countries', this.selectedCountryList);
   }
 
   onTextFieldChange(event: any, field: keyof EntityInterfaces.FormData) {
@@ -196,7 +192,7 @@ export class AddEntityDialog implements OnInit {
       if (this.formData.hasOwnProperty(field)) {
         const fieldValue =
           this.formData[field as keyof EntityInterfaces.FormData];
-        console.log('the field values', this.formData);
+
         if (
           (field === 'lawModules' || field === 'industry') &&
           (fieldValue as number[]).length === 0
@@ -218,7 +214,7 @@ export class AddEntityDialog implements OnInit {
       // );
       // this.selectedCountryList = this.formData.country;
       this.formData.country = this.selectedCountryList;
-      console.log('country', this.selectedCountryList);
+
       this.selectedEntity = this.transformedEntityList.find(
         (entity) => entity.value === this.formData.entityType
       );
@@ -244,7 +240,7 @@ export class AddEntityDialog implements OnInit {
 
       this.formData.childrenID = 0;
       this.data.entityTable.addEntityData(this.formData, this.entitySaveTitle);
-      console.log('the form data of entity', this.formData);
+
       this.dialogRef.close();
     }
   }

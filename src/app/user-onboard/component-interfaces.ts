@@ -59,7 +59,7 @@ export interface DialogData {
 }
 
 @Injectable({
-  providedIn: 'root', // This makes the service available app-wide
+  providedIn: 'root',
 })
 export class operatingUnitFetchDefinitions {
   fieldPayload = [
@@ -92,11 +92,9 @@ export class operatingUnitFetchDefinitions {
         );
         encryptStorage.setItem('countries', response.data.countries);
 
-        // Execute the callback function after successful operation
         callback();
       },
       error: () => {
-        //this.snackbar.showError('Failed to fetch entity definitions.');
         console.log('the error');
       },
     });

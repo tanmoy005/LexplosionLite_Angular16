@@ -10,20 +10,19 @@ import { environment } from 'dotenv';
 import { PaymentService } from 'src/app/services/Payment.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 
-
-
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent {
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     public dialog: MatDialog,
     private apiService: ApiService,
     private paymentService: PaymentService,
     private snackbar: SnackbarService
-  ) { }
+  ) {}
   @ViewChild(StepperComponent, { static: false }) stepper: StepperComponent;
 
   colorPaymentDoneButton: string = '#42C997';
@@ -54,18 +53,15 @@ export class PaymentComponent {
   private redirectUserToPaymentPage() {
     const { amount, promoCode, companyId } = this.paymentService.getData();
     try {
-      this.apiService.initiatePayment(amount, companyId, promoCode).subscribe((response) => {
-        console.log('response', response);
-        const { success, redirectUrl } = response
-        if (success) {
-          console.log('redirectUrl', redirectUrl);
-        }
-      });
-
+      this.apiService
+        .initiatePayment(amount, companyId, promoCode)
+        .subscribe((response) => {
+          const { success, redirectUrl } = response;
+          if (success) {
+          }
+        });
     } catch (error) {
-      this.snackbar.showError(
-        'Some error occurred, please try again'
-      );
+      this.snackbar.showError('Some error occurred, please try again');
     }
   }
 }

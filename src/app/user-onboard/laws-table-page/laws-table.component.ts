@@ -32,8 +32,6 @@ export class LawsTablePageComponent implements OnInit {
 
     if (navigation && navigation.extras.state) {
       this.receivedData = navigation.extras.state;
-      console.log('Received data:', navigation.extras.state);
-      // this.businessName = this.stateData['businessname'];
     }
   }
   isLoading: boolean = false;
@@ -52,7 +50,6 @@ export class LawsTablePageComponent implements OnInit {
     this.apiService.postApplicableLaws(payload).subscribe(
       (response) => {
         if (response) {
-          console.log('the applicable laws', response.data);
           this.ApplicableLawsItems = response.data;
         }
         this.isLoading = false;

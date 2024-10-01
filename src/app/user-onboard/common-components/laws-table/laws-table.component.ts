@@ -43,7 +43,7 @@ export class LawsTableComponent {
         module: item.komriskLawCategory.description,
       });
     });
-    console.log('the laws table data', transformedData);
+
     return transformedData;
   }
 

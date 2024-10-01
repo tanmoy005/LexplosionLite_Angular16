@@ -211,7 +211,6 @@ export class StepperComponent implements OnInit {
   isSetIndexTriggered: boolean = false; // Flag to track setIndex trigger
 
   setIndex(event: any) {
-    console.log('click is triggered from setIndex');
     this.selectedIndex = event.selectedIndex;
     this.currentStep = event.selectedIndex;
     this.isSetIndexTriggered = true;
@@ -225,92 +224,14 @@ export class StepperComponent implements OnInit {
   // }
   triggerClick() {
     if (!this.isSetIndexTriggered) {
-      console.log('setIndex was not triggered, triggerClick will not proceed');
-      return; // If setIndex was not triggered, exit the function
+      return;
     }
 
-    console.log('triggerClick triggered');
     this.navigateToStep(this.selectedIndex);
-    this.isSetIndexTriggered = false; // Reset the flag after click is handled
+    this.isSetIndexTriggered = false;
   }
 
   clickableIndexes(index: number) {}
-
-  // navigateToStep(index: number) {
-  //   const currentUrl = this.router.url;
-  //   let currindex: number | undefined; // Declare currindex here
-
-  //   const lastSegment = currentUrl.split('/').pop();
-  //   if (lastSegment && this.step_routing_dict[lastSegment]) {
-  //     currindex = this.step_routing_dict[lastSegment];
-  //   }
-
-  //   console.log('the current URL', currentUrl);
-  //   if (this.stepCompletionStatus) {
-  //     if (
-  //       index >= 0 &&
-  //       index < this.stepperSteps.length &&
-  //       (index === this.currentStep + 1 || index < this.currentStep)
-  //     ) {
-  //       this.ngZone.run(() => {
-  //         this.router.navigate([this.stepRoutings[index]]).then(() => {
-  //           this.currentStep = index;
-  //           this.lastStep = index;
-  //           this.cdr.detectChanges();
-  //         });
-  //       });
-  //     } else {
-  //       alert('Please complete all steps in between first.');
-  //       console.log('the current URL 11', currentUrl);
-  //       this.router.navigate([currentUrl]).then(() => {
-  //         // if (currindex !== undefined) {
-  //         //   this.currentStep = currindex;
-  //         //   console.log('Navigates happened with currindex', currindex);
-  //         // }
-  //       });
-  //     }
-  //     this.updatePointerEvents();
-  //   } else {
-  //     alert(this.stepCompletionMessage);
-  //   }
-  // }
-  // navigateToStep(index: number) {
-  //   console.log('number from trigger click', index);
-  //   const currentUrl = this.router.url;
-  //   console.log('the current URL', currentUrl);
-  //   const lastSegment = currentUrl.split('/').pop();
-  //   if (lastSegment && this.step_routing_dict[lastSegment]) {
-  //   }
-  //   //this.lastStep = this.currentStep;
-  //   if (this.stepCompletionStatus) {
-  //     if (
-  //       index >= 0 &&
-  //       index < this.stepperSteps.length &&
-  //       (index === this.step_routing_dict[lastSegment] + 1 ||
-  //         index < this.step_routing_dict[lastSegment])
-  //     ) {
-  //       this.router.navigate([this.stepRoutings[index]]);
-  //       // this.currentStep = index;
-  //       // this.lastStep = index;
-  //     } else {
-  //       alert('Please complete all steps in between first.');
-  //       console.log('the current URL', currentUrl);
-  //       const lastSegment = currentUrl.split('/').pop();
-
-  //       if (lastSegment && this.step_routing_dict[lastSegment]) {
-  //         this.currentStep = this.step_routing_dict[lastSegment];
-  //         console.log(
-  //           'the current URL 111',
-  //           this.step_routing_dict[lastSegment]
-  //         );
-  //       }
-  //     }
-  //     this.updatePointerEvents();
-  //   } else {
-  //     alert(this.stepCompletionMessage);
-  //     // window.location.reload();
-  //   }
-  // }
 
   navigateToStep(index: number) {
     const currentUrl = this.router.url;
@@ -321,10 +242,6 @@ export class StepperComponent implements OnInit {
       currindex = this.step_routing_dict[lastSegment];
     }
 
-    console.log('the current URL', currentUrl);
-    console.log('the stepcompletion status', this.stepCompletionStatus);
-    console.log('the curr index ', currindex);
-    console.log('the curr index want to go ', index);
     if (this.stepCompletionStatus) {
       if (
         index >= 0 &&
@@ -341,11 +258,10 @@ export class StepperComponent implements OnInit {
         });
       } else {
         alert('Please complete all steps in between first.');
-        console.log('the current URL 11', currentUrl);
+
         this.router.navigate([currentUrl]).then(() => {
           if (currindex !== undefined) {
             this.currentStep = currindex;
-            console.log('Navigates happened with currindex', currindex);
           }
         });
       }
@@ -355,7 +271,6 @@ export class StepperComponent implements OnInit {
       this.router.navigate([currentUrl]).then(() => {
         if (currindex !== undefined) {
           this.currentStep = currindex;
-          console.log('Navigates happened with currindex', currindex);
         }
       });
     }

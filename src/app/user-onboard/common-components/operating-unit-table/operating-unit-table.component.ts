@@ -171,11 +171,10 @@ export class OperatingUnitTableComponent implements OnInit {
     try {
       this.apiService.postApplicableLaws(payload).subscribe((response) => {
         if (response) {
-          console.log('the applicable laws', response.data);
           this.ApplicableLawsItems = response.data;
           //this.isLoading = false;
           const summary = summarizeLaws(response.data);
-          console.log('the summarized law', summary);
+
           this.LawSummary = summary;
         }
       });
@@ -304,7 +303,6 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openEntityDialog(entityName: string) {
-    console.log('the op unit dialog for entity', this.entity);
     this.dialog.open(AddNewOperatingUnitDialogComponent, {
       data: {
         entityTable: this,
@@ -348,33 +346,9 @@ export class OperatingUnitTableComponent implements OnInit {
   }
 
   openLawDialog(opID: number) {
-    // const payload = {
-    //   company: getCompanyId(),
-    //   entity: this.entity.id,
-    //   operatingUnit: [opID],
-    // };
     this.router.navigate(['/laws'], {
       state: { entity: this.entity.id, operatingUnit: [opID] },
     });
-    // const dialogRef = this.dialog.open(OpUnitLawsDialogComponent, {});
-    // dialogRef.afterClosed().subscribe((result) => {});
-    // const payload = {
-    //   company: getCompanyId(),
-    //   entity: this.entity.id,
-    //   operatingUnit: [opID],
-    // };
-    // console.log('the payload for laws', payload);
-    // try {
-    //   this.apiService.postApplicableLaws(payload).subscribe((response) => {
-    //     if (response) {
-    //       this.router.navigate(['/laws']);
-    //       // this.router.navigate(['/entity-details'], { state: { entity: '' } });
-    //       //this.snackbar.showSuccess('A new user is created');
-    //     }
-    //   });
-    // } catch (e) {
-    //   this.snackbar.showError('Some error occurred while fetching Laws');
-    // }
   }
 
   navigateBackToEntityDetailsPage() {

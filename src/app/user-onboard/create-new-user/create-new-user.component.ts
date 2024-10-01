@@ -120,9 +120,7 @@ export class CreateNewUserComponent implements OnInit {
     this.isDropdownOpen = false;
   }
 
-  onBusinessValueChange(value: any) {
-    console.log('the business selected', value);
-  }
+  onBusinessValueChange(value: any) {}
 
   openSuccessUserDialog() {
     const dialogRef = this.dialog.open(UserSuccessfulModalComponent);
@@ -161,9 +159,6 @@ export class CreateNewUserComponent implements OnInit {
 
       companyIds: [getCompanyId()],
     };
-
-    console.log('the create new user payload', payload);
-    //this.openSuccessUserDialog();
 
     try {
       this.apiService.postCreateUser(payload).subscribe((response) => {

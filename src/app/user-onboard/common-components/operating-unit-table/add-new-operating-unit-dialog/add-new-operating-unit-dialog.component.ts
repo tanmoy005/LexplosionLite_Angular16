@@ -170,7 +170,7 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     this.transformedDataOperatingUnits = transformOperatingUnitTypes(
       this.data.operatingUnitTypes
     );
-    console.log('the selected op', this.data.selectedOP);
+
     this.transformedStates = transformStates(this.data.states);
 
     this.entityList = transformOperatingUnitTypes(this.data.entity.entityList);
@@ -200,7 +200,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       countryforOP.includes(country.id)
     );
 
-    console.log('the matching countries', matchingCountries);
     this.countryList = matchingCountries.map(
       (country: { id: any; name: any }) => ({
         value: country.id,
@@ -213,7 +212,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
   ngOnInit(): void {
     this.fetchCountriesForOpunit();
     if (this.data.opUnitPosition !== 0) {
-      console.log('the opunit to edit', this.data.selectedOP);
       this.operatingUnitName = this.data.selectedOP.name;
       this.operatingUnitType = this.data.selectedOP.operatingUnitType.id;
       this.ownership = this.data.selectedOP.ownership.id;
@@ -299,7 +297,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
     }
     if (columnvalue === 'states') {
       this.state = value;
-      console.log('the state value', value);
     }
     if (columnvalue === 'activity') {
       this.selectedActivitiesList = value;
@@ -309,7 +306,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.selectedEntities = value;
     }
     if (columnvalue === 'country') {
-      console.log('the country value', value);
       this.selectedCountryID = value;
       if (value !== 1) {
         this.transformedStates = [];

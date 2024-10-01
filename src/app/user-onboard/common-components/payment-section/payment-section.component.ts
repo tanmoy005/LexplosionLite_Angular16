@@ -1,3 +1,4 @@
+import { SnackbarService } from './../../../shared/snackbar.service';
 import { Component, HostListener } from '@angular/core';
 import { environment } from 'dotenv';
 import { EncryptStorage } from 'encrypt-storage';
@@ -36,7 +37,11 @@ function getCompanyId() {
   styleUrls: ['./payment-section.component.scss'],
 })
 export class PaymentSectionComponent {
-  constructor(private apiService: ApiService, private paymentService: PaymentService) {
+  constructor(
+    private apiService: ApiService,
+    private paymentService: PaymentService,
+    private snackbar: SnackbarService
+  ) {
     this.screenWidth = window.innerWidth;
   }
   orderHeaders: [] = [];
@@ -45,11 +50,11 @@ export class PaymentSectionComponent {
   paymentDetailsColClass: string;
   subsriptionPlanList: SubscriptionPlan[] = [
     {
-      label: 'Monthly'
+      label: 'Monthly',
     },
     {
-      label: 'Yearly'
-    }
+      label: 'Yearly',
+    },
   ];
   netPayableAmount: string;
   total: PaymountAmount;
@@ -63,8 +68,6 @@ export class PaymentSectionComponent {
   }
   selectedOption: string | null = null;
   screenWidth: number;
-
-
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -89,7 +92,6 @@ export class PaymentSectionComponent {
   // }
 
   getCardSize(defaultHeight: number | string, defaultWidth: string | number) {
-
     if (this.screenWidth <= 1280) {
       return { height: '100%', width: '100%' };
     } else {
@@ -98,30 +100,26 @@ export class PaymentSectionComponent {
   }
   updateSubscriptionPeriod(subscriptionPlanLabel: string) {
     if (this.selectedOption === subscriptionPlanLabel) {
-      // Uncheck if already selected (optional, if you want to allow deselection)
       this.selectedOption = null;
     } else {
-      // Set the new selected option
       this.selectedOption = subscriptionPlanLabel;
     }
   }
   setOrderDetails() {
-
     const payload = {
-      company_id: this.companyId
+      company_id: this.companyId,
     };
-    console.log('payload1', payload);
 
     try {
       this.apiService.getOrderDetails(payload).subscribe((response) => {
         if (response) {
-          //this.snackbar.showSuccess('OTP has been sent to your email');
-          console.log('order list', response);
           const { orderHeaders, orderData, orderSummary } = response;
           const { netPayableAmount, total, subTotal, tax } = orderSummary;
           this.paymentDetailsColumns = orderHeaders;
           this.orderData = orderData;
-          this.paymentDetailsColClass = `col-${String(12 / orderHeaders.length)}`;
+          this.paymentDetailsColClass = `col-${String(
+            12 / orderHeaders.length
+          )}`;
           this.netPayableAmount = netPayableAmount;
           this.total = total;
           this.subTotal = subTotal;
@@ -130,20 +128,15 @@ export class PaymentSectionComponent {
         }
       });
     } catch (e) {
-      console.log('error fetching feature list');
-      // this.snackbar.showError(
-      //   'Some error occurred while creating your admin profile.'
-      // );
+      this.snackbar.showError('Some error occurred, try again.');
     }
-    console.log('taxes', this.taxes);
   }
   storePaymentInitiationData(amount: string) {
     const paymentInitiationData = {
       amount: amount,
       companyId: this.companyId,
-      promoCode: this.promoCode
-    }
+      promoCode: this.promoCode,
+    };
     this.paymentService.setData(paymentInitiationData);
   }
 }
-

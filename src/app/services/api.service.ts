@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { SnackbarService } from '../shared/snackbar.service';
 import { EncryptStorage } from 'encrypt-storage';
@@ -36,7 +40,7 @@ export class ApiService {
     saveLaws: 'entity-details/entity-result/saveLawsKomriskLite',
     createWorkSpace: 'api/workspaces/createNewWorkSpace',
     getOrderDetails: 'komrisk/getOrderDetails',
-    initiatePayment: 'initiate-payment'
+    initiatePayment: 'initiate-payment',
   };
 
   private endpointsWithoutAuthToken = [
@@ -46,7 +50,7 @@ export class ApiService {
     this.endpoints.newUserVerification,
   ];
 
-  constructor(private http: HttpClient, private snackBar: SnackbarService) { }
+  constructor(private http: HttpClient, private snackBar: SnackbarService) {}
 
   getAuthToken() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
@@ -71,22 +75,23 @@ export class ApiService {
 
     if (companyId) {
       encryptStorage.setItem('company-id', companyId);
-      console.log(`Company ID ${companyId} stored successfully.`);
     } else {
-      console.error('No company ID found to store.');
     }
   }
 
   private setHeaderJson(apiUrl: string) {
     // var headerJSON;
     let headerJSON = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
     if (!this.endpointsWithoutAuthToken.includes(apiUrl)) {
       // headerJSON = { 'Content-Type': 'application/json' };
-      headerJSON = headerJSON.set('Authorization', `Bearer ${this.getAuthToken()}`);
+      headerJSON = headerJSON.set(
+        'Authorization',
+        `Bearer ${this.getAuthToken()}`
+      );
     }
-    return headerJSON
+    return headerJSON;
   }
 
   private postData(apiUrl: string, data: any): Observable<any> {
@@ -189,8 +194,13 @@ export class ApiService {
   getOrderDetails(data: any): Observable<any> {
     return this.postData(this.endpoints.getOrderDetails, data);
   }
-  initiatePayment(amount: string, companyId: string, promoCode: string | null): Observable<any> {
-    return this.getData(`${this.endpoints.initiatePayment}?amount=${amount}&company_id=${companyId}&promo_code=${promoCode}`);
+  initiatePayment(
+    amount: string,
+    companyId: string,
+    promoCode: string | null
+  ): Observable<any> {
+    return this.getData(
+      `${this.endpoints.initiatePayment}?amount=${amount}&company_id=${companyId}&promo_code=${promoCode}`
+    );
   }
-
 }

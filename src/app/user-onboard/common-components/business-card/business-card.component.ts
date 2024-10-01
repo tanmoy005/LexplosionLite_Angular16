@@ -51,41 +51,15 @@ export class BusinessCardComponent implements OnInit {
           (country: any) => country.company_country.CountryId
         );
         this.countryForCompanyIdList = countryIds;
-        console.log('the country for companies id', countryIds);
+
         const matchingCountries = this.apiCountryList?.filter((country: any) =>
           countryIds.includes(country.id)
         );
-        // this.countryForCompanyIdList = matchingCountries;
-        console.log('the matching country list', matchingCountries);
       }
-      console.log('the country for company', response['countries']);
+
       return response['countries'];
     });
   }
-  // fetchCountriesForCompanies(payload: any) {
-  //   this.apiService.postCountriesforCompanies(payload).subscribe((response) => {
-  //     if (response) {
-  //       this.countryForCompany = response['countries'];
-  //       const countryIds = response['countries']?.map(
-  //         (country: any) => country.company_country.CountryId
-  //       );
-  //       this.countryForCompanyIdList = countryIds;
-  //       console.log('the country for companies id', countryIds);
-
-  //       // Ensure apiCountryList is defined before filtering
-  //       if (this.apiCountryList && this.apiCountryList.length > 0) {
-  //         const matchingCountries = this.apiCountryList.filter((country: any) =>
-  //           countryIds.includes(country.id)
-  //         );
-  //         console.log('the matching country list', matchingCountries);
-  //       } else {
-  //         console.log('apiCountryList is not available yet.');
-  //       }
-  //     }
-  //     console.log('the country for company', response['countries']);
-  //     return response['countries'];
-  //   });
-  // }
 
   ngOnInit(): void {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
@@ -102,7 +76,7 @@ export class BusinessCardComponent implements OnInit {
     this.companyHqadd = userCompanyAdd;
 
     const savedCountries = this.encryptStorage.getItem('countries');
-    console.log('saved countries', savedCountries);
+
     this.apiCountryList = savedCountries;
     this.transformedCountries = savedCountries?.map(
       (country: { id: any; name: any }) => ({
@@ -126,7 +100,6 @@ export class BusinessCardComponent implements OnInit {
   selectedCountryList: any = [];
 
   onCountryValueChange(value: any) {
-    console.log('the country selected', value);
     this.selectedCountryList = value;
     this.selectedCountryChange.emit(value);
   }
