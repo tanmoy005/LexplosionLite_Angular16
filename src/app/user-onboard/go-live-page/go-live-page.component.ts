@@ -9,6 +9,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from 'src/app/shared/snackbar.service';
 import { concatMap } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 const WORKSAPCE_DATA: GoliveInterFaces.WorkSpaceDetails[] = [];
 export interface WorkspaceDetails {
@@ -224,8 +226,6 @@ export class GoLivePageComponent {
     this.paymentMode = data?.['mode'];
   }
 
-  // workSpaceColumns: string[] = ['#', 'Name', 'Admin'];
-  // dataSource: GoliveInterFaces.WorkSpaceDetails[] = [];
   screenWidth: number;
   workSpaceColumns = ['serialNumber', 'workSpaceName', 'adminName'];
   dataSource: WorkspaceDetails[] = [];
@@ -247,6 +247,7 @@ export class GoLivePageComponent {
   }
   ApplicableLawsItems: ApplicableLaws[] = [];
   LawSummary: any = [];
+  isLoading: boolean = false;
 
   // fetchLawsList() {
   //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
@@ -289,6 +290,7 @@ export class GoLivePageComponent {
   // }
   fetchLawsList() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    this.isLoading = true;
     const payload = {
       company: getCompanyId(),
     };
@@ -306,17 +308,25 @@ export class GoLivePageComponent {
             processLaws(item, getCompanyId())
           );
 
-          // Prepare an array of API call observables
+          // const apiCalls = processedSummaries.map((summaryItem) =>
+          //   this.apiService.postSaveLawsList(summaryItem)
+          // );
           const apiCalls = processedSummaries.map((summaryItem) =>
-            this.apiService.postSaveLawsList(summaryItem)
+            this.apiService.postSaveLawsList(summaryItem).pipe(
+              catchError((error) => {
+                // Log error and stop further API calls
+                this.isLoading = false;
+                this.snackbar.showError('An error occurred while saving laws');
+                console.error('Error in postSaveLawsList:', error);
+                return throwError(() => error);
+              })
+            )
           );
 
-          // Use forkJoin to wait for all API calls to complete
           forkJoin(apiCalls).subscribe(
             (apiResponses) => {
               console.log('All API responses for summary items:', apiResponses);
 
-              // After all API calls are done, make the postCreateAdminCompany call
               const adminPayload = {
                 domainName: 'lexplosionlogictic22.com',
                 companyName: getCompanyName(),
@@ -328,27 +338,27 @@ export class GoLivePageComponent {
 
               this.apiService.postCreateWorkSpace(adminPayload).subscribe(
                 (adminResponse) => {
-                  // console.log(
-                  //   'Admin company creation response:',
-                  //   adminResponse
-                  // );
+                  this.isLoading = false;
                   if (adminResponse.success === true) {
                     this.snackbar.showSuccess('Workspace Created Successfully');
                     this.handleSuccessfulWorkspaceCreation();
                   }
                 },
                 (error) => {
+                  this.isLoading = false;
                   console.error('Error creating admin company:', error);
                 }
               );
             },
             (error) => {
+              this.isLoading = false;
               console.error('Error in postSaveLawsList API calls:', error);
             }
           );
         }
       });
     } catch (e) {
+      this.isLoading = false;
       this.snackbar.showError('Some error occurred while fetching Laws');
     }
   }

@@ -63,11 +63,8 @@ export class UserAuthenticationService {
         const encryptStorage = new EncryptStorage(environment.localStorageKey);
         encryptStorage.setItem('login-details', response);
 
-        // Provide a callback function
         this.opUnitFetchObj.fetchEntityOPUnitDefinitions(() => {
           this.router.navigate(['/entity-details'], { state: { entity: '' } });
-          // Optionally reload the page
-          // window.location.reload();
         });
       },
       error: () => {
