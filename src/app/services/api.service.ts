@@ -51,7 +51,7 @@ export class ApiService {
     this.endpoints.newUserVerification,
   ];
 
-  constructor(private http: HttpClient, private snackBar: SnackbarService) {}
+  constructor(private http: HttpClient, private snackBar: SnackbarService) { }
 
   getAuthToken() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
@@ -94,28 +94,23 @@ export class ApiService {
     }
     return headerJSON;
   }
-
+  private handleErrors<T>() {
+    return catchError((error: HttpErrorResponse) => {
+      this.snackBar.showError(error?.error?.error); // Assuming error?.error?.error has the actual error message
+      return throwError(() => new Error(error?.error?.error)); // Forward the error
+    });
+  }
   private postData(apiUrl: string, data: any): Observable<any> {
     const headerJSON = this.setHeaderJson(apiUrl);
     return this.http
       .post<any>(`${this.baseUrl}/${apiUrl}`, data, { headers: headerJSON })
-      .pipe(
-        catchError(({ error }: HttpErrorResponse) => {
-          this.snackBar.showError(error?.error);
-          return throwError(() => new Error(error?.error));
-        })
-      );
+      .pipe(this.handleErrors());
   }
   private getData(apiUrl: string): Observable<any> {
     const headerJSON = this.setHeaderJson(apiUrl);
     return this.http
       .get<any>(`${this.baseUrl}/${apiUrl}`, { headers: headerJSON })
-      .pipe(
-        catchError(({ error }: HttpErrorResponse) => {
-          this.snackBar.showError(error?.error);
-          return throwError(() => new Error(error?.error));
-        })
-      );
+      .pipe(this.handleErrors());
   }
 
   postLoginData(data: any): Observable<any> {
