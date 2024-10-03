@@ -25,7 +25,7 @@ export class TokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = this.tokenService.getToken();
-
+    console.log('the interceptor is called');
     // Attach the access token to the request
     if (token) {
       request = this.addTokenToRequest(request, token);
@@ -57,7 +57,8 @@ export class TokenInterceptor implements HttpInterceptor {
       return this.tokenService.refreshToken().pipe(
         switchMap((token: any) => {
           this.isRefreshing = false;
-          this.tokenService.setToken(token); // Store the new token
+          this.tokenService.setToken(token);
+
           this.refreshTokenSubject.next(token);
           return next.handle(this.addTokenToRequest(request, token));
         }),

@@ -41,6 +41,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { FooterComponent } from './layouts/full/footer/footer.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/tokenInterceptor';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import { FooterComponent } from './layouts/full/footer/footer.component';
   providers: [
     DialogService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     // {
     //   provide: LocationStrategy,
     //   useClass: PathLocationStrategy,

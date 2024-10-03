@@ -38,6 +38,7 @@ export class RegHeaderComponent {
       encryptStorage.removeItem('industryActivities'),
       encryptStorage.removeItem('operatingUnitTypes'),
       encryptStorage.removeItem('companyLaws'),
+      encryptStorage.removeItem('token'),
     ])
       .then(() => {
         this.router.navigate(['/home']);
