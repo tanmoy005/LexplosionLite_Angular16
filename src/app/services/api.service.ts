@@ -41,6 +41,7 @@ export class ApiService {
     createWorkSpace: 'api/workspaces/createNewWorkSpace',
     getOrderDetails: 'komrisk/getOrderDetails',
     initiatePayment: 'initiate-payment',
+    getRefreshToken: 'refreshToken',
   };
 
   private endpointsWithoutAuthToken = [
@@ -202,5 +203,9 @@ export class ApiService {
     return this.getData(
       `${this.endpoints.initiatePayment}?amount=${amount}&company_id=${companyId}&promo_code=${promoCode}`
     );
+  }
+
+  postGetRefreshToken(data: any): Observable<any> {
+    return this.postData(this.endpoints.getRefreshToken, data);
   }
 }
