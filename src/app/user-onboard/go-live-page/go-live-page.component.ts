@@ -249,7 +249,7 @@ export class GoLivePageComponent {
           const apiCalls = processedSummaries.map((summaryItem) =>
             this.apiService.postSaveLawsList(summaryItem).pipe(
               catchError((error) => {
-                this.isLoading = false;
+                //this.isLoading = false;
                 this.snackbar.showError('An error occurred while saving laws');
 
                 return throwError(() => error);
@@ -277,19 +277,21 @@ export class GoLivePageComponent {
                   }
                 },
                 (error) => {
-                  this.isLoading = false;
+                  //this.isLoading = false;
                 }
               );
             },
             (error) => {
-              this.isLoading = false;
+              //this.isLoading = false;
             }
           );
         }
       });
     } catch (e) {
-      this.isLoading = false;
+      //this.isLoading = false;
       this.snackbar.showError('Some error occurred while fetching Laws');
+    } finally {
+      this.isLoading = false;
     }
   }
 
