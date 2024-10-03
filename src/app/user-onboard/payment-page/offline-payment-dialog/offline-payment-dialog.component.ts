@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class OfflinePaymentDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<OfflinePaymentDialogComponent>,
-    private router: Router
+    private router: Router,
   ) {}
   closeSuccessDialog() {
     this.dialogRef.close();

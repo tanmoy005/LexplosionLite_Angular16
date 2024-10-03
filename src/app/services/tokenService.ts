@@ -5,10 +5,6 @@ import { tap } from 'rxjs/operators';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 
-// interface TokenResponse {
-//   newToken: string;
-// }
-
 interface TokenResponse {
   tokenData: {
     access_token: string;
@@ -22,15 +18,15 @@ export class TokenService {
   private refreshTokenUrl =
     'https://enginebackendqa.komrisk.com/v1/refreshToken';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private encryptStorage: EncryptStorage = new EncryptStorage(
     environment.localStorageKey
   );
   getToken(): string | null {
-    const token = this.encryptStorage.getItem('token');
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    const token = encryptStorage.getItem('token')
     return token;
-    // return this.token;
   }
 
   setToken(token: string): void {

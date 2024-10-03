@@ -10,6 +10,7 @@ import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, switchMap, filter, take } from 'rxjs/operators';
 import { TokenService } from './tokenService';
 import { Injectable } from '@angular/core';
+import { SnackbarService } from '../shared/snackbar.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -18,7 +19,8 @@ export class TokenInterceptor implements HttpInterceptor {
     null
   );
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService, private snackBar: SnackbarService) {}
+
 
   intercept(
     request: HttpRequest<any>,
@@ -36,7 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           return this.handle401Error(request, next);
         }
-        return throwError(() => error);
+        return throwError(() => new Error(error?.error?.error));
       })
     );
   }
@@ -66,11 +68,11 @@ export class TokenInterceptor implements HttpInterceptor {
           this.refreshTokenSubject.next(msg);
           return next.handle(this.addTokenToRequest(request, msg));
         }),
-        catchError((err) => {
+        catchError((error) => {
           this.isRefreshing = false;
           //this.tokenService.logout();
 
-          return throwError(() => err);
+          return throwError(() => new Error(error?.error?.error));
         })
       );
     } else {

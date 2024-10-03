@@ -26,7 +26,7 @@ export class LawsTableComponent {
     this.dataSource = this.transformData(this.data);
   }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   openDialog() {
     this.dialog.open(LawsReadMoreDialogComponent);
@@ -59,5 +59,8 @@ export class LawsTableComponent {
     } else {
       return './assets/images/icons/LawAll.svg';
     }
+  }
+  handleClickOnReadwith(): void {
+    this.openDialog();
   }
 }
