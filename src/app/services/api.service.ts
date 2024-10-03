@@ -51,11 +51,16 @@ export class ApiService {
     this.endpoints.newUserVerification,
   ];
 
-  constructor(private http: HttpClient, private snackBar: SnackbarService) { }
+  constructor(private http: HttpClient, private snackBar: SnackbarService) {}
 
+  // getAuthToken() {
+  //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //   const { token } = encryptStorage.getItem('login-details');
+  //   return token;
+  // }
   getAuthToken() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
-    const { token } = encryptStorage.getItem('login-details');
+    const token = encryptStorage.getItem('token');
     return token;
   }
 

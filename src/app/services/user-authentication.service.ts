@@ -41,6 +41,12 @@ export class UserAuthenticationService {
     return this.apiService.postCreateAdminCompany(data);
   }
 
+  handleSaveAuthDetails(response: any) {
+    const encryptStorage = new EncryptStorage(environment.localStorageKey);
+    encryptStorage.setItem('login-details', response);
+    encryptStorage.setItem('token', response.token);
+  }
+
   // handleUserLogin(payload: any) {
   //   try {
   //     this.userLogin(payload).subscribe((response) => {
@@ -60,8 +66,10 @@ export class UserAuthenticationService {
     this.userLogin(payload).subscribe({
       next: (response) => {
         this.snackbar.showSuccess('Login Successful');
-        const encryptStorage = new EncryptStorage(environment.localStorageKey);
-        encryptStorage.setItem('login-details', response);
+        // const encryptStorage = new EncryptStorage(environment.localStorageKey);
+        // encryptStorage.setItem('login-details', response);
+        // encryptStorage.setItem('token', response.token);
+        this.handleSaveAuthDetails(response);
 
         this.opUnitFetchObj.fetchEntityOPUnitDefinitions(() => {
           this.router.navigate(['/entity-details'], { state: { entity: '' } });
@@ -95,8 +103,10 @@ export class UserAuthenticationService {
     this.userRegistration(payload).subscribe({
       next: (response) => {
         this.snackbar.showSuccess('User Creation Successful!');
-        const encryptStorage = new EncryptStorage(environment.localStorageKey);
-        encryptStorage.setItem('login-details', response);
+        // const encryptStorage = new EncryptStorage(environment.localStorageKey);
+        // encryptStorage.setItem('login-details', response);
+        // encryptStorage.setItem('token', response.token);
+        this.handleSaveAuthDetails(response);
 
         // Provide a callback function
         this.opUnitFetchObj.fetchEntityOPUnitDefinitions(() => {
