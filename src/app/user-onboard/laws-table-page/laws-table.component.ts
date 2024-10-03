@@ -38,41 +38,51 @@ export class LawsTablePageComponent implements OnInit {
   receivedData: any;
 
   ngOnInit(): void {
-    const payload = {
-      company: getCompanyId(),
-    };
-    if (this.receivedData) {
-      Object.assign(payload, this.receivedData);
-    }
-
-    this.isLoading = true;
-
-    this.apiService.postApplicableLaws(payload).subscribe(
-      (response) => {
-        if (response) {
-          this.ApplicableLawsItems = response.data;
-        }
-        this.isLoading = false;
-      },
-      (error) => {
-        this.isLoading = false;
-        if (error.status === 500) {
-          this.snackbar.showError(
-            'Internal Server Error (500): Failed to fetch applicable laws'
-          );
-        } else {
-          this.snackbar.showError(
-            'internal server error. please try again after a while.'
-          );
-        }
-      }
-    );
+    this.setApplicableLaws();
   }
 
   ApplicableLawsItems: ApplicableLaws[] = applicableLawsItems;
 
   navigateToPaymentsPage(event: any) {
     this.router.navigate(['/payment']);
+  }
+
+  private setApplicableLaws() {
+    try {
+      const payload = {
+        company: getCompanyId(),
+      };
+      if (this.receivedData) {
+        Object.assign(payload, this.receivedData);
+      }
+
+      this.isLoading = true;
+
+      this.apiService.postApplicableLaws(payload).subscribe(
+        (response) => {
+          if (response) {
+            this.ApplicableLawsItems = response.data;
+          }
+          this.isLoading = false;
+        },
+        (error) => {
+          this.isLoading = false;
+          if (error.status === 500) {
+            this.snackbar.showError(
+              'Internal Server Error (500): Failed to fetch applicable laws'
+            );
+          } else {
+            this.snackbar.showError(
+              'internal server error. please try again after a while.'
+            );
+          }
+        }
+      );
+    } catch (error) {
+
+    } finally {
+      this.isLoading = true;
+    }
   }
 
   navigateToFeaturesPage(event: any) {
