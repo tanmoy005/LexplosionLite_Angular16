@@ -44,6 +44,7 @@ export class UserAuthenticationService {
   handleSaveAuthDetails(response: any) {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
     encryptStorage.setItem('login-details', response);
+    console.log('token from login', response.token);
     encryptStorage.setItem('token', response.token);
   }
 

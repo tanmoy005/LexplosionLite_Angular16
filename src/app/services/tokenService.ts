@@ -34,11 +34,13 @@ export class TokenService {
   }
 
   setToken(token: string): void {
+    console.log('set token called');
     this.encryptStorage.setItem('token', token);
   }
 
   refreshToken(): Observable<TokenResponse> {
     // Call the API to get a new token
+    console.log('refresh token api called');
     return this.http
       .post<TokenResponse>(`${this.refreshTokenUrl}`, {
         tokenData: {
@@ -46,8 +48,10 @@ export class TokenService {
         },
       })
       .pipe(
-        tap((response: TokenResponse) => {
-          this.setToken(response.tokenData.access_token);
+        tap((response: any) => {
+          this.setToken(response.msg);
+
+          console.log('token from refresh token', response.msg);
         })
       );
   }
@@ -55,7 +59,7 @@ export class TokenService {
   logout(): void {
     //this.token = null;
     //const encryptStorage = new EncryptStorage(environment.localStorageKey);
-    this.encryptStorage.removeItem('token');
+    //this.encryptStorage.removeItem('token');
     //localStorage.removeItem('refreshToken');
   }
 }

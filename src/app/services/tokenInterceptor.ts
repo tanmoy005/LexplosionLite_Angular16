@@ -36,7 +36,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           return this.handle401Error(request, next);
         }
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   }
@@ -45,6 +45,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return request.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`,
+        //Authorization: `Bearer abcd`,
       },
     });
   }
@@ -55,18 +56,21 @@ export class TokenInterceptor implements HttpInterceptor {
       this.refreshTokenSubject.next(null);
 
       return this.tokenService.refreshToken().pipe(
-        switchMap((token: any) => {
+        switchMap((response: any) => {
+          const { msg } = response;
           this.isRefreshing = false;
-          this.tokenService.setToken(token);
+          console.log('the token from refresh api', msg);
 
-          this.refreshTokenSubject.next(token);
-          return next.handle(this.addTokenToRequest(request, token));
+          this.tokenService.setToken(msg);
+
+          this.refreshTokenSubject.next(msg);
+          return next.handle(this.addTokenToRequest(request, msg));
         }),
         catchError((err) => {
           this.isRefreshing = false;
-          this.tokenService.logout();
+          //this.tokenService.logout();
 
-          return throwError(err);
+          return throwError(() => err);
         })
       );
     } else {
