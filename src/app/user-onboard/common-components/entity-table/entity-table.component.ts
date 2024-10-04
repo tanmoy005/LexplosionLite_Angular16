@@ -214,6 +214,8 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     };
     try {
       this.apiService.postApplicableLaws(payload).subscribe((response) => {
+        console.log('response23423', response);
+        
         if (response) {
           this.ApplicableLawsItems = response.data;
           //this.isLoading = false;
@@ -224,7 +226,9 @@ export class EntityTableComponent implements OnInit, OnDestroy {
         }
       });
     } catch (e) {
-      this.snackbar.showError('Some error occurred while fetching Laws');
+      console.log('error111', e);
+      
+      // this.snackbar.showError('Some error occurred while fetching Laws');
       // this.isLoading = false;
     }
   }

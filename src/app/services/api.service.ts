@@ -102,7 +102,9 @@ export class ApiService {
   }
   private handleErrors<T>() {
     return catchError((error: HttpErrorResponse) => {
-      this.snackBar.showError(error?.error?.error); // Assuming error?.error?.error has the actual error message
+      console.log('error234234', error);
+      
+      // this.snackBar.showError(error?.error?.error); // Assuming error?.error?.error has the actual error message
       return throwError(() => new Error(error?.error?.error)); // Forward the error
     });
   }

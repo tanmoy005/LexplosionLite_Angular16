@@ -38,7 +38,11 @@ export class TokenInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           return this.handle401Error(request, next);
         }
-        return throwError(() => new Error(error?.error?.error));
+        console.log('error12', error?.error?.error);
+        this.snackBar.showError(
+          error?.error?.error
+        );
+        return throwError(() => error?.error?.error);
       })
     );
   }
