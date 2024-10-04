@@ -19,7 +19,11 @@
   >
     {{ cardHeaderTitle }}
   </div>
-  <button *ngIf="isCrossRequired" (click)="handleCloseDialog()">
+  <button
+    *ngIf="isCrossRequired"
+    (click)="handleCloseDialog()"
+    class="invisible-border-button"
+  >
     <mat-icon>close</mat-icon>
   </button>
 </div>

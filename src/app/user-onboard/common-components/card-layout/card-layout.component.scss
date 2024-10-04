@@ -55,3 +55,11 @@
   overflow-y: auto;
   height: 212px;
 }
+
+.invisible-border-button {
+  border: none;
+  background: none;
+  padding: 2%;
+  margin: 0;
+  cursor: pointer;
+}
