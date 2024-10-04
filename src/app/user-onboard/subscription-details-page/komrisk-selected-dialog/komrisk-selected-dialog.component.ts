@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./komrisk-selected-dialog.component.scss'],
 })
 export class KomriskSelectedDialogComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public dialogRef: MatDialogRef<KomriskSelectedDialogComponent>
+  ) {}
 
   navigateToLandingPage(event: any) {
     this.router.navigate(['/entity-details']);

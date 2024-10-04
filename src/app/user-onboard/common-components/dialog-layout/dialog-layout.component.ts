@@ -13,6 +13,7 @@
 // }
 
 import { Component, Input } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-layout',
@@ -26,4 +27,5 @@ export class DialogLayoutComponent {
   // Set default value for shade to 'dark'
   @Input() shade: string = 'dark';
   @Input() isCrossPresent: boolean = false;
+  @Input() currentDialog: MatDialogRef<any>;
 }
