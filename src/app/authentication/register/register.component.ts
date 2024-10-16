@@ -93,30 +93,79 @@ export class AppSideRegisterComponent implements OnInit {
 
   fieldPayload = ['countries'];
   isLoading: boolean = false;
-  fetchEntityOPUnitDefinitions() {
-    this.apiService
-      .getFieldDefinition(this.fieldPayload)
-      .subscribe((response) => {
-        const encryptStorage = new EncryptStorage(environment.localStorageKey);
-        encryptStorage.setItem('countries', response.data.countries);
-      });
-    const encryptStorage = new EncryptStorage(environment.localStorageKey);
-    return encryptStorage.getItem('countries');
+  // fetchEntityOPUnitDefinitions() {
+  //   this.apiService
+  //     .getFieldDefinition(this.fieldPayload)
+  //     .subscribe((response) => {
+  //       const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //       encryptStorage.setItem('countries', response.data.countries);
+
+  //       //return response.data.countries;
+  //     });
+  //   //const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //   //return encryptStorage.getItem('countries');
+  // }
+  fetchEntityOPUnitDefinitions(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getFieldDefinition(this.fieldPayload).subscribe(
+        (response) => {
+          const encryptStorage = new EncryptStorage(
+            environment.localStorageKey
+          );
+          encryptStorage.setItem('countries', response.data.countries);
+          resolve(response.data.countries); // Resolving the promise with countries
+        },
+        (error) => {
+          reject(error); // Handle errors and reject the promise
+        }
+      );
+    });
   }
 
-  ngOnInit(): void {
-    // const encryptStorage = new EncryptStorage(environment.localStorageKey);
-    // this.countryList = this.fetchEntityOPUnitDefinitions();
-    this.newCountryNameList = this.fetchEntityOPUnitDefinitions();
-    this.transformedCountries = this.newCountryNameList.map(
+  // ngOnInit(): void {
+  //   // const encryptStorage = new EncryptStorage(environment.localStorageKey);
+  //   // this.countryList = this.fetchEntityOPUnitDefinitions();
+  //   this.newCountryNameList = this.fetchEntityOPUnitDefinitions();
+  //   const allCountries = this.fetchEntityOPUnitDefinitions();
+  //   this.transformedCountries = allCountries.map(
+  //     (country: { id: any; name: any }) => ({
+  //       value: country.id,
+  //       label: country.name,
+  //       icon: undefined,
+  //     })
+  //   );
+  //   this.selectedCountry = this.countryList[0]; // Default selection
+  //   this.countryCodeFormControl.setValue(this.selectedCountry);
+  // }
+  async ngOnInit(): Promise<void> {
+    this.newCountryNameList = await this.fetchEntityOPUnitDefinitions();
+
+    const allCountries = await this.fetchEntityOPUnitDefinitions();
+
+    this.transformedCountries = allCountries.map(
       (country: { id: any; name: any }) => ({
         value: country.id,
         label: country.name,
         icon: undefined,
       })
     );
-    this.selectedCountry = this.countryList[0]; // Default selection
-    this.countryCodeFormControl.setValue(this.selectedCountry);
+
+    this.selectedCountry = this.newCountryNameList[0];
+    const countryCode = this.countryList[0];
+    console.log('the country in on in it', countryCode);
+    //this.countryCodeFormControl.setValue(this.selectedCountry);
+    //this.countryCodeFormControl.setValue(countryCode);
+    //countryList: CountryData[] = CountryListForPhoneNumberSection;
+    //this.countryList = CountryListForPhoneNumberSection;
+    const preSelectedCountry = {
+      value: 2,
+      label: '+65',
+      icon: './assets/images/singapore_flag.png',
+      code: '',
+    };
+
+    // Set the pre-selected value to the FormControl
+    this.countryCodeFormControl.setValue(preSelectedCountry);
   }
 
   newCountryNameList: any;
@@ -148,7 +197,7 @@ export class AppSideRegisterComponent implements OnInit {
   selectedCountry: CountryData | null = null;
 
   phoneNumberFormControl = new FormControl('', [
-    Validators.required,
+    //Validators.required,
     phoneNumberValidator,
   ]);
 
@@ -190,6 +239,7 @@ export class AppSideRegisterComponent implements OnInit {
   onCountryChange(event: any) {
     this.selectedCountry = event.value;
     this.countryCode = this.selectedCountry?.value;
+    console.log('the selected country code', this.selectedCountry);
     this.isDropdownOpen = false;
   }
   onDropdownStateChange(isOpen: boolean): void {
@@ -230,7 +280,7 @@ export class AppSideRegisterComponent implements OnInit {
       this.confirmPassword?.trim() !== '' &&
       this.confirmPassword === this.password &&
       this.countryCode !== null &&
-      this.phoneNumber?.trim() !== '' &&
+      //this.phoneNumber?.trim() !== '' &&
       this.phoneNumberFormControl.valid &&
       this.agreeToTerms
     ) {

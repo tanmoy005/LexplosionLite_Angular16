@@ -169,7 +169,7 @@ export class CreateNewUserComponent implements OnInit {
         }
       });
     } catch (e) {
-      this.snackbar.showError('Some error occurred while creating user');
+      //this.snackbar.showError('Some error occurred while creating user');
     }
 
     //const payload = { otp: this.otp, email: this.stateData.email };

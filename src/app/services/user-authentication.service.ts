@@ -115,7 +115,7 @@ export class UserAuthenticationService {
         });
       },
       error: () => {
-        this.snackbar.showError('Some error occurred while creating the user!');
+        //this.snackbar.showError('Some error occurred while creating the user!');
       },
     });
   }

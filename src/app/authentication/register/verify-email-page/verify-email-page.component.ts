@@ -74,9 +74,9 @@ export class VerifyEmailPageComponent {
         }
       });
     } catch (e) {
-      this.snackbar.showError(
-        'Some error occurred while creating your admin profile.'
-      );
+      // this.snackbar.showError(
+      //   'Some error occurred while creating your admin profile.'
+      // );
     }
 
     // this.router.navigate(['/entity-details'], { state: { entity: '' } });
@@ -105,9 +105,9 @@ export class VerifyEmailPageComponent {
         }
       });
     } catch (e) {
-      this.snackbar.showError(
-        'Some error occurred while creating your admin profile.'
-      );
+      // this.snackbar.showError(
+      //   'Some error occurred while creating your admin profile.'
+      // );
     }
   }
 }

@@ -1,29 +1,3 @@
-<!-- <div class="reg-header">
-  <img
-    src="../../../../assets/images/logos/Komrisk Lite logoKomriskLite.svg"
-    class="logo"
-    (click)="handleClickOnLogo()"
-    alt="logo"
-  />
-  <p class="text_12_400_gray_1000_responsive">A Lexplosion Product</p>
-</div> -->
-
-<!-- <div class="reg-header">
-  <img
-    src="../../../../assets/images/logos/Komrisk Lite logoKomriskLite.svg"
-    class="logo"
-    (click)="handleClickOnLogo()"
-    alt="logo"
-  />
-  <p class="text_12_400_gray_1000_responsive lexplosion-product">
-    A
-    <img src="../../../../assets/images/logos/image 10LexplosionProduct.svg" />
-    Product
-  </p>
-  <img src="../../../../assets/images/icons/VectorProfileIcon.svg" />
-  <mat-icon>keyboard_arrow_down</mat-icon>
-</div> -->
-
 <div class="reg-header">
   <img
     src="../../../../assets/images/logos/Komrisk Lite Logo_2024.svg"
@@ -41,7 +15,10 @@
       />
       Product
     </p>
-    <div class="col-md-12 col-lg-12 col-sm-12 profile-section-items">
+    <div
+      class="col-md-12 col-lg-12 col-sm-12 profile-section-items"
+      *ngIf="isProfileActive"
+    >
       <div class="profile-icon-class">
         <button
           class="invisible-border-button"
@@ -49,11 +26,6 @@
           #menuTrigger
           [disabled]="!isProfileActive"
         >
-          <!-- <img
-            src="../../../../assets/images/icons/VectorProfileIcon.svg"
-            alt="profile-icon"
-            class="responsive-svg"
-          /> -->
           <img
             [src]="
               isProfileActive
@@ -63,11 +35,7 @@
             alt="profile-icon"
             class="responsive-svg"
           />
-          <!-- <img
-            src="../../../../assets/images/icons/VectorDown Arrow.svg"
-            style="margin-left: 12px"
-            class="responsive-svg-down-arr"
-          /> -->
+
           <img
             [src]="
               isProfileActive

@@ -6,13 +6,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuTrigger, MatMenuModule } from '@angular/material/menu';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reg-header',
   templateUrl: './reg-header.component.html',
   styleUrls: ['./reg-header.component.css'],
   standalone: true,
-  imports: [MatDividerModule, MatIconModule, MatMenuModule],
+  imports: [MatDividerModule, MatIconModule, MatMenuModule, CommonModule],
   encapsulation: ViewEncapsulation.None,
 })
 export class RegHeaderComponent {
