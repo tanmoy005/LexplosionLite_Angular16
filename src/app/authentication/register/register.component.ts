@@ -150,9 +150,10 @@ export class AppSideRegisterComponent implements OnInit {
       })
     );
 
-    this.selectedCountry = this.newCountryNameList[0];
+    // this.selectedCountry = this.newCountryNameList[0];
+    this.selectedCountry = this.countryList[0];
     const countryCode = this.countryList[0];
-    console.log('the country in on in it', countryCode);
+    //console.log('the country in on in it', countryCode);
     //this.countryCodeFormControl.setValue(this.selectedCountry);
     //this.countryCodeFormControl.setValue(countryCode);
     //countryList: CountryData[] = CountryListForPhoneNumberSection;
