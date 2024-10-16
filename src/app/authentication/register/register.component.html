@@ -331,7 +331,7 @@
           />
           <mat-error
             *ngIf="
-              emailFormControl.hasError('email') &&
+              emailFormControl.hasError('invalidEmail') &&
               !emailFormControl.hasError('required')
             "
             >Please enter a valid email address</mat-error

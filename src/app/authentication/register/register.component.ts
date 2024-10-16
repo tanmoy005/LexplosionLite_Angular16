@@ -58,7 +58,13 @@ function passwordValidator(): ValidatorFn {
     return !passwordValid ? { passwordInvalid: true } : null;
   };
 }
-
+export function customEmailValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const valid = emailRegex.test(control.value);
+    return valid ? null : { invalidEmail: true };
+  };
+}
 export function confirmPasswordValidator(
   passwordControl: AbstractControl
 ): ValidatorFn {
@@ -138,7 +144,7 @@ export class AppSideRegisterComponent implements OnInit {
   //   this.countryCodeFormControl.setValue(this.selectedCountry);
   // }
   async ngOnInit(): Promise<void> {
-    this.newCountryNameList = await this.fetchEntityOPUnitDefinitions();
+    //this.newCountryNameList = await this.fetchEntityOPUnitDefinitions();
 
     const allCountries = await this.fetchEntityOPUnitDefinitions();
 
@@ -175,7 +181,8 @@ export class AppSideRegisterComponent implements OnInit {
   companynameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [
     Validators.required,
-    Validators.email,
+    //Validators.email,
+    customEmailValidator(),
   ]);
 
   headquarterAddressFormControl = new FormControl('', [Validators.required]);
@@ -296,30 +303,21 @@ export class AppSideRegisterComponent implements OnInit {
   }
 
   handleRegistration(event: any) {
-    // const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
-    // const usernameParts = this.username?.trim().split(' ') || [''];
-    // //this.isLoading = true;
-    // if (isRegistrationCredentialsFine) {
-    //   const payload = {
-    //     // name: this.username,
-    //     name: this.businessname,
-    //     description: this.headquarterAddress,
-    //     firstName: usernameParts[0] || '',
-    //     lastName: usernameParts.slice(1).join(' ') || '',
-    //     email: this.email,
-    //     mobile: this.phoneNumber,
-    //     password: this.password,
-    //     source: loginSource,
-    //     //countries: [1],
-    //     countries: this.selectedCountryList,
-    //   };
-    //   this.router.navigate(['/verify-email'], { state: payload });
-    // } else {
-    //   this.snackbar.showError(
-    //     'Please enter all field values in correct format and check terms and conditions.'
-    //   );
-    //   //this.isLoading = false;
-    // }
+    // const usernameParts1 = this.username?.trim().split(' ') || [''];
+    // const payload = {
+    //   // name: this.username,
+    //   name: this.businessname,
+    //   description: this.headquarterAddress,
+    //   firstName: usernameParts1[0] || '',
+    //   lastName: usernameParts1.slice(1).join(' ') || '',
+    //   email: this.email,
+    //   mobile: this.phoneNumber,
+    //   password: this.password,
+    //   source: loginSource,
+    //   //countries: [1],
+    //   countries: this.selectedCountryList,
+    // };
+    // this.router.navigate(['/verify-email'], { state: payload });
     const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
     const usernameParts = this.username?.trim().split(' ') || [''];
     this.isLoading = true;
