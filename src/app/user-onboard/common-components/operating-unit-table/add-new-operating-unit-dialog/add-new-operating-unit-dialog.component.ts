@@ -260,7 +260,6 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       this.editingnoOfApprentice = this.noOfApprentice;
       this.editingnoOfChild = this.noOfChild;
       this.buttonName = 'Update';
-      //this.isStateDropdownDisabled = false;
     }
   }
 
@@ -378,13 +377,13 @@ export class AddNewOperatingUnitDialogComponent implements OnInit {
       const payload = {
         id: id,
         name: this.operatingUnitName,
-        //company: [406],
+
         company: getCompanyId(),
-        // countryId: 1,
+
         countryId: this.selectedCountryID,
         entities: this.selectedEntities,
         operatingUnitType: this.operatingUnitType,
-        // state: 36,
+
         state: this.state,
         stateSearch: null,
         activities: this.selectedActivitiesList,

@@ -1,4 +1,7 @@
-::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
+::ng-deep
+  .mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header
+  .mat-step-label {
   padding: 16px 0 0 0;
   text-align: center;
   width: 100%;
@@ -35,13 +38,11 @@
 .disabled-step {
   pointer-events: none;
   opacity: 0.5;
-  /* visually indicate that the step is disabled */
 }
 
 .custom-step-header {
   background-color: #af2727;
   color: #a70d0d;
-  /* Add any other styles you want to apply */
 }
 
 ::ng-deep .custom-stepper .mat-step-header .mat-step-icon-selected,
@@ -51,19 +52,15 @@
   color: #855308;
 }
 
-::ng-deep .custom-stepper .mat-step-header .mat-step-label.mat-step-label-active {
+::ng-deep
+  .custom-stepper
+  .mat-step-header
+  .mat-step-label.mat-step-label-active {
   color: #b88a0d;
 }
 ::ng-deep mat-step-header {
-  align-items: start!important;
+  align-items: start !important;
 }
 ::ng-deep mat-step-header:last-child {
-  align-items: end!important;
+  align-items: end !important;
 }
-
-/* .mat-step-header .mat-step-icon-selected,
-.mat-step-header .mat-step-icon-state-done,
-.mat-step-header .mat-step-icon-state-edit {
-  background-color: #373ba3;
-  color: #b92424;
-} */

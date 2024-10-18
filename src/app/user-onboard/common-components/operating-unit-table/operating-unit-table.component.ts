@@ -51,37 +51,6 @@ function getCompanyId() {
   return userCompanyId;
 }
 
-// function summarizeLaws(data: any) {
-//   // Initialize an empty map to keep track of unique law IDs for each entity
-//   const entityLawsMap = new Map();
-
-//   // Iterate through each item in the data array
-//   data.forEach((item: any) => {
-//     const entityId = item.operatingUnit.id;
-//     const komriskLaws = item.komriskLaws;
-
-//     // Ensure the map has a set initialized for the entity
-//     if (!entityLawsMap.has(entityId)) {
-//       entityLawsMap.set(entityId, new Set());
-//     }
-
-//     // Get the current set of law IDs for this entity
-//     const lawIdSet = entityLawsMap.get(entityId);
-
-//     // Add each law ID to the set (duplicates will automatically be ignored)
-//     komriskLaws.forEach((law: any) => {
-//       lawIdSet.add(law.id);
-//     });
-//   });
-
-//   // Convert the map to an array of objects with the count of unique laws
-//   const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
-//     id,
-//     noOfLaws: lawIdSet.size,
-//   }));
-
-//   return result;
-// }
 interface EntityLawCount {
   id: number;
   noOfLaws: number;
@@ -129,7 +98,7 @@ export class OperatingUnitTableComponent implements OnInit {
   @Input() entity: EntityDataType;
   @Input() isDotsCliscked: boolean;
   operatingUnitTypes: FieldDefinitionInterfaces.OperatingUnitTypes[] = [];
-  // states: StateListInterface | undefined;
+
   states: StateInterface[] | undefined;
   opUnitDataFromApi: FetchOPUnits[];
 
@@ -138,8 +107,6 @@ export class OperatingUnitTableComponent implements OnInit {
     this.fetchLawsList();
     const savedUniTypes = this.encryptStorage.getItem('operatingUnitTypes');
 
-    // const savedStates = this.apiService.getDemoStateData(this.entity.country);
-    //const savedStates = this.apiService.getDemoStateData(1);
     const savedStates = this.encryptStorage.getItem('states');
 
     this.states = savedStates;
@@ -180,7 +147,6 @@ export class OperatingUnitTableComponent implements OnInit {
       });
     } catch (e) {
       this.snackbar.showError('Some error occurred while fetching Laws');
-      // this.isLoading = false;
     }
   }
   getBadgeCount(id: number): number | null {

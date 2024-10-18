@@ -1,16 +1,20 @@
-<!-- <p>offline-payment-dialog works!</p> -->
-
-<app-dialog-layout [dialogHeaderTitle]="''" [dialogHeaderImage]="''" [shade]="'light'">
+<app-dialog-layout
+  [dialogHeaderTitle]="''"
+  [dialogHeaderImage]="''"
+  [shade]="'light'"
+>
   <mat-dialog-content class="modal-content">
-    <!-- <div>
-      <mat-icon class="dark-purple-icon">check_circle</mat-icon>
-    </div> -->
-
     <div class="user-added-successfully">
-      <p class="text_12_700_gray_1000"> Currently, no information is available for this particular law</p>
+      <p class="text_12_700_gray_1000">
+        Currently, no information is available for this particular law
+      </p>
     </div>
     <div class="btn-containar-dialog">
-      <button mat-stroked-button class="btn-primary-outline-md btn-spacing" (click)="closeDialog()">
+      <button
+        mat-stroked-button
+        class="btn-primary-outline-md btn-spacing"
+        (click)="closeDialog()"
+      >
         <img src="./assets/images/icons/Icons - Lex Kom Litecross.svg" />
         <span>Exit</span>
       </button>
