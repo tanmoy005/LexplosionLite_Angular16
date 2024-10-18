@@ -9,33 +9,6 @@ import {
 } from '@angular/animations';
 import { ApiService } from 'src/app/services/api.service';
 
-const ELEMENT_DATA: any[] = [
-  { FEATURES: 1, DETAILS: 'Hydrogen', KOMRISK: 1.0079, KOMISK_LITE: 'H' },
-  { FEATURES: 2, DETAILS: 'Helium', KOMRISK: 4.0026, KOMISK_LITE: 'He' },
-  { FEATURES: 3, DETAILS: 'Lithium', KOMRISK: 6.941, KOMISK_LITE: 'Li' },
-  { FEATURES: 4, DETAILS: 'Beryllium', KOMRISK: 9.0122, KOMISK_LITE: 'Be' },
-  { FEATURES: 5, DETAILS: 'Boron', KOMRISK: 10.811, KOMISK_LITE: 'B' },
-  { FEATURES: 6, DETAILS: 'Carbon', KOMRISK: 12.0107, KOMISK_LITE: 'C' },
-  { FEATURES: 7, DETAILS: 'Nitrogen', KOMRISK: 14.0067, KOMISK_LITE: 'N' },
-  { FEATURES: 8, DETAILS: 'Oxygen', KOMRISK: 15.9994, KOMISK_LITE: 'O' },
-  { FEATURES: 9, DETAILS: 'Fluorine', KOMRISK: 18.9984, KOMISK_LITE: 'F' },
-  { FEATURES: 10, DETAILS: 'Neon', KOMRISK: 20.1797, KOMISK_LITE: 'Ne' },
-];
-
-export class TableExpandableRowsExample {
-  dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
-  expandedElement: PeriodicElement | null;
-}
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  description: string;
-}
-
 const mainData = [
   {
     id: 1,
@@ -149,14 +122,12 @@ export class FeaturesComponent implements OnInit {
     this.featuresList.forEach((parentFeature: any) => {
       let mismatchFound = false;
 
-      // Check if any of the child features have the mismatch
       parentFeature.features.forEach((feature: any) => {
         if (feature.komriskLite === false && feature.komrisk === true) {
           mismatchFound = true;
         }
       });
 
-      // If a mismatch is found, restructure the parent data accordingly
       if (mismatchFound) {
         this.restructuredData.push({
           id: parentFeature.id,
@@ -176,30 +147,21 @@ export class FeaturesComponent implements OnInit {
     try {
       this.apiService.postFetchFeatureList(payload).subscribe((response) => {
         if (response) {
-          //this.snackbar.showSuccess('OTP has been sent to your email');
-
           this.featuresList = response;
           this.restructureFeaturesList();
-          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
         }
       });
-    } catch (e) {
-      // this.snackbar.showError(
-      //   'Some error occurred while creating your admin profile.'
-      // );
-    }
+    } catch (e) {}
   }
   ngAfterViewInit() {
     const element = this.subcriptionTableRef.nativeElement;
 
-    // Initialize the ResizeObserver to monitor height changes
     this.resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         this.subcriptionHighlighterHeight = entry.contentRect.height + 48;
       }
     });
 
-    // Start observing the element
     this.resizeObserver.observe(element);
 
     this.setSubcriptionHighlighterPosition();
@@ -210,7 +172,6 @@ export class FeaturesComponent implements OnInit {
     }
   }
   ngOnDestroy() {
-    // Clean up the observer when the component is destroyed
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }
