@@ -1,5 +1,11 @@
 import { treeDataitem } from './../../../shared/menu-items/tree-items';
-import { Component, ViewChild, ViewEncapsulation, Input } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ViewEncapsulation,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,6 +14,22 @@ import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 import { CommonModule } from '@angular/common';
 
+function getFirstName() {
+  const encryptStorage = new EncryptStorage(environment.localStorageKey);
+
+  const { user } = encryptStorage.getItem('login-details');
+  const userFirstName = user.firstName;
+
+  return userFirstName;
+}
+function getLastName() {
+  const encryptStorage = new EncryptStorage(environment.localStorageKey);
+
+  const { user } = encryptStorage.getItem('login-details');
+  const userLastName = user.lastName;
+
+  return userLastName;
+}
 @Component({
   selector: 'app-reg-header',
   templateUrl: './reg-header.component.html',
@@ -16,10 +38,14 @@ import { CommonModule } from '@angular/common';
   imports: [MatDividerModule, MatIconModule, MatMenuModule, CommonModule],
   encapsulation: ViewEncapsulation.None,
 })
-export class RegHeaderComponent {
+export class RegHeaderComponent implements OnInit {
   constructor(private router: Router) {}
   @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
   @Input() isProfileActive: boolean = true;
+  userName: string = 'Uername';
+  ngOnInit(): void {
+    this.userName = getFirstName() + ' ' + getLastName();
+  }
 
   handleClickOnLogo() {
     this.router.navigate(['/home']);
