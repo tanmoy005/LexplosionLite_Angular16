@@ -53,25 +53,13 @@ export class ApiService {
 
   constructor(private http: HttpClient, private snackBar: SnackbarService) {}
 
-  // getAuthToken() {
-  //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //   const { token } = encryptStorage.getItem('login-details');
-  //   return token;
-  // }
   getAuthToken() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
     const token = encryptStorage.getItem('token');
     return token;
   }
 
-  // getCompanyId() {
-  //   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //   const { token } = encryptStorage.getItem('login-details');
-  //   return token;
-  // }
-
   getCompanyId() {
-    // Retrieve the login details from encrypted storage
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
     const loginDetails = encryptStorage.getItem('login-details');
 
@@ -86,26 +74,20 @@ export class ApiService {
   }
 
   private setHeaderJson(apiUrl: string) {
-    // var headerJSON;
     let headerJSON = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     if (!this.endpointsWithoutAuthToken.includes(apiUrl)) {
-      // headerJSON = { 'Content-Type': 'application/json' };
       headerJSON = headerJSON.set(
         'Authorization',
         `Bearer ${this.getAuthToken()}`
-        // `Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDcsImZpcnN0TmFtZSI6IkxleCIsImxhc3ROYW1lIjoiQWRtaW4iLCJuYW1lIjoiTGV4IEFkbWluIiwiZW1haWwiOiJhZG1pbkBsZXhwbG9zaW9uLmluIiwibW9iaWxlIjoiODcwOTQ3NDU1NiIsImNvbXBhbmllcyI6W3siaWQiOjQwNiwibmFtZSI6IkxFWFBMT1NJT04gTE9HSUMgVEVTVElORyAyLjAgZW5naW5lIiwiY29tcGFueUlkIjpudWxsLCJjb21wYW55VXJsIjpudWxsfV0sInJvbGUiOnsiaWQiOjEsImF1dGhvcml0eSI6IkxFWF9JVF9BRE1JTiIsIm1vZHVsZXMiOlt7ImlkIjoxLCJuYW1lIjoiVVNFUiBNQU5BR0VNRU5UIiwiY2FuQ3JlYXRlIjp0cnVlLCJjYW5SZWFkIjp0cnVlLCJjYW5VcGRhdGUiOnRydWUsImNhbkRlbGV0ZSI6dHJ1ZX0seyJpZCI6MywibmFtZSI6IkNPTVBBTlkgTUFOQUdFTUVOVCIsImNhbkNyZWF0ZSI6dHJ1ZSwiY2FuUmVhZCI6dHJ1ZSwiY2FuVXBkYXRlIjp0cnVlLCJjYW5EZWxldGUiOnRydWV9XX0sImlhdCI6MTcyNDIxOTc3NywiZXhwIjoxNzMxNDE5Nzc3fQ.GR2KxeVSrutpmap49LDR4pH_GJoUQ5lhiyMkFisNZNmoWyZ_ny9wcODblZGXGu0QHyIrC9RQonbFTLtl6WAauQ`
       );
     }
     return headerJSON;
   }
   private handleErrors<T>() {
     return catchError((error: HttpErrorResponse) => {
-      console.log('error234234', error);
-      
-      // this.snackBar.showError(error?.error?.error); // Assuming error?.error?.error has the actual error message
-      return throwError(() => new Error(error?.error?.error)); // Forward the error
+      return throwError(() => new Error(error?.error?.error));
     });
   }
   private postData(apiUrl: string, data: any): Observable<any> {

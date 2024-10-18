@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 
 interface PaymentSharedData {
-    amount: string;
-    companyId: string;
-    promoCode: string;
+  amount: string;
+  companyId: string;
+  promoCode: string;
 }
 @Injectable({
-  providedIn: 'root'  // This makes the service available application-wide
+  providedIn: 'root',
 })
 export class PaymentService {
-
   private sharedData: PaymentSharedData;
 
-  constructor() { }
+  constructor() {}
 
-  // Method to set data
   setData(data: PaymentSharedData) {
     this.sharedData = data;
   }
 
-  // Method to get data
   getData() {
     return this.sharedData;
   }

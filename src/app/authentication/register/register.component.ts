@@ -97,8 +97,10 @@ export class AppSideRegisterComponent implements OnInit {
 
   fieldPayload = ['countries'];
   isLoading: boolean = false;
+  loadingCountry: boolean = false;
 
   fetchEntityOPUnitDefinitions(): Promise<any> {
+    this.loadingCountry = true;
     return new Promise((resolve, reject) => {
       this.apiService.getFieldDefinition(this.fieldPayload).subscribe(
         (response) => {
@@ -106,9 +108,11 @@ export class AppSideRegisterComponent implements OnInit {
             environment.localStorageKey
           );
           encryptStorage.setItem('countries', response.data.countries);
+          this.loadingCountry = false;
           resolve(response.data.countries);
         },
         (error) => {
+          this.loadingCountry = false;
           reject(error);
         }
       );
@@ -285,7 +289,7 @@ export class AppSideRegisterComponent implements OnInit {
         mobile: this.phoneNumber,
         password: this.password,
         source: loginSource,
-        //countries: [1],
+
         countries: this.selectedCountryList,
       };
       this.authService.handleAdminUserCreation(payload);

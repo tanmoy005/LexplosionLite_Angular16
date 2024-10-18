@@ -71,56 +71,12 @@ export class AppSideLoginComponent {
   loginResponse: any;
   loginSource: string = loginSource;
 
-  // THIS FUNCTION IS BEING MOVED IN AND EXPORTED FROM - src\app\user-onboard\component-interfaces.ts
-
-  // fetchDefinitions() {
-  //   const fieldPayload = [
-  //     'entityTypes',
-  //     'industryActivities',
-  //     'states',
-  //     'operatingUnitTypes',
-  //     'komriskLawCategories',
-  //   ];
-
-  //   this.apiService.getFieldDefinition(fieldPayload).subscribe((response) => {
-  //     const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //     encryptStorage.setItem('entityTypes', response.data.entityTypes);
-  //     encryptStorage.setItem(
-  //       'industryActivities',
-  //       response.data.industryActivities
-  //     );
-  //     encryptStorage.setItem('states', response.data.states);
-  //     encryptStorage.setItem(
-  //       'operatingUnitTypes',
-  //       response.data.operatingUnitTypes
-  //     );
-  //     encryptStorage.setItem(
-  //       'komriskLawCategories',
-  //       response.data.komriskLawCategories
-  //     );
-  //   });
-  // }
-
   handleLogin(event: any) {
     const loginPayload = {
       unique_key: this.username,
       password: this.password,
       source: this.loginSource,
     };
-
-    // THIS FUNCTION IS BEING MOVED IN AND EXPORTED FROM - src\app\guest-user\login\login.component.ts
-    // try {
-    //   this.authService.userLogin(loginPayload).subscribe((response) => {
-    //     this.snackbar.showSuccess('Login Successful!');
-    //     const encryptStorage = new EncryptStorage(environment.localStorageKey);
-    //     encryptStorage.setItem('login-details', response);
-    //     //this.fetchDefinitions();
-    //     this.opUnitFetchObj.fetchEntityOPUnitDefinitions();
-    //     this.router.navigate(['/entity-details'], { state: { entity: '' } });
-    //   });
-    // } catch (error) {
-    //   this.snackbar.showError('Some error occurred while logging you in!');
-    // }
 
     this.authService.handleUserLogin(loginPayload);
   }

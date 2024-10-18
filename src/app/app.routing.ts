@@ -1,14 +1,9 @@
-import { UserOnboardModule } from './user-onboard/user-onboard.module';
 import { Routes } from '@angular/router';
 
-import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank/blank.component';
 import { InitialLayoutComponent } from './layouts/initial-layout/initial-layout.component';
-import { authGuard } from './auth.guard';
 import { NewUserVerificationComponent } from './user-onboard/new-user-verification/new-user-verification.component';
 import { loginGuard } from './login.guard';
-import { loginResolver } from './services/default-redirect.resolver';
-import { redirectGuard } from './default-redirect.guard';
 
 export const AppRoutes: Routes = [
   {
@@ -16,21 +11,7 @@ export const AppRoutes: Routes = [
     //canActivate: [redirectGuard],
     redirectTo: '/home',
     pathMatch: 'full',
-
-    // pathMatch: 'prefix',
   },
-  // {
-  //   path: '',
-  //   resolve: {
-  //     route: loginResolver,
-  //   },
-  // },
-  // {
-  //   path: '',
-  //   redirectTo: '', // Keep this empty for now (or default to another path)
-  //   pathMatch: 'full',
-  //   canActivate: [redirectGuard], // This will dynamically redirect based on authentication
-  // },
 
   {
     path: '',
@@ -42,7 +23,6 @@ export const AppRoutes: Routes = [
           import('./authentication/authentication.module').then(
             (m) => m.AuthenticationModule
           ),
-        // canActivate: [loginGuard],
       },
       {
         path: '',
@@ -80,7 +60,6 @@ export const AppRoutes: Routes = [
     ],
   },
   {
-    // component: InitialLayoutComponent,
     path: 'verify',
     component: NewUserVerificationComponent,
   },

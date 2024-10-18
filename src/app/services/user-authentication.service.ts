@@ -12,9 +12,6 @@ import { operatingUnitFetchDefinitions } from '../user-onboard/component-interfa
   providedIn: 'root',
 })
 export class UserAuthenticationService {
-  // CreateBusinessURL = 'https://enginebackendqa.komrisk.com/v1/company';
-  // CreateUserURL = 'https://enginebackendqa.komrisk.com/v1/user';
-  // loginURL = 'https://enginebackendqa.komrisk.com/v1/login';
   environment: any = environment;
 
   constructor(
@@ -67,18 +64,14 @@ export class UserAuthenticationService {
     this.userLogin(payload).subscribe({
       next: (response) => {
         this.snackbar.showSuccess('Login Successful');
-        // const encryptStorage = new EncryptStorage(environment.localStorageKey);
-        // encryptStorage.setItem('login-details', response);
-        // encryptStorage.setItem('token', response.token);
+
         this.handleSaveAuthDetails(response);
 
         this.opUnitFetchObj.fetchEntityOPUnitDefinitions(() => {
           this.router.navigate(['/entity-details'], { state: { entity: '' } });
         });
       },
-      error: () => {
-        this.snackbar.showError('Some error occurred while logging you in!');
-      },
+      error: () => {},
     });
   }
 

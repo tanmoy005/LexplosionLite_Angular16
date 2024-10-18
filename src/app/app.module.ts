@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 
 import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
-// import { FooterComponent } from './layouts/full/footer/footer.component';
+
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
@@ -64,7 +64,7 @@ import { TokenInterceptor } from './services/tokenInterceptor';
     SharedModule,
     RouterModule.forRoot(AppRoutes),
     AppSidebarComponent,
-    // UserOnboardModule,
+
     MatIconModule,
     MatSnackBarModule,
     MatMenuModule,

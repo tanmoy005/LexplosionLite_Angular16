@@ -18,19 +18,18 @@ export class TokenService {
   private refreshTokenUrl =
     'https://enginebackendqa.komrisk.com/v1/refreshToken';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private encryptStorage: EncryptStorage = new EncryptStorage(
     environment.localStorageKey
   );
   getToken(): string | null {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
-    const token = encryptStorage.getItem('token')
+    const token = encryptStorage.getItem('token');
     return token;
   }
 
   setToken(token: string): void {
-    console.log('set token called');
     this.encryptStorage.setItem('token', token);
   }
 
@@ -46,16 +45,9 @@ export class TokenService {
       .pipe(
         tap((response: any) => {
           this.setToken(response.msg);
-
-          console.log('token from refresh token', response.msg);
         })
       );
   }
 
-  logout(): void {
-    //this.token = null;
-    //const encryptStorage = new EncryptStorage(environment.localStorageKey);
-    //this.encryptStorage.removeItem('token');
-    //localStorage.removeItem('refreshToken');
-  }
+  logout(): void {}
 }
