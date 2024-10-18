@@ -67,58 +67,6 @@ function getMaxIdFromGrandchildren(children: TreeNode): number {
   return maxId;
 }
 
-// function summarizeLaws(data: any) {
-//   // Initialize an empty map to keep track of laws count for each entity
-//   const entityLawsMap = new Map();
-
-//   // Iterate through each item in the data array
-//   data.forEach((item: any) => {
-//     const entityId = item.entity.id;
-//     const numberOfLaws = item.komriskLaws.length;
-
-//     // Update the count of laws for each entity
-//     if (entityLawsMap.has(entityId)) {
-//       entityLawsMap.set(entityId, entityLawsMap.get(entityId) + numberOfLaws);
-//     } else {
-//       entityLawsMap.set(entityId, numberOfLaws);
-//     }
-//   });
-
-//   // Convert the map to an array of objects
-//   const result = Array.from(entityLawsMap, ([id, noOfLaws]) => ({
-//     id,
-//     noOfLaws,
-//   }));
-
-//   return result;
-// }
-
-// function summarizeLaws(data: any) {
-//   const entityLawsMap = new Map();
-
-//   data.forEach((item: any) => {
-//     const entityId = item.entity.id;
-//     const komriskLaws = item.komriskLaws;
-
-//     if (!entityLawsMap.has(entityId)) {
-//       entityLawsMap.set(entityId, new Set());
-//     }
-
-//     const lawIdSet = entityLawsMap.get(entityId);
-
-//     komriskLaws.forEach((law: any) => {
-//       lawIdSet.add(law.id);
-//     });
-//   });
-
-//   const result = Array.from(entityLawsMap, ([id, lawIdSet]) => ({
-//     id,
-//     noOfLaws: lawIdSet.size,
-//   }));
-
-//   return result;
-// }
-
 interface EntityLawCount {
   id: number;
   noOfLaws: number;
@@ -131,25 +79,21 @@ interface EntityLawAndOpUnitCount {
 }
 
 function summarizeLaws(data: ApplicableLaws[]): EntityLawCount[] {
-  // Define the type for the map where entityId is the key and the count of laws is the value
   const entityLawMap: { [key: number]: number } = {};
 
   data.forEach((item) => {
     const entityId = item.entity.id;
 
-    // If the entityId is not in the map, initialize it with 0
     if (!entityLawMap[entityId]) {
       entityLawMap[entityId] = 0;
     }
 
-    // Increment the law count for each occurrence of lawApplicability
     entityLawMap[entityId]++;
   });
 
-  // Convert the map into the desired structure
   return Object.keys(entityLawMap).map((key) => ({
-    id: +key, // Convert key to number
-    noOfLaws: entityLawMap[+key], // Use the value as the count of laws
+    id: +key,
+    noOfLaws: entityLawMap[+key],
   }));
 }
 
@@ -215,7 +159,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     try {
       this.apiService.postApplicableLaws(payload).subscribe((response) => {
         console.log('response23423', response);
-        
+
         if (response) {
           this.ApplicableLawsItems = response.data;
           //this.isLoading = false;
@@ -225,12 +169,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           encryptStorage.setItem('companyLaws', response.data);
         }
       });
-    } catch (e) {
-      console.log('error111', e);
-      
-      // this.snackbar.showError('Some error occurred while fetching Laws');
-      // this.isLoading = false;
-    }
+    } catch (e) {}
   }
   getBadgeCount(id: number): number | null {
     const data = this.LawSummary.find((item: any) => item.id === id);
@@ -294,7 +233,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     treeDataitem.children = [];
     let isNoOpUnit = true;
     this.entityTableDataLoading.emit(true);
-    //const entityFetchPayload = { company: 1 };
+
     const entityFetchPayload = { company: getCompanyId() };
     var opUnitNullStatus = false;
     var opUnitNullEntitiesList: string[] = [];
@@ -347,9 +286,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
                 (law: LawCategories) => law.description
               ),
               operatingUnit: entity.operatingUnits,
-              // country: [1],
-              // countryLabel: 'India',
-              // country: [1],
+
               country: countryIds,
               countryLabel: 'India',
 
@@ -358,10 +295,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
               childrenID: this.entityChild.id,
             };
 
-            // if (entityRow.operatingUnit.length === 0) {
-            //   opUnitNullStatus = true;
-            //   opUnitNullEntitiesList.push(entityRow.name);
-            // }
             if (entityRow.operatingUnit.length === 0) {
               opUnitNullStatus = true;
               opUnitNullEntitiesList.push(entityRow.name);
@@ -374,8 +307,6 @@ export class EntityTableComponent implements OnInit, OnDestroy {
             this.fetchOperatingUnitChildren(entity, entityRow);
           });
 
-          // treeDataitem
-
           this.table.renderRows();
           this.entityTableDataLoading.emit(false);
           this.checkAllEntitiesOPUnit.emit({
@@ -386,11 +317,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           this.isNoEntity.emit(entityNullStatus);
           this.isNoOpUnit.emit(isNoOpUnit);
         });
-    } catch (error) {
-      this.snackbar.showError(
-        'Some error occurred while fetching entity list!'
-      );
-    }
+    } catch (error) {}
   }
 
   viewAddEntityDialog(entity?: EntityInterfaces.BusinessDetails | null) {
@@ -419,7 +346,7 @@ export class EntityTableComponent implements OnInit, OnDestroy {
           const entityResponse = response;
 
           this.snackbar.showSuccess(successMessage);
-          // location.reload();
+
           this.dataSource = [];
           this.fetchEntityList();
           this.fetchLawsList();
@@ -437,22 +364,10 @@ export class EntityTableComponent implements OnInit, OnDestroy {
     });
   }
 
-  // openLawDialog() {
-  //   const name: string = 'Law List';
-  //   const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
-  //     data: { name: name },
-  //   });
-  //   dialogRef.afterClosed().subscribe((result) => {});
-  // }
   openLawDialog(entityId: number) {
     this.router.navigate(['/laws'], {
       state: { entity: entityId },
     });
-    // const name: string = 'Law List';
-    // const dialogRef = this.dialog.open(ViewEntityLawsDialog, {
-    //   data: { name: name },
-    // });
-    // dialogRef.afterClosed().subscribe((result) => {});
   }
   openOpDialog() {
     const name: string = 'Operating Unit List';

@@ -39,7 +39,6 @@ export class TreeStructureComponent implements OnInit {
     this.showBox1 = !this.showBox1;
     this.showBox2 = !this.showBox2;
 
-    // Since the view changes, wait for the DOM update before re-attaching scroll listeners
     setTimeout(() => this.addScrollListeners(), 0);
   }
 

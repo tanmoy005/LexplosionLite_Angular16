@@ -104,15 +104,7 @@ export class AddEntityDialog implements OnInit {
         icon: undefined,
       })
     );
-    // let filteredCountryList = CountryList;
 
-    // try {
-    //   filteredCountryList = CountryList.filter((country) =>
-    //     this.data.entityTable.countryList.includes(country.value)
-    //   );
-    // } catch (error) {}
-
-    // this.countryList = filteredCountryList;
     this.distinctIndutryTypesList = [];
 
     const seenIds = new Set();
@@ -209,10 +201,6 @@ export class AddEntityDialog implements OnInit {
     if (isAnyFieldBlank) {
       this.snackbar.showError('Please enter all the field values.');
     } else {
-      // this.selectedCountry = this.countryList.find(
-      //   (country) => country.value === this.formData.country
-      // );
-      // this.selectedCountryList = this.formData.country;
       this.formData.country = this.selectedCountryList;
 
       this.selectedEntity = this.transformedEntityList.find(

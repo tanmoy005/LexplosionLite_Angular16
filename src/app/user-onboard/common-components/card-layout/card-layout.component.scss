@@ -28,23 +28,7 @@
   background-color: $purple-400;
   @include card-struncture;
 }
-// @media (min-width: 992px) {
-//     .phn-section {
-//         width: 102%;
-//     }
-// }
 
-// @media (min-width: 1300px) {
-//     .phn-section {
-//         width: 105%;
-//     }
-// }
-
-// @media (max-width: 767.98px) {
-//     .phn-section {
-//         width: 105%;
-//     }
-// }
 .card-content-container-dark {
   overflow-x: auto;
   overflow-y: auto;

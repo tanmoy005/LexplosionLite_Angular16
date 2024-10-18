@@ -10,12 +10,12 @@ import {
 } from '@angular/core';
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
-// import { ApiService } from '../services/api.service';
+
 import { ApiService } from 'src/app/services/api.service';
 
 function getCompanyId() {
   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //return encryptStorage.getItem('company-id');
+
   const { user } = encryptStorage.getItem('login-details');
   const userCompanies = user.companies;
   const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
@@ -71,7 +71,7 @@ export class BusinessCardComponent implements OnInit {
 
     const userCompanyAdd =
       userCompanies.length > 0 ? userCompanies[0]['companyDescription'] : '';
-    // return userCompanyName;
+
     this.companyName = userCompanyName;
     this.companyHqadd = userCompanyAdd;
 
@@ -94,9 +94,6 @@ export class BusinessCardComponent implements OnInit {
 
   @Output() selectedCountryChange: EventEmitter<any> = new EventEmitter<any>();
 
-  // onCountryValueChange(value: any) {
-  //   this.selectedCountryChange.emit(value);
-  // }
   selectedCountryList: any = [];
 
   onCountryValueChange(value: any) {

@@ -30,18 +30,16 @@ export class CompanyStructureDialogueComponent {
   treeDataItem: any;
   activeLevel: any;
   zoomLevel: number = 1;
-  // Component logic goes here
+
   ngOnInit(): void {
     this.initializeTreeData();
   }
   ngAfterViewInit(): void {
-    // Attach scroll event listener to the first scrollable element
     this.scrollBox1?.nativeElement.addEventListener(
       'scroll',
       this.handleScroll.bind(this, 'Box 1')
     );
 
-    // Attach scroll event listener to the second scrollable element
     this.scrollBox2?.nativeElement.addEventListener(
       'scroll',
       this.handleScroll.bind(this, 'Box 2')
@@ -50,14 +48,12 @@ export class CompanyStructureDialogueComponent {
     window.addEventListener('scroll', () => {});
     const container = this.scrollContainer.nativeElement;
 
-    // Calculate vertical center
     const scrollTopCenter =
       (container.scrollHeight - container.clientHeight) / 2;
-    // Calculate horizontal center
+
     const scrollLeftCenter =
       (container.scrollWidth - container.clientWidth) / 2;
 
-    // Set the scroll positions
     container.scrollTop = scrollTopCenter;
     container.scrollLeft = scrollLeftCenter;
 
@@ -66,10 +62,6 @@ export class CompanyStructureDialogueComponent {
       this.handleScroll.bind(this, 'Box 1')
     );
 
-    // Attach scroll event listener to the second scrollable element
-    // this.scrollBox2.nativeElement.addEventListener('scroll', this.handleScroll.bind(this, 'Box 2'));
-
-    // Optionally, detect scrolling on the window (document scrolling)
     window.addEventListener('scroll', () => {});
   }
 
@@ -82,10 +74,10 @@ export class CompanyStructureDialogueComponent {
     this.dialogRef.close();
   }
   zoomIn() {
-    this.zoomLevel = this.zoomService.zoomIn(this.zoomLevel); // Use service
+    this.zoomLevel = this.zoomService.zoomIn(this.zoomLevel);
   }
 
   zoomOut() {
-    this.zoomLevel = this.zoomService.zoomOut(this.zoomLevel); // Use service
+    this.zoomLevel = this.zoomService.zoomOut(this.zoomLevel);
   }
 }

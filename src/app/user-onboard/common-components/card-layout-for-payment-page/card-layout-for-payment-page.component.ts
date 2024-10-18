@@ -6,8 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card-layout-for-payment-page.component.scss'],
 })
 export class CardLayoutForPaymentPageComponent {
-  // @Input() cardHeight: number;
-  // @Input() cardWidth: number;
   @Input() cardHeight: string | number;
   @Input() cardWidth: string | number;
 }

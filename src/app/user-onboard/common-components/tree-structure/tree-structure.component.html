@@ -1,54 +1,26 @@
-<!-- <ul class="tree">
-      <li style="margin: 5px;" *ngFor="let node of [rootNode]">
-        <span class="nodeSpan">{{ node.label }}</span>
-        <ul *ngIf="node.children">
-          <li *ngFor="let child of node.children">
-            <app-tree-structure [rootNode]="child"></app-tree-structure>
-          </li>
-        </ul>
-      </li>
-  </ul> -->
-
-<!-- <ul class="tree">
-  <li style="margin: 5px" *ngFor="let node of [rootNode]">
-    <div [ngClass]="{ 'level-1': node.level === 1 && activeLevel === 1 }">
-      <span class="nodeSpan">{{ node.label }}</span>
-    </div>
-    <ul *ngIf="node.children && node.children.length">
-      <div>
-        <li *ngFor="let child of node.children">
-          <div
-            [ngClass]="{ 'level-2': child.level === 2 && activeLevel === 2 }"
-          >
-            <app-tree-structure
-              [rootNode]="child"
-              [activeLevel]="activeLevel"
-            ></app-tree-structure>
-          </div>
-        </li>
-      </div>
-    </ul>
-  </li>
-</ul> -->
-
 <ul class="tree">
   <li style="margin: 5px" *ngFor="let node of [rootNode]">
-    <div [ngClass]="{ 'level-1': node.level === 1 && activeLevel === 1 } ">
+    <div [ngClass]="{ 'level-1': node.level === 1 && activeLevel === 1 }">
       <div class="node-container">
-        <!-- <div *ngIf="node && node.length === 1" class="vertical-upper-divider-sm"></div> -->
         <span class="nodeSpan">{{ node.label }}</span>
-  <div *ngIf="node.children && node.children.length" [ngClass]="{
-    'vertical-divider-bg': node.children.length === 1,
-    'vertical-divider-sm': node.children.length > 1
-  }"></div>
-  </div>
-  </div>
-  <ul *ngIf="node.children && node.children.length">
-    <li *ngFor="let child of node.children">
-      <div [ngClass]="{ 'level-2': child.level === 2 && activeLevel === 2 }">
-        <app-tree-structure [rootNode]="child" [activeLevel]="activeLevel"></app-tree-structure>
+        <div
+          *ngIf="node.children && node.children.length"
+          [ngClass]="{
+            'vertical-divider-bg': node.children.length === 1,
+            'vertical-divider-sm': node.children.length > 1
+          }"
+        ></div>
       </div>
-    </li>
-  </ul>
+    </div>
+    <ul *ngIf="node.children && node.children.length">
+      <li *ngFor="let child of node.children">
+        <div [ngClass]="{ 'level-2': child.level === 2 && activeLevel === 2 }">
+          <app-tree-structure
+            [rootNode]="child"
+            [activeLevel]="activeLevel"
+          ></app-tree-structure>
+        </div>
+      </li>
+    </ul>
   </li>
 </ul>

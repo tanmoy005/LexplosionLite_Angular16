@@ -50,12 +50,6 @@
   width: 60px;
 }
 
-// @media (max-width: 2560px) and (min-width: 1441px) {
-//   .entity-dialog {
-//     width: 800px;
-//   }
-// }
-
 .dark-brown-icon {
   color: rgba(120, 106, 205, 1);
   font-size: 20px;
@@ -63,12 +57,6 @@
 
 .entity-details-table table th {
   background-color: rgba(120, 106, 205, 0.04);
-  // color: black;
-  // font-family: Barlow;
-  // font-size: 12px;
-  // font-weight: 700;
-  // line-height: 14.4px;
-  // text-align: left;
 }
 
 .entity-details-table .mdc-data-table__cell,
@@ -77,10 +65,6 @@
 }
 
 .entity-details-table table td {
-  // font-family: Barlow;
-  // font-size: 12px;
-  // font-weight: 400;
-  // line-height: 14.4px;
   text-align: left;
 }
 
@@ -113,10 +97,6 @@
   margin: 0;
   cursor: pointer;
 }
-
-// .field-serial-no {
-//   margin: 12px 1vw;
-// }
 
 .custom-badge .mat-badge-content {
   background-color: #0073a5;

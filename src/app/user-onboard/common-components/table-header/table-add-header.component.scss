@@ -11,25 +11,15 @@
   flex-wrap: wrap;
 }
 
-// .route-name {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
-
 .separator {
   margin: 0 5px;
   vertical-align: middle;
 }
 
-// .button-container {
-//   display: flex;
-//   justify-content: flex-end;
-// }
-
 .button-container {
   display: flex;
   justify-content: flex-end;
-  gap: 8px; /* Adjust the value as needed for the desired spacing */
+  gap: 8px;
 }
 
 .path-layout-typography {
@@ -57,21 +47,6 @@
 }
 
 .btn-name-style-add-new-user {
-  // font-size: 12px !important;
-  // font-family: Barlow;
-  // font-weight: 400px;
-  // line-height: 14.4px;
   display: flex;
   align-items: center;
 }
-
-// @media (max-width: 2560px) and (min-width: 1441px) {
-//   .btn-name-style {
-//     font-size: calc(
-//       var(--base-unit-4k) * var(--scale-button-font-size)
-//     ) !important;
-//     font-family: Barlow;
-//     font-weight: 400px;
-//     line-height: 14.4px;
-//   }
-// }

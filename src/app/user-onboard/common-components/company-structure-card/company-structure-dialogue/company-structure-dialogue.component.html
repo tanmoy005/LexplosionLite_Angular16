@@ -1,27 +1,36 @@
 <div class="full-screen-modal">
-    <app-dialog-layout [dialogHeaderTitle]="dialogHeaderTitle">
-        <mat-dialog-content>
-            <!-- <div class="tree-container" [ngStyle]="{ transform: 'scale(' + zoomLevel + ')' }"> -->
-            <div class="zoom-controls">
-                <button mat-icon-button (click)="zoomIn()">
-                    <mat-icon class="dark-brown-icon">zoom_in</mat-icon>
-                </button>
-                <button mat-icon-button (click)="zoomOut()">
-                    <mat-icon class="dark-brown-icon">zoom_out</mat-icon>
-                </button>
-            </div>
-            <div class="full-screen-content-container" #scrollContainer>
-                <div class="tree-container" [ngStyle]="{ transform: 'scale(' + zoomLevel + ')' }">
-                    <app-tree-structure [rootNode]="treeDataItem" [activeLevel]="activeLevel">
-                    </app-tree-structure>
-                </div>
-            </div>
-        </mat-dialog-content>
-        <mat-dialog-actions class="mat-dialog-actions-container">
-            <button mat-button class="btn-primary-outline-md" (click)="closeCompanyStructureDialog()">
-                <p class="btn-name-style">Back</p>
-                <p></p>
-            </button>
-        </mat-dialog-actions>
-    </app-dialog-layout>
+  <app-dialog-layout [dialogHeaderTitle]="dialogHeaderTitle">
+    <mat-dialog-content>
+      <div class="zoom-controls">
+        <button mat-icon-button (click)="zoomIn()">
+          <mat-icon class="dark-brown-icon">zoom_in</mat-icon>
+        </button>
+        <button mat-icon-button (click)="zoomOut()">
+          <mat-icon class="dark-brown-icon">zoom_out</mat-icon>
+        </button>
+      </div>
+      <div class="full-screen-content-container" #scrollContainer>
+        <div
+          class="tree-container"
+          [ngStyle]="{ transform: 'scale(' + zoomLevel + ')' }"
+        >
+          <app-tree-structure
+            [rootNode]="treeDataItem"
+            [activeLevel]="activeLevel"
+          >
+          </app-tree-structure>
+        </div>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="mat-dialog-actions-container">
+      <button
+        mat-button
+        class="btn-primary-outline-md"
+        (click)="closeCompanyStructureDialog()"
+      >
+        <p class="btn-name-style">Back</p>
+        <p></p>
+      </button>
+    </mat-dialog-actions>
+  </app-dialog-layout>
 </div>
