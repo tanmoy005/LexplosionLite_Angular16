@@ -2,14 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  /* Adjust the value as needed */
 }
-
-// .create-user-form {
-//   gap: 10px;
-//   width: 23.13vw;
-//   // width: 25vw;
-// }
 
 .create-user-form {
   gap: 10px;
@@ -20,28 +13,17 @@
   }
 }
 
-/* Optional: If you want to control the gap more precisely for specific child elements */
 .add-new-user-container > app-table-add-header {
   margin-bottom: 16px;
-  /* Adjust the value as needed */
 }
 
 .custom-card-content {
   display: flex;
   padding: 0 0px;
-  /* Adjust as needed */
 
   flex-direction: column;
   gap: 16px;
 }
-
-// .flag-image-new-user {
-//   // width: 32px;
-//   // height: 24px;
-//   width: 2.343vw;
-//   height: 1.756vw;
-//   margin-right: 1rem;
-// }
 
 @media (min-width: 1280px) {
   .custom-col {
@@ -50,18 +32,7 @@
   }
 }
 
-// @media (min-width: 960px) {
-//   .custom-col {
-//     flex: 0 0 27.333333%;
-//     max-width: 27.333333%;
-//   }
-// }
-
 .btn-name-style-add-new-user {
-  // font-size: 12px !important;
-  // font-family: Barlow;
-  // font-weight: 400px;
-  // line-height: 14.4px;
   display: flex;
   align-items: center;
 }
@@ -77,14 +48,6 @@
   margin-top: -10px;
 }
 
-// @media (min-width: 1280px) {
-//   .custom-col-1 {
-//     flex: 0 0 16.6666666667%;
-//     max-width: 14.666667%;
-//   }
-// }
-
-/* For screens 1280px and up */
 @media (max-width: 1279px) {
   .custom-col-1 {
     flex: 0 0 18.6667%;
@@ -99,7 +62,6 @@
   }
 }
 
-/* For screens 1368px and up */
 @media (min-width: 1366px) {
   .custom-col-1 {
     flex: 0 0 14.6667%;
@@ -107,19 +69,9 @@
   }
 }
 
-/* For screens 1440px and up */
 @media (min-width: 1440px) {
   .custom-col-1 {
     flex: 0 0 12.6667%;
     max-width: 12.6667%;
   }
 }
-
-// @media (max-width: 1279px) {
-//   .flag-image-new-user {
-//     width: 2.5vw;
-//     height: 1.875vw;
-//   }
-// }
-
-/* Add more media queries as needed */

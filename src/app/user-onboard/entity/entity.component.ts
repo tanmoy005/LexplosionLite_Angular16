@@ -11,7 +11,6 @@ import { ApiService } from 'src/app/services/api.service';
 
 function getCompanyId() {
   const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //return encryptStorage.getItem('company-id');
   const { user } = encryptStorage.getItem('login-details');
   const userCompanies = user.companies;
   const userCompanyId = userCompanies.length > 0 ? userCompanies[0]['id'] : '';
@@ -170,39 +169,20 @@ export class EntityComponent implements OnInit {
     }
   }
 
-  // goToSubscription() {
-  //   if (this.entityListNullStatus) {
-  //     this.snackbar.showWarning('Add atlease one Entity');
-  //   } else if (!this.entitiesOPUnitNullStatus) {
-  //     this.router.navigate(['/subscription'], { state: { entity: '' } });
-  //   } else {
-  //     this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
-  //   }
-
-  //   // this.router.navigate(['/subscription'], { state: { entity: '' } });
-  // }
   goToSubscription() {
     if (this.entityListNullStatus) {
       this.snackbar.showWarning('Add atlease one Entity');
     } else if (this.opUnitListNullStatus) {
-      //this.router.navigate(['/subscription'], { state: { entity: '' } });
       this.snackbar.showWarning('Add atlease one Operating Unit');
     } else {
-      //this.snackbar.showWarning(this.entityUnsuccessfulCreationMessage);
       this.router.navigate(['/subscription'], { state: { entity: '' } });
     }
-
-    // this.router.navigate(['/subscription'], { state: { entity: '' } });
   }
 
   handleIsAddNewUserClicked(state: boolean) {
     this.isAddNewUserClicked = state;
 
     this.isemitedAddNewUserClicked.emit(this.isAddNewUserClicked);
-    // this.isDataComingFromDots = state;
-    // if (this.resolveDotsClickedPromise) {
-    //   this.resolveDotsClickedPromise();
-    // }
   }
 
   handleEntityListStatus(state: boolean) {

@@ -71,10 +71,7 @@ export class CreateNewUserComponent implements OnInit {
   countryNameList: CountryData[] = CountryList;
   @Output() isBackClicked = new EventEmitter<boolean>();
 
-  phoneNumberFormControl = new FormControl('', [
-    // Validators.required,
-    phoneNumberValidator,
-  ]);
+  phoneNumberFormControl = new FormControl('', [phoneNumberValidator]);
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -84,7 +81,7 @@ export class CreateNewUserComponent implements OnInit {
   companyName: string = '';
 
   ngOnInit(): void {
-    this.selectedCountry = this.countryList[0]; // Default selection
+    this.selectedCountry = this.countryList[0];
     this.countryCodeFormControl.setValue(this.selectedCountry);
 
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
@@ -93,7 +90,7 @@ export class CreateNewUserComponent implements OnInit {
     const userCompanies = user.companies;
     const userCompanyName =
       userCompanies.length > 0 ? userCompanies[0]['name'] : '';
-    // return userCompanyName;
+
     this.companyName = userCompanyName;
   }
 
@@ -103,9 +100,7 @@ export class CreateNewUserComponent implements OnInit {
   nameFormControl = new FormControl('', [Validators.required]);
 
   handleBackButtonClick(event: any) {
-    // window.location.reload();
     this.isBackClicked.emit(true);
-    // this.handleTableDataLoadingFromOperatingUnit.emit(true);
   }
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -142,9 +137,6 @@ export class CreateNewUserComponent implements OnInit {
   }
 
   handleRegistration(event: any) {
-    //this.openSuccessUserDialog();
-    // const isRegistrationCredentialsFine = this.checkRegistrationCredentials();
-
     const usernameParts = this.name?.trim().split(' ') || [''];
 
     const payload = {
@@ -163,28 +155,14 @@ export class CreateNewUserComponent implements OnInit {
     try {
       this.apiService.postCreateUser(payload).subscribe((response) => {
         if (response) {
-          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
           this.snackbar.showSuccess('A new user is created');
           this.openSuccessUserDialog();
         }
       });
-    } catch (e) {
-      //this.snackbar.showError('Some error occurred while creating user');
-    }
-
-    //const payload = { otp: this.otp, email: this.stateData.email };
-    //this.authService.handleAdminUserCreation(payload);
-    // this.router.navigate(['/verify-email'], { state: payload });
+    } catch (e) {}
   }
 
   handleCancelClick() {
-    // this.nameFormControl.reset('');
-    // this.phoneNumberFormControl.reset('');
-    // this.emailFormControl.reset('');
-    // this.selectedCountry = this.countryList[0]; // Resetting to default selected country
-    // this.countryCodeFormControl.setValue(this.selectedCountry);
-    // this.countryCode = 1; // Reset to default country code
-
     this.isBackClicked.emit(true);
   }
 }

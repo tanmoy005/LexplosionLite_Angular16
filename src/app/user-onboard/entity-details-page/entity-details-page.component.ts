@@ -20,9 +20,6 @@ import { entityCreationNullStatus } from 'src/app/shared/menu-items/entity-inter
   encapsulation: ViewEncapsulation.None,
 })
 export class EntityDetailsPageComponent {
-  // ngOnInit(): void {
-  //   window.location.reload();
-  // }
   entityTypesList: FieldDefinitionInterfaces.EntityTypes;
   industryTypesList: FieldDefinitionInterfaces.IndustryActivies;
   lawCategoriesList: FieldDefinitionInterfaces.komriskLawCategories;
@@ -67,16 +64,8 @@ export class EntityDetailsPageComponent {
     this.isDotsClicked = state;
   }
 
-  // handleSuccessfulEntityCreation(state: entityCreationNullStatus) {
-  //   this.isEntityCreationSuccessful = state.isEntityHasNullOPUnit;
-  //   this.stepper.stepCompletionStatus = state.isEntityHasNullOPUnit;
-  //   this.stepper.stepCompletionMessage = state.entityOPUnitNUllMessage;
-  // }
-
   handleSuccessfulEntityCreation(state: entityCreationNullStatus) {
-    //this.isEntityCreationSuccessful = state.isEntityHasNullOPUnit;
     this.stepper.stepCompletionStatus = true;
-    //this.stepper.stepCompletionMessage = state.entityOPUnitNUllMessage;
   }
 
   handleBackClick(event: boolean) {
