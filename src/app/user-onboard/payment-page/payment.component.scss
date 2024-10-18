@@ -17,12 +17,6 @@
   border-radius: 5px;
 }
 
-// .payment-details-button-container {
-//   display: flex;
-
-//   justify-content: space-between;
-// }
-
 .btn-name-style-online-payment {
   display: flex;
   align-items: center;
@@ -31,12 +25,12 @@
 .payment-details-button-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Align items vertically centered */
+  align-items: center;
   margin-top: 22px;
   margin-left: 18px;
 }
 
 .payment-details-buttons {
   display: flex;
-  gap: 10px; /* Add space between the Pay Online and Pay Offline buttons */
+  gap: 10px;
 }

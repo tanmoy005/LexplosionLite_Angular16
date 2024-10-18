@@ -35,18 +35,11 @@ export class PaymentComponent {
 
   openOnlinePaymentDialog() {
     const dialogRef = this.dialog.open(OnlinePaymentDialogComponent);
-    // dialogRef.componentInstance.isAddNewUserClickedModal.subscribe(() => {
-    //   this.handleCancelClick();
-    // });
   }
   openOfflinePaymentDialog() {
     const dialogRef = this.dialog.open(OfflinePaymentDialogComponent);
-    // dialogRef.componentInstance.isAddNewUserClickedModal.subscribe(() => {
-    //   this.handleCancelClick();
-    // });
   }
   handleClickOnOnlinePayment() {
-    // return this.apiService.initiatePayment();
     this.redirectUserToPaymentPage();
     this.openOnlinePaymentDialog();
   }
