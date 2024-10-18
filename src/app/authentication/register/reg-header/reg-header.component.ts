@@ -1,4 +1,3 @@
-import { treeDataitem } from './../../../shared/menu-items/tree-items';
 import {
   Component,
   ViewChild,
@@ -54,7 +53,6 @@ export class RegHeaderComponent implements OnInit {
   handleClickOnLogOut() {
     const encryptStorage = new EncryptStorage(environment.localStorageKey);
 
-    // Remove all necessary items from encryptStorage
     Promise.all([
       encryptStorage.removeItem('company-id'),
       encryptStorage.removeItem('login-details'),

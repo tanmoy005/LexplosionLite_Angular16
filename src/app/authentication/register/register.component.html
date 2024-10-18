@@ -1,5 +1,4 @@
 <div class="register-container">
-  <!-- <mat-card style="display: contents"> -->
   <app-reg-header [isProfileActive]="false"></app-reg-header>
   <mat-divider></mat-divider>
   <div
@@ -65,14 +64,6 @@
           >
         </mat-form-field>
 
-        <!-- <app-dropdown
-            [label]="'Select one or more countries'"
-            [options]="countryList"
-            [IsMultiSelection]="true"
-            [IsRequired]="false"
-            (selectedValueChange)="onCountryValueChange($event)"
-          >
-          </app-dropdown> -->
         <div class="bg-dropdown-register mt-16px">
           <app-dropdown
             [label]="'Select one or more countries'"
@@ -136,36 +127,6 @@
                 />
               </mat-form-field>
             </div>
-            <!-- <div class="bg-dropdown-white" (click)="toggleDropdown()">
-                <mat-form-field appearance="outline">
-                  <div class="row" *ngIf="!isDropdownOpen">
-                    <div class="col-lg-1 col-md-1" style="padding-right: 5px">
-                      <span class="country-code">{{
-                        selectedCountry?.label
-                        }}</span>
-                    </div>
-                    <div class="col-lg-6 col-md-6" style="padding-right: 5px">
-                      <img [src]="selectedCountry?.icon" alt="Flag" class="flag-image-new-user" />
-                    </div>
-                  </div>
-  
-                  <mat-select *ngIf="isDropdownOpen" [formControl]="countryCodeFormControl"
-                    (selectionChange)="onCountryChange($event)" #countrySelect>
-                    <mat-option *ngFor="let country of countryList" [value]="country">
-                      <div class="row">
-                        <div class="col-1">
-                          <span class="country-code">{{ country.label }}</span>
-                        </div>
-                        <div class="col-4">
-                          <img [src]="country.icon" alt="Flag" class="flag-image-new-user" style="margin-left: -8px" />
-                        </div>
-                      </div>
-                    </mat-option>
-                  </mat-select>
-  
-                  <input matInput name="countryCode" [readonly]="true" style="display: none" />
-                </mat-form-field>
-              </div> -->
           </div>
 
           <div class="col-lg-8 col-md-8">
@@ -183,9 +144,6 @@
                 class="text_12_400_gray_1000_responsive"
               />
 
-              <!-- <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
-                >Phone Number is&nbsp;<strong>required</strong></mat-error
-              > -->
               <mat-error
                 *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')"
                 >Invalid Phone Number</mat-error
@@ -193,86 +151,6 @@
             </mat-form-field>
           </div>
         </div>
-        <!-- <div style="width: 296px" class="phn-section">
-            <div class="bg-dropdown-white" (click)="toggleDropdown()">
-              <mat-form-field appearance="outline">
-                <div class="row" *ngIf="!isDropdownOpen">
-                  <div class="col-1" style="padding-right: 5px">
-                    <span class="country-code">{{
-                      selectedCountry?.label
-                    }}</span>
-                  </div>
-                  <div class="col-6" style="padding-right: 5px">
-                    <img
-                      [src]="selectedCountry?.icon"
-                      alt="Flag"
-                      class="flag-image"
-                    />
-                  </div>
-                </div>
-
-                <mat-select
-                  *ngIf="isDropdownOpen"
-                  [formControl]="countryCodeFormControl"
-                  (selectionChange)="onCountryChange($event)"
-                  #countrySelect
-                >
-                  <mat-option
-                    *ngFor="let country of countryList"
-                    [value]="country"
-                  >
-                    <div class="row">
-                      <div class="col-1">
-                        <span class="country-code">{{ country.label }}</span>
-                      </div>
-                      <div class="col-4">
-                        <img
-                          [src]="country.icon"
-                          alt="Flag"
-                          class="flag-image"
-                          style="margin-left: -8px"
-                        />
-                      </div>
-                    </div>
-                  </mat-option>
-                </mat-select>
-
-                <input
-                  matInput
-                  name="countryCode"
-                  [formControl]="countryCodeFormControl"
-                  [readonly]="true"
-                  style="display: none"
-                />
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-form-field
-                class="registration-phone-no-input"
-                appearance="outline"
-              >
-                <mat-label class="text_12_400_gray_1000"
-                  >Phone Number</mat-label
-                >
-                <input
-                  matInput
-                  type="tel"
-                  placeholder="Ex. 9999900000"
-                  name="phoneNumber"
-                  [formControl]="phoneNumberFormControl"
-                />
-
-                <mat-error *ngIf="phoneNumberFormControl.hasError('required')"
-                  >Phone Number is&nbsp;<strong>required</strong></mat-error
-                >
-                <mat-error
-                  *ngIf="phoneNumberFormControl.hasError('invalidPhoneNumber')"
-                  >Invalid Phone Number</mat-error
-                >
-              </mat-form-field>
-            </div>
-          </div> -->
 
         <div>
           <mat-checkbox
@@ -283,12 +161,6 @@
             [checked]="agreeToTerms"
             (change)="updateCheckBoxStateAndOpenConditionModal($event.checked)"
           >
-            <!-- <span class="agree-to-label">
-                  I agree to
-                  <button mat-button (click)="termsConditionModalOpen()">
-                    <p style="color: blue">terms and conditions</p>
-                  </button>
-                </span> -->
             <span class="text_12_400_gray_100">
               I agree to
               <a class="button-link">
@@ -374,19 +246,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="row" style="width: 550px">
-          <div class="col-lg-7 col-md-7 col-sm-7">
-          </div>
-
-          <div *ngIf="passwordFormControl.hasError('passwordInvalid')"
-            class="col-lg-1 col-md-1 col-sm-1 password-error-icon">
-            <mat-icon
-              matTooltip="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
-              [matTooltipPosition]="'above'">
-              info
-            </mat-icon>
-          </div>
-        </div> -->
 
         <div class="row">
           <div class="col">
@@ -433,7 +292,6 @@
       </form>
     </mat-card-content>
   </div>
-  <!-- </mat-card> -->
 </div>
 <div class="spinner-backdrop" *ngIf="isLoading">
   <mat-spinner></mat-spinner>

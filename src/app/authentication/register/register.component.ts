@@ -32,8 +32,6 @@ import { UserAuthenticationService } from 'src/app/services/user-authentication.
 import { EncryptStorage } from 'encrypt-storage';
 import { environment } from 'dotenv';
 
-// import { CountryData } from 'src/app/shared/menu-items/country-list';
-
 function passwordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
@@ -99,18 +97,7 @@ export class AppSideRegisterComponent implements OnInit {
 
   fieldPayload = ['countries'];
   isLoading: boolean = false;
-  // fetchEntityOPUnitDefinitions() {
-  //   this.apiService
-  //     .getFieldDefinition(this.fieldPayload)
-  //     .subscribe((response) => {
-  //       const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //       encryptStorage.setItem('countries', response.data.countries);
 
-  //       //return response.data.countries;
-  //     });
-  //   //const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //   //return encryptStorage.getItem('countries');
-  // }
   fetchEntityOPUnitDefinitions(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.apiService.getFieldDefinition(this.fieldPayload).subscribe(
@@ -119,33 +106,16 @@ export class AppSideRegisterComponent implements OnInit {
             environment.localStorageKey
           );
           encryptStorage.setItem('countries', response.data.countries);
-          resolve(response.data.countries); // Resolving the promise with countries
+          resolve(response.data.countries);
         },
         (error) => {
-          reject(error); // Handle errors and reject the promise
+          reject(error);
         }
       );
     });
   }
 
-  // ngOnInit(): void {
-  //   // const encryptStorage = new EncryptStorage(environment.localStorageKey);
-  //   // this.countryList = this.fetchEntityOPUnitDefinitions();
-  //   this.newCountryNameList = this.fetchEntityOPUnitDefinitions();
-  //   const allCountries = this.fetchEntityOPUnitDefinitions();
-  //   this.transformedCountries = allCountries.map(
-  //     (country: { id: any; name: any }) => ({
-  //       value: country.id,
-  //       label: country.name,
-  //       icon: undefined,
-  //     })
-  //   );
-  //   this.selectedCountry = this.countryList[0]; // Default selection
-  //   this.countryCodeFormControl.setValue(this.selectedCountry);
-  // }
   async ngOnInit(): Promise<void> {
-    //this.newCountryNameList = await this.fetchEntityOPUnitDefinitions();
-
     const allCountries = await this.fetchEntityOPUnitDefinitions();
 
     this.transformedCountries = allCountries.map(
@@ -156,23 +126,7 @@ export class AppSideRegisterComponent implements OnInit {
       })
     );
 
-    // this.selectedCountry = this.newCountryNameList[0];
     this.selectedCountry = this.countryList[0];
-    const countryCode = this.countryList[0];
-    //console.log('the country in on in it', countryCode);
-    //this.countryCodeFormControl.setValue(this.selectedCountry);
-    //this.countryCodeFormControl.setValue(countryCode);
-    //countryList: CountryData[] = CountryListForPhoneNumberSection;
-    //this.countryList = CountryListForPhoneNumberSection;
-    const preSelectedCountry = {
-      value: 2,
-      label: '+65',
-      icon: './assets/images/singapore_flag.png',
-      code: '',
-    };
-
-    // Set the pre-selected value to the FormControl
-    this.countryCodeFormControl.setValue(preSelectedCountry);
   }
 
   newCountryNameList: any;
@@ -181,7 +135,7 @@ export class AppSideRegisterComponent implements OnInit {
   companynameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [
     Validators.required,
-    //Validators.email,
+
     customEmailValidator(),
   ]);
 
@@ -261,7 +215,6 @@ export class AppSideRegisterComponent implements OnInit {
   selectedCountryList: any;
   countryCode: number | null = 1;
   countryList: CountryData[] = CountryListForPhoneNumberSection;
-  //countryList: CountryData[];
 
   countryNameList: CountryData[] = CountryList;
 

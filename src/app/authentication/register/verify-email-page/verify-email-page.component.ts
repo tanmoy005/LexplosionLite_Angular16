@@ -73,13 +73,7 @@ export class VerifyEmailPageComponent {
           this.router.navigate(['/entity-details'], { state: { entity: '' } });
         }
       });
-    } catch (e) {
-      // this.snackbar.showError(
-      //   'Some error occurred while creating your admin profile.'
-      // );
-    }
-
-    // this.router.navigate(['/entity-details'], { state: { entity: '' } });
+    } catch (e) {}
   }
 
   maskEmail(email: string): string {
@@ -101,13 +95,8 @@ export class VerifyEmailPageComponent {
       this.apiService.postSendOTP(payload).subscribe((response) => {
         if (response) {
           this.snackbar.showSuccess('OTP has been sent to your email');
-          // this.router.navigate(['/entity-details'], { state: { entity: '' } });
         }
       });
-    } catch (e) {
-      // this.snackbar.showError(
-      //   'Some error occurred while creating your admin profile.'
-      // );
-    }
+    } catch (e) {}
   }
 }
